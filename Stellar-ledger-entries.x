@@ -16,6 +16,7 @@
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
 %#include "xdr/Stellar-ledger-entries-invoice.h"
+%#include "xdr/Stellar-ledger-entries-reviewable-request.h"
 
 namespace stellar
 {
@@ -46,7 +47,8 @@ enum LedgerEntryType
     ACCOUNT_LIMITS = 11,
 	ASSET_PAIR = 12,
 	OFFER_ENTRY = 13,
-    INVOICE = 14
+    INVOICE = 14,
+	REVIEWABLE_REQUEST = 15
 };
 
 
@@ -86,6 +88,8 @@ struct LedgerEntry
 		OfferEntry offer;
     case INVOICE:
         InvoiceEntry invoice;
+	case REVIEWABLE_REQUEST:
+		ReviewableRequestEntry reviewableRequest;
     }
     data;
 

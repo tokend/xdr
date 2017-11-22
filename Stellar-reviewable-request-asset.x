@@ -7,27 +7,32 @@
 namespace stellar
 {
 
-enum AssetPolicy
-{
-	ASSET_TRANSFERABLE = 1
-};
+struct AssetCreationRequest {
 
-
-
-struct AssetEntry
-{
-    AssetCode code;
-	AccountID owner;
-    string64 name;
+	AssetCode code;
+	string64 name;
 	AccountID preissuedAssetSigner;
 	longstring description;
 	string256 externalResourceLink;
 	uint64 maxIssuanceAmount;
-	uint64 availableForIssueance;
-	uint64 issued;
     uint32 policies;
 
-    // reserved for future use
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct AssetUpdateRequest {
+	AssetCode code;
+	longstring description;
+	string256 externalResourceLink;
+	uint32 policies;
+
+	// reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

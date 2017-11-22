@@ -99,7 +99,8 @@ enum OperationType
     DIRECT_DEBIT = 14,
 	MANAGE_ASSET_PAIR = 15,
 	MANAGE_OFFER = 16,
-    MANAGE_INVOICE = 17
+    MANAGE_INVOICE = 17,
+	REVIEW_REQUEST = 18
 };
 
 struct DecoratedSignature

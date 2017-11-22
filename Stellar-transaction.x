@@ -21,6 +21,7 @@
 %#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
 %#include "xdr/Stellar-operation-manage-invoice.h"
+%#include "xdr/Stellar-operation-review-request.h"
 
 namespace stellar
 {
@@ -72,6 +73,8 @@ struct Operation
 		ManageOfferOp manageOfferOp;
     case MANAGE_INVOICE:
         ManageInvoiceOp manageInvoiceOp;
+	case REVIEW_REQUEST:
+		ReviewRequestOp reviewRequestOp;
     }
     body;
 };
@@ -200,6 +203,8 @@ case opINNER:
 		ManageOfferResult manageOfferResult;
 	case MANAGE_INVOICE:
 		ManageInvoiceResult manageInvoiceResult;
+	case REVIEW_REQUEST:
+		ReviewRequestResult reviewRequestResult;
     }
     tr;
 default:

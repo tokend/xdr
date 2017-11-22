@@ -87,7 +87,8 @@ enum AccountType
 	GENERAL = 2,           // general account can perform payments, setoptions, be source account for tx, etc.
 	COMMISSION = 3,        // commission account
 	MASTER = 4,            // master account
-    NOT_VERIFIED = 5
+    NOT_VERIFIED = 5,
+	SYNDICATE = 6 // can create asset
 };
 
 enum BlockReasons

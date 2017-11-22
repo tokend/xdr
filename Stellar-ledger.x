@@ -258,6 +258,16 @@ case INVOICE:
 		}
 		ext;
     } invoice;
+case REVIEWABLE_REQUEST:
+    struct {
+        uint64 ID;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+    } reviewableRequest;
 };
 
 enum BucketEntryType
