@@ -81,26 +81,26 @@ struct PaymentOp
 enum PaymentResultCode
 {
     // codes considered as "success" for the operation
-    PAYMENT_SUCCESS = 0, // payment successfuly completed
+    SUCCESS = 0, // payment successfuly completed
 
     // codes considered as "failure" for the operation
-    PAYMENT_MALFORMED = -1,       // bad input
-    PAYMENT_UNDERFUNDED = -2,     // not enough funds in source account
-    PAYMENT_LINE_FULL = -3,       // destination would go above their limit
-	PAYMENT_FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-    PAYMENT_BALANCE_NOT_FOUND = -5, // destination balance not found
-    PAYMENT_BALANCE_ACCOUNT_MISMATCHED = -6,
-    PAYMENT_BALANCE_ASSETS_MISMATCHED = -7,
-	PAYMENT_SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    PAYMENT_REFERENCE_DUPLICATION = -9,
-    PAYMENT_STATS_OVERFLOW = -10,
-    PAYMENT_LIMITS_EXCEEDED = -11,
-    PAYMENT_NOT_ALLOWED_BY_ASSET_POLICY = -12,
-    PAYMENT_INVOICE_NOT_FOUND = -13,
-    PAYMENT_INVOICE_WRONG_AMOUNT = -14,
-    PAYMENT_INVOICE_BALANCE_MISMATCH = -15,
-    PAYMENT_INVOICE_ACCOUNT_MISMATCH = -16,
-    PAYMENT_INVOICE_ALREADY_PAID = -17
+    MALFORMED = -1,       // bad input
+    UNDERFUNDED = -2,     // not enough funds in source account
+    LINE_FULL = -3,       // destination would go above their limit
+	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
+    BALANCE_NOT_FOUND = -5, // destination balance not found
+    BALANCE_ACCOUNT_MISMATCHED = -6,
+    BALANCE_ASSETS_MISMATCHED = -7,
+	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
+    REFERENCE_DUPLICATION = -9,
+    STATS_OVERFLOW = -10,
+    LIMITS_EXCEEDED = -11,
+    NOT_ALLOWED_BY_ASSET_POLICY = -12,
+    INVOICE_NOT_FOUND = -13,
+    INVOICE_WRONG_AMOUNT = -14,
+    INVOICE_BALANCE_MISMATCH = -15,
+    INVOICE_ACCOUNT_MISMATCH = -16,
+    INVOICE_ALREADY_PAID = -17
 };
 
 struct PaymentResponse {
@@ -118,7 +118,7 @@ struct PaymentResponse {
 
 union PaymentResult switch (PaymentResultCode code)
 {
-case PAYMENT_SUCCESS:
+case SUCCESS:
     PaymentResponse paymentResponse;
 default:
     void;

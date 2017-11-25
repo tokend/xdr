@@ -32,18 +32,18 @@ struct RecoverOp
 enum RecoverResultCode
 {
     // codes considered as "success" for the operation
-    RECOVER_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
 
-    RECOVER_MALFORMED = -1,
-    RECOVER_OLD_SIGNER_NOT_FOUND = -2,
-    RECOVER_SIGNER_ALREADY_EXISTS = -3
+    MALFORMED = -1,
+    OLD_SIGNER_NOT_FOUND = -2,
+    SIGNER_ALREADY_EXISTS = -3
 };
 
 union RecoverResult switch (RecoverResultCode code)
 {
-case RECOVER_SUCCESS:
+case SUCCESS:
     struct {
 		// reserved for future use
 		union switch (LedgerVersion v)

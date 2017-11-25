@@ -38,24 +38,24 @@ struct ManageForfeitRequestOp
 enum ManageForfeitRequestResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_FORFEIT_REQUEST_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-	MANAGE_FORFEIT_REQUEST_UNDERFUNDED = -1,
-    MANAGE_FORFEIT_REQUEST_INVALID_AMOUNT = -2,
-    MANAGE_FORFEIT_REQUEST_LINE_FULL = -3,
-    MANAGE_FORFEIT_REQUEST_BALANCE_MISMATCH = -4,
-    MANAGE_FORFEIT_REQUEST_STATS_OVERFLOW = -5,
-    MANAGE_FORFEIT_REQUEST_LIMITS_EXCEEDED = -6,
-    MANAGE_FORFEIT_REQUEST_REVIEWER_NOT_FOUND = -7,
-    MANAGE_FORFEIT_REQUEST_INVALID_DETAILS = -8,
-	MANAGE_FORFEIT_REQUEST_FEE_MISMATCH = -9 // fee is not equal to expected fee
+	UNDERFUNDED = -1,
+    INVALID_AMOUNT = -2,
+    LINE_FULL = -3,
+    BALANCE_MISMATCH = -4,
+    STATS_OVERFLOW = -5,
+    LIMITS_EXCEEDED = -6,
+    REVIEWER_NOT_FOUND = -7,
+    INVALID_DETAILS = -8,
+	FEE_MISMATCH = -9 // fee is not equal to expected fee
 };
 
 
 union ManageForfeitRequestResult switch (ManageForfeitRequestResultCode code)
 {
-    case MANAGE_FORFEIT_REQUEST_SUCCESS:
+    case SUCCESS:
         struct
         {
             uint64 paymentID;

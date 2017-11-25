@@ -78,21 +78,21 @@ in ascending order
 */
 enum LedgerUpgradeType
 {
-    LEDGER_UPGRADE_VERSION = 1,
-    LEDGER_UPGRADE_MAX_TX_SET_SIZE = 2,
-    LEDGER_UPGRADE_ISSUANCE_KEYS = 3,
-    LEDGER_UPGRADE_TX_EXPIRATION_PERIOD = 4
+    VERSION = 1,
+    MAX_TX_SET_SIZE = 2,
+    ISSUANCE_KEYS = 3,
+    TX_EXPIRATION_PERIOD = 4
 };
 
 union LedgerUpgrade switch (LedgerUpgradeType type)
 {
-case LEDGER_UPGRADE_VERSION:
+case VERSION:
     uint32 newLedgerVersion; // update ledgerVersion
-case LEDGER_UPGRADE_MAX_TX_SET_SIZE:
+case MAX_TX_SET_SIZE:
     uint32 newMaxTxSetSize; // update maxTxSetSize
-case LEDGER_UPGRADE_ISSUANCE_KEYS:
+case ISSUANCE_KEYS:
     PublicKey newIssuanceKeys<>;
-case LEDGER_UPGRADE_TX_EXPIRATION_PERIOD:
+case TX_EXPIRATION_PERIOD:
     int64 newTxExpirationPeriod;
 };
 
@@ -356,21 +356,21 @@ case EMPTY_VERSION:
 
 enum LedgerEntryChangeType
 {
-    LEDGER_ENTRY_CREATED = 0, // entry was added to the ledger
-    LEDGER_ENTRY_UPDATED = 1, // entry was modified in the ledger
-    LEDGER_ENTRY_REMOVED = 2, // entry was removed from the ledger
-    LEDGER_ENTRY_STATE = 3    // value of the entry
+    CREATED = 0, // entry was added to the ledger
+    UPDATED = 1, // entry was modified in the ledger
+    REMOVED = 2, // entry was removed from the ledger
+    STATE = 3    // value of the entry
 };
 
 union LedgerEntryChange switch (LedgerEntryChangeType type)
 {
-case LEDGER_ENTRY_CREATED:
+case CREATED:
     LedgerEntry created;
-case LEDGER_ENTRY_UPDATED:
+case UPDATED:
     LedgerEntry updated;
-case LEDGER_ENTRY_REMOVED:
+case REMOVED:
     LedgerKey removed;
-case LEDGER_ENTRY_STATE:
+case STATE:
     LedgerEntry state;
 };
 

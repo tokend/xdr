@@ -24,10 +24,10 @@ namespace stellar
 // defined by these indexes
 enum ThresholdIndexes
 {
-    THRESHOLD_MASTER_WEIGHT = 0,
-    THRESHOLD_LOW = 1,
-    THRESHOLD_MED = 2,
-    THRESHOLD_HIGH = 3
+    MASTER_WEIGHT = 0,
+    LOW = 1,
+    MED = 2,
+    HIGH = 3
 };
 
 enum LedgerEntryType
@@ -100,8 +100,8 @@ struct LedgerEntry
 // the respective envelopes
 enum EnvelopeType
 {
-    ENVELOPE_TYPE_SCP = 1,
-    ENVELOPE_TYPE_TX = 2,
-    ENVELOPE_TYPE_AUTH = 3
+    SCP = 1,
+    TX = 2,
+    AUTH = 3
 };
 }
