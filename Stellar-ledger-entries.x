@@ -4,7 +4,6 @@
 
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-account.h"
-%#include "xdr/Stellar-ledger-entries-coins-emission-request.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
 %#include "xdr/Stellar-ledger-entries-payment-request.h"
@@ -34,9 +33,7 @@ enum ThresholdIndexes
 enum LedgerEntryType
 {
     ACCOUNT = 0,
-	COINS_EMISSION_REQUEST = 1,
     FEE = 2,
-    COINS_EMISSION = 3,
     BALANCE = 4,
     PAYMENT_REQUEST = 5,
     ASSET = 6,
@@ -60,12 +57,8 @@ struct LedgerEntry
     {
     case ACCOUNT:
         AccountEntry account;
-	case COINS_EMISSION_REQUEST:
-		CoinsEmissionRequestEntry coinsEmissionRequest;
     case FEE:
         FeeEntry feeState;
-    case COINS_EMISSION:
-		CoinsEmissionEntry coinsEmission;
     case BALANCE:
         BalanceEntry balance;
     case PAYMENT_REQUEST:
@@ -73,7 +66,7 @@ struct LedgerEntry
     case ASSET:
         AssetEntry asset;
     case REFERENCE_ENTRY:
-        ReferenceEntry payment;
+        ReferenceEntry reference;
     case ACCOUNT_TYPE_LIMITS:
         AccountTypeLimitsEntry accountTypeLimits;
     case STATISTICS:

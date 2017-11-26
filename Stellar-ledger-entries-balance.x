@@ -12,8 +12,8 @@ struct BalanceEntry
     BalanceID balanceID;
     AssetCode asset;
     AccountID accountID;
-    int64 amount;
-    int64 locked;
+    uint64 amount;
+    uint64 locked;
 
     // reserved for future use
     union switch (LedgerVersion v)

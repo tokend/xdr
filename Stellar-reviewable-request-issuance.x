@@ -7,20 +7,11 @@
 namespace stellar
 {
 
-/* CoinsEmissionRequestEntry
+struct PreIssuanceRequest {
 
-    Entry representing a coins emission request.
-
-*/
-struct CoinsEmissionRequestEntry
-{
-	uint64 requestID;
-    string64 reference;
-    BalanceID receiver;
-	AccountID issuer;
-    int64 amount;
-    AssetCode asset;
-	bool isApproved;
+	AssetCode asset;
+	uint64 amount;
+	DecoratedSignature signature;
 
 	// reserved for future use
     union switch (LedgerVersion v)
@@ -31,13 +22,10 @@ struct CoinsEmissionRequestEntry
     ext;
 };
 
-
-struct CoinsEmissionEntry
-{
-	string64 serialNumber;
-    int64 amount;
-    AssetCode asset;
-
+struct IssuanceRequest {
+	AssetCode asset;
+	uint64 amount;
+	BalanceID receiver;
 	// reserved for future use
     union switch (LedgerVersion v)
     {

@@ -111,29 +111,6 @@ case ACCOUNT:
 		}
 		ext;
     } account;
-case COINS_EMISSION_REQUEST:
-	struct
-	{
-		AccountID issuer;
-		uint64 requestID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} coinsEmissionRequest;
-case COINS_EMISSION:
-	struct
-	{
-		string64 serialNumber;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} coinsEmission;
 case FEE:
     struct {
         Hash hash;
@@ -190,7 +167,7 @@ case REFERENCE_ENTRY:
 			void;
 		}
 		ext;
-    } payment;
+    } reference;
 case ACCOUNT_TYPE_LIMITS:
     struct {
         AccountType accountType;

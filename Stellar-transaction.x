@@ -6,8 +6,6 @@
 %#include "xdr/Stellar-operation-create-account.h"
 %#include "xdr/Stellar-operation-payment.h"
 %#include "xdr/Stellar-operation-set-options.h"
-%#include "xdr/Stellar-operation-manage-coins-emission-request.h"
-%#include "xdr/Stellar-operation-review-coins-emission-request.h"
 %#include "xdr/Stellar-operation-set-fees.h"
 %#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-manage-forfeit-request.h"
@@ -15,7 +13,8 @@
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
-%#include "xdr/Stellar-operation-upload-preemissions.h"
+%#include "xdr/Stellar-operation-create-preissuance-request.h"
+%#include "xdr/Stellar-operation-create-issuance-request.h"
 %#include "xdr/Stellar-operation-set-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
@@ -43,10 +42,8 @@ struct Operation
         PaymentOp paymentOp;
     case SET_OPTIONS:
         SetOptionsOp setOptionsOp;
-	case MANAGE_COINS_EMISSION_REQUEST:
-		ManageCoinsEmissionRequestOp manageCoinsEmissionRequestOp;
-	case REVIEW_COINS_EMISSION_REQUEST:
-		ReviewCoinsEmissionRequestOp reviewCoinsEmissionRequestOp;
+	case CREATE_ISSUANCE_REQUEST:
+		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
         SetFeesOp setFeesOp;
 	case MANAGE_ACCOUNT:
@@ -61,8 +58,8 @@ struct Operation
 		ReviewPaymentRequestOp reviewPaymentRequestOp;
     case MANAGE_ASSET:
         ManageAssetOp manageAssetOp;
-    case UPLOAD_PREEMISSIONS:
-        UploadPreemissionsOp uploadPreemissionsOp;
+    case CREATE_PREISSUANCE_REQUEST:
+        CreatePreIssuanceRequestOp createPreIssuanceRequest;
     case SET_LIMITS:
         SetLimitsOp setLimitsOp;
     case DIRECT_DEBIT:
@@ -173,10 +170,8 @@ case opINNER:
         PaymentResult paymentResult;
     case SET_OPTIONS:
         SetOptionsResult setOptionsResult;
-	case MANAGE_COINS_EMISSION_REQUEST:
-		ManageCoinsEmissionRequestResult manageCoinsEmissionRequestResult;
-	case REVIEW_COINS_EMISSION_REQUEST:
-		ReviewCoinsEmissionRequestResult reviewCoinsEmissionRequestResult;
+	case CREATE_ISSUANCE_REQUEST:
+		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
         SetFeesResult setFeesResult;
 	case MANAGE_ACCOUNT:
@@ -191,8 +186,8 @@ case opINNER:
         ReviewPaymentRequestResult reviewPaymentRequestResult;
     case MANAGE_ASSET:
         ManageAssetResult manageAssetResult;
-    case UPLOAD_PREEMISSIONS:
-        UploadPreemissionsResult uploadPreemissionsResult;
+    case CREATE_PREISSUANCE_REQUEST:
+        CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
     case SET_LIMITS:
         SetLimitsResult setLimitsResult;
     case DIRECT_DEBIT:
