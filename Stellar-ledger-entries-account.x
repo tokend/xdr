@@ -31,14 +31,13 @@ struct Signer
     uint32 weight; // really only need 1byte
 	uint32 signerType;
 	uint32 identity;
+	string256 name;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-	case SIGNER_NAME:
-		string256 name;
     }
     ext;
 };
@@ -125,14 +124,13 @@ struct AccountEntry
     // Referral marketing
     AccountID* referrer;     // parent account
     int64 shareForReferrer; // share of fee to pay parent
+	int32 policies;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-	case ACCOUNT_POLICIES:
-		int32 policies;
     }
     ext;
 };

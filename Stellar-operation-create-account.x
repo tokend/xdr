@@ -21,14 +21,13 @@ struct CreateAccountOp
     AccountID destination; // account to create
     AccountID* referrer;     // parent account
 	AccountType accountType;
+	uint32 policies;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;
-	case ACCOUNT_POLICIES:
-		uint32 policies;
+        void;		
     }
     ext;
 };
