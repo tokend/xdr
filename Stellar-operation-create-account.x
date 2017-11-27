@@ -20,12 +20,7 @@ struct CreateAccountOp
 {
     AccountID destination; // account to create
     AccountID* referrer;     // parent account
-
-	union switch (AccountType accountType)
-    {
-    default:
-        void;
-    } details;
+	AccountType accountType;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
