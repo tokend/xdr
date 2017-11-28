@@ -44,30 +44,30 @@ struct ReviewRequestOp
 enum ReviewRequestResultCode
 {
     // codes considered as "success" for the operation
-    REVIEW_REQUEST_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    REVIEW_REQUEST_INVALID_REASON = -1,        // reason must be empty if approving and not empty if rejecting
-	REVIEW_REQUEST_INVALID_ACTION = -2,
-	REVIEW_REQUEST_HASH_MISMATCHED = -3,
-	REVIEW_REQUEST_NOT_FOUND = -4,
-	REVIEW_REQUEST_TYPE_MISMATCHED = -5,
-	REVIEW_REQUEST_REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
+    INVALID_REASON = -1,        // reason must be empty if approving and not empty if rejecting
+	INVALID_ACTION = -2,
+	HASH_MISMATCHED = -3,
+	NOT_FOUND = -4,
+	TYPE_MISMATCHED = -5,
+	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
 
 	// Asset requests
-	REVIEW_REQUEST_ASSET_ALREADY_EXISTS = -20,
-	REVIEW_REQUEST_ASSET_DOES_NOT_EXISTS = -21,
+	ASSET_ALREADY_EXISTS = -20,
+	ASSET_DOES_NOT_EXISTS = -21,
 
 	// Issuance requests
-	REVIEW_REQUEST_MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
-	REVIEW_REQUEST_INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
-	REVIEW_REQUEST_FULL_LINE = -42 // can't fund balance - total funds exceed UINT64_MAX
+	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
+	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
+	FULL_LINE = -42 // can't fund balance - total funds exceed UINT64_MAX
 	
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
-case REVIEW_REQUEST_SUCCESS:
+case SUCCESS:
 	struct {
 		// reserved for future use
 		union switch (LedgerVersion v)
