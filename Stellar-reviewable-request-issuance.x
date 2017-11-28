@@ -12,6 +12,7 @@ struct PreIssuanceRequest {
 	AssetCode asset;
 	uint64 amount;
 	DecoratedSignature signature;
+	string64 reference;
 
 	// reserved for future use
     union switch (LedgerVersion v)

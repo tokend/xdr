@@ -17,7 +17,6 @@ namespace stellar
 struct CreatePreIssuanceRequestOp
 {
     PreIssuanceRequest request;
-	string64 reference;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
