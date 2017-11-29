@@ -16,7 +16,7 @@ enum SignerType
 	ASSET_MANAGER = 16, // allowed to create assets/asset pairs and update policies, set fees
 	ASSET_RATE_MANAGER = 32, // allowed to set physical asset price
 	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
-	EMISSION_MANAGER = 128, // allowed to make emission requests, review emission, upload preemission
+	ISSUANCE_MANAGER = 128, // allowed to make preissuance request, review issuance
 	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
 	PAYMENT_OPERATOR = 512, // allowed to review payment requests
 	LIMITS_MANAGER = 1024, // allowed to change limits
