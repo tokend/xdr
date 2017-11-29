@@ -9,20 +9,20 @@ namespace stellar
 
 enum SignerType
 {
-	SIGNER_READER = 1,                  // can only read data from API and Horizon
-	SIGNER_NOT_VERIFIED_ACC_MANAGER = 2,// can manage not verified account and block/unblock general
-	SIGNER_GENERAL_ACC_MANAGER = 4,     // allowed to create account, block/unblock, change limits for particular general account
-	SIGNER_DIRECT_DEBIT_OPERATOR = 8, // allowed to perform direct debit operation
-	SIGNER_ASSET_MANAGER = 16, // allowed to create assets/asset pairs and update policies, set fees, review pre-issuance requests
-	SIGNER_ASSET_RATE_MANAGER = 32, // allowed to set physical asset price
-	SIGNER_BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
-	SIGNER_ISSUANCE_MANAGER = 128, // allowed to make preissuance request, review issuance requests
-	SIGNER_INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
-	SIGNER_PAYMENT_OPERATOR = 512, // allowed to review payment requests
-	SIGNER_LIMITS_MANAGER = 1024, // allowed to change limits
-	SIGNER_ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
-	SIGNER_COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
-	SIGNER_OPERATIONAL_BALANCE_MANAGER = 8192 // allowed to spend from operational balances
+	READER = 1,                  // can only read data from API and Horizon
+	NOT_VERIFIED_ACC_MANAGER = 2,// can manage not verified account and block/unblock general
+	GENERAL_ACC_MANAGER = 4,     // allowed to create account, block/unblock, change limits for particular general account
+	DIRECT_DEBIT_OPERATOR = 8, // allowed to perform direct debit operation
+	ASSET_MANAGER = 16, // allowed to create assets/asset pairs and update policies, set fees
+	ASSET_RATE_MANAGER = 32, // allowed to set physical asset price
+	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
+	ISSUANCE_MANAGER = 128, // allowed to make preissuance request, review issuance
+	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
+	PAYMENT_OPERATOR = 512, // allowed to review payment requests
+	LIMITS_MANAGER = 1024, // allowed to change limits
+	ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
+	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
+	OPERATIONAL_BALANCE_MANAGER = 8192 // allowed to spend from operational balances
 };
 
 struct Signer

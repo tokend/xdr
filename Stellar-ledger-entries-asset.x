@@ -9,7 +9,7 @@ namespace stellar
 
 enum AssetPolicy
 {
-	ASSET_TRANSFERABLE = 1
+	TRANSFERABLE = 1
 };
 
 

@@ -10,9 +10,9 @@ namespace stellar
 
 enum AssetPairPolicy
 {
-	ASSET_PAIR_TRADEABLE = 1, // if not set pair can not be traided
-	ASSET_PAIR_PHYSICAL_PRICE_RESTRICTION = 2, // if set, then prices for new offers must be greater then physical price with correction
-	ASSET_PAIR_CURRENT_PRICE_RESTRICTION = 4 // if set, then price for new offers must be in interval of (1 +- maxPriceStep)*currentPrice
+	TRADEABLE = 1, // if not set pair can not be traided
+	PHYSICAL_PRICE_RESTRICTION = 2, // if set, then prices for new offers must be greater then physical price with correction
+	CURRENT_PRICE_RESTRICTION = 4 // if set, then price for new offers must be in interval of (1 +- maxPriceStep)*currentPrice
 };
 
 struct AssetPairEntry

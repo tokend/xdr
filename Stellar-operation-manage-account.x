@@ -36,13 +36,13 @@ struct ManageAccountOp
 enum ManageAccountResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_ACCOUNT_SUCCESS = 0, // account was created
+    SUCCESS = 0, // account was created
 
     // codes considered as "failure" for the operation
-    MANAGE_ACCOUNT_NOT_FOUND = -1,         // account does not exists
-    MANAGE_ACCOUNT_MALFORMED = -2,
-	MANAGE_ACCOUNT_NOT_ALLOWED = -3,         // manage account operation is not allowed on this account
-    MANAGE_ACCOUNT_TYPE_MISMATCH = -4
+    NOT_FOUND = -1,         // account does not exists
+    MALFORMED = -2,
+	NOT_ALLOWED = -3,         // manage account operation is not allowed on this account
+    TYPE_MISMATCH = -4
 };
 
 struct ManageAccountSuccess {
@@ -58,7 +58,7 @@ struct ManageAccountSuccess {
 
 union ManageAccountResult switch (ManageAccountResultCode code)
 {
-case MANAGE_ACCOUNT_SUCCESS:
+case SUCCESS:
     ManageAccountSuccess success;
 default:
     void;

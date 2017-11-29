@@ -34,16 +34,16 @@ struct CreateIssuanceRequestOp
 enum CreateIssuanceRequestResultCode
 {
     // codes considered as "success" for the operation
-    CREATE_ISSUANCE_REQUEST_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    CREATE_ISSUANCE_REQUEST_ASSET_NOT_FOUND = -1,
-	CREATE_ISSUANCE_REQUEST_INVALID_AMOUNT = -2,
-	CREATE_ISSUANCE_REQUEST_REFERENCE_DUPLICATION = -3,
-	CREATE_ISSUANCE_REQUEST_NO_COUNTERPARTY = -4,
-	CREATE_ISSUANCE_REQUEST_NOT_AUTHORIZED = -5,
-	CREATE_ISSUANCE_REQUEST_EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
-	CREATE_ISSUANCE_REQUEST_RECEIVER_FULL_LINE = -7
+    ASSET_NOT_FOUND = -1,
+	INVALID_AMOUNT = -2,
+	REFERENCE_DUPLICATION = -3,
+	NO_COUNTERPARTY = -4,
+	NOT_AUTHORIZED = -5,
+	EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
+	RECEIVER_FULL_LINE = -7
 };
 
 struct CreateIssuanceRequestSuccess {
@@ -59,7 +59,7 @@ struct CreateIssuanceRequestSuccess {
 
 union CreateIssuanceRequestResult switch (CreateIssuanceRequestResultCode code)
 {
-case CREATE_ISSUANCE_REQUEST_SUCCESS:
+case SUCCESS:
     CreateIssuanceRequestSuccess success;
 default:
     void;

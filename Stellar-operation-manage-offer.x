@@ -40,28 +40,28 @@ struct ManageOfferOp
 enum ManageOfferResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_OFFER_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MANAGE_OFFER_MALFORMED = -1,     // generated offer would be invalid
-    MANAGE_OFFER_PAIR_NOT_TRADED = -2, // it's not allowed to trage with this pair
-    MANAGE_OFFER_BALANCE_NOT_FOUND = -3,  // does not own balance for buying or selling
-    MANAGE_OFFER_UNDERFUNDED = -4,    // doesn't hold what it's trying to sell
-    MANAGE_OFFER_CROSS_SELF = -5,     // would cross an offer from the same user
-	MANAGE_OFFER_OVERFLOW = -6,
-	MANAGE_OFFER_ASSET_PAIR_NOT_TRADABLE = -7,
-	MANAGE_OFFER_PHYSICAL_PRICE_RESTRICTION = -8, // offer price violates physical price restriction
-	MAANGE_OFFER_CURRENT_PRICE_RESTRICTION = -9,
-    MANAGE_OFFER_NOT_FOUND = -10, // offerID does not match an existing offer
-    MANAGE_OFFER_INVALID_PERCENT_FEE = -11,
-	MANAGE_OFFER_INSUFFISIENT_PRICE = -12
+    MALFORMED = -1,     // generated offer would be invalid
+    PAIR_NOT_TRADED = -2, // it's not allowed to trage with this pair
+    BALANCE_NOT_FOUND = -3,  // does not own balance for buying or selling
+    UNDERFUNDED = -4,    // doesn't hold what it's trying to sell
+    CROSS_SELF = -5,     // would cross an offer from the same user
+	OFFER_OVERFLOW = -6,
+	ASSET_PAIR_NOT_TRADABLE = -7,
+	PHYSICAL_PRICE_RESTRICTION = -8, // offer price violates physical price restriction
+	CURRENT_PRICE_RESTRICTION = -9,
+    NOT_FOUND = -10, // offerID does not match an existing offer
+    INVALID_PERCENT_FEE = -11,
+	INSUFFICIENT_PRICE = -12
 };
 
 enum ManageOfferEffect
 {
-    MANAGE_OFFER_CREATED = 0,
-    MANAGE_OFFER_UPDATED = 1,
-    MANAGE_OFFER_DELETED = 2
+    CREATED = 0,
+    UPDATED = 1,
+    DELETED = 2
 };
 
 /* This result is used when offers are taken during an operation */
@@ -97,8 +97,8 @@ struct ManageOfferSuccessResult
 
     union switch (ManageOfferEffect effect)
     {
-    case MANAGE_OFFER_CREATED:
-    case MANAGE_OFFER_UPDATED:
+    case CREATED:
+    case UPDATED:
         OfferEntry offer;
     default:
         void;
@@ -115,9 +115,9 @@ struct ManageOfferSuccessResult
 
 union ManageOfferResult switch (ManageOfferResultCode code)
 {
-case MANAGE_OFFER_SUCCESS:
+case SUCCESS:
     ManageOfferSuccessResult success;
-case MANAGE_OFFER_PHYSICAL_PRICE_RESTRICTION:
+case PHYSICAL_PRICE_RESTRICTION:
 	struct {
 		int64 physicalPrice;
 		union switch (LedgerVersion v)
@@ -127,7 +127,7 @@ case MANAGE_OFFER_PHYSICAL_PRICE_RESTRICTION:
 		}
 		ext;
 	} physicalPriceRestriction;
-case MAANGE_OFFER_CURRENT_PRICE_RESTRICTION:
+case CURRENT_PRICE_RESTRICTION:
 	struct {
 		int64 currentPrice;
 		union switch (LedgerVersion v)
