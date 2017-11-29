@@ -18,7 +18,7 @@ Result: ManageBalanceResult
 enum ManageBalanceAction
 {
     CREATE = 0,
-    DELETE = 1
+    DELETE_BALANCE = 1
 };
 
 
