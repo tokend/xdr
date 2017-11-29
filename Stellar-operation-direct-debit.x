@@ -26,22 +26,22 @@ struct DirectDebitOp
 enum DirectDebitResultCode
 {
     // codes considered as "success" for the operation
-    DIRECT_DEBIT_SUCCESS = 0, // payment successfuly completed
+    SUCCESS = 0, // payment successfuly completed
 
     // codes considered as "failure" for the operation
-    DIRECT_DEBIT_MALFORMED = -1,       // bad input
-    DIRECT_DEBIT_UNDERFUNDED = -2,     // not enough funds in source account
-    DIRECT_DEBIT_LINE_FULL = -3,       // destination would go above their limit
-	DIRECT_DEBIT_FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-    DIRECT_DEBIT_BALANCE_NOT_FOUND = -5, // destination balance not found
-    DIRECT_DEBIT_BALANCE_ACCOUNT_MISMATCHED = -6,
-    DIRECT_DEBIT_BALANCE_ASSETS_MISMATCHED = -7,
-	DIRECT_DEBIT_SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    DIRECT_DEBIT_REFERENCE_DUPLICATION = -9,
-    DIRECT_DEBIT_STATS_OVERFLOW = -10,
-    DIRECT_DEBIT_LIMITS_EXCEEDED = -11,
-    DIRECT_DEBIT_NOT_ALLOWED_BY_ASSET_POLICY = -12,
-    DIRECT_DEBIT_NO_TRUST = -13
+    MALFORMED = -1,       // bad input
+    UNDERFUNDED = -2,     // not enough funds in source account
+    LINE_FULL = -3,       // destination would go above their limit
+	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
+    BALANCE_NOT_FOUND = -5, // destination balance not found
+    BALANCE_ACCOUNT_MISMATCHED = -6,
+    BALANCE_ASSETS_MISMATCHED = -7,
+	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
+    REFERENCE_DUPLICATION = -9,
+    STATS_OVERFLOW = -10,
+    LIMITS_EXCEEDED = -11,
+    NOT_ALLOWED_BY_ASSET_POLICY = -12,
+    NO_TRUST = -13
 };
 
 struct DirectDebitSuccess {
@@ -57,7 +57,7 @@ struct DirectDebitSuccess {
 
 union DirectDebitResult switch (DirectDebitResultCode code)
 {
-case DIRECT_DEBIT_SUCCESS:
+case SUCCESS:
     DirectDebitSuccess success;
 default:
     void;

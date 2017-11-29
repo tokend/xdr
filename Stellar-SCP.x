@@ -17,10 +17,10 @@ struct SCPBallot
 
 enum SCPStatementType
 {
-    SCP_ST_PREPARE = 0,
-    SCP_ST_CONFIRM = 1,
-    SCP_ST_EXTERNALIZE = 2,
-    SCP_ST_NOMINATE = 3
+    PREPARE = 0,
+    CONFIRM = 1,
+    EXTERNALIZE = 2,
+    NOMINATE = 3
 };
 
 struct SCPNomination
@@ -37,7 +37,7 @@ struct SCPStatement
 
     union switch (SCPStatementType type)
     {
-    case SCP_ST_PREPARE:
+    case PREPARE:
         struct
         {
             Hash quorumSetHash;       // D
@@ -47,7 +47,7 @@ struct SCPStatement
             uint32 nC;                // c.n
             uint32 nH;                // h.n
         } prepare;
-    case SCP_ST_CONFIRM:
+    case CONFIRM:
         struct
         {
             SCPBallot ballot;   // b
@@ -56,14 +56,14 @@ struct SCPStatement
             uint32 nH;          // h.n
             Hash quorumSetHash; // D
         } confirm;
-    case SCP_ST_EXTERNALIZE:
+    case EXTERNALIZE:
         struct
         {
             SCPBallot commit;         // c
             uint32 nH;                // h.n
             Hash commitQuorumSetHash; // D used before EXTERNALIZE
         } externalize;
-    case SCP_ST_NOMINATE:
+    case NOMINATE:
         SCPNomination nominate;
     }
     pledges;

@@ -37,16 +37,16 @@ struct ManageInvoiceOp
 enum ManageInvoiceResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_INVOICE_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MANAGE_INVOICE_MALFORMED = -1,
-    MANAGE_INVOICE_BALANCE_NOT_FOUND = -2,
-	MANAGE_INVOICE_OVERFLOW = -3,
+    MALFORMED = -1,
+    BALANCE_NOT_FOUND = -2,
+	INVOICE_OVERFLOW = -3,
 
-    MANAGE_INVOICE_NOT_FOUND = -4,
-    MANAGE_INVOICE_TOO_MANY_INVOICES = -5,
-    MANAGE_INVOICE_CAN_NOT_DELETE_IN_PROGRESS = -6
+    NOT_FOUND = -4,
+    TOO_MANY_INVOICES = -5,
+    CAN_NOT_DELETE_IN_PROGRESS = -6
 };
 
 struct ManageInvoiceSuccessResult 
@@ -65,7 +65,7 @@ struct ManageInvoiceSuccessResult
 
 union ManageInvoiceResult switch (ManageInvoiceResultCode code)
 {
-case MANAGE_INVOICE_SUCCESS:
+case SUCCESS:
     ManageInvoiceSuccessResult success;
 default:
     void;

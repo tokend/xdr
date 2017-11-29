@@ -34,18 +34,18 @@ struct ReviewPaymentRequestOp
 enum ReviewPaymentRequestResultCode
 {
     // codes considered as "success" for the operation
-    REVIEW_PAYMENT_REQUEST_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-	REVIEW_PAYMENT_REQUEST_NOT_FOUND = -1,           // failed to find Recovery request with such ID
-    REVIEW_PAYMENT_REQUEST_LINE_FULL = -2
+	NOT_FOUND = -1,           // failed to find Recovery request with such ID
+    LINE_FULL = -2
 };
 
 enum PaymentState
 {
-    PAYMENT_PENDING = 0,
-    PAYMENT_PROCESSED = 1,
-    PAYMENT_REJECTED = 2
+    PENDING = 0,
+    PROCESSED = 1,
+    REJECTED = 2
 };
 
 struct ReviewPaymentResponse {
@@ -65,7 +65,7 @@ struct ReviewPaymentResponse {
 
 union ReviewPaymentRequestResult switch (ReviewPaymentRequestResultCode code)
 {
-case REVIEW_PAYMENT_REQUEST_SUCCESS:
+case SUCCESS:
     ReviewPaymentResponse reviewPaymentResponse;
 default:
     void;

@@ -64,20 +64,20 @@ struct SetOptionsOp
 enum SetOptionsResultCode
 {
     // codes considered as "success" for the operation
-    SET_OPTIONS_SUCCESS = 0,
+    SUCCESS = 0,
     // codes considered as "failure" for the operation
-    SET_OPTIONS_TOO_MANY_SIGNERS = -1, // max number of signers already reached
-    SET_OPTIONS_THRESHOLD_OUT_OF_RANGE = -2, // bad value for weight/threshold
-    SET_OPTIONS_BAD_SIGNER = -3,             // signer cannot be masterkey
-    SET_OPTIONS_BALANCE_NOT_FOUND = -4,
-    SET_OPTIONS_TRUST_MALFORMED = -5,
-	SET_OPTIONS_TRUST_TOO_MANY = -6,
-	SET_OPTIONS_INVALID_SIGNER_VERSION = -7 // if signer version is higher than ledger version
+    TOO_MANY_SIGNERS = -1, // max number of signers already reached
+    THRESHOLD_OUT_OF_RANGE = -2, // bad value for weight/threshold
+    BAD_SIGNER = -3,             // signer cannot be masterkey
+    BALANCE_NOT_FOUND = -4,
+    TRUST_MALFORMED = -5,
+	TRUST_TOO_MANY = -6,
+	INVALID_SIGNER_VERSION = -7 // if signer version is higher than ledger version
 };
 
 union SetOptionsResult switch (SetOptionsResultCode code)
 {
-case SET_OPTIONS_SUCCESS:
+case SUCCESS:
     struct {
 		// reserved for future use
 		union switch (LedgerVersion v)
