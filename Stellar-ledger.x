@@ -237,7 +237,7 @@ case INVOICE:
     } invoice;
 case REVIEWABLE_REQUEST:
     struct {
-        uint64 ID;
+        uint64 requestID;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:

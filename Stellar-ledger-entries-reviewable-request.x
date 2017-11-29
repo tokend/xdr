@@ -20,7 +20,7 @@ enum ReviewableRequestType
 
 // ReviewableRequest - request reviewable by admin
 struct ReviewableRequestEntry {
-	uint64 ID;
+	uint64 requestID;
 	Hash hash; // hash of the request body
 	AccountID requestor;
 	string256 rejectReason;
