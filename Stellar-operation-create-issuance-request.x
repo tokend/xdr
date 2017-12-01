@@ -48,6 +48,7 @@ enum CreateIssuanceRequestResultCode
 
 struct CreateIssuanceRequestSuccess {
 	uint64 requestID;
+	AccountID receiver;
 	bool fulfilled;
 	union switch (LedgerVersion v)
 	{
