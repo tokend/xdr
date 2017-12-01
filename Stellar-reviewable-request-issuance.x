@@ -7,15 +7,27 @@
 namespace stellar
 {
 
-struct BalanceEntry
-{
-    BalanceID balanceID;
-    AssetCode asset;
-    AccountID accountID;
-    uint64 amount;
-    uint64 locked;
+struct PreIssuanceRequest {
 
-    // reserved for future use
+	AssetCode asset;
+	uint64 amount;
+	DecoratedSignature signature;
+	string64 reference;
+
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct IssuanceRequest {
+	AssetCode asset;
+	uint64 amount;
+	BalanceID receiver;
+	// reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

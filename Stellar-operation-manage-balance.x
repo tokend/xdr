@@ -17,8 +17,8 @@ Result: ManageBalanceResult
 
 enum ManageBalanceAction
 {
-    MANAGE_BALANCE_CREATE = 0,
-    MANAGE_BALANCE_DELETE = 1
+    CREATE = 0,
+    DELETE_BALANCE = 1
 };
 
 
@@ -41,15 +41,15 @@ struct ManageBalanceOp
 enum ManageBalanceResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_BALANCE_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MANAGE_BALANCE_MALFORMED = -1,       // invalid destination
-    MANAGE_BALANCE_NOT_FOUND = -2,
-    MANAGE_BALANCE_DESTINATION_NOT_FOUND = -3,
-    MANAGE_BALANCE_ALREADY_EXISTS = -4,
-    MANAGE_BALANCE_ASSET_NOT_FOUND = -5,
-    MANAGE_BALANCE_INVALID_ASSET = -6
+    MALFORMED = -1,       // invalid destination
+    NOT_FOUND = -2,
+    DESTINATION_NOT_FOUND = -3,
+    ALREADY_EXISTS = -4,
+    ASSET_NOT_FOUND = -5,
+    INVALID_ASSET = -6
 };
 
 struct ManageBalanceSuccess {
@@ -64,7 +64,7 @@ struct ManageBalanceSuccess {
 
 union ManageBalanceResult switch (ManageBalanceResultCode code)
 {
-case MANAGE_BALANCE_SUCCESS:
+case SUCCESS:
     ManageBalanceSuccess success;
 default:
     void;

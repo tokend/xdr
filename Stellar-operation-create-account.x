@@ -20,20 +20,14 @@ struct CreateAccountOp
 {
     AccountID destination; // account to create
     AccountID* referrer;     // parent account
-
-	union switch (AccountType accountType)
-    {
-    default:
-        void;
-    } details;
+	AccountType accountType;
+	uint32 policies;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;
-	case ACCOUNT_POLICIES:
-		uint32 policies;
+        void;		
     }
     ext;
 };
@@ -43,15 +37,15 @@ struct CreateAccountOp
 enum CreateAccountResultCode
 {
     // codes considered as "success" for the operation
-    CREATE_ACCOUNT_SUCCESS = 0, // account was created
+    SUCCESS = 0, // account was created
 
     // codes considered as "failure" for the operation
-    CREATE_ACCOUNT_MALFORMED = -1,       // invalid destination
-	CREATE_ACCOUNT_ACCOUNT_TYPE_MISMATCHED = -2, // account already exist and change of account type is not allowed
-	CREATE_ACCOUNT_TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
-    CREATE_ACCOUNT_NAME_DUPLICATION = -4,
-    CREATE_ACCOUNT_REFERRER_NOT_FOUND = -5,
-	CREATE_ACCOUNT_INVALID_ACCOUNT_VERSION = -6 // if account version is higher than ledger version
+    MALFORMED = -1,       // invalid destination
+	ACCOUNT_TYPE_MISMATCHED = -2, // account already exist and change of account type is not allowed
+	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
+    NAME_DUPLICATION = -4,
+    REFERRER_NOT_FOUND = -5,
+	INVALID_ACCOUNT_VERSION = -6 // if account version is higher than ledger version
 };
 
 struct CreateAccountSuccess
@@ -68,7 +62,7 @@ struct CreateAccountSuccess
 
 union CreateAccountResult switch (CreateAccountResultCode code)
 {
-case CREATE_ACCOUNT_SUCCESS:
+case SUCCESS:
     CreateAccountSuccess success;
 default:
     void;

@@ -9,9 +9,7 @@ namespace stellar
 
 enum AssetPolicy
 {
-	ASSET_TRANSFERABLE = 1,
-    ASSET_EMITTABLE_PRIMARY = 2,
-    ASSET_EMITTABLE_SECONDARY = 4
+	TRANSFERABLE = 1
 };
 
 
@@ -19,7 +17,15 @@ enum AssetPolicy
 struct AssetEntry
 {
     AssetCode code;
-    int32 policies;
+	AccountID owner;
+    string64 name;
+	AccountID preissuedAssetSigner;
+	longstring description;
+	string256 externalResourceLink;
+	uint64 maxIssuanceAmount;
+	uint64 availableForIssueance;
+	uint64 issued;
+    uint32 policies;
 
     // reserved for future use
     union switch (LedgerVersion v)

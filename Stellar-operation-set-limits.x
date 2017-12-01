@@ -34,14 +34,14 @@ struct SetLimitsOp
 enum SetLimitsResultCode
 {
     // codes considered as "success" for the operation
-    SET_LIMITS_SUCCESS = 0,
+    SUCCESS = 0,
     // codes considered as "failure" for the operation
-    SET_LIMITS_MALFORMED = -1
+    MALFORMED = -1
 };
 
 union SetLimitsResult switch (SetLimitsResultCode code)
 {
-case SET_LIMITS_SUCCESS:
+case SUCCESS:
     struct {
 		// reserved for future use
 		union switch (LedgerVersion v)

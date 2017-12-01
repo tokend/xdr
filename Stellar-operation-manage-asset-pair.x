@@ -9,9 +9,9 @@ namespace stellar
 
 enum ManageAssetPairAction
 {
-    MANAGE_ASSET_PAIR_CREATE = 0,
-    MANAGE_ASSET_PAIR_UPDATE_PRICE = 1,
-    MANAGE_ASSET_PAIR_UPDATE_POLICIES = 2
+    CREATE = 0,
+    UPDATE_PRICE = 1,
+    UPDATE_POLICIES = 2
 };
 
 
@@ -50,16 +50,16 @@ struct ManageAssetPairOp
 enum ManageAssetPairResultCode
 {
     // codes considered as "success" for the operation
-    MANAGE_ASSET_PAIR_SUCCESS = 0,
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-	MANAGE_ASSET_PAIR_NOT_FOUND = -1,           // failed to find asset with such code
-	MANAGE_ASSET_PAIR_ALREADY_EXISTS = -2,
-    MANAGE_ASSET_PAIR_MALFORMED = -3,
-	MANAGE_ASSET_PAIR_INVALID_ASSET = -4,
-	MANAGE_ASSET_PAIR_INVALID_ACTION = -5,
-	MANAGE_ASSET_PAIR_INVALID_POLICIES = -6,
-	MANAGE_ASSET_PAIR_ASSET_NOT_FOUND = -7
+	NOT_FOUND = -1,           // failed to find asset with such code
+	ALREADY_EXISTS = -2,
+    MALFORMED = -3,
+	INVALID_ASSET = -4,
+	INVALID_ACTION = -5,
+	INVALID_POLICIES = -6,
+	ASSET_NOT_FOUND = -7
 };
 
 struct ManageAssetPairSuccess
@@ -76,7 +76,7 @@ struct ManageAssetPairSuccess
 
 union ManageAssetPairResult switch (ManageAssetPairResultCode code)
 {
-case MANAGE_ASSET_PAIR_SUCCESS:
+case SUCCESS:
     ManageAssetPairSuccess success;
 default:
     void;

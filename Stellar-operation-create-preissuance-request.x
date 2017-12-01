@@ -7,17 +7,16 @@
 namespace stellar
 {
 
-/* RecoverOp
+/* CreatePreIssuanceRequestOp
 
-    Threshold: medium
+    Threshold: high
 
-    Result: RecoverResult
+    Result: CreatePreIssuanceRequestOpResult
 */
-struct RecoverOp
+
+struct CreatePreIssuanceRequestOp
 {
-    AccountID account;
-    PublicKey oldSigner;
-    PublicKey newSigner;
+    PreIssuanceRequest request;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
@@ -27,24 +26,28 @@ struct RecoverOp
     ext;
 };
 
-/******* Recover Result ********/
+/******* CreatePreIssuanceRequest Result ********/
 
-enum RecoverResultCode
+enum CreatePreIssuanceRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-
-    MALFORMED = -1,
-    OLD_SIGNER_NOT_FOUND = -2,
-    SIGNER_ALREADY_EXISTS = -3
+    ASSET_NOT_FOUND = -1,
+    REFERENCE_DUPLICATION = -2,    // reference is already used
+    NOT_AUTHORIZED_UPLOAD = -3, // tries to pre issue asset for not owned asset
+    INVALID_SIGNATURE = -4,
+    EXCEEDED_MAX_AMOUNT = -5,
+	INVALID_AMOUNT = -6,
+	INVALID_REFERENCE = -7
 };
 
-union RecoverResult switch (RecoverResultCode code)
+union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode code)
 {
 case SUCCESS:
     struct {
+		uint64 requestID;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{

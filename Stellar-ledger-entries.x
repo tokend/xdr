@@ -4,7 +4,6 @@
 
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-account.h"
-%#include "xdr/Stellar-ledger-entries-coins-emission-request.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
 %#include "xdr/Stellar-ledger-entries-payment-request.h"
@@ -16,6 +15,7 @@
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
 %#include "xdr/Stellar-ledger-entries-invoice.h"
+%#include "xdr/Stellar-ledger-entries-reviewable-request.h"
 
 namespace stellar
 {
@@ -24,18 +24,16 @@ namespace stellar
 // defined by these indexes
 enum ThresholdIndexes
 {
-    THRESHOLD_MASTER_WEIGHT = 0,
-    THRESHOLD_LOW = 1,
-    THRESHOLD_MED = 2,
-    THRESHOLD_HIGH = 3
+    MASTER_WEIGHT = 0,
+    LOW = 1,
+    MED = 2,
+    HIGH = 3
 };
 
 enum LedgerEntryType
 {
     ACCOUNT = 0,
-	COINS_EMISSION_REQUEST = 1,
     FEE = 2,
-    COINS_EMISSION = 3,
     BALANCE = 4,
     PAYMENT_REQUEST = 5,
     ASSET = 6,
@@ -46,7 +44,8 @@ enum LedgerEntryType
     ACCOUNT_LIMITS = 11,
 	ASSET_PAIR = 12,
 	OFFER_ENTRY = 13,
-    INVOICE = 14
+    INVOICE = 14,
+	REVIEWABLE_REQUEST = 15
 };
 
 
@@ -58,12 +57,8 @@ struct LedgerEntry
     {
     case ACCOUNT:
         AccountEntry account;
-	case COINS_EMISSION_REQUEST:
-		CoinsEmissionRequestEntry coinsEmissionRequest;
     case FEE:
         FeeEntry feeState;
-    case COINS_EMISSION:
-		CoinsEmissionEntry coinsEmission;
     case BALANCE:
         BalanceEntry balance;
     case PAYMENT_REQUEST:
@@ -71,7 +66,7 @@ struct LedgerEntry
     case ASSET:
         AssetEntry asset;
     case REFERENCE_ENTRY:
-        ReferenceEntry payment;
+        ReferenceEntry reference;
     case ACCOUNT_TYPE_LIMITS:
         AccountTypeLimitsEntry accountTypeLimits;
     case STATISTICS:
@@ -86,6 +81,8 @@ struct LedgerEntry
 		OfferEntry offer;
     case INVOICE:
         InvoiceEntry invoice;
+	case REVIEWABLE_REQUEST:
+		ReviewableRequestEntry reviewableRequest;
     }
     data;
 
@@ -103,8 +100,8 @@ struct LedgerEntry
 // the respective envelopes
 enum EnvelopeType
 {
-    ENVELOPE_TYPE_SCP = 1,
-    ENVELOPE_TYPE_TX = 2,
-    ENVELOPE_TYPE_AUTH = 3
+    SCP = 1,
+    TX = 2,
+    AUTH = 3
 };
 }
