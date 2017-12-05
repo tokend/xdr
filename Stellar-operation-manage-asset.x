@@ -72,7 +72,8 @@ enum ManageAssetResultCode
 	INVALID_CODE = -5,                // asset code is invalid (empty or contains space)
 	INVALID_NAME = -6,                // asset name is invalid (empty)
 	INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
-	ASSET_NOT_FOUND = -8
+	ASSET_NOT_FOUND = -8,             // asset does not exists
+	REQUEST_ALREADY_EXISTS = -9       // request for creation of unique entry already exists
 };
 
 struct ManageAssetSuccess
