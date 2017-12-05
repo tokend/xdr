@@ -33,6 +33,12 @@ struct StellarValue
     ext;
 };
 
+// The IdGenerator is generator of id for specific instances
+struct IdGenerator {
+	LedgerEntryType entryType; // type of the entry, for which ids will be generated
+	uint64 idPool; // last used entry specific ID, used for generating entry of specified type
+};
+
 /* The LedgerHeader is the highest level structure representing the
  * state of a ledger, cryptographically linked to previous ledgers.
 */
@@ -46,7 +52,7 @@ struct LedgerHeader
 
     uint32 ledgerSeq; // sequence number of this ledger
 
-    uint64 idPool; // last used global ID, used for generating objects
+    IdGenerator idGenerators<>; // generators of ids
 
     uint32 baseFee;     // base fee per operation in stroops
     uint32 baseReserve; // account base reserve in stroops
