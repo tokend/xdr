@@ -123,7 +123,7 @@ struct AccountEntry
     
     // Referral marketing
     AccountID* referrer;     // parent account
-    int64 shareForReferrer; // share of fee to pay parent
+
 	int32 policies;
 
     // reserved for future use
