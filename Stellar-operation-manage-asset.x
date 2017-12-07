@@ -73,12 +73,14 @@ enum ManageAssetResultCode
 	INVALID_NAME = -6,                // asset name is invalid (empty)
 	INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
 	ASSET_NOT_FOUND = -8,             // asset does not exists
-	REQUEST_ALREADY_EXISTS = -9       // request for creation of unique entry already exists
+	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists
+	STATS_ASSET_ALREADY_EXISTS = -10
 };
 
 struct ManageAssetSuccess
 {
 	uint64 requestID;
+	bool fulfilled;
     // reserved for future use
     union switch (LedgerVersion v)
     {
