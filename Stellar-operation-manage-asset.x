@@ -74,8 +74,7 @@ enum ManageAssetResultCode
 	INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
 	ASSET_NOT_FOUND = -8,             // asset does not exists
 	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists
-	STATS_ASSET_ALREADY_EXISTS = -10,
-	NO_PERMISSIONS = -11              // attempt to update base or stats asset from non-master account
+	STATS_ASSET_ALREADY_EXISTS = -10
 };
 
 struct ManageAssetSuccess
