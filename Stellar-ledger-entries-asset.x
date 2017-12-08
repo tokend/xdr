@@ -28,6 +28,7 @@ struct AssetEntry
 	uint64 availableForIssueance;
 	uint64 issued;
     uint32 policies;
+    longstring logoID;
 
     // reserved for future use
     union switch (LedgerVersion v)
