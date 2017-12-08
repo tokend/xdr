@@ -8,6 +8,11 @@
 namespace stellar
 {
 
+enum ExternalSystemIDGeneratorType {
+	BITCOIN_BASIC = 1,
+	ETHEREUM_BASIC = 2
+};
+
 typedef opaque UpgradeType<128>;
 
 /* StellarValue is the value used by SCP to reach consensus on a given ledger
@@ -33,6 +38,12 @@ struct StellarValue
     ext;
 };
 
+// The IdGenerator is generator of id for specific instances
+struct IdGenerator {
+	LedgerEntryType entryType; // type of the entry, for which ids will be generated
+	uint64 idPool; // last used entry specific ID, used for generating entry of specified type
+};
+
 /* The LedgerHeader is the highest level structure representing the
  * state of a ledger, cryptographically linked to previous ledgers.
 */
@@ -46,14 +57,14 @@ struct LedgerHeader
 
     uint32 ledgerSeq; // sequence number of this ledger
 
-    uint64 idPool; // last used global ID, used for generating objects
+    IdGenerator idGenerators<>; // generators of ids
 
     uint32 baseFee;     // base fee per operation in stroops
     uint32 baseReserve; // account base reserve in stroops
 
     uint32 maxTxSetSize; // maximum size a transaction set can be
 
-    PublicKey issuanceKeys<>;
+    ExternalSystemIDGeneratorType externalSystemIDGenerators<>;
     int64 txExpirationPeriod;
     
     Hash skipList[4]; // hashes of ledgers in the past. allows you to jump back
@@ -80,8 +91,8 @@ enum LedgerUpgradeType
 {
     VERSION = 1,
     MAX_TX_SET_SIZE = 2,
-    ISSUANCE_KEYS = 3,
-    TX_EXPIRATION_PERIOD = 4
+    TX_EXPIRATION_PERIOD = 3,
+	EXTERNAL_SYSTEM_ID_GENERATOR = 4
 };
 
 union LedgerUpgrade switch (LedgerUpgradeType type)
@@ -90,8 +101,8 @@ case VERSION:
     uint32 newLedgerVersion; // update ledgerVersion
 case MAX_TX_SET_SIZE:
     uint32 newMaxTxSetSize; // update maxTxSetSize
-case ISSUANCE_KEYS:
-    PublicKey newIssuanceKeys<>;
+case EXTERNAL_SYSTEM_ID_GENERATOR:
+    ExternalSystemIDGeneratorType newExternalSystemIDGenerators<>;
 case TX_EXPIRATION_PERIOD:
     int64 newTxExpirationPeriod;
 };
@@ -245,6 +256,17 @@ case REVIEWABLE_REQUEST:
 		}
 		ext;
     } reviewableRequest;
+case EXTERNAL_SYSTEM_ACCOUNT_ID:
+	struct {
+		AccountID accountID;
+		ExternalSystemType externalSystemType;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+	} externalSystemAccountID;
 };
 
 enum BucketEntryType
