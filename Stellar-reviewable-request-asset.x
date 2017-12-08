@@ -16,6 +16,7 @@ struct AssetCreationRequest {
 	string256 externalResourceLink;
 	uint64 maxIssuanceAmount;
     uint32 policies;
+    longstring logoID;
 
 	// reserved for future use
     union switch (LedgerVersion v)
@@ -31,6 +32,7 @@ struct AssetUpdateRequest {
 	longstring description;
 	string256 externalResourceLink;
 	uint32 policies;
+    longstring logoID;
 
 	// reserved for future use
     union switch (LedgerVersion v)
