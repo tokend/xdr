@@ -12,9 +12,10 @@ Entry representing a fee state.
 enum FeeType
 {
     PAYMENT_FEE = 0,
-	OFFER_FEE = 1,
-    FORFEIT_FEE = 2,
-    EMISSION_FEE = 3
+    REFERRAL_FEE = 1,
+	OFFER_FEE = 2,
+    FORFEIT_FEE = 3,
+    EMISSION_FEE = 4
 };
 
 enum EmissionFeeType
