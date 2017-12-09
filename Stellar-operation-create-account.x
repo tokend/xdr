@@ -51,7 +51,6 @@ enum CreateAccountResultCode
 struct CreateAccountSuccess
 {
 	ExternalSystemAccountID externalSystemIDs<>;
-	int64 referrerFee;
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
