@@ -78,6 +78,11 @@ typedef string AssetCode<16>;
 typedef uint64 Salt;
 typedef opaque DataValue<64>;
 
+struct Fee {
+	uint64 fixed;
+	uint64 percent;
+};
+
 enum OperationType
 {
     CREATE_ACCOUNT = 0,
@@ -86,7 +91,7 @@ enum OperationType
     CREATE_ISSUANCE_REQUEST = 3,
     SET_FEES = 5,
 	MANAGE_ACCOUNT = 6,
-    MANAGE_FORFEIT_REQUEST = 7,
+    CREATE_WITHDRAWAL_REQUEST = 7,
     RECOVER = 8,
     MANAGE_BALANCE = 9,
     REVIEW_PAYMENT_REQUEST = 10,
