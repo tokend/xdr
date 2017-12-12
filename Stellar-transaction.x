@@ -8,7 +8,7 @@
 %#include "xdr/Stellar-operation-set-options.h"
 %#include "xdr/Stellar-operation-set-fees.h"
 %#include "xdr/Stellar-operation-manage-account.h"
-%#include "xdr/Stellar-operation-manage-forfeit-request.h"
+%#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-recover.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-review-payment-request.h"
@@ -48,8 +48,8 @@ struct Operation
         SetFeesOp setFeesOp;
 	case MANAGE_ACCOUNT:
 		ManageAccountOp manageAccountOp;
-	case MANAGE_FORFEIT_REQUEST:
-		ManageForfeitRequestOp manageForfeitRequestOp;
+	case CREATE_WITHDRAWAL_REQUEST:
+		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case RECOVER:
 		RecoverOp recoverOp;
 	case MANAGE_BALANCE:
@@ -176,8 +176,8 @@ case opINNER:
         SetFeesResult setFeesResult;
 	case MANAGE_ACCOUNT:
 		ManageAccountResult manageAccountResult;
-    case MANAGE_FORFEIT_REQUEST:
-		ManageForfeitRequestResult manageForfeitRequestResult;
+    case CREATE_WITHDRAWAL_REQUEST:
+		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case RECOVER:
 		RecoverResult recoverResult;
     case MANAGE_BALANCE:
