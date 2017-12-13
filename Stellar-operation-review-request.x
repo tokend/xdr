@@ -22,12 +22,28 @@ enum ReviewRequestOpAction {
     Result: ReviewRequestResult
 */
 
+struct WithdrawalDetails {
+	string externalDetails<>;
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 
 struct ReviewRequestOp
 {
 	uint64 requestID;
 	Hash requestHash;
-	ReviewableRequestType requestType;
+	union switch(ReviewableRequestType requestType) {
+	case WITHDRAW:
+		WithdrawalDetails withdrawal;
+	default:
+		void;
+	} requestDetails;
 	ReviewRequestOpAction action;
 	string256 reason;
 	// reserved for future use

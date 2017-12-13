@@ -15,6 +15,7 @@ struct AssetCreationRequest {
 	longstring description;
 	string256 externalResourceLink;
 	uint64 maxIssuanceAmount;
+	uint64 initialPreissuedAmount;
     uint32 policies;
     longstring logoID;
 

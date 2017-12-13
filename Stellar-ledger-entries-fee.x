@@ -13,7 +13,7 @@ enum FeeType
 {
     PAYMENT_FEE = 0,
 	OFFER_FEE = 1,
-    FORFEIT_FEE = 2,
+    WITHDRAWAL_FEE = 2,
     EMISSION_FEE = 3
 };
 
