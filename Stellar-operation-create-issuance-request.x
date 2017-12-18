@@ -50,6 +50,7 @@ struct CreateIssuanceRequestSuccess {
 	uint64 requestID;
 	AccountID receiver;
 	bool fulfilled;
+	Fee fee;
 	union switch (LedgerVersion v)
 	{
 	case EMPTY_VERSION:
