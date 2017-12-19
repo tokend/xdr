@@ -21,6 +21,7 @@
 %#include "xdr/Stellar-operation-manage-offer.h"
 %#include "xdr/Stellar-operation-manage-invoice.h"
 %#include "xdr/Stellar-operation-review-request.h"
+%#include "xdr/Stellar-operation-create-sale-creation-request.h"
 
 namespace stellar
 {
@@ -72,6 +73,8 @@ struct Operation
         ManageInvoiceOp manageInvoiceOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
+	case CREATE_SALE_REQUEST:
+		CreateSaleCreationRequestOp createSaleCreationRequestOp;
     }
     body;
 };
@@ -200,6 +203,8 @@ case opINNER:
 		ManageInvoiceResult manageInvoiceResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;
+	case CREATE_SALE_REQUEST:
+		CreateSaleCreationRequestResult createSaleCreationRequestResult;
     }
     tr;
 default:

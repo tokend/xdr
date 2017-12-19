@@ -77,7 +77,12 @@ enum ReviewRequestResultCode
 	// Issuance requests
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
-	FULL_LINE = -42 // can't fund balance - total funds exceed UINT64_MAX
+	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
+
+	// sale creation reuqests
+	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
+	BASE_ASSET_DOES_NOT_EXISTS = -51,
+	SOFT_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
 	
 };
 

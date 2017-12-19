@@ -267,6 +267,16 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID:
 		}
 		ext;
 	} externalSystemAccountID;
+case SALE:
+	struct {
+		uint64 saleID;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+	} sale;
 };
 
 enum BucketEntryType

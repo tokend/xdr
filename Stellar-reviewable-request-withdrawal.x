@@ -27,7 +27,7 @@ struct WithdrawalRequest {
 	BalanceID balance; // balance id from which withdrawal will be performed
     uint64 amount; // amount to be withdrawn
 	Fee fee; // expected fee to be paid
-    string externalDetails<>; // details of the withdrawal (External system id, etc.)
+    longstring externalDetails; // details of the withdrawal (External system id, etc.)
 	union switch (WithdrawalType withdrawalType) {
 	case AUTO_CONVERSION:
 		AutoConversionWithdrawalDetails autoConversion;
