@@ -8,7 +8,6 @@ namespace stellar
 {
 
 struct PreIssuanceRequest {
-
 	AssetCode asset;
 	uint64 amount;
 	DecoratedSignature signature;
@@ -27,6 +26,7 @@ struct IssuanceRequest {
 	AssetCode asset;
 	uint64 amount;
 	BalanceID receiver;
+	string externalDetails<>; // details of the issuance (External system id, etc.)
 	// reserved for future use
     union switch (LedgerVersion v)
     {
