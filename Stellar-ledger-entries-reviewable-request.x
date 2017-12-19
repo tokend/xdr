@@ -30,6 +30,7 @@ struct ReviewableRequestEntry {
 	string256 rejectReason;
 	AccountID reviewer;
 	string64* reference; // reference for request which will act as an unique key for the request (will reject request with the same reference from same requestor)
+	int64 createdAt; // when request was created
 
 	union switch (ReviewableRequestType type) {
 		case ASSET_CREATE:
