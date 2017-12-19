@@ -46,7 +46,10 @@ enum CreateWithdrawalRequestResultCode
 	CONVERSION_OVERFLOW = -7, // overflow during converting source asset to dest asset
 	CONVERTED_AMOUNT_MISMATCHED = -8, // expected converted amount passed by user, does not match calculated
 	BALANCE_LOCK_OVERFLOW = -9, // overflow while tried to lock amount
-	UNDERFUNDED = -10 // insufficient balance to perform operation
+	UNDERFUNDED = -10, // insufficient balance to perform operation
+	INVALID_UNIVERSAL_AMOUNT = -11, // non-zero universal amount
+	STATS_OVERFLOW = -12, // statistics overflowed by the operation
+    LIMITS_EXCEEDED = -13 // withdraw exceeds limits for source account
 };
 
 struct CreateWithdrawalSuccess {
