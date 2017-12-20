@@ -27,6 +27,7 @@ struct IssuanceRequest {
 	AssetCode asset;
 	uint64 amount;
 	BalanceID receiver;
+	Fee fee; //totalFee to be payed (calculated automatically)
 	// reserved for future use
     union switch (LedgerVersion v)
     {

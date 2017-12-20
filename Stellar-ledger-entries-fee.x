@@ -14,7 +14,7 @@ enum FeeType
     PAYMENT_FEE = 0,
 	OFFER_FEE = 1,
     WITHDRAWAL_FEE = 2,
-    EMISSION_FEE = 3
+    ISSUANCE_FEE = 3
 };
 
 enum EmissionFeeType
