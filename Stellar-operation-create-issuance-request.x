@@ -43,7 +43,8 @@ enum CreateIssuanceRequestResultCode
 	NO_COUNTERPARTY = -4,
 	NOT_AUTHORIZED = -5,
 	EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
-	RECEIVER_FULL_LINE = -7
+	RECEIVER_FULL_LINE = -7,
+	FEE_EXCEEDS_AMOUNT = -8 // fee more than amount to issue
 };
 
 struct CreateIssuanceRequestSuccess {
