@@ -81,6 +81,14 @@ typedef opaque DataValue<64>;
 struct Fee {
 	uint64 fixed;
 	uint64 percent;
+
+    // reserved for future use
+    union switch(LedgerVersion v)
+    {
+        case EMPTY_VERSION:
+            void;
+    }
+    ext;
 };
 
 enum OperationType
