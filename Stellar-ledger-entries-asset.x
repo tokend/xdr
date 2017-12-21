@@ -21,16 +21,13 @@ struct AssetEntry
 {
     AssetCode code;
 	AccountID owner;
-    string64 name;
 	AccountID preissuedAssetSigner; // signer of pre issuance tokens
-	longstring description;
-	string256 externalResourceLink;
+	longstring details;
 	uint64 maxIssuanceAmount; // max number of tokens to be issued
 	uint64 availableForIssueance; // pre issued tokens available for issuance
 	uint64 issued; // number of issued tokens
 	uint64 lockedIssuance; // number of tokens locked for entries like token sale. lockedIssuance + issued can not be > maxIssuanceAmount
     uint32 policies;
-    longstring logoID;
 
     // reserved for future use
     union switch (LedgerVersion v)

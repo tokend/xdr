@@ -13,7 +13,6 @@ struct SaleEntry
 	AccountID ownerID;
     AssetCode baseAsset; // asset for which sale will be performed
 	AssetCode quoteAsset; // asset in which participation will be accepted
-	string256 name; // name of the sale
 	uint64 startTime; // start time of the sale
 	uint64 endTime; // close time of the sale
 	uint64 price; // price for 1 baseAsset in terms of quote asset

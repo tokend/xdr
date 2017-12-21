@@ -70,7 +70,6 @@ enum ManageAssetResultCode
 	ASSET_ALREADY_EXISTS = -3,			   // asset with such code already exist
     INVALID_MAX_ISSUANCE_AMOUNT = -4, // max issuance amount is 0
 	INVALID_CODE = -5,                // asset code is invalid (empty or contains space)
-	INVALID_NAME = -6,                // asset name is invalid (empty)
 	INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
 	ASSET_NOT_FOUND = -8,             // asset does not exists
 	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists

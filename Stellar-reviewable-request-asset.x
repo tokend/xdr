@@ -10,14 +10,11 @@ namespace stellar
 struct AssetCreationRequest {
 
 	AssetCode code;
-	string64 name;
 	AccountID preissuedAssetSigner;
-	longstring description;
-	string256 externalResourceLink;
 	uint64 maxIssuanceAmount;
 	uint64 initialPreissuedAmount;
     uint32 policies;
-    longstring logoID;
+    longstring details;
 
 	// reserved for future use
     union switch (LedgerVersion v)
@@ -30,10 +27,8 @@ struct AssetCreationRequest {
 
 struct AssetUpdateRequest {
 	AssetCode code;
-	longstring description;
-	string256 externalResourceLink;
+	longstring details;
 	uint32 policies;
-    longstring logoID;
 
 	// reserved for future use
     union switch (LedgerVersion v)
