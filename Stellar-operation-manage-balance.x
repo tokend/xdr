@@ -24,7 +24,6 @@ enum ManageBalanceAction
 
 struct ManageBalanceOp
 {
-    BalanceID balanceID;
     ManageBalanceAction action;
     AccountID destination;
     AssetCode asset;
@@ -47,12 +46,12 @@ enum ManageBalanceResultCode
     MALFORMED = -1,       // invalid destination
     NOT_FOUND = -2,
     DESTINATION_NOT_FOUND = -3,
-    ALREADY_EXISTS = -4,
-    ASSET_NOT_FOUND = -5,
-    INVALID_ASSET = -6
+    ASSET_NOT_FOUND = -4,
+    INVALID_ASSET = -5
 };
 
 struct ManageBalanceSuccess {
+	BalanceID balanceID;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
