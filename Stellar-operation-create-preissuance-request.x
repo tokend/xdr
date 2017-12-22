@@ -48,6 +48,7 @@ union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode 
 case SUCCESS:
     struct {
 		uint64 requestID;
+		bool fulfilled;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{

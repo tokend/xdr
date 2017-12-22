@@ -81,6 +81,14 @@ typedef opaque DataValue<64>;
 struct Fee {
 	uint64 fixed;
 	uint64 percent;
+
+    // reserved for future use
+    union switch(LedgerVersion v)
+    {
+        case EMPTY_VERSION:
+            void;
+    }
+    ext;
 };
 
 enum OperationType
@@ -102,7 +110,8 @@ enum OperationType
 	MANAGE_ASSET_PAIR = 15,
 	MANAGE_OFFER = 16,
     MANAGE_INVOICE = 17,
-	REVIEW_REQUEST = 18
+	REVIEW_REQUEST = 18,
+	CREATE_SALE_REQUEST = 19
 };
 
 struct DecoratedSignature

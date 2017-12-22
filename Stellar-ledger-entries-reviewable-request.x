@@ -6,6 +6,7 @@
 %#include "xdr/Stellar-reviewable-request-asset.h"
 %#include "xdr/Stellar-reviewable-request-issuance.h"
 %#include "xdr/Stellar-reviewable-request-withdrawal.h"
+%#include "xdr/Stellar-reviewable-request-sale.h"
 
 namespace stellar
 {
@@ -16,7 +17,8 @@ enum ReviewableRequestType
 	ASSET_UPDATE = 1,
 	PRE_ISSUANCE_CREATE = 2,
 	ISSUANCE_CREATE = 3,
-	WITHDRAW = 4
+	WITHDRAW = 4,
+	SALE = 5
 
 };
 
@@ -41,6 +43,8 @@ struct ReviewableRequestEntry {
 			IssuanceRequest issuanceRequest;
 		case WITHDRAW:
 			WithdrawalRequest withdrawalRequest;
+		case SALE:
+			SaleCreationRequest saleCreationRequest;
 	} body;
 
 	// reserved for future use
