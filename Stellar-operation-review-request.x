@@ -33,17 +33,6 @@ struct WithdrawalDetails {
     ext;
 };
 
-struct IssuanceDetails {
-	string externalDetails<>;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -51,8 +40,6 @@ struct ReviewRequestOp
 	union switch(ReviewableRequestType requestType) {
 	case WITHDRAW:
 		WithdrawalDetails withdrawal;
-	case ISSUANCE_CREATE:
-		IssuanceDetails issuance;
 	default:
 		void;
 	} requestDetails;

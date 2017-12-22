@@ -26,7 +26,7 @@ struct IssuanceRequest {
 	AssetCode asset;
 	uint64 amount;
 	BalanceID receiver;
-	string externalDetails<>; // details of the issuance (External system id, etc.)
+	longstring externalDetails; // details of the issuance (External system id, etc.)
 	Fee fee; //totalFee to be payed (calculated automatically)
 	// reserved for future use
     union switch (LedgerVersion v)
