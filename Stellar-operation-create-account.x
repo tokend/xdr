@@ -45,7 +45,8 @@ enum CreateAccountResultCode
 	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,
-	INVALID_ACCOUNT_VERSION = -6 // if account version is higher than ledger version
+	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
+	NOT_VERIFIED_CANNOT_HAS_POLICIES = -7
 };
 
 struct CreateAccountSuccess
