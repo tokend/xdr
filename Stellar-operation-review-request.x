@@ -82,7 +82,7 @@ enum ReviewRequestResultCode
 	// sale creation reuqests
 	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
 	BASE_ASSET_DOES_NOT_EXISTS = -51,
-	SOFT_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
 	
 };
 
