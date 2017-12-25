@@ -33,7 +33,6 @@ struct WithdrawalDetails {
     ext;
 };
 
-
 struct ReviewRequestOp
 {
 	uint64 requestID;
