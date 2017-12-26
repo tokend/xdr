@@ -26,6 +26,7 @@ struct ManageOfferOp
 
     // 0=create a new offer, otherwise edit an existing offer
     uint64 offerID;
+	uint64 orderBookID;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
