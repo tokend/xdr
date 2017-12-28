@@ -23,7 +23,8 @@ enum SignerType
 	ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
 	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
 	OPERATIONAL_BALANCE_MANAGER = 8192, // allowed to spend from operational balances
-	EXCHANGE_ACC_MANAGER = 16384 // can manage exchange account
+	EXCHANGE_ACC_MANAGER = 16384, // can manage exchange account
+	SYNDICATE_ACC_MANAGER = 32768 // can manage syndicate account
 };
 
 struct Signer
