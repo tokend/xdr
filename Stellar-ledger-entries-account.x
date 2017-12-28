@@ -22,7 +22,8 @@ enum SignerType
 	LIMITS_MANAGER = 1024, // allowed to change limits
 	ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
 	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
-	OPERATIONAL_BALANCE_MANAGER = 8192 // allowed to spend from operational balances
+	OPERATIONAL_BALANCE_MANAGER = 8192, // allowed to spend from operational balances
+	EXCHANGE_ACC_MANAGER = 16384 // can manage exchange account
 };
 
 struct Signer
@@ -87,7 +88,8 @@ enum AccountType
 	COMMISSION = 3,        // commission account
 	MASTER = 4,            // master account
     NOT_VERIFIED = 5,
-	SYNDICATE = 6 // can create asset
+	SYNDICATE = 6, // can create asset
+	EXCHANGE = 7
 };
 
 enum BlockReasons
