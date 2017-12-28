@@ -55,7 +55,14 @@ enum ManageOfferResultCode
 	CURRENT_PRICE_RESTRICTION = -9,
     NOT_FOUND = -10, // offerID does not match an existing offer
     INVALID_PERCENT_FEE = -11,
-	INSUFFICIENT_PRICE = -12
+	INSUFFICIENT_PRICE = -12,
+	ORDER_BOOK_DOES_NOT_EXISTS = -13, // specified order book does not exists
+	SALE_IS_NOT_STARTED_YET = -14, // sale is not started yet
+	SALE_ALREADY_ENDED = -15, // sale has already ended
+	ORDER_VIOLATES_HARD_CAP = -16, // currentcap + order will exceed hard cap
+	CANT_PARTICIPATE_OWN_SALE = -17, // it's not allowed to participate in own sale
+	ASSET_MISMATCHED = -18, // sale assets does not match assets for specified balances
+	PRICE_DOES_NOT_MATCH = -19 // price does not match sale price
 };
 
 enum ManageOfferEffect
