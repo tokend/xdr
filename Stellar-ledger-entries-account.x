@@ -24,6 +24,8 @@ enum SignerType
 	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
 	OPERATIONAL_BALANCE_MANAGER = 8192, // allowed to spend from operational balances
 	EVENTS_CHECKER = 16384 // allow to check and trigger events
+	EXCHANGE_ACC_MANAGER = 32768, // can manage exchange account
+	SYNDICATE_ACC_MANAGER = 65536 // can manage syndicate account
 };
 
 struct Signer
@@ -88,7 +90,8 @@ enum AccountType
 	COMMISSION = 3,        // commission account
 	MASTER = 4,            // master account
     NOT_VERIFIED = 5,
-	SYNDICATE = 6 // can create asset
+	SYNDICATE = 6, // can create asset
+	EXCHANGE = 7
 };
 
 enum BlockReasons
