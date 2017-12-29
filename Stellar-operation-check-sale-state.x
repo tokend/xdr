@@ -54,6 +54,20 @@ struct SaleCanceled {
     ext;
 };
 
+struct CheckSaleClosedResult {
+	AccountID saleOwner;
+	BalanceID saleBaseBalance;
+	BalanceID saleQuoteBalance;
+	ManageOfferSuccessResult saleDetails;
+	 // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct CheckSaleStateSuccess
 {
 	uint64 saleID;
@@ -62,7 +76,7 @@ struct CheckSaleStateSuccess
     case CANCELED:
         SaleCanceled saleCanceled;
 	case CLOSED:
-		ManageOfferSuccessResult saleClosed;
+		CheckSaleClosedResult saleClosed;
     }
     effect;
 	 // reserved for future use
