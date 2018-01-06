@@ -36,6 +36,17 @@ struct TrustData {
 	ext;
 };
 
+struct LimitsUpdateRequestData {
+    Hash documentHash;
+    longstring externalDetails;
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct SetOptionsOp
 {
     // account threshold manipulation
@@ -49,6 +60,10 @@ struct SetOptionsOp
     Signer* signer;
 
     TrustData* trustData;
+
+    // Create LimitsUpdateRequest for account
+    LimitsUpdateRequestData* limitsUpdateRequestData;
+
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
@@ -79,6 +94,7 @@ union SetOptionsResult switch (SetOptionsResultCode code)
 {
 case SUCCESS:
     struct {
+        uint64 limitsUpdateRequestID;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{
