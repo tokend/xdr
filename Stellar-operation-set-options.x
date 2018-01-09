@@ -3,6 +3,7 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-reviewable-request-update-KYC.h"
 
 namespace stellar
 {
@@ -36,6 +37,19 @@ struct TrustData {
 	ext;
 };
 
+struct UpdateKYCData {
+    longstring dataKYC;
+    uint64 requestID;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct SetOptionsOp
 {
     // account threshold manipulation
@@ -49,6 +63,8 @@ struct SetOptionsOp
     Signer* signer;
 
     TrustData* trustData;
+
+    UpdateKYCData* updateKYCData;
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
@@ -72,13 +88,16 @@ enum SetOptionsResultCode
     BALANCE_NOT_FOUND = -4,
     TRUST_MALFORMED = -5,
 	TRUST_TOO_MANY = -6,
-	INVALID_SIGNER_VERSION = -7 // if signer version is higher than ledger version
+	INVALID_SIGNER_VERSION = -7, // if signer version is higher than ledger version
+	UPDATE_KYC_MALFORMED = -8,
+	UPDATE_KYC_REQUEST_NOT_FOUND = -9
 };
 
 union SetOptionsResult switch (SetOptionsResultCode code)
 {
 case SUCCESS:
     struct {
+        uint64 requestID;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{
