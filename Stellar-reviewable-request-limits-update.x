@@ -9,7 +9,6 @@ namespace stellar
 
 struct LimitsUpdateRequest {
     Hash documentHash;
-    longstring externalDetails;
 
     // reserved for future use
     union switch (LedgerVersion v)
