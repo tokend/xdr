@@ -38,7 +38,6 @@ struct TrustData {
 
 struct LimitsUpdateRequestData {
     Hash documentHash;
-    longstring externalDetails;
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -87,7 +86,8 @@ enum SetOptionsResultCode
     BALANCE_NOT_FOUND = -4,
     TRUST_MALFORMED = -5,
 	TRUST_TOO_MANY = -6,
-	INVALID_SIGNER_VERSION = -7 // if signer version is higher than ledger version
+	INVALID_SIGNER_VERSION = -7, // if signer version is higher than ledger version
+	LIMITS_UPDATE_REQUEST_REFERENCE_DUPLICATION = -8
 };
 
 union SetOptionsResult switch (SetOptionsResultCode code)
