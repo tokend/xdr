@@ -12,7 +12,7 @@ struct UpdateKYCRequest
     longstring dataKYC;
 
     //need this for changing back from NOT_VERIFIED to the original state
-    AccountType accountType;
+    AccountType accountTypeBeforeUpdate;
 
     // reserved for future use
     union switch (LedgerVersion v)

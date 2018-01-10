@@ -69,7 +69,6 @@ enum ReviewRequestResultCode
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
 	PERMANENT_REJECT_NOT_ALLOWED = -7,
-	REQUESTOR_NOT_FOUND = -8,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
