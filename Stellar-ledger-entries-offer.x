@@ -13,8 +13,9 @@ namespace stellar
 
 */
 struct OfferEntry
-{
+{	
     uint64 offerID;
+	uint64 orderBookID;
 	AccountID ownerID;
 	bool isBuy;
     AssetCode base; // A

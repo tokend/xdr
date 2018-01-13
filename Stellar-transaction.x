@@ -8,7 +8,7 @@
 %#include "xdr/Stellar-operation-set-options.h"
 %#include "xdr/Stellar-operation-set-fees.h"
 %#include "xdr/Stellar-operation-manage-account.h"
-%#include "xdr/Stellar-operation-manage-forfeit-request.h"
+%#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-recover.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-review-payment-request.h"
@@ -21,6 +21,8 @@
 %#include "xdr/Stellar-operation-manage-offer.h"
 %#include "xdr/Stellar-operation-manage-invoice.h"
 %#include "xdr/Stellar-operation-review-request.h"
+%#include "xdr/Stellar-operation-create-sale-creation-request.h"
+%#include "xdr/Stellar-operation-check-sale-state.h"
 
 namespace stellar
 {
@@ -48,8 +50,8 @@ struct Operation
         SetFeesOp setFeesOp;
 	case MANAGE_ACCOUNT:
 		ManageAccountOp manageAccountOp;
-	case MANAGE_FORFEIT_REQUEST:
-		ManageForfeitRequestOp manageForfeitRequestOp;
+	case CREATE_WITHDRAWAL_REQUEST:
+		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case RECOVER:
 		RecoverOp recoverOp;
 	case MANAGE_BALANCE:
@@ -72,6 +74,10 @@ struct Operation
         ManageInvoiceOp manageInvoiceOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
+	case CREATE_SALE_REQUEST:
+		CreateSaleCreationRequestOp createSaleCreationRequestOp;
+	case CHECK_SALE_STATE:
+		CheckSaleStateOp checkSaleStateOp;
     }
     body;
 };
@@ -176,8 +182,8 @@ case opINNER:
         SetFeesResult setFeesResult;
 	case MANAGE_ACCOUNT:
 		ManageAccountResult manageAccountResult;
-    case MANAGE_FORFEIT_REQUEST:
-		ManageForfeitRequestResult manageForfeitRequestResult;
+    case CREATE_WITHDRAWAL_REQUEST:
+		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case RECOVER:
 		RecoverResult recoverResult;
     case MANAGE_BALANCE:
@@ -200,6 +206,10 @@ case opINNER:
 		ManageInvoiceResult manageInvoiceResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;
+	case CREATE_SALE_REQUEST:
+		CreateSaleCreationRequestResult createSaleCreationRequestResult;
+	case CHECK_SALE_STATE:
+		CheckSaleStateResult checkSaleStateResult;
     }
     tr;
 default:

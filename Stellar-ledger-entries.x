@@ -16,6 +16,8 @@
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
 %#include "xdr/Stellar-ledger-entries-invoice.h"
 %#include "xdr/Stellar-ledger-entries-reviewable-request.h"
+%#include "xdr/Stellar-ledger-entries-external-system-id.h"
+%#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
 {
@@ -45,7 +47,9 @@ enum LedgerEntryType
 	ASSET_PAIR = 12,
 	OFFER_ENTRY = 13,
     INVOICE = 14,
-	REVIEWABLE_REQUEST = 15
+	REVIEWABLE_REQUEST = 15,
+	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
+	SALE = 17
 };
 
 
@@ -83,6 +87,10 @@ struct LedgerEntry
         InvoiceEntry invoice;
 	case REVIEWABLE_REQUEST:
 		ReviewableRequestEntry reviewableRequest;
+	case EXTERNAL_SYSTEM_ACCOUNT_ID:
+		ExternalSystemAccountID externalSystemAccountID;
+	case SALE:
+		SaleEntry sale;
     }
     data;
 

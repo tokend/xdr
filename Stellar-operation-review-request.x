@@ -22,12 +22,27 @@ enum ReviewRequestOpAction {
     Result: ReviewRequestResult
 */
 
+struct WithdrawalDetails {
+	string externalDetails<>;
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 struct ReviewRequestOp
 {
 	uint64 requestID;
 	Hash requestHash;
-	ReviewableRequestType requestType;
+	union switch(ReviewableRequestType requestType) {
+	case WITHDRAW:
+		WithdrawalDetails withdrawal;
+	default:
+		void;
+	} requestDetails;
 	ReviewRequestOpAction action;
 	string256 reason;
 	// reserved for future use
@@ -61,7 +76,12 @@ enum ReviewRequestResultCode
 	// Issuance requests
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
-	FULL_LINE = -42 // can't fund balance - total funds exceed UINT64_MAX
+	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
+
+	// sale creation reuqests
+	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
+	BASE_ASSET_DOES_NOT_EXISTS = -51,
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
 	
 };
 

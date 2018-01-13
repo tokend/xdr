@@ -27,7 +27,9 @@ struct CreateAccountOp
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;		
+        void;	
+	case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
+		ExternalSystemAccountID externalSystemIDs<>;
     }
     ext;
 };
@@ -45,12 +47,15 @@ enum CreateAccountResultCode
 	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,
-	INVALID_ACCOUNT_VERSION = -6 // if account version is higher than ledger version
+	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
+	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7,
+	EXTERNAL_SYS_ACC_NOT_ALLOWED = -8, // op contains external system account ID which should be generated on core level
+	EXTERNAL_SYS_ID_EXISTS = -9 // external system account ID already exists
 };
 
 struct CreateAccountSuccess
 {
-	int64 referrerFee;
+	ExternalSystemAccountID externalSystemIDs<>;
 	 // reserved for future use
     union switch (LedgerVersion v)
     {

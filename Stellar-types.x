@@ -32,10 +32,7 @@ case KEY_TYPE_ED25519:
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	IMPROVED_STATS_CALCULATION = 4,
-	EMISSION_REQUEST_BALANCE_ID = 5,
-	IMPROVED_TRANSFER_FEES_CALC = 8,
-	USE_IMPROVED_SIGNATURE_CHECK = 9
+	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1
 };
 
 // variable size as the size depends on the signature scheme used
@@ -78,6 +75,19 @@ typedef string AssetCode<16>;
 typedef uint64 Salt;
 typedef opaque DataValue<64>;
 
+struct Fee {
+	uint64 fixed;
+	uint64 percent;
+
+    // reserved for future use
+    union switch(LedgerVersion v)
+    {
+        case EMPTY_VERSION:
+            void;
+    }
+    ext;
+};
+
 enum OperationType
 {
     CREATE_ACCOUNT = 0,
@@ -86,7 +96,7 @@ enum OperationType
     CREATE_ISSUANCE_REQUEST = 3,
     SET_FEES = 5,
 	MANAGE_ACCOUNT = 6,
-    MANAGE_FORFEIT_REQUEST = 7,
+    CREATE_WITHDRAWAL_REQUEST = 7,
     RECOVER = 8,
     MANAGE_BALANCE = 9,
     REVIEW_PAYMENT_REQUEST = 10,
@@ -97,7 +107,9 @@ enum OperationType
 	MANAGE_ASSET_PAIR = 15,
 	MANAGE_OFFER = 16,
     MANAGE_INVOICE = 17,
-	REVIEW_REQUEST = 18
+	REVIEW_REQUEST = 18,
+	CREATE_SALE_REQUEST = 19,
+	CHECK_SALE_STATE = 20
 };
 
 struct DecoratedSignature

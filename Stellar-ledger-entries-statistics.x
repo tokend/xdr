@@ -11,10 +11,10 @@ struct StatisticsEntry
 {
 	AccountID accountID;
 
-	int64 dailyOutcome;
-	int64 weeklyOutcome;
-	int64 monthlyOutcome;
-	int64 annualOutcome;
+	uint64 dailyOutcome;
+	uint64 weeklyOutcome;
+	uint64 monthlyOutcome;
+	uint64 annualOutcome;
 
 	int64 updatedAt;
 

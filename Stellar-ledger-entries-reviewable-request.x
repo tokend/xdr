@@ -5,6 +5,8 @@
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-reviewable-request-asset.h"
 %#include "xdr/Stellar-reviewable-request-issuance.h"
+%#include "xdr/Stellar-reviewable-request-withdrawal.h"
+%#include "xdr/Stellar-reviewable-request-sale.h"
 
 namespace stellar
 {
@@ -14,7 +16,9 @@ enum ReviewableRequestType
     ASSET_CREATE = 0,
 	ASSET_UPDATE = 1,
 	PRE_ISSUANCE_CREATE = 2,
-	ISSUANCE_CREATE = 3
+	ISSUANCE_CREATE = 3,
+	WITHDRAW = 4,
+	SALE = 5
 
 };
 
@@ -26,6 +30,7 @@ struct ReviewableRequestEntry {
 	string256 rejectReason;
 	AccountID reviewer;
 	string64* reference; // reference for request which will act as an unique key for the request (will reject request with the same reference from same requestor)
+	int64 createdAt; // when request was created
 
 	union switch (ReviewableRequestType type) {
 		case ASSET_CREATE:
@@ -36,6 +41,10 @@ struct ReviewableRequestEntry {
 			PreIssuanceRequest preIssuanceRequest;
 		case ISSUANCE_CREATE:
 			IssuanceRequest issuanceRequest;
+		case WITHDRAW:
+			WithdrawalRequest withdrawalRequest;
+		case SALE:
+			SaleCreationRequest saleCreationRequest;
 	} body;
 
 	// reserved for future use
