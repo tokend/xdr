@@ -114,6 +114,7 @@ enum BlockReasons
 struct AccountEntry
 {
     AccountID accountID;      // master public key for this account
+    AccountID recoveryID;
 
     // fields used for signatures
     // thresholds stores unsigned bytes: [weight of master|low|medium|high]
