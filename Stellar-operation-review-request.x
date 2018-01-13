@@ -22,6 +22,16 @@ enum ReviewRequestOpAction {
     Result: ReviewRequestResult
 */
 
+struct LimitsUpdateDetails {
+    Limits newLimits;
+    union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+};
+
 struct WithdrawalDetails {
 	string externalDetails<>;
 	// reserved for future use
@@ -40,6 +50,8 @@ struct ReviewRequestOp
 	union switch(ReviewableRequestType requestType) {
 	case WITHDRAW:
 		WithdrawalDetails withdrawal;
+    case LIMITS_UPDATE:
+        LimitsUpdateDetails limitsUpdate;
 	default:
 		void;
 	} requestDetails;
@@ -78,7 +90,7 @@ enum ReviewRequestResultCode
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
 
-	// sale creation reuqests
+	// sale creation requests
 	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
 	BASE_ASSET_DOES_NOT_EXISTS = -51,
 	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
