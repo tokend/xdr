@@ -80,6 +80,7 @@ enum ReviewRequestResultCode
 	NOT_FOUND = -4,
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
+	INVALID_EXTERNAL_DETAILS = -7,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
