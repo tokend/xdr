@@ -7,6 +7,7 @@
 %#include "xdr/Stellar-reviewable-request-issuance.h"
 %#include "xdr/Stellar-reviewable-request-withdrawal.h"
 %#include "xdr/Stellar-reviewable-request-sale.h"
+%#include "xdr/Stellar-reviewable-request-limits-update.h"
 
 namespace stellar
 {
@@ -18,8 +19,8 @@ enum ReviewableRequestType
 	PRE_ISSUANCE_CREATE = 2,
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
-	SALE = 5
-
+	SALE = 5,
+	LIMITS_UPDATE = 6
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -45,6 +46,8 @@ struct ReviewableRequestEntry {
 			WithdrawalRequest withdrawalRequest;
 		case SALE:
 			SaleCreationRequest saleCreationRequest;
+        case LIMITS_UPDATE:
+            LimitsUpdateRequest limitsUpdateRequest;
 	} body;
 
 	// reserved for future use
