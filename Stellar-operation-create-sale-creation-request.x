@@ -47,7 +47,9 @@ enum CreateSaleCreationRequestResultCode
 	INVALID_CAP = -7, // hard cap is < soft cap
 	INSUFFICIENT_MAX_ISSUANCE = -8, // max number of tokens is less then number of tokens required for soft cap
 	INVALID_ASSET_PAIR = -9, // one of the assets has invalid code or base asset is equal to quote asset
-	REQUEST_OR_SALE_ALREADY_EXISTS = -10
+	REQUEST_OR_SALE_ALREADY_EXISTS = -10,
+	INSUFFICIENT_PREISSUED = -11, // amount of pre issued tokens is insufficient for hard cap
+	INVALID_DETAILS = -12 // details must be a valid json
 };
 
 struct CreateSaleCreationSuccess {

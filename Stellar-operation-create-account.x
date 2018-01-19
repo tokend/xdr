@@ -19,6 +19,7 @@ Result: CreateAccountResult
 struct CreateAccountOp
 {
     AccountID destination; // account to create
+    AccountID recoveryKey; // recovery signer's public key
     AccountID* referrer;     // parent account
 	AccountType accountType;
 	uint32 policies;
@@ -46,7 +47,7 @@ enum CreateAccountResultCode
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,
 	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
-	NOT_VERIFIED_CANNOT_HAS_POLICIES = -7
+	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7
 };
 
 struct CreateAccountSuccess

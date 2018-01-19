@@ -26,7 +26,7 @@ struct AssetEntry
 	uint64 maxIssuanceAmount; // max number of tokens to be issued
 	uint64 availableForIssueance; // pre issued tokens available for issuance
 	uint64 issued; // number of issued tokens
-	uint64 lockedIssuance; // number of tokens locked for entries like token sale. lockedIssuance + issued can not be > maxIssuanceAmount
+	uint64 pendingIssuance; // number of tokens locked for entries like token sale. lockedIssuance + issued can not be > maxIssuanceAmount
     uint32 policies;
 
     // reserved for future use

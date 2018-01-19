@@ -10,7 +10,7 @@ namespace stellar
 
 enum AssetPairPolicy
 {
-	TRADEABLE = 1, // if not set pair can not be traided
+	TRADEABLE_SECONDARY_MARKET = 1, // if not set pair can not be traided on secondary market
 	PHYSICAL_PRICE_RESTRICTION = 2, // if set, then prices for new offers must be greater then physical price with correction
 	CURRENT_PRICE_RESTRICTION = 4 // if set, then price for new offers must be in interval of (1 +- maxPriceStep)*currentPrice
 };

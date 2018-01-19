@@ -20,6 +20,9 @@ struct SaleEntry
 	uint64 hardCap; // max amount of quote asset to be received
 	longstring details; // sale specific details
 
+	BalanceID baseBalance;
+	BalanceID quoteBalance;
+
 	uint64 currentCap; // current capitalization
 
 	union switch (LedgerVersion v)

@@ -44,7 +44,8 @@ enum CreateIssuanceRequestResultCode
 	NOT_AUTHORIZED = -5,
 	EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
 	RECEIVER_FULL_LINE = -7,
-	FEE_EXCEEDS_AMOUNT = -8 // fee more than amount to issue
+	INVALID_EXTERNAL_DETAILS = -8, // external details size exceeds max allowed
+	FEE_EXCEEDS_AMOUNT = -9 // fee more than amount to issue
 };
 
 struct CreateIssuanceRequestSuccess {

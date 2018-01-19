@@ -7,16 +7,8 @@
 namespace stellar
 {
 
-struct StatisticsEntry
-{
-	AccountID accountID;
-
-	uint64 dailyOutcome;
-	uint64 weeklyOutcome;
-	uint64 monthlyOutcome;
-	uint64 annualOutcome;
-
-	int64 updatedAt;
+struct LimitsUpdateRequest {
+    Hash documentHash;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -28,4 +20,3 @@ struct StatisticsEntry
 };
 
 }
-
