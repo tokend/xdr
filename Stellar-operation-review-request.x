@@ -94,8 +94,8 @@ enum ReviewRequestResultCode
 	// sale creation requests
 	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
 	BASE_ASSET_DOES_NOT_EXISTS = -51,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
-	
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52,
+	USER_IS_BLOCKED = -53
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
