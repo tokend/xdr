@@ -52,6 +52,8 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
+	case TWO_STEP_WITHDRAWAL:
+		WithdrawalDetails twoStepWithdrawal;
 	default:
 		void;
 	} requestDetails;
@@ -92,9 +94,9 @@ enum ReviewRequestResultCode
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
 
 	// sale creation requests
-	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
-	BASE_ASSET_DOES_NOT_EXISTS = -51,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
+	BASE_ASSET_DOES_NOT_EXISTS = -50,
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
+	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52
 	
 };
 
