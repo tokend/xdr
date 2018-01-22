@@ -40,6 +40,8 @@ struct ReviewRequestOp
 	union switch(ReviewableRequestType requestType) {
 	case WITHDRAW:
 		WithdrawalDetails withdrawal;
+	case TWO_STEP_WITHDRAWAL:
+		WithdrawalDetails twoStepWithdrawal;
 	default:
 		void;
 	} requestDetails;

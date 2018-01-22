@@ -18,7 +18,8 @@ enum ReviewableRequestType
 	PRE_ISSUANCE_CREATE = 2,
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
-	SALE = 5
+	SALE = 5,
+	TWO_STEP_WITHDRAWAL = 6
 
 };
 
@@ -45,6 +46,8 @@ struct ReviewableRequestEntry {
 			WithdrawalRequest withdrawalRequest;
 		case SALE:
 			SaleCreationRequest saleCreationRequest;
+		case TWO_STEP_WITHDRAWAL:
+			WithdrawalRequest twoStepWithdrawalRequest;
 	} body;
 
 	// reserved for future use
