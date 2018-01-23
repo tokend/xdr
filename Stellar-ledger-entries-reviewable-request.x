@@ -20,7 +20,7 @@ enum ReviewableRequestType
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
 	SALE = 5,
-	LIMITS_UPDATE = 6
+	LIMITS_UPDATE = 6,
 	TWO_STEP_WITHDRAWAL = 7
 };
 
