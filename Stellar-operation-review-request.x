@@ -22,6 +22,16 @@ enum ReviewRequestOpAction {
     Result: ReviewRequestResult
 */
 
+struct LimitsUpdateDetails {
+    Limits newLimits;
+    union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+};
+
 struct WithdrawalDetails {
 	string externalDetails<>;
 	// reserved for future use
@@ -40,6 +50,8 @@ struct ReviewRequestOp
 	union switch(ReviewableRequestType requestType) {
 	case WITHDRAW:
 		WithdrawalDetails withdrawal;
+    case LIMITS_UPDATE:
+        LimitsUpdateDetails limitsUpdate;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
 	default:
@@ -70,6 +82,7 @@ enum ReviewRequestResultCode
 	NOT_FOUND = -4,
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
+	INVALID_EXTERNAL_DETAILS = -7,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,

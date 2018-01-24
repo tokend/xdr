@@ -19,6 +19,7 @@ Result: CreateAccountResult
 struct CreateAccountOp
 {
     AccountID destination; // account to create
+    AccountID recoveryKey; // recovery signer's public key
     AccountID* referrer;     // parent account
 	AccountType accountType;
 	uint32 policies;
