@@ -32,10 +32,7 @@ case KEY_TYPE_ED25519:
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	IMPROVED_STATS_CALCULATION = 4,
-	EMISSION_REQUEST_BALANCE_ID = 5,
-	IMPROVED_TRANSFER_FEES_CALC = 8,
-	USE_IMPROVED_SIGNATURE_CHECK = 9
+	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1
 };
 
 // variable size as the size depends on the signature scheme used

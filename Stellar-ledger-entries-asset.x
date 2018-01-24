@@ -12,7 +12,13 @@ enum AssetPolicy
 	TRANSFERABLE = 1,
 	BASE_ASSET = 2,
 	STATS_QUOTE_ASSET = 4,
-	WITHDRAWABLE = 8
+	WITHDRAWABLE = 8,
+	TWO_STEP_WITHDRAWAL = 16
+};
+
+enum AssetSystemPolicies
+{
+	TWO_STEP_WITHDRAW = 1
 };
 
 
