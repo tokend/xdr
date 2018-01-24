@@ -111,7 +111,8 @@ enum OperationType
     MANAGE_INVOICE = 17,
 	REVIEW_REQUEST = 18,
 	CREATE_SALE_REQUEST = 19,
-	CHECK_SALE_STATE = 20
+	CHECK_SALE_STATE = 20,
+	PAYOUT = 21
 };
 
 struct DecoratedSignature
