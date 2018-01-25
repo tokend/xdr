@@ -66,7 +66,8 @@ enum ManageOfferResultCode
 	PRICE_IS_INVALID = -20, // price must be positive
 	UPDATE_IS_NOT_ALLOWED = -21, // update of the offer is not allowed
 	INVALID_AMOUNT = -22, // amount must be positive 
-	SALE_IS_NOT_ACTIVE = -23
+	SALE_IS_NOT_ACTIVE = -23,
+	REQUIRES_KYC = -24 // source must have KYC in order to participate
 
 };
 
