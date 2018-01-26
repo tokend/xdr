@@ -20,7 +20,8 @@ enum ReviewableRequestType
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
 	SALE = 5,
-	LIMITS_UPDATE = 6
+	LIMITS_UPDATE = 6,
+	TWO_STEP_WITHDRAWAL = 7
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -48,6 +49,8 @@ struct ReviewableRequestEntry {
 			SaleCreationRequest saleCreationRequest;
         case LIMITS_UPDATE:
             LimitsUpdateRequest limitsUpdateRequest;
+		case TWO_STEP_WITHDRAWAL:
+			WithdrawalRequest twoStepWithdrawalRequest;
 	} body;
 
 	// reserved for future use

@@ -6,7 +6,8 @@ namespace stellar
 enum ExternalSystemType
 {
 	BITCOIN = 1,
-	ETHEREUM = 2
+	ETHEREUM = 2,
+	SECURE_VOTE = 3
 };
 
 struct ExternalSystemAccountID

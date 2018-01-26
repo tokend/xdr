@@ -52,6 +52,8 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
+	case TWO_STEP_WITHDRAWAL:
+		WithdrawalDetails twoStepWithdrawal;
 	default:
 		void;
 	} requestDetails;
@@ -81,6 +83,7 @@ enum ReviewRequestResultCode
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
 	INVALID_EXTERNAL_DETAILS = -7,
+	REQUESTOR_IS_BLOCKED = -8,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
@@ -92,10 +95,9 @@ enum ReviewRequestResultCode
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
 
 	// sale creation requests
-	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
-	BASE_ASSET_DOES_NOT_EXISTS = -51,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52,
-	USER_IS_BLOCKED = -53
+	BASE_ASSET_DOES_NOT_EXISTS = -50,
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
+	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
