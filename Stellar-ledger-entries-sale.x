@@ -30,6 +30,8 @@ struct SaleEntry
 	AssetCode defaultQuoteAsset; // asset for soft and hard cap
 	uint64 softCap; // minimum amount of quote asset to be received at which sale will be considered a successful
 	uint64 hardCap; // max amount of quote asset to be received
+	uint64 currentCapInBase;
+	uint64 hardCapInBase;
 	longstring details; // sale specific details
 	SaleQuoteAsset quoteAssets<100>;
 
