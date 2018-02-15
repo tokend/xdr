@@ -33,7 +33,7 @@ case KEY_TYPE_ED25519:
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
 	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1,
-	DETAILED_LEDGER_CHANGES = 2 // write more all ledger changes to transaction meta
+	DETAILED_LEDGER_CHANGES = 2, // write more all ledger changes to transaction meta
 	NEW_SIGNER_TYPES = 3 // use more comprehensive list of signer types
 };
 
