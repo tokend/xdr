@@ -83,6 +83,7 @@ enum ReviewRequestResultCode
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
 	INVALID_EXTERNAL_DETAILS = -7,
+	REQUESTOR_IS_BLOCKED = -8,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
@@ -97,7 +98,6 @@ enum ReviewRequestResultCode
 	BASE_ASSET_DOES_NOT_EXISTS = -50,
 	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
 	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52
-	
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
