@@ -22,6 +22,7 @@
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-manage-external-system-id-provider.h"
 
 namespace stellar
 {
@@ -75,6 +76,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+    case MANAGE_EXTERNAL_SYSTEM_ID_PROVIDER:
+        ManageExternalSystemIdProviderOp manageExternalSystemIdProviderOp;
     }
     body;
 };
@@ -205,6 +208,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+    case MANAGE_EXTERNAL_SYSTEM_ID_PROVIDER:
+        ManageExternalSystemIdProviderResult manageExternalSystemIdProviderResult;
     }
     tr;
 default:
