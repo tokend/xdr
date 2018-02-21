@@ -34,7 +34,8 @@ enum LedgerVersion {
 	EMPTY_VERSION = 0,
 	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1,
 	DETAILED_LEDGER_CHANGES = 2, // write more all ledger changes to transaction meta
-	NEW_SIGNER_TYPES = 3 // use more comprehensive list of signer types
+	NEW_SIGNER_TYPES = 3, // use more comprehensive list of signer types
+	TYPED_SALE = 4 // sales can have type
 };
 
 // variable size as the size depends on the signature scheme used
