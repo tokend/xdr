@@ -3,9 +3,9 @@
 namespace stellar
 {
 
-struct ExternalSystemAccountIDProvider
+struct ExternalSystemAccountIDPoolEntry
 {
-    uint64 providerID;
+    uint64 poolEntryID;
     ExternalSystemType externalSystemType;
     longstring data;
     AccountID* accountID;
