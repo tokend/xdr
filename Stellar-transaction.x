@@ -23,6 +23,7 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
+%#include "xdr/Stellar-operation-bind-external-system-id.h"
 
 namespace stellar
 {
@@ -78,6 +79,8 @@ struct Operation
 		CheckSaleStateOp checkSaleStateOp;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
     }
     body;
 };
@@ -210,6 +213,8 @@ case opINNER:
 		CheckSaleStateResult checkSaleStateResult;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
     }
     tr;
 default:
