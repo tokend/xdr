@@ -42,10 +42,21 @@ enum CheckSaleStateResultCode
 
 enum CheckSaleStateEffect {
 	CANCELED = 1, // sale did not managed to go over soft cap in time
-	CLOSED = 2 // sale met hard cap or (end time and soft cap)
+	CLOSED = 2, // sale met hard cap or (end time and soft cap)
+	UPDATED = 3 // on check sale was modified and modifications must be saved
 };
 
 struct SaleCanceled {
+	 // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct SaleUpdated {
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
@@ -89,6 +100,8 @@ struct CheckSaleStateSuccess
         SaleCanceled saleCanceled;
 	case CLOSED:
 		CheckSaleClosedResult saleClosed;
+	case UPDATED:
+		SaleUpdated saleUpdated;
     }
     effect;
 	 // reserved for future use
