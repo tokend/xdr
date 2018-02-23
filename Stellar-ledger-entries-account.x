@@ -25,7 +25,8 @@ enum SignerType
 	OPERATIONAL_BALANCE_MANAGER = 8192, // allowed to spend from operational balances
 	EVENTS_CHECKER = 16384, // allow to check and trigger events
 	EXCHANGE_ACC_MANAGER = 32768, // can manage exchange account
-	SYNDICATE_ACC_MANAGER = 65536 // can manage syndicate account
+	SYNDICATE_ACC_MANAGER = 65536, // can manage syndicate account
+	KYC_ACC_MANAGER = 131072 // can manage kyc
 };
 
 struct Signer
@@ -135,7 +136,10 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
+	case USE_KYC_LEVEL:
+		uint32 kycLevel;
     }
+	
     ext;
 };
 

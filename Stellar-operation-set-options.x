@@ -3,7 +3,7 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
+
 
 namespace stellar
 {
@@ -37,18 +37,7 @@ struct TrustData {
 	ext;
 };
 
-struct UpdateKYCData {
-    longstring dataKYC;
-    uint64 requestID;
 
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
 
 struct SetOptionsOp
 {
@@ -64,7 +53,7 @@ struct SetOptionsOp
 
     TrustData* trustData;
 
-    UpdateKYCData* updateKYCData;
+   
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{

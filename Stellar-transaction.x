@@ -23,6 +23,7 @@
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-create-KYC-request.h"
 
 namespace stellar
 {
@@ -78,6 +79,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case CREATE_KYC_REQUEST:
+		CreateKYCRequestOp createKYCRequestOp;
     }
     body;
 };
@@ -210,6 +213,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+	case CREATE_KYC_REQUEST:
+	    CreateKYCRequestResult createKYCRequestResult;
     }
     tr;
 default:

@@ -35,7 +35,8 @@ enum LedgerVersion {
 	IMPROVED_STATS_CALCULATION = 4,
 	EMISSION_REQUEST_BALANCE_ID = 5,
 	IMPROVED_TRANSFER_FEES_CALC = 8,
-	USE_IMPROVED_SIGNATURE_CHECK = 9
+	USE_IMPROVED_SIGNATURE_CHECK = 9,
+	USE_KYC_LEVEL = 10
 };
 
 // variable size as the size depends on the signature scheme used
@@ -112,7 +113,8 @@ enum OperationType
     MANAGE_INVOICE = 17,
 	REVIEW_REQUEST = 18,
 	CREATE_SALE_REQUEST = 19,
-	CHECK_SALE_STATE = 20
+	CHECK_SALE_STATE = 20,
+	CREATE_KYC_REQUEST =21
 };
 
 struct DecoratedSignature

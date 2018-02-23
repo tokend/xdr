@@ -7,8 +7,7 @@
 %#include "xdr/Stellar-reviewable-request-issuance.h"
 %#include "xdr/Stellar-reviewable-request-withdrawal.h"
 %#include "xdr/Stellar-reviewable-request-sale.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
-
+%#include "xdr/Stellar-reviewable-request-change-KYC.h"
 namespace stellar
 {
 
@@ -20,7 +19,7 @@ enum ReviewableRequestType
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
 	SALE = 5,
-    UPDATE_KYC = 6
+	CHANGE_KYC = 6 
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -46,8 +45,8 @@ struct ReviewableRequestEntry {
 			WithdrawalRequest withdrawalRequest;
 		case SALE:
 			SaleCreationRequest saleCreationRequest;
-		case UPDATE_KYC:
-		    UpdateKYCRequest updateKYCRequest;
+		case CHANGE_KYC:
+		    ChangeKYCRequest changeKYCRequest;
 	} body;
 
 	// reserved for future use
