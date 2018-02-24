@@ -18,7 +18,8 @@ Result: ManageBalanceResult
 enum ManageBalanceAction
 {
     CREATE = 0,
-    DELETE_BALANCE = 1
+    DELETE_BALANCE = 1,
+	CREATE_UNIQUE = 2 // ensures that balance will not be created if one for such asset and account exists
 };
 
 
@@ -47,7 +48,9 @@ enum ManageBalanceResultCode
     NOT_FOUND = -2,
     DESTINATION_NOT_FOUND = -3,
     ASSET_NOT_FOUND = -4,
-    INVALID_ASSET = -5
+    INVALID_ASSET = -5,
+	BALANCE_ALREADY_EXISTS = -6,
+	VERSION_IS_NOT_SUPPORTED_YET = -7 // version specified in request is not supported yet
 };
 
 struct ManageBalanceSuccess {

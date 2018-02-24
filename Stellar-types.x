@@ -35,7 +35,8 @@ enum LedgerVersion {
 	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1,
 	DETAILED_LEDGER_CHANGES = 2, // write more all ledger changes to transaction meta
 	NEW_SIGNER_TYPES = 3, // use more comprehensive list of signer types
-	TYPED_SALE = 4 // sales can have type
+	TYPED_SALE = 4, // sales can have type
+	UNIQUE_BALANCE_CREATION = 5 // allows to specify in manage balance that balance should not be created if one for such asset and account exists
 };
 
 // variable size as the size depends on the signature scheme used
