@@ -16,7 +16,7 @@ enum SignerType
 	ASSET_MANAGER = 16, // allowed to create assets/asset pairs and update policies, set fees
 	ASSET_RATE_MANAGER = 32, // allowed to set physical asset price
 	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
-	ISSUANCE_MANAGER = 128, // allowed to make preissuance request, review issuance
+	ISSUANCE_MANAGER = 128, // allowed to make preissuance request
 	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
 	PAYMENT_OPERATOR = 512, // allowed to review payment requests
 	LIMITS_MANAGER = 1024, // allowed to change limits
@@ -26,7 +26,11 @@ enum SignerType
 	EVENTS_CHECKER = 16384, // allow to check and trigger events
 	EXCHANGE_ACC_MANAGER = 32768, // can manage exchange account
 	SYNDICATE_ACC_MANAGER = 65536, // can manage syndicate account
-	KYC_ACC_MANAGER = 131072 // can manage kyc
+	USER_ASSET_MANAGER = 131072, // can review sale, asset creation/update requests
+	USER_ISSUANCE_MANAGER = 262144, // can review pre-issuance/issuance requests
+	WITHDRAW_MANAGER = 524288, // can review withdraw requests
+	FEES_MANAGER = 1048576, // can set fee
+	KYC_ACC_MANAGER = 2097152 // can manage kyc
 };
 
 struct Signer
@@ -115,6 +119,7 @@ enum BlockReasons
 struct AccountEntry
 {
     AccountID accountID;      // master public key for this account
+    AccountID recoveryID;
 
     // fields used for signatures
     // thresholds stores unsigned bytes: [weight of master|low|medium|high]

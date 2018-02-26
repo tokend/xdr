@@ -37,7 +37,15 @@ struct TrustData {
 	ext;
 };
 
-
+struct LimitsUpdateRequestData {
+    Hash documentHash;
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 struct SetOptionsOp
 {
@@ -53,7 +61,9 @@ struct SetOptionsOp
 
     TrustData* trustData;
 
-   
+    // Create LimitsUpdateRequest for account
+    LimitsUpdateRequestData* limitsUpdateRequestData;
+
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
@@ -78,15 +88,14 @@ enum SetOptionsResultCode
     TRUST_MALFORMED = -5,
 	TRUST_TOO_MANY = -6,
 	INVALID_SIGNER_VERSION = -7, // if signer version is higher than ledger version
-	UPDATE_KYC_MALFORMED = -8,
-	UPDATE_KYC_REQUEST_NOT_FOUND = -9
+	LIMITS_UPDATE_REQUEST_REFERENCE_DUPLICATION = -8
 };
 
 union SetOptionsResult switch (SetOptionsResultCode code)
 {
 case SUCCESS:
     struct {
-        uint64 requestID;
+        uint64 limitsUpdateRequestID;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{

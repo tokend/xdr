@@ -22,6 +22,16 @@ enum ReviewRequestOpAction {
     Result: ReviewRequestResult
 */
 
+struct LimitsUpdateDetails {
+    Limits newLimits;
+    union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+};
+
 struct WithdrawalDetails {
 	string externalDetails<>;
 	// reserved for future use
@@ -40,6 +50,10 @@ struct ReviewRequestOp
 	union switch(ReviewableRequestType requestType) {
 	case WITHDRAW:
 		WithdrawalDetails withdrawal;
+    case LIMITS_UPDATE:
+        LimitsUpdateDetails limitsUpdate;
+	case TWO_STEP_WITHDRAWAL:
+		WithdrawalDetails twoStepWithdrawal;
 	default:
 		void;
 	} requestDetails;
@@ -68,7 +82,8 @@ enum ReviewRequestResultCode
 	NOT_FOUND = -4,
 	TYPE_MISMATCHED = -5,
 	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
-	PERMANENT_REJECT_NOT_ALLOWED = -7,
+	INVALID_EXTERNAL_DETAILS = -7,
+	REQUESTOR_IS_BLOCKED = -8,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
@@ -79,11 +94,10 @@ enum ReviewRequestResultCode
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
 
-	// sale creation reuqests
-	QUOTE_ASSET_DOES_NOT_EXISTS = -50,
-	BASE_ASSET_DOES_NOT_EXISTS = -51,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -52
-	
+	// sale creation requests
+	BASE_ASSET_DOES_NOT_EXISTS = -50,
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
+	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)

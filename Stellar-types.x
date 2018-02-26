@@ -32,11 +32,12 @@ case KEY_TYPE_ED25519:
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	IMPROVED_STATS_CALCULATION = 4,
-	EMISSION_REQUEST_BALANCE_ID = 5,
-	IMPROVED_TRANSFER_FEES_CALC = 8,
-	USE_IMPROVED_SIGNATURE_CHECK = 9,
-	USE_KYC_LEVEL = 10
+	PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC = 1,
+	DETAILED_LEDGER_CHANGES = 2, // write more all ledger changes to transaction meta
+	NEW_SIGNER_TYPES = 3, // use more comprehensive list of signer types
+	TYPED_SALE = 4, // sales can have type
+	UNIQUE_BALANCE_CREATION = 5, // allows to specify in manage balance that balance should not be created if one for such asset and account exists
+	USE_KYC_LEVEL = 6
 };
 
 // variable size as the size depends on the signature scheme used
@@ -101,7 +102,6 @@ enum OperationType
     SET_FEES = 5,
 	MANAGE_ACCOUNT = 6,
     CREATE_WITHDRAWAL_REQUEST = 7,
-    RECOVER = 8,
     MANAGE_BALANCE = 9,
     REVIEW_PAYMENT_REQUEST = 10,
     MANAGE_ASSET = 11,

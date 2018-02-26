@@ -9,7 +9,6 @@
 %#include "xdr/Stellar-operation-set-fees.h"
 %#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
-%#include "xdr/Stellar-operation-recover.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
@@ -53,8 +52,6 @@ struct Operation
 		ManageAccountOp manageAccountOp;
 	case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
-	case RECOVER:
-		RecoverOp recoverOp;
 	case MANAGE_BALANCE:
 		ManageBalanceOp manageBalanceOp;
 	case REVIEW_PAYMENT_REQUEST:
@@ -187,8 +184,6 @@ case opINNER:
 		ManageAccountResult manageAccountResult;
     case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
-    case RECOVER:
-		RecoverResult recoverResult;
     case MANAGE_BALANCE:
         ManageBalanceResult manageBalanceResult;
     case REVIEW_PAYMENT_REQUEST:
