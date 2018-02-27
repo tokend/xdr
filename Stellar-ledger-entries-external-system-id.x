@@ -7,7 +7,8 @@ enum ExternalSystemType
 {
 	BITCOIN = 1,
 	ETHEREUM = 2,
-	SECURE_VOTE = 3
+	SECURE_VOTE = 3,
+	ERC20_TOKEN = 4
 };
 
 struct ExternalSystemAccountID

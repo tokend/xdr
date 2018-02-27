@@ -32,7 +32,8 @@ enum BindExternalSystemAccountIdResultCode
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    NO_AVAILABLE_ID = -2
+    NO_AVAILABLE_ID = -2,
+    AUTO_GENERATED_TYPE_NOT_ALLOWED = -3
 };
 
 struct BindExternalSystemAccountIdSuccess {
