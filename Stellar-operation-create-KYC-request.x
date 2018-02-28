@@ -27,11 +27,10 @@ enum CreateKYCRequestResultCode
 
     // codes considered as "failure" for the operation
     UPDATED_ACC_NOT_EXIST = -1,         // account does not exists
-	NOT_ALLOWED = -2,        //set account type operation is not allowed on this account
-    REQUEST_EXIST = -3,
-	SET_TYPE_THE_SAME = -4,// if account type and kyc level the same that account have
-	REQUEST_NOT_EXIST = -5,
-	REQUEST_TYPE_MISSMATCH = -6
+    REQUEST_EXIST = -2,
+	SET_TYPE_THE_SAME = -3, // if account type and kyc level the same that account have
+	REQUEST_NOT_EXIST = -4
+
 };
 union CreateKYCRequestResult switch (CreateKYCRequestResultCode code)
 {
