@@ -30,7 +30,8 @@ enum SignerType
 	USER_ISSUANCE_MANAGER = 262144, // can review pre-issuance/issuance requests
 	WITHDRAW_MANAGER = 524288, // can review withdraw requests
 	FEES_MANAGER = 1048576, // can set fee
-	KYC_ACC_MANAGER = 2097152 // can manage kyc
+	TX_SENDER = 2097152, // can send tx
+	KYC_ACC_MANAGER = 4194304 // can manage kyc
 };
 
 struct Signer
