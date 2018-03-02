@@ -12,7 +12,8 @@ enum ManageAssetAction
 {
     CREATE_ASSET_CREATION_REQUEST = 0,
     CREATE_ASSET_UPDATE_REQUEST = 1,
-	CANCEL_ASSET_REQUEST = 2
+	CANCEL_ASSET_REQUEST = 2,
+	CHANGE_PREISSUED_ASSET_SIGNER = 3
 };
 
 // CancelAssetRequest - cancels update or create request
@@ -47,6 +48,8 @@ struct ManageAssetOp
 		AssetUpdateRequest updateAsset;
 	case CANCEL_ASSET_REQUEST:
 		CancelAssetRequest cancelRequest;
+	case CHANGE_PREISSUED_ASSET_SIGNER:
+		AssetChangePreissuedSigner changePreissuedSigner;
 	} request;
 
 	// reserved for future use

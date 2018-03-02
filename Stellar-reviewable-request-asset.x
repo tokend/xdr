@@ -39,4 +39,16 @@ struct AssetUpdateRequest {
     ext;
 };
 
+struct AssetChangePreissuedSigner {
+	AssetCode code;
+	AccountID accountID;
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 }

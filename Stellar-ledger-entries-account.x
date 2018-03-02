@@ -29,7 +29,8 @@ enum SignerType
 	USER_ASSET_MANAGER = 131072, // can review sale, asset creation/update requests
 	USER_ISSUANCE_MANAGER = 262144, // can review pre-issuance/issuance requests
 	WITHDRAW_MANAGER = 524288, // can review withdraw requests
-	FEES_MANAGER = 1048576 // can set fee
+	FEES_MANAGER = 1048576, // can set fee
+	TX_SENDER = 2097152 // can send tx
 };
 
 struct Signer
