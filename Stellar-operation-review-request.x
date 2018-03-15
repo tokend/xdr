@@ -43,6 +43,17 @@ struct WithdrawalDetails {
     ext;
 };
 
+struct AMLAlertDetails {
+	string comment<>;
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -54,6 +65,8 @@ struct ReviewRequestOp
         LimitsUpdateDetails limitsUpdate;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
+	case AML_ALERT:
+		AMLAlertDetails amlAlertDetails;
 	default:
 		void;
 	} requestDetails;
