@@ -31,6 +31,7 @@ enum SignerType
 	WITHDRAW_MANAGER = 524288, // can review withdraw requests
 	FEES_MANAGER = 1048576, // can set fee
 	TX_SENDER = 2097152 // can send tx
+	AML_ALERT_MANAGER = 4194304 // can manage AML alert request
 };
 
 struct Signer
