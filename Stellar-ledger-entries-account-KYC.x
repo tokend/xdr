@@ -10,7 +10,6 @@ namespace stellar
 struct AccountKYCEntry
 {
     AccountID accountID;
-
     longstring KYCData;
 
     // reserved for future use

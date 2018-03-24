@@ -3,14 +3,29 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-reviewable-request-change-KYC.h"
+%#include "xdr/Stellar-reviewable-request-update-KYC.h"
 namespace stellar
 {
 
-struct CreateKYCRequestOp
-{
-   uint64 requestID;
-   ChangeKYCRequest changeKYCRequest;
+struct UpdateKYCRequestData {
+    AccountID accountToUpdateKYC;
+	AccountType accountTypeToSet;
+	uint32 kycLevel;
+    longstring kycData;
+	uint32 allTasks;
+
+	// Reserved for future use
+	union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct CreateUpdateKYCRequestOp {
+    uint64 requestID;
+    UpdateKYCRequestData updateKYCRequestData;
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -18,27 +33,29 @@ struct CreateKYCRequestOp
     }
     ext;
 };
-/******* UpdateKYCLevel Result ********/
 
-enum CreateKYCRequestResultCode
+/******* CreateUpdateKYCRequest Result ********/
+
+enum CreateUpdateKYCRequestResultCode
 {
     // codes considered as "success" for the operation
-    SUCCESS = 0, // account was created
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    UPDATED_ACC_NOT_EXIST = -1,         // account does not exists
-    REQUEST_EXIST = -2,
-	SET_TYPE_THE_SAME = -3, // if account type and kyc level the same that account have
-	REQUEST_NOT_EXIST = -4
-
+    MALFORMED = -1,
+    UPDATED_ACC_NOT_EXIST = -2, // account does not exists
+    REQUEST_EXIST = -3,
+	SET_TYPE_THE_SAME = -4, // if account type and kyc level the same that account have
+	REQUEST_NOT_EXIST = -5
 };
-union CreateKYCRequestResult switch (CreateKYCRequestResultCode code)
+
+union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)
 {
 case SUCCESS:
     struct {
 		uint64 requestID;
 		bool fulfilled;
-		// reserved for future use
+		// Reserved for future use
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
@@ -49,6 +66,5 @@ case SUCCESS:
 default:
     void;
 };
-
 
 }
