@@ -77,7 +77,7 @@ struct Operation
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
 	case CREATE_KYC_REQUEST:
-		CreateKYCRequestOp createKYCRequestOp;
+		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
     }
     body;
 };
@@ -209,7 +209,7 @@ case opINNER:
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
 	case CREATE_KYC_REQUEST:
-	    CreateKYCRequestResult createKYCRequestResult;
+	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
     }
     tr;
 default:
