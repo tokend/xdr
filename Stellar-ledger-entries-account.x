@@ -32,7 +32,7 @@ enum SignerType
 	FEES_MANAGER = 1048576, // can set fee
 	TX_SENDER = 2097152, // can send tx
 	KYC_ACC_MANAGER = 4194304, // can manage kyc
-	KYC_FINAL_ADMIN = 8388608 // can set allTasks mask in KYC request to zero value
+	KYC_SUPER_ADMIN = 8388608
 };
 
 struct Signer

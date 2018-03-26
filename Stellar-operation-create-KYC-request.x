@@ -12,7 +12,7 @@ struct UpdateKYCRequestData {
 	AccountType accountTypeToSet;
 	uint32 kycLevel;
     longstring kycData;
-	uint32 allTasks;
+	uint32* allTasks;
 
 	// Reserved for future use
 	union switch (LedgerVersion v)
@@ -42,11 +42,11 @@ enum CreateUpdateKYCRequestResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,
-    UPDATED_ACC_NOT_EXIST = -2, // account does not exists
-    REQUEST_EXIST = -3,
-	SET_TYPE_THE_SAME = -4, // if account type and kyc level the same that account have
-	REQUEST_NOT_EXIST = -5
+    ACC_TO_UPDATE_DOES_NOT_EXIST = -1, // account to update does not exist
+    REQUEST_ALREADY_EXISTS = -2,
+	SAME_ACC_TYPE_TO_SET = -3,
+	REQUEST_DOES_NOT_EXIST = -4,
+	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5
 };
 
 union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)
