@@ -43,6 +43,17 @@ struct WithdrawalDetails {
     ext;
 };
 
+struct AMLAlertDetails {
+	string comment<>;
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct UpdateKYCDetails {
     uint32 newTasks;
     string externalDetails<>;
@@ -66,6 +77,8 @@ struct ReviewRequestOp
         LimitsUpdateDetails limitsUpdate;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
+    case AML_ALERT:
+        AMLAlertDetails amlAlertDetails;
     case UPDATE_KYC:
         UpdateKYCDetails updateKYC;
 	default:
