@@ -43,6 +43,18 @@ struct WithdrawalDetails {
     ext;
 };
 
+struct UpdateKYCDetails {
+    uint32 newTasks;
+    string externalDetails<>;
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -54,6 +66,8 @@ struct ReviewRequestOp
         LimitsUpdateDetails limitsUpdate;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
+    case UPDATE_KYC:
+        UpdateKYCDetails updateKYC;
 	default:
 		void;
 	} requestDetails;
