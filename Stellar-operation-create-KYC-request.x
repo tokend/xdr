@@ -10,7 +10,7 @@ namespace stellar
 struct UpdateKYCRequestData {
     AccountID accountToUpdateKYC;
 	AccountType accountTypeToSet;
-	uint32 kycLevel;
+	uint32 kycLevelToSet;
     longstring kycData;
 	uint32* allTasks;
 
@@ -46,7 +46,9 @@ enum CreateUpdateKYCRequestResultCode
     REQUEST_ALREADY_EXISTS = -2,
 	SAME_ACC_TYPE_TO_SET = -3,
 	REQUEST_DOES_NOT_EXIST = -4,
-	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5
+	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
+	NOT_ALLOWED_TO_UPDATE_REQUEST = -6, // master account can update request only through review request operation
+	INVALID_UPDATE_KYC_REQUEST_DATA = -7
 };
 
 union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)
