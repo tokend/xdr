@@ -55,7 +55,8 @@ struct AMLAlertDetails {
 };
 
 struct UpdateKYCDetails {
-    uint32 newTasks;
+    uint32 tasksToAdd;
+    uint32 tasksToRemove;
     string externalDetails<>;
     // Reserved for future use
     union switch (LedgerVersion v)
