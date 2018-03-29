@@ -18,6 +18,7 @@
 %#include "xdr/Stellar-ledger-entries-reviewable-request.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
+%#include "xdr/Stellar-ledger-entries-account-KYC.h"
 
 namespace stellar
 {
@@ -49,7 +50,8 @@ enum LedgerEntryType
     INVOICE = 14,
 	REVIEWABLE_REQUEST = 15,
 	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
-	SALE = 17
+	SALE = 17,
+	ACCOUNT_KYC = 18
 };
 
 
@@ -91,6 +93,8 @@ struct LedgerEntry
 		ExternalSystemAccountID externalSystemAccountID;
 	case SALE:
 		SaleEntry sale;
+	case ACCOUNT_KYC:
+        AccountKYCEntry accountKYC;
     }
     data;
 

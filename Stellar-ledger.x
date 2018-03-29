@@ -277,6 +277,16 @@ case SALE:
 		}
 		ext;
 	} sale;
+case ACCOUNT_KYC:
+    struct {
+        AccountID accountID;
+        union switch(LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountKYC;
 };
 
 enum BucketEntryType
