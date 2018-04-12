@@ -115,7 +115,8 @@ enum OperationType
 	REVIEW_REQUEST = 18,
 	CREATE_SALE_REQUEST = 19,
 	CHECK_SALE_STATE = 20,
-	CREATE_AML_ALERT = 21
+	CREATE_AML_ALERT = 21,
+	MANAGE_KEY_VALUE = 22
 };
 
 struct DecoratedSignature

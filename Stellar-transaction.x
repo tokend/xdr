@@ -23,6 +23,7 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
+%#include "xdr/Strllar-operation-manage-key-value.h"
 namespace stellar
 {
 
@@ -77,6 +78,8 @@ struct Operation
 		CheckSaleStateOp checkSaleStateOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueOp manageKeyValueOp;
     }
     body;
 };
@@ -209,6 +212,8 @@ case opINNER:
 		CheckSaleStateResult checkSaleStateResult;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueResult manageKeyValueResult;
     }
     tr;
 default:

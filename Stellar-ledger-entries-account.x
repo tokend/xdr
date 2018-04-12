@@ -32,7 +32,8 @@ enum SignerType
 	FEES_MANAGER = 1048576, // can set fee
 	TX_SENDER = 2097152, // can send tx
 	AML_ALERT_MANAGER = 4194304, // can manage AML alert request
-	AML_ALERT_REVIEWER = 8388608 // can review aml alert requests
+	AML_ALERT_REVIEWER = 8388608, // can review aml alert requests
+	KEY_VALUE_MANAGER = 16777216 // can manage keyValue
 };
 
 struct Signer
