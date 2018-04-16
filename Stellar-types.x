@@ -36,7 +36,12 @@ enum LedgerVersion {
 	DETAILED_LEDGER_CHANGES = 2, // write more all ledger changes to transaction meta
 	NEW_SIGNER_TYPES = 3, // use more comprehensive list of signer types
 	TYPED_SALE = 4, // sales can have type
-	UNIQUE_BALANCE_CREATION = 5 // allows to specify in manage balance that balance should not be created if one for such asset and account exists
+	UNIQUE_BALANCE_CREATION = 5, // allows to specify in manage balance that balance should not be created if one for such asset and account exists
+	ASSET_PREISSUER_MIGRATION = 6,
+	ASSET_PREISSUER_MIGRATED = 7,
+	USE_KYC_LEVEL = 8,
+	ERROR_ON_NON_ZERO_TASKS_TO_REMOVE_IN_REJECT_KYC = 9,
+	ALLOW_ACCOUNT_MANAGER_TO_CHANGE_KYC = 10
 };
 
 // variable size as the size depends on the signature scheme used
@@ -113,8 +118,10 @@ enum OperationType
 	REVIEW_REQUEST = 18,
 	CREATE_SALE_REQUEST = 19,
 	CHECK_SALE_STATE = 20,
-	MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 21,
-	BIND_EXTERNAL_SYSTEM_ACCOUNT_ID = 22
+    CREATE_AML_ALERT = 21,
+    CREATE_KYC_REQUEST = 22
+	MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 23,
+	BIND_EXTERNAL_SYSTEM_ACCOUNT_ID = 24
 };
 
 struct DecoratedSignature

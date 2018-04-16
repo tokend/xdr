@@ -22,6 +22,8 @@
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-create-AML-alert-request.h"
+%#include "xdr/Stellar-operation-create-KYC-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 
@@ -77,6 +79,10 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case CREATE_AML_ALERT:
+	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
+	case CREATE_KYC_REQUEST:
+		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
@@ -211,6 +217,10 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+    case CREATE_AML_ALERT:
+        CreateAMLAlertRequestResult createAMLAlertRequestResult;
+	case CREATE_KYC_REQUEST:
+	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:

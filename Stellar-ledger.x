@@ -277,7 +277,17 @@ case SALE:
 		}
 		ext;
 	} sale;
-case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+case ACCOUNT_KYC:
+    struct {
+        AccountID accountID;
+        union switch(LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountKYC;
+    case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
     struct {
 		uint64 poolEntryID;
 		union switch (LedgerVersion v)
