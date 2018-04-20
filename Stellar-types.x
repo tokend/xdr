@@ -38,7 +38,8 @@ enum LedgerVersion {
 	TYPED_SALE = 4, // sales can have type
 	UNIQUE_BALANCE_CREATION = 5, // allows to specify in manage balance that balance should not be created if one for such asset and account exists
 	ASSET_PREISSUER_MIGRATION = 6,
-	ASSET_PREISSUER_MIGRATED = 7
+	ASSET_PREISSUER_MIGRATED = 7,
+	USE_KYC_LEVEL = 8
 };
 
 // variable size as the size depends on the signature scheme used
@@ -116,7 +117,8 @@ enum OperationType
 	CREATE_SALE_REQUEST = 19,
 	CHECK_SALE_STATE = 20,
 	CREATE_AML_ALERT = 21,
-	MANAGE_KEY_VALUE = 22
+    CREATE_KYC_REQUEST = 22,
+    MANAGE_KEY_VALUE = 23
 };
 
 struct DecoratedSignature
