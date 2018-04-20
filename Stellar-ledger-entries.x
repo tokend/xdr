@@ -53,11 +53,8 @@ enum LedgerEntryType
 	REVIEWABLE_REQUEST = 15,
 	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
 	SALE = 17,
-<<<<<<< HEAD
-	KEY_VALUE = 18
-=======
-	ACCOUNT_KYC = 18
->>>>>>> master
+	ACCOUNT_KYC = 18,
+	KEY_VALUE = 19
 };
 
 
@@ -99,13 +96,10 @@ struct LedgerEntry
 		ExternalSystemAccountID externalSystemAccountID;
 	case SALE:
 		SaleEntry sale;
-<<<<<<< HEAD
 	case KEY_VALUE:
 	    KeyValueEntry keyValue;
-=======
 	case ACCOUNT_KYC:
         AccountKYCEntry accountKYC;
->>>>>>> master
     }
     data;
 

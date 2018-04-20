@@ -81,13 +81,10 @@ struct Operation
 		CheckSaleStateOp checkSaleStateOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
-<<<<<<< HEAD
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueOp manageKeyValueOp;
-=======
 	case CREATE_KYC_REQUEST:
 		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
->>>>>>> master
     }
     body;
 };
