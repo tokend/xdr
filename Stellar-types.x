@@ -39,7 +39,11 @@ enum LedgerVersion {
 	UNIQUE_BALANCE_CREATION = 5, // allows to specify in manage balance that balance should not be created if one for such asset and account exists
 	ASSET_PREISSUER_MIGRATION = 6,
 	ASSET_PREISSUER_MIGRATED = 7,
-	USE_KYC_LEVEL = 8
+	USE_KYC_LEVEL = 8,
+	ERROR_ON_NON_ZERO_TASKS_TO_REMOVE_IN_REJECT_KYC = 9,
+	ALLOW_ACCOUNT_MANAGER_TO_CHANGE_KYC = 10,
+	CHANGE_ASSET_ISSUER_BAD_AUTH_EXTRA_FIXED = 11,
+	AUTO_CREATE_COMMISSION_BALANCE_ON_TRANSFER = 12
 };
 
 // variable size as the size depends on the signature scheme used

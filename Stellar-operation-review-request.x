@@ -126,7 +126,10 @@ enum ReviewRequestResultCode
 	// Sale creation requests
 	BASE_ASSET_DOES_NOT_EXISTS = -50,
 	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
-	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52
+	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52,
+
+	// Update KYC requests
+	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
