@@ -215,17 +215,12 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
-<<<<<<< HEAD
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueResult manageKeyValueResult;
-=======
-    case CREATE_AML_ALERT:
-        CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case CREATE_KYC_REQUEST:
 	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
->>>>>>> master
     }
     tr;
 default:
