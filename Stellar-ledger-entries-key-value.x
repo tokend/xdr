@@ -6,10 +6,10 @@ namespace stellar
 
     enum KeyValueEntryType
     {
-        KYC_SETTINGS = 1
+        UINT32 = 1
     };
 
-    struct KYCSettings
+    /*struct KYCSettings
     {
         // reserved for future use
         union switch (LedgerVersion v)
@@ -19,17 +19,18 @@ namespace stellar
         }
         ext;
     };
+    */
 
 
     struct KeyValueEntry
     {
-        string256 key;
+        longstring key;
 
 
         union switch (KeyValueEntryType type)
         {
-             case KYC_SETTINGS:
-                KYCSettings kycSettings;
+             case UINT32:
+                uint32 defaultMask;
         }
         value;
 

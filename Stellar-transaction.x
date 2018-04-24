@@ -23,7 +23,7 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
-%#include "xdr/Strllar-operation-manage-key-value.h"
+%#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
 
 
