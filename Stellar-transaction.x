@@ -24,6 +24,8 @@
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
+%#include "xdr/Stellar-operation-payment-v2.h"
+
 
 namespace stellar
 {
@@ -81,6 +83,8 @@ struct Operation
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case CREATE_KYC_REQUEST:
 		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
+    case PAYMENT_V2:
+        PaymentOpV2 paymentOpV2;
     }
     body;
 };
@@ -215,6 +219,8 @@ case opINNER:
         CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case CREATE_KYC_REQUEST:
 	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
+    case PAYMENT_V2:
+        PaymentV2Result paymentV2Result;
     }
     tr;
 default:
