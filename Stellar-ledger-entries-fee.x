@@ -25,8 +25,8 @@ enum EmissionFeeType
 
 enum PaymentFeeType
 {
-    OUTGOING = 0,
-    INCOMING = 1
+    OUTGOING = 1,
+    INCOMING = 2
 };
 
 struct FeeEntry

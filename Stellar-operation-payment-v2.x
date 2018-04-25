@@ -40,7 +40,7 @@ struct PaymentFeeDataV2 {
     ext;
 };
 
-enum DestinationType {
+enum PaymentDestinationType {
     ACCOUNT = 0,
     BALANCE = 1
 };
@@ -49,7 +49,7 @@ struct PaymentOpV2
 {
     BalanceID sourceBalanceID;
 
-    union switch (DestinationType type) {
+    union switch (PaymentDestinationType type) {
         case ACCOUNT:
             AccountID accountID;
         case BALANCE:
@@ -82,13 +82,14 @@ enum PaymentV2ResultCode
     UNDERFUNDED = -2,     // not enough funds in source account
     LINE_FULL = -3,       // destination would go above their limit
 	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-    BALANCE_ACCOUNT_MISMATCHED = -5,
-    BALANCE_ASSETS_MISMATCHED = -6,
-	SRC_BALANCE_NOT_FOUND = -7, // source balance not found
-    REFERENCE_DUPLICATION = -8,
-    STATS_OVERFLOW = -9,
-    LIMITS_EXCEEDED = -10,
-    NOT_ALLOWED_BY_ASSET_POLICY = -11
+	DESTINATION_BALANCE_NOT_FOUND = -5,
+    BALANCE_ACCOUNT_MISMATCHED = -6,
+    BALANCE_ASSETS_MISMATCHED = -7,
+	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
+    REFERENCE_DUPLICATION = -9,
+    STATS_OVERFLOW = -10,
+    LIMITS_EXCEEDED = -11,
+    NOT_ALLOWED_BY_ASSET_POLICY = -12
 };
 
 struct PaymentV2Response {
