@@ -13,8 +13,12 @@ namespace stellar
 */
 
 struct FeeDataV2 {
-    uint64 paymentFee;
+    uint64 maxPaymentFee;
     uint64 fixedFee;
+
+    // Cross asset fees
+    AssetCode feeAsset;
+
 	// reserved for future use
     union switch (LedgerVersion v)
     {
@@ -28,9 +32,6 @@ struct PaymentFeeDataV2 {
     FeeDataV2 sourceFee;
     FeeDataV2 destinationFee;
     bool sourcePaysForDest; // if true - source account pays fee, else destination
-
-    // Cross asset fees
-    AssetCode feeAsset;
 
     union switch (LedgerVersion v)
     {
@@ -60,8 +61,8 @@ struct PaymentOpV2
 
     PaymentFeeDataV2 feeData;
 
-    string256 subject;
-    string64 reference;
+    longstring subject;
+    longstring reference;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -83,19 +84,22 @@ enum PaymentV2ResultCode
     LINE_FULL = -3,       // destination would go above their limit
 	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
 	DESTINATION_BALANCE_NOT_FOUND = -5,
-    BALANCE_ACCOUNT_MISMATCHED = -6,
-    BALANCE_ASSETS_MISMATCHED = -7,
-	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    REFERENCE_DUPLICATION = -9,
-    STATS_OVERFLOW = -10,
-    LIMITS_EXCEEDED = -11,
-    NOT_ALLOWED_BY_ASSET_POLICY = -12
+    BALANCE_ASSETS_MISMATCHED = -6,
+	SRC_BALANCE_NOT_FOUND = -7, // source balance not found
+    REFERENCE_DUPLICATION = -8,
+    STATS_OVERFLOW = -9,
+    LIMITS_EXCEEDED = -10,
+    NOT_ALLOWED_BY_ASSET_POLICY = -11,
+    SRC_FEE_ASSET_BALANCE_NOT_FOUND = -12,
+    DESTINATION_FEE_ASSET_BALANCE_NOT_FOUND = -13
 };
 
 struct PaymentV2Response {
     AccountID destination;
-    uint64 paymentID;
     AssetCode asset;
+    uint64 paymentID;
+    uint64 actualPaymentFee;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
