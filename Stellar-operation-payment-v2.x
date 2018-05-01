@@ -79,26 +79,31 @@ enum PaymentV2ResultCode
     SUCCESS = 0, // payment successfully completed
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,       // bad input
-    UNDERFUNDED = -2,     // not enough funds in source account
-    LINE_FULL = -3,       // destination would go above their limit
-	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-	DESTINATION_BALANCE_NOT_FOUND = -5,
-    BALANCE_ASSETS_MISMATCHED = -6,
-	SRC_BALANCE_NOT_FOUND = -7, // source balance not found
-    REFERENCE_DUPLICATION = -8,
-    STATS_OVERFLOW = -9,
-    LIMITS_EXCEEDED = -10,
-    NOT_ALLOWED_BY_ASSET_POLICY = -11,
-    SRC_FEE_ASSET_BALANCE_NOT_FOUND = -12,
-    DESTINATION_FEE_ASSET_BALANCE_NOT_FOUND = -13
+    MALFORMED = -1, // bad input
+    UNDERFUNDED = -2, // not enough funds in source account
+    LINE_FULL = -3, // destination would go above their limit
+	SOURCE_FEE_MISMATCHED = -4,
+	DESTINATION_FEE_MISMATCHED = -5,
+	DESTINATION_BALANCE_NOT_FOUND = -6,
+    BALANCE_ASSETS_MISMATCHED = -7,
+	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
+    REFERENCE_DUPLICATION = -9,
+    STATS_OVERFLOW = -10,
+    LIMITS_EXCEEDED = -11,
+    NOT_ALLOWED_BY_ASSET_POLICY = -12,
+    SRC_FEE_ASSET_NOT_FOUND = -13,
+    SRC_FEE_BALANCE_NOT_FOUND = -14,
+    INVALID_DESTINATION_FEE_ASSET = -15 // destination fee asset must be the same as source balance asset
 };
 
 struct PaymentV2Response {
     AccountID destination;
     AssetCode asset;
+    uint64 sourceSentUniversal;
     uint64 paymentID;
-    uint64 actualPaymentFee;
+
+    uint64 actualSourcePaymentFee;
+    uint64 actualDestinationPaymentFee;
 
     // reserved for future use
     union switch (LedgerVersion v)
