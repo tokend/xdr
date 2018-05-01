@@ -13,7 +13,7 @@ Result: BindExternalSystemAccountIdResult
 
 struct BindExternalSystemAccountIdOp
 {
-    ExternalSystemType externalSystemType;
+    int32 externalSystemType;
 
     union switch (LedgerVersion v)
     {

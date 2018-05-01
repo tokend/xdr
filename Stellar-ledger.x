@@ -259,7 +259,7 @@ case REVIEWABLE_REQUEST:
 case EXTERNAL_SYSTEM_ACCOUNT_ID:
 	struct {
 		AccountID accountID;
-		ExternalSystemType externalSystemType;
+		int32 externalSystemType;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
@@ -287,9 +287,10 @@ case ACCOUNT_KYC:
         }
         ext;
     } accountKYC;
-    case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
     struct {
 		uint64 poolEntryID;
+		int32 externalSystemType;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
