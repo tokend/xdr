@@ -44,7 +44,8 @@ enum LedgerVersion {
 	ALLOW_ACCOUNT_MANAGER_TO_CHANGE_KYC = 10,
 	CHANGE_ASSET_ISSUER_BAD_AUTH_EXTRA_FIXED = 11,
 	AUTO_CREATE_COMMISSION_BALANCE_ON_TRANSFER = 12,
-	USE_PAYMENT_V2 = 13
+	CROSS_ASSET_FEE = 13,
+	USE_PAYMENT_V2 = 14
 };
 
 // variable size as the size depends on the signature scheme used

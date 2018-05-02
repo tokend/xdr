@@ -82,18 +82,18 @@ enum PaymentV2ResultCode
     MALFORMED = -1, // bad input
     UNDERFUNDED = -2, // not enough funds in source account
     LINE_FULL = -3, // destination would go above their limit
-	SOURCE_FEE_MISMATCHED = -4,
-	DESTINATION_FEE_MISMATCHED = -5,
-	DESTINATION_BALANCE_NOT_FOUND = -6,
-    BALANCE_ASSETS_MISMATCHED = -7,
-	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    REFERENCE_DUPLICATION = -9,
-    STATS_OVERFLOW = -10,
-    LIMITS_EXCEEDED = -11,
-    NOT_ALLOWED_BY_ASSET_POLICY = -12,
-    SRC_FEE_ASSET_NOT_FOUND = -13,
-    SRC_FEE_BALANCE_NOT_FOUND = -14,
-    INVALID_DESTINATION_FEE_ASSET = -15 // destination fee asset must be the same as source balance asset
+	DESTINATION_BALANCE_NOT_FOUND = -4,
+    BALANCE_ASSETS_MISMATCHED = -5,
+	SRC_BALANCE_NOT_FOUND = -6, // source balance not found
+    REFERENCE_DUPLICATION = -7,
+    STATS_OVERFLOW = -8,
+    LIMITS_EXCEEDED = -9,
+    NOT_ALLOWED_BY_ASSET_POLICY = -10,
+    INVALID_DESTINATION_FEE = -11,
+    INVALID_DESTINATION_FEE_ASSET = -12, // destination fee asset must be the same as source balance asset
+    FEE_ASSET_MISMATCHED = -13,
+    INSUFFICIENT_FEE_AMOUNT = -14,
+    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15
 };
 
 struct PaymentV2Response {

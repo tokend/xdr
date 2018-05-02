@@ -50,7 +50,7 @@ struct FeeEntry
     {
     case EMPTY_VERSION:
         void;
-    case USE_PAYMENT_V2:
+    case CROSS_ASSET_FEE:
         AssetCode feeAsset;
     }
     ext;
