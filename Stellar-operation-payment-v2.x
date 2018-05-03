@@ -98,6 +98,8 @@ enum PaymentV2ResultCode
 
 struct PaymentV2Response {
     AccountID destination;
+    BalanceID destinationBalance;
+
     AssetCode asset;
     uint64 sourceSentUniversal;
     uint64 paymentID;
