@@ -93,8 +93,7 @@ enum PaymentV2ResultCode
     INVALID_DESTINATION_FEE_ASSET = -12, // destination fee asset must be the same as source balance asset
     FEE_ASSET_MISMATCHED = -13,
     INSUFFICIENT_FEE_AMOUNT = -14,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16
+    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15
 };
 
 struct PaymentV2Response {
