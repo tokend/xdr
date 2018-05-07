@@ -99,16 +99,14 @@ enum PaymentV2ResultCode
 
 struct PaymentV2Response {
     AccountID destination;
-    BalanceID destinationBalanceID;
+    BalanceID destinationBalance;
 
     AssetCode asset;
     uint64 sourceSentUniversal;
     uint64 paymentID;
 
     uint64 actualSourcePaymentFee;
-    AssetCode actualSourcePaymentFeeAssetCode;
     uint64 actualDestinationPaymentFee;
-    AssetCode actualDestPaymentFeeAssetCode;
 
     // reserved for future use
     union switch (LedgerVersion v)
