@@ -290,7 +290,6 @@ case ACCOUNT_KYC:
 case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
     struct {
 		uint64 poolEntryID;
-		int32 externalSystemType;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
