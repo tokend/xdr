@@ -23,6 +23,12 @@ enum EmissionFeeType
 	SECONDARY_MARKET = 2
 };
 
+enum PaymentFeeType
+{
+    OUTGOING = 1,
+    INCOMING = 2
+};
+
 struct FeeEntry
 {
     FeeType feeType;
@@ -44,8 +50,10 @@ struct FeeEntry
     {
     case EMPTY_VERSION:
         void;
+    case CROSS_ASSET_FEE:
+        AssetCode feeAsset;
     }
     ext;
-
 };
+
 }

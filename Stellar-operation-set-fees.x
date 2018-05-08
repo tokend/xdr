@@ -7,7 +7,6 @@
 
 namespace stellar
 {
-    
     /* SetFeesOp
      
      Creates, updates or deletes fees
@@ -45,7 +44,14 @@ namespace stellar
 		MALFORMED_RANGE = -6,
 		RANGE_OVERLAP = -7,
 		NOT_FOUND = -8,
-		SUB_TYPE_NOT_EXIST = -9
+		SUB_TYPE_NOT_EXIST = -9,
+		INVALID_FEE_VERSION = -10, // version of fee entry is greater than ledger version
+		INVALID_FEE_ASSET = -11,
+		FEE_ASSET_NOT_ALLOWED = -12, // feeAsset can be set only if feeType is PAYMENT
+		CROSS_ASSET_FEE_NOT_ALLOWED = -13, // feeAsset on payment fee type can differ from asset only if payment fee subtype is OUTGOING
+		FEE_ASSET_NOT_FOUND = -14,
+		ASSET_PAIR_NOT_FOUND = -15, // cannot create cross asset fee entry without existing asset pair
+		INVALID_ASSET_PAIR_PRICE = -16
     };
     
     union SetFeesResult switch (SetFeesResultCode code)
