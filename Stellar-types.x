@@ -126,7 +126,8 @@ enum OperationType
 	CHECK_SALE_STATE = 20,
     CREATE_AML_ALERT = 21,
     CREATE_KYC_REQUEST = 22,
-    PAYMENT_V2 = 23
+    PAYMENT_V2 = 23,
+    MANAGE_SALE = 24
 };
 
 struct DecoratedSignature
