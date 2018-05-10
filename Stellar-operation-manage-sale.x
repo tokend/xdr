@@ -5,7 +5,7 @@ namespace stellar
 
 enum ManageSaleAction
 {
-    UPDATE_DETAILS = 1
+    CREATE_UPDATE_DETAILS_REQUEST = 1
 };
 
 
@@ -20,10 +20,8 @@ struct ManageSaleOp
     uint64 saleID;
 
     union switch (ManageSaleAction action) {
-    case UPDATE_DETAILS:
+    case CREATE_UPDATE_DETAILS_REQUEST:
         longstring newDetails;
-    default:
-        void;
     } data;
 
     // reserved for future use
@@ -40,11 +38,17 @@ enum ManageSaleResultCode
 {
     SUCCESS = 0,
 
-    NOT_FOUND = -1 // sale not found
+    NOT_FOUND = -1, // sale not found
+    INVALID_NEW_DETAILS = -2 // newDetails field is invalid JSON
 };
 
 struct ManageSaleResultSuccess
 {
+    union switch (ManageSaleAction action) {
+    case CREATE_UPDATE_DETAILS_REQUEST:
+        uint64 requestID;
+    } response;
+
     //reserved for future use
     union switch (LedgerVersion v)
     {
