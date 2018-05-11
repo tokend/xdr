@@ -26,6 +26,8 @@
 %#include "xdr/Stellar-operation-create-KYC-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
+%#include "xdr/Stellar-operation-payment-v2.h"
+
 
 namespace stellar
 {
@@ -87,6 +89,8 @@ struct Operation
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
+    case PAYMENT_V2:
+        PaymentOpV2 paymentOpV2;
     }
     body;
 };
@@ -225,6 +229,8 @@ case opINNER:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
+    case PAYMENT_V2:
+        PaymentV2Result paymentV2Result;
     }
     tr;
 default:
