@@ -47,7 +47,8 @@ enum LedgerVersion {
     ALLOW_REJECT_REQUEST_OF_BLOCKED_REQUESTOR = 13,
 	ASSET_UPDATE_CHECK_REFERENCE_EXISTS = 14,
 	CROSS_ASSET_FEE = 15,
-	USE_PAYMENT_V2 = 16
+	USE_PAYMENT_V2 = 16,
+	ALLOW_SYNDICATE_TO_UPDATE_KYC = 17
 };
 
 // variable size as the size depends on the signature scheme used
