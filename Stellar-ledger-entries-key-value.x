@@ -26,7 +26,6 @@ namespace stellar
     {
         longstring key;
 
-
         union switch (KeyValueEntryType type)
         {
              case UINT32:
