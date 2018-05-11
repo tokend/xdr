@@ -82,8 +82,6 @@ struct ReviewRequestOp
         AMLAlertDetails amlAlertDetails;
     case UPDATE_KYC:
         UpdateKYCDetails updateKYC;
-    case UPDATE_SALE_DETAILS:
-        UpdateSaleDetailsRequest updateSaleDetails;
 	default:
 		void;
 	} requestDetails;

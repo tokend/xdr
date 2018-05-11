@@ -15,13 +15,25 @@ Result: ManageSaleResult
 
 */
 
+struct UpdateSaleDetailsData {
+    uint64 requestID; // if requestID is 0 - create request, else - update
+    longstring newDetails;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
 struct ManageSaleOp
 {
     uint64 saleID;
 
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
-        longstring newDetails;
+        UpdateSaleDetailsData updateSaleDetailsData;
     } data;
 
     // reserved for future use
@@ -29,8 +41,7 @@ struct ManageSaleOp
     {
     case EMPTY_VERSION:
         void;
-    }
-    ext;
+    } ext;
 };
 
 
@@ -38,8 +49,10 @@ enum ManageSaleResultCode
 {
     SUCCESS = 0,
 
-    NOT_FOUND = -1, // sale not found
-    INVALID_NEW_DETAILS = -2 // newDetails field is invalid JSON
+    SALE_NOT_FOUND = -1, // sale not found
+    INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
+    UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
+    UPDATE_DETAILS_REQUEST_NOT_FOUND = -4
 };
 
 struct ManageSaleResultSuccess
