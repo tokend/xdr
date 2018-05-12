@@ -35,7 +35,8 @@ enum SignerType
 	AML_ALERT_REVIEWER = 8388608, // can review aml alert requests
 	KYC_ACC_MANAGER = 16777216, // can manage kyc
 	KYC_SUPER_ADMIN = 33554432,
-	KEY_VALUE_MANAGER = 67108864 // can manage keyValue
+	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
+    KEY_VALUE_MANAGER = 134217728 // can manage keyValue
 };
 
 struct Signer
