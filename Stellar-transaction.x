@@ -27,6 +27,7 @@
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-manage-sale.h"
 
 
 namespace stellar
@@ -91,6 +92,8 @@ struct Operation
         BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
     case PAYMENT_V2:
         PaymentOpV2 paymentOpV2;
+    case MANAGE_SALE:
+        ManageSaleOp manageSaleOp;
     }
     body;
 };
@@ -231,6 +234,8 @@ case opINNER:
         BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
     case PAYMENT_V2:
         PaymentV2Result paymentV2Result;
+    case MANAGE_SALE:
+        ManageSaleResult manageSaleResult;
     }
     tr;
 default:
