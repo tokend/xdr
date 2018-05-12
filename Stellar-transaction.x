@@ -24,6 +24,8 @@
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
+%#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
+%#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 
 
@@ -83,6 +85,10 @@ struct Operation
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case CREATE_KYC_REQUEST:
 		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
+    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+        ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
     case PAYMENT_V2:
         PaymentOpV2 paymentOpV2;
     }
@@ -219,6 +225,10 @@ case opINNER:
         CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case CREATE_KYC_REQUEST:
 	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
+    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+        ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
     case PAYMENT_V2:
         PaymentV2Result paymentV2Result;
     }

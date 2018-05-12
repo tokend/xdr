@@ -3,17 +3,10 @@
 namespace stellar
 {
 
-enum ExternalSystemType
-{
-	BITCOIN = 1,
-	ETHEREUM = 2,
-	SECURE_VOTE = 3
-};
-
 struct ExternalSystemAccountID
 {
     AccountID accountID;
-    ExternalSystemType externalSystemType;
+    int32 externalSystemType;
 	longstring data;
 
 	 // reserved for future use
