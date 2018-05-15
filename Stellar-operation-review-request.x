@@ -129,7 +129,10 @@ enum ReviewRequestResultCode
 	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52,
 
 	// Update KYC requests
-	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60
+	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
+
+	// Update sale details requests
+	SALE_NOT_FOUND = -70
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)

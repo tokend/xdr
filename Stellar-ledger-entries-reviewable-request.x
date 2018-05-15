@@ -10,6 +10,8 @@
 %#include "xdr/Stellar-reviewable-request-update-KYC.h"
 %#include "xdr/Stellar-reviewable-request-limits-update.h"
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
+%#include "xdr/Stellar-reviewable-request-update-sale-details.h"
+
 
 namespace stellar
 {
@@ -25,7 +27,8 @@ enum ReviewableRequestType
 	LIMITS_UPDATE = 6,
 	TWO_STEP_WITHDRAWAL = 7,
     AML_ALERT = 8,
-	UPDATE_KYC = 9
+	UPDATE_KYC = 9,
+	UPDATE_SALE_DETAILS = 10
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -59,6 +62,8 @@ struct ReviewableRequestEntry {
             AMLAlertRequest amlAlertRequest;
         case UPDATE_KYC:
             UpdateKYCRequest updateKYCRequest;
+        case UPDATE_SALE_DETAILS:
+            UpdateSaleDetailsRequest updateSaleDetailsRequest;
 	} body;
 
 	// reserved for future use
