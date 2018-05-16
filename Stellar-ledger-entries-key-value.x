@@ -9,19 +9,6 @@ namespace stellar
         UINT32 = 1
     };
 
-    /*struct KYCSettings
-    {
-        // reserved for future use
-        union switch (LedgerVersion v)
-        {
-            case EMPTY_VERSION:
-                void;
-        }
-        ext;
-    };
-    */
-
-
     struct KeyValueEntry
     {
         longstring key;
