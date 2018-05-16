@@ -36,6 +36,11 @@ struct SaleCreationRequest {
         void;
 	case TYPED_SALE:
 		SaleTypeExt saleTypeExt;
+    case ALLOW_TO_SPECIFY_REQUIRED_BASE_ASSET_AMOUNT_FOR_HARD_CAP:
+        struct {
+            SaleTypeExt saleTypeExt;
+            uint64 requiredBaseAssetForHardCap;
+        } extV2;
     }
     ext;
 };

@@ -50,7 +50,8 @@ enum LedgerVersion {
 	USE_PAYMENT_V2 = 16,
 	ALLOW_SYNDICATE_TO_UPDATE_KYC = 17,
 	DO_NOT_BUILD_ACCOUNT_IF_VERSION_EQUALS_OR_GREATER = 18,
-	KYC_RULES = 19
+	ALLOW_TO_SPECIFY_REQUIRED_BASE_ASSET_AMOUNT_FOR_HARD_CAP = 19,
+	KYC_RULES = 20
 };
 
 // variable size as the size depends on the signature scheme used
