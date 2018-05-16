@@ -259,7 +259,7 @@ case REVIEWABLE_REQUEST:
 case EXTERNAL_SYSTEM_ACCOUNT_ID:
 	struct {
 		AccountID accountID;
-		ExternalSystemType externalSystemType;
+		int32 externalSystemType;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
@@ -277,6 +277,26 @@ case SALE:
 		}
 		ext;
 	} sale;
+case ACCOUNT_KYC:
+    struct {
+        AccountID accountID;
+        union switch(LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountKYC;
+case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+    struct {
+		uint64 poolEntryID;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+	} externalSystemAccountIDPoolEntry;
 };
 
 enum BucketEntryType
