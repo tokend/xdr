@@ -16,7 +16,7 @@ namespace stellar
         union switch (KeyValueEntryType type)
         {
              case UINT32:
-                uint32 defaultMask;
+                uint32 ui32Value;
         }
         value;
 
