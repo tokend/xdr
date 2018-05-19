@@ -28,7 +28,7 @@
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
-
+%#include "xdr/Stellar-operation-set-identity-policy.h"
 
 namespace stellar
 {
@@ -94,6 +94,8 @@ struct Operation
         PaymentOpV2 paymentOpV2;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
+    case SET_IDENTITY_POLICY:
+        SetIdentityPolicyOp setIdentityPolicyOp;
     }
     body;
 };
@@ -236,6 +238,8 @@ case opINNER:
         PaymentV2Result paymentV2Result;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
+    case SET_IDENTITY_POLICY:
+        SetIdentityPolicyResult setIdentityPolicyResult;
     }
     tr;
 default:
