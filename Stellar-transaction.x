@@ -28,6 +28,7 @@
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
+%#include "xdr/Stellar-operation-manage-policy-attachment.h"
 
 
 namespace stellar
@@ -94,6 +95,8 @@ struct Operation
         PaymentOpV2 paymentOpV2;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
+    case MANAGE_POLICY_ATTACHMENT:
+        ManagePolicyAttachmentOp managePolicyAttachmentOp;
     }
     body;
 };
@@ -236,6 +239,8 @@ case opINNER:
         PaymentV2Result paymentV2Result;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
+    case MANAGE_POLICY_ATTACHMENT:
+        ManagePolicyAttachmentResult managePolicyAttachmentResult;
     }
     tr;
 default:

@@ -297,6 +297,16 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 		}
 		ext;
 	} externalSystemAccountIDPoolEntry;
+case POLICY_ATTACHMENT:
+    struct {
+        uint64 policyAttachmentID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } policyAttachment;
 };
 
 enum BucketEntryType
