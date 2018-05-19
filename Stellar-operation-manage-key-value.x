@@ -44,7 +44,8 @@ namespace stellar
     enum ManageKeyValueResultCode
     {
         SUCCESS = 1,
-        NOT_FOUND = -1
+        NOT_FOUND = -1,
+        INVALID_TYPE = -2
     };
 
     union ManageKeyValueResult switch (ManageKeyValueResultCode code)
