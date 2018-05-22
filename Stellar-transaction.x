@@ -13,7 +13,7 @@
 %#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
 %#include "xdr/Stellar-operation-create-preissuance-request.h"
-%#include "xdr/Stellar-operation-create-issuance-request.h"
+%#include "xdr/Stellar-operation-create-issua    } policyAttachment;nce-request.h"
 %#include "xdr/Stellar-operation-set-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
@@ -28,8 +28,8 @@
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
+%#include "xdr/Stellar-operation-set-identity-policy.h"
 %#include "xdr/Stellar-operation-manage-policy-attachment.h"
-
 
 namespace stellar
 {
@@ -95,6 +95,8 @@ struct Operation
         PaymentOpV2 paymentOpV2;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
+    case SET_IDENTITY_POLICY:
+        SetIdentityPolicyOp setIdentityPolicyOp;
     case MANAGE_POLICY_ATTACHMENT:
         ManagePolicyAttachmentOp managePolicyAttachmentOp;
     }
@@ -239,6 +241,8 @@ case opINNER:
         PaymentV2Result paymentV2Result;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
+    case SET_IDENTITY_POLICY:
+        SetIdentityPolicyResult setIdentityPolicyResult;
     case MANAGE_POLICY_ATTACHMENT:
         ManagePolicyAttachmentResult managePolicyAttachmentResult;
     }

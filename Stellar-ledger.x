@@ -297,6 +297,16 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 		}
 		ext;
 	} externalSystemAccountIDPoolEntry;
+case IDENTITY_POLICY:
+    struct {
+		uint64 id;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+	} identityPolicy;
 case POLICY_ATTACHMENT:
     struct {
         uint64 policyAttachmentID;
