@@ -19,7 +19,8 @@ struct SetIdentityPolicyOp
 {
     uint64 id;
     uint64 priority;
-    string resource<>;
+    string256 resource;
+    string256 action;
 	Effect effect;
 
 	bool isDelete;

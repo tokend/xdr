@@ -16,6 +16,7 @@ struct IdentityPolicyEntry
     uint64 id;
     uint64 priority;
     string resource<>;
+    string action<>;
 	Effect effect;
 	AccountID ownerID;
 
