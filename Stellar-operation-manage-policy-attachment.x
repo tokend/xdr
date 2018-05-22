@@ -6,7 +6,7 @@ namespace stellar {
 
     Create or delete policy attachment for any account, specific account type or account id
 
-    Threshold: med
+    Threshold: high
 
     Result: ManagePolicyAttachmentResult
 */
