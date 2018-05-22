@@ -11,7 +11,12 @@ namespace stellar {
     Result: ManagePolicyAttachmentResult
 */
 
-struct ManagePolicyAttachmentOp {
+enum ManagePolicyAttachmentAction {
+    CREATE_POLICY_ATTACHMENT = 0,
+    DELETE_POLICY_ATTACHMENT = 1
+};
+
+struct CreatePolicyAttachment {
     uint64 policyID;
 
     union switch (PolicyAttachmentType type) {
@@ -23,7 +28,30 @@ struct ManagePolicyAttachmentOp {
             AccountID accountID;
     } actor;
 
-    bool isDelete; // if true - delete policy attachment
+    // reserved for future use
+    union switch (LedgerVersion v) {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct DeletePolicyAttachment {
+    uint64 policyAttachmentID;
+
+    // reserved for future use
+    union switch (LedgerVersion v) {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct ManagePolicyAttachmentOp {
+    union switch (ManagePolicyAttachmentAction action) {
+        case CREATE_POLICY_ATTACHMENT:
+            CreatePolicyAttachment creationData;
+        case DELETE_POLICY_ATTACHMENT:
+            DeletePolicyAttachment deletionData;
+    } opInput;
 
     // reserved for future use
     union switch (LedgerVersion v) {
@@ -40,7 +68,8 @@ enum ManagePolicyAttachmentResultCode {
     POLICY_NOT_FOUND = -1, // policy with required policyID not found or source isn't the owner of the policy
     TOO_MUCH_POLICY_ATTACHMENTS = -2, // policy attachments limit exceeded for operation source account
     DESTINATION_ACCOUNT_NOT_FOUND = -3, // account for policy attachment not found
-    ATTACHMENT_ALREADY_EXISTS = -4 // policy attachment with provided params already exists
+    ATTACHMENT_ALREADY_EXISTS = -4, // policy attachment with provided params already exists
+    POLICY_ATTACHMENT_NOT_FOUND = -5
 };
 
 struct ManagePolicyAttachmentSuccess {
