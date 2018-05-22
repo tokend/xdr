@@ -6,7 +6,8 @@ namespace stellar
 
     enum KeyValueEntryType
     {
-        UINT32 = 1
+        UINT32 = 1,
+        STRING = 2
     };
 
     struct KeyValueEntry
@@ -17,6 +18,8 @@ namespace stellar
         {
              case UINT32:
                 uint32 ui32Value;
+             case STRING:
+                string stringValue<>;
         }
         value;
 
