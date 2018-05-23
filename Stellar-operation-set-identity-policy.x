@@ -41,11 +41,10 @@ enum SetIdentityPolicyResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    INVALID_ID = -1,            // user trying to update policy which doesn't own
-    INVALID_PRIORITY = -2,      // priority bound breaking
-    POLICIES_LIMIT_EXCEED = -3, // too many policies for account
-    MALFORMED = -4,
-	NOT_FOUND = -5
+    INVALID_PRIORITY = -1,      // priority bound breaking
+    POLICIES_LIMIT_EXCEED = -2, // too many policies for account
+    MALFORMED = -3,
+	NOT_FOUND = -4
 };
 
 union SetIdentityPolicyResult switch (SetIdentityPolicyResultCode code)
