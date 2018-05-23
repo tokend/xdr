@@ -300,6 +300,7 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 case IDENTITY_POLICY:
     struct {
 		uint64 id;
+		AccountID ownerID;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
