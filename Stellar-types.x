@@ -53,7 +53,8 @@ enum LedgerVersion {
 	ALLOW_TO_SPECIFY_REQUIRED_BASE_ASSET_AMOUNT_FOR_HARD_CAP = 19,
 	KYC_RULES = 20,
 	ALLOW_TO_CREATE_SEVERAL_SALES = 21,
-	KEY_VALUE_POOL_ENTRY_EXPIRES_AT = 22
+	KEY_VALUE_POOL_ENTRY_EXPIRES_AT = 22,
+	KEY_VALUE_UPDATE = 23
 };
 
 // variable size as the size depends on the signature scheme used
