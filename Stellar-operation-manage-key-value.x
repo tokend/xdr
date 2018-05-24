@@ -6,7 +6,7 @@ namespace stellar
     enum ManageKVAction
     {
         PUT = 1,
-        DELETE = 2
+        REMOVE = 2
     };
 
     struct ManageKeyValueOp
@@ -16,7 +16,7 @@ namespace stellar
         {
             case PUT:
                 KeyValueEntry value;
-            case DELETE:
+            case REMOVE:
                 void;
         }
         action;
