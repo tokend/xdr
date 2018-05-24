@@ -11,6 +11,7 @@ enum PolicyAttachmentType {
 struct PolicyAttachmentEntry {
     uint64 policyAttachmentID;
     uint64 policyID;
+    AccountID ownerID;
 
     union switch (PolicyAttachmentType type) {
         case FOR_ANY_ACCOUNT:
