@@ -66,7 +66,7 @@ enum ManagePolicyAttachmentResultCode {
 
     // codes considered as "failure" for the operation
     POLICY_NOT_FOUND = -1, // policy with required policyID not found or source isn't the owner of the policy
-    TOO_MUCH_POLICY_ATTACHMENTS = -2, // policy attachments limit exceeded for operation source account
+    POLICY_ATTACHMENTS_LIMIT_EXCEEDED = -2, // policy attachments limit exceeded for operation source account
     DESTINATION_ACCOUNT_NOT_FOUND = -3, // account for policy attachment not found
     ATTACHMENT_ALREADY_EXISTS = -4, // policy attachment with provided params already exists
     POLICY_ATTACHMENT_NOT_FOUND = -5
