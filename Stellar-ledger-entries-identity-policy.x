@@ -6,8 +6,8 @@ namespace stellar
 
 enum Effect
 {
-    ALLOW = 1,
-    DENY = 2
+    DENY = 0,
+    ALLOW = 1
 };
 
 
@@ -16,6 +16,7 @@ struct IdentityPolicyEntry
     uint64 id;
     uint64 priority;
     string resource<>;
+    string action<>;
 	Effect effect;
 	AccountID ownerID;
 
