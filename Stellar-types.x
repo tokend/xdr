@@ -54,7 +54,8 @@ enum LedgerVersion {
 	KYC_RULES = 20,
 	ALLOW_TO_CREATE_SEVERAL_SALES = 21,
 	KEY_VALUE_POOL_ENTRY_EXPIRES_AT = 22,
-	KEY_VALUE_UPDATE = 23
+	KEY_VALUE_UPDATE = 23,
+	ALLOW_TO_CANCEL_SALE_PARTICIP_WITHOUT_SPECIFING_BALANCE = 24
 };
 
 // variable size as the size depends on the signature scheme used
