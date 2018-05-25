@@ -15,15 +15,28 @@ namespace stellar
 
  Result: SetIdentityPolicyResult
 */
-struct SetIdentityPolicyOp
+
+struct SetIdentityPolicyData
 {
-    uint64 id;
     uint64 priority;
     string256 resource;
     string256 action;
-	Effect effect;
+    Effect effect;
 
-	bool isDelete;
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct SetIdentityPolicyOp
+{
+    uint64 id;
+
+    SetIdentityPolicyData *data;
+
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
@@ -41,10 +54,9 @@ enum SetIdentityPolicyResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    INVALID_PRIORITY = -1,      // priority bound breaking
-    POLICIES_LIMIT_EXCEED = -2, // too many policies for account
-    MALFORMED = -3,
-	NOT_FOUND = -4
+    POLICIES_LIMIT_EXCEED = -1, // too many policies for account
+    MALFORMED = -2,
+	NOT_FOUND = -3
 };
 
 union SetIdentityPolicyResult switch (SetIdentityPolicyResultCode code)

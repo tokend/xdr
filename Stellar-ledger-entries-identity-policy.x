@@ -6,8 +6,8 @@ namespace stellar
 
 enum Effect
 {
-    ALLOW = 1,
-    DENY = 2
+    DENY = 0,
+    ALLOW = 1
 };
 
 
