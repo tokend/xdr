@@ -13,7 +13,7 @@
 %#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
 %#include "xdr/Stellar-operation-create-preissuance-request.h"
-%#include "xdr/Stellar-operation-create-issua    } policyAttachment;nce-request.h"
+%#include "xdr/Stellar-operation-create-issuance-request.h"
 %#include "xdr/Stellar-operation-set-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
