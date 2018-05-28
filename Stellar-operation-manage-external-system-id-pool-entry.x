@@ -13,8 +13,8 @@ Result: ManageExternalSystemAccountIdPoolEntryResult
 
 enum ManageExternalSystemAccountIdPoolEntryAction
 {
-    CREATE_POOL_ENTRY = 0,
-    DELETE_POOL_ENTRY = 1
+    CREATE = 0,
+    REMOVE = 1
 };
 
 struct CreateExternalSystemAccountIdPoolEntryActionInput
@@ -47,9 +47,9 @@ struct ManageExternalSystemAccountIdPoolEntryOp
 {
     union switch (ManageExternalSystemAccountIdPoolEntryAction action)
     {
-    case CREATE_POOL_ENTRY:
+    case CREATE:
         CreateExternalSystemAccountIdPoolEntryActionInput createExternalSystemAccountIdPoolEntryActionInput;
-    case DELETE_POOL_ENTRY:
+    case REMOVE:
         DeleteExternalSystemAccountIdPoolEntryActionInput deleteExternalSystemAccountIdPoolEntryActionInput;
     } actionInput;
 
