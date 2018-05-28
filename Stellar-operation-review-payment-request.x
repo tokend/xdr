@@ -19,7 +19,7 @@ struct ReviewPaymentRequestOp
     uint64 paymentID;
 
 	bool accept;
-    string256* rejectReason;
+    longstring* rejectReason;
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{

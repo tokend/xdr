@@ -36,7 +36,7 @@ struct ReviewableRequestEntry {
 	uint64 requestID;
 	Hash hash; // hash of the request body
 	AccountID requestor;
-	string256 rejectReason;
+	longstring rejectReason;
 	AccountID reviewer;
 	string64* reference; // reference for request which will act as an unique key for the request (will reject request with the same reference from same requestor)
 	int64 createdAt; // when request was created

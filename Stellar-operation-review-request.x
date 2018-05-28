@@ -86,7 +86,7 @@ struct ReviewRequestOp
 		void;
 	} requestDetails;
 	ReviewRequestOpAction action;
-	string256 reason;
+	longstring reason;
 	// reserved for future use
     union switch (LedgerVersion v)
     {

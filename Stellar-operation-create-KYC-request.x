@@ -49,7 +49,8 @@ enum CreateUpdateKYCRequestResultCode
 	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
 	NOT_ALLOWED_TO_UPDATE_REQUEST = -6, // master account can update request only through review request operation
 	INVALID_UPDATE_KYC_REQUEST_DATA = -7,
-	INVALID_KYC_DATA = -8
+	INVALID_KYC_DATA = -8,
+	KYC_RULE_NOT_FOUND = -9
 };
 
 union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)

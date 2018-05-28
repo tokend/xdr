@@ -277,6 +277,16 @@ case SALE:
 		}
 		ext;
 	} sale;
+case KEY_VALUE:
+    struct {
+        string256 key;
+        union switch (LedgerVersion v)
+        {
+        	case EMPTY_VERSION:
+        		void;
+        }
+        ext;
+    } keyValue;
 case ACCOUNT_KYC:
     struct {
         AccountID accountID;

@@ -23,12 +23,14 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
+%#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-set-identity-policy.h"
+
 
 namespace stellar
 {
@@ -84,6 +86,8 @@ struct Operation
 		CheckSaleStateOp checkSaleStateOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueOp manageKeyValueOp;
 	case CREATE_KYC_REQUEST:
 		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
@@ -226,8 +230,10 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
-    case CREATE_AML_ALERT:
-        CreateAMLAlertRequestResult createAMLAlertRequestResult;
+	case CREATE_AML_ALERT:
+	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueResult manageKeyValueResult;
 	case CREATE_KYC_REQUEST:
 	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
