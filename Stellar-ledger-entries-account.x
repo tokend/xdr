@@ -102,7 +102,8 @@ enum AccountType
 	MASTER = 4,            // master account
     NOT_VERIFIED = 5,
 	SYNDICATE = 6, // can create asset
-	EXCHANGE = 7
+	EXCHANGE = 7,
+	ANY = 2147483647 // INTERNAL ONLY
 };
 
 enum BlockReasons
