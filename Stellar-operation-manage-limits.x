@@ -3,35 +3,44 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-ledger-entries-limits-v2.h"
 
 namespace stellar
 {
 
-/* Set Limits Options
+/* Manage Limits Options
 
     Threshold: med
 
-    Result: SetLimitsResult
+    Result: ManageLimitsResult
 */
 
-struct SetLimitsOp
+struct ManageLimitsOp
 {
-    AccountID* account;
-    AccountType* accountType;
+    uint64      id;
+    AccountType *accountType;
+    AccountID   *accountID;
+    StatsOpType statsOpType;
+    AssetCode   assetCode;
+    bool        isConvertNeeded;
 
-    Limits limits;
-	// reserved for future use
-	union switch (LedgerVersion v)
-	{
-	case EMPTY_VERSION:
-		void;
-	}
-	ext;
+    uint64 dailyOut;
+    uint64 weeklyOut;
+    uint64 monthlyOut;
+    uint64 annualOut;
+
+     // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
-/******* SetLimits Result ********/
+/******* ManageLimits Result ********/
 
-enum SetLimitsResultCode
+enum ManageLimitsResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
@@ -39,7 +48,7 @@ enum SetLimitsResultCode
     MALFORMED = -1
 };
 
-union SetLimitsResult switch (SetLimitsResultCode code)
+union ManageLimitsResult switch (ManageLimitsResultCode code)
 {
 case SUCCESS:
     struct {
