@@ -23,6 +23,7 @@ struct ManageLimitsOp
     StatsOpType statsOpType;
     AssetCode   assetCode;
     bool        isConvertNeeded;
+    bool        isDelete;
 
     uint64 dailyOut;
     uint64 weeklyOut;

@@ -21,6 +21,7 @@
 %#include "xdr/Stellar-ledger-entries-key-value.h"
 %#include "xdr/Stellar-ledger-entries-account-KYC.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id-pool-entry.h"
+%#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 
 
 namespace stellar
@@ -56,7 +57,9 @@ enum LedgerEntryType
 	SALE = 17,
 	ACCOUNT_KYC = 18,
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
-    KEY_VALUE = 20
+    KEY_VALUE = 20,
+    LIMITS_V2 = 21,
+    STATISTICS_V2 = 22
 };
 
 
@@ -104,6 +107,10 @@ struct LedgerEntry
         AccountKYCEntry accountKYC;
     case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ExternalSystemAccountIDPoolEntry externalSystemAccountIDPoolEntry;
+    case LIMITS_V2:
+        LimitsV2Entry limitsV2;
+    case STATISTICS_V2:
+        StatisticsV2Entry statisticsV2;
     }
     data;
 

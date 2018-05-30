@@ -1,11 +1,12 @@
 %#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-ledger-entries-limits-v2.h"
 
 namespace stellar
 {
 
-struct StatisticsEntryV2
+struct StatisticsV2Entry
 {
-    uint64 id;
+    uint64      id;
 	AccountID   accountID;
 	StatsOpType statsOpType;
     AssetCode   assetCode;

@@ -16,7 +16,7 @@ enum StatsOpType
 // (account_id = ? or account_id is null) and (account_type = ? or account_type is null) and (asset_code = ? or isConvertNeeded)
 // and (stats_op_type in (?, ?)) order by
 // stats_op_type, asset_code, is_convert_needed, account_id = ?, account_type = ? desc;
-struct LimitsV2
+struct LimitsV2Entry
 {
     uint64      id;
     AccountType *accountType;
