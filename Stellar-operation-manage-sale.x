@@ -63,6 +63,8 @@ struct ManageSaleResultSuccess
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
+    case CANCEL:
+        void;
     } response;
 
     //reserved for future use
