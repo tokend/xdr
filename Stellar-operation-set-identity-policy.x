@@ -63,6 +63,8 @@ union SetIdentityPolicyResult switch (SetIdentityPolicyResultCode code)
 {
     case SUCCESS:
         struct {
+            uint64 identityPolicyID;
+
 			// reserved for future use
 			union switch (LedgerVersion v)
 			{
