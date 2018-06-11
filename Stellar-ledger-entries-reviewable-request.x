@@ -28,7 +28,8 @@ enum ReviewableRequestType
 	TWO_STEP_WITHDRAWAL = 7,
     AML_ALERT = 8,
 	UPDATE_KYC = 9,
-	UPDATE_SALE_DETAILS = 10
+	UPDATE_SALE_DETAILS = 10,
+	LIMITS_V2_UPDATE = 11
 };
 
 // ReviewableRequest - request reviewable by admin

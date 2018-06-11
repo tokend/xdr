@@ -46,7 +46,8 @@ enum ManageLimitsResultCode
     // codes considered as "success" for the operation
     SUCCESS = 0,
     // codes considered as "failure" for the operation
-    MALFORMED = -1
+    MALFORMED = -1,
+    NOT_FOUND = -2
 };
 
 union ManageLimitsResult switch (ManageLimitsResultCode code)
