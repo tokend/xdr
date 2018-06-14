@@ -22,6 +22,7 @@
 %#include "xdr/Stellar-ledger-entries-account-KYC.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
+%#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 
 
 namespace stellar
@@ -59,7 +60,8 @@ enum LedgerEntryType
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
     KEY_VALUE = 20,
     LIMITS_V2 = 21,
-    STATISTICS_V2 = 22
+    STATISTICS_V2 = 22,
+    PENDING_STATISTICS = 23
 };
 
 
@@ -111,6 +113,8 @@ struct LedgerEntry
         LimitsV2Entry limitsV2;
     case STATISTICS_V2:
         StatisticsV2Entry statisticsV2;
+    case PENDING_STATISTICS:
+        PendingStatisticsEntry pendingStatistics;
     }
     data;
 

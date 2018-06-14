@@ -1,14 +1,14 @@
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-ledger-entries-limits-v2.h"
 
 namespace stellar
 {
 
-struct PendingStatistics
+struct PendingStatisticsEntry
 {
-    uint64 statisticsV2ID;
+    uint64 statisticsID;
     uint64 requestID;
-    uint64 addedAmount;
+    uint64 amount;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {

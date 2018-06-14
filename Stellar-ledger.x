@@ -327,6 +327,17 @@ case STATISTICS_V2:
         }
         ext;
     } statisticsV2;
+case PENDING_STATISTICS:
+    struct {
+        uint64 statsID;
+        uint64 requestID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } pendingStatistics;
 };
 
 enum BucketEntryType
