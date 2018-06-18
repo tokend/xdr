@@ -29,7 +29,7 @@
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
-
+%#include "xdr/Stellar-operation-create-manage-limits-request.h"
 
 
 namespace stellar
@@ -98,6 +98,8 @@ struct Operation
         PaymentOpV2 paymentOpV2;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestOp createManageLimitsRequestOp;
     }
     body;
 };
@@ -242,6 +244,8 @@ case opINNER:
         PaymentV2Result paymentV2Result;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestResult createManageLimitsRequestResult;
     }
     tr;
 default:

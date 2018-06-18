@@ -32,7 +32,7 @@ struct LimitsUpdateDetails {
         ext;
 };
 
-struct LimitsV2UpdateDetails {
+struct ManageLimitsDetails {
     LimitsV2Entry newLimitsV2;
     bool isDelete;
     union switch (LedgerVersion v)
@@ -87,8 +87,8 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
-    case LIMITS_V2_UPDATE:
-        LimitsV2UpdateDetails limitsV2Update;
+    case MANAGE_LIMITS:
+        ManageLimitsDetails manageLimits;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
     case AML_ALERT:

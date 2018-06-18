@@ -329,7 +329,7 @@ case STATISTICS_V2:
     } statisticsV2;
 case PENDING_STATISTICS:
     struct {
-        uint64 statsID;
+        uint64 statisticsID;
         uint64 requestID;
         union switch (LedgerVersion v)
         {
