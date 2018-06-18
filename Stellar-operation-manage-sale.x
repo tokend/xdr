@@ -5,7 +5,8 @@ namespace stellar
 
 enum ManageSaleAction
 {
-    CREATE_UPDATE_DETAILS_REQUEST = 1
+    CREATE_UPDATE_DETAILS_REQUEST = 1,
+    CANCEL = 2
 };
 
 
@@ -34,6 +35,8 @@ struct ManageSaleOp
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         UpdateSaleDetailsData updateSaleDetailsData;
+    case CANCEL:
+        void;
     } data;
 
     // reserved for future use
@@ -60,6 +63,8 @@ struct ManageSaleResultSuccess
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
+    case CANCEL:
+        void;
     } response;
 
     //reserved for future use
