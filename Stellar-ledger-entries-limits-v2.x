@@ -10,12 +10,6 @@ enum StatsOpType
     SPEND = 3
 };
 
-// the idea behind this request is to select all limits which are appliable for account-operation pair
-// we should try to select most precise limits (for specific account, for specific type, system global)
-// select distinct on (stats_op_type, asset_code, is_convert_needed) * from limits_v2 where
-// (account_id = ? or account_id is null) and (account_type = ? or account_type is null) and (asset_code = ? or isConvertNeeded)
-// and (stats_op_type in (?, ?)) order by
-// stats_op_type, asset_code, is_convert_needed, account_id = ?, account_type = ? desc;
 struct LimitsV2Entry
 {
     uint64      id;
