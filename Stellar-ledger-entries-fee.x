@@ -14,7 +14,8 @@ enum FeeType
     PAYMENT_FEE = 0,
 	OFFER_FEE = 1,
     WITHDRAWAL_FEE = 2,
-    ISSUANCE_FEE = 3
+    ISSUANCE_FEE = 3,
+    INVEST_FEE = 4 // fee to be taken while creating sale participation
 };
 
 enum EmissionFeeType
