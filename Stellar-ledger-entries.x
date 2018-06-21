@@ -21,12 +21,9 @@
 %#include "xdr/Stellar-ledger-entries-key-value.h"
 %#include "xdr/Stellar-ledger-entries-account-KYC.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id-pool-entry.h"
-<<<<<<< HEAD
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
-=======
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
->>>>>>> master
 
 
 namespace stellar
