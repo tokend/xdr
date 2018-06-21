@@ -28,8 +28,7 @@ enum ReviewableRequestType
 	TWO_STEP_WITHDRAWAL = 7,
     AML_ALERT = 8,
 	UPDATE_KYC = 9,
-	UPDATE_SALE_DETAILS = 10,
-	MANAGE_LIMITS = 11
+	UPDATE_SALE_DETAILS = 10
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -57,8 +56,6 @@ struct ReviewableRequestEntry {
 			SaleCreationRequest saleCreationRequest;
         case LIMITS_UPDATE:
             LimitsUpdateRequest limitsUpdateRequest;
-        case MANAGE_LIMITS:
-            LimitsUpdateRequest manageLimitsRequest;
 		case TWO_STEP_WITHDRAWAL:
 			WithdrawalRequest twoStepWithdrawalRequest;
         case AML_ALERT:

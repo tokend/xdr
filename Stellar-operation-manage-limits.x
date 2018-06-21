@@ -8,6 +8,21 @@
 namespace stellar
 {
 
+enum ManageLimitsAction
+{
+    UPDATE = 0,
+    DELETE = 1
+};
+
+struct UpdateLimitsDetails
+{
+    AccountType *accountType;
+    AccountID   *accountID;
+    StatsOpType statsOpType;
+    AssetCode   assetCode;
+    bool        isConvertNeeded;
+};
+
 /* Manage Limits Options
 
     Threshold: med
@@ -17,13 +32,13 @@ namespace stellar
 
 struct ManageLimitsOp
 {
-    uint64      id;
-    AccountType *accountType;
-    AccountID   *accountID;
-    StatsOpType statsOpType;
-    AssetCode   assetCode;
-    bool        isConvertNeeded;
-    bool        isDelete;
+    union switch (ManageLimitsAction action)
+    {
+    case UPDATE:
+        UpdateLimitsDetails updateLimitsDetails;
+    case DELETE:
+        uint64 id;
+    } details;
 
     uint64 dailyOut;
     uint64 weeklyOut;
@@ -47,7 +62,8 @@ enum ManageLimitsResultCode
     SUCCESS = 0,
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    NOT_FOUND = -2
+    NOT_FOUND = -2,
+    ALREADY_EXISTS = -3
 };
 
 union ManageLimitsResult switch (ManageLimitsResultCode code)

@@ -23,18 +23,7 @@ enum ReviewRequestOpAction {
 */
 
 struct LimitsUpdateDetails {
-    Limits newLimits;
-    union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-};
-
-struct ManageLimitsDetails {
     LimitsV2Entry newLimitsV2;
-    bool isDelete;
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -87,8 +76,6 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
-    case MANAGE_LIMITS:
-        ManageLimitsDetails manageLimits;
 	case TWO_STEP_WITHDRAWAL:
 		WithdrawalDetails twoStepWithdrawal;
     case AML_ALERT:
