@@ -307,6 +307,16 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 		}
 		ext;
 	} externalSystemAccountIDPoolEntry;
+case SALE_ANTE:
+    struct {
+        uint64 saleID;
+        BalanceID participantBalanceID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } saleAnte;
 case LIMITS_V2:
     struct {
         uint64 id;
@@ -314,8 +324,7 @@ case LIMITS_V2:
         {
         case EMPTY_VERSION:
             void;
-        }
-        ext;
+        } ext;
     } limitsV2;
 case STATISTICS_V2:
     struct {
