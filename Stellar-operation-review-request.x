@@ -23,13 +23,13 @@ enum ReviewRequestOpAction {
 */
 
 struct LimitsUpdateDetails {
-    Limits newLimits;
+    LimitsV2Entry newLimitsV2;
     union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 struct WithdrawalDetails {
