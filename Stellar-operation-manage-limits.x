@@ -10,17 +10,22 @@ namespace stellar
 
 enum ManageLimitsAction
 {
-    UPDATE = 0,
+    CREATE = 0,
     DELETE = 1
 };
 
-struct UpdateLimitsDetails
+struct LimitsCreateDetails
 {
     AccountType *accountType;
     AccountID   *accountID;
     StatsOpType statsOpType;
     AssetCode   assetCode;
     bool        isConvertNeeded;
+
+    uint64 dailyOut;
+    uint64 weeklyOut;
+    uint64 monthlyOut;
+    uint64 annualOut;
 };
 
 /* Manage Limits Options
@@ -34,16 +39,11 @@ struct ManageLimitsOp
 {
     union switch (ManageLimitsAction action)
     {
-    case UPDATE:
-        UpdateLimitsDetails updateLimitsDetails;
+    case CREATE:
+        LimitsCreateDetails limitsCreateDetails;
     case DELETE:
         uint64 id;
     } details;
-
-    uint64 dailyOut;
-    uint64 weeklyOut;
-    uint64 monthlyOut;
-    uint64 annualOut;
 
      // reserved for future use
     union switch (LedgerVersion v)
@@ -70,6 +70,14 @@ union ManageLimitsResult switch (ManageLimitsResultCode code)
 {
 case SUCCESS:
     struct {
+        union switch (ManageLimitsAction action)
+        {
+        case CREATE:
+            uint64 id;
+        case DELETE:
+            void;
+        } details;
+
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{
