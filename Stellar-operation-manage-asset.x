@@ -41,7 +41,7 @@ struct UpdateMaxIssuance {
         void;
     }
     ext;
-}; 
+};
 
 /* ManageAssetOp
 
@@ -65,8 +65,8 @@ struct ManageAssetOp
 		CancelAssetRequest cancelRequest;
 	case CHANGE_PREISSUED_ASSET_SIGNER:
 		AssetChangePreissuedSigner changePreissuedSigner;
-	case UPDATE_MAX_ISSUANCE:
-		UpdateMaxIssuance updateMaxIssuance;
+    case UPDATE_MAX_ISSUANCE:
+        UpdateMaxIssuance updateMaxIssuance;
 	} request;
 
 	// reserved for future use
