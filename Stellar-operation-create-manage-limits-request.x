@@ -4,22 +4,23 @@
 
 %#include "xdr/Stellar-ledger-entries.h"
 
+
 namespace stellar
 {
 
-/* Set Limits Options
+/* CreateManageLimitsRequestOp
 
-    Threshold: med
+    Create manage limits request
 
-    Result: SetLimitsResult
+    Threshold: med or high
+
+    Result: CreateManageLimitsRequestResult
 */
 
-struct SetLimitsOp
+struct CreateManageLimitsRequestOp
 {
-    AccountID* account;
-    AccountType* accountType;
+    LimitsUpdateRequest manageLimitsRequest;
 
-    Limits limits;
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
@@ -27,22 +28,25 @@ struct SetLimitsOp
 		void;
 	}
 	ext;
+
 };
 
-/******* SetLimits Result ********/
+/******* CreateManageLimits Result ********/
 
-enum SetLimitsResultCode
+enum CreateManageLimitsRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
     // codes considered as "failure" for the operation
-    MALFORMED = -1
+	MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1
 };
 
-union SetLimitsResult switch (SetLimitsResultCode code)
+
+union CreateManageLimitsRequestResult switch (CreateManageLimitsRequestResultCode code)
 {
 case SUCCESS:
     struct {
+        uint64 manageLimitsRequestID;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{

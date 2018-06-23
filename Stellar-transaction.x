@@ -14,7 +14,7 @@
 %#include "xdr/Stellar-operation-manage-asset.h"
 %#include "xdr/Stellar-operation-create-preissuance-request.h"
 %#include "xdr/Stellar-operation-create-issuance-request.h"
-%#include "xdr/Stellar-operation-set-limits.h"
+%#include "xdr/Stellar-operation-manage-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
@@ -29,7 +29,7 @@
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
-
+%#include "xdr/Stellar-operation-create-manage-limits-request.h"
 
 
 namespace stellar
@@ -68,8 +68,8 @@ struct Operation
         ManageAssetOp manageAssetOp;
     case CREATE_PREISSUANCE_REQUEST:
         CreatePreIssuanceRequestOp createPreIssuanceRequest;
-    case SET_LIMITS:
-        SetLimitsOp setLimitsOp;
+    case MANAGE_LIMITS:
+        ManageLimitsOp manageLimitsOp;
     case DIRECT_DEBIT:
         DirectDebitOp directDebitOp;
 	case MANAGE_ASSET_PAIR:
@@ -98,6 +98,8 @@ struct Operation
         PaymentOpV2 paymentOpV2;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestOp createManageLimitsRequestOp;
     }
     body;
 };
@@ -212,8 +214,8 @@ case opINNER:
         ManageAssetResult manageAssetResult;
     case CREATE_PREISSUANCE_REQUEST:
         CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
-    case SET_LIMITS:
-        SetLimitsResult setLimitsResult;
+    case MANAGE_LIMITS:
+        ManageLimitsResult manageLimitsResult;
     case DIRECT_DEBIT:
         DirectDebitResult directDebitResult;
 	case MANAGE_ASSET_PAIR:
@@ -242,6 +244,8 @@ case opINNER:
         PaymentV2Result paymentV2Result;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestResult createManageLimitsRequestResult;
     }
     tr;
 default:
