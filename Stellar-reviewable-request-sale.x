@@ -41,6 +41,12 @@ struct SaleCreationRequest {
             SaleTypeExt saleTypeExt;
             uint64 requiredBaseAssetForHardCap;
         } extV2;
+	case STATABLE_SALES:
+		struct {
+			SaleTypeExt saleTypeExt;
+            uint64 requiredBaseAssetForHardCap;
+			SaleState state;
+		} extV3;
     }
     ext;
 };
