@@ -60,7 +60,8 @@ enum LedgerVersion {
 	ALLOW_MASTER_TO_MANAGE_SALE = 26,
 	USE_SALE_ANTE = 27,
 	FIX_ASSET_PAIRS_CREATION_IN_SALE_CREATION = 28,
-	CREATE_ONLY_STATISTICS_V2 = 29
+	STATABLE_SALES = 29,
+	CREATE_ONLY_STATISTICS_V2 = 30
 };
 
 // variable size as the size depends on the signature scheme used
