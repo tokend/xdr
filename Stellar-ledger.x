@@ -317,6 +317,36 @@ case SALE_ANTE:
             void;
         } ext;
     } saleAnte;
+case LIMITS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } limitsV2;
+case STATISTICS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } statisticsV2;
+case PENDING_STATISTICS:
+    struct {
+        uint64 statisticsID;
+        uint64 requestID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } pendingStatistics;
 };
 
 enum BucketEntryType
