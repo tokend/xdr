@@ -1,4 +1,5 @@
 %#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
 {
@@ -6,7 +7,8 @@ namespace stellar
 enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
-    CANCEL = 2
+    CANCEL = 2,
+	SET_STATE = 3
 };
 
 
@@ -37,6 +39,8 @@ struct ManageSaleOp
         UpdateSaleDetailsData updateSaleDetailsData;
     case CANCEL:
         void;
+	case SET_STATE:
+		SaleState saleState;
     } data;
 
     // reserved for future use
@@ -55,7 +59,8 @@ enum ManageSaleResultCode
     SALE_NOT_FOUND = -1, // sale not found
     INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
-    UPDATE_DETAILS_REQUEST_NOT_FOUND = -4
+    UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
+	NOT_ALLOWED = -5 // it's not allowed to set state for non master account
 };
 
 struct ManageSaleResultSuccess
@@ -65,6 +70,8 @@ struct ManageSaleResultSuccess
         uint64 requestID;
     case CANCEL:
         void;
+	case SET_STATE:
+		void;
     } response;
 
     //reserved for future use

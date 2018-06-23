@@ -7,6 +7,12 @@
 namespace stellar
 {
 
+enum SaleState {
+	NONE = 0, // default state
+	VOTING = 1, // not allowed to invest
+	PROMOTION = 2 // not allowed to invest, but allowed to change all the details
+};
+
 enum SaleType {
 	BASIC_SALE = 1, // sale creator specifies price for each quote asset
 	CROWD_FUNDING = 2 // sale creator does not specify price,
@@ -40,6 +46,11 @@ struct SaleTypeExt {
         CrowdFundingSale crowdFundingSale;
     }
     typedSale;
+};
+
+struct StatableSaleExt {
+	SaleTypeExt saleTypeExt;
+	SaleState state;
 };
 
 
@@ -79,6 +90,8 @@ struct SaleEntry
         void;
 	case TYPED_SALE:
 		SaleTypeExt saleTypeExt;
+	case STATABLE_SALES:
+		StatableSaleExt statableSaleExt;
     }
     ext;
 };
