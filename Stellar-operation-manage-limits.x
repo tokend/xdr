@@ -11,7 +11,7 @@ namespace stellar
 enum ManageLimitsAction
 {
     CREATE = 0,
-    DELETE = 1
+    REMOVE = 1
 };
 
 struct LimitsCreateDetails
@@ -41,7 +41,7 @@ struct ManageLimitsOp
     {
     case CREATE:
         LimitsCreateDetails limitsCreateDetails;
-    case DELETE:
+    case REMOVE:
         uint64 id;
     } details;
 
@@ -74,7 +74,7 @@ case SUCCESS:
         {
         case CREATE:
             uint64 id;
-        case DELETE:
+        case REMOVE:
             void;
         } details;
 
