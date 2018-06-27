@@ -104,7 +104,8 @@ enum AccountType
 	SYNDICATE = 6, // can create asset
 	EXCHANGE = 7,
 	ACCREDITED_INVESTOR = 8,
-	INSTITUTIONAL_INVESTOR = 9
+	INSTITUTIONAL_INVESTOR = 9,
+	VERIFIED = 10
 };
 
 enum BlockReasons
