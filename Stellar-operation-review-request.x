@@ -131,8 +131,11 @@ enum ReviewRequestResultCode
 	// Update KYC requests
 	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
 
-	// Update sale details requests
-	SALE_NOT_FOUND = -70
+	// Update sale details and promotion update requests
+	SALE_NOT_FOUND = -70,
+
+	// Promotion update requests
+	INVALID_STATE = -80 // sale state must be "PROMOTION"
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
