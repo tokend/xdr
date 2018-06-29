@@ -69,7 +69,8 @@ enum ManageOfferResultCode
 	SALE_IS_NOT_ACTIVE = -23,
 	REQUIRES_KYC = -24, // source must have KYC in order to participate
 	SOURCE_UNDERFUNDED = -25,
-	SOURCE_BALANCE_LOCK_OVERFLOW = -26
+	SOURCE_BALANCE_LOCK_OVERFLOW = -26,
+	REQUIRES_VERIFICATION = -27 // source must be verified in order to participate
 };
 
 enum ManageOfferEffect
