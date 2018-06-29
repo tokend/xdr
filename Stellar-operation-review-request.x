@@ -135,7 +135,7 @@ enum ReviewRequestResultCode
 	SALE_NOT_FOUND = -70,
 
 	// Promotion update requests
-	INVALID_STATE = -80 // sale state must be "PROMOTION"
+	INVALID_SALE_STATE = -80 // sale state must be "PROMOTION"
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
