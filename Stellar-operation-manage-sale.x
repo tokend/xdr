@@ -1,5 +1,6 @@
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
+%#include "Stellar-reviewable-request-sale.h"
 
 namespace stellar
 {
@@ -8,11 +9,12 @@ enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
     CANCEL = 2,
-	SET_STATE = 3
+	SET_STATE = 3,
+	CREATE_PROMOTION_UPDATE_REQUEST = 4
 };
 
 
-/* Can update sale details
+/* Can update sale details, cancel sale, set sale state and update sales with "promotion" state
 
 Result: ManageSaleResult
 
@@ -23,6 +25,17 @@ struct UpdateSaleDetailsData {
     longstring newDetails;
 
     // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct PromotionUpdateData {
+    uint64 requestID; // if requestID is 0 - create request, else - update
+    SaleCreationRequest newPromotionData;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -41,6 +54,8 @@ struct ManageSaleOp
         void;
 	case SET_STATE:
 		SaleState saleState;
+    case CREATE_PROMOTION_UPDATE_REQUEST:
+        PromotionUpdateData promotionUpdateData;
     } data;
 
     // reserved for future use
@@ -57,10 +72,24 @@ enum ManageSaleResultCode
     SUCCESS = 0,
 
     SALE_NOT_FOUND = -1, // sale not found
+
+    // errors related to action "CREATE_UPDATE_DETAILS_REQUEST"
     INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
-	NOT_ALLOWED = -5 // it's not allowed to set state for non master account
+
+    // errors related to action "SET_STATE"
+	NOT_ALLOWED = -5, // it's not allowed to set state for non master account
+
+	// errors related to action "CREATE_PROMOTION_UPDATE_REQUEST"
+	PROMOTION_UPDATE_REQUEST_INVALID_ASSET_PAIR = -6, // one of the assets has invalid code or base asset is equal to quote asset
+	PROMOTION_UPDATE_REQUEST_INVALID_PRICE = -7, // price cannot be 0
+	PROMOTION_UPDATE_REQUEST_START_END_INVALID = -8, // sale ends before start
+	PROMOTION_UPDATE_REQUEST_INVALID_CAP = -9, // hard cap is < soft cap
+	PROMOTION_UPDATE_REQUEST_INVALID_DETAILS = -10, // details field is invalid JSON
+	INVALID_SALE_STATE = -11, // sale state must be "PROMOTION"
+	PROMOTION_UPDATE_REQUEST_ALREADY_EXISTS = -12,
+	PROMOTION_UPDATE_REQUEST_NOT_FOUND = -13
 };
 
 struct ManageSaleResultSuccess
@@ -72,6 +101,8 @@ struct ManageSaleResultSuccess
         void;
 	case SET_STATE:
 		void;
+    case CREATE_PROMOTION_UPDATE_REQUEST:
+        uint64 promotionUpdateRequestID;
     } response;
 
     //reserved for future use
