@@ -142,6 +142,8 @@ case SUCCESS:
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{
+		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
+		    uint64 saleID;
 		case EMPTY_VERSION:
 			void;
 		}
