@@ -63,7 +63,8 @@ enum LedgerVersion {
 	STATABLE_SALES = 29,
 	CREATE_ONLY_STATISTICS_V2 = 30,
 	LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH = 31,
-	FIX_PAYMENT_V2_FEE = 32
+	FIX_PAYMENT_V2_FEE = 32,
+	ADD_SALE_ID_REVIEW_REQUEST_RESULT = 33
 };
 
 // variable size as the size depends on the signature scheme used
