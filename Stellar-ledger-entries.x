@@ -14,7 +14,6 @@
 %#include "xdr/Stellar-ledger-entries-statistics.h"
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
-%#include "xdr/Stellar-ledger-entries-invoice.h"
 %#include "xdr/Stellar-ledger-entries-reviewable-request.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
@@ -53,7 +52,6 @@ enum LedgerEntryType
     ACCOUNT_LIMITS = 11,
 	ASSET_PAIR = 12,
 	OFFER_ENTRY = 13,
-    INVOICE = 14,
 	REVIEWABLE_REQUEST = 15,
 	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
 	SALE = 17,
@@ -97,8 +95,6 @@ struct LedgerEntry
 		AssetPairEntry assetPair;
 	case OFFER_ENTRY:
 		OfferEntry offer;
-    case INVOICE:
-        InvoiceEntry invoice;
 	case REVIEWABLE_REQUEST:
 		ReviewableRequestEntry reviewableRequest;
 	case EXTERNAL_SYSTEM_ACCOUNT_ID:

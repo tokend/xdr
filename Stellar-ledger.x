@@ -236,16 +236,6 @@ case OFFER_ENTRY:
 		uint64 offerID;
 		AccountID ownerID;
 	} offer;
-case INVOICE:
-    struct {
-        uint64 invoiceID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } invoice;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;

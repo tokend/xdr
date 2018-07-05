@@ -18,7 +18,7 @@
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
-%#include "xdr/Stellar-operation-manage-invoice.h"
+%#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
@@ -30,6 +30,7 @@
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
+%#include "xdr/Stellar-operation-bill-pay.h"
 
 
 namespace stellar
@@ -76,8 +77,8 @@ struct Operation
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
 		ManageOfferOp manageOfferOp;
-    case MANAGE_INVOICE:
-        ManageInvoiceOp manageInvoiceOp;
+    case INVOICE_REQUEST:
+        ManageInvoiceRequestOp manageInvoiceRequestOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
 	case CREATE_SALE_REQUEST:
@@ -100,6 +101,8 @@ struct Operation
         ManageSaleOp manageSaleOp;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestOp createManageLimitsRequestOp;
+    case BILL_PAY:
+        BillPayOp billPayOp;
     }
     body;
 };
@@ -222,8 +225,8 @@ case opINNER:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
 		ManageOfferResult manageOfferResult;
-	case MANAGE_INVOICE:
-		ManageInvoiceResult manageInvoiceResult;
+	case INVOICE_REQUEST:
+		ManageInvoiceRequestResult manageInvoiceRequestResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;
 	case CREATE_SALE_REQUEST:
@@ -246,6 +249,8 @@ case opINNER:
         ManageSaleResult manageSaleResult;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestResult createManageLimitsRequestResult;
+    case BILL_PAY:
+        BillPayResult billPayResult;
     }
     tr;
 default:

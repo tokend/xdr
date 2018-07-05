@@ -7,22 +7,27 @@
 namespace stellar
 {
 
-enum InvoiceState
+struct InvoiceRequest
 {
-    INVOICE_NEEDS_PAYMENT = 0,
-    INVOICE_NEEDS_PAYMENT_REVIEW = 1
+    BalanceID receiverBalance;
+    AccountID sender;
+    uint64 amount; // not allowed to set 0
+
+    longstring details;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
-
-struct InvoiceEntry
+struct InvoiceRequestEntry
 {
-    uint64 invoiceID;
     AccountID receiverAccount;
-    BalanceID receiverBalance;
-	AccountID sender;
-    int64 amount;
-    
-    InvoiceState state;
+    InvoiceRequest invoiceRequest;
 
     // reserved for future use
     union switch (LedgerVersion v)

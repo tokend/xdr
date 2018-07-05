@@ -95,6 +95,8 @@ enum PaymentV2ResultCode
     INSUFFICIENT_FEE_AMOUNT = -14,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16
+
+    // !!! Add new result code to bill pay op too !!!
 };
 
 struct PaymentV2Response {

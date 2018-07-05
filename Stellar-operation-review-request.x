@@ -113,6 +113,7 @@ enum ReviewRequestResultCode
 	INVALID_EXTERNAL_DETAILS = -7,
 	REQUESTOR_IS_BLOCKED = -8,
 	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
+	APPROVE_NOT_ALLOWED = -10, // approve not allowed, use other operation
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
