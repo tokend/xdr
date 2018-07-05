@@ -77,7 +77,7 @@ struct Operation
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
 		ManageOfferOp manageOfferOp;
-    case INVOICE_REQUEST:
+    case MANAGE_INVOICE_REQUEST:
         ManageInvoiceRequestOp manageInvoiceRequestOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
@@ -225,7 +225,7 @@ case opINNER:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
 		ManageOfferResult manageOfferResult;
-	case INVOICE_REQUEST:
+	case MANAGE_INVOICE_REQUEST:
 		ManageInvoiceRequestResult manageInvoiceRequestResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;

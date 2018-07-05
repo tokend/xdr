@@ -24,18 +24,4 @@ struct InvoiceRequest
     ext;
 };
 
-struct InvoiceRequestEntry
-{
-    AccountID receiverAccount;
-    InvoiceRequest invoiceRequest;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 }

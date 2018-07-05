@@ -12,7 +12,7 @@
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
 %#include "xdr/Stellar-reviewable-request-update-promotion.h"
-%#include "xdr/Stellar-reviewable-request-manage-invoice.h"
+%#include "xdr/Stellar-reviewable-request-invoice.h"
 
 
 namespace stellar
@@ -71,7 +71,7 @@ struct ReviewableRequestEntry {
         case UPDATE_PROMOTION:
             PromotionUpdateRequest promotionUpdateRequest;
         case INVOICE:
-            InvoiceRequestEntry invoiceRequestEntry;
+            InvoiceRequest invoiceRequest;
 	} body;
 
 	// reserved for future use
