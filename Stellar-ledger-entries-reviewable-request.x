@@ -32,7 +32,7 @@ enum ReviewableRequestType
 	UPDATE_KYC = 9,
 	UPDATE_SALE_DETAILS = 10,
 	UPDATE_PROMOTION = 11,
-	MANAGE_INVOICE = 12
+	INVOICE = 12
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -70,7 +70,7 @@ struct ReviewableRequestEntry {
             UpdateSaleDetailsRequest updateSaleDetailsRequest;
         case UPDATE_PROMOTION:
             PromotionUpdateRequest promotionUpdateRequest;
-        case MANAGE_INVOICE:
+        case INVOICE:
             InvoiceRequestEntry invoiceRequestEntry;
 	} body;
 
