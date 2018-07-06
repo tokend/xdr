@@ -132,7 +132,10 @@ enum ReviewRequestResultCode
 	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
 
 	// Update sale details requests
-	SALE_NOT_FOUND = -70
+	SALE_NOT_FOUND = -70,
+
+	// Update sale end time requests
+	INVALID_SALE_NEW_END_TIME = -80 // new end time is before start time or current ledger close time
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
