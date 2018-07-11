@@ -64,7 +64,8 @@ enum LedgerVersion {
 	CREATE_ONLY_STATISTICS_V2 = 30,
 	LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH = 31,
 	FIX_PAYMENT_V2_FEE = 32,
-	ADD_SALE_ID_REVIEW_REQUEST_RESULT = 33
+	ADD_SALE_ID_REVIEW_REQUEST_RESULT = 33,
+	FIX_SET_SALE_STATE_AND_CHECK_SALE_STATE_OPS = 34 // only master allowed to set sale state, max issuance after sale closure = pending + issued
 };
 
 // variable size as the size depends on the signature scheme used
