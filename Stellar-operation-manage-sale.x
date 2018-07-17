@@ -127,11 +127,13 @@ struct ManageSaleResultSuccess
 	    uint64 updateEndTimeRequestID;
     } response;
 
-    //reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
+    case ALLOW_TO_UPDATE_VOTING_SALES_AS_PROMOTION:
+        bool fulfilled; // can be used for any reviewable request type created with manage sale operation
     }
     ext;
 };
