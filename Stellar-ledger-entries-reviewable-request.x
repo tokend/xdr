@@ -34,6 +34,26 @@ enum ReviewableRequestType
 	UPDATE_SALE_END_TIME = 12
 };
 
+struct TasksExt {
+    // Tasks are represented by a bitmask
+    uint32 allTasks;
+    uint32 pendingTasks;
+
+    // Sequence number increases when the request is rejected
+    uint32 sequenceNumber;
+
+    // External details vector consists of comments written by request reviewers
+    longstring externalDetails<>;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 // ReviewableRequest - request reviewable by admin
 struct ReviewableRequestEntry {
 	uint64 requestID;
@@ -78,6 +98,8 @@ struct ReviewableRequestEntry {
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+        TasksExt tasksExt;
     }
     ext;
 };
