@@ -36,7 +36,8 @@ enum SignerType
 	KYC_ACC_MANAGER = 16777216, // can manage kyc
 	KYC_SUPER_ADMIN = 33554432,
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
-    KEY_VALUE_MANAGER = 134217728 // can manage keyValue
+    KEY_VALUE_MANAGER = 134217728, // can manage keyValue
+    SUPER_ISSUANCE_MANAGER = 268435456
 };
 
 struct Signer

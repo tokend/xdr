@@ -10,7 +10,7 @@ namespace stellar
 
 /* CreateIssuanceRequestOp
 
-    Creates or deletes issuance request
+    Creates new issuance request
 
     Threshold: high
 
@@ -25,6 +25,8 @@ struct CreateIssuanceRequestOp
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+        uint32* allTasks;
     }
     ext;
 };
