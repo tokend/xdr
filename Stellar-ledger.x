@@ -337,6 +337,16 @@ case PENDING_STATISTICS:
         }
         ext;
     } pendingStatistics;
+case CONTRACT:
+    struct {
+        uint64 contractID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } contract;
 };
 
 enum BucketEntryType

@@ -3,6 +3,7 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-operation-payment-v2.h"
 
 namespace stellar
 {
@@ -67,6 +68,18 @@ struct UpdateKYCDetails {
     ext;
 };
 
+struct BillPayDetails {
+    PaymentOpV2 paymentDetails;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -82,6 +95,8 @@ struct ReviewRequestOp
         AMLAlertDetails amlAlertDetails;
     case UPDATE_KYC:
         UpdateKYCDetails updateKYC;
+    case INVOICE:
+        BillPayDetails billPay;
 	default:
 		void;
 	} requestDetails;
