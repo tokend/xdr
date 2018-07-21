@@ -48,16 +48,17 @@ enum ManageInvoiceRequestResultCode
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    BALANCE_NOT_FOUND = -2,
+    BALANCE_NOT_FOUND = -2, // sender balance not found
     NOT_FOUND = -3, // not found invoice request, when try to remove
     TOO_MANY_INVOICES = -4,
     MANAGE_INVOICE_REQUEST_REFERENCE_DUPLICATION = -5,
-    NOT_ALLOWED_TO_REMOVE = -6 // only invoice creator can remove invoice
+    NOT_ALLOWED_TO_REMOVE = -6, // only invoice creator can remove invoice
+    IS_SECURED_MUST_BE_FALSE = -7
 };
 
 struct CreateInvoiceRequestResponse
 {
-	AssetCode asset;
+	BalanceID receiverBalance;
 	BalanceID senderBalance;
 
 	uint64 requestID;

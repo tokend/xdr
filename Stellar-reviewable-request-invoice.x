@@ -9,9 +9,11 @@ namespace stellar
 
 struct InvoiceRequest
 {
-    BalanceID receiverBalance;
+    AssetCode asset;
     AccountID sender;
     uint64 amount; // not allowed to set 0
+
+    bool isSecured;
 
     longstring details;
 

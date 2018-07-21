@@ -55,7 +55,8 @@ enum BillPayResultCode
     AMOUNT_MISMATCHED = -42, // amount does not match
     DESTINATION_BALANCE_MISMATCHED = -43, // invoice balance and payment balance do not match
     DESTINATION_ACCOUNT_MISMATCHED = -44, // invoice account and payment account do not match
-    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -45 // not allowed shift fee responsibility to destination
+    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -45, // not allowed shift fee responsibility to destination
+    SOURCE_BALANCE_MISMATCHED = -46 // source balance must match invoice sender account
 };
 
 union BillPayResult switch (BillPayResultCode code)

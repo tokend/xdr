@@ -113,7 +113,6 @@ enum ReviewRequestResultCode
 	INVALID_EXTERNAL_DETAILS = -7,
 	REQUESTOR_IS_BLOCKED = -8,
 	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
-	APPROVE_NOT_ALLOWED = -10, // approve not allowed, use other operation
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
@@ -139,7 +138,14 @@ enum ReviewRequestResultCode
 	INVALID_SALE_STATE = -80, // sale state must be "PROMOTION"
 
 	// Update sale end time requests
-    INVALID_SALE_NEW_END_TIME = -90 // new end time is before start time or current ledger close time
+    INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
+
+    // Invoice requests
+    ONLY_SENDER_CAN_APPROVE_INVOICE = -100, // only sender can approve invoice request
+    ALREADY_APPROVED = -101, // invoice status isSecured already true
+    BALANCE_NOT_FOUND = -102, // source balance not found
+    LOCKED_AMOUNT_OVERFLOW = -103, // cannot lock such amount
+    BALANCE_UNDERFUNDED = -104 // not enough amount on balance
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
