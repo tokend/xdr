@@ -39,9 +39,6 @@ struct TasksExt {
     uint32 allTasks;
     uint32 pendingTasks;
 
-    // Sequence number increases when the request is rejected
-    uint32 sequenceNumber;
-
     // External details vector consists of comments written by request reviewers
     longstring externalDetails<>;
 
