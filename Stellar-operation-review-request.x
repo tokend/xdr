@@ -138,6 +138,7 @@ enum ReviewRequestResultCode
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
+	SYSTEM_TASKS_NOT_ALLOWED = -43,
 
 	// Sale creation requests
 	BASE_ASSET_DOES_NOT_EXISTS = -50,
