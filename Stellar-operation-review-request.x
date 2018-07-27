@@ -81,6 +81,35 @@ struct ReviewerResponse {
     ext;
 };
 
+struct SaleExtended {
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ExtendedResult {
+    bool fulfilled;
+
+    union switch(ReviewableRequestType requestType) {
+    case SALE:
+        SaleExtended saleExtended;
+    } typeExt;
+
+   // Reserved for future use
+   union switch (LedgerVersion v)
+   {
+   case EMPTY_VERSION:
+       void;
+   }
+   ext;
+};
+
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -169,6 +198,8 @@ case SUCCESS:
 		    uint64 saleID;
 		case EMPTY_VERSION:
 			void;
+        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+            ExtendedResult extendedResult;
 		}
 		ext;
 	} success;
