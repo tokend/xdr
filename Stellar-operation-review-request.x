@@ -68,7 +68,7 @@ struct UpdateKYCDetails {
     ext;
 };
 
-struct ReviewerResponse {
+struct ReviewDetails {
     uint32 tasksToAdd;
     uint32 tasksToRemove;
     string externalDetails<>;
@@ -136,7 +136,7 @@ struct ReviewRequestOp
     case EMPTY_VERSION:
         void;
     case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        ReviewerResponse reviewerResponse;
+        ReviewDetails reviewDetails;
     }
     ext;
 };
