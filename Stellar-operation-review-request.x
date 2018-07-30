@@ -157,10 +157,30 @@ enum ReviewRequestResultCode
 
     // Invoice requests
     ONLY_SENDER_CAN_APPROVE_INVOICE = -100, // only sender can approve invoice request
-    ALREADY_APPROVED = -101, // invoice status isSecured already true
-    BALANCE_NOT_FOUND = -102, // source balance not found
-    LOCKED_AMOUNT_OVERFLOW = -103, // cannot lock such amount
-    BALANCE_UNDERFUNDED = -104 // not enough amount on balance
+    AMOUNT_MISMATCHED = -101, // amount does not match
+    DESTINATION_BALANCE_MISMATCHED = -102, // invoice balance and payment balance do not match
+    DESTINATION_ACCOUNT_MISMATCHED = -103, // invoice account and payment account do not match
+    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -104, // not allowed shift fee responsibility to destination
+    SOURCE_BALANCE_MISMATCHED = -105, // source balance must match invoice sender account
+    CONTRACT_NOT_FOUND = -106,
+    INVOICE_RECIEVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
+    // codes considered as "failure" for the payment operation
+    PAYMENT_V2_MALFORMED = -110, // bad input, requestID must be > 0
+    UNDERFUNDED = -111, // not enough funds in source account
+    LINE_FULL = -112, // destination would go above their limit
+    DESTINATION_BALANCE_NOT_FOUND = -113,
+    BALANCE_ASSETS_MISMATCHED = -114,
+    SRC_BALANCE_NOT_FOUND = -115, // source balance not found
+    REFERENCE_DUPLICATION = -116,
+    STATS_OVERFLOW = -117,
+    LIMITS_EXCEEDED = -118,
+    NOT_ALLOWED_BY_ASSET_POLICY = -119,
+    INVALID_DESTINATION_FEE = -120,
+    INVALID_DESTINATION_FEE_ASSET = -121, // destination fee asset must be the same as source balance asset
+    FEE_ASSET_MISMATCHED = -122,
+    INSUFFICIENT_FEE_AMOUNT = -123,
+    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
@@ -172,6 +192,8 @@ case SUCCESS:
 		{
 		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
 		    uint64 saleID;
+		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
+		    PaymentV2Response paymentV2Response;
 		case EMPTY_VERSION:
 			void;
 		}

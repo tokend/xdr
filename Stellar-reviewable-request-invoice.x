@@ -13,6 +13,7 @@ struct InvoiceRequest
     AccountID sender;
     uint64 amount; // not allowed to set 0
 
+    uint64 *contractID;
     longstring details;
 
     // reserved for future use
