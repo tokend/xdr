@@ -99,6 +99,8 @@ struct ExtendedResult {
     union switch(ReviewableRequestType requestType) {
     case SALE:
         SaleExtended saleExtended;
+    case NONE:
+        void;
     } typeExt;
 
    // Reserved for future use

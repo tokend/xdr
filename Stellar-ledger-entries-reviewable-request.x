@@ -31,7 +31,8 @@ enum ReviewableRequestType
 	UPDATE_KYC = 9,
 	UPDATE_SALE_DETAILS = 10,
 	UPDATE_PROMOTION = 11,
-	UPDATE_SALE_END_TIME = 12
+	UPDATE_SALE_END_TIME = 12,
+	NONE = 13 // use this request type in ReviewRequestOp extended result if additional info is not required
 };
 
 struct TasksExt {
