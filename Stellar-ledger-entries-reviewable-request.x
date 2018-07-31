@@ -14,6 +14,7 @@
 %#include "xdr/Stellar-reviewable-request-update-promotion.h"
 %#include "xdr/Stellar-reviewable-request-invoice.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-end-time.h"
+%#include "xdr/Stellar-reviewable-request-contract.h"
 
 namespace stellar
 {
@@ -33,7 +34,8 @@ enum ReviewableRequestType
 	UPDATE_SALE_DETAILS = 10,
 	UPDATE_PROMOTION = 11,
 	UPDATE_SALE_END_TIME = 12,
-	INVOICE = 13
+	INVOICE = 13,
+	CONTRACT = 14
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -75,6 +77,8 @@ struct ReviewableRequestEntry {
             InvoiceRequest invoiceRequest;
         case UPDATE_SALE_END_TIME:
             UpdateSaleEndTimeRequest updateSaleEndTimeRequest;
+        case CONTRACT:
+            ContractRequest contractRequest;
 	} body;
 
 	// reserved for future use

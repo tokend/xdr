@@ -7,25 +7,25 @@
 namespace stellar
 {
 
-/* Creates or deletes an invoice
+/* Creates or deletes an contract
 
 Threshold: med
 
-Result: ManageInvoiceRequestResult
+Result: ManageContractRequestResult
 
 */
 
-enum ManageInvoiceRequestAction
+enum ManageContractRequestAction
 {
     CREATE = 0,
     REMOVE = 1
 };
 
-struct ManageInvoiceRequestOp
+struct ManageContractRequestOp
 {
-    union switch (ManageInvoiceRequestAction action){
+    union switch (ManageContractRequestAction action){
     case CREATE:
-        InvoiceRequest invoiceRequest;
+        ContractRequest contractRequest;
     case REMOVE:
         uint64 requestID;
     } details;
@@ -39,27 +39,22 @@ struct ManageInvoiceRequestOp
     ext;
 };
 
-/******* ManageInvoiceRequest Result ********/
+/******* ManageContractRequest Result ********/
 
-enum ManageInvoiceRequestResultCode
+enum ManageContractRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    BALANCE_NOT_FOUND = -2, // sender balance not found
-    NOT_FOUND = -3, // not found invoice request, when try to remove
-    TOO_MANY_INVOICES = -4,
-    INVOICE_REQUEST_REFERENCE_DUPLICATION = -5,
-    NOT_ALLOWED_TO_REMOVE = -6 // only invoice creator can remove invoice
+    NOT_FOUND = -2, // not found contract request, when try to remove
+    CONTRACT_REQUEST_REFERENCE_DUPLICATION = -3,
+    NOT_ALLOWED_TO_REMOVE = -4 // only contract creator can remove contract
 };
 
-struct CreateInvoiceRequestResponse
+struct CreateContractRequestResponse
 {
-	BalanceID receiverBalance;
-	BalanceID senderBalance;
-
 	uint64 requestID;
 
 	union switch (LedgerVersion v)
@@ -70,15 +65,15 @@ struct CreateInvoiceRequestResponse
     ext;
 };
 
-union ManageInvoiceRequestResult switch (ManageInvoiceRequestResultCode code)
+union ManageContractRequestResult switch (ManageContractRequestResultCode code)
 {
 case SUCCESS:
     struct
     {
-        union switch (ManageInvoiceRequestAction action)
+        union switch (ManageContractRequestAction action)
         {
         case CREATE:
-            CreateInvoiceRequestResponse response;
+            CreateContractRequestResponse response;
         case REMOVE:
             void;
         } details;

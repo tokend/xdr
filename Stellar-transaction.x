@@ -30,7 +30,8 @@
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
-%#include "xdr/Stellar-operation-bill-pay.h"
+%#include "xdr/Stellar-operation-add-contract-details.h"
+%#include "xdr/Stellar-operation-manage-contract-request.h"
 
 
 namespace stellar
@@ -101,8 +102,10 @@ struct Operation
         ManageSaleOp manageSaleOp;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestOp createManageLimitsRequestOp;
-    case BILL_PAY:
-        BillPayOp billPayOp;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestOp manageContractRequestOp;
+    case ADD_CONTRACT_DETAILS:
+        AddContractDetailsOp addContractDetailsOp;
     }
     body;
 };
@@ -249,8 +252,10 @@ case opINNER:
         ManageSaleResult manageSaleResult;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestResult createManageLimitsRequestResult;
-    case BILL_PAY:
-        BillPayResult billPayResult;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestResult manageContractRequestResult;
+    case ADD_CONTRACT_DETAILS:
+        AddContractDetailsResult addContractDetailsResult;
     }
     tr;
 default:
