@@ -9,6 +9,7 @@ namespace stellar
 
 struct ContractRequest
 {
+    AccountID customer;
     longstring details;
 
     // reserved for future use
