@@ -180,7 +180,11 @@ enum ReviewRequestResultCode
     FEE_ASSET_MISMATCHED = -122,
     INSUFFICIENT_FEE_AMOUNT = -123,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
+
+    //Contract requests
+    ONLY_CUSTOMER_CAN_APPROVE_CONTRACT = -140,
+    ONLY_CUSTOMER_CAN_PERMANENT_REJECT_CONTRACT = -141
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
@@ -194,6 +198,8 @@ case SUCCESS:
 		    uint64 saleID;
 		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
 		    PaymentV2Response paymentV2Response;
+		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
+		    uint64 contractID;
 		case EMPTY_VERSION:
 			void;
 		}

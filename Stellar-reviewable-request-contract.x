@@ -12,6 +12,9 @@ struct ContractRequest
     AccountID customer;
     longstring details;
 
+    uint64 startTime;
+    uint64 endTime;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {

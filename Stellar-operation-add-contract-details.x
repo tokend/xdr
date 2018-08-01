@@ -17,6 +17,7 @@ Result: AddContractDetailsResult
 
 struct AddContractDetailsOp
 {
+    uint64 contractID;
     longstring details;
 
 	// reserved for future use
@@ -37,7 +38,8 @@ enum AddContractDetailsResultCode
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    NOT_FOUND = -2 // not found contract
+    NOT_FOUND = -2, // not found contract
+    NOT_ALLOWED = -3 // only contractor or customer can add details
 };
 
 union AddContractDetailsResult switch (AddContractDetailsResultCode code)

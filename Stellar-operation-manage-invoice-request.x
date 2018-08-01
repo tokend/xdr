@@ -52,7 +52,8 @@ enum ManageInvoiceRequestResultCode
     NOT_FOUND = -3, // not found invoice request, when try to remove
     TOO_MANY_INVOICES = -4,
     INVOICE_REQUEST_REFERENCE_DUPLICATION = -5,
-    NOT_ALLOWED_TO_REMOVE = -6 // only invoice creator can remove invoice
+    NOT_ALLOWED_TO_REMOVE = -6, // only invoice creator can remove invoice
+    CONTRACT_NOT_FOUND = -7
 };
 
 struct CreateInvoiceRequestResponse
