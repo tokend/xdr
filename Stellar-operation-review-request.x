@@ -156,7 +156,6 @@ enum ReviewRequestResultCode
     INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
 
     // Invoice requests
-    ONLY_SENDER_CAN_APPROVE_INVOICE = -100, // only sender can approve invoice request
     AMOUNT_MISMATCHED = -101, // amount does not match
     DESTINATION_BALANCE_MISMATCHED = -102, // invoice balance and payment balance do not match
     DESTINATION_ACCOUNT_MISMATCHED = -103, // invoice account and payment account do not match
@@ -180,11 +179,7 @@ enum ReviewRequestResultCode
     FEE_ASSET_MISMATCHED = -122,
     INSUFFICIENT_FEE_AMOUNT = -123,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
-
-    //Contract requests
-    ONLY_CUSTOMER_CAN_APPROVE_CONTRACT = -140,
-    ONLY_CUSTOMER_CAN_PERMANENT_REJECT_CONTRACT = -141
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
