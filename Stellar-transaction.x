@@ -160,6 +160,8 @@ struct Transaction
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        uint64 maxTotalFee;
     }
     ext;
 };
@@ -264,10 +266,13 @@ enum TransactionResultCode
 
     txBAD_AUTH = -5,             // too few valid signatures / wrong network
     txNO_ACCOUNT = -6,           // source account not found
-    txBAD_AUTH_EXTRA = -7,      // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,      // an unknown error occured
-	txACCOUNT_BLOCKED = -9,     // account is blocked and cannot be source of tx
-    txDUPLICATION = -10         // if timing is stored
+    txBAD_AUTH_EXTRA = -7,       // unused signatures attached to transaction
+    txINTERNAL_ERROR = -8,       // an unknown error occured
+	txACCOUNT_BLOCKED = -9,      // account is blocked and cannot be source of tx
+    txDUPLICATION = -10,         // if timing is stored
+    txINSUFFICIENT_FEE = -11,    // the actual total fee amount is greater than the max total fee amount, provided by the source
+    txSOURCE_UNDERFUNDED = -12,  // not enough tx fee asset on source balance
+    txCOMMISSION_LINE_FULL = -13 // commission tx fee asset balance amount overflow
 };
 
 struct TransactionResult
