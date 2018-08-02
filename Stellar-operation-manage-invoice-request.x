@@ -54,7 +54,8 @@ enum ManageInvoiceRequestResultCode
     INVOICE_REQUEST_REFERENCE_DUPLICATION = -5,
     NOT_ALLOWED_TO_REMOVE = -6, // only invoice creator can remove invoice
     CONTRACT_NOT_FOUND = -7,
-    ONLY_CONTRACTOR_CAN_ATTACH_INVOICE_TO_CONTRACT = -8
+    ONLY_CONTRACTOR_CAN_ATTACH_INVOICE_TO_CONTRACT = -8,
+    SENDER_ACCOUNT_MISMATCHED = -9
 };
 
 struct CreateInvoiceRequestResponse

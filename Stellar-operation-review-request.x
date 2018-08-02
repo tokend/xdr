@@ -162,7 +162,7 @@ enum ReviewRequestResultCode
     REQUIRED_SOURCE_PAY_FOR_DESTINATION = -104, // not allowed shift fee responsibility to destination
     SOURCE_BALANCE_MISMATCHED = -105, // source balance must match invoice sender account
     CONTRACT_NOT_FOUND = -106,
-    INVOICE_RECIEVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
+    INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
     // codes considered as "failure" for the payment operation
     PAYMENT_V2_MALFORMED = -110, // bad input, requestID must be > 0
     UNDERFUNDED = -111, // not enough funds in source account
