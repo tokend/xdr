@@ -70,7 +70,8 @@ enum LedgerVersion {
 	ALLOW_CLOSE_SALE_WITH_NON_ZERO_BALANCE = 36,
 	ALLOW_TO_UPDATE_VOTING_SALES_AS_PROMOTION = 37,
 	ALLOW_TO_ISSUE_AFTER_SALE = 38,
-	FIX_PAYMENT_V2_SEND_TO_SELF = 39
+	FIX_PAYMENT_V2_SEND_TO_SELF = 39,
+	ADD_TRANSACTION_FEE = 40
 };
 
 // variable size as the size depends on the signature scheme used
