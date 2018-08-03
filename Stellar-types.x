@@ -157,7 +157,7 @@ enum OperationType
     MANAGE_KEY_VALUE = 27,
     CREATE_MANAGE_LIMITS_REQUEST = 28,
     MANAGE_CONTRACT_REQUEST = 29,
-    ADD_CONTRACT_DETAILS = 30
+    MANAGE_CONTRACT = 30
 };
 
 struct DecoratedSignature

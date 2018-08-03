@@ -30,7 +30,7 @@
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
-%#include "xdr/Stellar-operation-add-contract-details.h"
+%#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 
 
@@ -104,8 +104,8 @@ struct Operation
         CreateManageLimitsRequestOp createManageLimitsRequestOp;
     case MANAGE_CONTRACT_REQUEST:
         ManageContractRequestOp manageContractRequestOp;
-    case ADD_CONTRACT_DETAILS:
-        AddContractDetailsOp addContractDetailsOp;
+    case MANAGE_CONTRACT:
+        ManageContractOp manageContractOp;
     }
     body;
 };
@@ -254,8 +254,8 @@ case opINNER:
         CreateManageLimitsRequestResult createManageLimitsRequestResult;
     case MANAGE_CONTRACT_REQUEST:
         ManageContractRequestResult manageContractRequestResult;
-    case ADD_CONTRACT_DETAILS:
-        AddContractDetailsResult addContractDetailsResult;
+    case MANAGE_CONTRACT:
+        ManageContractResult manageContractResult;
     }
     tr;
 default:
