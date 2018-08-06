@@ -275,6 +275,34 @@ enum TransactionResultCode
     txCOMMISSION_LINE_FULL = -13 // commission tx fee asset balance amount overflow
 };
 
+struct OperationFee
+{
+    Operation operation;
+    uint64 amount;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct TransactionFee
+{
+    AssetCode assetCode;
+    OperationFee operationFees<100>;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct TransactionResult
 {
     int64 feeCharged; // actual fee charged for the transaction
@@ -294,6 +322,8 @@ struct TransactionResult
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        TransactionFee transactionFee;
     }
     ext;
 };
