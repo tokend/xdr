@@ -5,7 +5,7 @@ namespace stellar
 
 enum ContractStatus
 {
-    NO_CONFIRMATION = 0,
+    NO_CONFIRMATIONS = 0,
     CUSTOMER_CONFIRMED = 1,
     CONTRACTOR_CONFIRMED = 2,
     BOTH_CONFIRMED = 3,

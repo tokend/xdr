@@ -60,7 +60,8 @@ enum ManageContractResultCode
     DETAILS_TOO_LONG = -5,
     ALREADY_BOTH_CONFIRMED = -6,
     ALREADY_CONTRACTOR_CONFIRMED = -7,
-    ALREADY_CUSTOMER_CONFIRMED = -8
+    ALREADY_CUSTOMER_CONFIRMED = -8,
+    INVOICE_NOT_APPROVED = -9 // all contract invoices must be approved
 };
 
 struct ManageContractResponse

@@ -14,6 +14,7 @@ struct InvoiceRequest
     uint64 amount; // not allowed to set 0
 
     uint64 *contractID;
+    bool isApproved;
     longstring details;
 
     // reserved for future use
