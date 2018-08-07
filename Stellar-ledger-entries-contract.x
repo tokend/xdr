@@ -18,13 +18,20 @@ struct ContractEntry
 
     AccountID contractor;
     AccountID customer;
-    AccountID judge;
+    AccountID escrow;
 
     uint64 startTime;
     uint64 endTime;
     longstring details<>;
 
-    ContractStatus status;
+    union switch (ContractStatus status)
+    {
+    case DISPUTING:
+        AccountID disputer;
+    default:
+        void;
+    }
+    statusInfo;
 
     union switch (LedgerVersion v)
     {
