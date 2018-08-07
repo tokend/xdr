@@ -18,7 +18,8 @@ enum ManageContractAction
 {
     ADD_DETAILS = 0,
     CONFIRM_COMPLETED = 1,
-    START_DISPUTE = 2
+    START_DISPUTE = 2,
+    RESOLVE_DISPUTE = 3
 };
 
 struct ManageContractOp
@@ -33,6 +34,8 @@ struct ManageContractOp
         void;
     case START_DISPUTE:
         longstring disputeReason;
+    case RESOLVE_DISPUTE:
+        bool isRevert;
     }
     data;
 
@@ -68,11 +71,9 @@ struct ManageContractResponse
 {
     union switch (ManageContractAction action)
     {
-    case ADD_DETAILS:
-        void;
     case CONFIRM_COMPLETED:
         bool isCompleted;
-    case START_DISPUTE:
+    default:
         void;
     }
     data;

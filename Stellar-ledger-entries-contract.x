@@ -3,13 +3,26 @@
 namespace stellar
 {
 
-enum ContractStatus
+enum ContractState
 {
     NO_CONFIRMATIONS = 0,
     CUSTOMER_CONFIRMED = 1,
     CONTRACTOR_CONFIRMED = 2,
     BOTH_CONFIRMED = 3,
     DISPUTING = 4
+};
+
+struct DisputeDetails
+{
+    AccountID disputer;
+    longstring reason;
+
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 struct ContractEntry
@@ -24,14 +37,14 @@ struct ContractEntry
     uint64 endTime;
     longstring details<>;
 
-    union switch (ContractStatus status)
+    union switch (ContractState state)
     {
     case DISPUTING:
-        AccountID disputer;
+        DisputeDetails disputeDetails;
     default:
         void;
     }
-    statusInfo;
+    stateInfo;
 
     union switch (LedgerVersion v)
     {
