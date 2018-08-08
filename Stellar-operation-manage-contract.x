@@ -61,10 +61,13 @@ enum ManageContractResultCode
     NOT_ALLOWED = -3, // only contractor or customer can add details
     TOO_MANY_CONTRACT_DETAILS = -4,
     DETAILS_TOO_LONG = -5,
-    ALREADY_BOTH_CONFIRMED = -6,
     ALREADY_CONTRACTOR_CONFIRMED = -7,
     ALREADY_CUSTOMER_CONFIRMED = -8,
-    INVOICE_NOT_APPROVED = -9 // all contract invoices must be approved
+    INVOICE_NOT_APPROVED = -9, // all contract invoices must be approved
+    DISPUTE_ALREADY_STARTED = -10,
+    RESOLVE_DISPUTE_NOW_ALLOWED = -11,
+    CONFIRM_NOT_ALLOWED = -12,
+    CUSTOMER_BALANCE_OVERFLOW = -13
 };
 
 struct ManageContractResponse
