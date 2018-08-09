@@ -158,7 +158,7 @@ enum ReviewRequestResultCode
     // Invoice requests
     AMOUNT_MISMATCHED = -101, // amount does not match
     DESTINATION_BALANCE_MISMATCHED = -102, // invoice balance and payment balance do not match
-    DESTINATION_ACCOUNT_MISMATCHED = -103, // invoice account and payment account do not match
+    NOT_ALLOWED_ACCOUNT_DESTINATION = -103,
     REQUIRED_SOURCE_PAY_FOR_DESTINATION = -104, // not allowed shift fee responsibility to destination
     SOURCE_BALANCE_MISMATCHED = -105, // source balance must match invoice sender account
     CONTRACT_NOT_FOUND = -106,

@@ -49,8 +49,9 @@ enum ManageContractRequestResultCode
     // codes considered as "failure" for the operation
     MALFORMED = -1,
     NOT_FOUND = -2, // not found contract request, when try to remove
-    CONTRACT_REQUEST_REFERENCE_DUPLICATION = -3,
-    NOT_ALLOWED_TO_REMOVE = -4 // only contract creator can remove contract
+    TOO_MANY_CONTRACTS = -3,
+    NOT_ALLOWED_TO_REMOVE = -4, // only contract creator can remove contract
+    DETAILS_TOO_LONG = -5
 };
 
 struct CreateContractRequestResponse
