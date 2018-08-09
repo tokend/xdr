@@ -8,7 +8,6 @@ enum ContractState
     NO_CONFIRMATIONS = 0,
     CUSTOMER_CONFIRMED = 1,
     CONTRACTOR_CONFIRMED = 2,
-    BOTH_CONFIRMED = 3,
     DISPUTING = 4
 };
 
@@ -36,6 +35,7 @@ struct ContractEntry
     uint64 startTime;
     uint64 endTime;
     longstring details<>;
+    uint64 invoiceRequestsIDs<>;
 
     union switch (ContractState state)
     {

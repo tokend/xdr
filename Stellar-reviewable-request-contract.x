@@ -10,6 +10,7 @@ namespace stellar
 struct ContractRequest
 {
     AccountID customer;
+    AccountID escrow;
     longstring details;
 
     uint64 startTime;
