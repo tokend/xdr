@@ -6,7 +6,6 @@
 %#include "xdr/Stellar-ledger-entries-account.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
-%#include "xdr/Stellar-ledger-entries-payment-request.h"
 %#include "xdr/Stellar-ledger-entries-asset.h"
 %#include "xdr/Stellar-ledger-entries-asset-pair.h"
 %#include "xdr/Stellar-ledger-entries-reference.h"
@@ -79,8 +78,6 @@ struct LedgerEntry
         FeeEntry feeState;
     case BALANCE:
         BalanceEntry balance;
-    case PAYMENT_REQUEST:
-        PaymentRequestEntry paymentRequest;
     case ASSET:
         AssetEntry asset;
     case REFERENCE_ENTRY:

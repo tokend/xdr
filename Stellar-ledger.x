@@ -145,17 +145,6 @@ case BALANCE:
 		}
 		ext;
     } balance;
-case PAYMENT_REQUEST:
-    struct
-    {
-		uint64 paymentID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } paymentRequest;
 case ASSET:
     struct
     {
