@@ -8,7 +8,9 @@ enum ContractState
     NO_CONFIRMATIONS = 0,
     CUSTOMER_CONFIRMED = 1,
     CONTRACTOR_CONFIRMED = 2,
-    DISPUTING = 4
+    DISPUTING = 4,
+    REVERT_RESOLVE = 8,
+    NOT_REVERT_RESOLVE = 16
 };
 
 struct DisputeDetails
