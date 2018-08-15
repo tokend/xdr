@@ -21,11 +21,29 @@ enum ManageInvoiceRequestAction
     REMOVE = 1
 };
 
+struct InvoiceCreationRequest
+{
+    AssetCode asset;
+    AccountID sender;
+    uint64 amount; // not allowed to set 0
+
+    uint64 *contractID;
+    longstring details;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ManageInvoiceRequestOp
 {
     union switch (ManageInvoiceRequestAction action){
     case CREATE:
-        InvoiceRequest invoiceRequest;
+        InvoiceCreationRequest invoiceRequest;
     case REMOVE:
         uint64 requestID;
     } details;
