@@ -54,6 +54,7 @@ struct AMLAlertDetails {
     ext;
 };
 
+// DEPRECATED
 struct UpdateKYCDetails {
     uint32 tasksToAdd;
     uint32 tasksToRemove;
@@ -65,6 +66,50 @@ struct UpdateKYCDetails {
         void;
     }
     ext;
+};
+
+struct ReviewDetails {
+    uint32 tasksToAdd;
+    uint32 tasksToRemove;
+    string externalDetails<>;
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct SaleExtended {
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ExtendedResult {
+    bool fulfilled;
+
+    union switch(ReviewableRequestType requestType) {
+    case SALE:
+        SaleExtended saleExtended;
+    case NONE:
+        void;
+    } typeExt;
+
+   // Reserved for future use
+   union switch (LedgerVersion v)
+   {
+   case EMPTY_VERSION:
+       void;
+   }
+   ext;
 };
 
 struct ReviewRequestOp
@@ -92,6 +137,8 @@ struct ReviewRequestOp
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+        ReviewDetails reviewDetails;
     }
     ext;
 };
@@ -122,6 +169,7 @@ enum ReviewRequestResultCode
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
+	SYSTEM_TASKS_NOT_ALLOWED = -43,
 
 	// Sale creation requests
 	BASE_ASSET_DOES_NOT_EXISTS = -50,
@@ -152,6 +200,8 @@ case SUCCESS:
 		    uint64 saleID;
 		case EMPTY_VERSION:
 			void;
+        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+            ExtendedResult extendedResult;
 		}
 		ext;
 	} success;

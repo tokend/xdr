@@ -31,7 +31,25 @@ enum ReviewableRequestType
 	UPDATE_KYC = 9,
 	UPDATE_SALE_DETAILS = 10,
 	UPDATE_PROMOTION = 11,
-	UPDATE_SALE_END_TIME = 12
+	UPDATE_SALE_END_TIME = 12,
+	NONE = 13 // use this request type in ReviewRequestOp extended result if additional info is not required
+};
+
+struct TasksExt {
+    // Tasks are represented by a bitmask
+    uint32 allTasks;
+    uint32 pendingTasks;
+
+    // External details vector consists of comments written by request reviewers
+    longstring externalDetails<>;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -78,6 +96,8 @@ struct ReviewableRequestEntry {
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+        TasksExt tasksExt;
     }
     ext;
 };
