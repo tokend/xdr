@@ -7,22 +7,14 @@
 namespace stellar
 {
 
-enum InvoiceState
+struct ContractRequest
 {
-    INVOICE_NEEDS_PAYMENT = 0,
-    INVOICE_NEEDS_PAYMENT_REVIEW = 1
-};
+    AccountID customer;
+    AccountID escrow;
+    longstring details;
 
-
-struct InvoiceEntry
-{
-    uint64 invoiceID;
-    AccountID receiverAccount;
-    BalanceID receiverBalance;
-	AccountID sender;
-    int64 amount;
-    
-    InvoiceState state;
+    uint64 startTime;
+    uint64 endTime;
 
     // reserved for future use
     union switch (LedgerVersion v)
