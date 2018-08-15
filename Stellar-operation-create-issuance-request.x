@@ -10,7 +10,7 @@ namespace stellar
 
 /* CreateIssuanceRequestOp
 
-    Creates or deletes issuance request
+    Creates new issuance request
 
     Threshold: high
 
@@ -25,6 +25,8 @@ struct CreateIssuanceRequestOp
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
+        uint32* allTasks;
     }
     ext;
 };
@@ -47,7 +49,9 @@ enum CreateIssuanceRequestResultCode
 	INVALID_EXTERNAL_DETAILS = -8, // external details size exceeds max allowed
 	FEE_EXCEEDS_AMOUNT = -9, // fee more than amount to issue
     REQUIRES_KYC = -10, // asset requires receiver to have KYC
-    REQUIRES_VERIFICATION = -11 //asset requires receiver to be verified
+    REQUIRES_VERIFICATION = -11, //asset requires receiver to be verified
+    ISSUANCE_TASKS_NOT_FOUND = -12, // issuance tasks have not been provided by the source and don't exist in 'KeyValue' table
+    SYSTEM_TASKS_NOT_ALLOWED = -13
 };
 
 struct CreateIssuanceRequestSuccess {
