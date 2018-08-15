@@ -7,7 +7,8 @@ enum StatsOpType
 {
     PAYMENT_OUT = 1,
     WITHDRAW = 2,
-    SPEND = 3
+    SPEND = 3,
+    DEPOSIT = 4
 };
 
 struct LimitsV2Entry
