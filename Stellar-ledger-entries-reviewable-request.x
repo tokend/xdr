@@ -12,7 +12,9 @@
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
 %#include "xdr/Stellar-reviewable-request-update-promotion.h"
+%#include "xdr/Stellar-reviewable-request-invoice.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-end-time.h"
+%#include "xdr/Stellar-reviewable-request-contract.h"
 
 namespace stellar
 {
@@ -32,7 +34,10 @@ enum ReviewableRequestType
 	UPDATE_SALE_DETAILS = 10,
 	UPDATE_PROMOTION = 11,
 	UPDATE_SALE_END_TIME = 12,
-	NONE = 13 // use this request type in ReviewRequestOp extended result if additional info is not required
+	NONE = 13, // use this request type in ReviewRequestOp extended result if additional info is not required
+	INVOICE = 14,
+	CONTRACT = 15
+
 };
 
 struct TasksExt {
@@ -87,8 +92,12 @@ struct ReviewableRequestEntry {
             UpdateSaleDetailsRequest updateSaleDetailsRequest;
         case UPDATE_PROMOTION:
             PromotionUpdateRequest promotionUpdateRequest;
+        case INVOICE:
+            InvoiceRequest invoiceRequest;
         case UPDATE_SALE_END_TIME:
             UpdateSaleEndTimeRequest updateSaleEndTimeRequest;
+        case CONTRACT:
+            ContractRequest contractRequest;
 	} body;
 
 	// reserved for future use
