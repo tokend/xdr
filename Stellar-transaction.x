@@ -10,7 +10,6 @@
 %#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
-%#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
 %#include "xdr/Stellar-operation-create-preissuance-request.h"
 %#include "xdr/Stellar-operation-create-issuance-request.h"
@@ -18,7 +17,7 @@
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
-%#include "xdr/Stellar-operation-manage-invoice.h"
+%#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
@@ -30,6 +29,8 @@
 %#include "xdr/Stellar-operation-payment-v2.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
+%#include "xdr/Stellar-operation-manage-contract.h"
+%#include "xdr/Stellar-operation-manage-contract-request.h"
 
 
 namespace stellar
@@ -62,8 +63,6 @@ struct Operation
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case MANAGE_BALANCE:
 		ManageBalanceOp manageBalanceOp;
-	case REVIEW_PAYMENT_REQUEST:
-		ReviewPaymentRequestOp reviewPaymentRequestOp;
     case MANAGE_ASSET:
         ManageAssetOp manageAssetOp;
     case CREATE_PREISSUANCE_REQUEST:
@@ -76,8 +75,8 @@ struct Operation
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
 		ManageOfferOp manageOfferOp;
-    case MANAGE_INVOICE:
-        ManageInvoiceOp manageInvoiceOp;
+    case MANAGE_INVOICE_REQUEST:
+        ManageInvoiceRequestOp manageInvoiceRequestOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
 	case CREATE_SALE_REQUEST:
@@ -100,6 +99,10 @@ struct Operation
         ManageSaleOp manageSaleOp;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestOp createManageLimitsRequestOp;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestOp manageContractRequestOp;
+    case MANAGE_CONTRACT:
+        ManageContractOp manageContractOp;
     }
     body;
 };
@@ -208,8 +211,6 @@ case opINNER:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case MANAGE_BALANCE:
         ManageBalanceResult manageBalanceResult;
-    case REVIEW_PAYMENT_REQUEST:
-        ReviewPaymentRequestResult reviewPaymentRequestResult;
     case MANAGE_ASSET:
         ManageAssetResult manageAssetResult;
     case CREATE_PREISSUANCE_REQUEST:
@@ -222,8 +223,8 @@ case opINNER:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
 		ManageOfferResult manageOfferResult;
-	case MANAGE_INVOICE:
-		ManageInvoiceResult manageInvoiceResult;
+	case MANAGE_INVOICE_REQUEST:
+		ManageInvoiceRequestResult manageInvoiceRequestResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;
 	case CREATE_SALE_REQUEST:
@@ -246,6 +247,10 @@ case opINNER:
         ManageSaleResult manageSaleResult;
     case CREATE_MANAGE_LIMITS_REQUEST:
         CreateManageLimitsRequestResult createManageLimitsRequestResult;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestResult manageContractRequestResult;
+    case MANAGE_CONTRACT:
+        ManageContractResult manageContractResult;
     }
     tr;
 default:
