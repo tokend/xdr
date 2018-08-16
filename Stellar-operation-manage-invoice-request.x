@@ -69,6 +69,7 @@ enum ManageInvoiceRequestResultCode
     BALANCE_NOT_FOUND = -2, // sender balance not found
     NOT_FOUND = -3, // not found invoice request, when try to remove
     TOO_MANY_INVOICES = -4,
+    DETAILS_TOO_LONG = -5,
     NOT_ALLOWED_TO_REMOVE = -6, // only invoice creator can remove invoice
     CONTRACT_NOT_FOUND = -7,
     ONLY_CONTRACTOR_CAN_ATTACH_INVOICE_TO_CONTRACT = -8,
