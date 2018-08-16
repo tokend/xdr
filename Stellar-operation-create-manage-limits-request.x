@@ -26,6 +26,8 @@ struct CreateManageLimitsRequestOp
 	{
 	case EMPTY_VERSION:
 		void;
+    case ALLOW_TO_UPDATE_AND_REJECT_LIMITS_UPDATE_REQUESTS:
+        uint64 requestID;
 	}
 	ext;
 
@@ -37,8 +39,12 @@ enum CreateManageLimitsRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
+
     // codes considered as "failure" for the operation
-	MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1
+	MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1,
+    MANAGE_LIMITS_REQUEST_NOT_FOUND = -2,
+    INVALID_DETAILS = -3, // details must be valid json
+    INVALID_MANAGE_LIMITS_REQUEST_VERSION = -4 // a version of the request is higher than ledger version
 };
 
 
