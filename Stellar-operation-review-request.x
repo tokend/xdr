@@ -186,7 +186,11 @@ enum ReviewRequestResultCode
 	INVALID_SALE_STATE = -80, // sale state must be "PROMOTION"
 
 	// Update sale end time requests
-    INVALID_SALE_NEW_END_TIME = -90 // new end time is before start time or current ledger close time
+    INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
+
+    // Limits update requests
+    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 100, // limits cannot be created for account ID and account type simultaneously
+    INVALID_LIMITS = 101
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
