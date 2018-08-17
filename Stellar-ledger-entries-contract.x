@@ -37,6 +37,7 @@ struct ContractEntry
     uint64 startTime;
     uint64 endTime;
     uint64 invoiceRequestsIDs<>;
+    longstring initialDetails;
 
     uint32 state;
     DisputeDetails *disputeDetails;
