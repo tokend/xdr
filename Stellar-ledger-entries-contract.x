@@ -13,19 +13,6 @@ enum ContractState
     NOT_REVERTING_RESOLVE = 16
 };
 
-struct DisputeDetails
-{
-    AccountID disputer;
-    longstring reason;
-
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct ContractEntry
 {
     uint64 contractID;
@@ -40,7 +27,6 @@ struct ContractEntry
     longstring initialDetails;
 
     uint32 state;
-    DisputeDetails *disputeDetails;
 
     union switch (LedgerVersion v)
     {
