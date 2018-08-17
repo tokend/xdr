@@ -59,15 +59,12 @@ enum ManageContractResultCode
     MALFORMED = -1,
     NOT_FOUND = -2, // not found contract
     NOT_ALLOWED = -3, // only contractor or customer can add details
-    TOO_MANY_CONTRACT_DETAILS = -4,
-    DETAILS_TOO_LONG = -5,
-    DISPUTE_REASON_TOO_LONG = -6,
-    ALREADY_CONFIRMED = -7,
-    INVOICE_NOT_APPROVED = -9, // all contract invoices must be approved
-    DISPUTE_ALREADY_STARTED = -10,
-    RESOLVE_DISPUTE_NOW_ALLOWED = -11,
-    CONFIRM_NOT_ALLOWED = -12,
-    CUSTOMER_BALANCE_OVERFLOW = -13
+    DETAILS_TOO_LONG = -4,
+    DISPUTE_REASON_TOO_LONG = -5,
+    ALREADY_CONFIRMED = -6,
+    INVOICE_NOT_APPROVED = -7, // all contract invoices must be approved
+    DISPUTE_ALREADY_STARTED = -8,
+    CUSTOMER_BALANCE_OVERFLOW = -9
 };
 
 struct ManageContractResponse
