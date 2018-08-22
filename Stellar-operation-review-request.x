@@ -212,6 +212,7 @@ enum ReviewRequestResultCode
     CONTRACT_NOT_FOUND = -106,
     INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
     INVOICE_ALREADY_APPROVED = -108,
+
     // codes considered as "failure" for the payment operation
     PAYMENT_V2_MALFORMED = -110, // bad input, requestID must be > 0
     UNDERFUNDED = -111, // not enough funds in source account
@@ -229,7 +230,11 @@ enum ReviewRequestResultCode
     INSUFFICIENT_FEE_AMOUNT = -123,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
-    DESTINATION_ACCOUNT_NOT_FOUND = -126
+    DESTINATION_ACCOUNT_NOT_FOUND = -126,
+
+    // Limits update requests
+    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
+    INVALID_LIMITS = 131
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
