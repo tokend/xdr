@@ -142,6 +142,8 @@ struct ReviewRequestOp
         UpdateKYCDetails updateKYC;
     case INVOICE:
         BillPayDetails billPay;
+    case CONTRACT:
+        ContractDetails contract;
 	default:
 		void;
 	} requestDetails;
