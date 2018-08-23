@@ -13,12 +13,27 @@ enum ManageAssetAction
     CREATE_ASSET_CREATION_REQUEST = 0,
     CREATE_ASSET_UPDATE_REQUEST = 1,
 	CANCEL_ASSET_REQUEST = 2,
-	CHANGE_PREISSUED_ASSET_SIGNER = 3
+	CHANGE_PREISSUED_ASSET_SIGNER = 3,
+	UPDATE_MAX_ISSUANCE = 4
 };
 
 // CancelAssetRequest - cancels update or create request
 struct CancelAssetRequest {
 
+	// reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+// UpdateMaxIssuance - updates max issuance of the asset. Not allowed by default - hash of transaction must be included in the TX_SKIP_SIG_CHECK
+struct UpdateMaxIssuance {
+
+	AssetCode assetCode;
+	uint64 maxIssuanceAmount;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
@@ -50,6 +65,8 @@ struct ManageAssetOp
 		CancelAssetRequest cancelRequest;
 	case CHANGE_PREISSUED_ASSET_SIGNER:
 		AssetChangePreissuedSigner changePreissuedSigner;
+    case UPDATE_MAX_ISSUANCE:
+        UpdateMaxIssuance updateMaxIssuance;
 	} request;
 
 	// reserved for future use

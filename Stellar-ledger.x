@@ -145,17 +145,6 @@ case BALANCE:
 		}
 		ext;
     } balance;
-case PAYMENT_REQUEST:
-    struct
-    {
-		uint64 paymentID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } paymentRequest;
 case ASSET:
     struct
     {
@@ -236,16 +225,6 @@ case OFFER_ENTRY:
 		uint64 offerID;
 		AccountID ownerID;
 	} offer;
-case INVOICE:
-    struct {
-        uint64 invoiceID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } invoice;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;
@@ -307,6 +286,56 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 		}
 		ext;
 	} externalSystemAccountIDPoolEntry;
+case SALE_ANTE:
+    struct {
+        uint64 saleID;
+        BalanceID participantBalanceID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } saleAnte;
+case LIMITS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } limitsV2;
+case STATISTICS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } statisticsV2;
+case PENDING_STATISTICS:
+    struct {
+        uint64 statisticsID;
+        uint64 requestID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } pendingStatistics;
+case CONTRACT:
+    struct {
+        uint64 contractID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } contract;
 case IDENTITY_POLICY:
     struct {
 		uint64 id;
