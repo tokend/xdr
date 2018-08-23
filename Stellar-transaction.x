@@ -282,7 +282,7 @@ enum TransactionResultCode
 
 struct OperationFee
 {
-    Operation operation;
+    OperationType operationType;
     uint64 amount;
 
     // reserved for future use
