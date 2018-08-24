@@ -69,6 +69,18 @@ struct UpdateKYCDetails {
     ext;
 };
 
+struct ContractDetails {
+    longstring details;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct BillPayDetails {
     PaymentOpV2 paymentDetails;
 
@@ -236,7 +248,10 @@ enum ReviewRequestResultCode
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
-    INVALID_LIMITS = 131
+    INVALID_LIMITS = 131,
+
+    // Contract requests
+    CONTRACT_DETAILS_TOO_LONG = -140 // customer details reached length limit
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)

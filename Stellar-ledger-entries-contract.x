@@ -32,6 +32,8 @@ struct ContractEntry
     {
     case EMPTY_VERSION:
         void;
+    case ADD_CUSTOMER_DETAILS_TO_CONTRACT:
+        longstring customerDetails;
     }
     ext;
 };
