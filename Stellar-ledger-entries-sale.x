@@ -15,8 +15,18 @@ enum SaleState {
 
 enum SaleType {
 	BASIC_SALE = 1, // sale creator specifies price for each quote asset
-	CROWD_FUNDING = 2 // sale creator does not specify price,
+	CROWD_FUNDING = 2, // sale creator does not specify price,
 	                  // price is defined on sale close based on amount of base asset to be sold and amount of quote assets collected
+    FIXED_PRICE=3
+};
+
+struct FixedPriceSale {
+	union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 struct CrowdFundingSale {
@@ -37,6 +47,7 @@ struct BasicSale {
     ext;
 };
 
+
 struct SaleTypeExt {
 	union switch (SaleType saleType)
     {
@@ -44,6 +55,8 @@ struct SaleTypeExt {
 		BasicSale basicSale;
     case CROWD_FUNDING:
         CrowdFundingSale crowdFundingSale;
+    case FIXED_PRICE:
+        FixedPriceSale fixedPriceSale;
     }
     typedSale;
 };
