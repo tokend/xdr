@@ -31,6 +31,7 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-manage-atomic-swap-bid.h"
 
 
 namespace stellar
@@ -103,6 +104,8 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
+    case MANAGE_ATOMIC_SWAP_BID:
+        ManageAtomicSwapBidOp manageAtomicSwapBidOp;
     }
     body;
 };
@@ -251,6 +254,8 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
+    case MANAGE_ATOMIC_SWAP_BID:
+        ManageAtomicSwapBidResult manageAtomicSwapBidResult;
     }
     tr;
 default:

@@ -336,6 +336,17 @@ case CONTRACT:
         }
         ext;
     } contract;
+case ATOMIC_SWAP_BID:
+    struct {
+        uint64 bidID;
+        AccountID ownerID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } atomicSwapBid;
 };
 
 enum BucketEntryType
