@@ -31,7 +31,9 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-%#include "xdr/Stellar-operation-manage-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-create-aswap-request.h"
 
 
 namespace stellar
@@ -104,8 +106,12 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
-    case MANAGE_ATOMIC_SWAP_BID:
-        ManageAtomicSwapBidOp manageAtomicSwapBidOp;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidOp cancelASwapBidOp;
+    case CREATE_AWSAP_REQUEST:
+        CreateASwapRequestOp createASwapRequestOp;
     }
     body;
 };
@@ -254,8 +260,12 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
-    case MANAGE_ATOMIC_SWAP_BID:
-        ManageAtomicSwapBidResult manageAtomicSwapBidResult;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidResult cancelASwapBidResult;
+    case CREATE_AWSAP_REQUEST:
+        CreateASwapRequestResult createASwapRequestResult;
     }
     tr;
 default:
