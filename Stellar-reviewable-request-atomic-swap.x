@@ -6,8 +6,10 @@ namespace stellar
 struct ASwapRequest
 {
     uint64 bidID;
-    uint64 amount;
+    uint64 baseAmount;
     uint64 fee;
+
+    AssetCode quoteAsset;
 
     union switch (LedgerVersion v)
     {
