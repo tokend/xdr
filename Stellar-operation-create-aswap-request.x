@@ -39,7 +39,7 @@ enum CreateASwapRequestResultCode
 
 struct CreateASwapRequestSuccess
 {
-    uint64    requestID;
+    uint64 requestID;
     AccountID owner;
 
     union switch (LedgerVersion v)
