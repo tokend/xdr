@@ -22,6 +22,7 @@ struct AtomicSwapBidEntry
     AssetCode baseAsset;
     BalanceID baseBalance;
     uint64 amount;
+    uint64 availableAmount;
     uint64 createdAt;
 
     uint64 fee;
