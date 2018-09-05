@@ -16,8 +16,8 @@ enum FeeType
     WITHDRAWAL_FEE = 2,
     ISSUANCE_FEE = 3,
     INVEST_FEE = 4, // fee to be taken while creating sale participation
-    ATOMIC_SWAP_SALE_FEE = -5,
-    ATOMIC_SWAP_PURCHASE_FEE = -6
+    ATOMIC_SWAP_SALE_FEE = 5,
+    ATOMIC_SWAP_PURCHASE_FEE = 6
 };
 
 enum EmissionFeeType
