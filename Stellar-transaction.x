@@ -110,7 +110,7 @@ struct Operation
         CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
     case CANCEL_ASWAP_BID:
         CancelASwapBidOp cancelASwapBidOp;
-    case CREATE_AWSAP_REQUEST:
+    case CREATE_ASWAP_REQUEST:
         CreateASwapRequestOp createASwapRequestOp;
     }
     body;
@@ -264,7 +264,7 @@ case opINNER:
         CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
     case CANCEL_ASWAP_BID:
         CancelASwapBidResult cancelASwapBidResult;
-    case CREATE_AWSAP_REQUEST:
+    case CREATE_ASWAP_REQUEST:
         CreateASwapRequestResult createASwapRequestResult;
     }
     tr;
