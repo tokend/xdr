@@ -16,7 +16,8 @@ enum FeeType
     WITHDRAWAL_FEE = 2,
     ISSUANCE_FEE = 3,
     INVEST_FEE = 4, // fee to be taken while creating sale participation
-    CAPITAL_DEPLOYMENT_FEE = 5 // fee to be taken when sale close
+    CAPITAL_DEPLOYMENT_FEE = 5, // fee to be taken when sale close
+    OPERATION_FEE = 6
 };
 
 enum EmissionFeeType
