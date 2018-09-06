@@ -156,10 +156,14 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
-	case USE_KYC_LEVEL:
-		uint32 kycLevel;
+    case USE_KYC_LEVEL:
+        uint32 kycLevel;
+    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
+        struct {
+            uint32 kycLevel;
+            uint32 accountRole;
+        } ext_0;
     }
-	
     ext;
 };
 
