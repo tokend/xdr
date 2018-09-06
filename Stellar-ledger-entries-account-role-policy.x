@@ -10,15 +10,14 @@ enum Effect
     ALLOW = 1
 };
 
-
-struct IdentityPolicyEntry
+struct AccountRolePolicyEntry
 {
     uint64 id;
-    uint64 priority;
     string resource<>;
     string action<>;
-	Effect effect;
-	AccountID ownerID;
+    Effect effect;
+    AccountID ownerID;
+    uint64 accountRoleID;
 
     // reserved for future use
     union switch (LedgerVersion v)

@@ -65,8 +65,8 @@ enum LedgerEntryType
     STATISTICS_V2 = 23,
     PENDING_STATISTICS = 24,
     CONTRACT = 25,
-    IDENTITY_POLICY = 26,
-    POLICY_ATTACHMENT = 27
+    ACCOUNT_ROLE = 26,
+    ACCOUNT_ROLE_POLICY = 27
 };
 
 
@@ -120,10 +120,10 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
-    case IDENTITY_POLICY:
-        IdentityPolicyEntry identityPolicy;
-    case POLICY_ATTACHMENT:
-        PolicyAttachmentEntry policyAttachment;
+    case ACCOUNT_ROLE:
+        AccountRoleEntry accountRoleEntry;
+    case ACCOUNT_ROLE_POLICY:
+        AccountRolePolicyEntry accountRolePolicyEntry;
     }
     data;
 
