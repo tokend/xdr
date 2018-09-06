@@ -8,7 +8,6 @@ struct ASwapBidCreationRequest
 {
     BalanceID baseBalance;
     uint64 amount;
-    uint64 fee;
     longstring details;
 
     ASwapBidQuoteAsset quoteAssets<>;

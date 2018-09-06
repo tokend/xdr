@@ -7,6 +7,7 @@ struct ASwapBidQuoteAsset
 {
     AssetCode quoteAsset;
     uint64 price;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -24,9 +25,6 @@ struct AtomicSwapBidEntry
     uint64 amount;
     uint64 lockedAmount;
     uint64 createdAt;
-
-    uint64 fee;
-    uint64 percentFee;
 
     longstring details;
 
