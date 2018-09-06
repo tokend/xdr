@@ -50,7 +50,8 @@ enum CreateWithdrawalRequestResultCode
 	INVALID_UNIVERSAL_AMOUNT = -11, // non-zero universal amount
 	STATS_OVERFLOW = -12, // statistics overflowed by the operation
     LIMITS_EXCEEDED = -13, // withdraw exceeds limits for source account
-	INVALID_PRE_CONFIRMATION_DETAILS = -14 // it's not allowed to pass pre confirmation details
+	INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
+    LOWER_BOUND_NOT_EXCEEDED = -15
 };
 
 struct CreateWithdrawalSuccess {
