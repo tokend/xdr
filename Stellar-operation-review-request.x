@@ -118,6 +118,19 @@ struct SaleExtended {
     ext;
 };
 
+struct ASwapBidExtended
+{
+    uint64 bidID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -126,6 +139,8 @@ struct ExtendedResult {
         SaleExtended saleExtended;
     case NONE:
         void;
+    case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
     } typeExt;
 
    // Reserved for future use
@@ -254,13 +269,13 @@ enum ReviewRequestResultCode
     CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
 
     // Atomic swap bid creation requests
-    BASE_BALANCE_NOT_FOUND = -150,
-    BASE_ASSET_NOT_FOUND = -151, // base asset does not exist
-    BASE_ASSET_CANNOT_BE_SWAPPED = -152,
-    QUOTE_ASSET_NOT_FOUND = -153, // quote asset does not exist
-    QUOTE_ASSET_CANNOT_BE_SWAPPED = -154,
-    ASSETS_ARE_EQUAL = -155, // base and quote assets are the same
-    INSUFFICIENT_FEE = -156
+    ASWAP_BID_BASE_ASSET_NOT_FOUND = -150, // base asset does not exist
+    ASWAP_BID_BASE_ASSET_CANNOT_BE_SWAPPED = -151,
+    ASWAP_BID_QUOTE_ASSET_NOT_FOUND = -152, // quote asset does not exist
+    ASWAP_BID_QUOTE_ASSET_CANNOT_BE_SWAPPED = -153,
+    ASWAP_BID_ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
+    ASWAP_BID_OVERFLOW = -155,
+    ASWAP_BID_INSUFFICIENT_FEE = -156
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
