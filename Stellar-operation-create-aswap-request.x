@@ -34,13 +34,13 @@ enum CreateASwapRequestResultCode
     INVALID_QUOTE_ASSET = -2,
     BID_NOT_FOUND = -3,
     QUOTE_ASSET_NOT_FOUND = -4,
-    BASE_AMOUNT_TOO_MUCH = -5
+    BID_UNDERFUNDED = -5 // bid has not enough base amount available for lock
 };
 
 struct CreateASwapRequestSuccess
 {
     uint64 requestID;
-    AccountID owner;
+    AccountID bidOwnerID;
 
     union switch (LedgerVersion v)
     {
