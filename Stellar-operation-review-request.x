@@ -251,7 +251,16 @@ enum ReviewRequestResultCode
     INVALID_LIMITS = 131,
 
     // Contract requests
-    CONTRACT_DETAILS_TOO_LONG = -140 // customer details reached length limit
+    CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
+
+    // Atomic swap bid creation requests
+    BASE_BALANCE_NOT_FOUND = -150,
+    BASE_ASSET_NOT_FOUND = -151, // base asset does not exist
+    BASE_ASSET_CANNOT_BE_SWAPPED = -152,
+    QUOTE_ASSET_NOT_FOUND = -153, // quote asset does not exist
+    QUOTE_ASSET_CANNOT_BE_SWAPPED = -154,
+    ASSETS_ARE_EQUAL = -155, // base and quote assets are the same
+    INSUFFICIENT_FEE = -156
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
