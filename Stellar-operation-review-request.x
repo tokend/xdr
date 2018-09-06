@@ -96,7 +96,7 @@ struct BillPayDetails {
 struct ReviewDetails {
     uint32 tasksToAdd;
     uint32 tasksToRemove;
-    string externalDetails<>;
+    longstring externalDetails;
     // Reserved for future use
     union switch (LedgerVersion v)
     {
@@ -275,7 +275,12 @@ enum ReviewRequestResultCode
     ASWAP_BID_QUOTE_ASSET_CANNOT_BE_SWAPPED = -153,
     ASWAP_BID_ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
     ASWAP_BID_OVERFLOW = -155,
-    ASWAP_BID_INSUFFICIENT_FEE = -156
+    ASWAP_BID_INSUFFICIENT_FEE = -156,
+
+    // Atomic swap
+    ASWAP_BID_NOT_FOUND = -160,
+    ASWAP_BID_UNDERFUNDED = -161,
+    ASWAP_PURCHASER_FULL_LINE = -162
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
