@@ -9,23 +9,23 @@ namespace stellar
 
 /* CreateWithdrawalRequestOp
 
-    Creates withdrawal request
+	Creates withdrawal request
 
-    Threshold: high
+	Threshold: high
 
-    Result: CreateWithdrawalRequestResult
+	Result: CreateWithdrawalRequestResult
 */
 
 struct CreateWithdrawalRequestOp
 {
-    WithdrawalRequest request;
+	WithdrawalRequest request;
 
 	union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+	{
+	case EMPTY_VERSION:
+		void;
+	}
+	ext;
 
 };
 
@@ -33,12 +33,12 @@ struct CreateWithdrawalRequestOp
 
 enum CreateWithdrawalRequestResultCode
 {
-    // codes considered as "success" for the operation
-    SUCCESS = 0,
+	// codes considered as "success" for the operation
+	SUCCESS = 0,
 
-    // codes considered as "failure" for the operation
+	// codes considered as "failure" for the operation
 	INVALID_AMOUNT = -1, // amount is 0
-    INVALID_EXTERNAL_DETAILS = -2, // external details size exceeds max allowed
+	INVALID_EXTERNAL_DETAILS = -2, // external details size exceeds max allowed
 	BALANCE_NOT_FOUND = -3, // balance not found
 	ASSET_IS_NOT_WITHDRAWABLE = -4, // asset is not withdrawable
 	CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed
@@ -49,28 +49,29 @@ enum CreateWithdrawalRequestResultCode
 	UNDERFUNDED = -10, // insufficient balance to perform operation
 	INVALID_UNIVERSAL_AMOUNT = -11, // non-zero universal amount
 	STATS_OVERFLOW = -12, // statistics overflowed by the operation
-    LIMITS_EXCEEDED = -13, // withdraw exceeds limits for source account
-	INVALID_PRE_CONFIRMATION_DETAILS = -14 // it's not allowed to pass pre confirmation details
+	LIMITS_EXCEEDED = -13, // withdraw exceeds limits for source account
+	INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
+	LOWER_BOUND_NOT_EXCEEDED = -15
 };
 
 struct CreateWithdrawalSuccess {
 	uint64 requestID;
 
 	union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+	{
+	case EMPTY_VERSION:
+		void;
+	}
+	ext;
 };
 
 
 union CreateWithdrawalRequestResult switch (CreateWithdrawalRequestResultCode code)
 {
-    case SUCCESS:
-        CreateWithdrawalSuccess success;
-    default:
-        void;
+	case SUCCESS:
+		CreateWithdrawalSuccess success;
+	default:
+		void;
 };
 
 }
