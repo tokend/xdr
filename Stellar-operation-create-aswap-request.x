@@ -34,7 +34,8 @@ enum CreateASwapRequestResultCode
     INVALID_QUOTE_ASSET = -2,
     BID_NOT_FOUND = -3,
     QUOTE_ASSET_NOT_FOUND = -4,
-    BID_UNDERFUNDED = -5 // bid has not enough base amount available for lock
+    BID_UNDERFUNDED = -5, // bid has not enough base amount available for lock
+    ATOMIC_SWAP_TASKS_NOT_FOUND = -6
 };
 
 struct CreateASwapRequestSuccess
