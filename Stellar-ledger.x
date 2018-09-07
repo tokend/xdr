@@ -336,27 +336,26 @@ case CONTRACT:
         }
         ext;
     } contract;
-case IDENTITY_POLICY:
+case ACCOUNT_ROLE:
     struct {
-		uint64 id;
-		AccountID ownerID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} identityPolicy;
-case POLICY_ATTACHMENT:
-    struct {
-        uint64 policyAttachmentID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
             void;
         }
         ext;
-    } policyAttachment;
+    } accountRole;
+case ACCOUNT_ROLE_POLICY:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountRolePolicy;
 };
 
 enum BucketEntryType
