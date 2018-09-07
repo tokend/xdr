@@ -23,8 +23,8 @@
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
-%#include "xdr/Stellar-ledger-entries-identity-policy.h"
-%#include "xdr/Stellar-ledger-entries-policy-attachment.h"
+%#include "xdr/Stellar-ledger-entries-account-role.h"
+%#include "xdr/Stellar-ledger-entries-account-role-policy.h"
 
 
 namespace stellar
