@@ -4,7 +4,7 @@
 namespace stellar
 {
 
-enum Effect
+enum AccountRolePolicyEffect
 {
     DENY = 0,
     ALLOW = 1
@@ -15,7 +15,7 @@ struct AccountRolePolicyEntry
     uint64 id;
     string resource<>;
     string action<>;
-    Effect effect;
+    AccountRolePolicyEffect effect;
     AccountID ownerID;
     uint64 accountRoleID;
 
