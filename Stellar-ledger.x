@@ -339,7 +339,6 @@ case CONTRACT:
 case ATOMIC_SWAP_BID:
     struct {
         uint64 bidID;
-        AccountID ownerID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
