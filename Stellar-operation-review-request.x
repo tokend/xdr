@@ -276,9 +276,8 @@ enum ReviewRequestResultCode
     ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
 
     // Atomic swap
-    ASWAP_BID_NOT_FOUND = -160,
-    ASWAP_BID_UNDERFUNDED = -161,
-    ASWAP_PURCHASER_FULL_LINE = -162
+    ASWAP_BID_UNDERFUNDED = -160,
+    ASWAP_PURCHASER_FULL_LINE = -161
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
