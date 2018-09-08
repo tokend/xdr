@@ -26,6 +26,8 @@ struct AtomicSwapBidEntry
     uint64 lockedAmount;
     uint64 createdAt;
 
+    bool isCancelled;
+
     longstring details;
 
     ASwapBidQuoteAsset quoteAssets<>;
