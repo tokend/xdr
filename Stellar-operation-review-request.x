@@ -274,6 +274,7 @@ enum ReviewRequestResultCode
     QUOTE_ASSET_NOT_FOUND = -152, // quote asset does not exist
     QUOTE_ASSET_CANNOT_BE_SWAPPED = -153,
     ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
+    BASE_BALANCE_UNDERFUNDED = -155,
 
     // Atomic swap
     ASWAP_BID_UNDERFUNDED = -160,
