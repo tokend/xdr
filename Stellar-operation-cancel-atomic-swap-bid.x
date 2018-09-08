@@ -29,7 +29,8 @@ enum CancelASwapBidResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1 // atomic swap bid does not exist
+    NOT_FOUND = -1, // atomic swap bid does not exist
+    ALREADY_CANCELLED = -2 // atomic swap bid already cancelled
 };
 
 struct CancelASwapBidResultSuccess

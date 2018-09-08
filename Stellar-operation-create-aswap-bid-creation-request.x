@@ -42,7 +42,8 @@ enum CreateASwapBidCreationRequestResultCode
     BASE_BALANCE_NOT_FOUND = -9,
     ASSETS_ARE_EQUAL = -10, // base and quote assets are the same
     BASE_BALANCE_UNDERFUNDED = -11,
-    INVALID_QUOTE_ASSET = -12 // one of the quote assets is invalid
+    INVALID_QUOTE_ASSET = -12, // one of the quote assets is invalid
+    NOT_ALLOWED_BY_ASSET_POLICY = -13
 };
 
 struct CreateASwapBidCreationRequestSuccess
