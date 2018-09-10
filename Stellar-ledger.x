@@ -338,7 +338,7 @@ case CONTRACT:
     } contract;
 case ACCOUNT_ROLE:
     struct {
-        uint64 id;
+        uint64 accountRoleID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -348,7 +348,7 @@ case ACCOUNT_ROLE:
     } accountRole;
 case ACCOUNT_ROLE_POLICY:
     struct {
-        uint64 id;
+        uint64 accountRolePolicyID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:

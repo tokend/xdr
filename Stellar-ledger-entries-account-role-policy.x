@@ -12,7 +12,7 @@ enum AccountRolePolicyEffect
 
 struct AccountRolePolicyEntry
 {
-    uint64 id;
+    uint64 accountRolePolicyID;
     string resource<>;
     string action<>;
     AccountRolePolicyEffect effect;

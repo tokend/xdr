@@ -31,8 +31,8 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-%#include "xdr/Stellar-operation-set-identity-policy.h"
-%#include "xdr/Stellar-operation-manage-policy-attachment.h"
+%#include "xdr/Stellar-operation-set-account-role.h"
+%#include "xdr/Stellar-operation-set-account-role-policy.h"
 
 
 namespace stellar
@@ -105,10 +105,10 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
-    case SET_IDENTITY_POLICY:
-        SetIdentityPolicyOp setIdentityPolicyOp;
-    case MANAGE_POLICY_ATTACHMENT:
-        ManagePolicyAttachmentOp managePolicyAttachmentOp;
+    case SET_ACCOUNT_ROLE:
+        SetAccountRoleOp setAccountRoleOp;
+    case SET_ACCOUNT_ROLE_POLICY:
+        SetAccountRolePolicyOp setAccountRolePolicyOp;
     }
     body;
 };
@@ -257,10 +257,10 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
-    case SET_IDENTITY_POLICY:
-        SetIdentityPolicyResult setIdentityPolicyResult;
-    case MANAGE_POLICY_ATTACHMENT:
-        ManagePolicyAttachmentResult managePolicyAttachmentResult;
+    case SET_ACCOUNT_ROLE:
+        SetAccountRoleResult setAccountRoleResult;
+    case SET_ACCOUNT_ROLE_POLICY:
+        SetAccountRolePolicyResult setAccountRolePolicyResult;
     }
     tr;
 default:

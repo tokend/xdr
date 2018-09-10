@@ -121,9 +121,9 @@ struct LedgerEntry
     case CONTRACT:
         ContractEntry contract;
     case ACCOUNT_ROLE:
-        AccountRoleEntry accountRoleEntry;
+        AccountRoleEntry accountRole;
     case ACCOUNT_ROLE_POLICY:
-        AccountRolePolicyEntry accountRolePolicyEntry;
+        AccountRolePolicyEntry accountRolePolicy;
     }
     data;
 
