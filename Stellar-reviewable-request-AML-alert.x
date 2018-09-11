@@ -4,19 +4,18 @@
 
 %#include "xdr/Stellar-types.h"
 
+
 namespace stellar
 {
 
-struct LimitsUpdateRequest {
-    Hash deprecatedDocumentHash;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
+struct AMLAlertRequest {
+    BalanceID balanceID;
+    uint64 amount;
+    longstring reason;
+	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH:
-        longstring details;
     }
     ext;
 };

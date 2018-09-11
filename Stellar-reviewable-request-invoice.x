@@ -7,16 +7,22 @@
 namespace stellar
 {
 
-struct LimitsUpdateRequest {
-    Hash deprecatedDocumentHash;
+struct InvoiceRequest
+{
+    AssetCode asset;
+    uint64 amount; // not allowed to set 0
+    BalanceID senderBalance;
+    BalanceID receiverBalance;
+
+    uint64 *contractID;
+    bool isApproved;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH:
-        longstring details;
     }
     ext;
 };

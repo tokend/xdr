@@ -10,19 +10,28 @@
 %#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
-%#include "xdr/Stellar-operation-review-payment-request.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
 %#include "xdr/Stellar-operation-create-preissuance-request.h"
 %#include "xdr/Stellar-operation-create-issuance-request.h"
-%#include "xdr/Stellar-operation-set-limits.h"
+%#include "xdr/Stellar-operation-manage-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
 %#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
-%#include "xdr/Stellar-operation-manage-invoice.h"
+%#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-payout.h"
+%#include "xdr/Stellar-operation-create-AML-alert-request.h"
+%#include "xdr/Stellar-operation-manage-key-value.h"
+%#include "xdr/Stellar-operation-create-KYC-request.h"
+%#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
+%#include "xdr/Stellar-operation-bind-external-system-id.h"
+%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-manage-sale.h"
+%#include "xdr/Stellar-operation-create-manage-limits-request.h"
+%#include "xdr/Stellar-operation-manage-contract.h"
+%#include "xdr/Stellar-operation-manage-contract-request.h"
 
 namespace stellar
 {
@@ -54,22 +63,20 @@ struct Operation
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case MANAGE_BALANCE:
 		ManageBalanceOp manageBalanceOp;
-	case REVIEW_PAYMENT_REQUEST:
-		ReviewPaymentRequestOp reviewPaymentRequestOp;
     case MANAGE_ASSET:
         ManageAssetOp manageAssetOp;
     case CREATE_PREISSUANCE_REQUEST:
         CreatePreIssuanceRequestOp createPreIssuanceRequest;
-    case SET_LIMITS:
-        SetLimitsOp setLimitsOp;
+    case MANAGE_LIMITS:
+        ManageLimitsOp manageLimitsOp;
     case DIRECT_DEBIT:
         DirectDebitOp directDebitOp;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
 		ManageOfferOp manageOfferOp;
-    case MANAGE_INVOICE:
-        ManageInvoiceOp manageInvoiceOp;
+    case MANAGE_INVOICE_REQUEST:
+        ManageInvoiceRequestOp manageInvoiceRequestOp;
 	case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
 	case CREATE_SALE_REQUEST:
@@ -78,6 +85,26 @@ struct Operation
 		CheckSaleStateOp checkSaleStateOp;
 	case PAYOUT:
 	    PayoutOp payoutOp;
+	case CREATE_AML_ALERT:
+	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueOp manageKeyValueOp;
+	case CREATE_KYC_REQUEST:
+		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
+    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+        ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
+    case PAYMENT_V2:
+        PaymentOpV2 paymentOpV2;
+    case MANAGE_SALE:
+        ManageSaleOp manageSaleOp;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestOp createManageLimitsRequestOp;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestOp manageContractRequestOp;
+    case MANAGE_CONTRACT:
+        ManageContractOp manageContractOp;
     }
     body;
 };
@@ -138,6 +165,8 @@ struct Transaction
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        uint64 maxTotalFee;
     }
     ext;
 };
@@ -186,22 +215,20 @@ case opINNER:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case MANAGE_BALANCE:
         ManageBalanceResult manageBalanceResult;
-    case REVIEW_PAYMENT_REQUEST:
-        ReviewPaymentRequestResult reviewPaymentRequestResult;
     case MANAGE_ASSET:
         ManageAssetResult manageAssetResult;
     case CREATE_PREISSUANCE_REQUEST:
         CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
-    case SET_LIMITS:
-        SetLimitsResult setLimitsResult;
+    case MANAGE_LIMITS:
+        ManageLimitsResult manageLimitsResult;
     case DIRECT_DEBIT:
         DirectDebitResult directDebitResult;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
 		ManageOfferResult manageOfferResult;
-	case MANAGE_INVOICE:
-		ManageInvoiceResult manageInvoiceResult;
+	case MANAGE_INVOICE_REQUEST:
+		ManageInvoiceRequestResult manageInvoiceRequestResult;
 	case REVIEW_REQUEST:
 		ReviewRequestResult reviewRequestResult;
 	case CREATE_SALE_REQUEST:
@@ -210,6 +237,26 @@ case opINNER:
 		CheckSaleStateResult checkSaleStateResult;
 	case PAYOUT:
 	    PayoutResult payoutResult;
+	case CREATE_AML_ALERT:
+	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
+	case MANAGE_KEY_VALUE:
+	    ManageKeyValueResult manageKeyValueResult;
+	case CREATE_KYC_REQUEST:
+	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
+    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+        ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
+    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
+        BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
+    case PAYMENT_V2:
+        PaymentV2Result paymentV2Result;
+    case MANAGE_SALE:
+        ManageSaleResult manageSaleResult;
+    case CREATE_MANAGE_LIMITS_REQUEST:
+        CreateManageLimitsRequestResult createManageLimitsRequestResult;
+    case MANAGE_CONTRACT_REQUEST:
+        ManageContractRequestResult manageContractRequestResult;
+    case MANAGE_CONTRACT:
+        ManageContractResult manageContractResult;
     }
     tr;
 default:
@@ -228,10 +275,41 @@ enum TransactionResultCode
 
     txBAD_AUTH = -5,             // too few valid signatures / wrong network
     txNO_ACCOUNT = -6,           // source account not found
-    txBAD_AUTH_EXTRA = -7,      // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,      // an unknown error occured
-	txACCOUNT_BLOCKED = -9,     // account is blocked and cannot be source of tx
-    txDUPLICATION = -10         // if timing is stored
+    txBAD_AUTH_EXTRA = -7,       // unused signatures attached to transaction
+    txINTERNAL_ERROR = -8,       // an unknown error occured
+	txACCOUNT_BLOCKED = -9,      // account is blocked and cannot be source of tx
+    txDUPLICATION = -10,         // if timing is stored
+    txINSUFFICIENT_FEE = -11,    // the actual total fee amount is greater than the max total fee amount, provided by the source
+    txSOURCE_UNDERFUNDED = -12,  // not enough tx fee asset on source balance
+    txCOMMISSION_LINE_FULL = -13 // commission tx fee asset balance amount overflow
+};
+
+struct OperationFee
+{
+    OperationType operationType;
+    uint64 amount;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct TransactionFee
+{
+    AssetCode assetCode;
+    OperationFee operationFees<100>;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 struct TransactionResult
@@ -253,6 +331,8 @@ struct TransactionResult
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        TransactionFee transactionFee;
     }
     ext;
 };

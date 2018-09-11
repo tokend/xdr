@@ -3,6 +3,7 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
 {
@@ -33,6 +34,19 @@ struct SaleCreationRequest {
     {
     case EMPTY_VERSION:
         void;
+	case TYPED_SALE:
+		SaleTypeExt saleTypeExt;
+    case ALLOW_TO_SPECIFY_REQUIRED_BASE_ASSET_AMOUNT_FOR_HARD_CAP:
+        struct {
+            SaleTypeExt saleTypeExt;
+            uint64 requiredBaseAssetForHardCap;
+        } extV2;
+	case STATABLE_SALES:
+		struct {
+			SaleTypeExt saleTypeExt;
+            uint64 requiredBaseAssetForHardCap;
+			SaleState state;
+		} extV3;
     }
     ext;
 };

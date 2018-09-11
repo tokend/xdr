@@ -16,7 +16,7 @@ enum SignerType
 	ASSET_MANAGER = 16, // allowed to create assets/asset pairs and update policies, set fees
 	ASSET_RATE_MANAGER = 32, // allowed to set physical asset price
 	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
-	ISSUANCE_MANAGER = 128, // allowed to make preissuance request, review issuance
+	ISSUANCE_MANAGER = 128, // allowed to make preissuance request
 	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
 	PAYMENT_OPERATOR = 512, // allowed to review payment requests
 	LIMITS_MANAGER = 1024, // allowed to change limits
@@ -25,7 +25,20 @@ enum SignerType
 	OPERATIONAL_BALANCE_MANAGER = 8192, // allowed to spend from operational balances
 	EVENTS_CHECKER = 16384, // allow to check and trigger events
 	EXCHANGE_ACC_MANAGER = 32768, // can manage exchange account
-	SYNDICATE_ACC_MANAGER = 65536 // can manage syndicate account
+	SYNDICATE_ACC_MANAGER = 65536, // can manage syndicate account
+	USER_ASSET_MANAGER = 131072, // can review sale, asset creation/update requests
+	USER_ISSUANCE_MANAGER = 262144, // can review pre-issuance/issuance requests
+	WITHDRAW_MANAGER = 524288, // can review withdraw requests
+	FEES_MANAGER = 1048576, // can set fee
+	TX_SENDER = 2097152, // can send tx
+	AML_ALERT_MANAGER = 4194304, // can manage AML alert request
+	AML_ALERT_REVIEWER = 8388608, // can review aml alert requests
+	KYC_ACC_MANAGER = 16777216, // can manage kyc
+	KYC_SUPER_ADMIN = 33554432,
+	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
+    KEY_VALUE_MANAGER = 134217728, // can manage keyValue
+    SUPER_ISSUANCE_MANAGER = 268435456,
+    CONTRACT_MANAGER = 536870912
 };
 
 struct Signer
@@ -91,14 +104,19 @@ enum AccountType
 	MASTER = 4,            // master account
     NOT_VERIFIED = 5,
 	SYNDICATE = 6, // can create asset
-	EXCHANGE = 7
+	EXCHANGE = 7,
+	ACCREDITED_INVESTOR = 8,
+	INSTITUTIONAL_INVESTOR = 9,
+	VERIFIED = 10
 };
 
 enum BlockReasons
 {
 	RECOVERY_REQUEST = 1,
 	KYC_UPDATE = 2,
-	SUSPICIOUS_BEHAVIOR = 4
+	SUSPICIOUS_BEHAVIOR = 4,
+	TOO_MANY_KYC_UPDATE_REQUESTS = 8,
+	WITHDRAWAL = 16
 };
 
 
@@ -136,7 +154,10 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
+	case USE_KYC_LEVEL:
+		uint32 kycLevel;
     }
+	
     ext;
 };
 

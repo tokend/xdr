@@ -7,16 +7,16 @@
 namespace stellar
 {
 
-struct LimitsUpdateRequest {
-    Hash deprecatedDocumentHash;
+struct AccountKYCEntry
+{
+    AccountID accountID;
+    longstring KYCData;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH:
-        longstring details;
     }
     ext;
 };

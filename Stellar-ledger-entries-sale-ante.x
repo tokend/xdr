@@ -3,13 +3,12 @@
 namespace stellar
 {
 
-struct ExternalSystemAccountID
+struct SaleAnteEntry
 {
-    AccountID accountID;
-    int32 externalSystemType;
-	longstring data;
+    uint64 saleID;
+    BalanceID participantBalanceID;
+    uint64 amount; // amount to be locked from participant balance
 
-	 // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

@@ -3,13 +3,13 @@
 namespace stellar
 {
 
-struct ExternalSystemAccountID
+struct PendingStatisticsEntry
 {
-    AccountID accountID;
-    int32 externalSystemType;
-	longstring data;
+    uint64 statisticsID;
+    uint64 requestID;
+    uint64 amount;
 
-	 // reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

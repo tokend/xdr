@@ -145,17 +145,6 @@ case BALANCE:
 		}
 		ext;
     } balance;
-case PAYMENT_REQUEST:
-    struct
-    {
-		uint64 paymentID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } paymentRequest;
 case ASSET:
     struct
     {
@@ -236,16 +225,6 @@ case OFFER_ENTRY:
 		uint64 offerID;
 		AccountID ownerID;
 	} offer;
-case INVOICE:
-    struct {
-        uint64 invoiceID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } invoice;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;
@@ -259,7 +238,7 @@ case REVIEWABLE_REQUEST:
 case EXTERNAL_SYSTEM_ACCOUNT_ID:
 	struct {
 		AccountID accountID;
-		ExternalSystemType externalSystemType;
+		int32 externalSystemType;
 		union switch (LedgerVersion v)
 		{
 		case EMPTY_VERSION:
@@ -277,6 +256,86 @@ case SALE:
 		}
 		ext;
 	} sale;
+case KEY_VALUE:
+    struct {
+        string256 key;
+        union switch (LedgerVersion v)
+        {
+        	case EMPTY_VERSION:
+        		void;
+        }
+        ext;
+    } keyValue;
+case ACCOUNT_KYC:
+    struct {
+        AccountID accountID;
+        union switch(LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountKYC;
+case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
+    struct {
+		uint64 poolEntryID;
+		union switch (LedgerVersion v)
+		{
+		case EMPTY_VERSION:
+			void;
+		}
+		ext;
+	} externalSystemAccountIDPoolEntry;
+case SALE_ANTE:
+    struct {
+        uint64 saleID;
+        BalanceID participantBalanceID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } saleAnte;
+case LIMITS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } limitsV2;
+case STATISTICS_V2:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } statisticsV2;
+case PENDING_STATISTICS:
+    struct {
+        uint64 statisticsID;
+        uint64 requestID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } pendingStatistics;
+case CONTRACT:
+    struct {
+        uint64 contractID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } contract;
 };
 
 enum BucketEntryType
