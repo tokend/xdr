@@ -349,6 +349,7 @@ case ACCOUNT_ROLE:
 case ACCOUNT_ROLE_POLICY:
     struct {
         uint64 accountRolePolicyID;
+        AccountID ownerID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
