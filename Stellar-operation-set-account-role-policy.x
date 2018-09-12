@@ -18,7 +18,7 @@ namespace stellar
 
 struct SetAccountRolePolicyData
 {
-    uint64 priority;
+    uint64 roleID;
     string256 resource;
     string256 action;
     AccountRolePolicyEffect effect;
@@ -55,14 +55,15 @@ enum SetAccountRolePolicyResultCode
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,
-    NOT_FOUND = -2
+    NOT_FOUND = -2,
+    POLICY_ALREADY_EXISTS = -3
 };
 
 union SetAccountRolePolicyResult switch (SetAccountRolePolicyResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 identityPolicyID;
+            uint64 accountRolePolicyID;
 
             // reserved for future use
             union switch (LedgerVersion v)
