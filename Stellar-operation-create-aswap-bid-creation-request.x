@@ -49,6 +49,7 @@ enum CreateASwapBidCreationRequestResultCode
 struct CreateASwapBidCreationRequestSuccess
 {
     uint64 requestID;
+    bool fulfilled;
 
     union switch (LedgerVersion v)
     {
