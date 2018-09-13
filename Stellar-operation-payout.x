@@ -12,10 +12,13 @@ namespace stellar
     Result: PayoutResult
 */
 
-struct PayoutOp {
-    AssetCode asset; // asset, whose holders will receive dividends
+struct PayoutOp
+{
+    AssetCode asset; // asset, which holders will receive dividends
     BalanceID sourceBalanceID; // balance, from which payout will be performed
+
     uint64 maxPayoutAmount; // max amount of asset, that owner wants to pay out
+    uint64 minPayoutAmount; // min tokens amount for one balance;
 
     Fee fee;
 
@@ -30,7 +33,8 @@ struct PayoutOp {
 
 /******* Payout Result ********/
 
-enum PayoutResultCode {
+enum PayoutResultCode
+{
     // codes considered as "success" for the operation
     SUCCESS = 0,    // payout successfully completed
 
