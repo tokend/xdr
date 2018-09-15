@@ -7,7 +7,7 @@ namespace stellar
 
     Spread an amount in specific asset between all holders of base asset
 
-    Threshold: med
+    Threshold: high
 
     Result: PayoutResult
 */
@@ -18,7 +18,8 @@ struct PayoutOp
     BalanceID sourceBalanceID; // balance, from which payout will be performed
 
     uint64 maxPayoutAmount; // max amount of asset, that owner wants to pay out
-    uint64 minPayoutAmount; // min tokens amount for one balance;
+    uint64 minPayoutAmount; // min tokens amount which will be payed for one balance;
+    uint64 minAssetHolderAmount; // min tokens amount for which holder will received dividends
 
     Fee fee;
 
@@ -39,20 +40,24 @@ enum PayoutResultCode
     SUCCESS = 0,    // payout successfully completed
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1, // bad input
-    ASSET_NOT_FOUND = -2,
-    BALANCE_NOT_FOUND = -3,
-    BALANCE_ACCOUNT_MISMATCHED = -4,
-    UNDERFUNDED = -5,
-    FEE_MISMATCHED = -6,
-    LIMITS_EXCEEDED = -7,
-    NOT_ALLOWED_BY_ASSET_POLICY = -8,
-    HOLDERS_NOT_FOUND = -9,
-    STATS_OVERFLOW = -10,
-    LINE_FULL = -11
+    INVALID_AMOUNT = -1, // max payout amount can not be zero
+    INVALID_ASSET = -2,
+    ASSET_NOT_FOUND = -3,
+    ASSET_NOT_TRANSFERABLE = -4, // asset must have policy transferable
+    BALANCE_NOT_FOUND = -5,
+    INSUFFICIENT_FEE_AMOUNT = -6,
+    FEE_EXCEEDS_ACTUAL_AMOUNT = -7,
+    TOTAL_FEE_OVERFLOW = -8,
+    UNDERFUNDED = -9, // not enough amount on source balance
+    HOLDERS_NOT_FOUND = -10, // there is no holders of such asset
+    MIN_AMOUNT_TOO_MUCH = -11, // there is no appropriate holders balances
+    LINE_FULL = -12, // destination balance amount overflows
+    STATS_OVERFLOW = -13, // source statistics overflow
+    LIMITS_EXCEEDED = -14 // source account limit exceeded
 };
 
-struct PayoutResponse {
+struct PayoutResponse
+{
     AccountID receiverID;
     BalanceID receiverBalanceID;
     uint64 receivedAmount;
@@ -66,7 +71,8 @@ struct PayoutResponse {
     ext;
 };
 
-struct PayoutSuccessResult {
+struct PayoutSuccessResult
+{
     PayoutResponse payoutResponses<>;
     uint64 actualPayoutAmount;
 
@@ -79,7 +85,8 @@ struct PayoutSuccessResult {
     ext;
 };
 
-union PayoutResult switch (PayoutResultCode code) {
+union PayoutResult switch (PayoutResultCode code)
+{
     case SUCCESS:
         PayoutSuccessResult payoutSuccessResult;
     default:
