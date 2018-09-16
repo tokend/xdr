@@ -20,6 +20,7 @@
 %#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
@@ -103,6 +104,8 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
     }
     body;
 };
@@ -253,6 +256,8 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
     }
     tr;
 default:
