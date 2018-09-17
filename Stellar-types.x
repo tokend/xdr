@@ -80,7 +80,8 @@ enum LedgerVersion {
     ALLOW_TO_UPDATE_AND_REJECT_LIMITS_UPDATE_REQUESTS = 46,
     ADD_CUSTOMER_DETAILS_TO_CONTRACT = 47,
     ADD_CAPITAL_DEPLOYMENT_FEE_TYPE = 48,
-    ADD_TRANSACTION_FEE = 49
+    ADD_TRANSACTION_FEE = 49,
+    ADD_EXPIRATION_DATE_TO_ASSET = 50
 };
 
 // variable size as the size depends on the signature scheme used
