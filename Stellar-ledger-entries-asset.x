@@ -44,7 +44,7 @@ struct AssetEntry
     case EMPTY_VERSION:
         void;
     case ADD_EXPIRATION_DATE_TO_ASSET:
-        uint64* expirationDate;
+        uint64 expirationDate;
     }
     ext;
 };

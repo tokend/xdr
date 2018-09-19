@@ -70,7 +70,9 @@ enum ManageOfferResultCode
 	REQUIRES_KYC = -24, // source must have KYC in order to participate
 	SOURCE_UNDERFUNDED = -25,
 	SOURCE_BALANCE_LOCK_OVERFLOW = -26,
-	REQUIRES_VERIFICATION = -27 // source must be verified in order to participate
+	REQUIRES_VERIFICATION = -27, // source must be verified in order to participate
+	BASE_ASSET_EXPIRED = -28,
+	QUOTE_ASSET_EXPIRED = -29
 };
 
 enum ManageOfferEffect
