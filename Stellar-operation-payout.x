@@ -75,6 +75,7 @@ struct PayoutSuccessResult
 {
     PayoutResponse payoutResponses<>;
     uint64 actualPayoutAmount;
+    Fee actualFee;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -88,7 +89,7 @@ struct PayoutSuccessResult
 union PayoutResult switch (PayoutResultCode code)
 {
     case SUCCESS:
-        PayoutSuccessResult payoutSuccessResult;
+        PayoutSuccessResult success;
     default:
         void;
 };
