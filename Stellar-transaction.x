@@ -22,6 +22,7 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
@@ -32,7 +33,6 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-
 
 namespace stellar
 {
@@ -84,6 +84,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case PAYOUT:
+	    PayoutOp payoutOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
@@ -236,6 +238,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+	case PAYOUT:
+	    PayoutResult payoutResult;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
