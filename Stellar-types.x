@@ -166,7 +166,8 @@ enum OperationType
     CREATE_MANAGE_LIMITS_REQUEST = 28,
     MANAGE_CONTRACT_REQUEST = 29,
     MANAGE_CONTRACT = 30,
-    CANCEL_SALE_REQUEST = 31
+    CANCEL_SALE_REQUEST = 31,
+    PAYOUT = 32
 };
 
 struct DecoratedSignature
