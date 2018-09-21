@@ -20,7 +20,9 @@
 %#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
@@ -33,7 +35,6 @@
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 %#include "xdr/Stellar-operation-set-account-role.h"
 %#include "xdr/Stellar-operation-set-account-role-policy.h"
-
 
 namespace stellar
 {
@@ -85,6 +86,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case PAYOUT:
+	    PayoutOp payoutOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
@@ -105,6 +108,8 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
     case SET_ACCOUNT_ROLE:
         SetAccountRoleOp setAccountRoleOp;
     case SET_ACCOUNT_ROLE_POLICY:
@@ -239,6 +244,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+	case PAYOUT:
+	    PayoutResult payoutResult;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
@@ -259,6 +266,8 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
     case SET_ACCOUNT_ROLE:
         SetAccountRoleResult setAccountRoleResult;
     case SET_ACCOUNT_ROLE_POLICY:
