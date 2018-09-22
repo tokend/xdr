@@ -336,9 +336,19 @@ case CONTRACT:
         }
         ext;
     } contract;
+case INVESTMENT_TOKEN_SALE:
+    struct {
+        uint64 saleID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } investmentTokenSale;
 case SETTLEMENT_OPTION:
     struct {
-        uint64 id;
+        uint64 settlementOptionID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
