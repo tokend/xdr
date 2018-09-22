@@ -5,23 +5,22 @@ namespace stellar
 
 enum SettlementOptionAction
 {
-    PROLONGATION = 1,
-    REDEMPTION = 2
+    PROLONG = 0,
+    REDEEM = 1
 };
 
 struct SettlementOptionEntry
 {
-    uint64 id;
+    uint64 settlementOptionID;
     uint64 investmentTokenSaleID;
-
     AccountID investorID;
 
     union switch (SettlementOptionAction action)
     {
-    case REDEMPTION:
-        AssetCode asset;
-    default:
+    case PROLONG:
         void;
+    case REDEEM:
+        AssetCode redemptionAsset;
     }
     details;
 
