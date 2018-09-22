@@ -336,6 +336,16 @@ case CONTRACT:
         }
         ext;
     } contract;
+case SETTLEMENT_OPTION:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } settlementOption;
 };
 
 enum BucketEntryType

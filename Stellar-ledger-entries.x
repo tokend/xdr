@@ -23,7 +23,7 @@
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
-
+%#include "xdr/Stellar-ledger-entries-settlement-option.h"
 
 namespace stellar
 {
@@ -62,7 +62,8 @@ enum LedgerEntryType
     LIMITS_V2 = 22,
     STATISTICS_V2 = 23,
     PENDING_STATISTICS = 24,
-    CONTRACT = 25
+    CONTRACT = 25,
+    SETTLEMENT_OPTION = 26
 };
 
 
@@ -116,6 +117,8 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
+    case SETTLEMENT_OPTION:
+        SettlementOptionEntry settlementOption;
     }
     data;
 
