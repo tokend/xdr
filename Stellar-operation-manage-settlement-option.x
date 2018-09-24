@@ -21,6 +21,13 @@ struct SettlementOptionCreationDetails
 {
     uint64 investmentTokenSaleID;
     uint64 amount;
+    union switch (SettlementOptionAction action)
+    {
+    case PROLONG:
+        void;
+    case REDEEM:
+        AssetCode redemptionAsset;
+    }
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -33,7 +40,8 @@ struct SettlementOptionCreationDetails
 
 struct ManageSettlementOptionOp
 {
-    union switch (ManageSettlementOptionAction action){
+    union switch (ManageSettlementOptionAction action)
+    {
     case CREATE:
         SettlementOptionCreationDetails creationDetails;
     case REMOVE:
