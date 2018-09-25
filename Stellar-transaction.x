@@ -33,10 +33,10 @@
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 %#include "xdr/Stellar-operation-manage-settlement-option.h"
+%#include "xdr/Stellar-operation-manage-investment-token-sale-creation-request.h"
 
 namespace stellar
 {
-
 
 /* An operation is the lowest unit of work that a transaction does */
 struct Operation
@@ -106,6 +106,8 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
+        ManageITSaleCreationRequestOp manageITSaleCreationRequestOp;
     case MANAGE_SETTLEMENT_OPTION:
         ManageSettlementOptionOp manageSettlementOptionOp;
     }
@@ -260,6 +262,8 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
+        ManageITSaleCreationRequestResult manageITSaleCreationRequestResult;
     case MANAGE_SETTLEMENT_OPTION:
         ManageSettlementOptionResult manageSettlementOptionResult;
     }
