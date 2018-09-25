@@ -20,15 +20,7 @@ enum ManageSettlementOptionAction
 struct SettlementOptionCreationDetails
 {
     uint64 investmentTokenSaleID;
-    uint64 amount;
-    union switch (SettlementOptionAction action)
-    {
-    case PROLONG:
-        void;
-    case REDEEM:
-        AssetCode redemptionAsset;
-    }
-    actionDetails;
+    SettlementOptionDetails details;
 
     // reserved for future use
     union switch (LedgerVersion v)

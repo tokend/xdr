@@ -9,20 +9,21 @@ enum SettlementOptionAction
     REDEEM = 1
 };
 
+union SettlementOptionDetails switch (SettlementOptionAction action)
+{
+case PROLONG:
+    void;
+case REDEEM:
+    AssetCode redemptionAsset;
+};
+
 struct SettlementOptionEntry
 {
     uint64 settlementOptionID;
     uint64 investmentTokenSaleID;
     AccountID investorID;
 
-    union switch (SettlementOptionAction action)
-    {
-    case PROLONG:
-        void;
-    case REDEEM:
-        AssetCode redemptionAsset;
-    }
-    details;
+    SettlementOptionDetails details;
 
     union switch (LedgerVersion v)
     {
