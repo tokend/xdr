@@ -55,7 +55,11 @@ struct ManageSettlementOptionOp
 enum ManageSettlementOptionResultCode
 {
     // codes considered as "success" for the operation
-    SUCCESS = 0
+    SUCCESS = 0,
+
+    ALREADY_EXISTS = -1,
+    NO_TOKENS = -2, // there is tokens on investor balance
+    NOT_FOUND = -3 // there is no settlement option with such id
 };
 
 struct CreateSettlementOptionResponse
