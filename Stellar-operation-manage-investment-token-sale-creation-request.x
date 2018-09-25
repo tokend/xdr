@@ -60,6 +60,7 @@ enum ManageITSaleCreationRequestResultCode
 struct ManageITSaleCreationRequestSuccess
 {
     uint64 requestID;
+    bool fulfilled;
 
     union switch (LedgerVersion v)
     {
