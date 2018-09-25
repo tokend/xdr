@@ -32,7 +32,7 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-
+%#include "xdr/Stellar-operation-manage-settlement-option.h"
 
 namespace stellar
 {
@@ -106,6 +106,8 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case MANAGE_SETTLEMENT_OPTION:
+        ManageSettlementOptionOp manageSettlementOptionOp;
     }
     body;
 };
@@ -258,6 +260,8 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case MANAGE_SETTLEMENT_OPTION:
+        ManageSettlementOptionResult manageSettlementOptionResult;
     }
     tr;
 default:

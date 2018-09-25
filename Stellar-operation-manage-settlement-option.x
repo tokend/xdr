@@ -28,6 +28,7 @@ struct SettlementOptionCreationDetails
     case REDEEM:
         AssetCode redemptionAsset;
     }
+    actionDetails;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -77,7 +78,7 @@ struct CreateSettlementOptionResponse
     ext;
 };
 
-sturct ManageSettlementOptionSuccess
+struct ManageSettlementOptionSuccess
 {
     union switch (ManageSettlementOptionAction action)
     {
@@ -85,7 +86,8 @@ sturct ManageSettlementOptionSuccess
         CreateSettlementOptionResponse response;
     case REMOVE:
         void;
-    } details;
+    }
+    details;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -96,7 +98,7 @@ sturct ManageSettlementOptionSuccess
     ext;
 };
 
-union ManageContractRequestResult switch (ManageContractRequestResultCode code)
+union ManageSettlementOptionResult switch (ManageSettlementOptionResultCode code)
 {
 case SUCCESS:
     ManageSettlementOptionSuccess success;
