@@ -33,8 +33,8 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-%#include "xdr/Stellar-operation-set-account-role.h"
-%#include "xdr/Stellar-operation-set-account-role-policy.h"
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-role-policy.h"
 
 namespace stellar
 {
@@ -111,9 +111,9 @@ struct Operation
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
     case SET_ACCOUNT_ROLE:
-        SetAccountRoleOp setAccountRoleOp;
+        ManageAccountRoleOp manageAccountRoleOp;
     case SET_ACCOUNT_ROLE_POLICY:
-        SetAccountRolePolicyOp setAccountRolePolicyOp;
+        ManageAccountRolePolicyOp manageAccountRolePolicyOp;
     }
     body;
 };
@@ -269,9 +269,9 @@ case opINNER:
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
     case SET_ACCOUNT_ROLE:
-        SetAccountRoleResult setAccountRoleResult;
+        ManageAccountRoleResult manageAccountRoleResult;
     case SET_ACCOUNT_ROLE_POLICY:
-        SetAccountRolePolicyResult setAccountRolePolicyResult;
+        ManageAccountRolePolicyResult manageAccountRolePolicyResult;
     }
     tr;
 default:

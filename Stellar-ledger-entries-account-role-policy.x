@@ -13,8 +13,8 @@ enum AccountRolePolicyEffect
 struct AccountRolePolicyEntry
 {
     uint64 accountRolePolicyID;
-    string resource<>;
-    string action<>;
+    longstring resource;
+    longstring action;
     AccountRolePolicyEffect effect;
     AccountID ownerID;
     uint64 accountRoleID;

@@ -38,8 +38,7 @@ enum SignerType
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
     KEY_VALUE_MANAGER = 134217728, // can manage keyValue
     SUPER_ISSUANCE_MANAGER = 268435456,
-    CONTRACT_MANAGER = 536870912,
-	IDENTITY_POLICY_MANAGER = 1073741824
+    CONTRACT_MANAGER = 536870912
 };
 
 struct Signer
@@ -108,8 +107,7 @@ enum AccountType
 	EXCHANGE = 7,
 	ACCREDITED_INVESTOR = 8,
 	INSTITUTIONAL_INVESTOR = 9,
-	VERIFIED = 10,
-	ANY = 2147483647 // INTERNAL ONLY
+	VERIFIED = 10
 };
 
 enum BlockReasons
@@ -121,6 +119,19 @@ enum BlockReasons
 	WITHDRAWAL = 16
 };
 
+struct AccountEntryExtended
+{
+    uint32 kycLevel;
+    uint64* accountRole;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 /* AccountEntry
 
@@ -159,12 +170,8 @@ struct AccountEntry
     case USE_KYC_LEVEL:
         uint32 kycLevel;
     case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
-        struct {
-            uint32 kycLevel;
-            uint32* accountRole;
-        } ext_0;
+        AccountEntryExtended accountEntryExt;
     }
     ext;
 };
-
 }

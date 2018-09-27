@@ -2,18 +2,24 @@
 
 namespace stellar {
 
-/* SetAccountRole
+/* ManageAccountRole
 
     Create or delete policy attachment for any account, specific account type or account id
 
     Threshold: high
 
-    Result: SetAccountRoleResult
+    Result: ManageAccountRoleResult
 */
 
-struct SetAccountRoleData
+enum ManageAccountRoleOpAction
 {
-    string name<>;
+    CREATE = 0,
+    REMOVE = 1
+};
+
+struct CreateAccountRoleData
+{
+    longstring name;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -23,10 +29,27 @@ struct SetAccountRoleData
     } ext;
 };
 
-struct SetAccountRoleOp
+struct RemoveAccountRoleData
 {
-    uint64 id;
-    SetAccountRoleData *data;
+    uint64 accountRoleID;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct ManageAccountRoleOp
+{
+    union switch (ManageAccountRoleOpAction action)
+    {
+    case CREATE:
+        CreateAccountRoleData createData;
+    case REMOVE:
+        RemoveAccountRoleData removeData;
+    } data;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -37,19 +60,18 @@ struct SetAccountRoleOp
     ext;
 };
 
-/******* SetAccountRole Result ********/
+/******* ManageAccountRoleOp Result ********/
 
-enum SetAccountRoleResultCode
+enum ManageAccountRoleResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,
-    NOT_FOUND = -2
+    NOT_FOUND = -1
 };
 
-union SetAccountRoleResult switch (SetAccountRoleResultCode code)
+union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
 {
     case SUCCESS:
         struct {

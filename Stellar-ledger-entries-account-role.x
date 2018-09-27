@@ -4,7 +4,7 @@ namespace stellar {
 
 struct AccountRoleEntry {
     uint64 accountRoleID;
-    string accountRoleName<>;
+    longstring accountRoleName;
     AccountID ownerID;
 
     // reserved for future use

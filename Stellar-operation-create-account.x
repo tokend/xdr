@@ -16,6 +16,12 @@ Result: CreateAccountResult
 
 */
 
+struct CreateAccountOpExtended
+{
+    ExternalSystemAccountID externalSystemIDs<>;
+    uint64* roleID;
+};
+
 struct CreateAccountOp
 {
     AccountID destination; // account to create
@@ -32,10 +38,7 @@ struct CreateAccountOp
     case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
         ExternalSystemAccountID externalSystemIDs<>;
     case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
-        struct {
-            ExternalSystemAccountID externalSystemIDs<>;
-            uint64* roleID;
-        } ext_0;
+        CreateAccountOpExtended opExt;
     }
     ext;
 };
