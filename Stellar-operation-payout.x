@@ -50,7 +50,7 @@ enum PayoutResultCode
     TOTAL_FEE_OVERFLOW = -8,
     UNDERFUNDED = -9, // not enough amount on source balance
     HOLDERS_NOT_FOUND = -10, // there is no holders of such asset
-    MIN_AMOUNT_TOO_MUCH = -11, // there is no appropriate holders balances
+    MIN_AMOUNT_TOO_BIG = -11, // there is no appropriate holders balances
     LINE_FULL = -12, // destination balance amount overflows
     STATS_OVERFLOW = -13, // source statistics overflow
     LIMITS_EXCEEDED = -14 // source account limit exceeded
