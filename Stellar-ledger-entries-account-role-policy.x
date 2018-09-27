@@ -1,4 +1,3 @@
-
 %#include "xdr/Stellar-types.h"
 
 namespace stellar
