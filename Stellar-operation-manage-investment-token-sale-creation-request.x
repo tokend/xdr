@@ -72,7 +72,8 @@ enum ManageITSaleCreationRequestResultCode
     INVALID_SETTLEMENT_END_DATE = -13,
     REQUEST_OR_SALE_ALREADY_EXISTS = -14,
     QUOTE_ASSET_NOT_FOUND = -15,
-    BASE_ASSET_NOT_FOUND = -16
+    BASE_ASSET_NOT_FOUND = -16,
+    INVSETMENT_TOKEN_SALE_CREATION_TASKS_NOT_FOUND = -17
 };
 
 struct ManageITSaleCreationRequestSuccess
