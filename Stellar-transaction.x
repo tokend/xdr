@@ -34,6 +34,7 @@
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 %#include "xdr/Stellar-operation-manage-settlement-option.h"
 %#include "xdr/Stellar-operation-manage-investment-token-sale-creation-request.h"
+%#include "xdr/Stellar-operation-create-investment-token-sale-participation.h"
 
 namespace stellar
 {
@@ -108,6 +109,8 @@ struct Operation
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
     case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
         ManageITSaleCreationRequestOp manageITSaleCreationRequestOp;
+    case CREATE_INVESTMENT_TOKEN_SALE_PARTICIPATION:
+        CreateITSaleParticipationOp createITSaleParticipationOp;
     case MANAGE_SETTLEMENT_OPTION:
         ManageSettlementOptionOp manageSettlementOptionOp;
     }
@@ -264,6 +267,8 @@ case opINNER:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
     case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
         ManageITSaleCreationRequestResult manageITSaleCreationRequestResult;
+    case CREATE_INVESTMENT_TOKEN_SALE_PARTICIPATION:
+        CreateITSaleParticipationResult createITSaleParticipationResult;
     case MANAGE_SETTLEMENT_OPTION:
         ManageSettlementOptionResult manageSettlementOptionResult;
     }
