@@ -91,9 +91,8 @@ enum ManageAccountRolePolicyResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,
-    NOT_FOUND = -2,
-    POLICY_ALREADY_EXISTS = -3
+    NOT_FOUND = -1,
+    POLICY_ALREADY_EXISTS = -2
 };
 
 union ManageAccountRolePolicyResult switch (ManageAccountRolePolicyResultCode code)

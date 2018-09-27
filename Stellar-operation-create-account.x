@@ -20,6 +20,13 @@ struct CreateAccountOpExtended
 {
     ExternalSystemAccountID externalSystemIDs<>;
     uint64* roleID;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
 };
 
 struct CreateAccountOp
