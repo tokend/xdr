@@ -26,7 +26,8 @@ struct CreateAccountOpExtended
     {
     case EMPTY_VERSION:
         void;
-    };
+    }
+    ext;
 };
 
 struct CreateAccountOp
