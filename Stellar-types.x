@@ -169,8 +169,8 @@ enum OperationType
     MANAGE_CONTRACT = 30,
     CANCEL_SALE_REQUEST = 31,
     PAYOUT = 32,
-    SET_ACCOUNT_ROLE = 33,
-    SET_ACCOUNT_ROLE_POLICY = 34
+    MANAGE_ACCOUNT_ROLE = 33,
+    MANAGE_ACCOUNT_ROLE_POLICY = 34
 };
 
 struct DecoratedSignature

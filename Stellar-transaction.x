@@ -110,9 +110,9 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case SET_ACCOUNT_ROLE:
+    case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
-    case SET_ACCOUNT_ROLE_POLICY:
+    case MANAGE_ACCOUNT_ROLE_POLICY:
         ManageAccountRolePolicyOp manageAccountRolePolicyOp;
     }
     body;
@@ -268,9 +268,9 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case SET_ACCOUNT_ROLE:
+    case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
-    case SET_ACCOUNT_ROLE_POLICY:
+    case MANAGE_ACCOUNT_ROLE_POLICY:
         ManageAccountRolePolicyResult manageAccountRolePolicyResult;
     }
     tr;
