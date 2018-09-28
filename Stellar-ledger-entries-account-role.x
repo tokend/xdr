@@ -5,7 +5,6 @@ namespace stellar {
 struct AccountRoleEntry {
     uint64 accountRoleID;
     longstring accountRoleName;
-    AccountID ownerID;
 
     // reserved for future use
     union switch (LedgerVersion v) {

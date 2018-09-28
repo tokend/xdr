@@ -15,7 +15,6 @@ struct AccountRolePolicyEntry
     longstring resource;
     longstring action;
     AccountRolePolicyEffect effect;
-    AccountID ownerID;
     uint64 accountRoleID;
 
     // reserved for future use
