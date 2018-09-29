@@ -118,6 +118,18 @@ struct SaleExtended {
     ext;
 };
 
+struct InvestmentTokenSaleExtended {
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -126,6 +138,8 @@ struct ExtendedResult {
         SaleExtended saleExtended;
     case NONE:
         void;
+    case INVESTMENT_TOKEN_SALE:
+        InvestmentTokenSaleExtended investmentTokenSaleExtended;
     } typeExt;
 
    // Reserved for future use
