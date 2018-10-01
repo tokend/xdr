@@ -57,9 +57,13 @@ enum ManageSettlementOptionResultCode
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
-    ALREADY_EXISTS = -1,
-    NO_TOKENS = -2, // there is tokens on investor balance
-    NOT_FOUND = -3 // there is no settlement option with such id
+    SETTLEMENT_OPTION_ALREADY_EXISTS = -1,
+    SETTLEMENT_OPTION_NOT_FOUND = -2, // there is no settlement option with such id
+    INVESTOR_HAS_NO_INVESTMENT_TOKEN = -3,
+    INVESTMENT_TOKEN_SALE_NOT_FOUND = -4, // there is no investment token sale with such id
+    REDEMPTION_ASSET_NOT_FOUND = -5,
+    NOW_IS_NOT_THE_SETTLEMENT_PERIOD = -6,
+    INVALID_REDEMPTION_ASSET = -7
 };
 
 struct CreateSettlementOptionResponse
