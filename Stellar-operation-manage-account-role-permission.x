@@ -1,30 +1,28 @@
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-ledger-entries-account-role-policy.h"
+%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
 
 namespace stellar
 {
-/* ManageAccountRolePolicyOp
+/* ManageAccountRolePermissionOp
 
- Creates, updates or deletes account role policy
+ Creates, updates or deletes account role permission
 
  Threshold: med
 
- Result: ManageAccountRolePolicyResult
+ Result: ManageAccountRolePermissionResult
 */
 
-enum ManageAccountRolePolicyOpAction
+enum ManageAccountRolePermissionOpAction
 {
     CREATE = 0,
     UPDATE = 1,
     REMOVE = 2
 };
 
-struct CreateAccountRolePolicyData
+struct CreateAccountRolePermissionData
 {
     uint64 roleID;
-    string256 resource;
-    string256 action;
-    AccountRolePolicyEffect effect;
+    OperationType opType;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -34,13 +32,11 @@ struct CreateAccountRolePolicyData
     } ext;
 };
 
-struct UpdateAccountRolePolicyData
+struct UpdateAccountRolePermissionData
 {
-    uint64 policyID;
+    uint64 permissionID;
     uint64 roleID;
-    string256 resource;
-    string256 action;
-    AccountRolePolicyEffect effect;
+    OperationType opType;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -50,9 +46,9 @@ struct UpdateAccountRolePolicyData
     } ext;
 };
 
-struct RemoveAccountRolePolicyData
+struct RemoveAccountRolePermissionData
 {
-    uint64 policyID;
+    uint64 permissionID;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -62,16 +58,16 @@ struct RemoveAccountRolePolicyData
     } ext;
 };
 
-struct ManageAccountRolePolicyOp
+struct ManageAccountRolePermissionOp
 {
-    union switch (ManageAccountRolePolicyOpAction action)
+    union switch (ManageAccountRolePermissionOpAction action)
     {
     case CREATE:
-        CreateAccountRolePolicyData createData;
+        CreateAccountRolePermissionData createData;
     case UPDATE:
-        UpdateAccountRolePolicyData updateData;
+        UpdateAccountRolePermissionData updateData;
     case REMOVE:
-        RemoveAccountRolePolicyData removeData;
+        RemoveAccountRolePermissionData removeData;
     } data;
 
     // reserved for future use
@@ -83,25 +79,23 @@ struct ManageAccountRolePolicyOp
     ext;
 };
 
-/******* ManageAccountRolePolicyOp Result ********/
+/******* ManageAccountRolePermissionOp Result ********/
 
-enum ManageAccountRolePolicyResultCode
+enum ManageAccountRolePermissionResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     NOT_FOUND = -1,
-    POLICY_ALREADY_EXISTS = -2,
-    EMPTY_RESOURCE = -3,
-    EMPTY_ACTION = -4
+    PERMISSION_ALREADY_EXISTS = -2
 };
 
-union ManageAccountRolePolicyResult switch (ManageAccountRolePolicyResultCode code)
+union ManageAccountRolePermissionResult switch (ManageAccountRolePermissionResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 accountRolePolicyID;
+            uint64 permissionID;
 
             // reserved for future use
             union switch (LedgerVersion v)

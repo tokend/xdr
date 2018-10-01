@@ -24,7 +24,7 @@
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
-%#include "xdr/Stellar-ledger-entries-account-role-policy.h"
+%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
 
 
 namespace stellar
@@ -66,7 +66,7 @@ enum LedgerEntryType
     PENDING_STATISTICS = 24,
     CONTRACT = 25,
     ACCOUNT_ROLE = 26,
-    ACCOUNT_ROLE_POLICY = 27
+    ACCOUNT_ROLE_PERMISSION = 27
 };
 
 
@@ -122,8 +122,8 @@ struct LedgerEntry
         ContractEntry contract;
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
-    case ACCOUNT_ROLE_POLICY:
-        AccountRolePolicyEntry accountRolePolicy;
+    case ACCOUNT_ROLE_PERMISSION:
+        AccountRolePermissionEntry accountRolePermission;
     }
     data;
 

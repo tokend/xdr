@@ -39,7 +39,7 @@ enum SignerType
     KEY_VALUE_MANAGER = 134217728, // can manage keyValue
     SUPER_ISSUANCE_MANAGER = 268435456,
     CONTRACT_MANAGER = 536870912,
-    ACCOUNT_ROLE_POLICY_MANAGER = 1073741824 // can manage account role policies
+    ACCOUNT_ROLE_PERMISSION_MANAGER = 1073741824 // can manage account role permissions
 };
 
 struct Signer

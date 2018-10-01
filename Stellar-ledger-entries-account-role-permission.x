@@ -3,19 +3,11 @@
 namespace stellar
 {
 
-enum AccountRolePolicyEffect
+struct AccountRolePermissionEntry
 {
-    DENY = 0,
-    ALLOW = 1
-};
-
-struct AccountRolePolicyEntry
-{
-    uint64 accountRolePolicyID;
-    longstring resource;
-    longstring action;
-    AccountRolePolicyEffect effect;
+    uint64 permissionID;
     uint64 accountRoleID;
+    OperationType opType;
 
     // reserved for future use
     union switch (LedgerVersion v)

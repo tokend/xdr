@@ -346,16 +346,16 @@ case ACCOUNT_ROLE:
         }
         ext;
     } accountRole;
-case ACCOUNT_ROLE_POLICY:
+case ACCOUNT_ROLE_PERMISSION:
     struct {
-        uint64 accountRolePolicyID;
+        uint64 permissionID;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
             void;
         }
         ext;
-    } accountRolePolicy;
+    } accountRolePermission;
 };
 
 enum BucketEntryType
