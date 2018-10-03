@@ -63,7 +63,8 @@ enum ManageSettlementOptionResultCode
     INVESTMENT_TOKEN_SALE_NOT_FOUND = -4, // there is no investment token sale with such id
     REDEMPTION_ASSET_NOT_FOUND = -5,
     NOW_IS_NOT_THE_SETTLEMENT_PERIOD = -6,
-    INVALID_REDEMPTION_ASSET = -7
+    INVALID_REDEMPTION_ASSET = -7,
+    REDEMPTION_ASSET_IS_NOT_SUPPORTED = -8
 };
 
 struct CreateSettlementOptionResponse
