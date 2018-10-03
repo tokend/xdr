@@ -35,12 +35,12 @@ enum CreateITSaleParticipationResultCode
     SUCCESS = 0,
 
     INVALID_AMOUNT = -1,
-    SALE_NOT_FOUND = -2, // there is no sale with such id
-    TOO_LATE = -3, // trading start date is started or available amount equals 0
-    QUOTE_ASSET_NOT_FOUND = -4,
-    BASE_AMOUNT_TOO_BIG = -5,
-    QUOTE_BALANCE_NOT_FOUND = -6,
-    FEE_OVERFLOWS = -7
+    INVESTMENT_TOKEN_SALE_NOT_FOUND = -2, // there is no investment token sale with such id
+    QUOTE_ASSET_NOT_FOUND = -3,
+    INSUFFICIENT_AVAILABLE_AMOUNT = -4,
+    QUOTE_BALANCE_NOT_FOUND = -5,
+    FEE_OVERFLOWS = -6,
+    INVESTMENT_TOKEN_SALE_IS_CLOSED = -7
 };
 
 

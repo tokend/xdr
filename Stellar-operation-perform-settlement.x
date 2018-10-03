@@ -37,7 +37,8 @@ enum PerformSettlementResultCode
     NEW_INVESTMENT_TOKEN_NOT_FOUND = -4,
     TRADING_PERIOD_HAS_NOT_STARTED_YET = -5, // cannot perform settlement before trading period
     SETTLEMENT_PERIOD_HAS_NOT_STARTED_YET = -6, // cannot perform settlement before settlement period
-    NOW_IS_SETTLEMENT_PERIOD = -7
+    NOW_IS_SETTLEMENT_PERIOD = -7,
+    INVESTMENT_TOKEN_IS_NOT_EXPIRED = -8
 };
 
 struct PerformSettlementSuccess
