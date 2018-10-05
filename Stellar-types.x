@@ -81,7 +81,7 @@ enum LedgerVersion {
     ADD_CUSTOMER_DETAILS_TO_CONTRACT = 47,
     ADD_CAPITAL_DEPLOYMENT_FEE_TYPE = 48,
     ADD_TRANSACTION_FEE = 49,
-    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 50
+    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 
 // variable size as the size depends on the signature scheme used
