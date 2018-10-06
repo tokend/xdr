@@ -336,6 +336,26 @@ case CONTRACT:
         }
         ext;
     } contract;
+case ACCOUNT_ROLE:
+    struct {
+        uint64 accountRoleID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountRole;
+case ACCOUNT_ROLE_PERMISSION:
+    struct {
+        uint64 permissionID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountRolePermission;
 };
 
 enum BucketEntryType

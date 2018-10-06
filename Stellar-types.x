@@ -80,7 +80,8 @@ enum LedgerVersion {
     ALLOW_TO_UPDATE_AND_REJECT_LIMITS_UPDATE_REQUESTS = 46,
     ADD_CUSTOMER_DETAILS_TO_CONTRACT = 47,
     ADD_CAPITAL_DEPLOYMENT_FEE_TYPE = 48,
-    ADD_TRANSACTION_FEE = 49
+    ADD_TRANSACTION_FEE = 49,
+    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 
 // variable size as the size depends on the signature scheme used
@@ -167,7 +168,9 @@ enum OperationType
     MANAGE_CONTRACT_REQUEST = 29,
     MANAGE_CONTRACT = 30,
     CANCEL_SALE_REQUEST = 31,
-    PAYOUT = 32
+    PAYOUT = 32,
+    MANAGE_ACCOUNT_ROLE = 33,
+    MANAGE_ACCOUNT_ROLE_PERMISSION = 34
 };
 
 struct DecoratedSignature

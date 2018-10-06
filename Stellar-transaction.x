@@ -33,6 +33,8 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
 namespace stellar
 {
@@ -108,6 +110,10 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleOp manageAccountRoleOp;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
     }
     body;
 };
@@ -194,7 +200,8 @@ enum OperationResultCode
     opNO_COUNTERPARTY = -5,
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
-	opBAD_AUTH_EXTRA = -8
+    opBAD_AUTH_EXTRA = -8,
+    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -262,6 +269,10 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleResult manageAccountRoleResult;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     }
     tr;
 default:
