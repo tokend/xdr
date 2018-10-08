@@ -94,7 +94,10 @@ enum PaymentV2ResultCode
     FEE_ASSET_MISMATCHED = -13,
     INSUFFICIENT_FEE_AMOUNT = -14,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16,
+    DESTINATION_ACCOUNT_NOT_FOUND = -17
+
+     // !!! Add new result code to review invoice op too !!!
 };
 
 struct PaymentV2Response {

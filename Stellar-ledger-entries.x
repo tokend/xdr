@@ -6,7 +6,6 @@
 %#include "xdr/Stellar-ledger-entries-account.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
-%#include "xdr/Stellar-ledger-entries-payment-request.h"
 %#include "xdr/Stellar-ledger-entries-asset.h"
 %#include "xdr/Stellar-ledger-entries-asset-pair.h"
 %#include "xdr/Stellar-ledger-entries-reference.h"
@@ -14,7 +13,6 @@
 %#include "xdr/Stellar-ledger-entries-statistics.h"
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
-%#include "xdr/Stellar-ledger-entries-invoice.h"
 %#include "xdr/Stellar-ledger-entries-reviewable-request.h"
 %#include "xdr/Stellar-ledger-entries-external-system-id.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
@@ -24,6 +22,9 @@
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
+%#include "xdr/Stellar-ledger-entries-contract.h"
+%#include "xdr/Stellar-ledger-entries-account-role.h"
+%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
 
 
 namespace stellar
@@ -53,7 +54,6 @@ enum LedgerEntryType
     ACCOUNT_LIMITS = 11,
 	ASSET_PAIR = 12,
 	OFFER_ENTRY = 13,
-    INVOICE = 14,
 	REVIEWABLE_REQUEST = 15,
 	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
 	SALE = 17,
@@ -63,7 +63,10 @@ enum LedgerEntryType
     SALE_ANTE = 21,
     LIMITS_V2 = 22,
     STATISTICS_V2 = 23,
-    PENDING_STATISTICS = 24
+    PENDING_STATISTICS = 24,
+    CONTRACT = 25,
+    ACCOUNT_ROLE = 26,
+    ACCOUNT_ROLE_PERMISSION = 27
 };
 
 
@@ -79,8 +82,6 @@ struct LedgerEntry
         FeeEntry feeState;
     case BALANCE:
         BalanceEntry balance;
-    case PAYMENT_REQUEST:
-        PaymentRequestEntry paymentRequest;
     case ASSET:
         AssetEntry asset;
     case REFERENCE_ENTRY:
@@ -97,8 +98,6 @@ struct LedgerEntry
 		AssetPairEntry assetPair;
 	case OFFER_ENTRY:
 		OfferEntry offer;
-    case INVOICE:
-        InvoiceEntry invoice;
 	case REVIEWABLE_REQUEST:
 		ReviewableRequestEntry reviewableRequest;
 	case EXTERNAL_SYSTEM_ACCOUNT_ID:
@@ -119,6 +118,12 @@ struct LedgerEntry
         StatisticsV2Entry statisticsV2;
     case PENDING_STATISTICS:
         PendingStatisticsEntry pendingStatistics;
+    case CONTRACT:
+        ContractEntry contract;
+    case ACCOUNT_ROLE:
+        AccountRoleEntry accountRole;
+    case ACCOUNT_ROLE_PERMISSION:
+        AccountRolePermissionEntry accountRolePermission;
     }
     data;
 

@@ -36,7 +36,10 @@ enum SignerType
 	KYC_ACC_MANAGER = 16777216, // can manage kyc
 	KYC_SUPER_ADMIN = 33554432,
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
-    KEY_VALUE_MANAGER = 134217728 // can manage keyValue
+    KEY_VALUE_MANAGER = 134217728, // can manage keyValue
+    SUPER_ISSUANCE_MANAGER = 268435456,
+    CONTRACT_MANAGER = 536870912,
+    ACCOUNT_ROLE_PERMISSION_MANAGER = 1073741824 // can manage account role permissions
 };
 
 struct Signer
@@ -113,9 +116,23 @@ enum BlockReasons
 	RECOVERY_REQUEST = 1,
 	KYC_UPDATE = 2,
 	SUSPICIOUS_BEHAVIOR = 4,
-	TOO_MANY_KYC_UPDATE_REQUESTS = 8
+	TOO_MANY_KYC_UPDATE_REQUESTS = 8,
+	WITHDRAWAL = 16
 };
 
+struct AccountEntryExtended
+{
+    uint32 kycLevel;
+    uint64* accountRole;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 /* AccountEntry
 
@@ -151,11 +168,11 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
-	case USE_KYC_LEVEL:
-		uint32 kycLevel;
+    case USE_KYC_LEVEL:
+        uint32 kycLevel;
+    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
+        AccountEntryExtended accountEntryExt;
     }
-	
     ext;
 };
-
 }

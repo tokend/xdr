@@ -145,17 +145,6 @@ case BALANCE:
 		}
 		ext;
     } balance;
-case PAYMENT_REQUEST:
-    struct
-    {
-		uint64 paymentID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } paymentRequest;
 case ASSET:
     struct
     {
@@ -236,16 +225,6 @@ case OFFER_ENTRY:
 		uint64 offerID;
 		AccountID ownerID;
 	} offer;
-case INVOICE:
-    struct {
-        uint64 invoiceID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } invoice;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;
@@ -347,6 +326,36 @@ case PENDING_STATISTICS:
         }
         ext;
     } pendingStatistics;
+case CONTRACT:
+    struct {
+        uint64 contractID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } contract;
+case ACCOUNT_ROLE:
+    struct {
+        uint64 accountRoleID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountRole;
+case ACCOUNT_ROLE_PERMISSION:
+    struct {
+        uint64 permissionID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } accountRolePermission;
 };
 
 enum BucketEntryType

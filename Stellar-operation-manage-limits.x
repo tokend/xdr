@@ -60,10 +60,13 @@ enum ManageLimitsResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
+
     // codes considered as "failure" for the operation
     MALFORMED = -1,
     NOT_FOUND = -2,
-    ALREADY_EXISTS = -3
+    ALREADY_EXISTS = -3,
+    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = -4, // limits cannot be created for account ID and account type simultaneously
+    INVALID_LIMITS = -5
 };
 
 union ManageLimitsResult switch (ManageLimitsResultCode code)
