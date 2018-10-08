@@ -35,6 +35,7 @@
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
+%#include "xdr/Stellar-operation-create-reference.h"
 
 namespace stellar
 {
@@ -114,6 +115,8 @@ struct Operation
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionOp manageAccountRolePermissionOp;
+    case CREATE_REFERENCE:
+        CreateReferenceOp createReferenceOp;
     }
     body;
 };
@@ -273,6 +276,8 @@ case opINNER:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionResult manageAccountRolePermissionResult;
+    case CREATE_REFERENCE:
+        CreateReferenceResult createReferenceResult;
     }
     tr;
 default:
