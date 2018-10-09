@@ -72,7 +72,8 @@ enum ManageOfferResultCode
 	SOURCE_BALANCE_LOCK_OVERFLOW = -26,
 	REQUIRES_VERIFICATION = -27, // source must be verified in order to participate
 	BASE_ASSET_EXPIRED = -28,
-	QUOTE_ASSET_EXPIRED = -29
+	QUOTE_ASSET_EXPIRED = -29,
+	INVALID_INVESTMENT_TOKEN = -30
 };
 
 enum ManageOfferEffect

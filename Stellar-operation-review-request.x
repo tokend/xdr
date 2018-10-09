@@ -208,6 +208,7 @@ enum ReviewRequestResultCode
 	ASSET_ALREADY_EXISTS = -20,
 	ASSET_DOES_NOT_EXISTS = -21,
 	INVALID_EXPIRATION_DATE = -22, // expiration date is less or equal to ledger close time
+	CHANGING_INVESTMENT_TOKEN_POLICY_IS_NOT_ALLOWED = -23,
 
 	// Issuance requests
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
