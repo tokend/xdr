@@ -16,6 +16,20 @@ Result: CreateAccountResult
 
 */
 
+struct CreateAccountOpExtended
+{
+    ExternalSystemAccountID externalSystemIDs<>;
+    uint64* roleID;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct CreateAccountOp
 {
     AccountID destination; // account to create
@@ -28,9 +42,11 @@ struct CreateAccountOp
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;	
-	case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
-		ExternalSystemAccountID externalSystemIDs<>;
+        void;
+    case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
+        ExternalSystemAccountID externalSystemIDs<>;
+    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
+        CreateAccountOpExtended opExt;
     }
     ext;
 };

@@ -37,6 +37,8 @@
 %#include "xdr/Stellar-operation-manage-investment-token-sale-creation-request.h"
 %#include "xdr/Stellar-operation-create-investment-token-sale-participation.h"
 %#include "xdr/Stellar-operation-perform-settlement.h"
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
 namespace stellar
 {
@@ -119,6 +121,10 @@ struct Operation
         ManageSettlementOptionOp manageSettlementOptionOp;
     case PERFORM_SETTLEMENT:
         PerformSettlementOp performSettlementOp;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleOp manageAccountRoleOp;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
     }
     body;
 };
@@ -205,7 +211,8 @@ enum OperationResultCode
     opNO_COUNTERPARTY = -5,
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
-	opBAD_AUTH_EXTRA = -8
+    opBAD_AUTH_EXTRA = -8,
+    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -281,6 +288,10 @@ case opINNER:
         ManageSettlementOptionResult manageSettlementOptionResult;
     case PERFORM_SETTLEMENT:
         PerformSettlementResult performSettlementResult;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleResult manageAccountRoleResult;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     }
     tr;
 default:
