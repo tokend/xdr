@@ -97,7 +97,7 @@ enum ManageAssetResultCode
 	INITIAL_PREISSUED_EXCEEDS_MAX_ISSUANCE = -11, // initial pre issued amount exceeds max issuance amount
 	INVALID_DETAILS = -12, // details must be a valid json
 	INVALID_EXPIRATION_DATE = -13, // expiration date is less or equal to ledger close time
-	ASSET_IS_EXPIRED = -14
+	ASSET_EXPIRED = -14
 };
 
 struct ManageAssetSuccess
