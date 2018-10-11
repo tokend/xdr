@@ -5,7 +5,7 @@ namespace stellar
 
 /* CreateReference
 
-    Add unique reference to database calculated from meta
+    Add unique reference to database
 
     Threshold: high
 
@@ -14,6 +14,7 @@ namespace stellar
 
 struct CreateReferenceOp
 {
+    string64 reference;
     longstring meta;
 
     // reserved for future use
@@ -32,14 +33,13 @@ enum CreateReferenceResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    INVALID_META = -1,
-    ALREADY_EXISTS = -2
+    INVALID_REFERENCE = -1,
+    INVALID_META = -2,
+    ALREADY_EXISTS = -3
 };
 
 struct CreateReferenceSuccessResult
 {
-    string64 reference;
-
     // reserved for future use
     union switch (LedgerVersion v)
     {
