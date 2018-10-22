@@ -18,7 +18,7 @@ enum SignerType
 	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
 	ISSUANCE_MANAGER = 128, // allowed to make preissuance request
 	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
-	PAYMENT_OPERATOR = 512, // allowed to review payment requests
+	ATOMIC_SWAP_MANAGER = 512, // allowed to work with atomic swaps
 	LIMITS_MANAGER = 1024, // allowed to change limits
 	ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
 	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
@@ -40,7 +40,6 @@ enum SignerType
     SUPER_ISSUANCE_MANAGER = 268435456,
     CONTRACT_MANAGER = 536870912,
     ACCOUNT_ROLE_PERMISSION_MANAGER = 1073741824 // can manage account role permissions
-    ATOMIC_SWAP_MANAGER = 2147483648
 };
 
 struct Signer
