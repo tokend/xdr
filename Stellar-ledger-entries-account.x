@@ -39,7 +39,8 @@ enum SignerType
     KEY_VALUE_MANAGER = 134217728, // can manage keyValue
     SUPER_ISSUANCE_MANAGER = 268435456,
     CONTRACT_MANAGER = 536870912,
-    ATOMIC_SWAP_MANAGER = 1073741824
+    ACCOUNT_ROLE_PERMISSION_MANAGER = 1073741824 // can manage account role permissions
+    ATOMIC_SWAP_MANAGER = 2147483648
 };
 
 struct Signer
@@ -120,6 +121,19 @@ enum BlockReasons
 	WITHDRAWAL = 16
 };
 
+struct AccountEntryExtended
+{
+    uint32 kycLevel;
+    uint64* accountRole;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 /* AccountEntry
 
@@ -155,11 +169,11 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
-	case USE_KYC_LEVEL:
-		uint32 kycLevel;
+    case USE_KYC_LEVEL:
+        uint32 kycLevel;
+    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
+        AccountEntryExtended accountEntryExt;
     }
-	
     ext;
 };
-
 }

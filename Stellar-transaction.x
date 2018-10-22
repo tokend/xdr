@@ -22,6 +22,7 @@
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
 %#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
@@ -35,7 +36,8 @@
 %#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
 %#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
 %#include "xdr/Stellar-operation-create-aswap-request.h"
-
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
 namespace stellar
 {
@@ -87,6 +89,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case PAYOUT:
+	    PayoutOp payoutOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
@@ -115,6 +119,10 @@ struct Operation
         CancelASwapBidOp cancelASwapBidOp;
     case CREATE_ASWAP_REQUEST:
         CreateASwapRequestOp createASwapRequestOp;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleOp manageAccountRoleOp;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
     }
     body;
 };
@@ -201,7 +209,8 @@ enum OperationResultCode
     opNO_COUNTERPARTY = -5,
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
-	opBAD_AUTH_EXTRA = -8
+    opBAD_AUTH_EXTRA = -8,
+    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -245,6 +254,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+	case PAYOUT:
+	    PayoutResult payoutResult;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
@@ -273,6 +284,10 @@ case opINNER:
         CancelASwapBidResult cancelASwapBidResult;
     case CREATE_ASWAP_REQUEST:
         CreateASwapRequestResult createASwapRequestResult;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleResult manageAccountRoleResult;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     }
     tr;
 default:
