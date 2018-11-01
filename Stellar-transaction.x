@@ -33,12 +33,15 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-manage-settlement-option.h"
+%#include "xdr/Stellar-operation-manage-investment-token-sale-creation-request.h"
+%#include "xdr/Stellar-operation-create-investment-token-sale-participation.h"
+%#include "xdr/Stellar-operation-perform-settlement.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
 namespace stellar
 {
-
 
 /* An operation is the lowest unit of work that a transaction does */
 struct Operation
@@ -110,6 +113,14 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
+        ManageITSaleCreationRequestOp manageITSaleCreationRequestOp;
+    case CREATE_INVESTMENT_TOKEN_SALE_PARTICIPATION:
+        CreateITSaleParticipationOp createITSaleParticipationOp;
+    case MANAGE_SETTLEMENT_OPTION:
+        ManageSettlementOptionOp manageSettlementOptionOp;
+    case PERFORM_SETTLEMENT:
+        PerformSettlementOp performSettlementOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
@@ -269,6 +280,14 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case MANAGE_INVESTMENT_TOKEN_SALE_CREATION_REQUEST:
+        ManageITSaleCreationRequestResult manageITSaleCreationRequestResult;
+    case CREATE_INVESTMENT_TOKEN_SALE_PARTICIPATION:
+        CreateITSaleParticipationResult createITSaleParticipationResult;
+    case MANAGE_SETTLEMENT_OPTION:
+        ManageSettlementOptionResult manageSettlementOptionResult;
+    case PERFORM_SETTLEMENT:
+        PerformSettlementResult performSettlementResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:

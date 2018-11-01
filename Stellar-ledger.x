@@ -356,6 +356,26 @@ case ACCOUNT_ROLE_PERMISSION:
         }
         ext;
     } accountRolePermission;
+case INVESTMENT_TOKEN_SALE:
+    struct {
+        uint64 saleID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } investmentTokenSale;
+case SETTLEMENT_OPTION:
+    struct {
+        uint64 settlementOptionID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } settlementOption;
 };
 
 enum BucketEntryType

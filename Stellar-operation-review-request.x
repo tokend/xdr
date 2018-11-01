@@ -118,6 +118,18 @@ struct SaleExtended {
     ext;
 };
 
+struct InvestmentTokenSaleExtended {
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -126,6 +138,8 @@ struct ExtendedResult {
         SaleExtended saleExtended;
     case NONE:
         void;
+    case INVESTMENT_TOKEN_SALE:
+        InvestmentTokenSaleExtended investmentTokenSaleExtended;
     } typeExt;
 
    // Reserved for future use
@@ -189,10 +203,13 @@ enum ReviewRequestResultCode
 	INVALID_EXTERNAL_DETAILS = -7,
 	REQUESTOR_IS_BLOCKED = -8,
 	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
+	REVIEW_DETAILS_MUST_BE_PROVIDED = -10,
 
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
 	ASSET_DOES_NOT_EXISTS = -21,
+	INVALID_EXPIRATION_DATE = -22, // expiration date is less or equal to ledger close time
+	CHANGING_INVESTMENT_TOKEN_POLICY_IS_NOT_ALLOWED = -23,
 
 	// Issuance requests
 	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
@@ -245,6 +262,7 @@ enum ReviewRequestResultCode
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
     DESTINATION_ACCOUNT_NOT_FOUND = -126,
+    ASSET_EXPIRED = -127,
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously

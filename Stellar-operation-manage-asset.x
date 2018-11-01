@@ -95,7 +95,9 @@ enum ManageAssetResultCode
 	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists
 	STATS_ASSET_ALREADY_EXISTS = -10, // statistics quote asset already exists
 	INITIAL_PREISSUED_EXCEEDS_MAX_ISSUANCE = -11, // initial pre issued amount exceeds max issuance amount
-	INVALID_DETAILS = -12 // details must be a valid json
+	INVALID_DETAILS = -12, // details must be a valid json
+	INVALID_EXPIRATION_DATE = -13, // expiration date is less or equal to ledger close time
+	ASSET_EXPIRED = -14
 };
 
 struct ManageAssetSuccess
