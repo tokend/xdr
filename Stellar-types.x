@@ -83,6 +83,7 @@ enum LedgerVersion {
     ADD_TRANSACTION_FEE = 49,
     ADD_DEFAULT_ISSUANCE_TASKS = 50,
     ADD_EXPIRATION_DATE_TO_ASSET = 51,
+    ADD_PROLONGATION_FLAG_TO_ITSALE = 52,
     REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 

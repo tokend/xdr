@@ -23,6 +23,8 @@ struct InvestmentTokenSaleCreationRequest
     {
     case EMPTY_VERSION:
         void;
+    case ADD_PROLONGATION_FLAG_TO_ITSALE:
+        bool isProlongationAllowed;
     } ext;
 };
 
