@@ -57,6 +57,7 @@ enum ManageSettlementOptionResultCode
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
+    // codes considered as "failure" for the operation
     SETTLEMENT_OPTION_ALREADY_EXISTS = -1,
     SETTLEMENT_OPTION_NOT_FOUND = -2, // there is no settlement option with such id
     INVESTOR_HAS_NO_INVESTMENT_TOKEN = -3,
@@ -64,7 +65,8 @@ enum ManageSettlementOptionResultCode
     REDEMPTION_ASSET_NOT_FOUND = -5,
     NOW_IS_NOT_THE_SETTLEMENT_PERIOD = -6,
     INVALID_REDEMPTION_ASSET = -7,
-    REDEMPTION_ASSET_IS_NOT_SUPPORTED = -8
+    REDEMPTION_ASSET_IS_NOT_SUPPORTED = -8,
+    PROLONGATION_IS_NOT_ALLOWED = -9
 };
 
 struct CreateSettlementOptionResponse
