@@ -131,6 +131,28 @@ struct ASwapBidExtended
     ext;
 };
 
+struct ASwapExtended
+{
+    uint64 bidID;
+    AccountID bidOwnerID;
+    AccountID purchaserID;
+    AssetCode baseAsset;
+    AssetCode quoteAsset;
+    uint64 baseAmount;
+    uint64 quoteAmount;
+    uint64 price;
+    BalanceID bidOwnerBaseBalanceID;
+    BalanceID purchaserBaseBalanceID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -141,6 +163,8 @@ struct ExtendedResult {
         void;
     case CREATE_ATOMIC_SWAP_BID:
         ASwapBidExtended aSwapBidExtended;
+    case ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
     } typeExt;
 
    // Reserved for future use

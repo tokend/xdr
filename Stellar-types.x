@@ -82,6 +82,7 @@ enum LedgerVersion {
     ADD_CAPITAL_DEPLOYMENT_FEE_TYPE = 48,
     ADD_TRANSACTION_FEE = 49,
     ADD_DEFAULT_ISSUANCE_TASKS = 50,
+    EXTEND_REVIEW_ATOMIC_SWAP_REQUEST_RESULT = 51,
     REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 
