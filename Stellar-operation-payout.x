@@ -53,7 +53,8 @@ enum PayoutResultCode
     MIN_AMOUNT_TOO_BIG = -11, // there is no appropriate holders balances
     LINE_FULL = -12, // destination balance amount overflows
     STATS_OVERFLOW = -13, // source statistics overflow
-    LIMITS_EXCEEDED = -14 // source account limit exceeded
+    LIMITS_EXCEEDED = -14, // source account limit exceeded
+    INCORRECT_PRECISION = -15 // asset does not allow amounts with such precision
 };
 
 struct PayoutResponse
