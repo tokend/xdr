@@ -21,11 +21,13 @@ struct CreateWithdrawalRequestOp
 	WithdrawalRequest request;
 
 	union switch (LedgerVersion v)
-	{
-	case EMPTY_VERSION:
-		void;
-	}
-	ext;
+    {
+    case EMPTY_VERSION:
+        void;
+    case WITHDRAWAL_TASKS:
+        uint32* allTasks;
+    }
+    ext;
 
 };
 
