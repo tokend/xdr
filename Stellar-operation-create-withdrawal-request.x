@@ -64,8 +64,6 @@ struct CreateWithdrawalSuccess {
 	{
 	case EMPTY_VERSION:
 		void;
-    case WITHDRAWAL_TASKS:   
-        bool fulfilled;
 	}
 	ext;
 };
