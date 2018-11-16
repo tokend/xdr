@@ -37,7 +37,7 @@ struct AdditionalAssetFields
         void;
     }
     ext;
-}
+};
 
 struct AssetEntry
 {
