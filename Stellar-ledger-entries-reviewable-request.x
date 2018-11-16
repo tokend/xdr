@@ -15,6 +15,7 @@
 %#include "xdr/Stellar-reviewable-request-invoice.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-end-time.h"
 %#include "xdr/Stellar-reviewable-request-contract.h"
+%#include "xdr/Stellar-reviewable-request-investment-token-sale.h"
 
 namespace stellar
 {
@@ -36,8 +37,8 @@ enum ReviewableRequestType
 	UPDATE_SALE_END_TIME = 12,
 	NONE = 13, // use this request type in ReviewRequestOp extended result if additional info is not required
 	INVOICE = 14,
-	CONTRACT = 15
-
+	CONTRACT = 15,
+	INVESTMENT_TOKEN_SALE = 16
 };
 
 struct TasksExt {
@@ -98,6 +99,8 @@ struct ReviewableRequestEntry {
             UpdateSaleEndTimeRequest updateSaleEndTimeRequest;
         case CONTRACT:
             ContractRequest contractRequest;
+        case INVESTMENT_TOKEN_SALE:
+            InvestmentTokenSaleCreationRequest investmentTokenSaleCreationRequest;
 	} body;
 
 	// reserved for future use

@@ -7,8 +7,8 @@
 namespace stellar
 {
 
-struct AssetCreationRequest {
-
+struct AssetCreationRequest
+{
 	AssetCode code;
 	AccountID preissuedAssetSigner;
 	uint64 maxIssuanceAmount;
@@ -21,6 +21,8 @@ struct AssetCreationRequest {
     {
     case EMPTY_VERSION:
         void;
+    case ADD_EXPIRATION_DATE_TO_ASSET:
+        uint64 expirationDate;
     }
     ext;
 };
@@ -35,6 +37,8 @@ struct AssetUpdateRequest {
     {
     case EMPTY_VERSION:
         void;
+    case ADD_EXPIRATION_DATE_TO_ASSET:
+        uint64 expirationDate;
     }
     ext;
 };

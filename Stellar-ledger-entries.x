@@ -23,6 +23,8 @@
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
+%#include "xdr/Stellar-ledger-entries-investment-token-sale.h"
+%#include "xdr/Stellar-ledger-entries-settlement-option.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
 %#include "xdr/Stellar-ledger-entries-account-role-permission.h"
 
@@ -66,7 +68,9 @@ enum LedgerEntryType
     PENDING_STATISTICS = 24,
     CONTRACT = 25,
     ACCOUNT_ROLE = 26,
-    ACCOUNT_ROLE_PERMISSION = 27
+    ACCOUNT_ROLE_PERMISSION = 27,
+    INVESTMENT_TOKEN_SALE = 28,
+    SETTLEMENT_OPTION = 29
 };
 
 
@@ -120,6 +124,10 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
+    case INVESTMENT_TOKEN_SALE:
+        InvestmentTokenSaleEntry investmentTokenSale;
+    case SETTLEMENT_OPTION:
+        SettlementOptionEntry settlementOption;
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
     case ACCOUNT_ROLE_PERMISSION:

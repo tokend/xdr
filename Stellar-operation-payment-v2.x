@@ -95,7 +95,8 @@ enum PaymentV2ResultCode
     INSUFFICIENT_FEE_AMOUNT = -14,
     BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16,
-    DESTINATION_ACCOUNT_NOT_FOUND = -17
+    DESTINATION_ACCOUNT_NOT_FOUND = -17,
+    ASSET_EXPIRED = -18
 
      // !!! Add new result code to review invoice op too !!!
 };

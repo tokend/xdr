@@ -16,7 +16,8 @@ enum AssetPolicy
 	TWO_STEP_WITHDRAWAL = 16,
 	REQUIRES_KYC = 32,
 	ISSUANCE_MANUAL_REVIEW_REQUIRED = 64,
-	REQUIRES_VERIFICATION = 128
+	REQUIRES_VERIFICATION = 128,
+	INVESTMENT_TOKEN = 256 // system policy, can be set only by core
 };
 
 enum AssetSystemPolicies
@@ -43,6 +44,8 @@ struct AssetEntry
     {
     case EMPTY_VERSION:
         void;
+    case ADD_EXPIRATION_DATE_TO_ASSET:
+        uint64 expirationDate;
     }
     ext;
 };
