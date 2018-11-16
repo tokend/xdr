@@ -216,6 +216,7 @@ enum ReviewRequestResultCode
 	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
 	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
 	SYSTEM_TASKS_NOT_ALLOWED = -43,
+    INCORRECT_PRECISION = -44,
 
 	// Sale creation requests
 	BASE_ASSET_DOES_NOT_EXISTS = -50,
@@ -263,6 +264,7 @@ enum ReviewRequestResultCode
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
     DESTINATION_ACCOUNT_NOT_FOUND = -126,
     ASSET_EXPIRED = -127,
+    INCORRECT_AMOUNT_PRECISION = -128,
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously

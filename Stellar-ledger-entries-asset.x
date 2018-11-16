@@ -25,7 +25,19 @@ enum AssetSystemPolicies
 	TWO_STEP_WITHDRAW = 1
 };
 
+struct AdditionalAssetFields
+{
+    uint64 expirationDate;
+    uint32 trailingDigitsCount;
 
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+}
 
 struct AssetEntry
 {
@@ -46,6 +58,8 @@ struct AssetEntry
         void;
     case ADD_EXPIRATION_DATE_TO_ASSET:
         uint64 expirationDate;
+    case ADD_ASSET_BALANCE_PRECISION:
+        AdditionalAssetFields additionalFields;
     }
     ext;
 };

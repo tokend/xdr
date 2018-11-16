@@ -73,7 +73,8 @@ enum ManageOfferResultCode
 	REQUIRES_VERIFICATION = -27, // source must be verified in order to participate
 	BASE_ASSET_EXPIRED = -28,
 	QUOTE_ASSET_EXPIRED = -29,
-	INVALID_INVESTMENT_TOKEN = -30
+	INVALID_INVESTMENT_TOKEN = -30,
+	INCORRECT_AMOUNT_PRECISION = -31
 };
 
 enum ManageOfferEffect

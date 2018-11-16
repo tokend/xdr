@@ -23,6 +23,8 @@ struct AssetCreationRequest
         void;
     case ADD_EXPIRATION_DATE_TO_ASSET:
         uint64 expirationDate;
+    case ADD_ASSET_BALANCE_PRECISION:
+        AdditionalAssetFields additionalFields;
     }
     ext;
 };

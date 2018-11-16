@@ -95,13 +95,12 @@ enum ManageAssetResultCode
 	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists
 	STATS_ASSET_ALREADY_EXISTS = -10, // statistics quote asset already exists
 	INITIAL_PREISSUED_EXCEEDS_MAX_ISSUANCE = -11, // initial pre issued amount exceeds max issuance amount
-<<<<<<< HEAD
-	INVALID_DETAILS = -12 // details must be a valid json
-=======
 	INVALID_DETAILS = -12, // details must be a valid json
 	INVALID_EXPIRATION_DATE = -13, // expiration date is less or equal to ledger close time
-	ASSET_EXPIRED = -14
->>>>>>> feature/investment_token
+	ASSET_EXPIRED = -14,
+    INVALID_TRAILING_DIGITS_COUNT = -15,          // invalid number of trailing digits
+    INVALID_PREISSUED_AMOUNT_PRECISION = -16,     // initial pre issued amount does not match precision set by trailing digits count
+    INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -17   // maximum issuance amount does not match precision set by trailing digits count
 };
 
 struct ManageAssetSuccess

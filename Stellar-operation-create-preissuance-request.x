@@ -35,12 +35,13 @@ enum CreatePreIssuanceRequestResultCode
 
     // codes considered as "failure" for the operation
     ASSET_NOT_FOUND = -1,
-    REFERENCE_DUPLICATION = -2,    // reference is already used
-    NOT_AUTHORIZED_UPLOAD = -3, // tries to pre issue asset for not owned asset
+    REFERENCE_DUPLICATION = -2,      // reference is already used
+    NOT_AUTHORIZED_UPLOAD = -3,      // tries to pre issue asset for not owned asset
     INVALID_SIGNATURE = -4,
     EXCEEDED_MAX_AMOUNT = -5,
-	INVALID_AMOUNT = -6,
-	INVALID_REFERENCE = -7
+    INVALID_AMOUNT = -6,             // amount is 0
+    INVALID_REFERENCE = -7,
+    INCORRECT_AMOUNT_PRECISION = -8  // amount does not fit to this asset's precision
 };
 
 union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode code)
