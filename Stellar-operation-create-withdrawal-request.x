@@ -54,7 +54,8 @@ enum CreateWithdrawalRequestResultCode
 	LIMITS_EXCEEDED = -13, // withdraw exceeds limits for source account
 	INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
 	LOWER_BOUND_NOT_EXCEEDED = -15, //amount to withdraw is too small 
-    WITHDRAWAL_TASKS_NOT_FOUND = -16
+    WITHDRAWAL_TASKS_NOT_FOUND = -16,
+	NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17 //Can't set withdrawal tasks on request creation
 };
 
 struct CreateWithdrawalSuccess {
