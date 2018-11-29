@@ -254,7 +254,7 @@ enum ReviewRequestResultCode
     CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
 
 	//Withdrawal request 
-	REMOVING_NON_EXISTING_TASKS = -150 // cannot remove tasks which are not set 
+	REMOVING_NOT_SET_TASKS = -150 // cannot remove tasks which are not set 
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
