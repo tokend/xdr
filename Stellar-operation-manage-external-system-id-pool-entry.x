@@ -71,8 +71,7 @@ enum ManageExternalSystemAccountIdPoolEntryResultCode
     // codes considered as "failure" for the operation
     MALFORMED = -1,
     ALREADY_EXISTS = -2,
-    AUTO_GENERATED_TYPE_NOT_ALLOWED = -3,
-    NOT_FOUND = -4
+    NOT_FOUND = -3
 };
 
 struct ManageExternalSystemAccountIdPoolEntrySuccess {
