@@ -21,6 +21,8 @@ struct AssetCreationRequest {
     {
     case EMPTY_VERSION:
         void;
+    case ADD_ASSET_BALANCE_PRECISION:
+        uint32 trailingDigitsCount;
     }
     ext;
 };
