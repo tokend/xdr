@@ -11,11 +11,11 @@ namespace stellar
 
     struct ManageKeyValueOp
     {
-        string256 key;
+        // longstring key;
         union switch(ManageKVAction action)
         {
             case PUT:
-                KeyValueEntry value;
+                 KeyValueEntryV2 value;
             case REMOVE:
                 void;
         }
@@ -24,8 +24,8 @@ namespace stellar
         // reserved for future use
         union switch (LedgerVersion v)
         {
-        case EMPTY_VERSION:
-            void;
+            case EMPTY_VERSION:
+                void;
         }
         ext;
     };
@@ -43,7 +43,7 @@ namespace stellar
 
     enum ManageKeyValueResultCode
     {
-        SUCCESS = 1,
+        SUCCESS = 0,
         NOT_FOUND = -1,
         INVALID_TYPE = -2
     };
@@ -55,5 +55,6 @@ namespace stellar
         default:
             void;
     };
+
 
 }

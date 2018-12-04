@@ -106,6 +106,8 @@ struct LedgerEntry
 		ExternalSystemAccountID externalSystemAccountID;
 	case SALE:
 		SaleEntry sale;
+	case KEY_VALUE_V2:
+	    KeyValueEntryV2 keyValueV2;
 	case KEY_VALUE:
 	    KeyValueEntry keyValue;
 	case ACCOUNT_KYC:
