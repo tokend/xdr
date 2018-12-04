@@ -98,7 +98,8 @@ enum ManageAssetResultCode
     INVALID_DETAILS = -12,                        // details must be a valid json
     INVALID_TRAILING_DIGITS_COUNT = -13,          // invalid number of trailing digits
     INVALID_PREISSUED_AMOUNT_PRECISION = -14,     // initial pre issued amount does not match precision set by trailing digits count
-    INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15   // maximum issuance amount does not match precision set by trailing digits count
+    INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15,   // maximum issuance amount does not match precision set by trailing digits count
+    INCOMPATIBLE_POLICIES = -16 // policies set in request are incompatible(i.e. WITHDRAWABLE and WITHDRAWA
 };
 
 struct ManageAssetSuccess
