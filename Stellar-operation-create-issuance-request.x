@@ -40,7 +40,7 @@ enum CreateIssuanceRequestResultCode
 
     // codes considered as "failure" for the operation
     ASSET_NOT_FOUND = -1,
-	INVALID_AMOUNT = -2,
+	INVALID_AMOUNT = -2,             // amount is 0
 	REFERENCE_DUPLICATION = -3,
 	NO_COUNTERPARTY = -4,
 	NOT_AUTHORIZED = -5,
@@ -51,7 +51,8 @@ enum CreateIssuanceRequestResultCode
     REQUIRES_KYC = -10, // asset requires receiver to have KYC
     REQUIRES_VERIFICATION = -11, //asset requires receiver to be verified
     ISSUANCE_TASKS_NOT_FOUND = -12, // issuance tasks have not been provided by the source and don't exist in 'KeyValue' table
-    SYSTEM_TASKS_NOT_ALLOWED = -13
+    SYSTEM_TASKS_NOT_ALLOWED = -13,
+    INVALID_AMOUNT_PRECISION = -14   // amount does not match asset's precision
 };
 
 struct CreateIssuanceRequestSuccess {
