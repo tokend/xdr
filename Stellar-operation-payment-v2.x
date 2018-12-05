@@ -109,8 +109,8 @@ struct PaymentV2Response {
     uint64 sourceSentUniversal;
     uint64 paymentID;
 
-    uint64 actualSourcePaymentFee;
-    uint64 actualDestinationPaymentFee;
+    Fee actualSourcePaymentFee;
+    Fee actualDestinationPaymentFee;
 
     // reserved for future use
     union switch (LedgerVersion v)
