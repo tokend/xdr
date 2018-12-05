@@ -249,7 +249,7 @@ case SALE:
 	} sale;
 case KEY_VALUE:
     struct {
-        string256 key;
+        longstring key;
         union switch (LedgerVersion v)
         {
         	case EMPTY_VERSION:
