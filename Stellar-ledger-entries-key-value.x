@@ -26,12 +26,12 @@ namespace stellar
     {
         longstring key;
 
-        KeyValueEntryValue value;
+        KeyValueEntryValue value; // todo docs
 
         // reserved for future use
         union switch (LedgerVersion v)
         {
-           case EMPTY_VERSION:
+            case EMPTY_VERSION:
                 void;
         }
         ext;
