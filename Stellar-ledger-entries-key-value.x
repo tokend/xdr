@@ -12,34 +12,21 @@ namespace stellar
     };
 
 
-    struct KeyValueEntryV2 { // TODO rename
-        longstring key;
-
-        union switch (KeyValueEntryType type)
-        {
-            case UINT32:
-                uint32 ui32Value;
-            case STRING:
-                string stringValue<>;
-            case UINT64:
-                uint64 ui64Value;
-        } value;
+    union KeyValueEntryValue switch (KeyValueEntryType type)
+    {
+        case UINT32:
+            uint32 ui32Value;
+        case STRING:
+            string stringValue<>;
+        case UINT64:
+            uint64 ui64Value;
     };
-    //union KeyValueEntryV2 switch (KeyValueEntryType type) // TODO rename
-    //{
-    //    case UINT32:
-    //        uint32 ui32Value;
-    //    case STRING:
-    //        string stringValue<>;
-    //    case UINT64:
-    //        uint64 ui64Value;
-    //};
 
     struct KeyValueEntry
     {
-        // longstring key;
+        longstring key;
 
-        KeyValueEntryV2 value;
+        KeyValueEntryValue value;
 
         // reserved for future use
         union switch (LedgerVersion v)

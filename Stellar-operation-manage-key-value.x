@@ -11,11 +11,11 @@ namespace stellar
 
     struct ManageKeyValueOp
     {
-        // longstring key;
+        longstring key;
         union switch(ManageKVAction action)
         {
             case PUT:
-                 KeyValueEntryV2 value;
+                 KeyValueEntryValue value;
             case REMOVE:
                 void;
         }

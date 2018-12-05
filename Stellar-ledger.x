@@ -258,7 +258,7 @@ case SALE:
 	} sale;
 case KEY_VALUE:
     struct {
-        //longstring key;
+        longstring key;
         union switch (LedgerVersion v)
         {
         	case EMPTY_VERSION:
@@ -266,10 +266,6 @@ case KEY_VALUE:
         }
         ext;
     } keyValue;
-case KEY_VALUE_V2:
-    struct {
-        longstring key;
-    } keyValueV2;
 case ACCOUNT_KYC:
     struct {
         AccountID accountID;
