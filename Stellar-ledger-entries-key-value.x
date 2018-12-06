@@ -36,7 +36,4 @@ namespace stellar
         }
         ext;
     };
-
-
-
 }
