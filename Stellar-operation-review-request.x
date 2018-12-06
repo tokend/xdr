@@ -106,76 +106,6 @@ struct ReviewDetails {
     ext;
 };
 
-struct SaleExtended {
-    uint64 saleID;
-
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct ASwapBidExtended
-{
-    uint64 bidID;
-
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct ASwapExtended
-{
-    uint64 bidID;
-    AccountID bidOwnerID;
-    AccountID purchaserID;
-    AssetCode baseAsset;
-    AssetCode quoteAsset;
-    uint64 baseAmount;
-    uint64 quoteAmount;
-    uint64 price;
-    BalanceID bidOwnerBaseBalanceID;
-    BalanceID purchaserBaseBalanceID;
-
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct ExtendedResult {
-    bool fulfilled;
-
-    union switch(ReviewableRequestType requestType) {
-    case SALE:
-        SaleExtended saleExtended;
-    case NONE:
-        void;
-    case CREATE_ATOMIC_SWAP_BID:
-        ASwapBidExtended aSwapBidExtended;
-    case ATOMIC_SWAP:
-        ASwapExtended aSwapExtended;
-    } typeExt;
-
-   // Reserved for future use
-   union switch (LedgerVersion v)
-   {
-   case EMPTY_VERSION:
-       void;
-   }
-   ext;
-};
-
 struct ReviewRequestOp
 {
 	uint64 requestID;
@@ -305,26 +235,113 @@ enum ReviewRequestResultCode
     ASWAP_PURCHASER_FULL_LINE = -161
 };
 
+
+struct InvoiceExtended
+{
+    PaymentV2Response paymentV2Response;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ContractExtended
+{
+    uint64 contractID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct SaleExtended
+{
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapBidExtended
+{
+    uint64 bidID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapExtended
+{
+    uint64 bidID;
+    AccountID bidOwnerID;
+    AccountID purchaserID;
+    AssetCode baseAsset;
+    AssetCode quoteAsset;
+    uint64 baseAmount;
+    uint64 quoteAmount;
+    uint64 price;
+    BalanceID bidOwnerBaseBalanceID;
+    BalanceID purchaserBaseBalanceID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ReviewRequestSuccessResult
+{
+    bool fulfilled;
+
+    union switch(ReviewableRequestType requestType) {
+    case SALE:
+        SaleExtended saleExtended;
+    case NONE:
+        void;
+    case CONTRACT:
+        ContractExtended contractExtended;
+    case INVOICE:
+        InvoiceExtended invoiceExtended;
+    case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
+    case ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
+    } typeExt;
+
+   // Reserved for future use
+   union switch (LedgerVersion v)
+   {
+   case EMPTY_VERSION:
+       void;
+   }
+   ext;
+};
+
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	struct {
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
-		    uint64 saleID;
-		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
-		    PaymentV2Response paymentV2Response;
-		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
-		    uint64 contractID;
-		case EMPTY_VERSION:
-			void;
-        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-            ExtendedResult extendedResult;
-		}
-		ext;
-	} success;
+	ReviewRequestSuccessResult success;
 default:
     void;
 };
