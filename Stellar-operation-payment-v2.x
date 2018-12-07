@@ -13,11 +13,7 @@ namespace stellar
 */
 
 struct FeeDataV2 {
-    uint64 maxPaymentFee;
-    uint64 fixedFee;
-
-    // Cross asset fees
-    AssetCode feeAsset;
+    Fee fee; // maxPaymentFee and fixedFee are now from this field
 
 	// reserved for future use
     union switch (LedgerVersion v)
@@ -31,6 +27,7 @@ struct FeeDataV2 {
 struct PaymentFeeDataV2 {
     FeeDataV2 sourceFee;
     FeeDataV2 destinationFee;
+
     bool sourcePaysForDest; // if true - source account pays fee, else destination
 
     union switch (LedgerVersion v)
