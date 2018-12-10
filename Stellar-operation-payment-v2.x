@@ -12,25 +12,10 @@ namespace stellar
     Result: PaymentResult
 */
 
-struct FeeDataV2 {
-    uint64 maxPaymentFee;
-    uint64 fixedFee;
-
-    // Cross asset fees
-    AssetCode feeAsset;
-
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct PaymentFeeDataV2 {
-    FeeDataV2 sourceFee;
-    FeeDataV2 destinationFee;
+    Fee sourceFee;
+    Fee destinationFee;
+
     bool sourcePaysForDest; // if true - source account pays fee, else destination
 
     union switch (LedgerVersion v)
