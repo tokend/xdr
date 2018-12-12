@@ -29,7 +29,7 @@ struct CreateContractRequest
         void;
     }
     ext;
-}
+};
 
 struct ManageContractRequestOp
 {
