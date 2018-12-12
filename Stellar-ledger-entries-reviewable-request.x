@@ -26,13 +26,12 @@ enum ReviewableRequestType
 	WITHDRAW = 4,
 	SALE = 5,
 	LIMITS_UPDATE = 6,
-	TWO_STEP_WITHDRAWAL = 7,
-    AML_ALERT = 8,
-	UPDATE_KYC = 9,
-	UPDATE_SALE_DETAILS = 10,
-	NONE = 11, // use this request type in ReviewRequestOp extended result if additional info is not required
-	INVOICE = 12,
-	CONTRACT = 13
+    AML_ALERT = 7,
+	UPDATE_KYC = 8,
+	UPDATE_SALE_DETAILS = 9,
+	NONE = 10, // use this request type in ReviewRequestOp extended result if additional info is not required
+	INVOICE = 11,
+	CONTRACT = 12
 
 };
 
