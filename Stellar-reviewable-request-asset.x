@@ -16,6 +16,8 @@ struct AssetCreationRequest {
     uint32 policies;
     longstring details;
 
+    uint32* allTasks;
+
 	// reserved for future use
     union switch (LedgerVersion v)
     {

@@ -9,7 +9,7 @@ enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
     CANCEL = 2,
-	SET_STATE = 3,
+	SET_STATE = 3
 };
 
 
@@ -22,6 +22,8 @@ Result: ManageSaleResult
 struct UpdateSaleDetailsData {
     uint64 requestID; // if requestID is 0 - create request, else - update
     longstring newDetails;
+
+    uint32* allTasks;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -38,7 +40,6 @@ struct ManageSaleOp
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         UpdateSaleDetailsData updateSaleDetailsData;
-        uint32* allTasks;
     case CANCEL:
         void;
 	case SET_STATE:

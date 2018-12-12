@@ -17,12 +17,25 @@ enum ManageContractRequestAction
     REMOVE = 1
 };
 
+struct CreateContractRequest 
+{
+    ContractRequest contractRequest;
+    uint32* allTasks;
+    
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+}
+
 struct ManageContractRequestOp
 {
     union switch (ManageContractRequestAction action){
     case CREATE:
-        ContractRequest contractRequest;
-        uint32* allTasks;
+        CreateContractRequest createContractRequest;
     case REMOVE:
         uint64 requestID;
     } details;

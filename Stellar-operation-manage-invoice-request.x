@@ -26,6 +26,8 @@ struct InvoiceCreationRequest
     uint64 *contractID;
     longstring details;
 
+    uint32* allTasks;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
@@ -40,7 +42,6 @@ struct ManageInvoiceRequestOp
     union switch (ManageInvoiceRequestAction action){
     case CREATE:
         InvoiceCreationRequest invoiceRequest;
-        uint32* allTasks;
     case REMOVE:
         uint64 requestID;
     } details;

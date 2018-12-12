@@ -59,7 +59,6 @@ struct ManageAssetOp
 	{
 	case CREATE_ASSET_CREATION_REQUEST:
 		AssetCreationRequest createAsset;
-        uint32* allTasks;
 	case CREATE_ASSET_UPDATE_REQUEST:
 		AssetUpdateRequest updateAsset;
 	case CANCEL_ASSET_REQUEST:
