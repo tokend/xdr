@@ -21,7 +21,6 @@
 %#include "xdr/Stellar-ledger-entries-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
-%#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
 %#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
@@ -61,7 +60,6 @@ enum LedgerEntryType
 	ACCOUNT_KYC = 18,
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
     KEY_VALUE = 20,
-    SALE_ANTE = 21,
     LIMITS_V2 = 22,
     STATISTICS_V2 = 23,
     PENDING_STATISTICS = 24,
@@ -112,8 +110,6 @@ struct LedgerEntry
         AccountKYCEntry accountKYC;
     case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ExternalSystemAccountIDPoolEntry externalSystemAccountIDPoolEntry;
-    case SALE_ANTE:
-        SaleAnteEntry saleAnte;
     case LIMITS_V2:
         LimitsV2Entry limitsV2;
     case STATISTICS_V2:
