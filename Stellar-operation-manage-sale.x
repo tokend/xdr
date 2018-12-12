@@ -67,7 +67,7 @@ enum ManageSaleResultCode
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
 
     // errors related to action "SET_STATE"
-    NOT_ALLOWED = -5, // it's not allowed to set state for non master account
+    NOT_ALLOWED = -5 // it's not allowed to set state for non master account
 
 };
 

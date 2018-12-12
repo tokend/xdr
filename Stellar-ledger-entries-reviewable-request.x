@@ -77,8 +77,6 @@ struct ReviewableRequestEntry {
 			SaleCreationRequest saleCreationRequest;
         case LIMITS_UPDATE:
             LimitsUpdateRequest limitsUpdateRequest;
-		case TWO_STEP_WITHDRAWAL:
-			WithdrawalRequest twoStepWithdrawalRequest;
         case AML_ALERT:
             AMLAlertRequest amlAlertRequest;
         case UPDATE_KYC:

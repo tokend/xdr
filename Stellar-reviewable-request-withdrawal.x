@@ -29,7 +29,6 @@ struct WithdrawalRequest {
     uint64 universalAmount; // amount in stats asset
 	Fee fee; // expected fee to be paid
     longstring externalDetails; // details of the withdrawal (External system id, etc.)
-	longstring preConfirmationDetails; // details provided by PSIM if two step withdrwal is required
 	union switch (WithdrawalType withdrawalType) {
 	case AUTO_CONVERSION:
 		AutoConversionWithdrawalDetails autoConversion;

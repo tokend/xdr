@@ -146,8 +146,6 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
-	case TWO_STEP_WITHDRAWAL:
-		WithdrawalDetails twoStepWithdrawal;
     case AML_ALERT:
         AMLAlertDetails amlAlertDetails;
     case UPDATE_KYC:
