@@ -84,6 +84,7 @@ enum LedgerVersion {
     ADD_DEFAULT_ISSUANCE_TASKS = 50,
 	ADD_ASSET_BALANCE_PRECISION = 51,
 	WITHDRAWAL_TASKS = 52,
+	REVIEWABLE_REQUESTS_WITH_TASKS = 53,
     REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 

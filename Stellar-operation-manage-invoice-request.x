@@ -40,6 +40,7 @@ struct ManageInvoiceRequestOp
     union switch (ManageInvoiceRequestAction action){
     case CREATE:
         InvoiceCreationRequest invoiceRequest;
+        uint32* allTasks;
     case REMOVE:
         uint64 requestID;
     } details;

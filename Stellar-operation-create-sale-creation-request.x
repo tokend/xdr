@@ -21,6 +21,8 @@ struct CreateSaleCreationRequestOp
 	uint64 requestID;
     SaleCreationRequest request;
 
+    uint32* allTasks;
+
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

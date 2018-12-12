@@ -21,6 +21,8 @@ struct CreateAMLAlertRequestOp
     string64 reference;
     AMLAlertRequest amlAlertRequest;
 
+    uint32* allTasks;
+    
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

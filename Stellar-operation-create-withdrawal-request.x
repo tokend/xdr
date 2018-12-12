@@ -20,12 +20,11 @@ struct CreateWithdrawalRequestOp
 {
 	WithdrawalRequest request;
 
+	uint32* allTasks;
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case WITHDRAWAL_TASKS:
-        uint32* allTasks;
     }
     ext;
 

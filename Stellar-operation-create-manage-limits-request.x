@@ -21,6 +21,7 @@ struct CreateManageLimitsRequestOp
 {
     LimitsUpdateRequest manageLimitsRequest;
 
+	uint32* allTasks;
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{

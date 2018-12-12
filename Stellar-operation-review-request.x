@@ -209,14 +209,8 @@ enum ReviewRequestResultCode
 	// Update KYC requests
 	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
 
-	// Update sale details, end time and promotion requests
+	// Update sale details
 	SALE_NOT_FOUND = -70,
-
-	// Promotion update requests
-	INVALID_SALE_STATE = -80, // sale state must be "PROMOTION"
-
-	// Update sale end time requests
-    INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
 
     // Invoice requests
     AMOUNT_MISMATCHED = -101, // amount does not match

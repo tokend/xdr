@@ -17,6 +17,8 @@ namespace stellar
 struct CreatePreIssuanceRequestOp
 {
     PreIssuanceRequest request;
+
+    uint32* allTasks;
 	// reserved for future use
     union switch (LedgerVersion v)
     {

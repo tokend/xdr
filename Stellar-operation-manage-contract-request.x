@@ -22,6 +22,7 @@ struct ManageContractRequestOp
     union switch (ManageContractRequestAction action){
     case CREATE:
         ContractRequest contractRequest;
+        uint32* allTasks;
     case REMOVE:
         uint64 requestID;
     } details;
