@@ -159,13 +159,14 @@ struct ReviewRequestOp
 	} requestDetails;
 	ReviewRequestOpAction action;
 	longstring reason;
-	// reserved for future use
+	
+    ReviewDetails reviewDetails;
+    
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        ReviewDetails reviewDetails;
     }
     ext;
 };
@@ -254,6 +255,8 @@ union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
 	struct {
+        ExtendedResult extendedResult;
+
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{
@@ -265,8 +268,6 @@ case SUCCESS:
 		    uint64 contractID;
 		case EMPTY_VERSION:
 			void;
-        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-            ExtendedResult extendedResult;
 		}
 		ext;
 	} success;
