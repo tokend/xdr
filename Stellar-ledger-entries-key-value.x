@@ -26,7 +26,7 @@ namespace stellar
     {
         longstring key;
 
-        KeyValueEntryValue value; // todo docs
+        KeyValueEntryValue value;
 
         // reserved for future use
         union switch (LedgerVersion v)

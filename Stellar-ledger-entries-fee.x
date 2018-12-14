@@ -39,6 +39,7 @@ struct FeeEntry
 {
     FeeType feeType;
     AssetCode asset;
+
     int64 fixedFee; // fee paid for operation
 	int64 percentFee; // percent of transfer amount to be charged
 
@@ -56,8 +57,6 @@ struct FeeEntry
     {
     case EMPTY_VERSION:
         void;
-    case CROSS_ASSET_FEE:
-        AssetCode feeAsset;
     }
     ext;
 };

@@ -209,12 +209,10 @@ enum ReviewRequestResultCode
     LIMITS_EXCEEDED = -118,
     NOT_ALLOWED_BY_ASSET_POLICY = -119,
     INVALID_DESTINATION_FEE = -120,
-    INVALID_DESTINATION_FEE_ASSET = -121, // destination fee asset must be the same as source balance asset
-    FEE_ASSET_MISMATCHED = -122,
     INSUFFICIENT_FEE_AMOUNT = -123,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
     DESTINATION_ACCOUNT_NOT_FOUND = -126,
+    INCORRECT_AMOUNT_PRECISION = -127,
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
