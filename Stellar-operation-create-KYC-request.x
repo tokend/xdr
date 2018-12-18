@@ -12,7 +12,6 @@ struct UpdateKYCRequestData {
 	AccountType accountTypeToSet;
 	uint32 kycLevelToSet;
     longstring kycData;
-	uint32* allTasks;
 
 	// Reserved for future use
 	union switch (LedgerVersion v)
@@ -26,6 +25,8 @@ struct UpdateKYCRequestData {
 struct CreateUpdateKYCRequestOp {
     uint64 requestID;
     UpdateKYCRequestData updateKYCRequestData;
+
+    uint32* allTasks;
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

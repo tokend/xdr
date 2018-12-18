@@ -61,12 +61,14 @@ enum ManageContractRequestResultCode
     NOT_FOUND = -2, // not found contract request, when try to remove
     TOO_MANY_CONTRACTS = -3,
     NOT_ALLOWED_TO_REMOVE = -4, // only contract creator can remove contract
-    DETAILS_TOO_LONG = -5
+    DETAILS_TOO_LONG = -5,
+    CONTRACT_CREATE_TASKS_NOT_FOUND = -6 // key-value not set
 };
 
 struct CreateContractRequestResponse
 {
 	uint64 requestID;
+    bool fulfilled;
 
 	union switch (LedgerVersion v)
     {

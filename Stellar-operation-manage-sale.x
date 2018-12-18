@@ -65,14 +65,17 @@ enum ManageSaleResultCode
     INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
+    INVALID_UPDATE_DETAILS_REQUEST_DATA = -5, // not allowed to set allTasks on request update
+    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6, // it's not allowed to set state for non master account
 
     // errors related to action "SET_STATE"
-    NOT_ALLOWED = -5 // it's not allowed to set state for non master account
-
+    NOT_ALLOWED = -11 // it's not allowed to set state for non master account  
 };
 
 struct ManageSaleResultSuccess
 {
+    bool fulfilled; // can be used for any reviewable request type created with manage sale operation   
+ 
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
@@ -87,8 +90,6 @@ struct ManageSaleResultSuccess
     {
     case EMPTY_VERSION:
         void;
-    case ALLOW_TO_UPDATE_VOTING_SALES_AS_PROMOTION:
-        bool fulfilled; // can be used for any reviewable request type created with manage sale operation
     }
     ext;
 };

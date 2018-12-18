@@ -45,7 +45,9 @@ enum CreateManageLimitsRequestResultCode
 	MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1,
     MANAGE_LIMITS_REQUEST_NOT_FOUND = -2,
     INVALID_DETAILS = -3, // details must be valid json
-    INVALID_MANAGE_LIMITS_REQUEST_VERSION = -4 // a version of the request is higher than ledger version
+    INVALID_MANAGE_LIMITS_REQUEST_VERSION = -4, // a version of the request is higher than ledger version
+	LIMITS_UPDATE_TASKS_NOT_FOUND = -5
+
 };
 
 
@@ -54,6 +56,7 @@ union CreateManageLimitsRequestResult switch (CreateManageLimitsRequestResultCod
 case SUCCESS:
     struct {
         uint64 manageLimitsRequestID;
+		bool fulfilled;
 		// reserved for future use
 		union switch (LedgerVersion v)
 		{

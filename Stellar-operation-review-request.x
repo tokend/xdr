@@ -57,8 +57,6 @@ struct AMLAlertDetails {
 
 // DEPRECATED
 struct UpdateKYCDetails {
-    uint32 tasksToAdd;
-    uint32 tasksToRemove;
     string externalDetails<>;
     // Reserved for future use
     union switch (LedgerVersion v)

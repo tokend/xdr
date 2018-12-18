@@ -72,7 +72,8 @@ enum ManageInvoiceRequestResultCode
     CONTRACT_NOT_FOUND = -7,
     ONLY_CONTRACTOR_CAN_ATTACH_INVOICE_TO_CONTRACT = -8,
     SENDER_ACCOUNT_MISMATCHED = -9,
-    INVOICE_IS_APPROVED = -10 // not allowed to remove approved invoice
+    INVOICE_IS_APPROVED = -10, // not allowed to remove approved invoice
+    INVOICE_TASKS_NOT_FOUND = -11
 };
 
 struct CreateInvoiceRequestResponse
@@ -95,6 +96,7 @@ union ManageInvoiceRequestResult switch (ManageInvoiceRequestResultCode code)
 case SUCCESS:
     struct
     {
+        bool fulfilled;
         union switch (ManageInvoiceRequestAction action)
         {
         case CREATE:
