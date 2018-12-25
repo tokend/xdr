@@ -27,6 +27,8 @@ struct SaleCreationRequest {
 	uint64 softCap; // minimum amount of quote asset to be received at which sale will be considered a successful
 	uint64 hardCap; // max amount of quote asset to be received
 	longstring details; // sale specific details
+    SaleTypeExt saleTypeExt;
+    uint64 requiredBaseAssetForHardCap;
 
 	SaleCreationRequestQuoteAsset quoteAssets<100>;
 
@@ -34,20 +36,7 @@ struct SaleCreationRequest {
     {
     case EMPTY_VERSION:
         void;
-	case TYPED_SALE:
-		SaleTypeExt saleTypeExt;
-    case ALLOW_TO_SPECIFY_REQUIRED_BASE_ASSET_AMOUNT_FOR_HARD_CAP:
-        struct {
-            SaleTypeExt saleTypeExt;
-            uint64 requiredBaseAssetForHardCap;
-        } extV2;
-	case STATABLE_SALES:
-		struct {
-			SaleTypeExt saleTypeExt;
-            uint64 requiredBaseAssetForHardCap;
-			SaleState state;
-		} extV3;
-    }
+	}
     ext;
 };
 

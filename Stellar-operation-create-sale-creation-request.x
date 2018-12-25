@@ -59,6 +59,7 @@ enum CreateSaleCreationRequestResultCode
 
 struct CreateSaleCreationSuccess {
 	uint64 requestID;
+    uint64* saleID;
 
     bool fulfilled;
 	union switch (LedgerVersion v)

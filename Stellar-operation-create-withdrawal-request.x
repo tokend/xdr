@@ -60,6 +60,7 @@ enum CreateWithdrawalRequestResultCode
 struct CreateWithdrawalSuccess {
 	uint64 requestID;
 
+   bool fulfilled;
 	union switch (LedgerVersion v)
 	{
 	case EMPTY_VERSION:

@@ -8,8 +8,7 @@ namespace stellar
 enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
-    CANCEL = 2,
-	SET_STATE = 3
+    CANCEL = 2
 };
 
 
@@ -42,8 +41,6 @@ struct ManageSaleOp
         UpdateSaleDetailsData updateSaleDetailsData;
     case CANCEL:
         void;
-	case SET_STATE:
-		SaleState saleState;
     } data;
 
     // reserved for future use
@@ -66,10 +63,7 @@ enum ManageSaleResultCode
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
     INVALID_UPDATE_DETAILS_REQUEST_DATA = -5, // not allowed to set allTasks on request update
-    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6, // it's not allowed to set state for non master account
-
-    // errors related to action "SET_STATE"
-    NOT_ALLOWED = -11 // it's not allowed to set state for non master account  
+    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6 // it's not allowed to set state for non master account
 };
 
 struct ManageSaleResultSuccess
@@ -81,8 +75,6 @@ struct ManageSaleResultSuccess
         uint64 requestID;
     case CANCEL:
         void;
-	case SET_STATE:
-		void;
     } response;
 
     // reserved for future use

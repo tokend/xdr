@@ -187,6 +187,8 @@ enum ReviewRequestResultCode
 	REQUESTOR_IS_BLOCKED = -8,
 	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
 
+	REMOVING_NOT_SET_TASKS = -10,// cannot remove tasks which are not set
+
 	// Asset requests
 	ASSET_ALREADY_EXISTS = -20,
 	ASSET_DOES_NOT_EXISTS = -21,
@@ -243,32 +245,14 @@ enum ReviewRequestResultCode
     INVALID_LIMITS = 131,
 
     // Contract requests
-    CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
+    CONTRACT_DETAILS_TOO_LONG = -140 // customer details reached length limit
 
-	//Withdrawal request 
-	REMOVING_NOT_SET_TASKS = -150 // cannot remove tasks which are not set 
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	struct {
-        ExtendedResult extendedResult;
-
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
-		    uint64 saleID;
-		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
-		    PaymentV2Response paymentV2Response;
-		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
-		    uint64 contractID;
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} success;
+	ExtendedResult success;
 default:
     void;
 };
