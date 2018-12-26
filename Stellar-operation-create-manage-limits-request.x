@@ -47,7 +47,8 @@ enum CreateManageLimitsRequestResultCode
     INVALID_DETAILS = -3, // details must be valid json
     INVALID_MANAGE_LIMITS_REQUEST_VERSION = -4, // a version of the request is higher than ledger version
 	LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6 // can't set allTasks on request update
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6, // can't set allTasks on request update
+    LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7
 
 };
 

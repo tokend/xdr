@@ -30,6 +30,7 @@ struct SaleCreationRequest {
     SaleTypeExt saleTypeExt;
     uint64 requiredBaseAssetForHardCap;
 
+    uint32 sequenceNumber;
 	SaleCreationRequestQuoteAsset quoteAssets<100>;
 
 	union switch (LedgerVersion v)
