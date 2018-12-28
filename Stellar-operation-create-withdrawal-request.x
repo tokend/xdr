@@ -20,12 +20,11 @@ struct CreateWithdrawalRequestOp
 {
 	WithdrawalRequest request;
 
+	uint32* allTasks;
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case WITHDRAWAL_TASKS:
-        uint32* allTasks;
     }
     ext;
 
@@ -55,12 +54,14 @@ enum CreateWithdrawalRequestResultCode
 	INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
 	LOWER_BOUND_NOT_EXCEEDED = -15, //amount to withdraw is too small 
     WITHDRAWAL_TASKS_NOT_FOUND = -16,
-	NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17 //Can't set withdrawal tasks on request creation
+	NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17, //Can't set withdrawal tasks on request creation
+	WITHDRAWAL_ZERO_TASKS_NOT_ALLOWED = -18
 };
 
 struct CreateWithdrawalSuccess {
 	uint64 requestID;
 
+   bool fulfilled;
 	union switch (LedgerVersion v)
 	{
 	case EMPTY_VERSION:

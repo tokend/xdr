@@ -13,10 +13,6 @@ struct UpdateKYCRequest {
 	uint32 kycLevel;
 	longstring kycData;
 
-	// Tasks are represented by a bit mask. Each flag(task) in mask refers to specific KYC data validity checker
-	uint32 allTasks;
-	uint32 pendingTasks;
-
 	// Sequence number increases when request is rejected
 	uint32 sequenceNumber;
 

@@ -17,6 +17,8 @@ namespace stellar
 struct CreatePreIssuanceRequestOp
 {
     PreIssuanceRequest request;
+
+    uint32* allTasks;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
@@ -41,7 +43,8 @@ enum CreatePreIssuanceRequestResultCode
     EXCEEDED_MAX_AMOUNT = -5,
     INVALID_AMOUNT = -6,             // amount is 0
     INVALID_REFERENCE = -7,
-    INCORRECT_AMOUNT_PRECISION = -8  // amount does not fit to this asset's precision
+    INCORRECT_AMOUNT_PRECISION = -8,  // amount does not fit to this asset's precision
+    PREISSUANCE_TASKS_NOT_FOUND = -9
 };
 
 union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode code)

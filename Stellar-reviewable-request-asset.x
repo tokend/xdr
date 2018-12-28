@@ -16,7 +16,9 @@ struct AssetCreationRequest {
     uint32 policies;
     longstring details;
 
-	// reserved for future use
+	uint32 sequenceNumber;
+
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -32,6 +34,7 @@ struct AssetUpdateRequest {
 	longstring details;
 	uint32 policies;
 
+	uint32 sequenceNumber;
 	// reserved for future use
     union switch (LedgerVersion v)
     {

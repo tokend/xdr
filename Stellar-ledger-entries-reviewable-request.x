@@ -11,9 +11,7 @@
 %#include "xdr/Stellar-reviewable-request-limits-update.h"
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
-%#include "xdr/Stellar-reviewable-request-update-promotion.h"
 %#include "xdr/Stellar-reviewable-request-invoice.h"
-%#include "xdr/Stellar-reviewable-request-update-sale-end-time.h"
 %#include "xdr/Stellar-reviewable-request-contract.h"
 %#include "xdr/Stellar-reviewable-request-atomic-swap.h"
 %#include "xdr/Stellar-reviewable-request-atomic-swap-bid.h"
@@ -30,15 +28,12 @@ enum ReviewableRequestType
 	WITHDRAW = 4,
 	SALE = 5,
 	LIMITS_UPDATE = 6,
-	TWO_STEP_WITHDRAWAL = 7,
-    AML_ALERT = 8,
-	UPDATE_KYC = 9,
-	UPDATE_SALE_DETAILS = 10,
-	UPDATE_PROMOTION = 11,
-	UPDATE_SALE_END_TIME = 12,
-	NONE = 13, // use this request type in ReviewRequestOp extended result if additional info is not required
-	INVOICE = 14,
-	CONTRACT = 15,
+    AML_ALERT = 7,
+	UPDATE_KYC = 8,
+	UPDATE_SALE_DETAILS = 9,
+	NONE = 10, // use this request type in ReviewRequestOp extended result if additional info is not required
+	INVOICE = 11,
+	CONTRACT = 12
 	CREATE_ATOMIC_SWAP_BID = 16,
 	ATOMIC_SWAP = 17
 };
@@ -85,20 +80,14 @@ struct ReviewableRequestEntry {
 			SaleCreationRequest saleCreationRequest;
         case LIMITS_UPDATE:
             LimitsUpdateRequest limitsUpdateRequest;
-		case TWO_STEP_WITHDRAWAL:
-			WithdrawalRequest twoStepWithdrawalRequest;
         case AML_ALERT:
             AMLAlertRequest amlAlertRequest;
         case UPDATE_KYC:
             UpdateKYCRequest updateKYCRequest;
         case UPDATE_SALE_DETAILS:
             UpdateSaleDetailsRequest updateSaleDetailsRequest;
-        case UPDATE_PROMOTION:
-            PromotionUpdateRequest promotionUpdateRequest;
         case INVOICE:
             InvoiceRequest invoiceRequest;
-        case UPDATE_SALE_END_TIME:
-            UpdateSaleEndTimeRequest updateSaleEndTimeRequest;
         case CONTRACT:
             ContractRequest contractRequest;
         case CREATE_ATOMIC_SWAP_BID:
@@ -107,14 +96,14 @@ struct ReviewableRequestEntry {
             ASwapRequest aSwapRequest;
 	} body;
 
+	TasksExt tasks;
+
 	// reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        TasksExt tasksExt;
-    }
+	}
     ext;
 };
 

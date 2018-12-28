@@ -20,13 +20,13 @@ struct CreateIssuanceRequestOp
 {
 	IssuanceRequest request;
 	string64 reference;
+
+    uint32* allTasks;
 	// reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        uint32* allTasks;
     }
     ext;
 };
