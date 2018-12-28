@@ -51,7 +51,8 @@ namespace stellar
 		CROSS_ASSET_FEE_NOT_ALLOWED = -13, // feeAsset on payment fee type can differ from asset only if payment fee subtype is OUTGOING
 		FEE_ASSET_NOT_FOUND = -14,
 		ASSET_PAIR_NOT_FOUND = -15, // cannot create cross asset fee entry without existing asset pair
-		INVALID_ASSET_PAIR_PRICE = -16
+		INVALID_ASSET_PAIR_PRICE = -16,
+		INVALID_FEE_HASH = -17
     };
     
     union SetFeesResult switch (SetFeesResultCode code)
