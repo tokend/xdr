@@ -16,8 +16,7 @@ enum AssetPolicy
 	TWO_STEP_WITHDRAWAL = 16,
 	REQUIRES_KYC = 32,
 	ISSUANCE_MANUAL_REVIEW_REQUIRED = 64,
-	REQUIRES_VERIFICATION = 128, 
-	WITHDRAWABLE_V2 = 256 // switch to withdraw with tasks
+	REQUIRES_VERIFICATION = 128
 };
 
 enum AssetSystemPolicies

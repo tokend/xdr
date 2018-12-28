@@ -18,7 +18,9 @@ enum FeeType
     INVEST_FEE = 4, // fee to be taken while creating sale participation
     CAPITAL_DEPLOYMENT_FEE = 5, // fee to be taken when sale close
     OPERATION_FEE = 6,
-    PAYOUT_FEE = 7
+    PAYOUT_FEE = 7,
+    ATOMIC_SWAP_SALE_FEE = 8,
+    ATOMIC_SWAP_PURCHASE_FEE = 9
 };
 
 enum EmissionFeeType
@@ -37,6 +39,7 @@ struct FeeEntry
 {
     FeeType feeType;
     AssetCode asset;
+
     int64 fixedFee; // fee paid for operation
 	int64 percentFee; // percent of transfer amount to be charged
 
@@ -54,8 +57,6 @@ struct FeeEntry
     {
     case EMPTY_VERSION:
         void;
-    case CROSS_ASSET_FEE:
-        AssetCode feeAsset;
     }
     ext;
 };

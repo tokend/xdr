@@ -12,25 +12,10 @@ namespace stellar
     Result: PaymentResult
 */
 
-struct FeeDataV2 {
-    uint64 maxPaymentFee;
-    uint64 fixedFee;
-
-    // Cross asset fees
-    AssetCode feeAsset;
-
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct PaymentFeeDataV2 {
-    FeeDataV2 sourceFee;
-    FeeDataV2 destinationFee;
+    Fee sourceFee;
+    Fee destinationFee;
+
     bool sourcePaysForDest; // if true - source account pays fee, else destination
 
     union switch (LedgerVersion v)
@@ -90,13 +75,10 @@ enum PaymentV2ResultCode
     LIMITS_EXCEEDED = -9,
     NOT_ALLOWED_BY_ASSET_POLICY = -10,
     INVALID_DESTINATION_FEE = -11,
-    INVALID_DESTINATION_FEE_ASSET = -12, // destination fee asset must be the same as source balance asset
-    FEE_ASSET_MISMATCHED = -13,
-    INSUFFICIENT_FEE_AMOUNT = -14,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -15,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -16,
-    DESTINATION_ACCOUNT_NOT_FOUND = -17,
-    INCORRECT_AMOUNT_PRECISION = -18
+    INSUFFICIENT_FEE_AMOUNT = -12,
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
+    DESTINATION_ACCOUNT_NOT_FOUND = -14,
+    INCORRECT_AMOUNT_PRECISION = -15
 
      // !!! Add new result code to review invoice op too !!!
 };
@@ -109,8 +91,8 @@ struct PaymentV2Response {
     uint64 sourceSentUniversal;
     uint64 paymentID;
 
-    uint64 actualSourcePaymentFee;
-    uint64 actualDestinationPaymentFee;
+    Fee actualSourcePaymentFee;
+    Fee actualDestinationPaymentFee;
 
     // reserved for future use
     union switch (LedgerVersion v)

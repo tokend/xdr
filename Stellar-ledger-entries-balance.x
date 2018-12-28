@@ -10,6 +10,7 @@ namespace stellar
 struct BalanceEntry
 {
     BalanceID balanceID;
+    uint64 balanceSeqID;
     AssetCode asset;
     AccountID accountID;
     uint64 amount;

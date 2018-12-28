@@ -8,11 +8,6 @@
 namespace stellar
 {
 
-enum ExternalSystemIDGeneratorType {
-	BITCOIN_BASIC = 1,
-	ETHEREUM_BASIC = 2
-};
-
 typedef opaque UpgradeType<128>;
 
 /* StellarValue is the value used by SCP to reach consensus on a given ledger
@@ -64,7 +59,6 @@ struct LedgerHeader
 
     uint32 maxTxSetSize; // maximum size a transaction set can be
 
-    ExternalSystemIDGeneratorType externalSystemIDGenerators<>;
     int64 txExpirationPeriod;
     
     Hash skipList[4]; // hashes of ledgers in the past. allows you to jump back
@@ -91,8 +85,7 @@ enum LedgerUpgradeType
 {
     VERSION = 1,
     MAX_TX_SET_SIZE = 2,
-    TX_EXPIRATION_PERIOD = 3,
-	EXTERNAL_SYSTEM_ID_GENERATOR = 4
+    TX_EXPIRATION_PERIOD = 3
 };
 
 union LedgerUpgrade switch (LedgerUpgradeType type)
@@ -101,8 +94,6 @@ case VERSION:
     uint32 newLedgerVersion; // update ledgerVersion
 case MAX_TX_SET_SIZE:
     uint32 newMaxTxSetSize; // update maxTxSetSize
-case EXTERNAL_SYSTEM_ID_GENERATOR:
-    ExternalSystemIDGeneratorType newExternalSystemIDGenerators<>;
 case TX_EXPIRATION_PERIOD:
     int64 newTxExpirationPeriod;
 };
@@ -258,7 +249,7 @@ case SALE:
 	} sale;
 case KEY_VALUE:
     struct {
-        string256 key;
+        longstring key;
         union switch (LedgerVersion v)
         {
         	case EMPTY_VERSION:
@@ -286,16 +277,6 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
 		}
 		ext;
 	} externalSystemAccountIDPoolEntry;
-case SALE_ANTE:
-    struct {
-        uint64 saleID;
-        BalanceID participantBalanceID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        } ext;
-    } saleAnte;
 case LIMITS_V2:
     struct {
         uint64 id;
@@ -336,6 +317,16 @@ case CONTRACT:
         }
         ext;
     } contract;
+case ATOMIC_SWAP_BID:
+    struct {
+        uint64 bidID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } atomicSwapBid;
 case ACCOUNT_ROLE:
     struct {
         uint64 accountRoleID;

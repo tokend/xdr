@@ -11,20 +11,22 @@ namespace stellar
         UINT64 = 3
     };
 
+
+    union KeyValueEntryValue switch (KeyValueEntryType type)
+    {
+        case UINT32:
+            uint32 ui32Value;
+        case STRING:
+            string stringValue<>;
+        case UINT64:
+            uint64 ui64Value;
+    };
+
     struct KeyValueEntry
     {
         longstring key;
 
-        union switch (KeyValueEntryType type)
-        {
-             case UINT32:
-                uint32 ui32Value;
-             case STRING:
-                string stringValue<>;
-            case UINT64:
-                uint64 ui64Value;
-        }
-        value;
+        KeyValueEntryValue value;
 
         // reserved for future use
         union switch (LedgerVersion v)
@@ -34,5 +36,7 @@ namespace stellar
         }
         ext;
     };
+
+
 
 }

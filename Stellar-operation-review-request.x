@@ -96,7 +96,7 @@ struct BillPayDetails {
 struct ReviewDetails {
     uint32 tasksToAdd;
     uint32 tasksToRemove;
-    string externalDetails<>;
+    longstring externalDetails;
     // Reserved for future use
     union switch (LedgerVersion v)
     {
@@ -104,37 +104,6 @@ struct ReviewDetails {
         void;
     }
     ext;
-};
-
-struct SaleExtended {
-    uint64 saleID;
-
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct ExtendedResult {
-    bool fulfilled;
-
-    union switch(ReviewableRequestType requestType) {
-    case SALE:
-        SaleExtended saleExtended;
-    case NONE:
-        void;
-    } typeExt;
-
-   // Reserved for future use
-   union switch (LedgerVersion v)
-   {
-   case EMPTY_VERSION:
-       void;
-   }
-   ext;
 };
 
 struct ReviewRequestOp
@@ -240,12 +209,10 @@ enum ReviewRequestResultCode
     LIMITS_EXCEEDED = -118,
     NOT_ALLOWED_BY_ASSET_POLICY = -119,
     INVALID_DESTINATION_FEE = -120,
-    INVALID_DESTINATION_FEE_ASSET = -121, // destination fee asset must be the same as source balance asset
-    FEE_ASSET_MISMATCHED = -122,
     INSUFFICIENT_FEE_AMOUNT = -123,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
     DESTINATION_ACCOUNT_NOT_FOUND = -126,
+    INCORRECT_AMOUNT_PRECISION = -127,
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
@@ -256,28 +223,123 @@ enum ReviewRequestResultCode
 
 	//Withdrawal request 
 	REMOVING_NOT_SET_TASKS = -150 // cannot remove tasks which are not set 
+    BASE_ASSET_CANNOT_BE_SWAPPED = -151,
+    QUOTE_ASSET_NOT_FOUND = -152, // quote asset does not exist
+    QUOTE_ASSET_CANNOT_BE_SWAPPED = -153,
+    ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
+
+    // Atomic swap
+    ASWAP_BID_UNDERFUNDED = -160,
+    ASWAP_PURCHASER_FULL_LINE = -161
+};
+
+
+struct InvoiceExtended
+{
+    PaymentV2Response paymentV2Response;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ContractExtended
+{
+    uint64 contractID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct SaleExtended
+{
+    uint64 saleID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapBidExtended
+{
+    uint64 bidID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapExtended
+{
+    uint64 bidID;
+    AccountID bidOwnerID;
+    AccountID purchaserID;
+    AssetCode baseAsset;
+    AssetCode quoteAsset;
+    uint64 baseAmount;
+    uint64 quoteAmount;
+    uint64 price;
+    BalanceID bidOwnerBaseBalanceID;
+    BalanceID purchaserBaseBalanceID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ReviewRequestSuccessResult
+{
+    bool fulfilled;
+
+    union switch(ReviewableRequestType requestType) {
+    case SALE:
+        SaleExtended saleExtended;
+    case NONE:
+        void;
+    case CONTRACT:
+        ContractExtended contractExtended;
+    case INVOICE:
+        InvoiceExtended invoiceExtended;
+    case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
+    case ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
+    } typeExt;
+
+   // Reserved for future use
+   union switch (LedgerVersion v)
+   {
+   case EMPTY_VERSION:
+       void;
+   }
+   ext;
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	struct {
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
-		    uint64 saleID;
-		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
-		    PaymentV2Response paymentV2Response;
-		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
-		    uint64 contractID;
-		case EMPTY_VERSION:
-			void;
-        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-            ExtendedResult extendedResult;
-		}
-		ext;
-	} success;
+	ReviewRequestSuccessResult success;
 default:
     void;
 };
