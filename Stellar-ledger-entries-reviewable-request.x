@@ -33,7 +33,7 @@ enum ReviewableRequestType
 	UPDATE_SALE_DETAILS = 9,
 	NONE = 10, // use this request type in ReviewRequestOp extended result if additional info is not required
 	INVOICE = 11,
-	CONTRACT = 12
+	CONTRACT = 12,
 	CREATE_ATOMIC_SWAP_BID = 16,
 	ATOMIC_SWAP = 17
 };
