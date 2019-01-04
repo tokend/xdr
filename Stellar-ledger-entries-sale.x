@@ -42,17 +42,15 @@ struct BasicSale {
 };
 
 
-struct SaleTypeExt {
-	union switch (SaleType saleType)
-    {
+
+union SaleTypeExt switch (SaleType saleType)
+{
 	case BASIC_SALE:
 		BasicSale basicSale;
-    case CROWD_FUNDING:
-        CrowdFundingSale crowdFundingSale;
-    case FIXED_PRICE:
-        FixedPriceSale fixedPriceSale;
-    }
-    typedSale;
+	case CROWD_FUNDING:
+		CrowdFundingSale crowdFundingSale;
+	case FIXED_PRICE:
+		FixedPriceSale fixedPriceSale;
 };
 
 struct SaleQuoteAsset {
