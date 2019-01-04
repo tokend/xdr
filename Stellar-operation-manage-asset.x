@@ -58,9 +58,29 @@ struct ManageAssetOp
     union switch (ManageAssetAction action)
 	{
 	case CREATE_ASSET_CREATION_REQUEST:
-		AssetCreationRequest createAsset;
+		struct {
+            AssetCreationRequest createAsset;
+            uint32* allTasks;
+			// reserved for future use
+			union switch (LedgerVersion v)
+			{
+			case EMPTY_VERSION:
+				void;
+			}
+			ext;
+        } createAssetCreationRequest;
 	case CREATE_ASSET_UPDATE_REQUEST:
-		AssetUpdateRequest updateAsset;
+		struct {
+            AssetUpdateRequest updateAsset;
+            uint32* allTasks;
+			// reserved for future use
+			union switch (LedgerVersion v)
+			{
+			case EMPTY_VERSION:
+				void;
+			}
+			ext;
+        } createAssetUpdateRequest;
 	case CANCEL_ASSET_REQUEST:
 		CancelAssetRequest cancelRequest;
 	case CHANGE_PREISSUED_ASSET_SIGNER:
@@ -98,7 +118,11 @@ enum ManageAssetResultCode
     INVALID_DETAILS = -12,                        // details must be a valid json
     INVALID_TRAILING_DIGITS_COUNT = -13,          // invalid number of trailing digits
     INVALID_PREISSUED_AMOUNT_PRECISION = -14,     // initial pre issued amount does not match precision set by trailing digits count
-    INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15   // maximum issuance amount does not match precision set by trailing digits count
+    INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15,   // maximum issuance amount does not match precision set by trailing digits count
+    ASSET_CREATE_TASKS_NOT_FOUND = -16, 
+    ASSET_UPDATE_TASKS_NOT_FOUND = -17,
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18,
+    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -19
 };
 
 struct ManageAssetSuccess

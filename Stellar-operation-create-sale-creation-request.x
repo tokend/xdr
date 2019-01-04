@@ -21,6 +21,8 @@ struct CreateSaleCreationRequestOp
 	uint64 requestID;
     SaleCreationRequest request;
 
+    uint32* allTasks;
+
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -50,12 +52,17 @@ enum CreateSaleCreationRequestResultCode
 	REQUEST_OR_SALE_ALREADY_EXISTS = -10,
 	INSUFFICIENT_PREISSUED = -11, // amount of pre issued tokens is insufficient for hard cap
 	INVALID_DETAILS = -12, // details must be a valid json
-	VERSION_IS_NOT_SUPPORTED_YET = -13 // version specified in request is not supported yet
+	VERSION_IS_NOT_SUPPORTED_YET = -13, // version specified in request is not supported yet
+    SALE_CREATE_TASKS_NOT_FOUND = -14,
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15, // can't set allTasks on request update
+    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -16
 };
 
 struct CreateSaleCreationSuccess {
 	uint64 requestID;
+    uint64 saleID;
 
+    bool fulfilled;
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

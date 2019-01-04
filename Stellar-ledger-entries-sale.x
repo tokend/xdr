@@ -7,12 +7,6 @@
 namespace stellar
 {
 
-enum SaleState {
-	NONE = 0, // default state
-	VOTING = 1, // not allowed to invest
-	PROMOTION = 2 // not allowed to invest, but allowed to change all the details
-};
-
 enum SaleType {
 	BASIC_SALE = 1, // sale creator specifies price for each quote asset
 	CROWD_FUNDING = 2, // sale creator does not specify price,
@@ -48,24 +42,16 @@ struct BasicSale {
 };
 
 
-struct SaleTypeExt {
-	union switch (SaleType saleType)
-    {
+
+union SaleTypeExt switch (SaleType saleType)
+{
 	case BASIC_SALE:
 		BasicSale basicSale;
-    case CROWD_FUNDING:
-        CrowdFundingSale crowdFundingSale;
-    case FIXED_PRICE:
-        FixedPriceSale fixedPriceSale;
-    }
-    typedSale;
+	case CROWD_FUNDING:
+		CrowdFundingSale crowdFundingSale;
+	case FIXED_PRICE:
+		FixedPriceSale fixedPriceSale;
 };
-
-struct StatableSaleExt {
-	SaleTypeExt saleTypeExt;
-	SaleState state;
-};
-
 
 struct SaleQuoteAsset {
 	AssetCode quoteAsset; // asset in which participation will be accepted
@@ -96,15 +82,12 @@ struct SaleEntry
 	SaleQuoteAsset quoteAssets<100>;
 
 	BalanceID baseBalance;
+    SaleTypeExt saleTypeExt;
 
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-	case TYPED_SALE:
-		SaleTypeExt saleTypeExt;
-	case STATABLE_SALES:
-		StatableSaleExt statableSaleExt;
     }
     ext;
 };
