@@ -61,11 +61,25 @@ struct ManageAssetOp
 		struct {
             AssetCreationRequest createAsset;
             uint32* allTasks;
+			// reserved for future use
+			union switch (LedgerVersion v)
+			{
+			case EMPTY_VERSION:
+				void;
+			}
+			ext;
         } createAssetCreationRequest;
 	case CREATE_ASSET_UPDATE_REQUEST:
 		struct {
             AssetUpdateRequest updateAsset;
             uint32* allTasks;
+			// reserved for future use
+			union switch (LedgerVersion v)
+			{
+			case EMPTY_VERSION:
+				void;
+			}
+			ext;
         } createAssetUpdateRequest;
 	case CANCEL_ASSET_REQUEST:
 		CancelAssetRequest cancelRequest;
