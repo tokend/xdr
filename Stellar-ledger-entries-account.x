@@ -148,7 +148,9 @@ struct AccountEntry
     AccountID accountID;      // master public key for this account
     AccountID recoveryID;
 
-    uint64 accountSeqID;
+	// sequenctial ID - unique identifier of the account, used by ingesting applications to 
+	// identify account, while keeping size of index small 
+    uint64 sequentialID;
 
     // fields used for signatures
     // thresholds stores unsigned bytes: [weight of master|low|medium|high]
