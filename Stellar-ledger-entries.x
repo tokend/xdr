@@ -24,7 +24,7 @@
 %#include "xdr/Stellar-ledger-entries-contract.h"
 %#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
-%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
+%#include "xdr/Stellar-ledger-entries-account-rule.h"
 
 
 namespace stellar
@@ -38,35 +38,6 @@ enum ThresholdIndexes
     LOW = 1,
     MED = 2,
     HIGH = 3
-};
-
-enum LedgerEntryType
-{
-    ACCOUNT = 0,
-    FEE = 2,
-    BALANCE = 4,
-    PAYMENT_REQUEST = 5,
-    ASSET = 6,
-    REFERENCE_ENTRY = 7,
-    ACCOUNT_TYPE_LIMITS = 8,
-    STATISTICS = 9,
-    TRUST = 10,
-    ACCOUNT_LIMITS = 11,
-	ASSET_PAIR = 12,
-	OFFER_ENTRY = 13,
-	REVIEWABLE_REQUEST = 15,
-	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
-	SALE = 17,
-	ACCOUNT_KYC = 18,
-	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
-    KEY_VALUE = 20,
-    LIMITS_V2 = 22,
-    STATISTICS_V2 = 23,
-    PENDING_STATISTICS = 24,
-    CONTRACT = 25,
-    ACCOUNT_ROLE = 26,
-    ACCOUNT_ROLE_PERMISSION = 27,
-    ATOMIC_SWAP_BID = 28
 };
 
 
@@ -122,8 +93,8 @@ struct LedgerEntry
         AtomicSwapBidEntry atomicSwapBid;
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
-    case ACCOUNT_ROLE_PERMISSION:
-        AccountRolePermissionEntry accountRolePermission;
+    case ACCOUNT_RULE:
+        AccountRuleEntry accountRolePermission;
     }
     data;
 

@@ -20,6 +20,7 @@ enum ManageAccountRoleOpAction
 struct CreateAccountRoleData
 {
     longstring name;
+    uint64 accountRuleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)

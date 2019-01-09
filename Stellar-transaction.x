@@ -121,8 +121,8 @@ struct Operation
         CreateASwapRequestOp createASwapRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
-        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
+    case MANAGE_ACCOUNT_RULE:
+        ManageAccountRuleOp manageAccountRolePermissionOp;
     }
     body;
 };
@@ -286,7 +286,7 @@ case opINNER:
         CreateASwapRequestResult createASwapRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+    case MANAGE_ACCOUNT_RULE:
         ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     }
     tr;

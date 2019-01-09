@@ -329,7 +329,7 @@ case ATOMIC_SWAP_BID:
     } atomicSwapBid;
 case ACCOUNT_ROLE:
     struct {
-        uint64 accountRoleID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -337,9 +337,9 @@ case ACCOUNT_ROLE:
         }
         ext;
     } accountRole;
-case ACCOUNT_ROLE_PERMISSION:
+case ACCOUNT_RULE:
     struct {
-        uint64 permissionID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:

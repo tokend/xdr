@@ -1,5 +1,6 @@
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
+%#include "xdr/Stellar-ledger-entries-account-rule.h"
+%#include "xdr/Stellar-account-rule-resource.h"
 
 namespace stellar
 {
@@ -21,8 +22,10 @@ enum ManageAccountRolePermissionOpAction
 
 struct CreateAccountRolePermissionData
 {
-    uint64 roleID;
-    OperationType opType;
+    AccountRuleResource resource;
+    string256 action;
+    bool isForbid;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -34,9 +37,11 @@ struct CreateAccountRolePermissionData
 
 struct UpdateAccountRolePermissionData
 {
-    uint64 permissionID;
-    uint64 roleID;
-    OperationType opType;
+    uint64 accountRuleID;
+    AccountRuleResource resource;
+    string256 action;
+    bool isForbid;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -48,7 +53,7 @@ struct UpdateAccountRolePermissionData
 
 struct RemoveAccountRolePermissionData
 {
-    uint64 permissionID;
+    uint64 accountRuleID;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -58,7 +63,7 @@ struct RemoveAccountRolePermissionData
     } ext;
 };
 
-struct ManageAccountRolePermissionOp
+struct ManageAccountRuleOp
 {
     union switch (ManageAccountRolePermissionOpAction action)
     {
