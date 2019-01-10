@@ -37,7 +37,7 @@
 %#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
 %#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
-%#include "xdr/Stellar-operation-manage-account-role-permission.h"
+%#include "xdr/Stellar-operation-manage-account-rule.h"
 
 namespace stellar
 {
@@ -122,7 +122,7 @@ struct Operation
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
-        ManageAccountRuleOp manageAccountRolePermissionOp;
+        ManageAccountRuleOp manageAccountRuleOp;
     }
     body;
 };
@@ -287,7 +287,7 @@ case opINNER:
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:
-        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
+        ManageAccountRuleResult manageAccountRuleResult;
     }
     tr;
 default:

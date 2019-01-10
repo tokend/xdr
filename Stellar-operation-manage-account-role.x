@@ -11,7 +11,7 @@ namespace stellar {
     Result: ManageAccountRoleResult
 */
 
-enum ManageAccountRoleOpAction
+enum ManageAccountRoleAction
 {
     CREATE = 0,
     REMOVE = 1
@@ -44,7 +44,7 @@ struct RemoveAccountRoleData
 
 struct ManageAccountRoleOp
 {
-    union switch (ManageAccountRoleOpAction action)
+    union switch (ManageAccountRoleAction action)
     {
     case CREATE:
         CreateAccountRoleData createData;
@@ -76,7 +76,7 @@ union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 accountRoleID;
+            uint64 roleID;
 
             // reserved for future use
             union switch (LedgerVersion v)
