@@ -10,7 +10,9 @@ namespace stellar
 struct BalanceEntry
 {
     BalanceID balanceID;
-    uint64 balanceSeqID;
+	// sequenctial ID - unique identifier of the balance, used by ingesting applications to 
+	// identify account, while keeping size of index small 
+    uint64 sequentialID;
     AssetCode asset;
     AccountID accountID;
     uint64 amount;
