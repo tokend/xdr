@@ -120,20 +120,6 @@ enum BlockReasons
 	WITHDRAWAL = 16
 };
 
-struct AccountEntryExtended
-{
-    uint32 kycLevel;
-    uint64* accountRole;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 /* AccountEntry
 
     Main entry representing a user in Stellar. All transactions are
@@ -167,6 +153,8 @@ struct AccountEntry
 
 	int32 policies;
 
+	uint64 roleID;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
@@ -174,8 +162,6 @@ struct AccountEntry
         void;
     case USE_KYC_LEVEL:
         uint32 kycLevel;
-    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
-        AccountEntryExtended accountEntryExt;
     }
     ext;
 };

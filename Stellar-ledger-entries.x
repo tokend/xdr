@@ -94,7 +94,7 @@ struct LedgerEntry
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
     case ACCOUNT_RULE:
-        AccountRuleEntry accountRolePermission;
+        AccountRuleEntry accountRule;
     }
     data;
 

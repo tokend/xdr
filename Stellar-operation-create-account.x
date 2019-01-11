@@ -16,19 +16,6 @@ Result: CreateAccountResult
 
 */
 
-struct CreateAccountOpExtended
-{
-    uint64* roleID;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct CreateAccountOp
 {
     AccountID destination; // account to create
@@ -36,6 +23,7 @@ struct CreateAccountOp
     AccountID* referrer;     // parent account
 	AccountType accountType;
 	uint32 policies;
+	uint64 roleID;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
@@ -44,8 +32,6 @@ struct CreateAccountOp
         void;
     case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
         ExternalSystemAccountID externalSystemIDs<>;
-    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
-        CreateAccountOpExtended opExt;
     }
     ext;
 };
@@ -64,7 +50,8 @@ enum CreateAccountResultCode
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,
 	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
-	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7
+	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7,
+	NO_SUCH_ROLE = -8
 };
 
 struct CreateAccountSuccess

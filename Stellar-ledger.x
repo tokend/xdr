@@ -346,7 +346,7 @@ case ACCOUNT_RULE:
             void;
         }
         ext;
-    } accountRolePermission;
+    } accountRule;
 };
 
 enum BucketEntryType
