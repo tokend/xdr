@@ -36,14 +36,13 @@ struct CreateAccountOp
     AccountID* referrer;     // parent account
 	AccountType accountType;
 	uint32 policies;
+    ExternalSystemAccountID externalSystemIDs<>;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
-        ExternalSystemAccountID externalSystemIDs<>;
     case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
         CreateAccountOpExtended opExt;
     }
