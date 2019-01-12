@@ -10,7 +10,7 @@ case ASSET:
     struct
     {
         AssetCode assetCode;
-        int64 assetType;
+        uint64 assetType;
 
         union switch (LedgerVersion v)
         {
@@ -79,6 +79,12 @@ case ASSET_PAIR:
 case OFFER_ENTRY:
     struct
     {
+        uint64 baseAssetType;
+        uint64 quoteAssetType;
+
+        AssetCode baseAssetCode;
+        AssetCode quoteAssetCode;
+
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
