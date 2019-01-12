@@ -22,7 +22,7 @@ namespace stellar
 enum ReviewableRequestType
 {
 	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
-	ASSET_UPDATE = 1,
+	ANY = 1,
 	PRE_ISSUANCE_CREATE = 2,
 	ISSUANCE_CREATE = 3,
 	WITHDRAW = 4,
@@ -34,6 +34,7 @@ enum ReviewableRequestType
 	ASSET_CREATE = 10,
 	INVOICE = 11,
 	CONTRACT = 12,
+	ASSET_UPDATE = 13,
 	CREATE_ATOMIC_SWAP_BID = 16,
 	ATOMIC_SWAP = 17
 };
