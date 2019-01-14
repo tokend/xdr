@@ -210,7 +210,8 @@ enum OperationResultCode
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
     opBAD_AUTH_EXTRA = -8,
-    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
+    opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
+    opNO_BALANCE = -10
 };
 
 union OperationResult switch (OperationResultCode code)
