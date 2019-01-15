@@ -32,11 +32,11 @@ case KEY_TYPE_ED25519:
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	FIX_PAYMENT_V2_FEE = 32,
-	ADD_SALE_ID_REVIEW_REQUEST_RESULT = 33,
-	FIX_SET_SALE_STATE_AND_CHECK_SALE_STATE_OPS = 34, // only master allowed to set sale state, max issuance after sale closure = pending + issued
-	FIX_UPDATE_MAX_ISSUANCE = 35,
-	ALLOW_CLOSE_SALE_WITH_NON_ZERO_BALANCE = 36,
+	// FIX_PAYMENT_V2_FEE = 32,
+	// ADD_SALE_ID_REVIEW_REQUEST_RESULT = 33,
+	// FIX_SET_SALE_STATE_AND_CHECK_SALE_STATE_OPS = 34, // only master allowed to set sale state, max issuance after sale closure = pending + issued
+	// FIX_UPDATE_MAX_ISSUANCE = 35,
+	// ALLOW_CLOSE_SALE_WITH_NON_ZERO_BALANCE = 36,
 	ALLOW_TO_UPDATE_VOTING_SALES_AS_PROMOTION = 37,
 	ALLOW_TO_ISSUE_AFTER_SALE = 38,
 	FIX_PAYMENT_V2_SEND_TO_SELF = 39,
