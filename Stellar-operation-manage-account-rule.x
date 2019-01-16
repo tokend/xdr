@@ -93,7 +93,8 @@ enum ManageAccountRuleResultCode
 
     // codes considered as "failure" for the operation
     NOT_FOUND = -1,
-    RULE_ALREADY_EXISTS = -2
+    RULE_IS_USED = -2,
+    INVALID_DETAILS = -3
 };
 
 union ManageAccountRuleResult switch (ManageAccountRuleResultCode code)

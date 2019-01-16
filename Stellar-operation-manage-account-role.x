@@ -14,12 +14,27 @@ namespace stellar {
 enum ManageAccountRoleAction
 {
     CREATE = 0,
-    REMOVE = 1
+    UPDATE = 1,
+    REMOVE = 2
 };
 
 struct CreateAccountRoleData
 {
-    longstring name;
+    longstring details;
+    uint64 accountRuleIDs<>;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
+struct UpdateAccountRoleData
+{
+    uint64 roleID;
+    longstring details;
     uint64 accountRuleIDs<>;
 
     // reserved for future use
@@ -48,6 +63,8 @@ struct ManageAccountRoleOp
     {
     case CREATE:
         CreateAccountRoleData createData;
+    case UPDATE:
+        UpdateAccountRoleData updateData;
     case REMOVE:
         RemoveAccountRoleData removeData;
     } data;
@@ -69,7 +86,9 @@ enum ManageAccountRoleResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1
+    NOT_FOUND = -1,
+    ROLE_IS_USED = -2,
+    INVALID_DETAILS = -3
 };
 
 union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
