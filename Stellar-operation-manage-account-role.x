@@ -88,7 +88,8 @@ enum ManageAccountRoleResultCode
     // codes considered as "failure" for the operation
     NOT_FOUND = -1,
     ROLE_IS_USED = -2,
-    INVALID_DETAILS = -3
+    INVALID_DETAILS = -3,
+    NO_SUCH_RULE = -4
 };
 
 union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
@@ -105,6 +106,8 @@ union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
             }
             ext;
         } success;
+    case NO_SUCH_RULE:
+        uint64 ruleID;
     default:
         void;
 };
