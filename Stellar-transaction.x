@@ -178,13 +178,13 @@ struct Transaction
 
     Operation operations<100>;
 
+    uint64 maxTotalFee;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        uint64 maxTotalFee;
     }
     ext;
 };
@@ -358,13 +358,13 @@ struct TransactionResult
     }
     result;
 
+    TransactionFee transactionFee;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        TransactionFee transactionFee;
     }
     ext;
 };
