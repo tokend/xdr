@@ -32,9 +32,7 @@ case KEY_TYPE_ED25519:
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	WITHDRAWAL_TASKS = 52,
-	ADD_ASSET_BALANCE_PRECISION = 53,
-    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
+    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 1 // do not use it yet, there are features to be improved
 };
 
 // variable size as the size depends on the signature scheme used
