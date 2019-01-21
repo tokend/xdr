@@ -45,7 +45,7 @@ enum CreateAccountResultCode
 
     // codes considered as "failure" for the operation
     MALFORMED = -1,       // invalid destination
-	ACCOUNT_TYPE_MISMATCHED = -2, // account already exist and change of account type is not allowed
+    ALREADY_EXISTS = -2, // account already exist
 	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,

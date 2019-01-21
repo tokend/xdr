@@ -212,7 +212,8 @@ enum OperationResultCode
     opBAD_AUTH_EXTRA = -8,
     opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
     opNO_BALANCE = -10,
-    opNO_ASSET = -11
+    opNO_ASSET = -11,
+    opNOT_SUPPORTED = -12
 };
 
 union OperationResult switch (OperationResultCode code)

@@ -111,6 +111,8 @@ union ManageAccountRuleResult switch (ManageAccountRuleResultCode code)
             }
             ext;
         } success;
+    case RULE_IS_USED:
+        uint64 roleIDs<>;
     default:
         void;
 };
