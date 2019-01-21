@@ -175,7 +175,10 @@ enum OperationType
     MANAGE_ACCOUNT_ROLE_PERMISSION = 34,
     CREATE_ASWAP_BID_REQUEST = 35,
     CANCEL_ASWAP_BID = 36,
-    CREATE_ASWAP_REQUEST = 37
+    CREATE_ASWAP_REQUEST = 37,
+    STAMP = 38,
+    LICENSE = 39,
+    CHECK_LICENSE = 40
 };
 
 struct DecoratedSignature

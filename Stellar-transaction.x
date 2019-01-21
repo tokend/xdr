@@ -38,6 +38,9 @@
 %#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
+%#include "xdr/Stellar-operation-license.h"
+%#include "xdr/Stellar-operation-stamp.h"
+%#include "xdr/Stellar-operation-check-license-state.h"
 
 namespace stellar
 {
@@ -123,6 +126,12 @@ struct Operation
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionOp manageAccountRolePermissionOp;
+    case STAMP:
+        StampOp stampOp;
+    case LICENSE:
+        LicenseOp licenseOp;
+    case CHECK_LICENSE:
+        CheckLicenseStateOp checkLicenseStateOp;
     }
     body;
 };
@@ -288,6 +297,12 @@ case opINNER:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionResult manageAccountRolePermissionResult;
+    case STAMP:
+        StampResult stampResult;
+    case LICENSE:
+        LicenseResult licenseResult;
+    case CHECK_LICENSE:
+        CheckLicenseStateResult checkLicenseStateResult;
     }
     tr;
 default:

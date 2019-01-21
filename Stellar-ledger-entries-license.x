@@ -1,0 +1,24 @@
+%#include "xdr/Stellar-types.h"
+
+
+namespace stellar
+{
+
+struct LicenseEntry
+{
+    uint64 adminCount;
+    uint64 dueDate;
+    Hash ledgerHash;
+    Hash prevLicenseHash;
+    DecoratedSignature signatures<2>;
+
+     // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+}

@@ -25,6 +25,8 @@
 %#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
 %#include "xdr/Stellar-ledger-entries-account-role-permission.h"
+%#include "xdr/Stellar-ledger-entries-license.h"
+%#include "xdr/Stellar-ledger-entries-stamp.h"
 
 
 namespace stellar
@@ -66,7 +68,9 @@ enum LedgerEntryType
     CONTRACT = 25,
     ACCOUNT_ROLE = 26,
     ACCOUNT_ROLE_PERMISSION = 27,
-    ATOMIC_SWAP_BID = 28
+    ATOMIC_SWAP_BID = 28,
+    STAMP = 29,
+    LICENSE = 30
 };
 
 
@@ -124,6 +128,10 @@ struct LedgerEntry
         AccountRoleEntry accountRole;
     case ACCOUNT_ROLE_PERMISSION:
         AccountRolePermissionEntry accountRolePermission;
+    case LICENSE:
+        LicenseEntry license;
+    case STAMP:
+        StampEntry stamp;
     }
     data;
 
