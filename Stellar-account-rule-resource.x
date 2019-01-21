@@ -181,6 +181,18 @@ case ACCOUNT_RULE:
             void;
         } ext;
     } accountRule;
+case ATOMIC_SWAP_BID:
+    struct
+    {
+        uint64 assetType;
+        AssetCode assetCode;
+
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } atomicSwapBid;
 /*case SIGNER_RULE:
     struct
     {

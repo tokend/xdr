@@ -213,7 +213,8 @@ enum OperationResultCode
     opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
     opNO_BALANCE = -10,
     opNO_ASSET = -11,
-    opNOT_SUPPORTED = -12
+    opNOT_SUPPORTED = -12,
+    opNO_BID = -13 // there is no atomic swap bid with such id
 };
 
 union OperationResult switch (OperationResultCode code)
