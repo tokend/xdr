@@ -69,6 +69,7 @@ struct SaleQuoteAsset {
 struct SaleEntry
 {
 	uint64 saleID;
+	uint64 saleType;
 	AccountID ownerID;
     AssetCode baseAsset; // asset for which sale will be performed
 	uint64 startTime; // start time of the sale

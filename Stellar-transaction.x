@@ -214,7 +214,8 @@ enum OperationResultCode
     opNO_BALANCE = -10,
     opNO_ASSET = -11,
     opNOT_SUPPORTED = -12,
-    opNO_BID = -13 // there is no atomic swap bid with such id
+    opNO_BID = -13, // there is no atomic swap bid with such id
+    opNO_SALE = -14
 };
 
 union OperationResult switch (OperationResultCode code)

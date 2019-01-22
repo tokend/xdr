@@ -21,7 +21,20 @@ case ASSET:
 case REVIEWABLE_REQUEST:
     struct
     {
-        ReviewableRequestType requestType;
+        union switch (ReviewableRequestType requestType)
+        {
+        case SALE:
+            struct
+            {
+                uint64 type;
+
+                union switch (LedgerVersion v)
+                {
+                case EMPTY_VERSION:
+                    void;
+                } ext;
+            } sale;
+        } details;
 
         union switch (LedgerVersion v)
         {
@@ -103,6 +116,9 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID:
 case SALE:
     struct
     {
+        uint64 saleID;
+        uint64 saleType;
+
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:

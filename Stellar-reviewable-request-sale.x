@@ -19,7 +19,9 @@ struct SaleCreationRequestQuoteAsset {
     ext;
 };
 
-struct SaleCreationRequest {
+struct SaleCreationRequest
+{
+    uint64 saleType;
 	AssetCode baseAsset; // asset for which sale will be performed
 	AssetCode defaultQuoteAsset; // asset for soft and hard cap
 	uint64 startTime; // start time of the sale
