@@ -34,6 +34,8 @@ case REVIEWABLE_REQUEST:
                     void;
                 } ext;
             } sale;
+        default:
+            void;
         } details;
 
         union switch (LedgerVersion v)
