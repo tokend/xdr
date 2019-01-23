@@ -10,7 +10,7 @@ struct LicenseEntry
     uint64 dueDate;
     Hash ledgerHash;
     Hash prevLicenseHash;
-    DecoratedSignature signatures<2>;
+    DecoratedSignature signatures<>;
 
      // reserved for future use
     union switch (LedgerVersion v)

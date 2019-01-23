@@ -40,7 +40,6 @@
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
 %#include "xdr/Stellar-operation-license.h"
 %#include "xdr/Stellar-operation-stamp.h"
-%#include "xdr/Stellar-operation-check-license-state.h"
 
 namespace stellar
 {
@@ -130,8 +129,6 @@ struct Operation
         StampOp stampOp;
     case LICENSE:
         LicenseOp licenseOp;
-    case CHECK_LICENSE:
-        CheckLicenseStateOp checkLicenseStateOp;
     }
     body;
 };
@@ -301,8 +298,6 @@ case opINNER:
         StampResult stampResult;
     case LICENSE:
         LicenseResult licenseResult;
-    case CHECK_LICENSE:
-        CheckLicenseStateResult checkLicenseStateResult;
     }
     tr;
 default:

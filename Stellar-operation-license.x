@@ -15,9 +15,9 @@ struct LicenseOp
 {
     uint64 adminCount;
     uint64 dueDate;
-    Hash blockHash;
-    Hash oldLicenseHash;
-    DecoratedSignature signatures<2>;
+    Hash ledgerHash;
+    Hash prevLicenseHash;
+    DecoratedSignature signatures<>;
 
 
     union switch (LedgerVersion v)

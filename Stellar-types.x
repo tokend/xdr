@@ -177,8 +177,7 @@ enum OperationType
     CANCEL_ASWAP_BID = 36,
     CREATE_ASWAP_REQUEST = 37,
     STAMP = 38,
-    LICENSE = 39,
-    CHECK_LICENSE = 40
+    LICENSE = 39
 };
 
 struct DecoratedSignature
