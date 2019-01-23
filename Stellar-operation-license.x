@@ -38,8 +38,7 @@ enum LicenseResultCode
     // codes considered as "failure" for the operation
     INVALID_STAMP = -1,
     INVALID_DUE_DATE = -2,
-    DOWNGRADE_NOT_ALLOWED = -3,
-    INVALID_SIGNATURE = -4
+    INVALID_SIGNATURE = -3
 };
 
 struct LicenseSuccess {
