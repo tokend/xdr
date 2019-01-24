@@ -1,32 +1,18 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
+
 namespace stellar
 {
 
-struct UpdateKYCRequestData {
-    AccountID accountToUpdateKYC;
-	AccountType accountTypeToSet;
-	uint32 kycLevelToSet;
+struct CreateChangeRoleRequestOp
+{
+    uint64 requestID;
+
+    AccountID destinationAccount;
+    uint64 accountRoleToSet;
     longstring kycData;
 
-	// Reserved for future use
-	union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct CreateUpdateKYCRequestOp {
-    uint64 requestID;
-    UpdateKYCRequestData updateKYCRequestData;
-
     uint32* allTasks;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -37,7 +23,7 @@ struct CreateUpdateKYCRequestOp {
 
 /******* CreateUpdateKYCRequest Result ********/
 
-enum CreateUpdateKYCRequestResultCode
+enum CreateChangeRoleRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
@@ -54,7 +40,7 @@ enum CreateUpdateKYCRequestResultCode
 	KYC_RULE_NOT_FOUND = -9
 };
 
-union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)
+union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode code)
 {
 case SUCCESS:
     struct {

@@ -7,17 +7,14 @@
 namespace stellar
 {
 
-struct UpdateKYCRequest {
-	AccountID accountToUpdateKYC;
-	AccountType accountTypeToSet;
-	uint32 kycLevel;
+struct ChangeRoleRequest
+{
+	AccountID destinationAccount;
+	uint64 accountRoleToSet;
 	longstring kycData;
 
 	// Sequence number increases when request is rejected
 	uint32 sequenceNumber;
-
-	// External details vector consists of comments written by KYC data validity checkers
-	longstring externalDetails<>;
 
 	// Reserved for future use
     union switch (LedgerVersion v)

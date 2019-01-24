@@ -7,7 +7,7 @@
 %#include "xdr/Stellar-reviewable-request-issuance.h"
 %#include "xdr/Stellar-reviewable-request-withdrawal.h"
 %#include "xdr/Stellar-reviewable-request-sale.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
+%#include "xdr/Stellar-reviewable-request-change-role.h"
 %#include "xdr/Stellar-reviewable-request-limits-update.h"
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
@@ -29,7 +29,7 @@ enum ReviewableRequestType
 	SALE = 5,
 	LIMITS_UPDATE = 6,
     AML_ALERT = 7,
-	UPDATE_KYC = 8,
+	CHANGE_ROLE = 8,
 	UPDATE_SALE_DETAILS = 9,
 	ASSET_CREATE = 10,
 	INVOICE = 11,
@@ -83,8 +83,8 @@ struct ReviewableRequestEntry {
             LimitsUpdateRequest limitsUpdateRequest;
         case AML_ALERT:
             AMLAlertRequest amlAlertRequest;
-        case UPDATE_KYC:
-            UpdateKYCRequest updateKYCRequest;
+        case CHANGE_ROLE:
+            ChangeRoleRequest changeRoleRequest;
         case UPDATE_SALE_DETAILS:
             UpdateSaleDetailsRequest updateSaleDetailsRequest;
         case INVOICE:

@@ -55,18 +55,6 @@ struct AMLAlertDetails {
     ext;
 };
 
-// DEPRECATED
-struct UpdateKYCDetails {
-    string externalDetails<>;
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct ContractDetails {
     longstring details;
 
@@ -185,8 +173,6 @@ struct ReviewRequestOp
         LimitsUpdateDetails limitsUpdate;
     case AML_ALERT:
         AMLAlertDetails amlAlertDetails;
-    case UPDATE_KYC:
-        UpdateKYCDetails updateKYC;
     case INVOICE:
         BillPayDetails billPay;
     case CONTRACT:
