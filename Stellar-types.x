@@ -91,7 +91,6 @@ struct Fee {
 enum OperationType
 {
     CREATE_ACCOUNT = 0,
-    PAYMENT = 1,
     SET_OPTIONS = 2,
     CREATE_ISSUANCE_REQUEST = 3,
     SET_FEES = 5,
@@ -101,7 +100,6 @@ enum OperationType
     MANAGE_ASSET = 11,
     CREATE_PREISSUANCE_REQUEST = 12,
     MANAGE_LIMITS = 13,
-    DIRECT_DEBIT = 14,
 	MANAGE_ASSET_PAIR = 15,
 	MANAGE_OFFER = 16,
     MANAGE_INVOICE_REQUEST = 17,
