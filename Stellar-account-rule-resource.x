@@ -6,6 +6,8 @@ namespace stellar
 
 union AccountRuleResource switch (LedgerEntryType type)
 {
+case TRANSACTION:
+    void;
 case ASSET:
     struct
     {

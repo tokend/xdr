@@ -312,13 +312,14 @@ enum TransactionResultCode
     txBAD_AUTH = -5,                   // too few valid signatures / wrong network
     txNO_ACCOUNT = -6,                 // source account not found
     txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,             // an unknown error occured
+    txINTERNAL_ERROR = -8,             // an unknown error occurred
     txACCOUNT_BLOCKED = -9,            // account is blocked and cannot be source of tx
     txDUPLICATION = -10,               // if timing is stored
     txINSUFFICIENT_FEE = -11,          // the actual total fee amount is greater than the max total fee amount, provided by the source
     txSOURCE_UNDERFUNDED = -12,        // not enough tx fee asset on source balance
     txCOMMISSION_LINE_FULL = -13,      // commission tx fee asset balance amount overflow
-    txFEE_INCORRECT_PRECISION = -14    // fee amount is incompatible with asset precision
+    txFEE_INCORRECT_PRECISION = -14,   // fee amount is incompatible with asset precision
+    txNO_ROLE_PERMISSION = -15         // account role has not rule that allows send transaction
 };
 
 struct OperationFee
