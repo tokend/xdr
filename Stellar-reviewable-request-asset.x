@@ -45,9 +45,12 @@ struct AssetUpdateRequest {
     ext;
 };
 
-struct AssetChangePreissuedSigner {
+struct AssetChangePreissuedSigner
+{
 	AssetCode code;
 	AccountID accountID;
+	DecoratedSignature signature;
+
 	// reserved for future use
     union switch (LedgerVersion v)
     {
