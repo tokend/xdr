@@ -8,10 +8,7 @@ namespace stellar
 enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
-    CANCEL = 2,
-	SET_STATE = 3,
-	CREATE_PROMOTION_UPDATE_REQUEST = 4,
-	CREATE_UPDATE_END_TIME_REQUEST = 5
+    CANCEL = 2
 };
 
 
@@ -25,28 +22,7 @@ struct UpdateSaleDetailsData {
     uint64 requestID; // if requestID is 0 - create request, else - update
     longstring newDetails;
 
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    } ext;
-};
-
-struct PromotionUpdateData {
-    uint64 requestID; // if requestID is 0 - create request, else - update
-    SaleCreationRequest newPromotionData;
-
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    } ext;
-};
-
-struct UpdateSaleEndTimeData {
-    uint64 requestID; // if requestID is 0 - create request, else - update
-    uint64 newEndTime;
+    uint32* allTasks;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -65,12 +41,6 @@ struct ManageSaleOp
         UpdateSaleDetailsData updateSaleDetailsData;
     case CANCEL:
         void;
-	case SET_STATE:
-		SaleState saleState;
-    case CREATE_PROMOTION_UPDATE_REQUEST:
-        PromotionUpdateData promotionUpdateData;
-    case CREATE_UPDATE_END_TIME_REQUEST:
-        UpdateSaleEndTimeData updateSaleEndTimeData;
     } data;
 
     // reserved for future use
@@ -92,39 +62,21 @@ enum ManageSaleResultCode
     INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
-
-    // errors related to action "SET_STATE"
-    NOT_ALLOWED = -5, // it's not allowed to set state for non master account
-
-    // errors related to action "CREATE_PROMOTION_UPDATE_REQUEST"
-    PROMOTION_UPDATE_REQUEST_INVALID_ASSET_PAIR = -6, // one of the assets has invalid code or base asset is equal to quote asset
-    PROMOTION_UPDATE_REQUEST_INVALID_PRICE = -7, // price cannot be 0
-    PROMOTION_UPDATE_REQUEST_START_END_INVALID = -8, // sale ends before start
-    PROMOTION_UPDATE_REQUEST_INVALID_CAP = -9, // hard cap is < soft cap
-    PROMOTION_UPDATE_REQUEST_INVALID_DETAILS = -10, // details field is invalid JSON
-    INVALID_SALE_STATE = -11, // sale state must be "PROMOTION"
-    PROMOTION_UPDATE_REQUEST_ALREADY_EXISTS = -12,
-    PROMOTION_UPDATE_REQUEST_NOT_FOUND = -13,
-
-    // errors related to action "CREATE_UPDATE_END_TIME_REQUEST"
-    INVALID_NEW_END_TIME = -14, // new end time is before start time or current ledger close time
-    UPDATE_END_TIME_REQUEST_ALREADY_EXISTS = -15,
-    UPDATE_END_TIME_REQUEST_NOT_FOUND = -16
+    INVALID_UPDATE_DETAILS_REQUEST_DATA = -5, // not allowed to set allTasks on request update
+    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6, // it's not allowed to set state for non master account
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -7,
+    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -8
 };
 
 struct ManageSaleResultSuccess
 {
+    bool fulfilled; // can be used for any reviewable request type created with manage sale operation   
+ 
     union switch (ManageSaleAction action) {
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
     case CANCEL:
         void;
-	case SET_STATE:
-		void;
-    case CREATE_PROMOTION_UPDATE_REQUEST:
-        uint64 promotionUpdateRequestID;
-	case CREATE_UPDATE_END_TIME_REQUEST:
-	    uint64 updateEndTimeRequestID;
     } response;
 
     // reserved for future use
@@ -132,8 +84,6 @@ struct ManageSaleResultSuccess
     {
     case EMPTY_VERSION:
         void;
-    case ALLOW_TO_UPDATE_VOTING_SALES_AS_PROMOTION:
-        bool fulfilled; // can be used for any reviewable request type created with manage sale operation
     }
     ext;
 };

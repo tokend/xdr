@@ -21,6 +21,8 @@ struct CreateAMLAlertRequestOp
     string64 reference;
     AMLAlertRequest amlAlertRequest;
 
+    uint32* allTasks;
+    
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -30,7 +32,7 @@ struct CreateAMLAlertRequestOp
 
 };
 
-/******* CreateSaleCreationRequest Result ********/
+/******* CreateAMLAlertRequest Result ********/
 
 enum CreateAMLAlertRequestResultCode
 {
@@ -41,13 +43,16 @@ enum CreateAMLAlertRequestResultCode
     UNDERFUNDED = 3, //when couldn't lock balance
     REFERENCE_DUPLICATION = 4, // reference already exists
     INVALID_AMOUNT = 5, // amount must be positive
-    INCORRECT_PRECISION = 6
+    INCORRECT_PRECISION = 6,
+
+    //codes considered as "failure" for the operation
+    AML_ALERT_TASKS_NOT_FOUND = -1
 
 };
 
 struct CreateAMLAlertRequestSuccess {
 	uint64 requestID;
-
+    bool fulfilled;
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
