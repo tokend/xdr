@@ -59,7 +59,8 @@ enum ManageAssetPairResultCode
 	INVALID_ASSET = -4,
 	INVALID_ACTION = -5,
 	INVALID_POLICIES = -6,
-	ASSET_NOT_FOUND = -7
+	ASSET_NOT_FOUND = -7,
+	INCOMPATIBLE_POLICIES = -8 //multiple strategies not allowed
 };
 
 struct ManageAssetPairSuccess
