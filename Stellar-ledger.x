@@ -113,6 +113,18 @@ case ACCOUNT:
 		}
 		ext;
     } account;
+case SIGNER:
+    struct
+    {
+        PublicKey pubKey;
+
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signer;
 case FEE:
     struct {
         Hash hash;

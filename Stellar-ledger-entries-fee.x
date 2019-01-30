@@ -44,7 +44,7 @@ struct FeeEntry
 	int64 percentFee; // percent of transfer amount to be charged
 
     AccountID* accountID;
-    AccountType* accountType;
+    uint64*    accountRole;
     int64 subtype; // for example, different withdrawals — bars or coins
 
     int64 lowerBound;

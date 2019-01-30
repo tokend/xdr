@@ -4,6 +4,7 @@
 
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-account.h"
+%#include "xdr/Stellar-ledger-entries-signer.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
 %#include "xdr/Stellar-ledger-entries-asset.h"
@@ -49,6 +50,8 @@ struct LedgerEntry
     {
     case ACCOUNT:
         AccountEntry account;
+    case SIGNER:
+        SignerEntry signer;
     case FEE:
         FeeEntry feeState;
     case BALANCE:

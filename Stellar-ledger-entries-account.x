@@ -64,7 +64,7 @@ struct TrustEntry
     AccountID allowedAccount;
     BalanceID balanceToUse;
 
-	 // reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -77,24 +77,17 @@ struct TrustEntry
 struct Limits
 {
     int64 dailyOut;
-	int64 weeklyOut;
-	int64 monthlyOut;
+    int64 weeklyOut;
+    int64 monthlyOut;
     int64 annualOut;
 
-	 // reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
     }
     ext;
-    
-};
-
-enum AccountPolicies
-{
-	NO_PERMISSIONS = 0,
-	ALLOW_TO_CREATE_USER_VIA_API = 1
 };
 
 enum AccountType
@@ -120,6 +113,7 @@ enum BlockReasons
 	WITHDRAWAL = 16
 };
 
+
 /* AccountEntry
 
     Main entry representing a user in Stellar. All transactions are
@@ -132,26 +126,12 @@ enum BlockReasons
 struct AccountEntry
 {
     AccountID accountID;      // master public key for this account
-    AccountID recoveryID;
 
-	// sequenctial ID - unique identifier of the account, used by ingesting applications to 
-	// identify account, while keeping size of index small 
+    // sequenctial ID - unique identifier of the account, used by ingesting applications to
+    // identify account, while keeping size of index small
     uint64 sequentialID;
 
-    // fields used for signatures
-    // thresholds stores unsigned bytes: [weight of master|low|medium|high]
-    Thresholds thresholds;
-
-    Signer signers<>; // possible signers for this account
-    Limits* limits;
-
 	uint32 blockReasons;
-    AccountType accountType; // type of the account
-    
-    // Referral marketing
-    AccountID* referrer;     // parent account
-
-	int32 policies;
 
 	uint64 roleID;
 
@@ -160,8 +140,6 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
-    case USE_KYC_LEVEL:
-        uint32 kycLevel;
     }
     ext;
 };

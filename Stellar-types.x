@@ -35,7 +35,8 @@ enum LedgerEntryType
 {
     ANY = 0,
     ACCOUNT = 1,
-    FEE = 2,
+    SIGNER = 2,
+    FEE = 3,
     BALANCE = 4,
     PAYMENT_REQUEST = 5,
     ASSET = 6,

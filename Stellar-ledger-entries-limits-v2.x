@@ -15,8 +15,8 @@ enum StatsOpType
 struct LimitsV2Entry
 {
     uint64      id;
-    AccountType *accountType;
-    AccountID   *accountID;
+    uint64*     accountRole;
+    AccountID*  accountID;
     StatsOpType statsOpType;
     AssetCode   assetCode;
     bool        isConvertNeeded;
