@@ -8,6 +8,7 @@ struct ASwapRequest
     uint64 bidID;
     uint64 baseAmount;
     AssetCode quoteAsset;
+    longstring creatorDetails; // details set by requester
 
     union switch (LedgerVersion v)
     {

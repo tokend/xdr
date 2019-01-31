@@ -4,7 +4,7 @@ namespace stellar {
 
 struct UpdateSaleDetailsRequest {
     uint64 saleID; // ID of sale to update details
-    longstring newDetails;
+    longstring creatorDetails; // details set by requester
 
     uint32 sequenceNumber;
     // Reserved for future use

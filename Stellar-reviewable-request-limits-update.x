@@ -16,7 +16,7 @@ struct LimitsUpdateRequest {
     case EMPTY_VERSION:
         void;
     case LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH:
-        longstring details;
+        longstring creatorDetails; // details set by requester
     }
     ext;
 };

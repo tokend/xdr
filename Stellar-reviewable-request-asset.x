@@ -14,7 +14,7 @@ struct AssetCreationRequest {
 	uint64 maxIssuanceAmount;
 	uint64 initialPreissuedAmount;
     uint32 policies;
-    longstring details;
+    longstring creatorDetails; // details set by requester
     uint64 type;
 
 	uint32 sequenceNumber;
