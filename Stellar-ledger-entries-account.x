@@ -167,13 +167,13 @@ struct AccountEntry
 
 	int32 policies;
 
+    uint32 kycLevel;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case USE_KYC_LEVEL:
-        uint32 kycLevel;
     case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
         AccountEntryExtended accountEntryExt;
     }

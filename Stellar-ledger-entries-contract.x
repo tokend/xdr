@@ -27,13 +27,12 @@ struct ContractEntry
     longstring initialDetails;
 
     uint32 state;
+    longstring customerDetails;
 
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_CUSTOMER_DETAILS_TO_CONTRACT:
-        longstring customerDetails;
     }
     ext;
 };

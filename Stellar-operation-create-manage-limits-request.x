@@ -22,13 +22,14 @@ struct CreateManageLimitsRequestOp
     LimitsUpdateRequest manageLimitsRequest;
 
 	uint32* allTasks;
+    uint64 requestID;
+
+
 	// reserved for future use
 	union switch (LedgerVersion v)
 	{
 	case EMPTY_VERSION:
 		void;
-    case ALLOW_TO_UPDATE_AND_REJECT_LIMITS_UPDATE_REQUESTS:
-        uint64 requestID;
 	}
 	ext;
 
