@@ -1,5 +1,5 @@
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-account-rule-resource.h"
+%#include "xdr/Stellar-resource-account-rule.h"
 
 namespace stellar
 {

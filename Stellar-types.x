@@ -60,7 +60,9 @@ enum LedgerEntryType
     ACCOUNT_ROLE = 26,
     ACCOUNT_RULE = 27,
     ATOMIC_SWAP_BID = 28,
-    TRANSACTION = 29 // is used for account rule resource
+    TRANSACTION = 29, // is used for account rule resource
+    SIGNER_RULE = 30,
+    SIGNER_ROLE = 31
 };
 
 enum LedgerVersion {

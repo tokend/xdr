@@ -26,6 +26,8 @@
 %#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
 %#include "xdr/Stellar-ledger-entries-account-rule.h"
+%#include "xdr/Stellar-ledger-entries-signer-role.h"
+%#include "xdr/Stellar-ledger-entries-signer-rule.h"
 
 
 namespace stellar
@@ -98,6 +100,10 @@ struct LedgerEntry
         AccountRoleEntry accountRole;
     case ACCOUNT_RULE:
         AccountRuleEntry accountRule;
+    case SIGNER_RULE:
+        SignerRuleEntry signerRule;
+    case SIGNER_ROLE:
+        SignerRoleEntry signerRole;
     }
     data;
 

@@ -1,3 +1,5 @@
+%#include "xdr/Stellar-types.h"
+
 namespace stellar
 {
 
@@ -6,7 +8,23 @@ union SignerRuleResource switch (LedgerEntryType type)
 case REVIEWABLE_REQUEST:
     struct
     {
-        ReviewableRequestType requestType;
+        union switch (ReviewableRequestType requestType)
+        {
+        case SALE:
+            struct
+            {
+                uint64 type;
+
+                union switch (LedgerVersion v)
+                {
+                case EMPTY_VERSION:
+                    void;
+                } ext;
+            } sale;
+        default:
+            void;
+        } details;
+
         uint64 tasksToAdd;
         uint64 tasksToRemove;
         uint64 allTasks;
@@ -21,7 +39,7 @@ case ASSET:
     struct
     {
         AssetCode assetCode;
-        int64 assetType;
+        uint64 assetType;
 
         union switch (LedgerVersion v)
         {
@@ -40,7 +58,7 @@ case ACCOUNT:
             void;
         } ext;
     } account;
-case Fee:
+case FEE:
     struct
     {
         union switch (LedgerVersion v)
@@ -79,6 +97,12 @@ case ASSET_PAIR:
 case OFFER_ENTRY:
     struct
     {
+        uint64 baseAssetType;
+        uint64 quoteAssetType;
+
+        AssetCode baseAssetCode;
+        AssetCode quoteAssetCode;
+
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -97,6 +121,9 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID:
 case SALE:
     struct
     {
+        uint64 saleID;
+        uint64 saleType;
+
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -175,7 +202,19 @@ case ACCOUNT_RULE:
             void;
         } ext;
     } accountRule;
-case SIGNER_RULE:
+case ATOMIC_SWAP_BID:
+    struct
+    {
+        uint64 assetType;
+        AssetCode assetCode;
+
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } atomicSwapBid;
+/*case SIGNER_RULE:
     struct
     {
         bool isDefault;
@@ -196,7 +235,7 @@ case SIGNER_ROLE:
         case EMPTY_VERSION:
             void;
         } ext;
-    } signerRole;
+    } signerRole;*/
 case SIGNER:
     struct
     {

@@ -359,6 +359,26 @@ case ACCOUNT_RULE:
         }
         ext;
     } accountRule;
+case SIGNER_ROLE:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signerRole;
+case SIGNER_RULE:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signerRule;
 };
 
 enum BucketEntryType

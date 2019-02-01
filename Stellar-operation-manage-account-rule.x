@@ -1,6 +1,5 @@
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-ledger-entries-account-rule.h"
-%#include "xdr/Stellar-account-rule-resource.h"
 
 namespace stellar
 {

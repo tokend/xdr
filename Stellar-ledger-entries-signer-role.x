@@ -1,22 +1,16 @@
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-resource-signer-rule.h"
 
 namespace stellar
 {
 
-struct SignerRuleEntry
+struct SignerRoleEntry
 {
     uint64 id;
-
-    SignerRuleResource resource;
-    string256 action;
-
-    bool isForbid;
-    bool isDefault; // default rules will be in each role
-
-    longstring details;
+    uint64 ruleIDs<>;
 
     AccountID ownerID;
+
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
