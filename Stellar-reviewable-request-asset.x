@@ -32,7 +32,7 @@ struct AssetCreationRequest {
 
 struct AssetUpdateRequest {
 	AssetCode code;
-	longstring details;
+    longstring creatorDetails; // details set by requester
 	uint32 policies;
 
 	uint32 sequenceNumber;

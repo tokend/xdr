@@ -12,7 +12,6 @@ struct WithdrawalRequest {
     uint64 amount; // amount to be withdrawn
     uint64 universalAmount; // amount in stats asset
 	Fee fee; // expected fee to be paid
-    longstring externalDetails; // details of the withdrawal (External system id, etc.)
     longstring creatorDetails; // details set by requester
 
 	union switch (LedgerVersion v)
