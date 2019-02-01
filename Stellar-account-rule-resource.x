@@ -25,7 +25,7 @@ case REVIEWABLE_REQUEST:
     {
         union switch (ReviewableRequestType requestType)
         {
-        case SALE:
+        case CREATE_SALE:
             struct
             {
                 uint64 type;
