@@ -57,8 +57,6 @@ struct AMLAlertDetails {
 
 // DEPRECATED
 struct UpdateKYCDetails {
-    uint32 tasksToAdd;
-    uint32 tasksToRemove;
     string externalDetails<>;
     // Reserved for future use
     union switch (LedgerVersion v)
@@ -118,6 +116,41 @@ struct SaleExtended {
     ext;
 };
 
+struct ASwapBidExtended
+{
+    uint64 bidID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapExtended
+{
+    uint64 bidID;
+    AccountID bidOwnerID;
+    AccountID purchaserID;
+    AssetCode baseAsset;
+    AssetCode quoteAsset;
+    uint64 baseAmount;
+    uint64 quoteAmount;
+    uint64 price;
+    BalanceID bidOwnerBaseBalanceID;
+    BalanceID purchaserBaseBalanceID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -126,6 +159,10 @@ struct ExtendedResult {
         SaleExtended saleExtended;
     case NONE:
         void;
+	case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
+    case ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
     } typeExt;
 
    // Reserved for future use
@@ -146,8 +183,6 @@ struct ReviewRequestOp
 		WithdrawalDetails withdrawal;
     case LIMITS_UPDATE:
         LimitsUpdateDetails limitsUpdate;
-	case TWO_STEP_WITHDRAWAL:
-		WithdrawalDetails twoStepWithdrawal;
     case AML_ALERT:
         AMLAlertDetails amlAlertDetails;
     case UPDATE_KYC:
@@ -161,13 +196,14 @@ struct ReviewRequestOp
 	} requestDetails;
 	ReviewRequestOpAction action;
 	longstring reason;
-	// reserved for future use
+	
+    ReviewDetails reviewDetails;
+    
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        ReviewDetails reviewDetails;
     }
     ext;
 };
@@ -190,94 +226,81 @@ enum ReviewRequestResultCode
 	REQUESTOR_IS_BLOCKED = -8,
 	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
 
+	REMOVING_NOT_SET_TASKS = -100,// cannot remove tasks which are not set
+
 	// Asset requests
-	ASSET_ALREADY_EXISTS = -20,
-	ASSET_DOES_NOT_EXISTS = -21,
+	ASSET_ALREADY_EXISTS = -200,
+	ASSET_DOES_NOT_EXISTS = -210,
 
 	// Issuance requests
-	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
-	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
-	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
-	SYSTEM_TASKS_NOT_ALLOWED = -43,
-    INCORRECT_PRECISION = -44,
+	MAX_ISSUANCE_AMOUNT_EXCEEDED = -400,
+	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
+	FULL_LINE = -420, // can't fund balance - total funds exceed UINT64_MAX
+	SYSTEM_TASKS_NOT_ALLOWED = -430,
+    INCORRECT_PRECISION = -440,
 
 	// Sale creation requests
-	BASE_ASSET_DOES_NOT_EXISTS = -50,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
-	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52,
+	BASE_ASSET_DOES_NOT_EXISTS = -500,
+	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
+	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
+	BASE_ASSET_NOT_FOUND = -530,
+	QUOTE_ASSET_NOT_FOUND = -550,
 
 	// Update KYC requests
-	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
+	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
 
-	// Update sale details, end time and promotion requests
-	SALE_NOT_FOUND = -70,
-
-	// Promotion update requests
-	INVALID_SALE_STATE = -80, // sale state must be "PROMOTION"
-
-	// Update sale end time requests
-    INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
+	// Update sale details
+	SALE_NOT_FOUND = -700,
 
     // Invoice requests
-    AMOUNT_MISMATCHED = -101, // amount does not match
-    DESTINATION_BALANCE_MISMATCHED = -102, // invoice balance and payment balance do not match
-    NOT_ALLOWED_ACCOUNT_DESTINATION = -103,
-    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -104, // not allowed shift fee responsibility to destination
-    SOURCE_BALANCE_MISMATCHED = -105, // source balance must match invoice sender account
-    CONTRACT_NOT_FOUND = -106,
-    INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
-    INVOICE_ALREADY_APPROVED = -108,
+    AMOUNT_MISMATCHED = -1010, // amount does not match
+    DESTINATION_BALANCE_MISMATCHED = -1020, // invoice balance and payment balance do not match
+    NOT_ALLOWED_ACCOUNT_DESTINATION = -1030,
+    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -1040, // not allowed shift fee responsibility to destination
+    SOURCE_BALANCE_MISMATCHED = -1050, // source balance must match invoice sender account
+    CONTRACT_NOT_FOUND = -1060,
+    INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -1070,
+    INVOICE_ALREADY_APPROVED = -1080,
 
     // codes considered as "failure" for the payment operation
-    PAYMENT_V2_MALFORMED = -110, // bad input, requestID must be > 0
-    UNDERFUNDED = -111, // not enough funds in source account
-    LINE_FULL = -112, // destination would go above their limit
-    DESTINATION_BALANCE_NOT_FOUND = -113,
-    BALANCE_ASSETS_MISMATCHED = -114,
-    SRC_BALANCE_NOT_FOUND = -115, // source balance not found
-    REFERENCE_DUPLICATION = -116,
-    STATS_OVERFLOW = -117,
-    LIMITS_EXCEEDED = -118,
-    NOT_ALLOWED_BY_ASSET_POLICY = -119,
-    INVALID_DESTINATION_FEE = -120,
-    INVALID_DESTINATION_FEE_ASSET = -121, // destination fee asset must be the same as source balance asset
-    FEE_ASSET_MISMATCHED = -122,
-    INSUFFICIENT_FEE_AMOUNT = -123,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
-    DESTINATION_ACCOUNT_NOT_FOUND = -126,
+    PAYMENT_V2_MALFORMED = -1100, // bad input0, requestID must be > 0
+    UNDERFUNDED = -1110, // not enough funds in source account
+    LINE_FULL = -1120, // destination would go above their limit
+    DESTINATION_BALANCE_NOT_FOUND = -1130,
+    BALANCE_ASSETS_MISMATCHED = -1140,
+    SRC_BALANCE_NOT_FOUND = -1150, // source balance not found
+    REFERENCE_DUPLICATION = -1160,
+    STATS_OVERFLOW = -1170,
+    LIMITS_EXCEEDED = -1180,
+    NOT_ALLOWED_BY_ASSET_POLICY = -1190,
+    INVALID_DESTINATION_FEE = -1200,
+    INVALID_DESTINATION_FEE_ASSET = -1210, // destination fee asset must be the same as source balance asset
+    FEE_ASSET_MISMATCHED = -1220,
+    INSUFFICIENT_FEE_AMOUNT = -1230,
+    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -1240,
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -1250,
+    DESTINATION_ACCOUNT_NOT_FOUND = -1260,
 
     // Limits update requests
-    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
-    INVALID_LIMITS = 131,
+    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 1300, // limits cannot be created for account ID and account type simultaneously
+    INVALID_LIMITS = 1310,
 
     // Contract requests
-    CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
+    CONTRACT_DETAILS_TOO_LONG = -1400, // customer details reached length limit
 
-	//Withdrawal request 
-	REMOVING_NOT_SET_TASKS = -150 // cannot remove tasks which are not set 
+	// Atomic swap
+	BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
+	QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
+	ASSETS_ARE_EQUAL = -1502,
+	ASWAP_BID_UNDERFUNDED = -1503,
+	ASWAP_PURCHASER_FULL_LINE = -1504
+
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	struct {
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
-		    uint64 saleID;
-		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
-		    PaymentV2Response paymentV2Response;
-		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
-		    uint64 contractID;
-		case EMPTY_VERSION:
-			void;
-        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-            ExtendedResult extendedResult;
-		}
-		ext;
-	} success;
+	ExtendedResult success;
 default:
     void;
 };

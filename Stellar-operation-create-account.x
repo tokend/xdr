@@ -18,7 +18,6 @@ Result: CreateAccountResult
 
 struct CreateAccountOpExtended
 {
-    ExternalSystemAccountID externalSystemIDs<>;
     uint64* roleID;
 
     // reserved for future use
@@ -65,14 +64,11 @@ enum CreateAccountResultCode
     NAME_DUPLICATION = -4,
     REFERRER_NOT_FOUND = -5,
 	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
-	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7,
-	EXTERNAL_SYS_ACC_NOT_ALLOWED = -8, // op contains external system account ID which should be generated on core level
-	EXTERNAL_SYS_ID_EXISTS = -9 // external system account ID already exists
+	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7
 };
 
 struct CreateAccountSuccess
 {
-	ExternalSystemAccountID externalSystemIDs<>;
 	 // reserved for future use
     union switch (LedgerVersion v)
     {

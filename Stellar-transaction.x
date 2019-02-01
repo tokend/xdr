@@ -33,6 +33,9 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
@@ -110,6 +113,12 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidOp cancelASwapBidOp;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestOp createASwapRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
@@ -269,6 +278,12 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidResult cancelASwapBidResult;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestResult createASwapRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
