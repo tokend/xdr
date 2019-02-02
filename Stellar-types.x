@@ -5,6 +5,16 @@
 namespace stellar
 {
 
+enum LedgerVersion {
+	EMPTY_VERSION = 0
+};
+
+union EmptyExt switch (LedgerVersion v)
+{
+case EMPTY_VERSION:
+    void;
+};
+
 typedef opaque Hash[32];
 typedef opaque uint256[32];
 
@@ -60,10 +70,6 @@ enum LedgerEntryType
     ACCOUNT_RULE = 27,
     ATOMIC_SWAP_BID = 28,
     TRANSACTION = 29 // is used for account rule resource
-};
-
-enum LedgerVersion {
-	EMPTY_VERSION = 0
 };
 
 // variable size as the size depends on the signature scheme used
