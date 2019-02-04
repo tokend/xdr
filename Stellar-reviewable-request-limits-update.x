@@ -9,14 +9,13 @@ namespace stellar
 
 struct LimitsUpdateRequest {
     Hash deprecatedDocumentHash;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case LIMITS_UPDATE_REQUEST_DEPRECATED_DOCUMENT_HASH:
-        longstring creatorDetails; // details set by requester
     }
     ext;
 };

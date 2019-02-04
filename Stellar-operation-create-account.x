@@ -30,8 +30,6 @@ struct CreateAccountOp
     {
     case EMPTY_VERSION:
         void;
-    case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
-        ExternalSystemAccountID externalSystemIDs<>;
     }
     ext;
 };
