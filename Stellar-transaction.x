@@ -4,7 +4,6 @@
 
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-operation-create-account.h"
-%#include "xdr/Stellar-operation-payment.h"
 %#include "xdr/Stellar-operation-set-fees.h"
 %#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
@@ -14,7 +13,6 @@
 %#include "xdr/Stellar-operation-create-issuance-request.h"
 %#include "xdr/Stellar-operation-manage-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
-%#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
 %#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
@@ -54,8 +52,6 @@ struct Operation
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-    case PAYMENT:
-        PaymentOp paymentOp;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
@@ -72,8 +68,6 @@ struct Operation
         CreatePreIssuanceRequestOp createPreIssuanceRequest;
     case MANAGE_LIMITS:
         ManageLimitsOp manageLimitsOp;
-    case DIRECT_DEBIT:
-        DirectDebitOp directDebitOp;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
@@ -180,8 +174,6 @@ struct Transaction
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        uint64 maxTotalFee;
     }
     ext;
 };
@@ -222,8 +214,6 @@ case opINNER:
     {
     case CREATE_ACCOUNT:
         CreateAccountResult createAccountResult;
-    case PAYMENT:
-        PaymentResult paymentResult;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
@@ -240,8 +230,6 @@ case opINNER:
         CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
     case MANAGE_LIMITS:
         ManageLimitsResult manageLimitsResult;
-    case DIRECT_DEBIT:
-        DirectDebitResult directDebitResult;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
@@ -331,20 +319,6 @@ struct OperationFee
     ext;
 };
 
-struct TransactionFee
-{
-    AssetCode assetCode;
-    OperationFee operationFees<100>;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct TransactionResult
 {
     int64 feeCharged; // actual fee charged for the transaction
@@ -364,8 +338,6 @@ struct TransactionResult
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        TransactionFee transactionFee;
     }
     ext;
 };

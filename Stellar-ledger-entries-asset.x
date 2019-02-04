@@ -31,14 +31,13 @@ struct AssetEntry
 	uint64 pendingIssuance; // number of tokens locked for entries like token sale. lockedIssuance + issued can not be > maxIssuanceAmount
     uint32 policies;
     uint64 type; // use instead policies that limit usage, use in account rules
+    uint32 trailingDigitsCount;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_ASSET_BALANCE_PRECISION:
-        uint32 trailingDigitsCount;
     }
     ext;
 };
