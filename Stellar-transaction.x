@@ -20,7 +20,9 @@
 %#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
 %#include "xdr/Stellar-operation-create-sale-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
 %#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
 %#include "xdr/Stellar-operation-create-KYC-request.h"
@@ -31,7 +33,11 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-
+%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-create-aswap-request.h"
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-role-permission.h"
 
 namespace stellar
 {
@@ -83,6 +89,8 @@ struct Operation
 		CreateSaleCreationRequestOp createSaleCreationRequestOp;
 	case CHECK_SALE_STATE:
 		CheckSaleStateOp checkSaleStateOp;
+	case PAYOUT:
+	    PayoutOp payoutOp;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
@@ -103,6 +111,18 @@ struct Operation
         ManageContractRequestOp manageContractRequestOp;
     case MANAGE_CONTRACT:
         ManageContractOp manageContractOp;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidOp cancelASwapBidOp;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestOp createASwapRequestOp;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleOp manageAccountRoleOp;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
     }
     body;
 };
@@ -163,6 +183,8 @@ struct Transaction
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        uint64 maxTotalFee;
     }
     ext;
 };
@@ -187,7 +209,8 @@ enum OperationResultCode
     opNO_COUNTERPARTY = -5,
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
-	opBAD_AUTH_EXTRA = -8
+    opBAD_AUTH_EXTRA = -8,
+    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -231,6 +254,8 @@ case opINNER:
 		CreateSaleCreationRequestResult createSaleCreationRequestResult;
 	case CHECK_SALE_STATE:
 		CheckSaleStateResult checkSaleStateResult;
+	case PAYOUT:
+	    PayoutResult payoutResult;
 	case CREATE_AML_ALERT:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
@@ -251,6 +276,18 @@ case opINNER:
         ManageContractRequestResult manageContractRequestResult;
     case MANAGE_CONTRACT:
         ManageContractResult manageContractResult;
+    case CANCEL_SALE_REQUEST:
+        CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidResult cancelASwapBidResult;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestResult createASwapRequestResult;
+    case MANAGE_ACCOUNT_ROLE:
+        ManageAccountRoleResult manageAccountRoleResult;
+    case MANAGE_ACCOUNT_ROLE_PERMISSION:
+        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     }
     tr;
 default:
@@ -269,10 +306,41 @@ enum TransactionResultCode
 
     txBAD_AUTH = -5,             // too few valid signatures / wrong network
     txNO_ACCOUNT = -6,           // source account not found
-    txBAD_AUTH_EXTRA = -7,      // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,      // an unknown error occured
-	txACCOUNT_BLOCKED = -9,     // account is blocked and cannot be source of tx
-    txDUPLICATION = -10         // if timing is stored
+    txBAD_AUTH_EXTRA = -7,       // unused signatures attached to transaction
+    txINTERNAL_ERROR = -8,       // an unknown error occured
+	txACCOUNT_BLOCKED = -9,      // account is blocked and cannot be source of tx
+    txDUPLICATION = -10,         // if timing is stored
+    txINSUFFICIENT_FEE = -11,    // the actual total fee amount is greater than the max total fee amount, provided by the source
+    txSOURCE_UNDERFUNDED = -12,  // not enough tx fee asset on source balance
+    txCOMMISSION_LINE_FULL = -13 // commission tx fee asset balance amount overflow
+};
+
+struct OperationFee
+{
+    OperationType operationType;
+    uint64 amount;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct TransactionFee
+{
+    AssetCode assetCode;
+    OperationFee operationFees<100>;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 struct TransactionResult
@@ -294,6 +362,8 @@ struct TransactionResult
     {
     case EMPTY_VERSION:
         void;
+    case ADD_TRANSACTION_FEE:
+        TransactionFee transactionFee;
     }
     ext;
 };

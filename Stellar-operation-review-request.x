@@ -69,6 +69,18 @@ struct UpdateKYCDetails {
     ext;
 };
 
+struct ContractDetails {
+    longstring details;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct BillPayDetails {
     PaymentOpV2 paymentDetails;
 
@@ -84,7 +96,7 @@ struct BillPayDetails {
 struct ReviewDetails {
     uint32 tasksToAdd;
     uint32 tasksToRemove;
-    string externalDetails<>;
+    longstring externalDetails;
     // Reserved for future use
     union switch (LedgerVersion v)
     {
@@ -106,6 +118,41 @@ struct SaleExtended {
     ext;
 };
 
+struct ASwapBidExtended
+{
+    uint64 bidID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+struct ASwapExtended
+{
+    uint64 bidID;
+    AccountID bidOwnerID;
+    AccountID purchaserID;
+    AssetCode baseAsset;
+    AssetCode quoteAsset;
+    uint64 baseAmount;
+    uint64 quoteAmount;
+    uint64 price;
+    BalanceID bidOwnerBaseBalanceID;
+    BalanceID purchaserBaseBalanceID;
+
+    // Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ExtendedResult {
     bool fulfilled;
 
@@ -114,6 +161,10 @@ struct ExtendedResult {
         SaleExtended saleExtended;
     case NONE:
         void;
+    case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
+    case ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
     } typeExt;
 
    // Reserved for future use
@@ -142,6 +193,8 @@ struct ReviewRequestOp
         UpdateKYCDetails updateKYC;
     case INVOICE:
         BillPayDetails billPay;
+    case CONTRACT:
+        ContractDetails contract;
 	default:
 		void;
 	} requestDetails;
@@ -234,7 +287,21 @@ enum ReviewRequestResultCode
 
     // Limits update requests
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
-    INVALID_LIMITS = 131
+    INVALID_LIMITS = 131,
+
+    // Contract requests
+    CONTRACT_DETAILS_TOO_LONG = -140, // customer details reached length limit
+
+    // Atomic swap bid creation requests
+    BASE_ASSET_NOT_FOUND = -150, // base asset does not exist
+    BASE_ASSET_CANNOT_BE_SWAPPED = -151,
+    QUOTE_ASSET_NOT_FOUND = -152, // quote asset does not exist
+    QUOTE_ASSET_CANNOT_BE_SWAPPED = -153,
+    ASSETS_ARE_EQUAL = -154, // base and quote assets are the same
+
+    // Atomic swap
+    ASWAP_BID_UNDERFUNDED = -160,
+    ASWAP_PURCHASER_FULL_LINE = -161
 };
 
 union ReviewRequestResult switch (ReviewRequestResultCode code)

@@ -18,7 +18,7 @@ enum SignerType
 	BALANCE_MANAGER = 64, // allowed to create balances, spend assets from balances
 	ISSUANCE_MANAGER = 128, // allowed to make preissuance request
 	INVOICE_MANAGER = 256, // allowed to create payment requests to other accounts
-	PAYMENT_OPERATOR = 512, // allowed to review payment requests
+	ATOMIC_SWAP_MANAGER = 512, // allowed to work with atomic swaps
 	LIMITS_MANAGER = 1024, // allowed to change limits
 	ACCOUNT_MANAGER = 2048, // allowed to add/delete signers and trust
 	COMMISSION_BALANCE_MANAGER  = 4096,// allowed to spend from commission balances
@@ -38,7 +38,8 @@ enum SignerType
 	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_MANAGER = 67108864,
     KEY_VALUE_MANAGER = 134217728, // can manage keyValue
     SUPER_ISSUANCE_MANAGER = 268435456,
-    CONTRACT_MANAGER = 536870912
+    CONTRACT_MANAGER = 536870912,
+    ACCOUNT_ROLE_PERMISSION_MANAGER = 1073741824 // can manage account role permissions
 };
 
 struct Signer
@@ -119,6 +120,19 @@ enum BlockReasons
 	WITHDRAWAL = 16
 };
 
+struct AccountEntryExtended
+{
+    uint32 kycLevel;
+    uint64* accountRole;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
 
 /* AccountEntry
 
@@ -154,11 +168,11 @@ struct AccountEntry
     {
     case EMPTY_VERSION:
         void;
-	case USE_KYC_LEVEL:
-		uint32 kycLevel;
+    case USE_KYC_LEVEL:
+        uint32 kycLevel;
+    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
+        AccountEntryExtended accountEntryExt;
     }
-	
     ext;
 };
-
 }

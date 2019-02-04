@@ -23,6 +23,9 @@
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
+%#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
+%#include "xdr/Stellar-ledger-entries-account-role.h"
+%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
 
 
 namespace stellar
@@ -62,7 +65,10 @@ enum LedgerEntryType
     LIMITS_V2 = 22,
     STATISTICS_V2 = 23,
     PENDING_STATISTICS = 24,
-    CONTRACT = 25
+    CONTRACT = 25,
+    ACCOUNT_ROLE = 26,
+    ACCOUNT_ROLE_PERMISSION = 27,
+    ATOMIC_SWAP_BID = 28
 };
 
 
@@ -116,6 +122,12 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
+    case ATOMIC_SWAP_BID:
+        AtomicSwapBidEntry atomicSwapBid;
+    case ACCOUNT_ROLE:
+        AccountRoleEntry accountRole;
+    case ACCOUNT_ROLE_PERMISSION:
+        AccountRolePermissionEntry accountRolePermission;
     }
     data;
 
