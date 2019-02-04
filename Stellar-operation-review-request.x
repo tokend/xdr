@@ -143,13 +143,13 @@ struct ExtendedResult {
     bool fulfilled;
 
     union switch(ReviewableRequestType requestType) {
-    case SALE:
+    case CREATE_SALE:
         SaleExtended saleExtended;
     case NONE:
         void;
 	case CREATE_ATOMIC_SWAP_BID:
         ASwapBidExtended aSwapBidExtended;
-    case ATOMIC_SWAP:
+    case CREATE_ATOMIC_SWAP:
         ASwapExtended aSwapExtended;
     } typeExt;
 
@@ -167,15 +167,15 @@ struct ReviewRequestOp
 	uint64 requestID;
 	Hash requestHash;
 	union switch(ReviewableRequestType requestType) {
-	case WITHDRAW:
+	case CREATE_WITHDRAW:
 		WithdrawalDetails withdrawal;
-    case LIMITS_UPDATE:
+    case UPDATE_LIMITS:
         LimitsUpdateDetails limitsUpdate;
-    case AML_ALERT:
+    case CREATE_AML_ALERT:
         AMLAlertDetails amlAlertDetails;
-    case INVOICE:
+    case CREATE_INVOICE:
         BillPayDetails billPay;
-    case CONTRACT:
+    case MANAGE_CONTRACT:
         ContractDetails contract;
 	default:
 		void;

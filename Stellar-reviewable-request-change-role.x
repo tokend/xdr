@@ -16,7 +16,9 @@ struct ChangeRoleRequest
 	// Sequence number increases when request is rejected
 	uint32 sequenceNumber;
 
-	// Reserved for future use
+    longstring creatorDetails; // details set by requester
+
+    // Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

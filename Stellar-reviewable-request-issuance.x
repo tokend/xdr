@@ -12,6 +12,7 @@ struct PreIssuanceRequest {
 	uint64 amount;
 	DecoratedSignature signature;
 	string64 reference;
+    longstring creatorDetails; // details set by requester
 
 	// reserved for future use
     union switch (LedgerVersion v)
