@@ -39,6 +39,7 @@
 %#include "xdr/Stellar-operation-perform-settlement.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-role-permission.h"
+%#include "xdr/Stellar-operation-market-order.h"
 
 namespace stellar
 {
@@ -125,6 +126,8 @@ struct Operation
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionOp manageAccountRolePermissionOp;
+    case MARKET_ORDER:
+        MarketOrderOp marketOrderOp;
     }
     body;
 };
@@ -292,6 +295,8 @@ case opINNER:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_ROLE_PERMISSION:
         ManageAccountRolePermissionResult manageAccountRolePermissionResult;
+    case MARKET_ORDER:
+        MarketOrderResult marketOrderResult;
     }
     tr;
 default:
