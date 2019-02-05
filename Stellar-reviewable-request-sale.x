@@ -28,7 +28,7 @@ struct SaleCreationRequest
 	uint64 endTime; // close time of the sale
 	uint64 softCap; // minimum amount of quote asset to be received at which sale will be considered a successful
 	uint64 hardCap; // max amount of quote asset to be received
-	longstring details; // sale specific details
+    longstring creatorDetails; // details set by requester
     SaleTypeExt saleTypeExt;
     uint64 requiredBaseAssetForHardCap;
 

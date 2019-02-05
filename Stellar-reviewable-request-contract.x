@@ -11,7 +11,7 @@ struct ContractRequest
 {
     AccountID customer;
     AccountID escrow;
-    longstring details;
+    longstring creatorDetails; // details set by requester
 
     uint64 startTime;
     uint64 endTime;

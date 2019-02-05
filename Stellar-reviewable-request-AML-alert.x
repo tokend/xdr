@@ -11,7 +11,8 @@ namespace stellar
 struct AMLAlertRequest {
     BalanceID balanceID;
     uint64 amount;
-    longstring reason;
+    longstring creatorDetails; // details set by requester
+
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

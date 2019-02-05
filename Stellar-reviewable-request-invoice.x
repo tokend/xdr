@@ -16,7 +16,7 @@ struct InvoiceRequest
 
     uint64 *contractID;
     bool isApproved;
-    longstring details;
+    longstring creatorDetails; // details set by requester
 
     // reserved for future use
     union switch (LedgerVersion v)

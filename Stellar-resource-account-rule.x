@@ -5,7 +5,7 @@ namespace stellar
 
 union RequestTypedResource switch (ReviewableRequestType requestType)
 {
-case SALE:
+case CREATE_SALE:
     struct
     {
         uint64 type;
