@@ -35,6 +35,8 @@
 %#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-rule.h"
+%#include "xdr/Stellar-operation-manage-signer-role.h"
+%#include "xdr/Stellar-operation-manage-signer-rule.h"
 
 namespace stellar
 {
@@ -114,6 +116,10 @@ struct Operation
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
         ManageAccountRuleOp manageAccountRuleOp;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleOp manageSignerRoleOp;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleOp manageSignerRuleOp;
     }
     body;
 };
@@ -200,11 +206,8 @@ enum OperationResultCode
     opCOUNTERPARTY_WRONG_TYPE = -7,
     opBAD_AUTH_EXTRA = -8,
     opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
-    opNO_BALANCE = -10,
-    opNO_ASSET = -11,
-    opNOT_SUPPORTED = -12,
-    opNO_BID = -13, // there is no atomic swap bid with such id
-    opNO_SALE = -14
+    opNO_ENTRY = -10,
+    opNOT_SUPPORTED = -11
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -276,8 +279,14 @@ case opINNER:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:
         ManageAccountRuleResult manageAccountRuleResult;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleResult manageSignerRoleResult;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleResult manageSignerRuleResult;
     }
     tr;
+case opNO_ENTRY:
+    LedgerEntryType entryType;
 default:
     void;
 };

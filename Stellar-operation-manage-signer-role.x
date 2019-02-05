@@ -3,26 +3,23 @@
 
 namespace stellar
 {
-/* ManageSignerRuleOp
+/* ManageSignerRoleOp
 
  Creates, updates or deletes signer rule
 
  Result: ManageSignerRuleResult
 */
 
-enum ManageSignerRuleAction
+enum ManageSignerRoleAction
 {
     CREATE = 0,
     UPDATE = 1,
     REMOVE = 2
 };
 
-struct CreateSignerRuleData
+struct CreateSignerRoleData
 {
-    SignerRuleResource resource;
-    string256 action;
-    bool isForbid;
-    bool isDefault;
+    uint64 ruleIDs<>;
     longstring details;
 
     // reserved for future use
@@ -33,13 +30,11 @@ struct CreateSignerRuleData
     } ext;
 };
 
-struct UpdateSignerRuleData
+struct UpdateSignerRoleData
 {
-    uint64 ruleID;
-    SignerRuleResource resource;
-    string256 action;
-    bool isForbid;
-    bool isDefault;
+    uint64 roleID;
+    uint64 ruleIDs<>;
+
     longstring details;
 
     // reserved for future use
@@ -50,9 +45,9 @@ struct UpdateSignerRuleData
     } ext;
 };
 
-struct RemoveSignerRuleData
+struct RemoveSignerRoleData
 {
-    uint64 ruleID;
+    uint64 roleID;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -62,16 +57,16 @@ struct RemoveSignerRuleData
     } ext;
 };
 
-struct ManageSignerRuleOp
+struct ManageSignerRoleOp
 {
-    union switch (ManageSignerRuleAction action)
+    union switch (ManageSignerRoleAction action)
     {
     case CREATE:
-        CreateSignerRuleData createData;
+        CreateSignerRoleData createData;
     case UPDATE:
-        UpdateSignerRuleData updateData;
+        UpdateSignerRoleData updateData;
     case REMOVE:
-        RemoveSignerRuleData removeData;
+        RemoveSignerRoleData removeData;
     } data;
 
     // reserved for future use
@@ -83,24 +78,25 @@ struct ManageSignerRuleOp
     ext;
 };
 
-/******* ManageSignerRuleOp Result ********/
+/******* ManageSignerRoleOp Result ********/
 
-enum ManageSignerRuleResultCode
+enum ManageSignerRoleResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     NOT_FOUND = -1, // does not exists or owner mismatched
-    RULE_IS_USED = -2,
-    INVALID_DETAILS = -3
+    ROLE_IS_USED = -2,
+    INVALID_DETAILS = -3,
+    NO_SUCH_RULE = -4
 };
 
-union ManageSignerRuleResult switch (ManageSignerRuleResultCode code)
+union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 ruleID;
+            uint64 roleID;
 
             // reserved for future use
             union switch (LedgerVersion v)
@@ -110,8 +106,8 @@ union ManageSignerRuleResult switch (ManageSignerRuleResultCode code)
             }
             ext;
         } success;
-    case RULE_IS_USED:
-        uint64 roleIDs<>;
+    case NO_SUCH_RULE:
+        uint64 ruleID;
     default:
         void;
 };
