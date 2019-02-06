@@ -35,6 +35,8 @@ struct OfferEntry
     // reserved for future use
     union switch (LedgerVersion v)
     {
+    case ADD_LEAD_MARKET_MAKER:
+        bool isLMM;
     case EMPTY_VERSION:
         void;
     }
