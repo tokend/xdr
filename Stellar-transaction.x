@@ -5,7 +5,6 @@
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-operation-create-account.h"
 %#include "xdr/Stellar-operation-set-fees.h"
-%#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
@@ -59,8 +58,6 @@ struct Operation
 		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
         SetFeesOp setFeesOp;
-	case MANAGE_ACCOUNT:
-		ManageAccountOp manageAccountOp;
 	case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case MANAGE_BALANCE:
@@ -224,8 +221,6 @@ case opINNER:
 		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
         SetFeesResult setFeesResult;
-	case MANAGE_ACCOUNT:
-		ManageAccountResult manageAccountResult;
     case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case MANAGE_BALANCE:

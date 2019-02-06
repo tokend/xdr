@@ -127,11 +127,12 @@ struct AccountEntry
 {
     AccountID accountID;      // master public key for this account
 
+    // Referral marketing
+    AccountID* referrer; // parent account
+
     // sequenctial ID - unique identifier of the account, used by ingesting applications to
     // identify account, while keeping size of index small
     uint64 sequentialID;
-
-	uint32 blockReasons;
 
 	uint64 roleID;
 

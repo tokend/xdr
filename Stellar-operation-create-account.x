@@ -1,8 +1,5 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
-%#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
 
 namespace stellar
 {
@@ -19,11 +16,10 @@ Result: CreateAccountResult
 struct CreateAccountOp
 {
     AccountID destination; // account to create
-    AccountID recoveryKey; // recovery signer's public key
-    AccountID* referrer;     // parent account
-	AccountType accountType;
-	uint32 policies;
+    AccountID* referrer;
 	uint64 roleID;
+
+	UpdateSignerData signersData<>;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
@@ -42,18 +38,18 @@ enum CreateAccountResultCode
     SUCCESS = 0, // account was created
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,       // invalid destination
+    INVALID_DESTINATION = -1, // source cannot be destination
     ALREADY_EXISTS = -2, // account already exist
-	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
-    NAME_DUPLICATION = -4,
-    REFERRER_NOT_FOUND = -5,
-	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
-	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7,
-	NO_SUCH_ROLE = -8
+    INVALID_WEIGHT = -3, // sum of weight with different identity must be more or equal threshold
+	NO_SUCH_ROLE = -4,
+	INVALID_SIGNER_DATA = -5,
+	NO_SIGNER_DATA = -6 // empty signer data array not allowed
 };
 
 struct CreateAccountSuccess
 {
+    uint64 sequentialID;
+
 	 // reserved for future use
     union switch (LedgerVersion v)
     {
@@ -67,6 +63,8 @@ union CreateAccountResult switch (CreateAccountResultCode code)
 {
 case SUCCESS:
     CreateAccountSuccess success;
+case INVALID_SIGNER_DATA:
+    ManageSignerResultCode createSignerErrorCode;
 default:
     void;
 };

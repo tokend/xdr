@@ -13,12 +13,14 @@
 ### Changed
 
 * Replace opNO_BALANCE etc. operation error codes by opNO_ENTRY
+* Create account op
 
 ### Deprecated
 
 ### Removed
 
 * Set option op
+* manage account op
 
 ### Fixed
 
