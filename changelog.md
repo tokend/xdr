@@ -7,6 +7,8 @@
 * Signer rule and role entries
 * Manage signer rule and role ops
 * Signer rule resource
+* signer entry
+* manage signer operation
 
 ### Changed
 

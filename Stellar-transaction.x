@@ -37,6 +37,7 @@
 %#include "xdr/Stellar-operation-manage-account-rule.h"
 %#include "xdr/Stellar-operation-manage-signer-role.h"
 %#include "xdr/Stellar-operation-manage-signer-rule.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
 
 namespace stellar
 {
@@ -116,6 +117,8 @@ struct Operation
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
         ManageAccountRuleOp manageAccountRuleOp;
+    case MANAGE_SIGNER:
+        ManageSignerOp manageSignerOp;
     case MANAGE_SIGNER_ROLE:
         ManageSignerRoleOp manageSignerRoleOp;
     case MANAGE_SIGNER_RULE:
@@ -279,6 +282,8 @@ case opINNER:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:
         ManageAccountRuleResult manageAccountRuleResult;
+    case MANAGE_SIGNER:
+        ManageSignerResult manageSignerResult;
     case MANAGE_SIGNER_ROLE:
         ManageSignerRoleResult manageSignerRoleResult;
     case MANAGE_SIGNER_RULE:
