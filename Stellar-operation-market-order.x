@@ -52,7 +52,8 @@ enum MarketOrderResultCode
 	INCORRECT_AMOUNT_PRECISION = -11,
 	ASSET_PAIR_DOES_NOT_SUPPORT_MARKET_ORDERS = -12,
     INVALID_ORDER_BOOK_ID = -13,
-	ORDER_BOOK_EMPTY = -14
+	ORDER_BOOK_EMPTY = -14,
+	WEIGHTED_PRICE_OVERFLOW = -15 // overflow happened during price calculation
 };
 
 struct MarketOrderSuccessResult
