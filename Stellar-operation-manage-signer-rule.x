@@ -23,6 +23,7 @@ struct CreateSignerRuleData
     string256 action;
     bool isForbid;
     bool isDefault;
+    bool isReadOnly;
     longstring details;
 
     // reserved for future use

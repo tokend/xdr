@@ -20,6 +20,7 @@ enum ManageSignerRoleAction
 struct CreateSignerRoleData
 {
     uint64 ruleIDs<>;
+    bool isReadOnly;
     longstring details;
 
     // reserved for future use
