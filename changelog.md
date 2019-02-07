@@ -24,6 +24,7 @@
 * account type limits entry
 * trust
 * signer types and signer struct
+* account types
 
 ### Fixed
 
