@@ -21,6 +21,9 @@
 
 * Set option op
 * manage account op
+* account type limits entry
+* trust
+* signer types and signer struct
 
 ### Fixed
 

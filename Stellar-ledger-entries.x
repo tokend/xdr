@@ -10,7 +10,6 @@
 %#include "xdr/Stellar-ledger-entries-asset.h"
 %#include "xdr/Stellar-ledger-entries-asset-pair.h"
 %#include "xdr/Stellar-ledger-entries-reference.h"
-%#include "xdr/Stellar-ledger-entries-account-type-limits.h"
 %#include "xdr/Stellar-ledger-entries-statistics.h"
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
@@ -62,12 +61,8 @@ struct LedgerEntry
         AssetEntry asset;
     case REFERENCE_ENTRY:
         ReferenceEntry reference;
-    case ACCOUNT_TYPE_LIMITS:
-        AccountTypeLimitsEntry accountTypeLimits;
     case STATISTICS:
         StatisticsEntry stats;
-    case TRUST:
-        TrustEntry trust;
     case ACCOUNT_LIMITS:
         AccountLimitsEntry accountLimits;
 	case ASSET_PAIR: 

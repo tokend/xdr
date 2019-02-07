@@ -171,16 +171,6 @@ case REFERENCE_ENTRY:
 		}
 		ext;
     } reference;
-case ACCOUNT_TYPE_LIMITS:
-    struct {
-        AccountType accountType;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } accountTypeLimits;
 case STATISTICS:
     struct {
         AccountID accountID;
@@ -191,17 +181,6 @@ case STATISTICS:
 		}
 		ext;
     } stats;
-case TRUST:
-    struct {
-        AccountID allowedAccount;
-        BalanceID balanceToUse;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } trust;
 case ACCOUNT_LIMITS:
     struct {
         AccountID accountID;
