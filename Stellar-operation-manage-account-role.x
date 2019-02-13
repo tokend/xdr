@@ -89,7 +89,8 @@ enum ManageAccountRoleResultCode
     NOT_FOUND = -1,
     ROLE_IS_USED = -2,
     INVALID_DETAILS = -3,
-    NO_SUCH_RULE = -4
+    NO_SUCH_RULE = -4,
+    RULE_ID_DUPLICATION = -5
 };
 
 union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
@@ -106,6 +107,7 @@ union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
             }
             ext;
         } success;
+    case RULE_ID_DUPLICATION:
     case NO_SUCH_RULE:
         uint64 ruleID;
     default:

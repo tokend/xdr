@@ -90,7 +90,9 @@ enum ManageSignerRoleResultCode
     NOT_FOUND = -1, // does not exists or owner mismatched
     ROLE_IS_USED = -2,
     INVALID_DETAILS = -3,
-    NO_SUCH_RULE = -4
+    NO_SUCH_RULE = -4,
+    RULE_ID_DUPLICATION = -5,
+    DEFAULT_RULE_ID_DUPLICATION = -6
 };
 
 union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
@@ -107,6 +109,8 @@ union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
             }
             ext;
         } success;
+    case RULE_ID_DUPLICATION:
+    case DEFAULT_RULE_ID_DUPLICATION:
     case NO_SUCH_RULE:
         uint64 ruleID;
     default:
