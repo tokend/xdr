@@ -25,7 +25,7 @@ struct UpdateSignerData
     uint32 weight; // threshold for all SignerRules equals 1000
     uint32 identity;
 
-    string256 details;
+    longstring details;
 
     EmptyExt ext;
 };
