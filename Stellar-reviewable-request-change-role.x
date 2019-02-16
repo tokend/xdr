@@ -9,7 +9,6 @@ struct ChangeRoleRequest
 {
 	AccountID destinationAccount;
 	uint64 accountRoleToSet;
-	longstring kycData;
 
 	// Sequence number increases when request is rejected
 	uint32 sequenceNumber;
