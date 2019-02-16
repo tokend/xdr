@@ -19,7 +19,7 @@ default:
 union AccountRuleResource switch (LedgerEntryType type)
 {
 case TRANSACTION:
-    void;
+    EmptyExt tx;
 case ASSET:
     struct
     {
