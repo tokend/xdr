@@ -94,7 +94,8 @@ struct Limits
 enum AccountPolicies
 {
 	NO_PERMISSIONS = 0,
-	ALLOW_TO_CREATE_USER_VIA_API = 1
+	ALLOW_TO_CREATE_USER_VIA_API = 1,
+	LEAD_MARKET_MAKER = 2
 };
 
 enum AccountType
