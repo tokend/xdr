@@ -4,9 +4,7 @@
 
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-operation-create-account.h"
-%#include "xdr/Stellar-operation-set-options.h"
 %#include "xdr/Stellar-operation-set-fees.h"
-%#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
@@ -23,7 +21,7 @@
 %#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
-%#include "xdr/Stellar-operation-create-KYC-request.h"
+%#include "xdr/Stellar-operation-create-change-role-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
 %#include "xdr/Stellar-operation-payment-v2.h"
@@ -35,7 +33,10 @@
 %#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
 %#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
-%#include "xdr/Stellar-operation-manage-account-role-permission.h"
+%#include "xdr/Stellar-operation-manage-account-rule.h"
+%#include "xdr/Stellar-operation-manage-signer-role.h"
+%#include "xdr/Stellar-operation-manage-signer-rule.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
 
 namespace stellar
 {
@@ -53,14 +54,10 @@ struct Operation
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-    case SET_OPTIONS:
-        SetOptionsOp setOptionsOp;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
         SetFeesOp setFeesOp;
-	case MANAGE_ACCOUNT:
-		ManageAccountOp manageAccountOp;
 	case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case MANAGE_BALANCE:
@@ -89,8 +86,8 @@ struct Operation
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueOp manageKeyValueOp;
-	case CREATE_KYC_REQUEST:
-		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
+	case CREATE_CHANGE_ROLE_REQUEST:
+		CreateChangeRoleRequestOp createChangeRoleRequestOp;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
@@ -115,8 +112,14 @@ struct Operation
         CreateASwapRequestOp createASwapRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
-        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
+    case MANAGE_ACCOUNT_RULE:
+        ManageAccountRuleOp manageAccountRuleOp;
+    case MANAGE_SIGNER:
+        ManageSignerOp manageSignerOp;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleOp manageSignerRoleOp;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleOp manageSignerRuleOp;
     }
     body;
 };
@@ -202,7 +205,9 @@ enum OperationResultCode
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
     opBAD_AUTH_EXTRA = -8,
-    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
+    opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
+    opNO_ENTRY = -10,
+    opNOT_SUPPORTED = -11
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -212,14 +217,10 @@ case opINNER:
     {
     case CREATE_ACCOUNT:
         CreateAccountResult createAccountResult;
-    case SET_OPTIONS:
-        SetOptionsResult setOptionsResult;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
         SetFeesResult setFeesResult;
-	case MANAGE_ACCOUNT:
-		ManageAccountResult manageAccountResult;
     case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case MANAGE_BALANCE:
@@ -248,8 +249,8 @@ case opINNER:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueResult manageKeyValueResult;
-	case CREATE_KYC_REQUEST:
-	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
+	case CREATE_CHANGE_ROLE_REQUEST:
+	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
@@ -274,10 +275,18 @@ case opINNER:
         CreateASwapRequestResult createASwapRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
-        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
+    case MANAGE_ACCOUNT_RULE:
+        ManageAccountRuleResult manageAccountRuleResult;
+    case MANAGE_SIGNER:
+        ManageSignerResult manageSignerResult;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleResult manageSignerRoleResult;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleResult manageSignerRuleResult;
     }
     tr;
+case opNO_ENTRY:
+    LedgerEntryType entryType;
 default:
     void;
 };
@@ -295,13 +304,14 @@ enum TransactionResultCode
     txBAD_AUTH = -5,                   // too few valid signatures / wrong network
     txNO_ACCOUNT = -6,                 // source account not found
     txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,             // an unknown error occured
+    txINTERNAL_ERROR = -8,             // an unknown error occurred
     txACCOUNT_BLOCKED = -9,            // account is blocked and cannot be source of tx
     txDUPLICATION = -10,               // if timing is stored
     txINSUFFICIENT_FEE = -11,          // the actual total fee amount is greater than the max total fee amount, provided by the source
     txSOURCE_UNDERFUNDED = -12,        // not enough tx fee asset on source balance
     txCOMMISSION_LINE_FULL = -13,      // commission tx fee asset balance amount overflow
-    txFEE_INCORRECT_PRECISION = -14    // fee amount is incompatible with asset precision
+    txFEE_INCORRECT_PRECISION = -14,   // fee amount is incompatible with asset precision
+    txNO_ROLE_PERMISSION = -15         // account role has not rule that allows send transaction
 };
 
 struct OperationFee

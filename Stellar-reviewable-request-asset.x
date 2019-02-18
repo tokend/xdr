@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-types.h"
 
@@ -14,7 +12,8 @@ struct AssetCreationRequest {
 	uint64 maxIssuanceAmount;
 	uint64 initialPreissuedAmount;
     uint32 policies;
-    longstring details;
+    longstring creatorDetails; // details set by requester
+    uint64 type;
 
 	uint32 sequenceNumber;
     uint32 trailingDigitsCount;
@@ -30,7 +29,7 @@ struct AssetCreationRequest {
 
 struct AssetUpdateRequest {
 	AssetCode code;
-	longstring details;
+    longstring creatorDetails; // details set by requester
 	uint32 policies;
 
 	uint32 sequenceNumber;
@@ -43,9 +42,12 @@ struct AssetUpdateRequest {
     ext;
 };
 
-struct AssetChangePreissuedSigner {
+struct AssetChangePreissuedSigner
+{
 	AssetCode code;
 	AccountID accountID;
+	DecoratedSignature signature;
+
 	// reserved for future use
     union switch (LedgerVersion v)
     {

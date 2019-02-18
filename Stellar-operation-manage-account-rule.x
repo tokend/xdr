@@ -1,5 +1,5 @@
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
+%#include "xdr/Stellar-ledger-entries-account-rule.h"
 
 namespace stellar
 {
@@ -12,17 +12,19 @@ namespace stellar
  Result: ManageAccountRolePermissionResult
 */
 
-enum ManageAccountRolePermissionOpAction
+enum ManageAccountRuleAction
 {
     CREATE = 0,
     UPDATE = 1,
     REMOVE = 2
 };
 
-struct CreateAccountRolePermissionData
+struct CreateAccountRuleData
 {
-    uint64 roleID;
-    OperationType opType;
+    AccountRuleResource resource;
+    string256 action;
+    bool isForbid;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -32,11 +34,13 @@ struct CreateAccountRolePermissionData
     } ext;
 };
 
-struct UpdateAccountRolePermissionData
+struct UpdateAccountRuleData
 {
-    uint64 permissionID;
-    uint64 roleID;
-    OperationType opType;
+    uint64 accountRuleID;
+    AccountRuleResource resource;
+    string256 action;
+    bool isForbid;
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -46,9 +50,9 @@ struct UpdateAccountRolePermissionData
     } ext;
 };
 
-struct RemoveAccountRolePermissionData
+struct RemoveAccountRuleData
 {
-    uint64 permissionID;
+    uint64 accountRuleID;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -58,16 +62,16 @@ struct RemoveAccountRolePermissionData
     } ext;
 };
 
-struct ManageAccountRolePermissionOp
+struct ManageAccountRuleOp
 {
-    union switch (ManageAccountRolePermissionOpAction action)
+    union switch (ManageAccountRuleAction action)
     {
     case CREATE:
-        CreateAccountRolePermissionData createData;
+        CreateAccountRuleData createData;
     case UPDATE:
-        UpdateAccountRolePermissionData updateData;
+        UpdateAccountRuleData updateData;
     case REMOVE:
-        RemoveAccountRolePermissionData removeData;
+        RemoveAccountRuleData removeData;
     } data;
 
     // reserved for future use
@@ -81,21 +85,22 @@ struct ManageAccountRolePermissionOp
 
 /******* ManageAccountRolePermissionOp Result ********/
 
-enum ManageAccountRolePermissionResultCode
+enum ManageAccountRuleResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     NOT_FOUND = -1,
-    PERMISSION_ALREADY_EXISTS = -2
+    RULE_IS_USED = -2,
+    INVALID_DETAILS = -3
 };
 
-union ManageAccountRolePermissionResult switch (ManageAccountRolePermissionResultCode code)
+union ManageAccountRuleResult switch (ManageAccountRuleResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 permissionID;
+            uint64 ruleID;
 
             // reserved for future use
             union switch (LedgerVersion v)
@@ -105,6 +110,8 @@ union ManageAccountRolePermissionResult switch (ManageAccountRolePermissionResul
             }
             ext;
         } success;
+    case RULE_IS_USED:
+        uint64 roleIDs<>;
     default:
         void;
 };

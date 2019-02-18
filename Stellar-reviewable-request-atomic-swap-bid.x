@@ -8,7 +8,7 @@ struct ASwapBidCreationRequest
 {
     BalanceID baseBalance;
     uint64 amount;
-    longstring details;
+    longstring creatorDetails; // details set by requester
 
     ASwapBidQuoteAsset quoteAssets<>;
 

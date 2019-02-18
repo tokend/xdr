@@ -1,12 +1,20 @@
+
+
 %#include "xdr/Stellar-types.h"
 
-namespace stellar {
+namespace stellar
+{
 
-struct UpdateSaleDetailsRequest {
-    uint64 saleID; // ID of sale to update details
+struct ChangeRoleRequest
+{
+	AccountID destinationAccount;
+	uint64 accountRoleToSet;
+
+	// Sequence number increases when request is rejected
+	uint32 sequenceNumber;
+
     longstring creatorDetails; // details set by requester
 
-    uint32 sequenceNumber;
     // Reserved for future use
     union switch (LedgerVersion v)
     {

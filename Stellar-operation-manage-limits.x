@@ -1,8 +1,3 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
-%#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-ledger-entries-limits-v2.h"
 
 namespace stellar
@@ -16,8 +11,8 @@ enum ManageLimitsAction
 
 struct LimitsCreateDetails
 {
-    AccountType *accountType;
-    AccountID   *accountID;
+    uint64*     accountRole;
+    AccountID*  accountID;
     StatsOpType statsOpType;
     AssetCode   assetCode;
     bool        isConvertNeeded;
@@ -26,6 +21,14 @@ struct LimitsCreateDetails
     uint64 weeklyOut;
     uint64 monthlyOut;
     uint64 annualOut;
+
+    // reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
 /* Manage Limits Options

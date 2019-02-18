@@ -5,6 +5,16 @@
 namespace stellar
 {
 
+enum LedgerVersion {
+	EMPTY_VERSION = 0
+};
+
+union EmptyExt switch (LedgerVersion v)
+{
+case EMPTY_VERSION:
+    void;
+};
+
 typedef opaque Hash[32];
 typedef opaque uint256[32];
 
@@ -30,9 +40,39 @@ case KEY_TYPE_ED25519:
     uint256 ed25519;
 };
 
-enum LedgerVersion {
-	EMPTY_VERSION = 0,
-    REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 1 // do not use it yet, there are features to be improved
+
+enum LedgerEntryType
+{
+    ANY = 0,
+    ACCOUNT = 1,
+    SIGNER = 2,
+    FEE = 3,
+    BALANCE = 4,
+    PAYMENT_REQUEST = 5,
+    ASSET = 6,
+    REFERENCE_ENTRY = 7,
+    ACCOUNT_TYPE_LIMITS = 8,
+    STATISTICS = 9,
+    TRUST = 10,
+    ACCOUNT_LIMITS = 11,
+	ASSET_PAIR = 12,
+	OFFER_ENTRY = 13,
+	REVIEWABLE_REQUEST = 15,
+	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
+	SALE = 17,
+	ACCOUNT_KYC = 18,
+	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
+    KEY_VALUE = 20,
+    LIMITS_V2 = 22,
+    STATISTICS_V2 = 23,
+    PENDING_STATISTICS = 24,
+    CONTRACT = 25,
+    ACCOUNT_ROLE = 26,
+    ACCOUNT_RULE = 27,
+    ATOMIC_SWAP_BID = 28,
+    TRANSACTION = 29, // is used for account rule resource
+    SIGNER_RULE = 30,
+    SIGNER_ROLE = 31
 };
 
 // variable size as the size depends on the signature scheme used
@@ -91,10 +131,8 @@ struct Fee {
 enum OperationType
 {
     CREATE_ACCOUNT = 0,
-    SET_OPTIONS = 2,
     CREATE_ISSUANCE_REQUEST = 3,
     SET_FEES = 5,
-	MANAGE_ACCOUNT = 6,
     CREATE_WITHDRAWAL_REQUEST = 7,
     MANAGE_BALANCE = 9,
     MANAGE_ASSET = 11,
@@ -107,7 +145,7 @@ enum OperationType
 	CREATE_SALE_REQUEST = 19,
 	CHECK_SALE_STATE = 20,
     CREATE_AML_ALERT = 21,
-    CREATE_KYC_REQUEST = 22,
+    CREATE_CHANGE_ROLE_REQUEST = 22,
     PAYMENT_V2 = 23,
     MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 24,
     BIND_EXTERNAL_SYSTEM_ACCOUNT_ID = 25,
@@ -119,10 +157,13 @@ enum OperationType
     CANCEL_SALE_REQUEST = 31,
     PAYOUT = 32,
     MANAGE_ACCOUNT_ROLE = 33,
-    MANAGE_ACCOUNT_ROLE_PERMISSION = 34,
+    MANAGE_ACCOUNT_RULE = 34,
     CREATE_ASWAP_BID_REQUEST = 35,
     CANCEL_ASWAP_BID = 36,
-    CREATE_ASWAP_REQUEST = 37
+    CREATE_ASWAP_REQUEST = 37,
+    MANAGE_SIGNER = 38,
+    MANAGE_SIGNER_ROLE = 39,
+    MANAGE_SIGNER_RULE = 40
 };
 
 struct DecoratedSignature

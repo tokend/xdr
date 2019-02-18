@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -107,9 +105,11 @@ enum ManageAssetResultCode
 
     // codes considered as "failure" for the operation
 	REQUEST_NOT_FOUND = -1,           // failed to find asset request with such id
-	ASSET_ALREADY_EXISTS = -3,			   // asset with such code already exist
+    INVALID_SIGNATURE = -2,           // only asset pre issuer can change asset pre issuer
+	ASSET_ALREADY_EXISTS = -3,	      // asset with such code already exist
     INVALID_MAX_ISSUANCE_AMOUNT = -4, // max issuance amount is 0
 	INVALID_CODE = -5,                // asset code is invalid (empty or contains space)
+    INVALID_PRE_ISSUER = -6,          // pre issuer is the same as existing
 	INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
 	ASSET_NOT_FOUND = -8,             // asset does not exists
 	REQUEST_ALREADY_EXISTS = -9,      // request for creation of unique entry already exists

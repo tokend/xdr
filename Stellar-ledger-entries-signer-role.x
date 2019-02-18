@@ -3,11 +3,14 @@
 namespace stellar
 {
 
-struct AccountRolePermissionEntry
+struct SignerRoleEntry
 {
-    uint64 permissionID;
-    uint64 accountRoleID;
-    OperationType opType;
+    uint64 id;
+    uint64 ruleIDs<>;
+
+    AccountID ownerID;
+
+    longstring details;
 
     // reserved for future use
     union switch (LedgerVersion v)

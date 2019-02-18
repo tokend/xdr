@@ -113,6 +113,18 @@ case ACCOUNT:
 		}
 		ext;
     } account;
+case SIGNER:
+    struct
+    {
+        PublicKey pubKey;
+
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signer;
 case FEE:
     struct {
         Hash hash;
@@ -159,16 +171,6 @@ case REFERENCE_ENTRY:
 		}
 		ext;
     } reference;
-case ACCOUNT_TYPE_LIMITS:
-    struct {
-        AccountType accountType;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } accountTypeLimits;
 case STATISTICS:
     struct {
         AccountID accountID;
@@ -179,17 +181,6 @@ case STATISTICS:
 		}
 		ext;
     } stats;
-case TRUST:
-    struct {
-        AccountID allowedAccount;
-        BalanceID balanceToUse;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } trust;
 case ACCOUNT_LIMITS:
     struct {
         AccountID accountID;
@@ -329,7 +320,7 @@ case ATOMIC_SWAP_BID:
     } atomicSwapBid;
 case ACCOUNT_ROLE:
     struct {
-        uint64 accountRoleID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -337,16 +328,36 @@ case ACCOUNT_ROLE:
         }
         ext;
     } accountRole;
-case ACCOUNT_ROLE_PERMISSION:
+case ACCOUNT_RULE:
     struct {
-        uint64 permissionID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
             void;
         }
         ext;
-    } accountRolePermission;
+    } accountRule;
+case SIGNER_ROLE:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signerRole;
+case SIGNER_RULE:
+    struct {
+        uint64 id;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } signerRule;
 };
 
 enum BucketEntryType

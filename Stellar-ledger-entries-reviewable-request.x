@@ -1,13 +1,11 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-reviewable-request-asset.h"
 %#include "xdr/Stellar-reviewable-request-issuance.h"
 %#include "xdr/Stellar-reviewable-request-withdrawal.h"
 %#include "xdr/Stellar-reviewable-request-sale.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
+%#include "xdr/Stellar-reviewable-request-change-role.h"
 %#include "xdr/Stellar-reviewable-request-limits-update.h"
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
@@ -22,20 +20,21 @@ namespace stellar
 enum ReviewableRequestType
 {
 	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
-	ASSET_UPDATE = 1,
-	PRE_ISSUANCE_CREATE = 2,
-	ISSUANCE_CREATE = 3,
-	WITHDRAW = 4,
-	SALE = 5,
-	LIMITS_UPDATE = 6,
-    AML_ALERT = 7,
-	UPDATE_KYC = 8,
+	ANY = 1,
+	CREATE_PRE_ISSUANCE = 2,
+	CREATE_ISSUANCE = 3,
+	CREATE_WITHDRAW = 4,
+	CREATE_SALE = 5,
+	UPDATE_LIMITS = 6,
+    CREATE_AML_ALERT = 7,
+	CHANGE_ROLE = 8,
 	UPDATE_SALE_DETAILS = 9,
-	ASSET_CREATE = 10,
-	INVOICE = 11,
-	CONTRACT = 12,
+	CREATE_ASSET = 10,
+	CREATE_INVOICE = 11,
+	MANAGE_CONTRACT = 12,
+	UPDATE_ASSET = 13,
 	CREATE_ATOMIC_SWAP_BID = 16,
-	ATOMIC_SWAP = 17
+	CREATE_ATOMIC_SWAP = 17
 };
 
 struct TasksExt {
@@ -66,33 +65,33 @@ struct ReviewableRequestEntry {
 	int64 createdAt; // when request was created
 
 	union switch (ReviewableRequestType type) {
-		case ASSET_CREATE:
+		case CREATE_ASSET:
 			AssetCreationRequest assetCreationRequest;
-		case ASSET_UPDATE:
+		case UPDATE_ASSET:
 			AssetUpdateRequest assetUpdateRequest;
-		case PRE_ISSUANCE_CREATE:
+		case CREATE_PRE_ISSUANCE:
 			PreIssuanceRequest preIssuanceRequest;
-		case ISSUANCE_CREATE:
+		case CREATE_ISSUANCE:
 			IssuanceRequest issuanceRequest;
-		case WITHDRAW:
+		case CREATE_WITHDRAW:
 			WithdrawalRequest withdrawalRequest;
-		case SALE:
+		case CREATE_SALE:
 			SaleCreationRequest saleCreationRequest;
-        case LIMITS_UPDATE:
+        case UPDATE_LIMITS:
             LimitsUpdateRequest limitsUpdateRequest;
-        case AML_ALERT:
+        case CREATE_AML_ALERT:
             AMLAlertRequest amlAlertRequest;
-        case UPDATE_KYC:
-            UpdateKYCRequest updateKYCRequest;
+        case CHANGE_ROLE:
+            ChangeRoleRequest changeRoleRequest;
         case UPDATE_SALE_DETAILS:
             UpdateSaleDetailsRequest updateSaleDetailsRequest;
-        case INVOICE:
+        case CREATE_INVOICE:
             InvoiceRequest invoiceRequest;
-        case CONTRACT:
+        case MANAGE_CONTRACT:
             ContractRequest contractRequest;
         case CREATE_ATOMIC_SWAP_BID:
             ASwapBidCreationRequest aSwapBidCreationRequest;
-        case ATOMIC_SWAP:
+        case CREATE_ATOMIC_SWAP:
             ASwapRequest aSwapRequest;
 	} body;
 
