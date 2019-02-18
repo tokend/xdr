@@ -117,6 +117,7 @@ case SIGNER:
     struct
     {
         PublicKey pubKey;
+        AccountID accountID;
 
         union switch (LedgerVersion v)
         {
