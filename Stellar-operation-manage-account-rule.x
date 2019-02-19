@@ -22,7 +22,7 @@ enum ManageAccountRuleAction
 struct CreateAccountRuleData
 {
     AccountRuleResource resource;
-    string256 action;
+    AccountRuleAction action;
     bool isForbid;
     longstring details;
 
@@ -38,7 +38,7 @@ struct UpdateAccountRuleData
 {
     uint64 accountRuleID;
     AccountRuleResource resource;
-    string256 action;
+    AccountRuleAction action;
     bool isForbid;
     longstring details;
 
