@@ -12,6 +12,14 @@ case CREATE_SALE:
 
         EmptyExt ext;
     } sale;
+case CREATE_ISSUANCE:
+    struct
+    {
+        AssetCode assetCode;
+        uint64 assetType;
+
+        EmptyExt ext;
+    } issuance;
 default:
     EmptyExt ext;
 };

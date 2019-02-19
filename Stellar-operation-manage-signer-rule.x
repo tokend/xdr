@@ -20,7 +20,7 @@ enum ManageSignerRuleAction
 struct CreateSignerRuleData
 {
     SignerRuleResource resource;
-    string256 action;
+    SignerRuleAction action;
     bool isForbid;
     bool isDefault;
     bool isReadOnly;
@@ -38,7 +38,7 @@ struct UpdateSignerRuleData
 {
     uint64 ruleID;
     SignerRuleResource resource;
-    string256 action;
+    SignerRuleAction action;
     bool isForbid;
     bool isDefault;
     longstring details;
