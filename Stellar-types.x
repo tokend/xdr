@@ -43,15 +43,14 @@ case KEY_TYPE_ED25519:
 
 enum LedgerEntryType
 {
-    ANY = 0,
-    ACCOUNT = 1,
-    SIGNER = 2,
-    FEE = 3,
-    BALANCE = 4,
-    PAYMENT_REQUEST = 5,
-    ASSET = 6,
-    REFERENCE_ENTRY = 7,
-    ACCOUNT_TYPE_LIMITS = 8,
+    ANY = 1,
+    ACCOUNT = 2,
+    SIGNER = 3,
+    FEE = 4,
+    BALANCE = 5,
+    PAYMENT_REQUEST = 6,
+    ASSET = 7,
+    REFERENCE_ENTRY = 8,
     STATISTICS = 9,
     TRUST = 10,
     ACCOUNT_LIMITS = 11,
@@ -130,7 +129,7 @@ struct Fee {
 
 enum OperationType
 {
-    CREATE_ACCOUNT = 0,
+    CREATE_ACCOUNT = 1,
     CREATE_ISSUANCE_REQUEST = 3,
     SET_FEES = 5,
     CREATE_WITHDRAWAL_REQUEST = 7,

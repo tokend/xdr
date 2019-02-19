@@ -9,7 +9,7 @@ struct AccountRuleEntry
     uint64 id;
 
     AccountRuleResource resource;
-    string256 action;
+    AccountRuleAction action;
 
     bool isForbid;
 

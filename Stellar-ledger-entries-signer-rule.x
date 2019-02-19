@@ -9,7 +9,7 @@ struct SignerRuleEntry
     uint64 id;
 
     SignerRuleResource resource;
-    string256 action;
+    SignerRuleAction action;
 
     bool isForbid;
     bool isDefault; // default rules will be in each role

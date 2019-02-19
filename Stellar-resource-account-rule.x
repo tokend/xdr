@@ -12,6 +12,14 @@ case CREATE_SALE:
 
         EmptyExt ext;
     } sale;
+case CREATE_ISSUANCE:
+    struct
+    {
+        AssetCode assetCode;
+        uint64 assetType;
+
+        EmptyExt ext;
+    } issuance;
 default:
     EmptyExt ext;
 };
@@ -66,6 +74,27 @@ case ATOMIC_SWAP_BID:
     } atomicSwapBid;
 default:
     EmptyExt ext;
+};
+
+enum AccountRuleAction
+{
+    ANY = 1,
+    CREATE = 2,
+    MANAGE = 3,
+    SEND = 4,
+    WITHDRAW = 5,
+    RECEIVE_ISSUANCE = 6,
+    RECEIVE_PAYMENT = 7,
+    RECEIVE_ATOMIC_SWAP = 8,
+    CREATE_TO_SELL = 9,
+    CREATE_TO_BUY = 10,
+    PARTICIPATE = 11,
+    BIND = 12,
+    UPDATE_MAX_ISSUANCE = 13,
+    CHECK = 14,
+    CREATE_WITH_TASKS = 15,
+    CREATE_FOR_OTHER = 16,
+    CANCEL = 17
 };
 
 }
