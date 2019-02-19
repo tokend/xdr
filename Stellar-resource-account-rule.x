@@ -20,6 +20,14 @@ case CREATE_ISSUANCE:
 
         EmptyExt ext;
     } issuance;
+case CREATE_WITHDRAW:
+    struct
+    {
+        AssetCode assetCode;
+        uint64 assetType;
+
+        EmptyExt ext;
+    } withdraw;
 default:
     EmptyExt ext;
 };
