@@ -23,7 +23,7 @@ struct CreateAccountRuleData
 {
     AccountRuleResource resource;
     AccountRuleAction action;
-    bool isForbid;
+    bool forbids;
     longstring details;
 
     // reserved for future use
@@ -39,7 +39,7 @@ struct UpdateAccountRuleData
     uint64 accountRuleID;
     AccountRuleResource resource;
     AccountRuleAction action;
-    bool isForbid;
+    bool forbids;
     longstring details;
 
     // reserved for future use

@@ -11,7 +11,7 @@ struct AccountRuleEntry
     AccountRuleResource resource;
     AccountRuleAction action;
 
-    bool isForbid;
+    bool forbids;
 
     longstring details;
 

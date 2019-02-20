@@ -11,7 +11,7 @@ struct SignerRuleEntry
     SignerRuleResource resource;
     SignerRuleAction action;
 
-    bool isForbid;
+    bool forbids;
     bool isDefault; // default rules will be in each role
 
     longstring details;

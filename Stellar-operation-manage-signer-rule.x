@@ -21,7 +21,7 @@ struct CreateSignerRuleData
 {
     SignerRuleResource resource;
     SignerRuleAction action;
-    bool isForbid;
+    bool forbids;
     bool isDefault;
     bool isReadOnly;
     longstring details;
@@ -39,7 +39,7 @@ struct UpdateSignerRuleData
     uint64 ruleID;
     SignerRuleResource resource;
     SignerRuleAction action;
-    bool isForbid;
+    bool forbids;
     bool isDefault;
     longstring details;
 
