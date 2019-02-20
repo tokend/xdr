@@ -62,6 +62,8 @@ case OFFER_ENTRY:
         AssetCode baseAssetCode;
         AssetCode quoteAssetCode;
 
+        bool isBuy;
+
         EmptyExt ext;
     } offer;
 case SALE:
@@ -88,21 +90,19 @@ enum AccountRuleAction
 {
     ANY = 1,
     CREATE = 2,
-    MANAGE = 3,
-    SEND = 4,
-    WITHDRAW = 5,
-    RECEIVE_ISSUANCE = 6,
-    RECEIVE_PAYMENT = 7,
-    RECEIVE_ATOMIC_SWAP = 8,
-    CREATE_TO_SELL = 9,
-    CREATE_TO_BUY = 10,
+    CREATE_FOR_OTHER = 3,
+    CREATE_WITH_TASKS = 4,
+    MANAGE = 5,
+    SEND = 6,
+    WITHDRAW = 7,
+    RECEIVE_ISSUANCE = 8,
+    RECEIVE_PAYMENT = 9,
+    RECEIVE_ATOMIC_SWAP = 10,
     PARTICIPATE = 11,
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
-    CREATE_WITH_TASKS = 15,
-    CREATE_FOR_OTHER = 16,
-    CANCEL = 17
+    CANCEL = 15
 };
 
 }

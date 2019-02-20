@@ -35,6 +35,8 @@ case OFFER_ENTRY:
         AssetCode baseAssetCode;
         AssetCode quoteAssetCode;
 
+        bool isBuy;
+
         EmptyExt ext;
     } offer;
 case SALE:
@@ -82,20 +84,18 @@ enum SignerRuleAction
 {
     ANY = 1,
     CREATE = 2,
-    MANAGE = 3,
-    SEND = 4,
-    REMOVE = 5,
-    CANCEL = 6,
-    REVIEW = 7,
-    RECEIVE_ATOMIC_SWAP = 8,
-    CREATE_TO_SELL = 9,
-    CREATE_TO_BUY = 10,
+    CREATE_FOR_OTHER = 3,
+    UPDATE = 4,
+    MANAGE = 5,
+    SEND = 6,
+    REMOVE = 7,
+    CANCEL = 8,
+    REVIEW = 9,
+    RECEIVE_ATOMIC_SWAP = 10,
     PARTICIPATE = 11,
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
-    CHECK = 14,
-    UPDATE = 15,
-    CREATE_FOR_OTHER = 16
+    CHECK = 14
 };
 
 
