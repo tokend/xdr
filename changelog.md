@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Changed
+
+* Error codes for create change role request op
+
+## 3.0.0-x.4
+
 ### Added
 
 * Signer rule and role entries
