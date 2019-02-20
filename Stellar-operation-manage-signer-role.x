@@ -92,7 +92,8 @@ enum ManageSignerRoleResultCode
     INVALID_DETAILS = -3,
     NO_SUCH_RULE = -4,
     RULE_ID_DUPLICATION = -5,
-    DEFAULT_RULE_ID_DUPLICATION = -6
+    DEFAULT_RULE_ID_DUPLICATION = -6,
+    TOO_MANY_RULE_IDS = -7
 };
 
 union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
@@ -113,6 +114,8 @@ union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
     case DEFAULT_RULE_ID_DUPLICATION:
     case NO_SUCH_RULE:
         uint64 ruleID;
+    case TOO_MANY_RULE_IDS:
+        uint64 maxRuleIDsCount;
     default:
         void;
 };

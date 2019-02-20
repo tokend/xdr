@@ -36,7 +36,7 @@ struct CreateAccountRuleData
 
 struct UpdateAccountRuleData
 {
-    uint64 accountRuleID;
+    uint64 ruleID;
     AccountRuleResource resource;
     AccountRuleAction action;
     bool forbids;
@@ -52,7 +52,7 @@ struct UpdateAccountRuleData
 
 struct RemoveAccountRuleData
 {
-    uint64 accountRuleID;
+    uint64 ruleID;
 
     // reserved for future use
     union switch (LedgerVersion v)

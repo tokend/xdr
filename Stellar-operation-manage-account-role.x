@@ -21,7 +21,7 @@ enum ManageAccountRoleAction
 struct CreateAccountRoleData
 {
     longstring details;
-    uint64 accountRuleIDs<>;
+    uint64 ruleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -35,7 +35,7 @@ struct UpdateAccountRoleData
 {
     uint64 roleID;
     longstring details;
-    uint64 accountRuleIDs<>;
+    uint64 ruleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -47,7 +47,7 @@ struct UpdateAccountRoleData
 
 struct RemoveAccountRoleData
 {
-    uint64 accountRoleID;
+    uint64 roleID;
 
     // reserved for future use
     union switch (LedgerVersion v)
