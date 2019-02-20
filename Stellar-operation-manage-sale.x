@@ -20,7 +20,7 @@ Result: ManageSaleResult
 
 struct UpdateSaleDetailsData {
     uint64 requestID; // if requestID is 0 - create request, else - update
-    longstring newDetails;
+    longstring creatorDetails;
 
     uint32* allTasks;
 
@@ -59,13 +59,12 @@ enum ManageSaleResultCode
     SALE_NOT_FOUND = -1, // sale not found
 
     // errors related to action "CREATE_UPDATE_DETAILS_REQUEST"
-    INVALID_NEW_DETAILS = -2, // newDetails field is invalid JSON
+    INVALID_CREATOR_DETAILS = -2, // newDetails field is invalid JSON
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
-    INVALID_UPDATE_DETAILS_REQUEST_DATA = -5, // not allowed to set allTasks on request update
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -5, // not allowed to set allTasks on request update
     SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6, // it's not allowed to set state for non master account
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -7,
-    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -8
+    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -7
 };
 
 struct ManageSaleResultSuccess
