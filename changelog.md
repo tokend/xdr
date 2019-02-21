@@ -4,7 +4,14 @@
 
 ### Changed
 
+* Use forbids name of filed in rules
+* Use consistently names of role and rule ids
 * Error codes for create change role request op
+* Error codes for invalid creator details
+* Rename kycData to creator Details
+* Rename paymentV2 to payment
+* Add isBuy to rule resources
+* Add withdraw case to request resource
 
 ## 3.0.0-x.4
 
