@@ -1,7 +1,7 @@
 
 
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-payment.h"
 
 namespace stellar
 {
@@ -66,7 +66,7 @@ struct ContractDetails {
 };
 
 struct BillPayDetails {
-    PaymentOpV2 paymentDetails;
+    PaymentOp paymentDetails;
 
     // reserved for future use
     union switch (LedgerVersion v)

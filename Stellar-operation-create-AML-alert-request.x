@@ -37,7 +37,7 @@ enum CreateAMLAlertRequestResultCode
     // codes considered as "success" for the operation
     SUCCESS = 0,
     BALANCE_NOT_EXIST = 1, // balance doesn't exist
-    INVALID_REASON = 2, //invalid reason for request
+    INVALID_CREATOR_DETAILS = 2, //invalid reason for request
     UNDERFUNDED = 3, //when couldn't lock balance
     REFERENCE_DUPLICATION = 4, // reference already exists
     INVALID_AMOUNT = 5, // amount must be positive

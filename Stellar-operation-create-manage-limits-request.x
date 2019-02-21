@@ -43,7 +43,7 @@ enum CreateManageLimitsRequestResultCode
     // codes considered as "failure" for the operation
 	MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1,
     MANAGE_LIMITS_REQUEST_NOT_FOUND = -2,
-    INVALID_DETAILS = -3, // details must be valid json
+    INVALID_CREATOR_DETAILS = -3, // details must be valid json
 	LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6, // can't set allTasks on request update
     LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7

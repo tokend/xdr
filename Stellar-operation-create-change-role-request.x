@@ -9,7 +9,7 @@ struct CreateChangeRoleRequestOp
 
     AccountID destinationAccount;
     uint64 accountRoleToSet;
-    longstring kycData;
+    longstring creatorDetails;
 
     uint32* allTasks;
 
@@ -35,9 +35,9 @@ enum CreateChangeRoleRequestResultCode
 	REQUEST_DOES_NOT_EXIST = -4,
 	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
 	NOT_ALLOWED_TO_UPDATE_REQUEST = -6, // master account can update request only through review request operation
-	INVALID_UPDATE_KYC_REQUEST_DATA = -7,
-	INVALID_KYC_DATA = -8,
-	KYC_RULE_NOT_FOUND = -9
+	INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
+	INVALID_CREATOR_DETAILS = -8,
+	CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };
 
 union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode code)

@@ -24,7 +24,7 @@
 %#include "xdr/Stellar-operation-create-change-role-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
-%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-payment.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
@@ -92,8 +92,8 @@ struct Operation
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
-    case PAYMENT_V2:
-        PaymentOpV2 paymentOpV2;
+    case PAYMENT:
+        PaymentOp paymentOp;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
     case CREATE_MANAGE_LIMITS_REQUEST:
@@ -255,8 +255,8 @@ case opINNER:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
-    case PAYMENT_V2:
-        PaymentV2Result paymentV2Result;
+    case PAYMENT:
+        PaymentResult paymentResult;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
     case CREATE_MANAGE_LIMITS_REQUEST:

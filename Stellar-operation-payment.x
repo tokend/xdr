@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-/* PaymentV2
+/* Payment
 
     Send an amount in specified asset to a destination account.
 
@@ -12,7 +12,7 @@ namespace stellar
     Result: PaymentResult
 */
 
-struct PaymentFeeDataV2 {
+struct PaymentFeeData {
     Fee sourceFee;
     Fee destinationFee;
 
@@ -31,7 +31,7 @@ enum PaymentDestinationType {
     BALANCE = 1
 };
 
-struct PaymentOpV2
+struct PaymentOp
 {
     BalanceID sourceBalanceID;
 
@@ -44,7 +44,7 @@ struct PaymentOpV2
 
     uint64 amount;
 
-    PaymentFeeDataV2 feeData;
+    PaymentFeeData feeData;
 
     longstring subject;
     longstring reference;
@@ -58,7 +58,7 @@ struct PaymentOpV2
     ext;
 };
 
-enum PaymentV2ResultCode
+enum PaymentResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0, // payment successfully completed
@@ -79,11 +79,9 @@ enum PaymentV2ResultCode
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
     DESTINATION_ACCOUNT_NOT_FOUND = -14,
     INCORRECT_AMOUNT_PRECISION = -15
-
-     // !!! Add new result code to review invoice op too !!!
 };
 
-struct PaymentV2Response {
+struct PaymentResponse {
     AccountID destination;
     BalanceID destinationBalanceID;
 
@@ -103,10 +101,10 @@ struct PaymentV2Response {
     ext;
 };
 
-union PaymentV2Result switch (PaymentV2ResultCode code)
+union PaymentResult switch (PaymentResultCode code)
 {
 case SUCCESS:
-    PaymentV2Response paymentV2Response;
+    PaymentResponse paymentResponse;
 default:
     void;
 };
