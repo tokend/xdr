@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-union RequestTypedResource switch (ReviewableRequestType requestType)
+union ReviewableRequestResource switch (ReviewableRequestType requestType)
 {
 case CREATE_SALE:
     struct
@@ -11,7 +11,7 @@ case CREATE_SALE:
         uint64 type;
 
         EmptyExt ext;
-    } sale;
+    } createSale;
 case CREATE_ISSUANCE:
     struct
     {
@@ -19,7 +19,7 @@ case CREATE_ISSUANCE:
         uint64 assetType;
 
         EmptyExt ext;
-    } issuance;
+    } createIssuance;
 case CREATE_WITHDRAW:
     struct
     {
@@ -27,15 +27,13 @@ case CREATE_WITHDRAW:
         uint64 assetType;
 
         EmptyExt ext;
-    } withdraw;
+    } createWithdraw;
 default:
     EmptyExt ext;
 };
 
 union AccountRuleResource switch (LedgerEntryType type)
 {
-case TRANSACTION:
-    EmptyExt tx;
 case ASSET:
     struct
     {
@@ -47,7 +45,7 @@ case ASSET:
 case REVIEWABLE_REQUEST:
     struct
     {
-        RequestTypedResource details;
+        ReviewableRequestResource details;
 
         EmptyExt ext;
     } reviewableRequest;
@@ -82,6 +80,13 @@ case ATOMIC_SWAP_BID:
 
         EmptyExt ext;
     } atomicSwapBid;
+case KEY_VALUE:
+    struct
+    {
+        longstring keyPrefix;
+
+        EmptyExt ext;
+    } keyValue;
 default:
     EmptyExt ext;
 };
