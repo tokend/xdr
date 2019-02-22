@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -44,7 +42,8 @@ enum CreatePreIssuanceRequestResultCode
     INVALID_AMOUNT = -6,             // amount is 0
     INVALID_REFERENCE = -7,
     INCORRECT_AMOUNT_PRECISION = -8,  // amount does not fit to this asset's precision
-    PREISSUANCE_TASKS_NOT_FOUND = -9
+    PREISSUANCE_TASKS_NOT_FOUND = -9,
+    INVALID_CREATOR_DETAILS = -10
 };
 
 union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode code)

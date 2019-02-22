@@ -1,27 +1,30 @@
 %#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-resource-signer-rule.h"
 
-namespace stellar {
+namespace stellar
+{
+/* ManageSignerRuleOp
 
-/* ManageAccountRole
+ Creates, updates or deletes signer rule
 
-    Create or delete policy attachment for any account, specific account type or account id
-
-    Threshold: high
-
-    Result: ManageAccountRoleResult
+ Result: ManageSignerRuleResult
 */
 
-enum ManageAccountRoleAction
+enum ManageSignerRuleAction
 {
     CREATE = 0,
     UPDATE = 1,
     REMOVE = 2
 };
 
-struct CreateAccountRoleData
+struct CreateSignerRuleData
 {
+    SignerRuleResource resource;
+    SignerRuleAction action;
+    bool forbids;
+    bool isDefault;
+    bool isReadOnly;
     longstring details;
-    uint64 ruleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -31,11 +34,14 @@ struct CreateAccountRoleData
     } ext;
 };
 
-struct UpdateAccountRoleData
+struct UpdateSignerRuleData
 {
-    uint64 roleID;
+    uint64 ruleID;
+    SignerRuleResource resource;
+    SignerRuleAction action;
+    bool forbids;
+    bool isDefault;
     longstring details;
-    uint64 ruleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -45,9 +51,9 @@ struct UpdateAccountRoleData
     } ext;
 };
 
-struct RemoveAccountRoleData
+struct RemoveSignerRuleData
 {
-    uint64 roleID;
+    uint64 ruleID;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -57,16 +63,16 @@ struct RemoveAccountRoleData
     } ext;
 };
 
-struct ManageAccountRoleOp
+struct ManageSignerRuleOp
 {
-    union switch (ManageAccountRoleAction action)
+    union switch (ManageSignerRuleAction action)
     {
     case CREATE:
-        CreateAccountRoleData createData;
+        CreateSignerRuleData createData;
     case UPDATE:
-        UpdateAccountRoleData updateData;
+        UpdateSignerRuleData updateData;
     case REMOVE:
-        RemoveAccountRoleData removeData;
+        RemoveSignerRuleData removeData;
     } data;
 
     // reserved for future use
@@ -78,26 +84,24 @@ struct ManageAccountRoleOp
     ext;
 };
 
-/******* ManageAccountRoleOp Result ********/
+/******* ManageSignerRuleOp Result ********/
 
-enum ManageAccountRoleResultCode
+enum ManageSignerRuleResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1,
-    ROLE_IS_USED = -2,
-    INVALID_DETAILS = -3,
-    NO_SUCH_RULE = -4,
-    RULE_ID_DUPLICATION = -5
+    NOT_FOUND = -1, // does not exists or owner mismatched
+    RULE_IS_USED = -2,
+    INVALID_DETAILS = -3
 };
 
-union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
+union ManageSignerRuleResult switch (ManageSignerRuleResultCode code)
 {
     case SUCCESS:
         struct {
-            uint64 roleID;
+            uint64 ruleID;
 
             // reserved for future use
             union switch (LedgerVersion v)
@@ -107,9 +111,8 @@ union ManageAccountRoleResult switch (ManageAccountRoleResultCode code)
             }
             ext;
         } success;
-    case RULE_ID_DUPLICATION:
-    case NO_SUCH_RULE:
-        uint64 ruleID;
+    case RULE_IS_USED:
+        uint64 roleIDs<>;
     default:
         void;
 };

@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -39,7 +37,7 @@ enum CreateWithdrawalRequestResultCode
 
 	// codes considered as "failure" for the operation
 	INVALID_AMOUNT = -1, // amount is 0
-	INVALID_EXTERNAL_DETAILS = -2, // external details size exceeds max allowed
+	INVALID_CREATOR_DETAILS = -2, // external details size exceeds max allowed
 	BALANCE_NOT_FOUND = -3, // balance not found
 	ASSET_IS_NOT_WITHDRAWABLE = -4, // asset is not withdrawable
 	CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed

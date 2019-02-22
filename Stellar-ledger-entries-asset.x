@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-types.h"
 
@@ -13,11 +11,9 @@ enum AssetPolicy
 	BASE_ASSET = 2,
 	STATS_QUOTE_ASSET = 4,
 	WITHDRAWABLE = 8,
-	REQUIRES_KYC = 16,
-	ISSUANCE_MANUAL_REVIEW_REQUIRED = 32,
-	REQUIRES_VERIFICATION = 64,
-	CAN_BE_BASE_IN_ATOMIC_SWAP = 128,
-	CAN_BE_QUOTE_IN_ATOMIC_SWAP = 256
+	ISSUANCE_MANUAL_REVIEW_REQUIRED = 16,
+	CAN_BE_BASE_IN_ATOMIC_SWAP = 32,
+	CAN_BE_QUOTE_IN_ATOMIC_SWAP = 64
 };
 
 
@@ -32,14 +28,14 @@ struct AssetEntry
 	uint64 issued; // number of issued tokens
 	uint64 pendingIssuance; // number of tokens locked for entries like token sale. lockedIssuance + issued can not be > maxIssuanceAmount
     uint32 policies;
+    uint64 type; // use instead policies that limit usage, use in account rules
+    uint32 trailingDigitsCount;
 
     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_ASSET_BALANCE_PRECISION:
-        uint32 trailingDigitsCount;
     }
     ext;
 };

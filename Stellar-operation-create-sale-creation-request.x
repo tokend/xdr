@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -51,7 +49,7 @@ enum CreateSaleCreationRequestResultCode
 	INVALID_ASSET_PAIR = -9, // one of the assets has invalid code or base asset is equal to quote asset
 	REQUEST_OR_SALE_ALREADY_EXISTS = -10,
 	INSUFFICIENT_PREISSUED = -11, // amount of pre issued tokens is insufficient for hard cap
-	INVALID_DETAILS = -12, // details must be a valid json
+	INVALID_CREATOR_DETAILS = -12, // details must be a valid json
 	VERSION_IS_NOT_SUPPORTED_YET = -13, // version specified in request is not supported yet
     SALE_CREATE_TASKS_NOT_FOUND = -14,
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15, // can't set allTasks on request update

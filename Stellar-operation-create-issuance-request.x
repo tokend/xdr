@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -46,7 +44,7 @@ enum CreateIssuanceRequestResultCode
 	NOT_AUTHORIZED = -5,
 	EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
 	RECEIVER_FULL_LINE = -7,
-	INVALID_EXTERNAL_DETAILS = -8, // external details size exceeds max allowed
+	INVALID_CREATOR_DETAILS = -8, // external details size exceeds max allowed
 	FEE_EXCEEDS_AMOUNT = -9, // fee more than amount to issue
     REQUIRES_KYC = -10, // asset requires receiver to have KYC
     REQUIRES_VERIFICATION = -11, //asset requires receiver to be verified

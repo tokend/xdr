@@ -1,32 +1,18 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-reviewable-request-update-KYC.h"
+
 namespace stellar
 {
 
-struct UpdateKYCRequestData {
-    AccountID accountToUpdateKYC;
-	AccountType accountTypeToSet;
-	uint32 kycLevelToSet;
-    longstring kycData;
-
-	// Reserved for future use
-	union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct CreateUpdateKYCRequestOp {
+struct CreateChangeRoleRequestOp
+{
     uint64 requestID;
-    UpdateKYCRequestData updateKYCRequestData;
+
+    AccountID destinationAccount;
+    uint64 accountRoleToSet;
+    longstring creatorDetails;
 
     uint32* allTasks;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -37,7 +23,7 @@ struct CreateUpdateKYCRequestOp {
 
 /******* CreateUpdateKYCRequest Result ********/
 
-enum CreateUpdateKYCRequestResultCode
+enum CreateChangeRoleRequestResultCode
 {
     // codes considered as "success" for the operation
     SUCCESS = 0,
@@ -49,12 +35,12 @@ enum CreateUpdateKYCRequestResultCode
 	REQUEST_DOES_NOT_EXIST = -4,
 	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
 	NOT_ALLOWED_TO_UPDATE_REQUEST = -6, // master account can update request only through review request operation
-	INVALID_UPDATE_KYC_REQUEST_DATA = -7,
-	INVALID_KYC_DATA = -8,
-	KYC_RULE_NOT_FOUND = -9
+	INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
+	INVALID_CREATOR_DETAILS = -8,
+	CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };
 
-union CreateUpdateKYCRequestResult switch (CreateUpdateKYCRequestResultCode code)
+union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode code)
 {
 case SUCCESS:
     struct {

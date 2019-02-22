@@ -1,9 +1,7 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-payment.h"
 
 namespace stellar
 {
@@ -55,18 +53,6 @@ struct AMLAlertDetails {
     ext;
 };
 
-// DEPRECATED
-struct UpdateKYCDetails {
-    string externalDetails<>;
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct ContractDetails {
     longstring details;
 
@@ -80,7 +66,7 @@ struct ContractDetails {
 };
 
 struct BillPayDetails {
-    PaymentOpV2 paymentDetails;
+    PaymentOp paymentDetails;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -155,13 +141,13 @@ struct ExtendedResult {
     bool fulfilled;
 
     union switch(ReviewableRequestType requestType) {
-    case SALE:
+    case CREATE_SALE:
         SaleExtended saleExtended;
     case NONE:
         void;
 	case CREATE_ATOMIC_SWAP_BID:
         ASwapBidExtended aSwapBidExtended;
-    case ATOMIC_SWAP:
+    case CREATE_ATOMIC_SWAP:
         ASwapExtended aSwapExtended;
     } typeExt;
 
@@ -179,17 +165,15 @@ struct ReviewRequestOp
 	uint64 requestID;
 	Hash requestHash;
 	union switch(ReviewableRequestType requestType) {
-	case WITHDRAW:
+	case CREATE_WITHDRAW:
 		WithdrawalDetails withdrawal;
-    case LIMITS_UPDATE:
+    case UPDATE_LIMITS:
         LimitsUpdateDetails limitsUpdate;
-    case AML_ALERT:
+    case CREATE_AML_ALERT:
         AMLAlertDetails amlAlertDetails;
-    case UPDATE_KYC:
-        UpdateKYCDetails updateKYC;
-    case INVOICE:
+    case CREATE_INVOICE:
         BillPayDetails billPay;
-    case CONTRACT:
+    case MANAGE_CONTRACT:
         ContractDetails contract;
 	default:
 		void;

@@ -1,7 +1,3 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
 %#include "xdr/Stellar-ledger-entries.h"
 
 namespace stellar
@@ -16,35 +12,12 @@ namespace stellar
     Result: PaymentResult
 */
 
-struct InvoiceReference {
-    uint64 invoiceID;
-    bool accept;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct FeeData {
-    int64 paymentFee;
-    int64 fixedFee;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct PaymentFeeData {
-    FeeData sourceFee;
-    FeeData destinationFee;
-    bool sourcePaysForDest;    // if true source account pays fee, else destination
-	// reserved for future use
+    Fee sourceFee;
+    Fee destinationFee;
+
+    bool sourcePaysForDest; // if true - source account pays fee, else destination
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -53,21 +26,30 @@ struct PaymentFeeData {
     ext;
 };
 
+enum PaymentDestinationType {
+    ACCOUNT = 0,
+    BALANCE = 1
+};
 
 struct PaymentOp
 {
     BalanceID sourceBalanceID;
-    BalanceID destinationBalanceID;
-    int64 amount;          // amount they end up with
+
+    union switch (PaymentDestinationType type) {
+        case ACCOUNT:
+            AccountID accountID;
+        case BALANCE:
+            BalanceID balanceID;
+    } destination;
+
+    uint64 amount;
 
     PaymentFeeData feeData;
 
-    string256 subject;
-    string64 reference;
-    
-    InvoiceReference* invoiceReference;
+    longstring subject;
+    longstring reference;
 
-	// reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -76,38 +58,40 @@ struct PaymentOp
     ext;
 };
 
-/******* Payment Result ********/
-
 enum PaymentResultCode
 {
     // codes considered as "success" for the operation
-    SUCCESS = 0, // payment successfuly completed
+    SUCCESS = 0, // payment successfully completed
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,       // bad input
-    UNDERFUNDED = -2,     // not enough funds in source account
-    LINE_FULL = -3,       // destination would go above their limit
-	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-    BALANCE_NOT_FOUND = -5, // destination balance not found
-    BALANCE_ACCOUNT_MISMATCHED = -6,
-    BALANCE_ASSETS_MISMATCHED = -7,
-	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    REFERENCE_DUPLICATION = -9,
-    STATS_OVERFLOW = -10,
-    LIMITS_EXCEEDED = -11,
-    NOT_ALLOWED_BY_ASSET_POLICY = -12,
-    INVOICE_NOT_FOUND = -13,
-    INVOICE_WRONG_AMOUNT = -14,
-    INVOICE_BALANCE_MISMATCH = -15,
-    INVOICE_ACCOUNT_MISMATCH = -16,
-    INVOICE_ALREADY_PAID = -17,
-    PAYMENT_V1_NO_LONGER_SUPPORTED = -18
+    MALFORMED = -1, // bad input
+    UNDERFUNDED = -2, // not enough funds in source account
+    LINE_FULL = -3, // destination would go above their limit
+	DESTINATION_BALANCE_NOT_FOUND = -4,
+    BALANCE_ASSETS_MISMATCHED = -5,
+	SRC_BALANCE_NOT_FOUND = -6, // source balance not found
+    REFERENCE_DUPLICATION = -7,
+    STATS_OVERFLOW = -8,
+    LIMITS_EXCEEDED = -9,
+    NOT_ALLOWED_BY_ASSET_POLICY = -10,
+    INVALID_DESTINATION_FEE = -11,
+    INSUFFICIENT_FEE_AMOUNT = -12,
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
+    DESTINATION_ACCOUNT_NOT_FOUND = -14,
+    INCORRECT_AMOUNT_PRECISION = -15
 };
 
 struct PaymentResponse {
     AccountID destination;
-    uint64 paymentID;
+    BalanceID destinationBalanceID;
+
     AssetCode asset;
+    uint64 sourceSentUniversal;
+    uint64 paymentID;
+
+    Fee actualSourcePaymentFee;
+    Fee actualDestinationPaymentFee;
+
     // reserved for future use
     union switch (LedgerVersion v)
     {
