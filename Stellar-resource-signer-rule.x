@@ -8,7 +8,7 @@ union SignerRuleResource switch (LedgerEntryType type)
 case REVIEWABLE_REQUEST:
     struct
     {
-        RequestTypedResource details;
+        ReviewableRequestResource details;
 
         uint64 tasksToAdd;
         uint64 tasksToRemove;
@@ -76,6 +76,13 @@ case SIGNER:
 
         EmptyExt ext;
     } signer;
+case KEY_VALUE:
+    struct
+    {
+        longstring keyPrefix;
+
+        EmptyExt ext;
+    } keyValue;
 default:
     EmptyExt ext;
 };

@@ -50,7 +50,9 @@ namespace stellar
 		FEE_ASSET_NOT_FOUND = -14,
 		ASSET_PAIR_NOT_FOUND = -15, // cannot create cross asset fee entry without existing asset pair
 		INVALID_ASSET_PAIR_PRICE = -16,
-		INVALID_FEE_HASH = -17
+		INVALID_FEE_HASH = -17,
+		//: Fixed fee amount must fit asset precision
+		INVALID_AMOUNT_PRECISION = -18
     };
     
     union SetFeesResult switch (SetFeesResultCode code)
