@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Added
+
+* Specify key value resource for rule
+* Add error code to set fee op
+
+### Changed
+
+* Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
+
+## Unreleased
+
 ### Changed
 
 * Use forbids name of filed in rules
