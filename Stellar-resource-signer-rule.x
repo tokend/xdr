@@ -12,7 +12,7 @@ case REVIEWABLE_REQUEST:
     {
         //: Describes properties of some reviewable request types that
         //: can be used to restrict the use of reviewable requests
-        RequestTypedResource details;
+        ReviewableRequestResource details;
 
         //: Bit mask of tasks which is allowed to add to reviewable request pending tasks
         uint64 tasksToAdd;
@@ -96,6 +96,13 @@ case SIGNER:
 
         EmptyExt ext;
     } signer;
+case KEY_VALUE:
+    struct
+    {
+        longstring keyPrefix;
+
+        EmptyExt ext;
+    } keyValue;
 default:
     EmptyExt ext;
 };
