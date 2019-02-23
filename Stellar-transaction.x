@@ -210,6 +210,14 @@ enum OperationResultCode
     opNOT_SUPPORTED = -11
 };
 
+struct AccountRuleRequirement
+{
+    AccountRuleResource resource;
+    AccountRuleAction action;
+
+    EmptyExt ext;
+};
+
 union OperationResult switch (OperationResultCode code)
 {
 case opINNER:
@@ -287,6 +295,8 @@ case opINNER:
     tr;
 case opNO_ENTRY:
     LedgerEntryType entryType;
+case opNO_ROLE_PERMISSION:
+    AccountRuleRequirement requirement;
 default:
     void;
 };
@@ -337,6 +347,8 @@ struct TransactionResult
     case txSUCCESS:
     case txFAILED:
         OperationResult results<>;
+    case txNO_ROLE_PERMISSION:
+        AccountRuleRequirement requirement;
     default:
         void;
     }
