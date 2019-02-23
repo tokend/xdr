@@ -45,7 +45,8 @@ namespace stellar
     {
         SUCCESS = 0,
         NOT_FOUND = -1,
-        INVALID_TYPE = -2
+        INVALID_TYPE = -2,
+        ZERO_VALUE_NOT_ALLOWED = -3
     };
 
     union ManageKeyValueResult switch (ManageKeyValueResultCode code)
