@@ -8,6 +8,7 @@
 * Specify key value resource for rule
 * Add error code to set fee op
 * Payload to NO_ROLE_PERMISSION error code
+* LicenseOp, StampOp, License entry, Stamp entry
 
 ### Changed
 
