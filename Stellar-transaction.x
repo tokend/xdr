@@ -210,11 +210,17 @@ enum OperationResultCode
     opNOT_SUPPORTED = -11
 };
 
+//: Defines requirements for tx or operation which were not fulfilled 
 struct AccountRuleRequirement
 {
+	//: defines resources to which access was denied
     AccountRuleResource resource;
+	//: defines action which was denied
     AccountRuleAction action;
+	//: defines account for which requirementes were not met
+	AccountID account;
 
+	//: reserved for future extention
     EmptyExt ext;
 };
 
