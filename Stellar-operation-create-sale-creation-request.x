@@ -1,6 +1,7 @@
 
 
 %#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-operation-review-request.h"
 
 namespace stellar
 {
@@ -53,7 +54,7 @@ enum CreateSaleCreationRequestResultCode
 	VERSION_IS_NOT_SUPPORTED_YET = -13, // version specified in request is not supported yet
     SALE_CREATE_TASKS_NOT_FOUND = -14,
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15, // can't set allTasks on request update
-    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -16
+    AUTO_REVIEW_FAILED = -16 //: due to tasks been 0, we have tried to auto review request, hovewer it failed
 };
 
 struct CreateSaleCreationSuccess {
@@ -69,11 +70,26 @@ struct CreateSaleCreationSuccess {
     ext;
 };
 
+//: specifies details on why auto review has failed
+struct CreateSaleCreationAutoReviewFailed {
+	//: auto review result
+	ReviewRequestResult reviewRequestRequest;
+	//: reserved for future use
+	union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 
 union CreateSaleCreationRequestResult switch (CreateSaleCreationRequestResultCode code)
 {
     case SUCCESS:
         CreateSaleCreationSuccess success;
+	case AUTO_REVIEW_FAILED:
+		CreateSaleCreationAutoReviewFailed autoReviewFailed;
     default:
         void;
 };

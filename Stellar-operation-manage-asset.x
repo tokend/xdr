@@ -121,8 +121,7 @@ enum ManageAssetResultCode
     INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15,   // maximum issuance amount does not match precision set by trailing digits count
     ASSET_CREATE_TASKS_NOT_FOUND = -16, 
     ASSET_UPDATE_TASKS_NOT_FOUND = -17,
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18,
-    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -19
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18
 };
 
 struct ManageAssetSuccess
