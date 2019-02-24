@@ -33,7 +33,6 @@ enum CreateChangeRoleRequestResultCode
     REQUEST_ALREADY_EXISTS = -2,
 	SAME_ACC_TYPE_TO_SET = -3,
 	REQUEST_DOES_NOT_EXIST = -4,
-	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
 	NOT_ALLOWED_TO_UPDATE_REQUEST = -6, // master account can update request only through review request operation
 	INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
 	INVALID_CREATOR_DETAILS = -8,
