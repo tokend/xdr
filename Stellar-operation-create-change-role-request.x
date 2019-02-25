@@ -44,19 +44,19 @@ enum CreateChangeRoleRequestResultCode
     ACC_TO_UPDATE_DOES_NOT_EXIST = -1,
     //: There is another change role request for such destination account
     REQUEST_ALREADY_EXISTS = -2,
-	//: There is no request with such `requestID`
-	REQUEST_DOES_NOT_EXIST = -4,
-	//: Only `destinationAccount` can update change role request
-	//: `destinationAccount` must be equal source Account
-	NOT_ALLOWED_TO_UPDATE_REQUEST = -6,
-	//: Not allowed to change `destinationAccount`, `accountRoleToSet`
-	//: or set `allTasks` on update change role request
-	INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
-	//: `creatorDetails` must be valid json structure
-	INVALID_CREATOR_DETAILS = -8,
-	//: There is no value in key value by `change_role_tasks` key
-	//: configuration does not allow to change role from current to `accountRoleToSet`
-	CHANGE_ROLE_TASKS_NOT_FOUND = -9
+    //: There is no request with such `requestID`
+    REQUEST_DOES_NOT_EXIST = -4,
+    //: Only `destinationAccount` can update change role request
+    //: `destinationAccount` must be equal source Account
+    NOT_ALLOWED_TO_UPDATE_REQUEST = -6,
+    //: Not allowed to change `destinationAccount`, `accountRoleToSet`
+    //: or set `allTasks` on update change role request
+    INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
+    //: `creatorDetails` must be valid json structure
+    INVALID_CREATOR_DETAILS = -8,
+    //: There is no value in key value by `change_role_tasks` key
+    //: configuration does not allow to change role from current to `accountRoleToSet`
+    CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };
 
 //: Result of operation applying
@@ -65,17 +65,17 @@ union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode co
 case SUCCESS:
     struct {
         //: ID of created or updated request
-		uint64 requestID;
-		//: True if request auto approved (pending tasks == 0),
-		//: `destinationAccount` must have new account role
-		bool fulfilled;
-		// Reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        uint64 requestID;
+        //: True if request auto approved (pending tasks == 0),
+        //: `destinationAccount` must have new account role
+        bool fulfilled;
+        // Reserved for future use
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
 	} success;
 default:
     void;

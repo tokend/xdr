@@ -51,12 +51,12 @@ enum CreateAccountResultCode
     //: Sum of weight with different identity must be more or equal threshold
     INVALID_WEIGHT = -3,
     //: There is no role with such id
-	NO_SUCH_ROLE = -4,
-	//: Failed to create signer for account cause of invalid `signersData`.
-	//: See `createSignerErrorCode`
-	INVALID_SIGNER_DATA = -5,
-	//: Not allowed to create account without signers
-	NO_SIGNER_DATA = -6 // empty signer data array not allowed
+    NO_SUCH_ROLE = -4,
+    //: Failed to create signer for account cause of invalid `signersData`.
+    //: See `createSignerErrorCode`
+    INVALID_SIGNER_DATA = -5,
+    //: Not allowed to create account without signers
+    NO_SIGNER_DATA = -6 // empty signer data array not allowed
 };
 
 //: CreateAccountSuccess is used to pass useful params if operation is success
@@ -65,7 +65,7 @@ struct CreateAccountSuccess
     //: Unique integer identifier of new account
     uint64 sequentialID;
 
-	//: reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

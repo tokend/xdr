@@ -82,11 +82,11 @@ enum ManageSignerResultCode
     //: Signer with such public key already attached to source account
     ALREADY_EXISTS = -2, // signer already exist
     //: There is no role with such id
-	NO_SUCH_ROLE = -3,
-	//: There is not necessary to set weight more than 1000
-	INVALID_WEIGHT = -4, // more than 1000
-	//: There is no signer with such public key for source account
-	NOT_FOUND = -5 // there is no signer with such public key
+    NO_SUCH_ROLE = -3,
+    //: There is not necessary to set weight more than 1000
+    INVALID_WEIGHT = -4, // more than 1000
+    //: There is no signer with such public key for source account
+    NOT_FOUND = -5 // there is no signer with such public key
 };
 
 //: Result of operation applying
