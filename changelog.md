@@ -11,6 +11,7 @@
 * Comments for docs to ManageSignerRoleOp
 * Comments for docs to CreateAccountOp
 * Comments for docs to ManageAccountRoleOp
+* Comments for docs to ManageAccountRuleOp
 
 ## Unreleased
 
