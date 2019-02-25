@@ -21,7 +21,7 @@ enum ManageSignerRoleAction
 //: CreateSignerRoleData is used to pass necessary params to create new signer role
 struct CreateSignerRoleData
 {
-    //: Array of ids of existing and not default rules
+    //: Array of ids of existing, non-repeating and not default rules
     uint64 ruleIDs<>;
     //: True means that no one can manage such rule after creating
     bool isReadOnly;
@@ -94,7 +94,7 @@ struct ManageSignerRoleOp
 
 /******* ManageSignerRoleOp Result ********/
 
-//: Result codes of ManageSignerRoleOp
+//: Result codes of ManageSignerRoleResultCode
 enum ManageSignerRoleResultCode
 {
     //: Means that specified action in `data` of ManageSignerRoleOp was successfully executed
