@@ -224,10 +224,10 @@ struct AccountRuleRequirement
     AccountRuleResource resource;
 	//: defines action which was denied
     AccountRuleAction action;
-	//: defines account for which requirementes were not met
+	//: defines account for which requirements were not met
 	AccountID account;
 
-	//: reserved for future extention
+	//: reserved for future extension
     EmptyExt ext;
 };
 

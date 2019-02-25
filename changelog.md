@@ -7,6 +7,7 @@
 * Comments for docs to CreateChangeRoleRequestOp
 * Comments for docs to ManageSignerRuleOp
 * Comments for docs to SignerRuleResource
+* Comments for docs to ManageSignerOp
 
 ## Unreleased
 
