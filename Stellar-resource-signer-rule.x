@@ -11,7 +11,7 @@ case REVIEWABLE_REQUEST:
     struct
     {
         //: Describes properties of some reviewable request types that
-        //: can be used to restrict the use of reviewable requests
+        //: can be used to restrict the using of reviewable requests
         ReviewableRequestResource details;
 
         //: Bit mask of tasks which is allowed to add to reviewable request pending tasks
@@ -97,13 +97,17 @@ case SIGNER:
         EmptyExt ext;
     } signer;
 case KEY_VALUE:
+    //: Describes properties which are equal to managed key value entry fields
     struct
     {
+        //: prefix of key
         longstring keyPrefix;
 
+        //: reserved for future extension
         EmptyExt ext;
     } keyValue;
 default:
+    //: reserved for future extension
     EmptyExt ext;
 };
 

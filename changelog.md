@@ -12,8 +12,9 @@
 * Comments for docs to CreateAccountOp
 * Comments for docs to ManageAccountRoleOp
 * Comments for docs to ManageAccountRuleOp
+* Comments for docs to AccountRuleResource
 
-## Unreleased
+## 3.0.1-x.1
 
 ### Added
 
@@ -26,11 +27,6 @@
 ### Changed
 
 * Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
-
-## Unreleased
-
-### Changed
-
 * Use forbids name of filed in rules
 * Use consistently names of role and rule ids
 * Error codes for create change role request op
