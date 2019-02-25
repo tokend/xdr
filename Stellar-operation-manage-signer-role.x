@@ -117,8 +117,10 @@ enum ManageSignerRoleResultCode
     TOO_MANY_RULE_IDS = -7
 };
 
+//: Result of operation applying
 union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
 {
+    //: Is used to pass useful params if operation is success
     case SUCCESS:
         struct
         {
