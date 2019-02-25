@@ -46,7 +46,7 @@ enum CreateAccountResultCode
     // codes considered as "failure" for the operation
     //: Source cannot be destination
     INVALID_DESTINATION = -1,
-    //: There is already exist account with such account ID
+    //: Account with such ID already exists
     ALREADY_EXISTS = -2, // account already exist
     //: Sum of weight with different identity must be more or equal threshold
     INVALID_WEIGHT = -3,
