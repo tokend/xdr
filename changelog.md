@@ -8,6 +8,7 @@
 * Comments for docs to ManageSignerRuleOp
 * Comments for docs to SignerRuleResource
 * Comments for docs to ManageSignerOp
+* Comments for docs to ManageSignerRoleOp
 
 ## Unreleased
 

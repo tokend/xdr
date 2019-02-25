@@ -10,6 +10,7 @@ namespace stellar
  Result: ManageSignerRuleResult
 */
 
+//: Actions which can be applied to signer role
 enum ManageSignerRoleAction
 {
     CREATE = 0,
@@ -17,13 +18,17 @@ enum ManageSignerRoleAction
     REMOVE = 2
 };
 
+//: CreateSignerRoleData is used to pass necessary params to create new signer role
 struct CreateSignerRoleData
 {
+    //: Array of ids of existing and not default rules
     uint64 ruleIDs<>;
+    //: True means that no one can manage such rule after creating
     bool isReadOnly;
+    //: Arbitrary stringified json object that will be attached to role
     longstring details;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -31,14 +36,18 @@ struct CreateSignerRoleData
     } ext;
 };
 
+//: UpdateSignerRoleData is used to pass necessary params to update existing signer role
 struct UpdateSignerRoleData
 {
+    //: Identifier of existing signer role
     uint64 roleID;
+    //: Array of ids of existing and not default rules
     uint64 ruleIDs<>;
 
+    //: Arbitrary stringified json object that will be attached to role
     longstring details;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -46,11 +55,13 @@ struct UpdateSignerRoleData
     } ext;
 };
 
+//: RemoveSignerRoleData is used to pass necessary params to remove existing signer role
 struct RemoveSignerRoleData
 {
+    //: Identifier of existing signer role
     uint64 roleID;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -58,8 +69,10 @@ struct RemoveSignerRoleData
     } ext;
 };
 
+//: ManageSignerRoleOp is used to create, update or remove signer role
 struct ManageSignerRoleOp
 {
+    //: data is used to pass one of `ManageSignerRoleAction` with needed params
     union switch (ManageSignerRoleAction action)
     {
     case CREATE:
@@ -70,7 +83,7 @@ struct ManageSignerRoleOp
         RemoveSignerRoleData removeData;
     } data;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -81,28 +94,38 @@ struct ManageSignerRoleOp
 
 /******* ManageSignerRoleOp Result ********/
 
+//: Result codes of ManageSignerRoleOp
 enum ManageSignerRoleResultCode
 {
-    // codes considered as "success" for the operation
+    //: Means that specified action in `data` of ManageSignerRoleOp was successfully executed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
+    //: There is no signer role with such id or source cannot manage the role
     NOT_FOUND = -1, // does not exists or owner mismatched
+    //: Not allowed to remove role if it is used at least in one singer
     ROLE_IS_USED = -2,
+    //: Passed details has invalid json structure
     INVALID_DETAILS = -3,
+    //: There is no rule with id passed through `ruleIDs`
     NO_SUCH_RULE = -4,
+    //: Not allowed to duplicate ids in `ruleIDs` array
     RULE_ID_DUPLICATION = -5,
+    //: Not allowed to pass ids of default rules on `ruleIDs` array
     DEFAULT_RULE_ID_DUPLICATION = -6,
+    //: Not allowed to pass ruleIDs more than maxSignerRuleCount (by default 128)
     TOO_MANY_RULE_IDS = -7
 };
 
 union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
 {
     case SUCCESS:
-        struct {
+        struct
+        {
+            //: id of role which was managed
             uint64 roleID;
 
-            // reserved for future use
+            //: reserved for future use
             union switch (LedgerVersion v)
             {
             case EMPTY_VERSION:
@@ -113,8 +136,10 @@ union ManageSignerRoleResult switch (ManageSignerRoleResultCode code)
     case RULE_ID_DUPLICATION:
     case DEFAULT_RULE_ID_DUPLICATION:
     case NO_SUCH_RULE:
+        //: ID of rule which was duplicated or is default or does not exist
         uint64 ruleID;
     case TOO_MANY_RULE_IDS:
+        //: max count of rule ids that can be passed in `ruleIDs` array
         uint64 maxRuleIDsCount;
     default:
         void;

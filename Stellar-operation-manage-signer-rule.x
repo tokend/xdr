@@ -94,7 +94,7 @@ struct ManageSignerRuleOp
         RemoveSignerRuleData removeData;
     } data;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -125,10 +125,10 @@ union ManageSignerRuleResult switch (ManageSignerRuleResultCode code)
 {
     case SUCCESS:
         struct {
-            //: id rule which was managed
+            //: id of rule which was managed
             uint64 ruleID;
 
-            // reserved for future use
+            //: reserved for future use
             union switch (LedgerVersion v)
             {
             case EMPTY_VERSION:
