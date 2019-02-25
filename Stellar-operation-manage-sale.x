@@ -63,8 +63,7 @@ enum ManageSaleResultCode
     UPDATE_DETAILS_REQUEST_ALREADY_EXISTS = -3,
     UPDATE_DETAILS_REQUEST_NOT_FOUND = -4,
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -5, // not allowed to set allTasks on request update
-    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6, // it's not allowed to set state for non master account
-    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -7
+    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6 // it's not allowed to set state for non master account
 };
 
 struct ManageSaleResultSuccess

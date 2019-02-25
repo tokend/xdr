@@ -37,6 +37,8 @@
 %#include "xdr/Stellar-operation-manage-signer-role.h"
 %#include "xdr/Stellar-operation-manage-signer-rule.h"
 %#include "xdr/Stellar-operation-manage-signer.h"
+%#include "xdr/Stellar-operation-license.h"
+%#include "xdr/Stellar-operation-stamp.h"
 
 namespace stellar
 {
@@ -120,6 +122,10 @@ struct Operation
         ManageSignerRoleOp manageSignerRoleOp;
     case MANAGE_SIGNER_RULE:
         ManageSignerRuleOp manageSignerRuleOp;
+    case STAMP:
+        StampOp stampOp;
+    case LICENSE:
+        LicenseOp licenseOp;
     }
     body;
 };
@@ -207,7 +213,22 @@ enum OperationResultCode
     opBAD_AUTH_EXTRA = -8,
     opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
     opNO_ENTRY = -10,
-    opNOT_SUPPORTED = -11
+    opNOT_SUPPORTED = -11,
+    opLICENSE_VIOLATION = -12// number of admins is greater than allowed
+};
+
+//: Defines requirements for tx or operation which were not fulfilled 
+struct AccountRuleRequirement
+{
+	//: defines resources to which access was denied
+    AccountRuleResource resource;
+	//: defines action which was denied
+    AccountRuleAction action;
+	//: defines account for which requirementes were not met
+	AccountID account;
+
+	//: reserved for future extention
+    EmptyExt ext;
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -283,10 +304,16 @@ case opINNER:
         ManageSignerRoleResult manageSignerRoleResult;
     case MANAGE_SIGNER_RULE:
         ManageSignerRuleResult manageSignerRuleResult;
+    case STAMP:
+        StampResult stampResult;
+    case LICENSE:
+        LicenseResult licenseResult;
     }
     tr;
 case opNO_ENTRY:
     LedgerEntryType entryType;
+case opNO_ROLE_PERMISSION:
+    AccountRuleRequirement requirement;
 default:
     void;
 };
@@ -337,6 +364,8 @@ struct TransactionResult
     case txSUCCESS:
     case txFAILED:
         OperationResult results<>;
+    case txNO_ROLE_PERMISSION:
+        AccountRuleRequirement requirement;
     default:
         void;
     }

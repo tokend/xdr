@@ -46,8 +46,6 @@ enum CreateChangeRoleRequestResultCode
     REQUEST_ALREADY_EXISTS = -2,
 	//: There is no request with such `requestID`
 	REQUEST_DOES_NOT_EXIST = -4,
-	//: Not allowed to update request if reject reason is empty
-	PENDING_REQUEST_UPDATE_NOT_ALLOWED = -5,
 	//: Only `destinationAccount` can update change role request
 	//: `destinationAccount` must be equal source Account
 	NOT_ALLOWED_TO_UPDATE_REQUEST = -6,

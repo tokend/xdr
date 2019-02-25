@@ -359,6 +359,26 @@ case SIGNER_RULE:
         }
         ext;
     } signerRule;
+case STAMP:
+    struct {
+        Hash ledgerHash;
+        Hash licenseHash;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } stamp;
+case LICENSE:
+    struct {
+        Hash licenseHash;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        } ext;
+    } license;
 };
 
 enum BucketEntryType

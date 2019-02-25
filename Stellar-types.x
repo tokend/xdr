@@ -71,7 +71,9 @@ enum LedgerEntryType
     ATOMIC_SWAP_BID = 28,
     TRANSACTION = 29, // is used for account rule resource
     SIGNER_RULE = 30,
-    SIGNER_ROLE = 31
+    SIGNER_ROLE = 31,
+    STAMP = 32,
+    LICENSE = 33
 };
 
 // variable size as the size depends on the signature scheme used
@@ -162,7 +164,9 @@ enum OperationType
     CREATE_ASWAP_REQUEST = 37,
     MANAGE_SIGNER = 38,
     MANAGE_SIGNER_ROLE = 39,
-    MANAGE_SIGNER_RULE = 40
+    MANAGE_SIGNER_RULE = 40,
+    STAMP = 41,
+    LICENSE = 42
 };
 
 struct DecoratedSignature

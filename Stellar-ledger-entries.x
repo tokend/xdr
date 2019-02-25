@@ -27,7 +27,8 @@
 %#include "xdr/Stellar-ledger-entries-account-rule.h"
 %#include "xdr/Stellar-ledger-entries-signer-role.h"
 %#include "xdr/Stellar-ledger-entries-signer-rule.h"
-
+%#include "xdr/Stellar-ledger-entries-license.h"
+%#include "xdr/Stellar-ledger-entries-stamp.h"
 
 namespace stellar
 {
@@ -99,7 +100,10 @@ struct LedgerEntry
         SignerRuleEntry signerRule;
     case SIGNER_ROLE:
         SignerRoleEntry signerRole;
-    }
+    case LICENSE:
+        LicenseEntry license;
+    case STAMP:
+        StampEntry stamp;}
     data;
 
     // reserved for future use
