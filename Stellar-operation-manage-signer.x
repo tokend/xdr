@@ -10,6 +10,7 @@ Result: ManageSignerResult
 
 */
 
+//: Actions which can be applied to signer
 enum ManageSignerAction
 {
     CREATE = 0,
@@ -17,12 +18,17 @@ enum ManageSignerAction
     REMOVE = 2
 };
 
+//: UpdateSignerData is used to pass necessary data to create or update signer
 struct UpdateSignerData
 {
+    //: Public key of signer
     PublicKey publicKey;
+    //: if of role that will be attached to signer
     uint64 roleID;
 
-    uint32 weight; // threshold for all SignerRules equals 1000
+    //: weight that signer will have, threshold for all SignerRequirements equals 1000
+    uint32 weight;
+    //:
     uint32 identity;
 
     longstring details;
@@ -30,6 +36,7 @@ struct UpdateSignerData
     EmptyExt ext;
 };
 
+//: RemoveSignerData is used to pass necessary data to remove signer
 struct RemoveSignerData
 {
     PublicKey publicKey;
