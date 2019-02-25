@@ -21,12 +21,12 @@ struct CreateAccountOp
     //: ID of account which contributed account creation
     AccountID* referrer;
     //: ID of role to be attached to account
-	uint64 roleID;
+    uint64 roleID;
 
     //: Array of data about signers to be created for `destination` account
-	UpdateSignerData signersData<>;
+    UpdateSignerData signersData<>;
 
-	//: reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
