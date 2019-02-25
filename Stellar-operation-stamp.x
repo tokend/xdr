@@ -10,9 +10,10 @@ Threshold: master weight
 Result: Hash
 
 */
-
+//: StampOp is used to save current ledger hash and current license hash
 struct StampOp
 {
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -25,17 +26,19 @@ struct StampOp
 
 enum StampResultCode
 {
-    // codes considered as "success" for the operation
+    //: Stamp was successful 
     SUCCESS = 0
 
-    // codes considered as "failure" for the operation
 };
-
+//: StampSuccess is used to pass saved ledger hash and license hash
 struct StampSuccess {
-
+    //: ledger hash saved into db
     Hash ledgerHash;
+
+    //: current license hash
     Hash licenseHash;
-    // reserved for future use
+    
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -44,6 +47,7 @@ struct StampSuccess {
     ext;
 };
 
+//: StampResult is a result of applying StampOp
 union StampResult switch (StampResultCode code)
 {
 case SUCCESS:
