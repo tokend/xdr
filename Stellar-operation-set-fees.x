@@ -19,7 +19,7 @@ namespace stellar
         FeeEntry* fee;
         //: `isDelete` defines whether we should setup fee or remove it
         bool isDelete;
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -80,7 +80,7 @@ namespace stellar
     {
         case SUCCESS:
             struct {
-                // reserved for future use
+                //: reserved for future use
                 union switch (LedgerVersion v)
                 {
                 case EMPTY_VERSION:
