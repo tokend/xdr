@@ -68,7 +68,7 @@ case SUCCESS:
     struct {
         //: ID of the created manage limits request
         uint64 manageLimitsRequestID;
-        //:
+        //: Indicates that the request was auto approved
 		bool fulfilled;
 		// reserved for future use
 		union switch (LedgerVersion v)
