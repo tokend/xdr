@@ -13,6 +13,7 @@
 * Comments for docs to ManageAccountRoleOp
 * Comments for docs to ManageAccountRuleOp
 * Comments for docs to AccountRuleResource
+* Comments for docs to ManageAssetOp
 
 ## 3.0.1-x.1
 
