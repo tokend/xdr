@@ -109,14 +109,14 @@ case SUCCESS:
             void;
         } details;
 
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} success;
+        // reserved for future use
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+} success;
 default:
     void;
 };
