@@ -49,7 +49,7 @@ enum CreateIssuanceRequestResultCode
     REFERENCE_DUPLICATION = -3,
     //: Target balance not found or asset of the target balance and asset in the request mismatched
     NO_COUNTERPARTY = -4,
-    //: Source account not allowed to perform issuance
+    //: Source of the operation is not an owner of the asset 
     NOT_AUTHORIZED = -5,
     //: Issued amount plus amount to issue will exceed max issuance amount
     EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
@@ -63,9 +63,9 @@ enum CreateIssuanceRequestResultCode
     REQUIRES_KYC = -10,
     //: Deprecated
     REQUIRES_VERIFICATION = -11, //asset requires receiver to be verified
-    //: Issuance tasks were not provided on request creation and corresponding KeyValue is not set
+    //: Issuance tasks are not set in the system, i.e. it's not allowed to perform issuance
     ISSUANCE_TASKS_NOT_FOUND = -12,
-    //: Not allowed to set tasks < 1024
+    //: Not allowed to set system tasks: 1, 2, 4
     SYSTEM_TASKS_NOT_ALLOWED = -13,
     //: Amount precision and asset precision are mismatched
     INVALID_AMOUNT_PRECISION = -14

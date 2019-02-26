@@ -286,7 +286,7 @@ enum ReviewRequestResultCode
     HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
     //: Trying to create sale with preissued amount less than hard cap
     INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
-    //: Trying to create sale for base asset that can not be found
+    //: Trying to create sale for base asset that cannot be found
     BASE_ASSET_NOT_FOUND = -530,
     //: Trying to create sale with one of the quote assets not existing
     QUOTE_ASSET_NOT_FOUND = -550,

@@ -13,7 +13,7 @@ namespace stellar
 
     Result: CreateWithdrawalRequestResult
 */
-//: CreateWitthdrawalRequest operation creates withdrawal request
+//: CreateWithdrawalRequest operation creates withdrawal request
 struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
@@ -45,11 +45,11 @@ enum CreateWithdrawalRequestResultCode
     INVALID_CREATOR_DETAILS = -2,
     //: Source balance to withdraw from not found 
     BALANCE_NOT_FOUND = -3, // balance not found
-    //: Asset can not be withdrawn
+    //: Asset cannot be withdrawn, as AssetPolicy::WITHDRAWABLE is not set
     ASSET_IS_NOT_WITHDRAWABLE = -4,
     //: Deprecated
     CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed
-    //: Expected fee and calculated fee are mismatched
+    //: Fee provided in the operation and fee calculated on operation application are mismatched
     FEE_MISMATCHED = -6,
     //: Deprecated
     CONVERSION_OVERFLOW = -7,
@@ -67,9 +67,9 @@ enum CreateWithdrawalRequestResultCode
     LIMITS_EXCEEDED = -13,
     //: Deprecated
     INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
-    //: Amount to withdraw does not exceed lower bound set in the system
+    //: Amount withdrawn is smaller than minimal withdrawable amount set in the system
     LOWER_BOUND_NOT_EXCEEDED = -15,
-    //: Default withdrawal tasks are not set in the system 
+    //: Withdrawal tasks are not set in the system, i.e. it's not allowed to perform withdraw
     WITHDRAWAL_TASKS_NOT_FOUND = -16,
     //: Not allowed to set withdrawal tasks on request creation
     NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17,

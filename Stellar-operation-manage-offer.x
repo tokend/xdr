@@ -14,7 +14,7 @@ Threshold: med
 Result: ManageOfferResult
 
 */
-//: ManageOfferOp is used to create, update or delete offer
+//: ManageOfferOp is used to create or delete offer
 struct ManageOfferOp
 {
     //: Balance for base asset of offer maker
