@@ -103,7 +103,8 @@ struct LedgerEntry
     case LICENSE:
         LicenseEntry license;
     case STAMP:
-        StampEntry stamp;}
+        StampEntry stamp;
+    }
     data;
 
     // reserved for future use
