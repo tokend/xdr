@@ -34,7 +34,7 @@ namespace stellar
         ext;
     };
 
-    //: `ManageKeyValueSuccess` represents data returned of successful manage key-value operation
+    //: `ManageKeyValueSuccess` represents data returned after successful manage key-value operation
     struct ManageKeyValueSuccess
     {
         //: reserved for future use
