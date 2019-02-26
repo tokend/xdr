@@ -14,6 +14,7 @@
 * Comments for docs to ManageAccountRuleOp
 * Comments for docs to AccountRuleResource
 * Comments for docs to ManageAssetOp
+* Comments for docs to CreatePreIssuanceRequestOp and preIssuanceRequest
 
 ## 3.0.1-x.1
 
