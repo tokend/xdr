@@ -214,7 +214,9 @@ enum OperationResultCode
     opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
     opNO_ENTRY = -10,
     opNOT_SUPPORTED = -11,
-    opLICENSE_VIOLATION = -12// number of admins is greater than allowed
+    opLICENSE_VIOLATION = -12, // number of admins is greater than allowed
+    //: operation was skipped cause of failure validation of previous operation
+    opSKIPPED = -13
 };
 
 //: Defines requirements for tx or operation which were not fulfilled 
