@@ -13,6 +13,7 @@ enum StatsOpType
     PAYOUT = 5
 };
 
+// `LimitsV2Entry` represents all the details of limits attached to the particular account
 struct LimitsV2Entry
 {
     //: ID of the limits entry
