@@ -82,12 +82,12 @@ enum PaymentResultCode
     //: After the payment a destination balance would go above the limit
     LINE_FULL = -3,
     //: There is no such destination balance
-	DESTINATION_BALANCE_NOT_FOUND = -4,
-	//: Sender balance asset and receiver balance asset are not equal
+    DESTINATION_BALANCE_NOT_FOUND = -4,
+    //: Sender balance asset and receiver balance asset are not equal
     BALANCE_ASSETS_MISMATCHED = -5,
     //: There is no such source balance
-	SRC_BALANCE_NOT_FOUND = -6,
-	//: Pair `reference-sender account` of the payment is not unique
+    SRC_BALANCE_NOT_FOUND = -6,
+    //: Pair `reference-sender account` of the payment is not unique
     REFERENCE_DUPLICATION = -7,
     //: Stats entry went above the account limits
     STATS_OVERFLOW = -8,
