@@ -4,6 +4,7 @@
 
 ### Added
 
+* Operation error code for skipped ops
 * Error code to manage key value op
 * Specify key value resource for rule
 * Add error code to set fee op
