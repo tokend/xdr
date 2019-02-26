@@ -3,6 +3,7 @@
 namespace stellar
 {
 
+// `StatsOpType` represents the type of the operation used for statistics purposes
 enum StatsOpType
 {
     PAYMENT_OUT = 1,
@@ -20,7 +21,7 @@ struct LimitsV2Entry
     uint64*     accountRole;
     //: (optional) ID of the account limits would be applied to
     AccountID*  accountID;
-    //: ?
+    //: Operation type used in statistics
     StatsOpType statsOpType;
     //: `AssetCode` of the limits entry
     AssetCode   assetCode;
