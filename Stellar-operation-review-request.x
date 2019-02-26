@@ -8,11 +8,11 @@ namespace stellar
 //: Actions that can be performed on request that is being reviewed
 enum ReviewRequestOpAction {
   //: Approve request
-	APPROVE = 1,
+  APPROVE = 1,
   //: Reject request
-	REJECT = 2,
+  REJECT = 2,
   //: Permanently reject request
-	PERMANENT_REJECT = 3
+  PERMANENT_REJECT = 3
 };
 
 /* ReviewRequestOp
@@ -40,8 +40,8 @@ struct LimitsUpdateDetails {
 //: Review details of Withdraw Request
 struct WithdrawalDetails {
   //: External details updated on Withdraw review
-	string externalDetails<>;
-	//: reserved for future use
+  string externalDetails<>;
+  //: reserved for future use
   union switch (LedgerVersion v)
   {
   case EMPTY_VERSION:
@@ -52,9 +52,9 @@ struct WithdrawalDetails {
 
 //: Details of AML Alert 
 struct AMLAlertDetails {
-	//: Comment on reason of AML Alert
+  //: Comment on reason of AML Alert
   string comment<>;
-	//: reserved for future use
+  //: reserved for future use
   union switch (LedgerVersion v)
   {
   case EMPTY_VERSION:
@@ -178,7 +178,7 @@ struct ExtendedResult {
     SaleExtended saleExtended;
   case NONE:
     void;
-	case CREATE_ATOMIC_SWAP_BID:
+  case CREATE_ATOMIC_SWAP_BID:
     ASwapBidExtended aSwapBidExtended;
   case CREATE_ATOMIC_SWAP:
     ASwapExtended aSwapExtended;
@@ -197,13 +197,13 @@ struct ExtendedResult {
 struct ReviewRequestOp
 {
   //: ID of the request being reviewed
-	uint64 requestID;
+  uint64 requestID;
   //: Hash of the request being reviewed
-	Hash requestHash;
-	//: requestDetails is used to pass request type along with details specific to it.
+  Hash requestHash;
+  //: requestDetails is used to pass request type along with details specific to it.
   union switch(ReviewableRequestType requestType) {
-	case CREATE_WITHDRAW:
-		WithdrawalDetails withdrawal;
+  case CREATE_WITHDRAW:
+    WithdrawalDetails withdrawal;
   case UPDATE_LIMITS:
     LimitsUpdateDetails limitsUpdate;
   case CREATE_AML_ALERT:
@@ -212,14 +212,14 @@ struct ReviewRequestOp
     BillPayDetails billPay;
   case MANAGE_CONTRACT:
     ContractDetails contract;
-	default:
-		void;
-	} requestDetails;
+  default:
+    void;
+  } requestDetails;
   //: Review action defines action performed on pending ReviewableRequest
-	ReviewRequestOpAction action;
+  ReviewRequestOpAction action;
   //: Contains reject reason
-	longstring reason;
-  //: Details of the ReviewRequest operation	
+  longstring reason;
+  //: Details of the ReviewRequest operation  
   ReviewDetails reviewDetails;
 
   //: Reserved for future use
@@ -243,60 +243,60 @@ enum ReviewRequestResultCode
   //: Reject reason must be empty on approve and must not be empty on reject/permanent reject
   INVALID_REASON = -1,
   //: Unknown action to perform on ReviewableRequest
-	INVALID_ACTION = -2,
+  INVALID_ACTION = -2,
   //: Actual hash of the request and provided hash are mismatched
-	HASH_MISMATCHED = -3,
+  HASH_MISMATCHED = -3,
   //: ReviewableRequest not found
-	NOT_FOUND = -4,
+  NOT_FOUND = -4,
   //: Actual type of the reviewable request and provided type are mismatched
-	TYPE_MISMATCHED = -5,
+  TYPE_MISMATCHED = -5,
   //: Reject not allowed. Only permanent reject should be used
-	REJECT_NOT_ALLOWED = -6,
+  REJECT_NOT_ALLOWED = -6,
   //: External details must be a valid JSON
-	INVALID_EXTERNAL_DETAILS = -7,
+  INVALID_EXTERNAL_DETAILS = -7,
   //: Source of ReviewableRequest is blocked
-	REQUESTOR_IS_BLOCKED = -8,
+  REQUESTOR_IS_BLOCKED = -8,
   //: Permanent reject not allowed. Only reject should be used
-	PERMANENT_REJECT_NOT_ALLOWED = -9,
+  PERMANENT_REJECT_NOT_ALLOWED = -9,
   //: Trying to remove tasks which are not set
-	REMOVING_NOT_SET_TASKS = -100,// cannot remove tasks which are not set
+  REMOVING_NOT_SET_TASKS = -100,// cannot remove tasks which are not set
 
-	//: Asset requests
-	//: Trying to create asset which already exists
+  //: Asset requests
+  //: Trying to create asset which already exists
   ASSET_ALREADY_EXISTS = -200,
   //: trying to update asset which does not exists
-	ASSET_DOES_NOT_EXISTS = -210,
+  ASSET_DOES_NOT_EXISTS = -210,
 
-	//: Issuance requests
-	//: After applying issuance request issued amount will exceed max issuance amount
+  //: Issuance requests
+  //: After applying issuance request issued amount will exceed max issuance amount
   MAX_ISSUANCE_AMOUNT_EXCEEDED = -400,
   //: Trying to issue more than available for issuance
-	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
+  INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
   //: Funding account will exceed UINT64_MAX
-	FULL_LINE = -420,
+  FULL_LINE = -420,
   //: Not allowed to set system tasks
-	SYSTEM_TASKS_NOT_ALLOWED = -430,
+  SYSTEM_TASKS_NOT_ALLOWED = -430,
   //: Incorrect amount precision
   INCORRECT_PRECISION = -440,
 
-	//: Sale creation requests
-	//: Trying to create sale for base asset which does not exist
+  //: Sale creation requests
+  //: Trying to create sale for base asset which does not exist
   BASE_ASSET_DOES_NOT_EXISTS = -500,
   //: Trying to create sale with hard cap that will exceed max issuance amount
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
+  HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
   //: Trying to create sale with preissued amount less than hard cap
-	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
+  INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
   //: Trying to create sale for base asset that can not be found
-	BASE_ASSET_NOT_FOUND = -530,
+  BASE_ASSET_NOT_FOUND = -530,
   //: Trying to create sale with one of the quote assets not existing
-	QUOTE_ASSET_NOT_FOUND = -550,
+  QUOTE_ASSET_NOT_FOUND = -550,
 
-	//: Change role 
-	//: Trying to remove zero tasks
+  //: Change role 
+  //: Trying to remove zero tasks
   NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
 
-	//: Update sale details
-	//: Trying to update details of non existing sale
+  //: Update sale details
+  //: Trying to update details of non existing sale
   SALE_NOT_FOUND = -700,
 
   //: Deprecated: Invoice requests
@@ -338,19 +338,19 @@ enum ReviewRequestResultCode
   //: Deprecated: Contract requests
   CONTRACT_DETAILS_TOO_LONG = -1400, // customer details reached length limit
 
-	// Atomic swap
-	BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
-	QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
-	ASSETS_ARE_EQUAL = -1502,
-	ASWAP_BID_UNDERFUNDED = -1503,
-	ASWAP_PURCHASER_FULL_LINE = -1504
+  // Atomic swap
+  BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
+  QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
+  ASSETS_ARE_EQUAL = -1502,
+  ASWAP_BID_UNDERFUNDED = -1503,
+  ASWAP_PURCHASER_FULL_LINE = -1504
 
 };
 //: Result of applying review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	ExtendedResult success;
+  ExtendedResult success;
 default:
   void;
 };

@@ -21,10 +21,10 @@ struct ManageOfferOp
   BalanceID baseBalance; 
   
   //: Balance for quote asset of offer maker
-	BalanceID quoteBalance; 
+  BalanceID quoteBalance; 
   
   //: Direction of the offer
-	bool isBuy;
+  bool isBuy;
   
   //: Amount in base asset to buy or sell. If set to 0 - deletes the offer
   int64 amount; 
@@ -39,8 +39,8 @@ struct ManageOfferOp
   uint64 offerID;
   
   //: ID of the orderBook to find match or to put offer in.
-	uint64 orderBookID;
-	 
+  uint64 orderBookID;
+   
   //: reserved for future use
   union switch (LedgerVersion v)
   {
@@ -195,29 +195,29 @@ union ManageOfferResult switch (ManageOfferResultCode code)
 case SUCCESS:
   ManageOfferSuccessResult success;
 case PHYSICAL_PRICE_RESTRICTION:
-	struct {
+  struct {
     //: Physical price of the base asset
-		int64 physicalPrice;
-		//: reserved for future use
-    union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-		  void;
-		}
-		ext;
-	} physicalPriceRestriction;
-case CURRENT_PRICE_RESTRICTION:
-	struct {
-    //: Current price of the base asset
-		int64 currentPrice;
+    int64 physicalPrice;
     //: reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-		  void;
-		}
-		ext;
-	} currentPriceRestriction;
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+      void;
+    }
+    ext;
+  } physicalPriceRestriction;
+case CURRENT_PRICE_RESTRICTION:
+  struct {
+    //: Current price of the base asset
+    int64 currentPrice;
+    //: reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+      void;
+    }
+    ext;
+  } currentPriceRestriction;
 default:
   void;
 };
