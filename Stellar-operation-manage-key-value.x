@@ -25,7 +25,7 @@ namespace stellar
         }
         action;
 
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
             case EMPTY_VERSION:
@@ -37,7 +37,7 @@ namespace stellar
     //: `ManageKeyValueSuccess` represents data returned of successful manage key-value operation
     struct ManageKeyValueSuccess
     {
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
             case EMPTY_VERSION:

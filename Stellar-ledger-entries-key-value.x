@@ -32,7 +32,7 @@ namespace stellar
         //: Value that corresponds to the particular key. Depends on `KeyValueEntryType`
         KeyValueEntryValue value;
 
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
             case EMPTY_VERSION:
