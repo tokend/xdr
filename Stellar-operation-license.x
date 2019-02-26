@@ -59,6 +59,7 @@ struct LicenseSuccess {
     }
     ext;
 };
+
 //: Result of the applying LicenseOp
 union LicenseResult switch (LicenseResultCode code)
 {
