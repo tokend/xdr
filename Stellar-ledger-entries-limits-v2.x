@@ -22,11 +22,13 @@ struct LimitsV2Entry
     uint64*     accountRole;
     //: (optional) ID of the account limits would be applied to
     AccountID*  accountID;
-    //: Operation type used in statistics
+    //: Statistics operation type. See `enum StatsOpType`
     StatsOpType statsOpType;
     //: `AssetCode` of the limits entry
     AssetCode   assetCode;
-    //: `isConvertNeeded` defines whether the asset conversion is needed for the limits entry
+    //: `isConvertNeeded` defines whether the asset conversion is needed for the limits entry.
+    //: If this field is `true` - limits are applied to all balances of the account (to every asset account owns).
+    //: Otherwise limits from particular limits entry are applied only to the balances with provided by entry `AssetCode`.
     bool        isConvertNeeded;
 
     //: daily out limit
@@ -38,7 +40,7 @@ struct LimitsV2Entry
     //: annual out limit
     uint64 annualOut;
 
-     // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

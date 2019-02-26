@@ -15,18 +15,19 @@ namespace stellar
     Result: CreateManageLimitsRequestResult
 */
 
-//: `CreateManageLimitsRequestOp` represents the operation of limits updating reviewable request
+//: `CreateManageLimitsRequestOp` represents the operation which creates `LimitsUpdateRequest`
 struct CreateManageLimitsRequestOp
 {
     //: Manage limits request itself
     LimitsUpdateRequest manageLimitsRequest;
 
-    //: Bitmask of tasks which must be done for request approval
+    //: Bitmask of tasks which must be done for request fulfilling
     uint32* allTasks;
     //: ID of the LimitsUpdateRequest
+    //: If `requestID == 0` - operation creates new limits entry, otherwise - updates existing
     uint64 requestID;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -67,7 +68,7 @@ case SUCCESS:
         uint64 manageLimitsRequestID;
         //: Indicates that the request was auto approved
         bool fulfilled;
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:

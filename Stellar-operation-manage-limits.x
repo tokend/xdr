@@ -33,7 +33,7 @@ struct LimitsCreateDetails
     //: annual out limit
     uint64 annualOut;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -56,14 +56,15 @@ struct ManageLimitsOp
     union switch (ManageLimitsAction action)
     {
     case CREATE:
-        //: Details of the new limits entry which would be created and stored for a particular account
+        //: Details of the new limits entry which would be created and stored for a particular account or role
+        //: Also could be used for setting limits globally (for all members of the system)
         LimitsCreateDetails limitsCreateDetails;
     case REMOVE:
         //: ID of the limits entry to remove
         uint64 id;
     } details;
 
-     // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -82,13 +83,13 @@ enum ManageLimitsResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Invalid input
+    //: (reserved for future use) Invalid input
     MALFORMED = -1,
     //: Limits entry not found
     NOT_FOUND = -2,
-    //: Limits entry already exists
+    //: (reserved for future use) Limits entry already exists
     ALREADY_EXISTS = -3,
-    //: Limits cannot be created for account ID and account role simultaneously fixme role?
+    //: Limits cannot be created for account ID and account role simultaneously
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = -4, // FIXME ACC_ROLE ?
     //: Limits entry is invalid (e.g. weeklyOut is less than dailyOut)
     INVALID_LIMITS = -5
@@ -109,7 +110,7 @@ case SUCCESS:
             void;
         } details;
 
-        // reserved for future use
+        //: reserved for future use
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
