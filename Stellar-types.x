@@ -123,7 +123,7 @@ struct Fee {
 	//: Percent of transfer amount to be charged
 	uint64 percent;
 
-    // reserved for future use
+    //: reserved for future use
     union switch(LedgerVersion v)
     {
         case EMPTY_VERSION:

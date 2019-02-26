@@ -63,7 +63,7 @@ struct FeeEntry
     //: Hash of the fee entry
     Hash hash;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

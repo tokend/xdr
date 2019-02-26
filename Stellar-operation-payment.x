@@ -59,7 +59,7 @@ struct PaymentOp
     //: `reference` is string formed by payment sender. Pair `reference-sender account` is unique.
     longstring reference;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
