@@ -13,12 +13,14 @@ namespace stellar
 
     Result: CreateWithdrawalRequestResult
 */
-//: CreateWithdrawalRequest operation creates withdrawal request
+//: CreateWithdrawalRequest operation is used creates reviewable request,
+//: which after approval from admin will charge withdrawn amount from balance and send it to external wallet/account
 struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
     WithdrawalRequest request;
-    //: Tasks to set, optional, can be NULL
+    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used  
+    //: instead of key-value by key withdrawal_tasks:<asset_code> 
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)

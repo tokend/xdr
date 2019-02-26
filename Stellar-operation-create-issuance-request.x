@@ -8,20 +8,21 @@ namespace stellar
 
 /* CreateIssuanceRequestOp
 
-        Creates new issuance request
+  Creates new issuance request
 
-        Threshold: high
+  Threshold: high
 
-        Result: CreateIssuanceRequestResult
+  Result: CreateIssuanceRequestResult
 */
-//: CreateIssuanceRequestOp creates new issuance request
+//: CreateIssuanceRequestOp is used to create reviewable request which after approval will issue provided amount of asset to receiver balance
 struct CreateIssuanceRequestOp
 {
     //: Issuance request to create
     IssuanceRequest request;
     //: Reference of the request
     string64 reference;
-    //: Tasks to set on 
+    //: (optional) Bit mask whose flags must be cleared in order for IssuanceRequest to be approved, which will be used  
+    //: instead key-value by key issuance_tasks:<asset_code> 
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -37,7 +38,7 @@ struct CreateIssuanceRequestOp
 enum CreateIssuanceRequestResultCode
 {
     // codes considered as "success" for the operation
-    //: Operation application was successful
+    //: CreateIssuanceRequest operation application was successful
     SUCCESS = 0,
     
     // codes considered as "failure" for the operation

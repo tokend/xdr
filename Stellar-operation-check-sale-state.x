@@ -32,13 +32,13 @@ struct CheckSaleStateOp
 enum CheckSaleStateResultCode
 {
     // codes considered as "success" for the operation
-    //: Operation was successfully applied
+    //: CheckSaleState operation was successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     //: Sale with provided ID not found
     NOT_FOUND = -1,
-    //: Sale not was not processed
+    //: Sale was not processed, because it's still active
     NOT_READY = -2
 };
 //: Effect of performing check sale state operation
