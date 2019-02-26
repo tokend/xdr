@@ -48,9 +48,9 @@ struct FeeEntry
     //: Percent of transfer amount to be charged
 	int64 percentFee;
 
-    //: Account from which fee would be charged
+    //: (optional) Account from which fee would be charged
     AccountID* accountID;
-    //: Account role from which fee would be charged
+    //: (optional) Account role from which fee would be charged
     uint64*    accountRole;
     //: For example, different withdrawals — bars or coins
     int64 subtype;
