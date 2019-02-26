@@ -4,10 +4,11 @@
 
 namespace stellar
 {
-
+//: `LimitsUpdateRequest` represents the limits update request in valid JSON format. It is used in CreateManageLimitsRequestOp.
 struct LimitsUpdateRequest
 {
-    longstring creatorDetails; // details set by requester
+    //: Details set by requester
+    longstring creatorDetails;
 
     // reserved for future use
     union switch (LedgerVersion v)
