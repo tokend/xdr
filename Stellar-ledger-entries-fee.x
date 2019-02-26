@@ -11,7 +11,7 @@ Entry representing a fee state.
 enum FeeType
 {
     PAYMENT_FEE = 0,
-	OFFER_FEE = 1,
+    OFFER_FEE = 1,
     WITHDRAWAL_FEE = 2,
     ISSUANCE_FEE = 3,
     INVEST_FEE = 4, // fee to be taken while creating sale participation
@@ -24,8 +24,8 @@ enum FeeType
 
 enum EmissionFeeType
 {
-	PRIMARY_MARKET = 1,
-	SECONDARY_MARKET = 2
+    PRIMARY_MARKET = 1,
+    SECONDARY_MARKET = 2
 };
 
 // `PaymentFeeType` defines FeeTypes for sender and for receiver of the payment
@@ -46,7 +46,7 @@ struct FeeEntry
     //: Fee paid for the operation
     int64 fixedFee;
     //: Percent of transfer amount to be charged
-	int64 percentFee;
+    int64 percentFee;
 
     //: (optional) Account from which fee would be charged
     AccountID* accountID;
@@ -63,7 +63,7 @@ struct FeeEntry
     //: Hash of the fee entry
     Hash hash;
 
-	// reserved for future use
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
