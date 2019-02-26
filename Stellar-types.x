@@ -116,8 +116,11 @@ typedef string AssetCode<16>;
 typedef uint64 Salt;
 typedef opaque DataValue<64>;
 
+//: `Fee` represents the most basic Fee details such as fixed fee and charged percent of the transfer
 struct Fee {
+    //: Fee paid for the operation
 	uint64 fixed;
+	//: Percent of transfer amount to be charged
 	uint64 percent;
 
     // reserved for future use
