@@ -1,2 +1,3 @@
 [filter "spacify"]
     clean = expand --tabs=4 --initial
+    required
