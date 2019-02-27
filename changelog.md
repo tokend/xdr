@@ -4,6 +4,20 @@
 
 ### Added
 
+* Comments for docs to CreateChangeRoleRequestOp
+* Comments for docs to ManageSignerRuleOp
+* Comments for docs to SignerRuleResource
+* Comments for docs to ManageSignerOp
+* Comments for docs to ManageSignerRoleOp
+* Comments for docs to CreateAccountOp
+* Comments for docs to ManageAccountRoleOp
+* Comments for docs to ManageAccountRuleOp
+* Comments for docs to AccountRuleResource
+
+## 3.0.1-x.1
+
+### Added
+
 * Error code to manage key value op
 * Specify key value resource for rule
 * Add error code to set fee op
@@ -13,11 +27,6 @@
 ### Changed
 
 * Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
-
-## Unreleased
-
-### Changed
-
 * Use forbids name of filed in rules
 * Use consistently names of role and rule ids
 * Error codes for create change role request op
