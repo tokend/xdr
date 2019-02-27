@@ -47,7 +47,7 @@ enum CheckSaleStateEffect {
     CANCELED = 1,
     //: Sale either reached soft cap and ended or reached hard cap
     CLOSED = 2,
-    //: Sale was modified during operation
+    //: Crowdfunding sale was successfully closed and prices for both sale and offers were updated
     UPDATED = 3
 };
 //: Entry for additional information regarding sale cancellation
