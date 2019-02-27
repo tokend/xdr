@@ -65,7 +65,7 @@ enum ManageAssetPairResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Failed to find asset pair with such code
+    //: Failed to find asset pair with given exactly `base` and `quote` not found
     NOT_FOUND = -1,
     //: Asset pair with given `base` and `quote` asset codes is already present in the system
     ALREADY_EXISTS = -2,
@@ -81,12 +81,12 @@ enum ManageAssetPairResultCode
     ASSET_NOT_FOUND = -7
 };
 
-// `ManageAssetPairSuccess` represents the successful result of the `ManageAssetPairOp`
+//: `ManageAssetPairSuccess` represents the successful result of the `ManageAssetPairOp`
 struct ManageAssetPairSuccess
 {
     //: Price of the asset pair after the operation
     int64 currentPrice;
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -95,7 +95,7 @@ struct ManageAssetPairSuccess
     ext;
 };
 
-// `ManageAssetPairResult` defines the result of the `ManageBalanceOp` based on the given `ManageAssetPairResultCode`
+//: `ManageAssetPairResult` defines the result of the `ManageBalanceOp` based on the given `ManageAssetPairResultCode`
 union ManageAssetPairResult switch (ManageAssetPairResultCode code)
 {
 case SUCCESS:

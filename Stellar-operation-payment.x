@@ -75,7 +75,7 @@ enum PaymentResultCode
     SUCCESS = 0, // payment successfully completed
 
     // codes considered as "failure" for the operation
-    //: Malformed operation (e.g. payment sender balance ID and payment receiver balance ID are equal)
+    //: Payment sender balance ID and payment receiver balance ID are equal or reference is longer than 64 symbols
     MALFORMED = -1,
     //: Not enough funds in source account
     UNDERFUNDED = -2,

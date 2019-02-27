@@ -21,7 +21,9 @@ struct LimitsCreateDetails
     StatsOpType statsOpType;
     //: `AssetCode` of the limits entry
     AssetCode   assetCode;
-    //: `isConvertNeeded` defines whether the asset conversion is needed for the limits entry
+    //: `isConvertNeeded` indicates whether the asset conversion is needed for the limits entry or not needed.
+    //: If this field is `true` - limits are applied to all balances of the account (to every asset account owns).
+    //: Otherwise limits from particular limits entry are applied only to the balances with `AssetCode` provided by entry.
     bool        isConvertNeeded;
 
     //: daily out limit

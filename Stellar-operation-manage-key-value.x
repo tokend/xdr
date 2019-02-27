@@ -53,7 +53,7 @@ namespace stellar
         SUCCESS = 0,
         //: There is no key value with such key
         NOT_FOUND = -1,
-        //: Value of the key-value entry has invalid type
+        //: Value of the key-value entry has not allowed type
         INVALID_TYPE = -2,
         //: uint32 zero value is not allowed
         ZERO_VALUE_NOT_ALLOWED = -3
