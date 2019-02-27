@@ -62,7 +62,7 @@ struct BindExternalSystemAccountIdSuccess
 union BindExternalSystemAccountIdResult switch (BindExternalSystemAccountIdResultCode code)
 {
 case SUCCESS:
-    //: `success` if used to pass useful fields after operation applying
+    //: `success` is used to pass useful fields after operation applying
     BindExternalSystemAccountIdSuccess success;
 default:
     void;
