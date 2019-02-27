@@ -22,7 +22,7 @@ struct CreateIssuanceRequestOp
     //: Reference of the request
     string64 reference;
     //: (optional) Bit mask whose flags must be cleared in order for IssuanceRequest to be approved, which will be used  
-    //: instead key-value by key issuance_tasks:<asset_code> 
+    //: instead of key-value by key issuance_tasks:<asset_code>
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -78,7 +78,7 @@ struct CreateIssuanceRequestSuccess {
     uint64 requestID;
     //: Account address of the receiver
     AccountID receiver;
-    //: Boolean indication whether the Issuance request was approved and applied on creation
+    //: Boolean indication whether or not the Issuance request was approved and applied on creation
     bool fulfilled;
     //: Paid fee
     Fee fee;
