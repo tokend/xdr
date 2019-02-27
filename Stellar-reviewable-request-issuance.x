@@ -20,7 +20,7 @@ struct PreIssuanceRequest {
     }
     ext;
 };
-//: Contains details regarding issuance 
+//: Body of reviewable IssuanceRequest, contains parameters regarding issuance
 struct IssuanceRequest {
     //: Code of asset to issue
 	AssetCode asset;
