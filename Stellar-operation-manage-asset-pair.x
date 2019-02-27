@@ -25,22 +25,22 @@ enum ManageAssetPairAction
 
     Result: ManageAssetPairResult
 */
-//: `ManageAssetPairOp` creates new asset pairs or update prices or policies of existing asset pairs
+//: `ManageAssetPairOp` either creates new asset pairs or update prices or policies of existing asset pairs
 struct ManageAssetPairOp
 {
-    //: Defines a ManageBalanceAction which would be applied to an asset pair
+    //: Defines a ManageBalanceAction which would be performed on an asset pair
     ManageAssetPairAction action;
     //: Defines a base asset of the asset pair
     AssetCode base;
     //: Defines a base asset of the asset pair
     AssetCode quote;
 
-    //: Physical price of the asset pair TODO proper description
+    //: Price of the asset pair assigned on creation. Can only be updated by the `UPDATE_PRICE` `ManageAssetPair` operation
     int64 physicalPrice;
 
     //: Correction of physical price in percents. If physical price is set and restriction by physical price set, mininal price for offer for this pair will be physicalPrice * physicalPriceCorrection
     int64 physicalPriceCorrection;
-    //: Maximal amount of price chanage in percents
+    //: Maximal amount of price change in percents
     int64 maxPriceStep;
 
     //: Bitmask of asset policies set by creator or corrected by manage asset operations
@@ -61,13 +61,13 @@ struct ManageAssetPairOp
 enum ManageAssetPairResultCode
 {
     // codes considered as "success" for the operation
-    //: Indicates that `ManageBalanceOp` was successfully applied
+    //: Indicates that `ManageAssetPair` was successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     //: Failed to find asset pair with such code
     NOT_FOUND = -1,
-    //: Asset pair with such code is already present in the system
+    //: Asset pair with given `base` and `quote` asset codes is already present in the system
     ALREADY_EXISTS = -2,
     //: Invalid input (e.g. physicalPrice < 0 or physicalPriceCorrection < 0 or maxPriceStep is not in interval [0..100])
     MALFORMED = -3,

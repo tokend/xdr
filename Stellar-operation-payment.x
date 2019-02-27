@@ -17,7 +17,7 @@ struct PaymentFeeData {
     Fee sourceFee;
     //: Fee kept from destination account/balance
     Fee destinationFee;
-    //: Boolean indication should destinationFee either be kept from source balance or from
+    //: Indicates whether or not source of the payment should pay fee for destination
     bool sourcePaysForDest;
 
     union switch (LedgerVersion v)
@@ -34,7 +34,7 @@ enum PaymentDestinationType {
     BALANCE = 1
 };
 
-//: PaymentOp defines a payment operation with the corresponding details
+//: PaymentOp is used to transfer some amount of asset from source balance to destination (account or balance   )
 struct PaymentOp
 {
     //: ID of the source balance of payment

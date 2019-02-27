@@ -7,7 +7,7 @@ namespace stellar
 Entry representing a fee state.
 */
 
-//: `FeeType` represents different types of fee for different operations (e.g. fee charged on withdrawal of on investment)
+//: `FeeType` represents different types of fee for different operations (e.g. fee charged on withdrawal or on investment)
 enum FeeType
 {
     PAYMENT_FEE = 0,
@@ -22,6 +22,7 @@ enum FeeType
     ATOMIC_SWAP_PURCHASE_FEE = 9
 };
 
+//: (not used yet)`EmissionFeeType` is a subtype of the Fee used for issuance
 enum EmissionFeeType
 {
     PRIMARY_MARKET = 1,
@@ -60,7 +61,7 @@ struct FeeEntry
     //: Defines upper bound of operation amount for which this fee is applicable
     int64 upperBound;
 
-    //: Hash of the fee entry
+    //: Hash of the fee entry (sha256 of stringified feeType, asset, subtype, accountID and accountRole)
     Hash hash;
 
     //: reserved for future use

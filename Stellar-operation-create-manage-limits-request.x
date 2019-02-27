@@ -46,13 +46,13 @@ enum CreateManageLimitsRequestResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Pair `reference-source account` of the operation is not unique
+    //: There is another manage limits request for source account
     MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1,
     //: There is no request with such ID
     MANAGE_LIMITS_REQUEST_NOT_FOUND = -2,
     //: Details must be valid json
     INVALID_CREATOR_DETAILS = -3,
-    //: Cannot load tasks fot the CreateManageLimitsRequest
+    //: Cannot load tasks fot the CreateManageLimitsRequest or configuration restricts to create manage limits request
     LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
     //: Cannot set allTasks on rejected request update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6,
@@ -67,7 +67,7 @@ case SUCCESS:
     struct {
         //: ID of the created manage limits request
         uint64 manageLimitsRequestID;
-        //: Boolean indicating that the request was auto approved
+        //: Boolean indicator that the request was auto approved
         bool fulfilled;
         //: reserved for future use
         union switch (LedgerVersion v)

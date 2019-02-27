@@ -17,7 +17,7 @@ namespace stellar
     {
         //: Fee entry to set
         FeeEntry* fee;
-        //: `isDelete` indicated either fee should be set or removed
+        //: `isDelete` indicates that fee should be either set or removed
         bool isDelete;
         //: reserved for future use
         union switch (LedgerVersion v)
