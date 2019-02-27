@@ -5,20 +5,28 @@
 namespace stellar
 {
 
+//: AssetCreationRequest is used to create asset with provided parameters
 struct AssetCreationRequest {
-
-	AssetCode code;
-	AccountID preissuedAssetSigner;
-	uint64 maxIssuanceAmount;
-	uint64 initialPreissuedAmount;
+    //: Code of the asset to create
+    AssetCode code;
+    //: AccountID of the account that will perform preissuance
+    AccountID preissuedAssetSigner;
+    //: Maximal amount to be issued
+    uint64 maxIssuanceAmount;
+    //: Amount to preissue on asset creation
+    uint64 initialPreissuedAmount;
+    //: Bitmask of policies to create asset with
     uint32 policies;
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by the admin
     longstring creatorDetails; // details set by requester
+    //: Asset type
     uint64 type;
-
-	uint32 sequenceNumber;
+    //: Used to keep track of rejected requests update. On each rejected AssetCreationRequest update, sequenceNumber increases
+    uint32 sequenceNumber;
+    //: Number of significant decimal places
     uint32 trailingDigitsCount;
 
-    // reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -26,14 +34,17 @@ struct AssetCreationRequest {
     }
     ext;
 };
-
+//: AssetUpdateRequest is used to update asset with provided parameters
 struct AssetUpdateRequest {
-	AssetCode code;
+    //: Code of asset to update
+    AssetCode code;
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by the admin
     longstring creatorDetails; // details set by requester
-	uint32 policies;
-
-	uint32 sequenceNumber;
-	// reserved for future use
+    //: New policies to set, will override existing ones
+    uint32 policies;
+    //: Used to keep track of rejected requests update. On each rejected AssetUpdateRequest update, sequenceNumber increases
+    uint32 sequenceNumber;
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -41,14 +52,17 @@ struct AssetUpdateRequest {
     }
     ext;
 };
-
+//: AssetChangePreissuedSigner is used to update preissued asset signer
 struct AssetChangePreissuedSigner
 {
-	AssetCode code;
-	AccountID accountID;
-	DecoratedSignature signature;
+    //: code of the asset to update
+    AssetCode code;
+    //: AccountID of account to set as preissued signer
+    AccountID accountID;
+    //: ??
+    DecoratedSignature signature;
 
-	// reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

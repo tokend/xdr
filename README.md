@@ -10,3 +10,7 @@ All notable changes to this project will be documented in [this file](https://gi
 
 This repo has been forked from [Stellar XDR](https://github.com/stellar/stellar-core)
 
+## Generate docs 
+
+1. Make sure `bundle` is installed and you have run `bundle install`
+1. Run `make`
