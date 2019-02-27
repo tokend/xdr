@@ -28,6 +28,12 @@
 * Comments for docs to ReviewRequestOp
 * Comments for docs to BindExternalSystemAccountIdOp
 * Comments for docs to ManageExternalSystemAccountIdPoolEntryOp
+* Comments for docs to ManageKeyValueOp
+* Comments for docs to ManageAssetPairOp
+* Comments for docs to ManageLimitsOp and LimitsUpdateRequest
+* Comments for docs to ManageBalanceOp
+* Comments for docs to PaymentOp
+* Comments for docs to SetFeesOp and FeeEntry
 
 ## 3.0.0-x.2
 
