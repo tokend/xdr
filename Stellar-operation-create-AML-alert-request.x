@@ -26,7 +26,7 @@ struct CreateAMLAlertRequestOp
     uint32* allTasks;
 
     //: Reserved for future use
-	union switch (LedgerVersion v)
+    union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
@@ -64,11 +64,11 @@ enum CreateAMLAlertRequestResultCode
 //: Result of successful application of CreateAMLAlert operation
 struct CreateAMLAlertRequestSuccess {
     //: ID of the newly created reviewable request
-	uint64 requestID;
+    uint64 requestID;
     //: Indicates  whether or not the AMLAlert request was approved and applied on creation
     bool fulfilled;
     //: Reserved for future use
-	union switch (LedgerVersion v)
+     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;

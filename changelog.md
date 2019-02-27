@@ -14,6 +14,17 @@
 * Comments for docs to ManageAccountRuleOp
 * Comments for docs to AccountRuleResource
 * Comments for docs to ManageAssetOp
+* Comments for docs to CreateSaleCreationRequestOp
+* Comments for docs to CheckSaleStateOp
+* Comments for docs to CancelSaleCreationRequestOp
+* Comments for docs to ManageSaleOp
+* Comments for docs to ManageOfferOp
+* Comments for docs to CreateIssuanceRequestOp
+* Comments for docs to CreateWithdrawalRequestOp
+* Comments for docs to CreateAMLAlertRequestOp
+* Comments for docs to LicenseOp
+* Comments for docs to StampOp
+* Comments for docs to ReviewRequestOp
 
 ## 3.0.1-x.1
 
