@@ -13,6 +13,7 @@
 * Comments for docs to ManageAccountRoleOp
 * Comments for docs to ManageAccountRuleOp
 * Comments for docs to AccountRuleResource
+* Comments for docs to ManageAssetOp
 * Comments for docs to CreateSaleCreationRequestOp
 * Comments for docs to CheckSaleStateOp
 * Comments for docs to CancelSaleCreationRequestOp
