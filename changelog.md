@@ -27,10 +27,20 @@
 * Comments for docs to StampOp
 * Comments for docs to ReviewRequestOp
 
-## 3.0.1-x.1
+## 3.0.0-x.2
+
+### Added
+* Result code of ManageSignersOp
+
+## 3.0.0-x.1
 
 ### Added
 
+* Signer rule and role entries
+* Manage signer rule and role ops
+* Signer rule resource
+* signer entry
+* manage signer operation
 * Error code to manage key value op
 * Specify key value resource for rule
 * Add error code to set fee op
@@ -39,6 +49,8 @@
 
 ### Changed
 
+* Replace opNO_BALANCE etc. operation error codes by opNO_ENTRY
+* Create account op
 * Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
 * Use forbids name of filed in rules
 * Use consistently names of role and rule ids
@@ -48,21 +60,6 @@
 * Rename paymentV2 to payment
 * Add isBuy to rule resources
 * Add withdraw case to request resource
-
-## 3.0.0-x.4
-
-### Added
-
-* Signer rule and role entries
-* Manage signer rule and role ops
-* Signer rule resource
-* signer entry
-* manage signer operation
-
-### Changed
-
-* Replace opNO_BALANCE etc. operation error codes by opNO_ENTRY
-* Create account op
 
 ### Deprecated
 
