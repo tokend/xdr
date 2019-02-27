@@ -56,7 +56,7 @@ enum CreateIssuanceRequestResultCode
     EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
     //: Amount to issue plus amount on balance would exceed UINT64_MAX 
     RECEIVER_FULL_LINE = -7,
-    //: Either creator details are not valid JSON or it's size exceed 4096 bytes
+    //: Creator details are not valid JSON
     INVALID_CREATOR_DETAILS = -8,
     //: Fee is greater than amount to issue
     FEE_EXCEEDS_AMOUNT = -9,

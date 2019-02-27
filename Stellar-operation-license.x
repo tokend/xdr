@@ -10,7 +10,7 @@ Threshold: master weight
 Result: LicenseResult
 
 */
-//: License operation is used to perform licensing the usage of customer's system  
+//: License operation is used to perform licensing of the usage of customer's system
 struct LicenseOp
 {
     //: Allowed number of admins to set in the system
@@ -24,7 +24,7 @@ struct LicenseOp
     //: Signatures are used to prove authenticity of license that is being submitted.
     DecoratedSignature signatures<>;
 
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -49,9 +49,9 @@ enum LicenseResultCode
     INVALID_SIGNATURE = -3
 };
 
-//: LicenseSuccess is a result returned if operation submit was successful
+//: LicenseSuccess is a result of successful LicenseOp application
 struct LicenseSuccess {
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -60,7 +60,7 @@ struct LicenseSuccess {
     ext;
 };
 
-//: Result of the applying LicenseOp
+//: Result of the License operation application
 union LicenseResult switch (LicenseResultCode code)
 {
 case SUCCESS:

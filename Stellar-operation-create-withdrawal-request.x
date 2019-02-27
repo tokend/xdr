@@ -43,7 +43,7 @@ enum CreateWithdrawalRequestResultCode
     // codes considered as "failure" for the operation
     //: Trying to create withdrawal with amount of 0
     INVALID_AMOUNT = -1,
-    //: Creator details either are not valid JSON or it's size exceeds 4096 bytes
+    //: Creator details either are not valid JSON
     INVALID_CREATOR_DETAILS = -2,
     //: Source balance to withdraw from not found 
     BALANCE_NOT_FOUND = -3, // balance not found

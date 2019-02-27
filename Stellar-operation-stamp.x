@@ -13,7 +13,7 @@ Result: Hash
 //: StampOp is used to save current ledger hash and current license hash
 struct StampOp
 {
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -38,7 +38,7 @@ struct StampSuccess {
     //: current license hash
     Hash licenseHash;
     
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -47,7 +47,7 @@ struct StampSuccess {
     ext;
 };
 
-//: StampResult is a result of applying StampOp
+//: StampResult is a result of Stamp operation application
 union StampResult switch (StampResultCode code)
 {
 case SUCCESS:

@@ -21,7 +21,8 @@ struct CreateSaleCreationRequestOp
     uint64 requestID;
     //: SaleCreationRequest details
     SaleCreationRequest request;
-    //: Tasks to set on request creation, can be NULL. 
+    //: (optional) Bit mask whose flags must be cleared in order for CreateSale request to be approved, which will be used
+    //: instead of key-value by key sale_create_tasks:<asset_code>
     uint32* allTasks;
     
     //: Reserved for future use
@@ -73,7 +74,7 @@ enum CreateSaleCreationRequestResultCode
     SALE_CREATE_TASKS_NOT_FOUND = -14,
     //: Not allowed to set all tasks on rejected SaleCreationRequest update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15,
-    //: due to tasks been 0, we have tried to auto review request, hovewer it failed
+    //: Due to tasks been 0, we have tried to auto review request, hovewer it failed
     AUTO_REVIEW_FAILED = -16 
 };
 
@@ -97,7 +98,7 @@ struct CreateSaleCreationSuccess {
 struct CreateSaleCreationAutoReviewFailed {
     //: auto review result
     ReviewRequestResult reviewRequestRequest;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

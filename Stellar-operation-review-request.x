@@ -41,7 +41,7 @@ struct LimitsUpdateDetails {
 struct WithdrawalDetails {
     //: External details updated on Withdraw review
     string externalDetails<>;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -54,7 +54,7 @@ struct WithdrawalDetails {
 struct AMLAlertDetails {
     //: Comment on reason of AML Alert
     string comment<>;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

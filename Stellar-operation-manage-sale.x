@@ -91,7 +91,7 @@ struct ManageSaleResultSuccess
         void;
     } response;
 
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

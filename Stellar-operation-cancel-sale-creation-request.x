@@ -12,7 +12,7 @@ namespace stellar
     Result: CancelSaleCreationRequestResult
 */
 
-//: CancelSaleCreation request is used to cancel sale creation request which on successful application will delete
+//: CancelSaleCreationRequest operation is used to cancel sale creation request which on successful application will delete
 //: SaleCreationRequest with provided ID
 struct CancelSaleCreationRequestOp
 {

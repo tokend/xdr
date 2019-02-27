@@ -13,7 +13,7 @@ Threshold: med
 Result: CheckSaleStateResult
 
 */
-//: CheckSaleState operation perform check on sale by ID
+//: CheckSaleState operation is used to perform check on sale state - whether it was successful or not
 struct CheckSaleStateOp
 {
     //:ID of the sale to check
@@ -95,7 +95,7 @@ struct CheckSaleClosedResult {
     AccountID saleOwner;
     //: Array of the sale participation results 
     CheckSubSaleClosedResult results<>;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
       case EMPTY_VERSION:

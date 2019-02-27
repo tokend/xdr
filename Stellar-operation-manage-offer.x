@@ -41,7 +41,7 @@ struct ManageOfferOp
     //: ID of the orderBook to find match or to put offer in.
     uint64 orderBookID;
      
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -150,7 +150,7 @@ struct ClaimOfferAtom
     BalanceID quoteBalance;
     //: Match price
     int64 currentPrice;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -180,7 +180,7 @@ struct ManageOfferSuccessResult
         void;
     }
     offer;
-    //: reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -198,7 +198,7 @@ case PHYSICAL_PRICE_RESTRICTION:
     struct {
         //: Physical price of the base asset
         int64 physicalPrice;
-        //: reserved for future use
+        //: Reserved for future use
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
@@ -210,7 +210,7 @@ case CURRENT_PRICE_RESTRICTION:
     struct {
         //: Current price of the base asset
         int64 currentPrice;
-        //: reserved for future use
+        //: Reserved for future use
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
