@@ -86,7 +86,9 @@ enum ManageSignerResultCode
     //: Not allowed to set weight more than 1000
     INVALID_WEIGHT = -4, // more than 1000
     //: There is no signer with such public key for source account
-    NOT_FOUND = -5 // there is no signer with such public key
+    NOT_FOUND = -5, // there is no signer with such public key
+    //: only occurs on creation of signers for admins, if number of signers exceeds number specified in license
+	NUMBER_OF_ADMINS_EXCEEDS_LICENSE = -6
 };
 
 //: Result of operation applying

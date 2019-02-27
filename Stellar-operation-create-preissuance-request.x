@@ -17,7 +17,7 @@ struct CreatePreIssuanceRequestOp
     //: Is used to body of reviewable request which is going to be created
     PreIssuanceRequest request;
 
-    //: Can be used to pass custom tasks instead of tasks from key value by `preissuance_tasks` key
+    //: Bit mask which can be used to pass custom tasks instead of tasks from key value by `preissuance_tasks` key
     uint32* allTasks;
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -71,7 +71,7 @@ case SUCCESS:
     {
         //: ID of created or updated request
         uint64 requestID;
-        //: True if request auto approved (pending tasks == 0),
+        //: Indicates whether or not request was auto approved (pending tasks == 0),
         //: amount was successfully pre issued
         bool fulfilled;
         //: reserved for future use
