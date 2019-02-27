@@ -4,15 +4,21 @@
 
 namespace stellar
 {
-
+//: WithdrawalRequest contains details regarding withdraw
 struct WithdrawalRequest {
-	BalanceID balance; // balance id from which withdrawal will be performed
+    //: Balance to withdraw from
+    BalanceID balance; // balance id from which withdrawal will be performed
+    //: Amount to withdraw
     uint64 amount; // amount to be withdrawn
+    //: Amount in stats quote asset 
     uint64 universalAmount; // amount in stats asset
-	Fee fee; // expected fee to be paid
+    //: Total fee to pay, contains fixed amount and calculated percent of the withdrawn amount
+    Fee fee; // expected fee to be paid
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
     longstring creatorDetails; // details set by requester
-
-	union switch (LedgerVersion v)
+    
+    //: Reserved for future use
+    union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
@@ -21,3 +27,4 @@ struct WithdrawalRequest {
 };
 
 }
+
