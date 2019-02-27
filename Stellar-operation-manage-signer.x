@@ -65,7 +65,9 @@ enum ManageSignerResultCode
     ALREADY_EXISTS = -2, // signer already exist
 	NO_SUCH_ROLE = -3,
 	INVALID_WEIGHT = -4, // more than 1000
-	NOT_FOUND = -5 // there is no signer with such public key
+	NOT_FOUND = -5, // there is no signer with such public key
+	//: only occurs on creation of signers for admins, if number of signers exceeds number specified in license
+	NUMBER_OF_ADMINS_EXCEEDS_LICENSE = -6
 };
 
 union ManageSignerResult switch (ManageSignerResultCode code)

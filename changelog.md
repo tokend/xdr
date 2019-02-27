@@ -1,34 +1,11 @@
 # Changelog
 
-## Unreleased
+## 3.0.0-x.2
 
 ### Added
+* Result code of ManageSignersOp
 
-* Operation error code for skipped ops
-* Error code to manage key value op
-* Specify key value resource for rule
-* Add error code to set fee op
-* Payload to NO_ROLE_PERMISSION error code
-* LicenseOp, StampOp, License entry, Stamp entry
-
-### Changed
-
-* Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
-
-## Unreleased
-
-### Changed
-
-* Use forbids name of filed in rules
-* Use consistently names of role and rule ids
-* Error codes for create change role request op
-* Error codes for invalid creator details
-* Rename kycData to creator Details
-* Rename paymentV2 to payment
-* Add isBuy to rule resources
-* Add withdraw case to request resource
-
-## 3.0.0-x.4
+## 3.0.0-x.1
 
 ### Added
 
@@ -37,11 +14,25 @@
 * Signer rule resource
 * signer entry
 * manage signer operation
+* Error code to manage key value op
+* Specify key value resource for rule
+* Add error code to set fee op
+* Payload to NO_ROLE_PERMISSION error code
+* LicenseOp, StampOp, License entry, Stamp entry
 
 ### Changed
 
 * Replace opNO_BALANCE etc. operation error codes by opNO_ENTRY
 * Create account op
+* Use consistent name of fields for RequestTypedResource (ReviewableRequestResource)
+* Use forbids name of filed in rules
+* Use consistently names of role and rule ids
+* Error codes for create change role request op
+* Error codes for invalid creator details
+* Rename kycData to creator Details
+* Rename paymentV2 to payment
+* Add isBuy to rule resources
+* Add withdraw case to request resource
 
 ### Deprecated
 
