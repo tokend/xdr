@@ -10,7 +10,7 @@ namespace stellar
  Result: ManageSignerRuleResult
 */
 
-//: Actions which can be applied to signer role
+//: Actions which can be performed with signer role
 enum ManageSignerRoleAction
 {
     CREATE = 0,
@@ -21,11 +21,11 @@ enum ManageSignerRoleAction
 //: CreateSignerRoleData is used to pass necessary params to create new signer role
 struct CreateSignerRoleData
 {
-    //: Array of ids of existing, non-repeating and not default rules
+    //: Array of ids of existing, unique and not default rules
     uint64 ruleIDs<>;
     //: True means that no one can manage such rule after creating
     bool isReadOnly;
-    //: Arbitrary stringified json object that will be attached to role
+    //: Arbitrary stringified json object with details to attach to the role
     longstring details;
 
     //: reserved for future use
@@ -39,12 +39,12 @@ struct CreateSignerRoleData
 //: UpdateSignerRoleData is used to pass necessary params to update existing signer role
 struct UpdateSignerRoleData
 {
-    //: Identifier of existing signer role
+    //: ID of existing signer role
     uint64 roleID;
-    //: Array of ids of existing and not default rules
+    //: Array of ids of existing, unique and not default rules
     uint64 ruleIDs<>;
 
-    //: Arbitrary stringified json object that will be attached to role
+    //: Arbitrary stringified json object with details to attach to the role
     longstring details;
 
     //: reserved for future use
@@ -103,7 +103,7 @@ enum ManageSignerRoleResultCode
     // codes considered as "failure" for the operation
     //: There is no signer role with such id or source cannot manage the role
     NOT_FOUND = -1, // does not exists or owner mismatched
-    //: Not allowed to remove role if it is used at least in one singer
+    //: Not allowed to remove role if it is attached at least to one singer
     ROLE_IS_USED = -2,
     //: Passed details has invalid json structure
     INVALID_DETAILS = -3,
