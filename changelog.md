@@ -26,6 +26,8 @@
 * Comments for docs to LicenseOp
 * Comments for docs to StampOp
 * Comments for docs to ReviewRequestOp
+* Comments for docs to BindExternalSystemAccountIdOp
+* Comments for docs to ManageExternalSystemAccountIdPoolEntryOp
 
 ## 3.0.0-x.2
 
