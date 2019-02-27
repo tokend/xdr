@@ -48,7 +48,8 @@ enum CreateSaleCreationRequestResultCode
     REQUEST_NOT_FOUND = -1,
     //: Trying to create sale for asset which does not exist
     BASE_ASSET_OR_ASSET_REQUEST_NOT_FOUND = -2,
-    //: Trying to create sale with quote asset which does not exist 
+    //: Trying to create sale with quote asset which does not exist or
+    //: there is no asset pair with default quote asset and one of quote assets
     QUOTE_ASSET_NOT_FOUND = -3,
     //: Trying to create sale with start time > end time
     START_END_INVALID = -4,
