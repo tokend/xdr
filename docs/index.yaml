@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: XDR
+  description: |
+    This repo defines structures used to communicate with `Core` of TokenD based networks.
+  contact:
+    email: dev@distributedlab.com
+    url: https://tokend.io
+    name: Support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 3.0.1-x.4
+servers:
+- url: https://api.achilles.tokend.io
+  description: TokenD Developer Environment
+# NOTE
+#
+# Add tag to x-tagGroups or it won't be displayed
