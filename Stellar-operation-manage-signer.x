@@ -28,11 +28,11 @@ struct UpdateSignerData
 
     //: weight that signer will have, threshold for all SignerRequirements equals 1000
     uint32 weight;
-    //: If there are some signers with equal identity, signer with the biggest weight
-    //: will be chosen or the first one that satisfied the threshold
+    //: If there are some signers with equal identity, only one signer with the biggest weight
+    //: will be chosen or the first one which satisfied the threshold
     uint32 identity;
 
-    //: Arbitrary stringified json object that will be attached to signer
+    //: Arbitrary stringified json object with details that will be attached to signer
     longstring details;
 
     //: reserved for future extension
@@ -83,7 +83,7 @@ enum ManageSignerResultCode
     ALREADY_EXISTS = -2, // signer already exist
     //: There is no role with such id
     NO_SUCH_ROLE = -3,
-    //: There is not necessary to set weight more than 1000
+    //: Not allowed to set weight more than 1000
     INVALID_WEIGHT = -4, // more than 1000
     //: There is no signer with such public key for source account
     NOT_FOUND = -5 // there is no signer with such public key

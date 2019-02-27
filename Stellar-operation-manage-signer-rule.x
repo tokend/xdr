@@ -10,7 +10,7 @@ namespace stellar
  Result: ManageSignerRuleResult
 */
 
-//: Actions which can be applied to signer rule
+//: Actions which can be performed with signer rule
 enum ManageSignerRuleAction
 {
     CREATE = 0,
@@ -21,7 +21,7 @@ enum ManageSignerRuleAction
 //: CreateSignerRuleData is used to pass necessary params to create new signer rule
 struct CreateSignerRuleData
 {
-    //: Resource is used to specify entity (for some - with properties) that can be managed over operations
+    //: Resource is used to specify entity (for some - with properties) that can be managed through operations
     SignerRuleResource resource;
     //: Value from enum that can be applied to `resource`
     SignerRuleAction action;
@@ -31,7 +31,7 @@ struct CreateSignerRuleData
     bool isDefault;
     //: True means that no one can manage such rule after creating
     bool isReadOnly;
-    //: Arbitrary stringified json object that will be attached to rule
+    //: Arbitrary stringified json object with details that will be attached to rule
     longstring details;
 
     // reserved for future use
@@ -47,7 +47,7 @@ struct UpdateSignerRuleData
 {
     //: Identifier of existing signer rule
     uint64 ruleID;
-    //: Resource is used to specify entity (for some - with properties) that can be managed over operations
+    //: Resource is used to specify entity (for some - with properties) that can be managed through operations
     SignerRuleResource resource;
     //: Value from enum that can be applied to `resource`
     SignerRuleAction action;
@@ -55,7 +55,7 @@ struct UpdateSignerRuleData
     bool forbids;
     //: True means that no one can manage such rule after creating
     bool isDefault;
-    //: Arbitrary stringified json object that will be attached to rule
+    //: Arbitrary stringified json object with details that will be attached to rule
     longstring details;
 
     // reserved for future use
@@ -114,7 +114,7 @@ enum ManageSignerRuleResultCode
     // codes considered as "failure" for the operation
     //: There is no signer rule with such id or source cannot manage the rule
     NOT_FOUND = -1, // does not exists or owner mismatched
-    //: Not allowed to remove rule if it is used at least in one role
+    //: Not allowed to remove rule if it is attached at least to one role
     RULE_IS_USED = -2,
     //: Passed details has invalid json structure
     INVALID_DETAILS = -3

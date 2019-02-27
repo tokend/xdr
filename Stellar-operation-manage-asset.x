@@ -13,7 +13,7 @@ enum ManageAssetAction
     UPDATE_MAX_ISSUANCE = 4
 };
 
-//: CancelAssetRequest is used cancel `UPDATE_ASSET` or `CREATE_ASSET` request
+//: CancelAssetRequest is used to cancel `UPDATE_ASSET` or `CREATE_ASSET` request
 struct CancelAssetRequest
 {
     //: reserved for future use
@@ -124,7 +124,7 @@ struct ManageAssetOp
 //: Result codes of ManageAssetOp
 enum ManageAssetResultCode
 {
-    //: Means that specified action in `data` of ManageSignerOp was successfully executed
+    //: Specified action in `data` of ManageSignerOp was successfully performed
     SUCCESS = 0,                       // request was successfully created/updated/canceled
 
     // codes considered as "failure" for the operation
@@ -135,13 +135,13 @@ enum ManageAssetResultCode
     //: Not allowed to create asset with code which already used for an other asset
     ASSET_ALREADY_EXISTS = -3,	      // asset with such code already exist
     //: Not allowed to set max issuance amount that
-    //: less than sum of issued and pendingIssuance and available for issuance
+    //: lesser than the sum of issued, pending issuance and available for issuance
     INVALID_MAX_ISSUANCE_AMOUNT = -4, // max issuance amount is 0
-    //: Not allowed use asset code which is empty or contains space
+    //: Not allowed to use asset code which is empty or contains space
     INVALID_CODE = -5,                // asset code is invalid (empty or contains space)
-    //: Not allowed to set pre issuer equals to exiting pre issuer
+    //: Not allowed to set pre issuer equal to existing pre issuer
     INVALID_PRE_ISSUER = -6,          // pre issuer is the same as existing
-    //: Not allowed to set policies which is not declared
+    //: Not allowed to set policies which are not declared
     INVALID_POLICIES = -7,            // asset policies (has flag which does not belong to AssetPolicies enum)
     //: There is no asset with such code
     ASSET_NOT_FOUND = -8,             // asset does not exists
@@ -153,11 +153,11 @@ enum ManageAssetResultCode
     INITIAL_PREISSUED_EXCEEDS_MAX_ISSUANCE = -11, // initial pre issued amount exceeds max issuance amount
     //: Not allowed to use details with invalid json structure
     INVALID_CREATOR_DETAILS = -12,                        // details must be a valid json
-    //: Not allowed to set trailing digits count more than max trailing digits count (for now - 6)
+    //: Not allowed to set trailing digits count greater than maximum trailing digits count (6 at the moment)
     INVALID_TRAILING_DIGITS_COUNT = -13,          // invalid number of trailing digits
-    //: Initial pre issued amount does not match precision set by trailing digits count
+    //: Pre issued amount precision and asset precision are mismatched
     INVALID_PREISSUED_AMOUNT_PRECISION = -14,
-    //: Maximum issuance amount does not match precision set by trailing digits count
+    //: Maximum issuance amount precision and asset precision are mismatched
     INVALID_MAX_ISSUANCE_AMOUNT_PRECISION = -15,
     //: There is no value in key value by `asset_create_tasks` key,
     //: configuration does not allow to create asset
@@ -165,7 +165,7 @@ enum ManageAssetResultCode
     //: There is no value in key value by `asset_update_tasks` key,
     //: configuration does not allow to update asset
     ASSET_UPDATE_TASKS_NOT_FOUND = -17,
-    //: Create `CREATE_ASSET` or `UPDATE_ASSET` allowed only with tasks from key value
+    //: Not allowed to set allTasks on update of rejected request.
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18
 };
 
