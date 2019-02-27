@@ -46,7 +46,7 @@ struct ManageAssetPairOp
     //: Bitmask of asset policies set by creator or corrected by manage asset operations
     int32 policies;
 
-     // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

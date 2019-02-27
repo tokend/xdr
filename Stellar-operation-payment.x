@@ -20,6 +20,7 @@ struct PaymentFeeData {
     //: Indicates whether or not source of the payment should pay fee for destination
     bool sourcePaysForDest;
 
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -126,7 +127,7 @@ struct PaymentResponse {
     //: Fee charged from the destination balance
     Fee actualDestinationPaymentFee;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
