@@ -14,6 +14,7 @@
 * Comments for docs to ManageAccountRuleOp
 * Comments for docs to AccountRuleResource
 * Comments for docs to ManageAssetOp
+* Comments for docs to CreatePreIssuanceRequestOp and preIssuanceRequest
 * Comments for docs to CreateSaleCreationRequestOp
 * Comments for docs to CheckSaleStateOp
 * Comments for docs to CancelSaleCreationRequestOp
