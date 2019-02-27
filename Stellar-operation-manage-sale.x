@@ -23,8 +23,8 @@ struct UpdateSaleDetailsData {
     uint64 requestID; // if requestID is 0 - create request, else - update
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
     longstring creatorDetails;
-    //: (optional) Bit mask whose flags must be cleared in order for IssuanceRequest to be approved, which will be used
-    //: instead of key-value by key sale_update_tasks:<asset_code>
+    //: (optional) Bit mask whose flags must be cleared in order for UpdateSaleDetailsRequest to be approved,
+    //: which will be used instead of key-value by key sale_update_tasks:<asset_code>
     uint32* allTasks;
 
     //: Reserved for future use
