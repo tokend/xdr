@@ -80,7 +80,7 @@ enum ManageSaleResultCode
 //:Result of successful application of ManageSale operation
 struct ManageSaleResultSuccess
 {
-    //: Boolean indicating whether or not the ManageSale request was approved and applied on creation
+    //: Indicates  whether or not the ManageSale request was approved and applied on creation
     bool fulfilled; // can be used for any reviewable request type created with manage sale operation   
 
     //: response is used for additional information regarding action performed on sale during operation application

@@ -170,7 +170,7 @@ struct ASwapExtended
 
 //: Extended result of the Review Request operation containing details specific to some request types
 struct ExtendedResult {
-    //: Boolean indicating whether the request that is being reviewed was applied
+    //: Indicates whether or not the request that is being reviewed was applied
     bool fulfilled;
     //: typeExt is used to pass ReviewableRequestType along with details specific to request type
     union switch(ReviewableRequestType requestType) {

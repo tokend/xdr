@@ -83,7 +83,7 @@ enum CreateWithdrawalRequestResultCode
 struct CreateWithdrawalSuccess {
     //: ID of the newly created WithdrawalRequest
     uint64 requestID;
-    //: Boolean indication whether the withdrawal request was approved and applied on creation
+    //: Indicates whether or not the withdrawal request was approved and applied on creation
     bool fulfilled;
     //: Reserved for future use
     union switch (LedgerVersion v)

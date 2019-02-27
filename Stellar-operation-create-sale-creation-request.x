@@ -83,7 +83,7 @@ struct CreateSaleCreationSuccess {
     uint64 requestID;
     //: ID of the new created sale (if request was fulfilled)
     uint64 saleID;
-    //: Boolean indication whether the sale creation request was approved and applied on creation
+    //: Indicates whether or not the sale creation request was approved and applied on creation
     bool fulfilled;
     union switch (LedgerVersion v)
     {

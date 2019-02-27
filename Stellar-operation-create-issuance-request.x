@@ -78,7 +78,7 @@ struct CreateIssuanceRequestSuccess {
     uint64 requestID;
     //: Account address of the receiver
     AccountID receiver;
-    //: Boolean indication whether or not the Issuance request was approved and applied on creation
+    //: Indicates whether or not the Issuance request was approved and applied on creation
     bool fulfilled;
     //: Paid fee
     Fee fee;

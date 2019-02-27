@@ -65,7 +65,7 @@ enum CreateAMLAlertRequestResultCode
 struct CreateAMLAlertRequestSuccess {
     //: ID of the newly created reviewable request
 	uint64 requestID;
-    //: Boolean indicating whether or not the AMLAlert request was approved and applied on creation
+    //: Indicates  whether or not the AMLAlert request was approved and applied on creation
     bool fulfilled;
     //: Reserved for future use
 	union switch (LedgerVersion v)
