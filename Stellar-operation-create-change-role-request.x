@@ -18,7 +18,7 @@ struct CreateChangeRoleRequestOp
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
     longstring creatorDetails;
 
-    //: Bit mask which will be used instead of value from key value by
+    //: Bit mask which will be used instead of value from key-value entry by
     //: `change_role_tasks:<currentRoleID>:<accountRoleToSet>` key
     uint32* allTasks;
 
@@ -36,7 +36,7 @@ struct CreateChangeRoleRequestOp
 enum CreateChangeRoleRequestResultCode
 {
     //: Means that change role request successfully created
-    //: or even auto approved if pending tasks of requests was zero
+    //: or auto approved if pending tasks of requests was zero
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -54,7 +54,7 @@ enum CreateChangeRoleRequestResultCode
     INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
     //: `creatorDetails` must be valid json structure
     INVALID_CREATOR_DETAILS = -8,
-    //: There is no value in key value by `change_role_tasks` key
+    //: There is no value in key-value entry by `change_role_tasks` key
     //: configuration does not allow to change role from current to `accountRoleToSet`
     CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };

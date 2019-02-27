@@ -11,7 +11,7 @@ namespace stellar {
     Result: ManageAccountRoleResult
 */
 
-//: Actions which can be applied to account role
+//: Actions which can be performed with account role
 enum ManageAccountRoleAction
 {
     CREATE = 0,
@@ -24,7 +24,7 @@ struct CreateAccountRoleData
 {
     //: Arbitrary stringified json object that will be attached to role
     longstring details;
-    //: Array of ids of existing non-repeating rules
+    //: Array of ids of existing unique rules
     uint64 ruleIDs<>;
 
     //: reserved for future use
@@ -42,7 +42,7 @@ struct UpdateAccountRoleData
     uint64 roleID;
     //: Arbitrary stringified json object that will be attached to role
     longstring details;
-    //: Array of ids of existing non-repeating rules
+    //: Array of ids of existing unique rules
     uint64 ruleIDs<>;
 
     //: reserved for future use
@@ -101,7 +101,7 @@ enum ManageAccountRoleResultCode
     // codes considered as "failure" for the operation
     //: There is no account role with such id
     NOT_FOUND = -1,
-    //: Not allowed to remove role if it is used at least in one account
+    //: Not allowed to remove role if it is attached at least to one account
     ROLE_IS_USED = -2,
     //: Passed details has invalid json structure
     INVALID_DETAILS = -3,

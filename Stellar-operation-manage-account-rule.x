@@ -12,7 +12,7 @@ namespace stellar
  Result: ManageAccountRolePermissionResult
 */
 
-//: Actions which can be applied to account rule
+//: Actions which can be performed with account rule
 enum ManageAccountRuleAction
 {
     CREATE = 0,
@@ -23,7 +23,7 @@ enum ManageAccountRuleAction
 //: CreateAccountRuleData is used to pass necessary params to create new account rule
 struct CreateAccountRuleData
 {
-    //: Resource is used to specify entity (for some - with properties) that can be managed over operations
+    //: Resource is used to specify entity (for some - with properties) that can be managed through operations
     AccountRuleResource resource;
     //: Value from enum that can be applied to `resource`
     AccountRuleAction action;
@@ -45,7 +45,7 @@ struct UpdateAccountRuleData
 {
     //: Identifier of existing signer rule
     uint64 ruleID;
-    //: Resource is used to specify entity (for some - with properties) that can be managed over operations
+    //: Resource is used to specify entity (for some - with properties) that can be managed through operations
     AccountRuleResource resource;
     //: Value from enum that can be applied to `resource`
     AccountRuleAction action;
@@ -104,7 +104,7 @@ struct ManageAccountRuleOp
 //: Result codes of ManageAccountRuleResultCode
 enum ManageAccountRuleResultCode
 {
-    //: Means that specified action in `data` of ManageAccountRuleOp was successfully executed
+    //: Means that specified action in `data` of ManageAccountRuleOp was successfully performed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
