@@ -2,14 +2,14 @@
 
 namespace stellar
 {
-    //: Actions could be applied to the key-value entry
+    //: Actions that could be performed on KeyValueEntry
     enum ManageKVAction
     {
         PUT = 1,
         REMOVE = 2
     };
 
-    //: `ManageKeyValueOp` represents manage key-value operation with the corresponding details
+    //: `ManageKeyValueOp` is used to create manage key-value operation which on successful application will update the key-value entry presented in the system
     struct ManageKeyValueOp
     {
         //: `key` is the key for KeyValueEntry
@@ -18,7 +18,7 @@ namespace stellar
         union switch(ManageKVAction action)
         {
             case PUT:
-                 //: Value to put
+                 //: Value to store
                  KeyValueEntryValue value;
             case REMOVE:
                 void;
@@ -34,7 +34,7 @@ namespace stellar
         ext;
     };
 
-    //: `ManageKeyValueSuccess` represents data returned after successful manage key-value operation
+    //: `ManageKeyValueSuccess` represents the details returned after successful application of `ManageKeyValueOp`
     struct ManageKeyValueSuccess
     {
         //: reserved for future use
@@ -49,11 +49,11 @@ namespace stellar
     //: Result codes for `ManageKeyValueOp`
     enum ManageKeyValueResultCode
     {
-        //: `ManageKeyValueOp` successfully performed
+        //: `ManageKeyValueOp` successfully applied
         SUCCESS = 0,
         //: There is no key value with such key
         NOT_FOUND = -1,
-        //: Value type of `kyc_lvlup_rules:<current_account_type>:0:<account_type_to_set>:0` key must be `UINT32`
+        //: Value of the key-value entry has invalid type
         INVALID_TYPE = -2,
         //: uint32 zero value is not allowed
         ZERO_VALUE_NOT_ALLOWED = -3

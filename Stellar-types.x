@@ -118,7 +118,7 @@ typedef opaque DataValue<64>;
 
 //: `Fee` represents the most basic Fee details such as fixed fee and charged percent of the transfer
 struct Fee {
-    //: Fee paid for the operation
+    //: Fixed amount to pay for the operation
 	uint64 fixed;
 	//: Percent of transfer amount to be charged
 	uint64 percent;

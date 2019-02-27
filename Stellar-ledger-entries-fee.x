@@ -28,7 +28,7 @@ enum EmissionFeeType
     SECONDARY_MARKET = 2
 };
 
-// `PaymentFeeType` defines FeeTypes for sender and for receiver of the payment
+// `PaymentFeeType` is a subtype of the Fee used for payments
 enum PaymentFeeType
 {
     OUTGOING = 1,
@@ -43,7 +43,7 @@ struct FeeEntry
     //: Asset in which fee would be charged
     AssetCode asset;
 
-    //: Fee paid for the operation
+    //: Fixed amount to pay for the operation
     int64 fixedFee;
     //: Percent of transfer amount to be charged
     int64 percentFee;
@@ -52,12 +52,12 @@ struct FeeEntry
     AccountID* accountID;
     //: (optional) Account role from which fee would be charged
     uint64*    accountRole;
-    //: For example, different withdrawals — bars or coins
+    //: Subtype of the fee depends on fee type and defines how fee entry is handl
     int64 subtype;
 
-    //: Defines the lower bound of operation amount for which this fee could be applied
+    //: Defines the lower bound of operation amount for which this fee is applicable
     int64 lowerBound;
-    //: Defines upper bound of operation amount for which this fee could be applied
+    //: Defines upper bound of operation amount for which this fee is applicable
     int64 upperBound;
 
     //: Hash of the fee entry

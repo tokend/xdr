@@ -17,7 +17,7 @@ namespace stellar
     {
         //: Fee entry to set
         FeeEntry* fee;
-        //: `isDelete` defines whether we should setup fee or remove it
+        //: `isDelete` indicated either fee should be set or removed
         bool isDelete;
         //: reserved for future use
         union switch (LedgerVersion v)
@@ -34,7 +34,7 @@ namespace stellar
     enum SetFeesResultCode
     {
         // codes considered as "success" for the operation
-        //: Fee was successfully set or deleted
+        //: `SetFeesOp` was successfully applied and fee was successfully set or deleted
         SUCCESS = 0,
 
         // codes considered as "failure" for an operation
@@ -70,7 +70,7 @@ namespace stellar
         ASSET_PAIR_NOT_FOUND = -15, // cannot create cross asset fee entry without existing asset pair
         //: Reserved for future use
         INVALID_ASSET_PAIR_PRICE = -16,
-        //: `FeeEntry` did not pass hash check (calculated fee hash differs from hash taken from db)
+        //: Calculated fee hash differs from hash taken from db
         INVALID_FEE_HASH = -17,
         //: Fixed fee amount must fit asset precision
         INVALID_AMOUNT_PRECISION = -18

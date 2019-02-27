@@ -17,7 +17,7 @@ struct PaymentFeeData {
     Fee sourceFee;
     //: Fee kept from destination account/balance
     Fee destinationFee;
-    //: `sourcePaysForDest` indicates should destinationFee either be kept from source balance or from
+    //: Boolean indication should destinationFee either be kept from source balance or from
     bool sourcePaysForDest;
 
     union switch (LedgerVersion v)
@@ -40,7 +40,7 @@ struct PaymentOp
     //: ID of the source balance of payment
     BalanceID sourceBalanceID;
 
-    //: `destination` defines type of the payment receiving instance based on given PaymentDestinationType
+    //: `destination` defines type of the instance which receives the payment based on given PaymentDestinationType
     union switch (PaymentDestinationType type) {
         case ACCOUNT:
             AccountID accountID;
@@ -48,7 +48,7 @@ struct PaymentOp
             BalanceID balanceID;
     } destination;
 
-    //: `amount` defines the amount of a payment
+    //: Amount of a payment
     uint64 amount;
 
     //: `feeData` defines all data about payment fee
@@ -79,13 +79,13 @@ enum PaymentResultCode
     MALFORMED = -1,
     //: Not enough funds in source account
     UNDERFUNDED = -2,
-    //: After the payment a destination balance would go above the limit
+    //: After the payment the destination balance would go above the limit (total amount on the balance would be greater than UINT64_MAX)
     LINE_FULL = -3,
-    //: There is no such destination balance
+    //: There is no balance found with ID provided in `destinations.balanceID`
     DESTINATION_BALANCE_NOT_FOUND = -4,
     //: Sender balance asset and receiver balance asset are not equal
     BALANCE_ASSETS_MISMATCHED = -5,
-    //: There is no such source balance
+    //: There is no balance found with ID provided in `sourceBalanceID`
     SRC_BALANCE_NOT_FOUND = -6,
     //: Pair `reference-sender account` of the payment is not unique
     REFERENCE_DUPLICATION = -7,
@@ -93,17 +93,17 @@ enum PaymentResultCode
     STATS_OVERFLOW = -8,
     //: Account would exceed its limits after the the payment
     LIMITS_EXCEEDED = -9,
-    //: Payment asset has no TRANSFERABLE policy set
+    //: Payment asset does not have `TRANSFERABLE` policy set
     NOT_ALLOWED_BY_ASSET_POLICY = -10,
-    //: Destination payment fee is invalid
+    //: Overflow during total fee to pay calculation
     INVALID_DESTINATION_FEE = -11,
     //: Payment fee amount is insufficient
     INSUFFICIENT_FEE_AMOUNT = -12,
-    //: Fee charged from destination balance is higher than the payment amount
+    //: Fee charged from destination balance is greater than the payment amount
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
-    //: There is no such destination account
+    //: There is no account found with ID provided in `destination.accountID`
     DESTINATION_ACCOUNT_NOT_FOUND = -14,
-    //: Precision of the payment amount differs from payment asset precision
+    //: Amount precision and asset precision are mismatched
     INCORRECT_AMOUNT_PRECISION = -15
 };
 

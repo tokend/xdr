@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-// `ManageLimitsAction` defines which action would be applied to the Limits entry
+// `ManageLimitsAction` defines which action could be performed on the Limits entry
 enum ManageLimitsAction
 {
     CREATE = 0,
@@ -49,18 +49,15 @@ struct LimitsCreateDetails
     Result: ManageLimitsResult
 */
 
-//: `ManageLimitsOp` describes the limits managing operation with the corresponding details
+//: `ManageLimitsOp` is used to update the limits set in the system
 struct ManageLimitsOp
 {
     //: `details` defines all details of the operation based on the given `ManageLimitsAction`
     union switch (ManageLimitsAction action)
     {
     case CREATE:
-        //: Details of the new limits entry which would be created and stored for a particular account or role
-        //: Also could be used for setting limits globally (for all members of the system)
         LimitsCreateDetails limitsCreateDetails;
     case REMOVE:
-        //: ID of the limits entry to remove
         uint64 id;
     } details;
 
@@ -79,7 +76,7 @@ struct ManageLimitsOp
 enum ManageLimitsResultCode
 {
     // codes considered as "success" for the operation
-    //: `ManageLimitsOp` was successfully performed
+    //: `ManageLimitsOp` was successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -95,16 +92,16 @@ enum ManageLimitsResultCode
     INVALID_LIMITS = -5
 };
 
-//: `ManageLimitsResult` defines result of ManageLimits operation based on the given `ManageLimitsResultCode`
+//: `ManageLimitsResult` defines the result of ManageLimitsOp application based on the given `ManageLimitsResultCode`
 union ManageLimitsResult switch (ManageLimitsResultCode code)
 {
 case SUCCESS:
     struct {
-        //: `details` represents the details of the ManageLimits operation result
+        //: `details` represents the additional information of the `ManageLimitsOp` application result
         union switch (ManageLimitsAction action)
         {
         case CREATE:
-            //: ID of the freshly created limits entry
+            //: ID of the created limits entry
             uint64 id;
         case REMOVE:
             void;
