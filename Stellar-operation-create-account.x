@@ -18,12 +18,12 @@ struct CreateAccountOp
 {
     //: ID of account to be created
     AccountID destination;
-    //: ID of account which contributed account creation
+    //: ID of an another account that introduced this account into the system
     AccountID* referrer;
     //: ID of role to be attached to account
     uint64 roleID;
 
-    //: Array of data about signers to be created for `destination` account
+    //: Array of data about signers which would to be created for `destination` account
     UpdateSignerData signersData<>;
 
     //: reserved for future use
@@ -44,15 +44,15 @@ enum CreateAccountResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Source cannot be destination
+    //: Source account cannot be the same as the destination account
     INVALID_DESTINATION = -1,
     //: Account with such ID already exists
     ALREADY_EXISTS = -2, // account already exist
-    //: Sum of weight with different identity must be more or equal threshold
+    //: Sum of weights of signers with different identities must exceed the threshold (for now 1000)
     INVALID_WEIGHT = -3,
     //: There is no role with such id
     NO_SUCH_ROLE = -4,
-    //: Failed to create signer for account cause of invalid `signersData`.
+    //: Failed to create signer for account because `signersData` is invalid.
     //: See `createSignerErrorCode`
     INVALID_SIGNER_DATA = -5,
     //: Not allowed to create account without signers
@@ -62,7 +62,7 @@ enum CreateAccountResultCode
 //: CreateAccountSuccess is used to pass useful params if operation is success
 struct CreateAccountSuccess
 {
-    //: Unique integer identifier of new account
+    //: Unique unsigned integer identifier of new account
     uint64 sequentialID;
 
     //: reserved for future use
@@ -80,7 +80,7 @@ union CreateAccountResult switch (CreateAccountResultCode code)
 case SUCCESS:
     CreateAccountSuccess success;
 case INVALID_SIGNER_DATA:
-    //: Is used to determine the reason of signer creation failure
+    //: `createSignerErrorCode` is used to determine the reason of signer creation failure
     ManageSignerResultCode createSignerErrorCode;
 default:
     void;
