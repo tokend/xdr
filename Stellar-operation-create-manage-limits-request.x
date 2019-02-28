@@ -15,7 +15,7 @@ namespace stellar
     Result: CreateManageLimitsRequestResult
 */
 
-//: CreateManageLimitsOp is used to create reviewable request which on approval will update limits set in the system
+//: `CreateManageLimitsRequestOp` is used to create reviewable request which on approval will update limits set in the system
 struct CreateManageLimitsRequestOp
 {
     //: Body of the UpdateLimits reviewable request to be created
@@ -24,8 +24,8 @@ struct CreateManageLimitsRequestOp
     //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used
     //: instead of key-value by key `limits_update_tasks`
     uint32* allTasks;
-    //: ID of the LimitsUpdateRequest
-    //: If `requestID == 0` - operation creates new limits entry, otherwise - updates existing
+    //: ID of the LimitsUpdateRequest\n
+    //: If `requestID == 0` - operation creates new `LimitsUpdateRequest`, otherwise - updates existing one
     uint64 requestID;
 
     //: reserved for future use

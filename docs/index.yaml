@@ -74,6 +74,7 @@ x-tagGroups:
       - Change Account Role Request
       - AMLAlert
       - Limits
+      - Create Manage Limits Request
   - name: Decentralized Exchange
     tags:
       - Asset Pairs
