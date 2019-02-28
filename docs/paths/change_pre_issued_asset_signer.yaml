@@ -6,14 +6,10 @@
     description: |
                   Allows to change assete pre issuer
                   #### Account Role Requirements
-                    | Account | Resource Type | Rule Action | Details |
-                    | --------|:-------------:| -----------:| ------------ |
-                    | source  | -      | -  | No account rule required beacuse only current asset pre issuer can change asset pre issuer |
+                    No account rule required beacuse only current asset pre issuer can change asset pre issuer
 
                   #### Signer Role Requirements
-                    | Resource Type | Rule Action | Details |
-                    |:-------------:| -----------:| --------|
-                    | -       | -   | No signer rule required beacuse only current asset pre issuer can change asset pre issuer |
+                    No signer rule required beacuse only current asset pre issuer can change asset pre issuer
     operationId: manageAssetOp
     parameters:
     - name: Manage Asset Op

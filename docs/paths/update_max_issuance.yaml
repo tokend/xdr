@@ -2,9 +2,9 @@
   get:
     tags:
       - Assets
-    summary: Update max issuance
+    summary: Update Max Issuance
     description: |
-                  Allows to update max issuance of asset
+                  Allows to change max issuance of asset
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action | Details |
                     | --------|:-------------:| -----------:| ------------ |

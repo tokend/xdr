@@ -2,9 +2,11 @@
   get:
     tags:
       - Assets
-    summary: Create `CREATE_ASSET` request
+    summary: Create Request For Asset Creation
     description: |
                   Allows to create or update `CREATE_ASSET` reviewable request
+                  `CREATE_ASSET` request is used to create asset entry
+
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action | Details |
                     | --------|:-------------:| -----------:| ------------ |
