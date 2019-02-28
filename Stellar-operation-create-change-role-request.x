@@ -3,8 +3,8 @@
 namespace stellar
 {
 
-//: CreateChangeRoleRequestOp is used to create reviewable request
-//: which after approval from admin will change role for `destinationAccount`
+//: `CreateChangeRoleRequestOp` is used to create the reviewable request
+//: which after approval from admin will change role of `destinationAccount`
 //: from current role to `accountRoleToSet`
 struct CreateChangeRoleRequestOp
 {
@@ -36,7 +36,7 @@ struct CreateChangeRoleRequestOp
 enum CreateChangeRoleRequestResultCode
 {
     //: Means that change role request successfully created
-    //: or auto approved if pending tasks of requests was zero
+    //: or auto approved if pending tasks of the request was zero
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -66,7 +66,7 @@ case SUCCESS:
     struct {
         //: ID of created or updated request
         uint64 requestID;
-        //: True if request auto approved (pending tasks == 0),
+        //: True if request was auto approved (pending tasks == 0),
         //: `destinationAccount` must have new account role
         bool fulfilled;
         // Reserved for future use
