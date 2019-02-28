@@ -18,6 +18,13 @@ servers:
 #
 # Add tag to x-tagGroups or it won't be displayed
 tags:
+  - name: Transaction
+    description: |
+                  Transactions are commands that modify the ledger state. 
+                  If you think of the ledger as a database, then Operations are SQL commands and Trannsactions are SQL transactions.
+
+
+                  Transactions allows you to combine several operations (even from different sources) into one atomic command (if one operation fails, whole transaction rollbacks). What is more, it's possible to specify different source account for different operation. This can be used to implement features like over-the-counter exchange (include into transaction two operations: one sending assets from A to B; one sending assets from B to A; such transaction requires signatures from both A and B).
   - name: Accounts
     description: Defines operations to manage Accounts
   - name: Assets
@@ -54,6 +61,7 @@ tags:
 x-tagGroups:
   - name: Essentials
     tags:
+      - Transaction
       - Accounts
       - Assets
       - Fees

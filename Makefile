@@ -1,6 +1,16 @@
 all: docs/build/openapi.yaml
 	mkdir -p public 
-	redoc-cli bundle docs/build/openapi.yaml -o public/index.html
+	redoc-cli bundle docs/build/openapi.yaml -o public/index.html \
+    --options.item-types-instead-of-operations=true \
+        --options.root-param-name-as-group-header=true \
+        --options.hide-download-button=true \
+        --options.hide-response-samples=true \
+        --options.hide-path=true \
+        --options.flatten-response-view=true \
+        --options.crop-arm-prefixes=true \
+        --options.code-samples-instead-of-request-samples=true \
+        --options.theme.params.underlined-header.text-transform=none \
+    /
 
 sp :=
 
