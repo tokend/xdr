@@ -44,7 +44,7 @@ enum CancelSaleCreationRequestResultCode
     REQUEST_NOT_FOUND = -2 // trying to cancel not existing reviewable request
 };
 
-//: Result of successful application of CancelSaleCreationRequest
+//: Result of successful application of `CancelSaleCreationRequestOp`
 struct CancelSaleCreationSuccess {
 
     //: Reserved for future use
