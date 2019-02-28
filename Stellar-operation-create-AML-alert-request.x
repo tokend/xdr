@@ -21,7 +21,7 @@ struct CreateAMLAlertRequestOp
     string64 reference; // TODO longstring ?
     //: Parameters of AMLAlertRequest
     AMLAlertRequest amlAlertRequest;
-    //: (optional) Bit mask whose flags must be cleared in order for AMLAlert to be approved, which will be used
+    //: (optional) Bit mask whose flags must be cleared in order for AMLAlertRequest to be approved, which will be used
     //: instead of key-value by key aml_alert_tasks:<asset_code>
     uint32* allTasks;
 
