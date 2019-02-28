@@ -13,8 +13,9 @@ enum StatsOpType
     PAYOUT = 5
 };
 
-//: `LimitsV2Entry` is used in system configuration to set limits (daily, weekly, montly, annual)
-//: for different assets, operations (according to StatsOpType) for account role, or for account, or globally (if both are not provided),
+//: `LimitsV2Entry` is used in the system configuration to set limits (daily, weekly, montly, annual)
+//: for different assets, operations (according to StatsOpType), particular account roles, particular accounts,
+//: or globally (only if both parameters particular account role and paticular account are not specified),
 struct LimitsV2Entry
 {
     //: ID of the limits entry
