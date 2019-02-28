@@ -10,7 +10,7 @@ Threshold: master weight
 Result: LicenseResult
 
 */
-//: License operation is used to perform licensing of the usage of customer's system
+//: License operation is used to increase allowed number of admins and due date
 struct LicenseOp
 {
     //: Allowed number of admins to set in the system
