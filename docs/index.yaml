@@ -20,6 +20,8 @@ servers:
 tags:
   - name: Accounts
     description: Defines operations to manage Accounts
+  - name: Balances
+    description: Defines operations to manage Balances
   - name: Assets
     description: Defines operations to manage Assets
   - name: Fees
@@ -55,6 +57,7 @@ x-tagGroups:
   - name: Essentials
     tags:
       - Accounts
+      - Balances
       - Assets
       - Fees
   - name: Asset Movements
