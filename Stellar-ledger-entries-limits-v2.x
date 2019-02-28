@@ -19,13 +19,13 @@ struct LimitsV2Entry
 {
     //: ID of the limits entry
     uint64      id;
-    //: (optional) ID of the account role limits would be applied to
+    //: (optional) ID of the account role to which limits would be applied
     uint64*     accountRole;
-    //: (optional) ID of the account limits would be applied to
+    //: (optional) ID of the account to which limits would be applied
     AccountID*  accountID;
-    //: Statistics operation type. See `enum StatsOpType`
+    //: Defines an operation type to which limits would be applied. See `enum StatsOpType`
     StatsOpType statsOpType;
-    //: `AssetCode` of the limits entry
+    //: `AssetCode` defines the asset to which limits would be applied
     AssetCode   assetCode;
     //: `isConvertNeeded` indicates whether the asset conversion is needed for the limits entry or not needed.
     //: If this field is `true` - limits are applied to all balances of the account (to every asset account owns).

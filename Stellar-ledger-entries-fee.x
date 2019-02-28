@@ -6,7 +6,7 @@ namespace stellar
 Entry representing a fee state.
 */
 
-//: `FeeType` represents different types of fee for different operations (e.g. fee charged on withdrawal or on investment)
+//: `enum FeeType` represents different types of fee for different operations
 enum FeeType
 {
     PAYMENT_FEE = 0,
@@ -21,7 +21,7 @@ enum FeeType
     ATOMIC_SWAP_PURCHASE_FEE = 9
 };
 
-//: (not used yet)`EmissionFeeType` is a subtype of the Fee used for issuance
+//: (not used) `EmissionFeeType` is a subtype of the Fee used for issuance
 enum EmissionFeeType
 {
     PRIMARY_MARKET = 1,
@@ -35,24 +35,27 @@ enum PaymentFeeType
     INCOMING = 2
 };
 
-//: `FeeEntry` represents the fee structure with the corresponding details
+//: `FeeEntry` is used to set fees to charge either from a particular Account or all Accounts with the particular AccountRole or globally in the system for different operations.
+//: * If `accountID` is defined - fee is charged from a particular account.
+//: * If `accountRole` is defined - fee is charged from all accounts with such account role
+//: * If both are undefined - fee is set globally for all members of the system
 struct FeeEntry
 {
-    //: Type of the particular FeeEntry
+    //: Type of the particular FeeEntry. Defines type of the fee based on the type of operation for which fee would be charged.
     FeeType feeType;
-    //: Code of asset for operations in which fee is applicable
+    //: Code of asset used in operation for which fee is applicable
     AssetCode asset;
 
     //: Fixed amount to pay for the operation
     int64 fixedFee;
-    //: Percent of transfer amount to be charged
+    //: Percent of operation amount to be charged
     int64 percentFee;
 
     //: (optional) Account from which fee would be charged
     AccountID* accountID;
     //: (optional) Account role from which fee would be charged
     uint64*    accountRole;
-    //: `subtype` of fee defines fee applicability to concrete operation
+    //: `subtype` of fee defines fee applicability to the particular operation
     int64 subtype;
 
     //: Defines the lower bound of operation amount for which this fee is applicable
