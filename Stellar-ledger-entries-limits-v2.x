@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-//: `StatsOpType` is a type of operations for which statistics is kept
+//: `StatsOpType` is a type of operation for which statistics is maintained
 enum StatsOpType
 {
     PAYMENT_OUT = 1,
@@ -18,19 +18,19 @@ enum StatsOpType
 //: or globally (only if both parameters particular account role and paticular account are not specified),
 struct LimitsV2Entry
 {
-    //: ID of the limits entry
+    //: ID of limits entry
     uint64      id;
-    //: (optional) ID of the account role to which limits would be applied
+    //: (optional) ID of an account role that will be imposed with limits
     uint64*     accountRole;
-    //: (optional) ID of the account to which limits would be applied
+    //: (optional) ID of an account that will be imposed with limits
     AccountID*  accountID;
-    //: Defines an operation type to which limits would be applied. See `enum StatsOpType`
+    //: Operation type that will be imposed with limits. See `enum StatsOpType`
     StatsOpType statsOpType;
-    //: `AssetCode` defines the asset to which limits would be applied
+    //: Asset that will be imposed with limits
     AssetCode   assetCode;
-    //: `isConvertNeeded` indicates whether the asset conversion is needed for the limits entry or not needed.
-    //: If this field is `true` - limits are applied to all balances of the account (to every asset account owns).
-    //: Otherwise limits from particular limits entry are applied only to the balances with `AssetCode` provided by entry.
+    //: `isConvertNeeded` indicates whether or not the asset conversion is needed for the limits entry.
+    //: If this field is `true`, limits are applied to all balances of an account (to every asset that account owns).
+    //: Otherwise, limits from particular limits entry are applied only to balances with `AssetCode` provided by entry.
     bool        isConvertNeeded;
 
     //: daily out limit

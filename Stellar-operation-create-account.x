@@ -18,9 +18,9 @@ struct CreateAccountOp
 {
     //: ID of account to be created
     AccountID destination;
-    //: ID of an another account that introduced this account into the system
+    //: ID of another account that introduced this account into the system
     AccountID* referrer;
-    //: ID of role which would be attached to account
+    //: ID of the role that will be attached to an account
     uint64 roleID;
 
     //: Array of data about created signers for `destination` account
@@ -40,22 +40,22 @@ struct CreateAccountOp
 //: Result codes of CreateAccountOp
 enum CreateAccountResultCode
 {
-    //: Means that `destination` account was successfully created with signers specified in `signersData`
+    //: Means that `destination` account has been successfully created with signers specified in `signersData`
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
     //: Source account cannot be the same as the destination account
     INVALID_DESTINATION = -1,
-    //: Account with such ID already exists
+    //: Account with such an ID already exists
     ALREADY_EXISTS = -2, // account already exist
-    //: Sum of weights of signers with different identities must exceed the threshold (for now 1000)
+    //: Sum of weights of signers with different identities must exceed the threshold (for now, 1000)
     INVALID_WEIGHT = -3,
-    //: There is no role with such id
+    //: There is no role with such an ID
     NO_SUCH_ROLE = -4,
-    //: Failed to create signer for account because `signersData` is invalid.
+    //: Creation of a signer for an account is failed because `signersData` is invalid.
     //: See `createSignerErrorCode`
     INVALID_SIGNER_DATA = -5,
-    //: Not allowed to create account without signers
+    //: It is not allowed to create accounts without signers
     NO_SIGNER_DATA = -6 // empty signer data array not allowed
 };
 
