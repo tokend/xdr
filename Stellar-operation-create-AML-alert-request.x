@@ -18,7 +18,7 @@ namespace stellar
 struct CreateAMLAlertRequestOp
 {
     //: Reference of AMLAlertRequest
-    string64 reference;
+    string64 reference; // TODO longstring ?
     //: Parameters of AMLAlertRequest
     AMLAlertRequest amlAlertRequest;
     //: (optional) Bit mask whose flags must be cleared in order for AMLAlert to be approved, which will be used
@@ -61,7 +61,7 @@ enum CreateAMLAlertRequestResultCode
 
 };
 
-//: Result of successful application of CreateAMLAlert operation
+//: Result of successful application of `CreateAMLAlertRequest` operation
 struct CreateAMLAlertRequestSuccess {
     //: ID of the newly created reviewable request
     uint64 requestID;
@@ -76,7 +76,7 @@ struct CreateAMLAlertRequestSuccess {
     ext;
 };
 
-//: Result of CreateAMLAlertRequest operation application along with result code
+//: Result of `CreateAMLAlertRequest` operation application along with result code
 union CreateAMLAlertRequestResult switch (CreateAMLAlertRequestResultCode code)
 {
     case SUCCESS:
