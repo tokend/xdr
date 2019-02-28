@@ -13,6 +13,7 @@ namespace stellar
      
      Result: SetFeesEmissionRequestResult
      */
+    //: Allows to establish or remove a relationship between a particular fee entry with the different entities
     struct SetFeesOp
     {
         //: Fee entry to set
