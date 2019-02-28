@@ -61,7 +61,8 @@ struct FeeEntry
     //: Defines the upper bound of operation amount for which this fee is applicable
     int64 upperBound;
 
-    //: Hash of the fee entry (sha256 of stringified feeType, asset, subtype, accountID and accountRole)
+    //: Hash of `type:<feeType>asset:<asset>subtype:<subtype>`
+    //: (Add `accountID:<accountID>` or `accountRole:<accountRole>` if corresponding fields are defined)
     Hash hash;
 
     //: reserved for future use
