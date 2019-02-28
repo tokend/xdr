@@ -23,7 +23,7 @@
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/ManageAccountOp'
+        $ref: '#/components/schemas/ManageAssetOp'
     responses:
       200:
         description: Result
@@ -31,4 +31,4 @@
           application/vnd.api+json:
             schema:
               type: object
-              $ref: '#/components/schemas/ManageAccountResult'
+              $ref: '#/components/schemas/ManageAssetResult'
