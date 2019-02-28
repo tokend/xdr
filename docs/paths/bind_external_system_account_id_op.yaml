@@ -4,7 +4,7 @@
       - External Systems
     summary: Bind external system account ID
     description: |
-                  Allows bind external system account ID
+                  Allows to bind source account to external system account ID pool
                   #### Account Role Requirements
                     | Account        | Resource Type | Action  |
                     | ------------- |:-------------:| -----:|
