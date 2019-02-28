@@ -4,15 +4,6 @@
 namespace stellar
 {
 
-/* CreateAccount
-Creates and funds a new account with the specified starting balance.
-
-Threshold: med
-
-Result: CreateAccountResult
-
-*/
-
 //: CreateAccountOp is used to create new account
 struct CreateAccountOp
 {

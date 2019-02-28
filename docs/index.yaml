@@ -17,3 +17,74 @@ servers:
 # NOTE
 #
 # Add tag to x-tagGroups or it won't be displayed
+tags:
+  - name: Accounts
+    description: Defines operations to manage Accounts
+  - name: Assets
+    description: Defines operations to manage Assets
+  - name: Fees
+    description: Defines operations to manage Fees
+  - name: Signers
+    description: Defines operations to manage Signers
+  - name: Account Roles
+    description: Account Role - entry that consists of [Account Rules](#tag/Account-Rules) and can be attached to account.
+  - name: Account Rules
+    description: |
+      Account Rule - entry that defines if `action` can be performed for [resource](#operation/AccountRuleResource).
+
+      TokenD uses strict policy for rules matching. 
+      List of requirements to the roles of participants is formed based on operation (transaction) details.
+      If one of the requirements is not fulfilled, operation is rejected.
+      Requirement is specified for account and consits of resource and action to be performed.
+      Requirement is fulfilled if account's role contains matching rule with `forbids=false`.
+      If one of the matching rules has `forbids=true` - operation is rejected.
+      If role does not contain any matching rules - operation is rejected.
+  - name: Asset Pairs
+    description: |
+                  
+  - name: Order Books
+    description: |
+                  
+  - name: AMLAlert
+    description: Defines access points to AMLAlert Reviewable Requests
+  - name: Issuance
+    description: Defines access points to get Issuance Reviewable Requests
+  - name: Withdrawal
+    description: Defines access points to get Withdrawal Reviewable Requests
+x-tagGroups:
+  - name: Essentials
+    tags:
+      - Accounts
+      - Assets
+      - Fees
+  - name: Asset Movements
+    tags:
+     - AMLAlert
+     - Issuance
+     - Withdrawal
+  - name: Access Control
+    tags:
+      - Signers
+      - Signer Roles
+      - Signer Rules
+  - name: KYC & AML
+    tags:
+      - Account Roles
+      - Account Rules
+      - Change Account Role Request
+      - AMLAlert
+      - Limits
+  - name: Decentralized Exchange
+    tags:
+      - Asset Pairs
+      - Offers
+      - Order Books
+      - Crowd Investing
+  - name: Advanced
+    tags:
+      - PreIssuance
+      - KeyValue
+  - name: Other
+    tags:
+      - Requests
+      - WIP
