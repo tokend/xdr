@@ -53,6 +53,8 @@ tags:
     description: Defines access points to get Issuance Reviewable Requests
   - name: Withdrawal
     description: Defines access points to get Withdrawal Reviewable Requests
+  - name: Payment
+    description: Defines access points to get Payments
 x-tagGroups:
   - name: Essentials
     tags:
@@ -65,6 +67,7 @@ x-tagGroups:
      - AMLAlert
      - Issuance
      - Withdrawal
+     - Payment
   - name: Access Control
     tags:
       - Signers
