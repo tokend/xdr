@@ -1,6 +1,5 @@
-
-
 %#include "xdr/Stellar-types.h"
+
 namespace stellar
 {
 /* FeeEntry     
@@ -22,43 +21,44 @@ enum FeeType
     ATOMIC_SWAP_PURCHASE_FEE = 9
 };
 
-//: (not used yet)`EmissionFeeType` is a subtype of the Fee used for issuance
+//: (not used) `EmissionFeeType` is a subtype of `ISSUANCE_FEE`
 enum EmissionFeeType
 {
     PRIMARY_MARKET = 1,
     SECONDARY_MARKET = 2
 };
 
-// `PaymentFeeType` is a subtype of the Fee used for payments
+//: `PaymentFeeType` is a subtype of `PAYMENT_FEE`
 enum PaymentFeeType
 {
     OUTGOING = 1,
     INCOMING = 2
 };
 
-// `FeeEntry` represents the fee structure with corresponding details
+//: `FeeEntry` is used in the system configuration to set fees for different assets, operations (according to FeeType), particular account roles, particular accounts,
+//: or globally (only if both parameters particular account role and paticular account are not specified).
 struct FeeEntry
 {
-    //: Type of a particular FeeEntry
+    //: Type of a particular fee depending on the operation (e.g., PAYMENT_FEE for payment operation, WITHDRAWAL_FEE for withdrawal operation, etc.)
     FeeType feeType;
-    //: Asset in which a fee will be charged
+    //: Code of an asset used in the operation for which the fee will be charged
     AssetCode asset;
 
-    //: Fixed amount to pay for the operation
+    //: Fixed amount of fee that will be charged for the operation
     int64 fixedFee;
-    //: Percent of transfer amount to be charged
+    //: Percent from the operation amount that will be charged for the corresponding operation
     int64 percentFee;
 
     //: (optional) Account from which fee would be charged
     AccountID* accountID;
     //: (optional) Account role from which fee would be charged
     uint64*    accountRole;
-    //: Subtype of the fee depends on fee type and defines how fee entry is handl
+    //: Defines a `subtype` of a fee if such exists (e.g., `OUTGOING` or `INCOMING` for `PAYMENT_FEE`)
     int64 subtype;
 
     //: Defines the lower bound of operation amount for which this fee is applicable
     int64 lowerBound;
-    //: Defines upper bound of operation amount for which this fee is applicable
+    //: Defines the upper bound of operation amount for which this fee is applicable
     int64 upperBound;
 
     //: Hash of the fee entry (sha256 of stringified feeType, asset, subtype, accountID and accountRole)
