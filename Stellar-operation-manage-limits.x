@@ -10,7 +10,7 @@ enum ManageLimitsAction
     REMOVE = 1
 };
 
-//: `LimitsV2Entry` is used in the system configuration to set limits (daily, weekly, montly, annual)
+//: `LimitsCreateDetails` is used in the system configuration to set limits (daily, weekly, montly, annual)
 //: for different assets, operations (according to StatsOpType), particular account roles, particular accounts,
 //: or globally (only if both parameters particular account role and paticular account are not specified)
 struct LimitsCreateDetails
