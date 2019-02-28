@@ -29,14 +29,14 @@ enum EmissionFeeType
     SECONDARY_MARKET = 2
 };
 
-// `PaymentFeeType` is a subtype of the Fee used for payments
+//: `PaymentFeeType` is a subtype of the Fee used for payments
 enum PaymentFeeType
 {
     OUTGOING = 1,
     INCOMING = 2
 };
 
-// `FeeEntry` represents the fee structure with the corresponding details
+//: `FeeEntry` represents the fee structure with the corresponding details
 struct FeeEntry
 {
     //: Type of the particular FeeEntry

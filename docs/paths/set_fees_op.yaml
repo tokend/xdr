@@ -1,0 +1,34 @@
+/setFeesOp:
+  get:
+    tags:
+      - Fees
+    summary: Set Fees
+    description: |
+      Allows to set or remove relationships between fee entries and particular entities.
+      #### Account Role Requirements
+        | Account        | Resource Type | Action   |
+        | -------------  |:-------------:| --------:|
+        | source         | `FEE`         | `MANAGE` |
+
+      #### Signer Role Requirements
+        | Resource Type | Rule Action |
+        |:-------------:| -----------:|
+        | `FEE`         | `MANAGE`    |
+    operationId: setFeesOp
+    parameters:
+      - name: Set Fees Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/SetFeesOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SetFeesResult'
