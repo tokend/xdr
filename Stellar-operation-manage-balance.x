@@ -24,7 +24,7 @@ enum ManageBalanceAction
     CREATE_UNIQUE = 2
 };
 
-//: `ManageBalanceOp` applies `action` of type `ManageBalanceAction` to the `destination` account (referenced by its AccountID) to the balance of the specific `asset` (referenced by its AssetCode)
+//: `ManageBalanceOp` applies `action` of type `ManageBalanceAction` to the balance of the specific `asset` (referenced to by its AssetCode) of the `destination` account (referenced to by its AccountID)
 struct ManageBalanceOp
 {
     //: Defines a ManageBalanceAction action to perform
@@ -57,7 +57,7 @@ enum ManageBalanceResultCode
     NOT_FOUND = -2,
     //: Cannot find the account provided by `destination` AccountID
     DESTINATION_NOT_FOUND = -3,
-    //: Cannot find asset by `asset` set in operation
+    //: Cannot find asset by `asset` provided by operation
     ASSET_NOT_FOUND = -4,
     //: AssetCode `asset` is invalid (e.g. `AssetCode` which not consists of alphanumeric symbols or zeros in `AssetCode` are not trailing)
     INVALID_ASSET = -5,
