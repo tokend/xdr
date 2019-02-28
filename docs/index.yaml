@@ -53,6 +53,8 @@ tags:
     description: Defines access points to get Withdrawal Reviewable Requests
   - name: Sale
     description: Defines access points to get operations related to sales
+  - name: External Systems
+    descriptions: Defines access points to get operations related to external systems
 x-tagGroups:
   - name: Essentials
     tags:
@@ -64,6 +66,7 @@ x-tagGroups:
      - AMLAlert
      - Issuance
      - Withdrawal
+     - External Systems
   - name: Access Control
     tags:
       - Signers
