@@ -20,6 +20,8 @@ servers:
 tags:
   - name: Accounts
     description: Defines operations to manage Accounts
+  - name: Balances
+    description: Defines operations to manage Balances
   - name: Assets
     description: Defines operations to manage Assets
   - name: Fees
@@ -51,10 +53,13 @@ tags:
     description: Defines access points to get Issuance Reviewable Requests
   - name: Withdrawal
     description: Defines access points to get Withdrawal Reviewable Requests
+  - name: Payment
+    description: Defines access points to get Payments
 x-tagGroups:
   - name: Essentials
     tags:
       - Accounts
+      - Balances
       - Assets
       - Fees
   - name: Asset Movements
@@ -62,6 +67,7 @@ x-tagGroups:
      - AMLAlert
      - Issuance
      - Withdrawal
+     - Payment
   - name: Access Control
     tags:
       - Signers
