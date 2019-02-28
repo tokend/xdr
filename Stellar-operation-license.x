@@ -45,7 +45,7 @@ enum LicenseResultCode
     INVALID_STAMP = -1,
     //: Provided due date is in the past.
     INVALID_DUE_DATE = -2,
-    //: Not enough valid signatures to submit license
+    //: Not enough valid signatures to submit license (required at least one valid signature)
     INVALID_SIGNATURE = -3
 };
 

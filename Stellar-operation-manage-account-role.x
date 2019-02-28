@@ -95,7 +95,7 @@ struct ManageAccountRoleOp
 //: Result codes of ManageAccountRoleResultCode
 enum ManageAccountRoleResultCode
 {
-    //: Means that specified action in `data` of ManageAccountRoleOp was successfully executed
+    //: Means that specified action in `data` of ManageAccountRoleOp was successfully performed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation

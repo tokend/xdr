@@ -11,7 +11,7 @@ Result: ManageExternalSystemAccountIdPoolEntryResult
 
 */
 
-//: Actions which can be performed with external system account ID pool
+//: Actions which can be performed with external system account ID in the external system ID pool
 enum ManageExternalSystemAccountIdPoolEntryAction
 {
     CREATE = 0,
@@ -19,7 +19,7 @@ enum ManageExternalSystemAccountIdPoolEntryAction
 };
 
 //: CreateExternalSystemAccountIdPoolEntryActionInput is used to
-//: pass necessary params to create new external system account ID pool
+//: pass necessary params to create new external system account ID in external system ID pool
 struct CreateExternalSystemAccountIdPoolEntryActionInput
 {
     //: Type of external system, selected arbitrarily
@@ -39,7 +39,7 @@ struct CreateExternalSystemAccountIdPoolEntryActionInput
 };
 
 //: DeleteExternalSystemAccountIdPoolEntryActionInput is used to
-//: pass necessary params to remove existing external system account ID pool
+//: pass necessary params to remove existing external system account ID in external system ID pool
 struct DeleteExternalSystemAccountIdPoolEntryActionInput
 {
     //: ID of existing external system account ID pool
@@ -55,7 +55,7 @@ struct DeleteExternalSystemAccountIdPoolEntryActionInput
 };
 
 //: ManageExternalSystemAccountIdPoolEntryOp is used to create or remove
-//: external system account ID pool
+//: external system account ID from external system ID pool
 struct ManageExternalSystemAccountIdPoolEntryOp
 {
     //: actionInput is used to pass one of
@@ -83,7 +83,7 @@ struct ManageExternalSystemAccountIdPoolEntryOp
 enum ManageExternalSystemAccountIdPoolEntryResultCode
 {
     //: Specified action in `actionInput` of ManageExternalSystemAccountIdPoolEntryOp
-    //: was successfully executed
+    //: was successfully performed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation

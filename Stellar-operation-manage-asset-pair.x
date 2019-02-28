@@ -35,7 +35,7 @@ struct ManageAssetPairOp
     //: Defines a base asset of the asset pair
     AssetCode quote;
 
-    //: Price of the asset pair assigned on creation. Can only be updated by the `UPDATE_PRICE` `ManageAssetPair` operation
+    //: Price of the asset pair assigned on creation. Can only be updated by the `ManageAssetPair` operation with action `UPDATE_PRICE`
     int64 physicalPrice;
 
     //: Correction of physical price in percents. If physical price is set and restriction by physical price set, mininal price for offer for this pair will be physicalPrice * physicalPriceCorrection
@@ -61,7 +61,7 @@ struct ManageAssetPairOp
 enum ManageAssetPairResultCode
 {
     // codes considered as "success" for the operation
-    //: Indicates that `ManageAssetPair` was successfully applied
+    //: Indicates that `ManageAssetPairOp` was successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -75,7 +75,7 @@ enum ManageAssetPairResultCode
     INVALID_ASSET = -4,
     //: `action` is not in the set of valid actions (see `ManageAssetPairAction`)
     INVALID_ACTION = -5,
-    //: Field `policies` is invalid (e.g. `policies < 0`)
+    //: Field `policies` is invalid (`policies < 0`)
     INVALID_POLICIES = -6,
     //: Asset with such code not found
     ASSET_NOT_FOUND = -7

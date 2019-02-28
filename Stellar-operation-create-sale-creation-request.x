@@ -59,7 +59,7 @@ enum CreateSaleCreationRequestResultCode
     INVALID_PRICE = -6,
     //: Trying to create sale with hard cap < soft cap
     INVALID_CAP = -7,
-    //: Max issuance amount is lesser than sale's soft cap
+    //: Max issuance amount is less than sale's soft cap
     INSUFFICIENT_MAX_ISSUANCE = -8,
     //: Trying to create sale with invalid asset code of one of the assets or base asset is equal to one of the quote assets 
     INVALID_ASSET_PAIR = -9,
