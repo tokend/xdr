@@ -1,0 +1,37 @@
+/createChangeRoleRequestOp:
+  get:
+    tags:
+      - KYC
+    summary: Create Change Role Request
+    description: |
+                  Allows creating `CHANGE_ROLE` reviewable request.
+                  `CHANGE_ROLE` request is used to change role of account.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  | Condtion |
+                    | --------|:-------------:|:-----:| ------------|
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks` == `null` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+                  #### Signer Role Requirements
+                    | Resource Type| Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createChangeRoleRequestOp
+    parameters:
+    - name: Create Change Role Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateChangeRoleRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateChangeRoleRequestResult'
