@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-//: ManageAssetAction is used to specify action to be performed over asset or asset create/update request
+//: ManageAssetAction is used to specify action to be performed with asset or asset create/update request
 enum ManageAssetAction
 {
     CREATE_ASSET_CREATION_REQUEST = 0,
@@ -25,12 +25,12 @@ struct CancelAssetRequest
     ext;
 };
 
-//: UpdateMaxIssuance is used to update max issuance of the asset.
+//: UpdateMaxIssuance is used to update max issuance amount of the asset.
 struct UpdateMaxIssuance
 {
-    //: code of asset to be updated
+    //: `assetCode` defines an asset entry which would be updated
     AssetCode assetCode;
-    //: amount to be max issuance amount in asset entry
+    //: new max issuance amount for asset entry
     uint64 maxIssuanceAmount;
 
     //: reserved for future use
@@ -71,7 +71,8 @@ struct ManageAssetOp
         {
             //: Is used needed to pass needed fields to create asset entry
             AssetCreationRequest createAsset;
-            //: Is used to pass tasks for reviewable request instead tasks from key value
+            //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ASSET` request to be approved, which will be used
+            //: instead of key-value by key `asset_create_tasks`
             uint32* allTasks;
 
             //: reserved for future use
@@ -88,7 +89,8 @@ struct ManageAssetOp
         {
             //: Is used needed to pass needed fields to update asset entry
             AssetUpdateRequest updateAsset;
-            //: Is used to pass tasks for reviewable request instead tasks from key value
+            //: (optional) Bit mask whose flags must be cleared in order for `UPDATE_ASSET` request to be approved, which will be used
+            //: instead of key-value by key `asset_update_tasks`
             uint32* allTasks;
 
             //: reserved for future use
@@ -130,12 +132,12 @@ enum ManageAssetResultCode
     // codes considered as "failure" for the operation
     //: There is no `CREATE_ASSET` or `UPDATE_ASSET` request with such id
     REQUEST_NOT_FOUND = -1,           // failed to find asset request with such id
-    //: only asset pre issuer can change asset pre issuer
+    //: only asset pre issuer can manage asset
     INVALID_SIGNATURE = -2,
-    //: Not allowed to create asset with code which already used for an other asset
+    //: Not allowed to create asset with code which already used for an another asset
     ASSET_ALREADY_EXISTS = -3,	      // asset with such code already exist
     //: Not allowed to set max issuance amount that
-    //: lesser than the sum of issued, pending issuance and available for issuance
+    //: less than the sum of issued, pending issuance and available for issuance
     INVALID_MAX_ISSUANCE_AMOUNT = -4, // max issuance amount is 0
     //: Not allowed to use asset code which is empty or contains space
     INVALID_CODE = -5,                // asset code is invalid (empty or contains space)
