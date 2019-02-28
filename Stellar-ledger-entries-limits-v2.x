@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-// `StatsOpType` is a type of operations for which statistics is kept
+//: `StatsOpType` is a type of operations for which statistics is kept
 enum StatsOpType
 {
     PAYMENT_OUT = 1,
@@ -13,7 +13,8 @@ enum StatsOpType
     PAYOUT = 5
 };
 
-// `LimitsV2Entry` represents all the details of limits attached to the particular account or account role or globally in the system
+//: `LimitsV2Entry` is used in system configuration to set limits (daily, weekly, montly, annual)
+//: for different assets, operations (according to StatsOpType) for account role, or for account, or globally (if both are not provided),
 struct LimitsV2Entry
 {
     //: ID of the limits entry

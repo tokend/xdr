@@ -1,6 +1,5 @@
-
-
 %#include "xdr/Stellar-types.h"
+
 namespace stellar
 {
 /* FeeEntry     
@@ -29,14 +28,14 @@ enum EmissionFeeType
     SECONDARY_MARKET = 2
 };
 
-// `PaymentFeeType` is a subtype of the Fee used for payments
+//: `PaymentFeeType` is a subtype of the Fee used for payments
 enum PaymentFeeType
 {
     OUTGOING = 1,
     INCOMING = 2
 };
 
-// `FeeEntry` represents the fee structure with the corresponding details
+//: `FeeEntry` represents the fee structure with the corresponding details
 struct FeeEntry
 {
     //: Type of the particular FeeEntry
@@ -53,7 +52,7 @@ struct FeeEntry
     AccountID* accountID;
     //: (optional) Account role from which fee would be charged
     uint64*    accountRole;
-    //: Subtype of the fee depends on fee type and defines how fee entry is handl
+    //: `subtype` of fee defines fee applicability to concrete operation
     int64 subtype;
 
     //: Defines the lower bound of operation amount for which this fee is applicable
