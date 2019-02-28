@@ -51,6 +51,8 @@ tags:
     description: Defines access points to get Issuance Reviewable Requests
   - name: Withdrawal
     description: Defines access points to get Withdrawal Reviewable Requests
+  - name: Sale
+    description: Defines access points to get operations related to sales
 x-tagGroups:
   - name: Essentials
     tags:
@@ -80,6 +82,7 @@ x-tagGroups:
       - Offers
       - Order Books
       - Crowd Investing
+      - Sale
   - name: Advanced
     tags:
       - PreIssuance

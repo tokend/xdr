@@ -1,0 +1,35 @@
+/createSaleCreationRequestOp:
+  get:
+    tags:
+      - Sale
+    summary: Create sale cretion request
+    description: |
+                  Allows to create sale creation request
+                  #### Account Role Requirements
+                    | Account        | Resource Type | Action  | Condition |
+                    | ------------- |:-------------:| -----:| ----: |
+                    | source      | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks` == `null` |
+                    | source      | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createSaleRequestOp
+    parameters:
+    - name: CreateSaleRequestOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateSaleCreationRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateSaleCreationRequestResult'

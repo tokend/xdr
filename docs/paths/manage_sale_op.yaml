@@ -1,0 +1,65 @@
+/createUpdateSaleDetailsRequest:
+  get:
+    tags:
+      - Sale
+    summary: create UpdateSaleDetailsRequest
+    description: |
+                  Allows to create reviewable request which after approval will update sale details
+                  #### Account Role Requirements
+                    Only sale owner or admin are able to manage sale
+                  #### Signer Role Requirements
+
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `SALE` | `MANAGE` |
+    operationId: createUpdateSaleDetailsRequestOp
+    parameters:
+    - name: ManageSaleOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageSaleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageSaleResult'
+
+/cancelSale:
+  get:
+    tags:
+      - Sale
+    summary: cancel active sale
+    description: |
+                  Allows to cancel sale
+                  #### Account Role Requirements
+                    Only sale owner or admin are able to manage sale
+                  #### Signer Role Requirements
+
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `SALE` | `MANAGE` |
+    operationId: cancelSaleOp
+    parameters:
+    - name: ManageSaleOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageSaleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageSaleResult'

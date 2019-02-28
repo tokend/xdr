@@ -1,27 +1,27 @@
-/reviewRequestOp:
+/cancelSaleCreationRequestOp:
   get:
     tags:
-      - Requests
-    summary: Review Request
+      - Sale
+    summary: Cancel sale creation request
     description: |
-                  Allows to review pending reviewable requests
+                  Allows to cancel creation of the sale
                   #### Account Role Requirements
-                    There are no account role requirements. Only `Reviewer` can review request
+                    Only sale creator can cancel request
                   #### Signer Role Requirements
 
                     | Resource Type | Action  |
                     |:-------------:| -----:|
-                    | `REVIEWABLE_REQUEST` | `REVIEW` |
-    operationId: reviewRequestOp
+                    | `REVIEWABLE_REQUEST` | `CANCEL` |
+    operationId: cancelSaleCreationRequestOp
     parameters:
-    - name: Review Request Op
+    - name: CancelSaleCreationRequestOp
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/ReviewRequestOp'
+        $ref: '#/components/schemas/CancelSaleCreationRequestOp'
     responses:
       200:
         description: Result
@@ -29,4 +29,4 @@
           application/vnd.api+json:
             schema:
               type: object
-              $ref: '#/components/schemas/ReviewRequestResult'
+              $ref: '#/components/schemas/CancelSaleCreationRequestResult'

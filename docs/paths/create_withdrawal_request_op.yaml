@@ -11,8 +11,6 @@
                     | source      | `WITHDRAW` | `CREATE` |
 
                   #### Signer Role Requirements
-                  Rule with matching resource of type `ReviewableRequest` and action `Review`.
-
                     | Resource Type | Action  |
                     |:-------------:| -----:|
                     | `REVIEWABLE_REQUEST` | `CREATE` |
