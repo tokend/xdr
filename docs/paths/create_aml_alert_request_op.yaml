@@ -1,0 +1,34 @@
+/createAMLAlertRequestOp:
+  get:
+    tags:
+      - AMLAlert
+    summary: Create aml alert request
+    description: |
+                  Allows to create request to issue asset to destination balance
+                  #### Account Role Requirements
+                    | Account        | Resource Type | Action  |
+                    | ------------- |:-------------:| -----:|
+                    | source      | `REVIEWABLE_REQUEST` | `CREATE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createAMLAlertRequestOp
+    parameters:
+    - name: CreateAMLAlertRequestOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateAmlAlertRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateAmlAlertRequestResult'

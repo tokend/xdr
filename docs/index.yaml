@@ -87,4 +87,5 @@ x-tagGroups:
   - name: Other
     tags:
       - Requests
+      - Licensing
       - WIP

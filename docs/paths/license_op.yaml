@@ -1,0 +1,35 @@
+/licenseOp:
+  get:
+    tags:
+      -  Licensing
+    summary: license
+    description: |
+                  Allows to save current license hash and currenct ledger hash for use in LicenseOp application
+                    #### Account Role Requirements
+                    | Account        | Resource Type | Action  |
+                    | ------------- |:-------------:| -----:|
+                    | source      | `LICENSE` | `CREATE` |
+
+                    #### Signer Role Requirements
+                    | Resource Type | Action   |
+                    |:-------------:| -----:   |
+                    | `LICENSE`       | `CREATE` |
+
+    operationId: licenseOp
+    parameters:
+    - name: license Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/LicenseOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/LicenseResult'

@@ -1,0 +1,33 @@
+/reviewRequestOp:
+  get:
+    tags:
+      - Requests
+    summary: Review Request
+    description: |
+                  Allows to review pending reviewable requests
+                  #### Account Role Requirements
+                    There are no account role requirements. Only `Reviewer` can review request
+                  #### Signer Role Requirements
+                  Rule with matching resource of type `REVIEWABLE_REQUEST` and action `REVIEW`.
+
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `REVIEW` |
+    operationId: reviewRequestOp
+    parameters:
+    - name: Review Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ReviewRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ReviewRequestResult'
