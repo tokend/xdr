@@ -40,7 +40,7 @@ struct FeeEntry
 {
     //: Type of the particular FeeEntry
     FeeType feeType;
-    //: Asset in which fee would be charged
+    //: Code of asset for operations in which fee is applicable
     AssetCode asset;
 
     //: Fixed amount to pay for the operation
