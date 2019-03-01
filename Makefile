@@ -1,6 +1,5 @@
 all: docs/build/openapi.yaml
-	mkdir -p public 
-	redoc-cli bundle docs/build/openapi.yaml -o public/index.html \
+	redoc-cli bundle docs/build/openapi.yaml -o index.html \
     --options.item-types-instead-of-operations=true \
         --options.root-param-name-as-group-header=true \
         --options.hide-download-button=true \
