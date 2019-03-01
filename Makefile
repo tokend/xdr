@@ -9,6 +9,7 @@ all: docs/build/openapi.yaml
         --options.crop-arm-prefixes=true \
         --options.code-samples-instead-of-request-samples=true \
         --options.theme.params.underlined-header.text-transform=none \
+        --options.theme.typography.links.color=#695de4 \
     /
 
 sp :=
