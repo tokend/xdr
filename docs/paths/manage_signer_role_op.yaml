@@ -15,6 +15,7 @@
                     |:-------------:|:-----:|
                     | `SIGNER_ROLE` | `MANAGE` |
     operationId: manageSignerRoleOp
+    x-item-type: operation
     parameters:
     - name: Manage Signer Role Op
       in: query

@@ -15,6 +15,7 @@
                     |:-------------:|:-----:|
                     | `SIGNER_RULE` | `MANAGE` |
     operationId: manageSignerRuleOp
+    x-item-type: operation
     parameters:
     - name: Manage Signer Rule Op
       in: query

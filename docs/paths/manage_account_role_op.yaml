@@ -15,6 +15,7 @@
                     |:-------------:|:-----:|
                     | `ACCOUNT_ROLE` | `MANAGE` |
     operationId: manageAccountRoleOp
+    x-item-type: operation
     parameters:
     - name: Manage Account Role Op
       in: query
