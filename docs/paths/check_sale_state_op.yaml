@@ -4,7 +4,8 @@
       - Sale
     summary: check sale state
     description: |
-      Allows to check state of the sale
+      Allows to check sale state. If sale reached hard cap or end time has come and reached soft cap, it will be closed
+      and exchange between sale owner and participants will be performed.
       #### Account Role Requirements
         | Account        | Resource Type| Action  |
         | ------------- |:-------------:| -----:|
