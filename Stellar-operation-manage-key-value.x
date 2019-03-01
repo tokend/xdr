@@ -9,16 +9,17 @@ namespace stellar
         REMOVE = 2
     };
 
-    //: `ManageKeyValueOp` is used to create manage key-value operation which on successful application will update the key-value entry presented in the system
+    //: `ManageKeyValueOp` is used to update the key-value entries presented in the system
     struct ManageKeyValueOp
     {
         //: `key` is the key for KeyValueEntry
         longstring key;
         //: `action` defines an action applied to the KeyValue based on the given ManageKVAction
+        //: * Action `PUT` stores new value for a particular key
+        //: * Action `REMOVE` removes the value by a particular key
         union switch(ManageKVAction action)
         {
             case PUT:
-                 //: Value to store
                  KeyValueEntryValue value;
             case REMOVE:
                 void;

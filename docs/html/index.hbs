@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <title>{{title}}</title>
+    <!-- nee    ded for adaptive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    {{{redocHead}}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <link rel="icon" data-react-helmet="true" href="https://tokend.io/images/icon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135426962-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date(), { 'anonymize_ip': true });
+
+        gtag('config', 'UA-135426962-1', { 'anonymize_ip': true });
+    </script>
+</head>
+
+<body>
+{{{redocHTML}}}
+</body>
+
+</html>

@@ -27,11 +27,11 @@ enum ManageBalanceAction
 //: `ManageBalanceOp` applies `action` of type `ManageBalanceAction` to the balance of the specific `asset` (referenced to by its AssetCode) of the `destination` account (referenced to by its AccountID)
 struct ManageBalanceOp
 {
-    //: Defines a ManageBalanceAction action to perform
+    //: Defines a `ManageBalanceAction` to perform
     ManageBalanceAction action;
     //: Defines the account whose balance would be managed
     AccountID destination;
-    //: Defines the asset of the balance to which `action` would be applied
+    //: Defines the balance to perform an `action` on by its asset code
     AssetCode asset;
     union switch (LedgerVersion v)
     {

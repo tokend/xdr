@@ -1,5 +1,5 @@
 all: docs/build/openapi.yaml
-	redoc-cli bundle docs/build/openapi.yaml -o docs/index.html \
+	redoc-cli bundle docs/build/openapi.yaml -t ./docs/html/index.hbs -o docs/index.html \
     --options.item-types-instead-of-operations=true \
         --options.root-param-name-as-group-header=true \
         --options.hide-download-button=true \
@@ -9,6 +9,7 @@ all: docs/build/openapi.yaml
         --options.crop-arm-prefixes=true \
         --options.code-samples-instead-of-request-samples=true \
         --options.theme.params.underlined-header.text-transform=none \
+        --options.theme.typography.links.color=#695de4 \
     /
 
 sp :=

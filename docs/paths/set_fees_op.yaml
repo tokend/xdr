@@ -4,7 +4,7 @@
       - Fees
     summary: Set Fees
     description: |
-      Allows to set or remove relationships between fee entries and particular entities.
+      Allows to set or remove relationships between [fee entries](#operation/feeEntryResource) and particular entities.
       #### Account Role Requirements
         | Account        | Resource Type | Action   |
         | -------------  |:-------------:| --------:|

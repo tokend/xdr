@@ -18,15 +18,16 @@
         Amount of tokens distributed between participants depends only on capitalization on sale close.
 
       #### Account Role Requirements
-        | Account        | Resource Type | Action  | Condition |
-        | ------------- |:-------------:| -----:| ----: |
-        | source      | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks` == `null` |
-        | source      | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+        | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+        | ------------- |:-------------:| -----:| -----: | ----: |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_SALE` | `CREATE` | `allTasks` == `null` |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_SALE` |`CREATE_WITH_TASKS` | `allTasks` != `null` |
 
       #### Signer Role Requirements
-        | Resource Type | Action  |
-        |:-------------:| -----:|
-        | `REVIEWABLE_REQUEST` | `CREATE` |
+        | Resource Type | ReviewableRequestType | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_SALE` |`CREATE` |
+
     operationId: createSaleRequestOp
     x-item-type: operation
     parameters:

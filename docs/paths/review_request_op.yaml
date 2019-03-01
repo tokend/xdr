@@ -12,7 +12,7 @@
       #### Account Role Requirements
         There are no account role requirements. Only `Reviewer` can review request
       #### Signer Role Requirements
-
+        In reviewable request resource `ReviewableRequestType` should correspond to type of the request being reviewed
         | Resource Type | Action  |
         |:-------------:| -----:|
         | `REVIEWABLE_REQUEST` | `REVIEW` |
