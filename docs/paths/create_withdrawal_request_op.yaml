@@ -4,16 +4,16 @@
       - Withdrawal
     summary: Create withdrawal request
     description: |
-                  Allows to create request to  withdraw assets from system to some external wallet, account etc.
-                  #### Account Role Requirements
-                    | Account        | Resource Type | Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `WITHDRAW` | `CREATE` |
+      Allows to create request to  withdraw assets from system to some external wallet, account etc.
+      #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `WITHDRAW` | `CREATE` |
 
-                  #### Signer Role Requirements
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `REVIEWABLE_REQUEST` | `CREATE` |
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `REVIEWABLE_REQUEST` | `CREATE` |
     operationId: createWithdrawalRequestOp
     parameters:
     - name: CreateWithdrawalRequestOp

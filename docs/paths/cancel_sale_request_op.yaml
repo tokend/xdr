@@ -4,14 +4,14 @@
       - Sale
     summary: Cancel sale creation request
     description: |
-                  Allows to cancel creation of the sale
-                  #### Account Role Requirements
-                    Only sale creator can cancel request
-                  #### Signer Role Requirements
+      Allows to cancel creation of the sale
+      #### Account Role Requirements
+        Only sale creator can cancel request
+      #### Signer Role Requirements
 
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `REVIEWABLE_REQUEST` | `CANCEL` |
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `REVIEWABLE_REQUEST` | `CANCEL` |
     operationId: cancelSaleCreationRequestOp
     parameters:
     - name: CancelSaleCreationRequestOp

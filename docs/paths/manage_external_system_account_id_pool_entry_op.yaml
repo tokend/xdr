@@ -4,17 +4,17 @@
       - External Systems
     summary: manage external system pool
     description: |
-                  Allows to manage external system account id pool - create, or remove it, depending on the action,
-                  specified in the operation
-                  #### Account Role Requirements
-                    | Account        | Resource Type | Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
+      Allows to manage external system account id pool - create, or remove it, depending on the action,
+      specified in the operation
+      #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
 
-                  #### Signer Role Requirements
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
     operationId: manageExternalSystemAccountIdPoolEntry
     parameters:
     - name: ManageExternalSystemAccountIdPoolEntryOp

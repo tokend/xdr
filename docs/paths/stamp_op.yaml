@@ -4,16 +4,16 @@
       -  Licensing
     summary: Stamp
     description: |
-                  Allows to save current license hash and currenct ledger hash for use in LicenseOp application
-                    #### Account Role Requirements
-                    | Account        | Resource Type | Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `STAMP` | `CREATE` |
+      Allows to save current license hash and currenct ledger hash for use in LicenseOp application
+        #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `STAMP` | `CREATE` |
 
-                    #### Signer Role Requirements
-                    | Resource Type | Action   |
-                    |:-------------:| -----:   |
-                    | `STAMP`       | `CREATE` |
+        #### Signer Role Requirements
+        | Resource Type | Action   |
+        |:-------------:| -----:   |
+        | `STAMP`       | `CREATE` |
 
     operationId: stampOp
     parameters:

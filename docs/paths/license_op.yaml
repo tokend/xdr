@@ -4,7 +4,7 @@
       -  Licensing
     summary: license
     description: |
-                  Allows to save current license hash and currenct ledger hash for use in LicenseOp application
+                  License is used to increase allowed number of admins and set new due date
                     #### Account Role Requirements
                     | Account        | Resource Type | Action  |
                     | ------------- |:-------------:| -----:|

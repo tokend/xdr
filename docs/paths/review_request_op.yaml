@@ -4,14 +4,14 @@
       - Requests
     summary: Review Request
     description: |
-                  Allows to review pending reviewable requests
-                  #### Account Role Requirements
-                    There are no account role requirements. Only `Reviewer` can review request
-                  #### Signer Role Requirements
+      Allows to review pending reviewable requests
+      #### Account Role Requirements
+        There are no account role requirements. Only `Reviewer` can review request
+      #### Signer Role Requirements
 
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `REVIEWABLE_REQUEST` | `REVIEW` |
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `REVIEWABLE_REQUEST` | `REVIEW` |
     operationId: reviewRequestOp
     parameters:
     - name: Review Request Op

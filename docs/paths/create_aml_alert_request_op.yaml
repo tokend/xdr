@@ -2,18 +2,19 @@
   get:
     tags:
       - AMLAlert
-    summary: Create aml alert request
+    summary: Create anti money laundering alert request
     description: |
-                  Allows to create request to issue asset to destination balance
-                  #### Account Role Requirements
-                    | Account        | Resource Type | Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `REVIEWABLE_REQUEST` | `CREATE` |
+      Anti money laundering alert request locks provided amount on target balance
+      until further investigation. On AMLAlertRequest approve locked amount is being voided
+      #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `REVIEWABLE_REQUEST` | `CREATE` |
 
-                  #### Signer Role Requirements
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `REVIEWABLE_REQUEST` | `CREATE` |
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `REVIEWABLE_REQUEST` | `CREATE` |
     operationId: createAMLAlertRequestOp
     parameters:
     - name: CreateAMLAlertRequestOp

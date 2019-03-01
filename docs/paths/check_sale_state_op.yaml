@@ -4,17 +4,17 @@
       - Sale
     summary: check sale state
     description: |
-                  Allows to check state of the sale
-                  #### Account Role Requirements
-                    | Account        | Resource Type| Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `SALE` | `CHECK` |
+      Allows to check state of the sale
+      #### Account Role Requirements
+        | Account        | Resource Type| Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `SALE` | `CHECK` |
 
-                  #### Signer Role Requirements
+      #### Signer Role Requirements
 
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `SALE` | `CHECK` |
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `SALE` | `CHECK` |
     operationId: checkSaleStateOp
     parameters:
     - name: CheckSaleStateOp

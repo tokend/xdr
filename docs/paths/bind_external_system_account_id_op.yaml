@@ -4,16 +4,16 @@
       - External Systems
     summary: Bind external system account ID
     description: |
-                  Allows to bind source account to external system account ID pool
-                  #### Account Role Requirements
-                    | Account        | Resource Type | Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
+      Allows to bind source account to external system account ID pool
+      #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
 
-                  #### Signer Role Requirements
-                    | Resource Type | Action  |
-                    |:-------------:| -----:|
-                    | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
     operationId: bindExternalSystemAccountIdOp
     parameters:
     - name: BindExternalSystemAccountIdOp
