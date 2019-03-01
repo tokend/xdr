@@ -1,0 +1,37 @@
+/bindExternalSystemAccountIDOp:
+  get:
+    tags:
+      - External Systems
+    summary: Bind External System Account ID
+    description: |
+      Allows to bind source account to external system account ID pool.
+      Only binded account can do deposits.
+
+      #### Account Role Requirements
+        | Account | Resource Type | Action  |
+        | --------|:-------------:|:------:|
+        | source  | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
+
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
+    operationId: bindExternalSystemAccountIdOp
+    x-item-type: operation
+    parameters:
+    - name: BindExternalSystemAccountIdOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/BindExternalSystemAccountIdOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/BindExternalSystemAccountIdResult'

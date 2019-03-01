@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: XDR
+  description: |
+    This repo defines structures used to communicate with `Core` of TokenD based networks.
+  contact:
+    email: dev@distributedlab.com
+    url: https://tokend.io
+    name: Support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 3.0.1
+servers:
+- url: https://api.achilles.tokend.io
+  description: TokenD Developer Environment
+# NOTE
+#
+# Add tag to x-tagGroups or it won't be displayed
+tags:
+  - name: Transaction
+    description: |
+                  Transactions are commands that modify the ledger state. 
+                  If you think of the ledger as a database, then Operations are SQL commands and Trannsactions are SQL transactions.
+
+
+                  Transactions allows you to combine several operations (even from different sources) into one atomic command (if one operation fails, whole transaction rollbacks). What is more, it's possible to specify different source account for different operation. This can be used to implement features like over-the-counter exchange (include into transaction two operations: one sending assets from A to B; one sending assets from B to A; such transaction requires signatures from both A and B).
+  - name: Accounts
+    description: Defines operations to manage Accounts
+  - name: Balances
+    description: Defines operations to manage Balances
+  - name: Assets
+    description: Defines operations to manage Assets
+  - name: Fees
+    description: Defines operations to manage Fees
+  - name: Signers 
+    description: Defines operations to manage Signers
+  - name: Account Roles
+    description: Account Role - entry that consists of [Account Rules](#tag/Account-Rules) and can be attached to account.
+  - name: Account Rules
+    description: |
+      Account Rule defines if `action` can be performed for [resource](#operation/AccountRuleResource).
+
+      TokenD uses strict policy for rules matching. 
+      List of requirements to the roles of participants is formed based on operation (transaction) details.
+      If one of the requirements is not fulfilled, operation is rejected.
+      Requirement is specified for account and consits of resource and action to be performed.
+      Requirement is fulfilled if account's role contains matching rule with `forbids=false`.
+      If one of the matching rules has `forbids=true` - operation is rejected.
+      If role does not contain any matching rules - operation is rejected.
+  - name: Signer Roles
+    description: Signer Role - entry that consists of [Signer Rules](#tag/Signer-Rules) and can be attached to signer.
+  - name: Signer Rules
+    description: |
+      Signer Rule - entry that defines if `action` can be performed for [resource](#operation/SignerRuleResource).
+
+      TokenD uses strict policy for rules matching. 
+      List of requirements to the roles of participants is formed based on operation (transaction) details.
+      If one of the requirements is not fulfilled, operation is rejected.
+      Requirement is specified for signer and consits of resource and action to be performed.
+      Requirement is fulfilled if signer's role contains matching rule with `forbids=false`.
+      If one of the matching rules has `forbids=true` - operation is rejected.
+      If role does not contain any matching rules - operation is rejected.  
+  - name: Asset Pairs
+    description: |
+                  
+  - name: Order Books
+    description: |
+                  
+  - name: AMLAlert
+    description: Defines access points to AMLAlert Reviewable Requests
+  - name: KYC
+    description: Defines access points to Change Role Reviewable Requests
+  - name: Issuance
+    description: Defines access points to get Issuance Reviewable Requests
+  - name: Withdrawal
+    description: Defines access points to get Withdrawal Reviewable Requests
+  - name: Payment
+    description: Defines access points to get Payments
+  - name: Sale
+    description: Defines access points to get operations related to sales
+  - name: External Systems
+    descriptions: Defines access points to get operations related to external systems
+x-tagGroups:
+  - name: Essentials
+    tags:
+      - Transaction
+      - Accounts
+      - Assets
+      - Payment
+  - name: Asset Movements
+    tags:
+     - Issuance
+     - Withdrawal
+     - Payment
+     - Balances
+     - AMLAlert
+     - Fees
+     - External Systems
+  - name: Access Control
+    tags:
+      - Signers
+      - Signer Roles
+      - Signer Rules
+  - name: KYC & AML
+    tags:
+      - Account Roles
+      - Account Rules
+      - KYC
+      - AMLAlert
+      - Limits
+      - Create Manage Limits Request
+  - name: Decentralized Exchange
+    tags:
+      - Asset Pairs
+      - Offers
+      - Order Books
+      - Crowd Investing
+      - Sale
+  - name: Advanced
+    tags:
+      - PreIssuance
+      - KeyValue
+  - name: Other
+    tags:
+      - Requests
+      - Licensing
+      - WIP

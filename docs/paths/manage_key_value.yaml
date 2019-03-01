@@ -1,0 +1,35 @@
+/manageKeyValueOp:
+  get:
+    tags:
+      - KeyValue
+    summary: Manage KeyValue
+    description: |
+      Operation allows to update key-value entry on successful application
+      #### Account Role Requirements
+        | Account        | Resource Type | Action   |
+        | -------------  |:-------------:| --------:|
+        | source         | `KEY_VALUE`   | `MANAGE` |
+
+      #### Signer Role Requirements
+        | Resource Type | Rule Action |
+        |:-------------:| -----------:|
+        | `KEY_VALUE`   | `MANAGE`    |
+    operationId: manageKeyValueOp
+    x-item-type: operation
+    parameters:
+      - name: Manage KeyValue Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/ManageKeyValueOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageLimitsResult'

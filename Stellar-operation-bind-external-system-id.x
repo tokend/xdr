@@ -38,7 +38,7 @@ enum BindExternalSystemAccountIdResultCode
     // codes considered as "failure" for the operation
     //: (deprecated)
     MALFORMED = -1,
-    //: There are no available IDs from external system in the pool of such an external system type
+    //: There is no available external system account ID pool entry for such external system type
     NO_AVAILABLE_ID = -2
 };
 

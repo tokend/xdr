@@ -25,7 +25,7 @@ enum ManageAssetPairAction
 
     Result: ManageAssetPairResult
 */
-//: `ManageAssetPairOp` either creates new asset pairs or updates prices or policies of existing asset pairs
+//: `ManageAssetPairOp` either creates new asset pairs or updates prices or policies of existing [asset pairs](#operation/assetPairResources)
 struct ManageAssetPairOp
 {
     //: Defines a ManageBalanceAction that will be performed on an asset pair
@@ -35,13 +35,12 @@ struct ManageAssetPairOp
     //: Defines a base asset of an asset pair
     AssetCode quote;
 
-    //: Price of an asset pair assigned on creation. Can only be updated by the `ManageAssetPair` operation with an `UPDATE_PRICE` action 
+    //: New physical price of the asset pair which would be set after successful `ManageAssetPairOp` application
     int64 physicalPrice;
 
-    //: Correction of the physical price in percents. If the physical price and the restriction by physical price are set, 
-    //: minimal price for this pair offer will be physicalPrice * physicalPriceCorrection
+    //: New correction of the asset pair physical price in percents
     int64 physicalPriceCorrection;
-    //: Maximal amount of price change in percents
+    //: New maximal price step of asset pair
     int64 maxPriceStep;
 
     //: Bitmask of asset policies set by the creator or corrected by manage asset operations

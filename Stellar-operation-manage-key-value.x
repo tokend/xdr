@@ -15,10 +15,11 @@ namespace stellar
         //: `key` is the key for KeyValueEntry
         longstring key;
         //: `action` defines an action applied to the KeyValue based on given ManageKVAction
+        //: * Action `PUT` stores new value for a particular key
+        //: * Action `REMOVE` removes the value by a particular key
         union switch(ManageKVAction action)
         {
             case PUT:
-                 //: Value to store
                  KeyValueEntryValue value;
             case REMOVE:
                 void;

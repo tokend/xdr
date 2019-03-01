@@ -44,12 +44,12 @@ namespace stellar
 {
 
 
-/* An operation is the lowest unit of work that a transaction does */
+//: An operation is the lowest unit of work that a transaction does
 struct Operation
 {
-    // sourceAccount is the account used to run the operation
-    // if not set, the runtime defaults to "sourceAccount" specified at
-    // the transaction level
+    //: sourceAccount is the account used to run the operation
+    //: if not set, the runtime defaults to "sourceAccount" specified at
+    //: the transaction level
     AccountID* sourceAccount;
 
     union switch (OperationType type)
@@ -155,30 +155,32 @@ case MEMO_RETURN:
 
 struct TimeBounds
 {
+    //: specifies inclusive min ledger close time after which transaction is valid
     uint64 minTime;
+    //: specifies inclusive max ledger close time before which transaction is valid.
+    //: note: transaction will be rejected if max time exceeds close time of current ledger on more then [`tx_expiration_period`](https://tokend.gitlab.io/horizon/#operation/info)
     uint64 maxTime; // 0 here means no maxTime
 };
 
-/* a transaction is a container for a set of operations
-    - is executed by an account
-    - fees are collected from the account
-    - operations are executed in order as one ACID transaction
-          either all operations are applied or none are
-          if any returns a failing code
-*/
-
+//: Transaction is a container for a set of operations
+//:    - is executed by an account
+//:    - operations are executed in order as one ACID transaction
+//: (either all operations are applied or none are if any returns a failing code)
 struct Transaction
 {
-    // account used to run the transaction
+    //: account used to run the transaction
     AccountID sourceAccount;
 
+    //: random number used to ensure there is no hash collisions
     Salt salt;
 
-    // validity range (inclusive) for the last ledger close time
+    //: validity range (inclusive) for the last ledger close time
     TimeBounds timeBounds;
 
+    //: allows to attach additional data to the transactions
     Memo memo;
 
+    //: list of operations to be applied. Max size is 100
     Operation operations<100>;
 
     // reserved for future use
@@ -194,6 +196,7 @@ struct Transaction
 struct TransactionEnvelope
 {
     Transaction tx;
+    //: list of signatures used to authorize transaction
     DecoratedSignature signatures<20>;
 };
 

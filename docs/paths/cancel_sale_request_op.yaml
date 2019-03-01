@@ -1,0 +1,33 @@
+/cancelSaleCreationRequestOp:
+  get:
+    tags:
+      - Sale
+    summary: Cancel sale creation request
+    description: |
+      Allows to cancel creation of the sale
+      #### Account Role Requirements
+        Only sale creator can cancel request
+      #### Signer Role Requirements
+
+        | Resource Type | Reviewable Request Type | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_SALE` | `CANCEL` |
+    operationId: cancelSaleCreationRequestOp
+    x-item-type: operation
+    parameters:
+    - name: CancelSaleCreationRequestOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CancelSaleCreationRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CancelSaleCreationRequestResult'

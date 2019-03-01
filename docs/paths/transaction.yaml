@@ -1,0 +1,32 @@
+/transaction:
+  get:
+    x-item-type: transaction
+    tags:
+      - Transaction
+    summary: Transaction Envelope
+    description: |
+                  #### Account Role Requirements
+                    | Account        | Resource Type| Action  |
+                    | ------------- |:-------------:| -----:|
+                    | source      | `TRANSACTION` | `SEND` |
+
+                  #### Signer Role Requirements
+                  Signers rules required on operation level.
+    operationId: transaction
+    parameters:
+    - name: Transaction
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/TransactionEnvelope'
+    responses:
+      200:
+        description: Result
+        content:
+          result:
+            schema:
+              type: object
+              $ref: '#/components/schemas/TransactionResult'

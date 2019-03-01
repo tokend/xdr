@@ -1,0 +1,35 @@
+/manageAssetPairOp:
+  get:
+    tags:
+      - Asset Pairs
+    summary: Manage Asset Pair
+    description: |
+      Allows to create new asset pairs or update either policies or prices of the existing [asset pairs](#operation/assetPairResource).
+      #### Account Role Requirements
+        | Account        | Resource Type  | Action   |
+        | -------------  |:--------------:| --------:|
+        | source         | `ASSET_PAIR`   | `MANAGE` |
+
+      #### Signer Role Requirements
+        | Resource Type  | Rule Action |
+        |:--------------:| -----------:|
+        | `ASSET_PAIR`   | `MANAGE`    |
+    operationId: manageAssetPairOp
+    x-item-type: operation
+    parameters:
+      - name: Manage Asset Pair Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/ManageAssetPairOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAssetPairResult'

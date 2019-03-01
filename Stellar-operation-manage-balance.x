@@ -32,7 +32,7 @@ struct ManageBalanceOp
     ManageBalanceAction action;
     //: Defines an account whose balance will be managed
     AccountID destination;
-    //: Defines an asset of the balance to which `action` will be applied
+    //: Defines an asset code of the balance to which `action` will be applied
     AssetCode asset;
     union switch (LedgerVersion v)
     {

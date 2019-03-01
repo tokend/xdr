@@ -1,0 +1,36 @@
+/reviewRequestOp:
+  get:
+    tags:
+      - Requests
+    summary: Review Request
+    description: |
+      Allows to review pending reviewable requests. Operation performs specified action - `APPROVE`, `REJECT` or
+      `PERMANENT_REJECT` on request.
+      It also sets or removes tasks - bit flags.
+      For request to be fulfilled, all tasks should be cleared, i.e. field `pendingTasks` of request that is being
+      reviewed should be zero.
+      #### Account Role Requirements
+        There are no account role requirements. Only `Reviewer` can review request
+      #### Signer Role Requirements
+        | Resource Type | Action  | Details |
+        |:-------------:|:--------:| ------------- |
+        | `REVIEWABLE_REQUEST` | `REVIEW` | Reviewable request resource has subtype which should correspond to type of the request being reviewed |
+    operationId: reviewRequestOp
+    x-item-type: operation
+    parameters:
+    - name: Review Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ReviewRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ReviewRequestResult'

@@ -1,0 +1,39 @@
+/manageBalanceOp:
+  get:
+    tags:
+      - Balances
+    summary: Manage Balance
+    description: |
+                  Allows either to create new balance or remove existing one.
+
+                  #### Account Role Requirements
+                    | Account        | Resource Type | Action            | Condition                                               |
+                    | -------------  |:-------------:|:----------------: | -                                                       |
+                    | source         | `BALANCE`     | `CREATE`          | source `accountID` is equal to destination `accountID`  |
+                    | source         | `BALANCE`     | `CREATE_FOR_OTHER`| source `accountID` differs from destination `accountID` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Rule Action           | Condition                                               |
+                    |:-------------:| :--------------------:| -                                                       |
+                    | `BALANCE`     | `CREATE_FOR_OTHER`    | source `accountID` is equal to destination `accountID`  |
+                    | `BALANCE`     | `CREATE`              | source `accountID` differs from destination `accountID` |
+
+    operationId: manageBalanceOp
+    x-item-type: operation
+    parameters:
+      - name: Manage Balance Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/ManageBalanceOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageBalanceResult'

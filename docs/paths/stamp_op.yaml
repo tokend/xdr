@@ -1,0 +1,36 @@
+/stampOp:
+  get:
+    tags:
+      -  Licensing
+    summary: Stamp
+    description: |
+      Allows to save current license hash and currenct ledger hash for use in LicenseOp application
+        #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `STAMP` | `CREATE` |
+
+        #### Signer Role Requirements
+        | Resource Type | Action   |
+        |:-------------:| -----:   |
+        | `STAMP`       | `CREATE` |
+
+    operationId: stampOp
+    x-item-type: operation
+    parameters:
+    - name: stamp Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/StampOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/StampResult'

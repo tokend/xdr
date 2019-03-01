@@ -58,7 +58,7 @@ struct DeleteExternalSystemAccountIdPoolEntryActionInput
 //: an external system account ID from the external system ID pool
 struct ManageExternalSystemAccountIdPoolEntryOp
 {
-    //: actionInput is used to pass one of
+    //: `actionInput` is used to pass one of
     //: `ManageExternalSystemAccountIdPoolEntryAction` with required params
     union switch (ManageExternalSystemAccountIdPoolEntryAction action)
     {

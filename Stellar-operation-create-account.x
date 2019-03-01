@@ -4,21 +4,13 @@
 namespace stellar
 {
 
-/* CreateAccount
-Creates and funds a new account with the specified starting balance.
-
-Threshold: med
-
-Result: CreateAccountResult
-
-*/
-
 //: CreateAccountOp is used to create new account
 struct CreateAccountOp
 {
     //: ID of account to be created
     AccountID destination;
-    //: ID of another account that introduced this account into the system
+    //: ID of an another account that introduced this account into the system.
+    //: If account with such ID does not exist or it's Admin Account. Referrer won't be set.
     AccountID* referrer;
     //: ID of the role that will be attached to an account
     uint64 roleID;

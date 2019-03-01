@@ -1,0 +1,35 @@
+/manageSignerOp:
+  get:
+    tags:
+      - Signers
+    summary: Manage Signer
+    description: |
+                  Allows managing signer for source account.
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  |
+                    | --------|:-------------:|:------:|
+                    | source  | `SIGNER` | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:| -----:|
+                    | `SIGNER` | `MANAGE` |
+    operationId: manageSignerOp
+    x-item-type: operation
+    parameters:
+    - name: Manage Signer Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageSignerOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageSignerResult'

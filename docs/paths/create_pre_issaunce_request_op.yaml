@@ -1,0 +1,33 @@
+/createPreIssuanceRequestOp:
+  get:
+    tags:
+      - Issuance
+    summary: Create Pre Issuance Request 
+    description: |
+                  Allows creating `CREATE_PRE_ISSUANCE` reviewable request.
+                  `CREATE_PRE_ISSUANCE` request is used to increase available for issuance amount of asset.
+
+                  #### Account Role Requirements
+                    No account rule required beacuse only asset pre issuer can do pre issuance.
+
+                  #### Signer Role Requirements
+                    No singer rule required beacuse only asset pre issuer can do pre issuance.
+    operationId: createPreIssuanceRequestOp
+    x-item-type: operation
+    parameters:
+    - name: Create Pre Issuance Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreatePreIssuanceRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreatePreIssuanceRequestResult'

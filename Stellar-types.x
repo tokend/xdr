@@ -116,11 +116,11 @@ typedef string AssetCode<16>;
 typedef uint64 Salt;
 typedef opaque DataValue<64>;
 
-//: `Fee` is used to unite fixed and percent fees
+//: `Fee` is used to unite fixed and percent fee amounts
 struct Fee {
     //: Fixed amount to pay for the operation
 	uint64 fixed;
-	//: Percentage of the managed amount
+	//: Part of the managed amount in percents
 	uint64 percent;
 
     //: reserved for future use

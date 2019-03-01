@@ -1,0 +1,36 @@
+/createAccountOp:
+  get:
+    tags:
+      - Accounts
+    summary: Create Account
+    description: |
+                  Allows creating account with specific role and signers.
+                  Balances for assets with policy `BASE_ASSET` will be created for the account automatically. 
+                  #### Account Role Requirements
+                    | Account        | Resource Type| Action  |
+                    | ------------- |:-------------:| -----:|
+                    | source      | `ACCOUNT` | `CREATE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Rule Action |
+                    |:-------------:| -----------:|
+                    | `ACCOUNT`     | `CREATE`    |
+    operationId: createAccountOp
+    x-item-type: operation
+    parameters:
+    - name: Create Account Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateAccountOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateAccountResult'

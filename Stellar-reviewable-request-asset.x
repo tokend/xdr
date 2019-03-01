@@ -20,7 +20,7 @@ struct AssetCreationRequest {
      //: Type of asset, selected arbitrarily. Can be used to restrict the usage of an asset
     uint64 type;
     //: Used to keep track of rejected requests updates (`SequenceNumber` increases after each rejected AssetCreationRequest update)
-    uint32 sequenceNumber;s
+    uint32 sequenceNumber;
     //: Number of significant decimal places
     uint32 trailingDigitsCount;
 
