@@ -1,0 +1,30 @@
+/changePreIssuedAssetSigner:
+  get:
+    tags:
+      - Assets
+    summary: Change current pre issuer of asset
+    description: |
+                  Allows to change assete pre issuer
+                  #### Account Role Requirements
+                    No account rule required beacuse only current asset pre issuer can change asset pre issuer
+
+                  #### Signer Role Requirements
+                    No signer rule required beacuse only current asset pre issuer can change asset pre issuer
+    operationId: manageAssetOp
+    parameters:
+    - name: Manage Asset Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageAssetOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAssetResult'
