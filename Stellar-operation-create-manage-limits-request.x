@@ -21,8 +21,8 @@ struct CreateManageLimitsRequestOp
     //: Body of the UpdateLimits reviewable request to be created
     LimitsUpdateRequest manageLimitsRequest;
 
-    //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used by key `limits_update_tasks`
-    //: instead of value from the key-value pair
+    //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used instead of value from the key-value pair 
+//: by key `limits_update_tasks`
     uint32* allTasks;
     //: ID of the LimitsUpdateRequest
     //: If `requestID == 0`, operation creates a new limits entry; otherwise, it updates the existing one 
@@ -50,9 +50,9 @@ enum CreateManageLimitsRequestResultCode
     MANAGE_LIMITS_REQUEST_REFERENCE_DUPLICATION = -1,
     //: There is no request with such ID
     MANAGE_LIMITS_REQUEST_NOT_FOUND = -2,
-    //: Details must be valid json
+    //: Details must be in a valid JSON format
     INVALID_CREATOR_DETAILS = -3,
-    //: Either tasks for the CreateManageLimitsRequest cannot be loaded or configuration restricts creating the manage limits request
+    //: Tasks are not set in the system (i.e., it is not allowed to perform the limits update request)
     LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
     //: Cannot set allTasks on the rejected request update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6,
@@ -67,7 +67,7 @@ case SUCCESS:
     struct {
         //: ID of the created manage limits request
         uint64 manageLimitsRequestID;
-        //: Boolean value that indicates whether or not the request was auto approved
+        //: Indicates whether or not the `limits update request` request was auto approved and fulfilled
         bool fulfilled;
         //: reserved for future use
         union switch (LedgerVersion v)

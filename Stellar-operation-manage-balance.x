@@ -13,25 +13,26 @@ Result: ManageBalanceResult
 
 */
 
-//: Actions could be performed on the balance
+//: Actions that can be performed on balances
 enum ManageBalanceAction
 {
     //: Create new balance
     CREATE = 0,
     //: Delete existing balance by ID
     DELETE_BALANCE = 1,
-    //: Ensure that the balance will not be created if the balance of the provided Asset exists and is attached to provided Account
+    //: Ensures that the balance will not be created if the balance of the provided asset exists and is attached to the provided account
     CREATE_UNIQUE = 2
 };
 
-//: `ManageBalanceOp` applies `action` of type `ManageBalanceAction` to the balance of the specific `asset` (referenced to by its AssetCode) of the `destination` account (referenced to by its AccountID)
+//: `ManageBalanceOp` applies an `action` of the `ManageBalanceAction` type on the balance of a particular `asset` (referenced to by its AssetCode) 
+//: of the `destination` account (referenced to by its AccountID)
 struct ManageBalanceOp
 {
-    //: Defines a ManageBalanceAction action to perform
+    //: Defines a ManageBalanceAction to be performed
     ManageBalanceAction action;
-    //: Defines the account whose balance would be managed
+    //: Defines an account whose balance will be managed
     AccountID destination;
-    //: Defines the asset of the balance to which `action` would be applied
+    //: Defines an asset of the balance to which `action` will be applied
     AssetCode asset;
     union switch (LedgerVersion v)
     {
@@ -43,33 +44,33 @@ struct ManageBalanceOp
 
 /******* ManageBalance Result ********/
 
-//: Result codes for ManageBalance operation
+//: Result codes for the ManageBalance operation
 enum ManageBalanceResultCode
 {
     // codes considered as "success" for the operation
-    //: Indicates that `ManageBalanceOp` successfully applied
+    //: Indicates that `ManageBalanceOp` is successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Not allowed to delete balance
+    //: It is not allowed to delete a balance
     MALFORMED = -1,
     //: (deprecated)
     NOT_FOUND = -2,
-    //: Cannot find the account provided by `destination` AccountID
+    //: Cannot find an account provided by the `destination` AccountID
     DESTINATION_NOT_FOUND = -3,
-    //: Cannot find asset by `asset` provided by operation
+    //: Cannot find an asset with a provided asset code
     ASSET_NOT_FOUND = -4,
-    //: AssetCode `asset` is invalid (e.g. `AssetCode` which not consists of alphanumeric symbols or zeros in `AssetCode` are not trailing)
+    //: AssetCode `asset` is invalid (e.g. `AssetCode` does not consist of alphanumeric symbols)
     INVALID_ASSET = -5,
-    //: Balance of the provided `asset` already exists and owned by `destination` account
+    //: Balance of the provided `asset` already exists and is owned by the `destination` account
     BALANCE_ALREADY_EXISTS = -6,
-    //: version specified in request is not supported yet
+    //: version specified in the request is not supported yet
     VERSION_IS_NOT_SUPPORTED_YET = -7
 };
 
 // `ManageBalanceSuccess` represents the successful result of the `ManageBalanceOp`
 struct ManageBalanceSuccess {
-    //: ID of the balance which was managed
+    //: ID of the balance that was managed
     BalanceID balanceID;
     //: reserved for future use
     union switch (LedgerVersion v)

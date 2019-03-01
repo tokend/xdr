@@ -35,8 +35,8 @@ struct CreateChangeRoleRequestOp
 //: Result codes of CreateChangeRoleRequestOp
 enum CreateChangeRoleRequestResultCode
 {
-    //: This means that change role request has either been successfully created
-    //: or auto approved if there have been no pending tasks of the request
+    //: Change role request has either been successfully created
+    //: or auto approved
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -52,14 +52,14 @@ enum CreateChangeRoleRequestResultCode
     //: It is not allowed to change `destinationAccount`, `accountRoleToSet`
     //: or set `allTasks` on update change role request
     INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
-    //: `creatorDetails` must be a valid json structure
+    //: `creatorDetails` must be in a valid JSON format
     INVALID_CREATOR_DETAILS = -8,
-    //: There is no value in the key-value entry by `change_role_tasks` key
+    //: There is no key-value entry by `change_role_tasks` key in the system;
     //: configuration does not allow changing the role from current to `accountRoleToSet`
     CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };
 
-//: Result of fulfilled operation 
+//: Result of operation application 
 union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode code)
 {
 case SUCCESS:

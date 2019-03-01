@@ -14,7 +14,8 @@ namespace stellar
 
   Result: CreateIssuanceRequestResult
 */
-//: CreateIssuanceRequestOp is used to create a reviewable request that, after approval, will issue the specified amount of asset to a receiver's balance
+//: CreateIssuanceRequestOp is used to create a reviewable request that, after reviewer's approval,
+//: will issue the specified amount of asset to a receiver's balance
 struct CreateIssuanceRequestOp
 {
     //: Issuance request to create
@@ -78,7 +79,7 @@ struct CreateIssuanceRequestSuccess {
     uint64 requestID;
     //: Account address of the receiver
     AccountID receiver;
-    //: Indicates whether or not the Issuance request was approved and applied on creation
+    //: Indicates whether or not the Issuance request was auto approved and fulfilled
     bool fulfilled;
     //: Paid fee
     Fee fee;

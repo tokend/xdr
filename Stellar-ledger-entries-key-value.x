@@ -29,7 +29,8 @@ namespace stellar
         //: String value that must be unique among other keys for kev-value pairs
         longstring key;
 
-        //: Value that corresponds to particular key. Depends on `KeyValueEntryType`
+        //: Value that corresponds to particular key (depending on `KeyValueEntryType`, 
+        //: the value can be either uint32, or uint64, or string)
         KeyValueEntryValue value;
 
         //: reserved for future use

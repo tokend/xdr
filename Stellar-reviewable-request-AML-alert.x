@@ -6,7 +6,7 @@
 namespace stellar
 {
 
-//: Body of reviewable AMLAlertRequest, contains parameters regarding AML alert
+//: Body of a reviewable AMLAlertRequest, contains parameters regarding AML alert
 struct AMLAlertRequest {
     //: Target balance to void tokens from
     BalanceID balanceID;
@@ -14,7 +14,7 @@ struct AMLAlertRequest {
     //: Amount to void
     uint64 amount;
 
-    //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
 
     //: Reserved for future use

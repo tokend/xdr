@@ -12,7 +12,8 @@ namespace stellar
     Result: CancelSaleCreationRequestResult
 */
 
-//: CancelSaleCreationRequest operation is used to cancel sale creation request which on successful application will delete
+//: CancelSaleCreationRequest operation is used to cancel sale creation request.
+//: If successful, request with the corresponding ID will be deleted
 //: SaleCreationRequest with provided ID
 struct CancelSaleCreationRequestOp
 {
@@ -44,7 +45,7 @@ enum CancelSaleCreationRequestResultCode
     REQUEST_NOT_FOUND = -2 // trying to cancel not existing reviewable request
 };
 
-//: Result of successful application of `CancelSaleCreationRequestOp`
+//: Result of successful `CancelSaleCreationRequestOp` application 
 struct CancelSaleCreationSuccess {
 
     //: Reserved for future use

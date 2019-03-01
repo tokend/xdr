@@ -10,7 +10,7 @@ namespace stellar
     Result: CreatePreIssuanceRequestOpResult
 */
 
-//: CreatePreIssuanceRequestOp is used to create reviewable requests,
+//: CreatePreIssuanceRequestOp is used to create a reviewable request,
 //: which, after admin's approval, will change `availableForIssuance` amount of asset
 struct CreatePreIssuanceRequestOp
 {
@@ -51,12 +51,11 @@ enum CreatePreIssuanceRequestResultCode
     EXCEEDED_MAX_AMOUNT = -5,
     //: The preissue amount in the preissuance request must exceed 0
     INVALID_AMOUNT = -6,             // amount is 0
-    //: The reference field must be filled 
+    //: The reference field must not be empty
     INVALID_REFERENCE = -7,
-    //: Preissue amount must fit the asset's precision
-    INCORRECT_AMOUNT_PRECISION = -8,  // amount does not fit to this asset's precision
-    //: There is no value in key value by `preissuance_tasks:<assetCode>` key
-    //: or configuration does not allow preissuing an asset with such code
+    //: Preissue amount must fit the precision of an asset to be issued
+    INCORRECT_AMOUNT_PRECISION = -8,  // amount does not fit this asset's precision
+    //: Preissuance tasks are not set in the system (i.e., it is not allowed to perform the preissuance)
     PREISSUANCE_TASKS_NOT_FOUND = -9,
     //: `creatorDetails` must be valid json structure
     INVALID_CREATOR_DETAILS = -10
@@ -71,8 +70,7 @@ case SUCCESS:
     {
         //: ID of created or updated request
         uint64 requestID;
-        //: Indicates whether or not the request was auto approved (pending tasks == 0),
-        //: amount was successfully preissued
+        //: Indicates whether or not the request was auto approved and fulfilled
         bool fulfilled;
         //: reserved for future use
         union switch (LedgerVersion v)

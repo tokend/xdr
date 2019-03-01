@@ -48,8 +48,7 @@ enum CreateSaleCreationRequestResultCode
     REQUEST_NOT_FOUND = -1,
     //: Trying to create a sale for an asset that does not exist
     BASE_ASSET_OR_ASSET_REQUEST_NOT_FOUND = -2,
-    //: Trying to create a sale with quote asset that does not exist or
-    //: there is no asset pair with default quote asset or other quote assets
+    //: Trying to create a sale either for a non-existing quote asset or for a non-existing asset pair
     QUOTE_ASSET_NOT_FOUND = -3,
     //: Trying to create a sale with start time > end time
     START_END_INVALID = -4,
@@ -61,13 +60,13 @@ enum CreateSaleCreationRequestResultCode
     INVALID_CAP = -7,
     //: Max issuance amount is less than sale's soft cap
     INSUFFICIENT_MAX_ISSUANCE = -8,
-    //: Trying to create a sale with invalid asset code of one of the assets or base asset is equal to one of the quote assets 
+    //: Trying to create a sale with either an invalid asset code of one of the assets or with a base asset that is the same as one of the quote assets 
     INVALID_ASSET_PAIR = -9,
-    //: Either a reviewable request already exist or a sale with sale parameters
+    //: Deprecated
     REQUEST_OR_SALE_ALREADY_EXISTS = -10,
     //: Trying to create SaleCreationRequest with preissued amount that is less than the hard cap
     INSUFFICIENT_PREISSUED = -11,
-    //: Creator details must be a valid JSON string
+    //: Creator details are not in a valid JSON format
     INVALID_CREATOR_DETAILS = -12,
     //: Version specified in the request is not supported yet
     VERSION_IS_NOT_SUPPORTED_YET = -13,
@@ -75,7 +74,7 @@ enum CreateSaleCreationRequestResultCode
     SALE_CREATE_TASKS_NOT_FOUND = -14,
     //: It is not allowed to set all tasks on rejected SaleCreationRequest update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15,
-    //: Due to tasks been 0, we have tried to auto review the request, but it failed
+    //: Auto review failed due to a particular reason (e.g., hard cap exceeded either max issuance amount or preissued amount of an asset)
     AUTO_REVIEW_FAILED = -16 
 };
 
@@ -83,9 +82,9 @@ enum CreateSaleCreationRequestResultCode
 struct CreateSaleCreationSuccess {
     //: ID of the SaleCreation request
     uint64 requestID;
-    //: ID of a newly created sale (if the sale creation request has been approved by an admin)
+    //: ID of a newly created sale (if the sale creation request has been auto approved)
     uint64 saleID;
-    //: Indicates whether or not the sale creation request was approved and applied on the creation
+    //: Indicates whether or not the sale creation request was auto approved and fulfilled
     bool fulfilled;
     union switch (LedgerVersion v)
     {

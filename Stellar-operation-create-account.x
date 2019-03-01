@@ -23,7 +23,7 @@ struct CreateAccountOp
     //: ID of the role that will be attached to an account
     uint64 roleID;
 
-    //: Array of data about created signers for `destination` account
+    //: Array of data about 'destination' account signers to be created
     UpdateSignerData signersData<>;
 
     //: reserved for future use
@@ -74,7 +74,7 @@ struct CreateAccountSuccess
     ext;
 };
 
-//: Result of operation applying
+//: Result of operation application
 union CreateAccountResult switch (CreateAccountResultCode code)
 {
 case SUCCESS:

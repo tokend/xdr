@@ -4,7 +4,7 @@
 
 namespace stellar
 {
-//: WithdrawalRequest contains details regarding withdraw
+//: WithdrawalRequest contains details regarding a withdraw
 struct WithdrawalRequest {
     //: Balance to withdraw from
     BalanceID balance; // balance id from which withdrawal will be performed
@@ -14,7 +14,7 @@ struct WithdrawalRequest {
     uint64 universalAmount; // amount in stats asset
     //: Total fee to pay, contains fixed amount and calculated percent of the withdrawn amount
     Fee fee; // expected fee to be paid
-    //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
     
     //: Reserved for future use

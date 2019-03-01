@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-// `ManageLimitsAction` defines which action could be performed on the Limits entry
+//: `ManageLimitsAction` defines which action can be performed on the Limits entry
 enum ManageLimitsAction
 {
     CREATE = 0,
@@ -15,13 +15,13 @@ enum ManageLimitsAction
 //: or globally (only if both parameters particular account role and paticular account are not specified)
 struct LimitsCreateDetails
 {
-    //: (optional) ID of the account role to which limits would be applied
+    //: (optional) ID of an account role that will be imposed with limits
     uint64*     accountRole;
-    //: (optional) ID of the account to which limits would be applied
+    //: (optional) ID of an account that will be imposed with limits
     AccountID*  accountID;
-    //: Defines an operation type to which limits would be applied. See `enum StatsOpType`
+    //: Operation type to which limits will be applied. See `enum StatsOpType`
     StatsOpType statsOpType;
-    //: `AssetCode` defines the asset to which limits would be applied
+    //: `AssetCode` defines an asset to which limits will be applied
     AssetCode   assetCode;
     //: `isConvertNeeded` indicates whether the asset conversion is needed for the limits entry or not needed.
     //: If this field is `true` - limits are applied to all balances of the account (to every asset account owns).
@@ -53,10 +53,10 @@ struct LimitsCreateDetails
     Result: ManageLimitsResult
 */
 
-//: `ManageLimitsOp` is used to update the limits set in the system
+//: `ManageLimitsOp` is used to update limits set in the system
 struct ManageLimitsOp
 {
-    //: `details` defines all details of the operation based on the given `ManageLimitsAction`
+    //: `details` defines all details of an operation based on given `ManageLimitsAction`
     union switch (ManageLimitsAction action)
     {
     case CREATE:
@@ -86,7 +86,7 @@ enum ManageLimitsResultCode
     // codes considered as "failure" for the operation
     //: (reserved for future use) Invalid input
     MALFORMED = -1,
-    //: Limits entry not found
+    //: Limits entry is not found
     NOT_FOUND = -2,
     //: (reserved for future use) Limits entry already exists
     ALREADY_EXISTS = -3,
@@ -96,12 +96,12 @@ enum ManageLimitsResultCode
     INVALID_LIMITS = -5
 };
 
-//: `ManageLimitsResult` defines the result of ManageLimitsOp application based on the given `ManageLimitsResultCode`
+//: `ManageLimitsResult` defines the result of ManageLimitsOp application based on given `ManageLimitsResultCode`
 union ManageLimitsResult switch (ManageLimitsResultCode code)
 {
 case SUCCESS:
     struct {
-        //: `details` represents the additional information of the `ManageLimitsOp` application result
+        //: `details` represents an additional information of the `ManageLimitsOp` application result
         union switch (ManageLimitsAction action)
         {
         case CREATE:

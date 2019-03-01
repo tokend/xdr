@@ -66,13 +66,14 @@ enum ManageAssetPairResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Failed to find an asset pair with given `base` and `quote` values
+    //: Failed to find an asset pair with given `base` and `quote` asset codes
     NOT_FOUND = -1,
     //: Asset pair with given `base` and `quote` asset codes is already present in the system
     ALREADY_EXISTS = -2,
     //: Invalid input (e.g. physicalPrice < 0 or physicalPriceCorrection < 0 or maxPriceStep is not in an interval [0..100])
     MALFORMED = -3,
-    //: AssetCode `base` or `quote` (or both) is invalid (e.g. `AssetCode` that does not consist of alphanumeric symbols or zeros in `AssetCode` are not trailing)
+    //: Either `base` or `quote`  asset code  (or both) is invalid 
+    //: (e.g. asset code does not consist of alphanumeric symbols)
     INVALID_ASSET = -4,
     //: `action` is not in the set of valid actions (see `ManageAssetPairAction`)
     INVALID_ACTION = -5,

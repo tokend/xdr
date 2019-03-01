@@ -41,13 +41,13 @@ enum CheckSaleStateResultCode
     //: Sale was not processed, because it's still active
     NOT_READY = -2
 };
-//: Result of performed check sale state operation
+//: Effect of performed check sale state operation
 enum CheckSaleStateEffect {
     //: Sale hasn't reached the soft cap before end time
     CANCELED = 1,
     //: Sale has either reached the soft cap and ended or reached hard cap
     CLOSED = 2,
-    //: Crowdfunding sale was successfully closed and prices on both sale and offers were updated
+    //: Crowdfunding sale was successfully closed and the price for the base asset was updated according to participants contribution
     UPDATED = 3
 };
 //: Entry for additional information regarding sale cancel
@@ -93,7 +93,7 @@ struct CheckSubSaleClosedResult {
 struct CheckSaleClosedResult {
     //: AccountID of the sale owner
     AccountID saleOwner;
-    //: Array of the sale participation results 
+    //: Array of individual's contribution details
     CheckSubSaleClosedResult results<>;
     //: Reserved for future use
     union switch (LedgerVersion v)

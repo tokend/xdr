@@ -13,8 +13,8 @@ namespace stellar
 
     Result: CreateAMLAlertRequestResult
 */
-//: CreateAMLAlertRequest operation creates a reviewable request that will void the specified amount after approval 
-//: from target balance
+//: CreateAMLAlertRequest operation creates a reviewable request 
+//: that will void the specified amount from target balance after the reviewer's approval
 struct CreateAMLAlertRequestOp
 {
     //: Reference of AMLAlertRequest
@@ -44,7 +44,7 @@ enum CreateAMLAlertRequestResultCode
     SUCCESS = 0,
     //: Balance with provided balance ID does not exist
     BALANCE_NOT_EXIST = 1, // balance doesn't exist
-    //: Creator details are not valid JSON
+    //: Creator details are not in a valid JSON format
     INVALID_CREATOR_DETAILS = 2, //invalid reason for request
     //: Specified amount is greater than the amount on the balance
     UNDERFUNDED = 3, //when couldn't lock balance
@@ -65,7 +65,7 @@ enum CreateAMLAlertRequestResultCode
 struct CreateAMLAlertRequestSuccess {
     //: ID of a newly created reviewable request
     uint64 requestID;
-    //: Indicates  whether or not the AMLAlert request was approved and applied on creation
+    //: Indicates  whether or not the AMLAlert request was auto approved and fulfilled 
     bool fulfilled;
     //: Reserved for future use
      union switch (LedgerVersion v)

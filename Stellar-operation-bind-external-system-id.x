@@ -42,7 +42,7 @@ enum BindExternalSystemAccountIdResultCode
     NO_AVAILABLE_ID = -2
 };
 
-//: `BindExternalSystemAccountIdSuccess` represents details of successful result of operation applying
+//: `BindExternalSystemAccountIdSuccess` represents details of successful result of operation application
 struct BindExternalSystemAccountIdSuccess
 {
     //: `data` is used to pass data about account from external system ID
@@ -57,7 +57,7 @@ struct BindExternalSystemAccountIdSuccess
     ext;
 };
 
-//: Result of operation applying
+//: Result of operation application
 union BindExternalSystemAccountIdResult switch (BindExternalSystemAccountIdResultCode code)
 {
 case SUCCESS:

@@ -4,11 +4,11 @@ namespace stellar
 {
 
 //: Describes properties of some reviewable request types that
-//: can be used to restrict the using of reviewable requests
+//: can be used to restrict the usage of reviewable requests
 union ReviewableRequestResource switch (ReviewableRequestType requestType)
 {
 case CREATE_SALE:
-    //: is used to restrict using of reviewable request with create_sale type
+    //: is used to restrict the usage of a reviewable request with create_sale type
     struct
     {
         //: type of sale
@@ -18,7 +18,7 @@ case CREATE_SALE:
         EmptyExt ext;
     } createSale;
 case CREATE_ISSUANCE:
-    //: is used to restrict using of reviewable request with create_issuance type
+    //: is used to restrict the usage of a reviewable request with create_issuance type
     struct
     {
         //: code of asset
@@ -30,7 +30,7 @@ case CREATE_ISSUANCE:
         EmptyExt ext;
     } createIssuance;
 case CREATE_WITHDRAW:
-    //: is used to restrict using of reviewable request with create_withdraw type
+    //: is used to restrict the usage of a reviewable request with create_withdraw type
     struct
     {
         //: code of asset
@@ -46,11 +46,11 @@ default:
     EmptyExt ext;
 };
 
-//: Describes properties of some entries that can be used to restrict the use of entries
+//: Describes properties of some entries that can be used to restrict the usage of entries
 union AccountRuleResource switch (LedgerEntryType type)
 {
 case ASSET:
-    //: Describes properties which are equal to managed asset entry fields
+    //: Describes properties that are equal to managed asset entry fields
     struct
     {
         AssetCode assetCode;
@@ -59,11 +59,11 @@ case ASSET:
         EmptyExt ext;
     } asset;
 case REVIEWABLE_REQUEST:
-    //: Describes properties which are equal to managed reviewable request entry fields
+    //: Describes properties that are equal to managed reviewable request entry fields
     struct
     {
         //: Describes properties of some reviewable request types that
-        //: can be used to restrict the using of reviewable requests
+        //: can be used to restrict the usage of reviewable requests
         ReviewableRequestResource details;
 
         //: reserved for future extension
@@ -72,7 +72,7 @@ case REVIEWABLE_REQUEST:
 case ANY:
     void;
 case OFFER_ENTRY:
-    //: Describes properties which are equal to managed offer entry fields and their properties
+    //: Describes properties that are equal to managed offer entry fields and their properties
     struct
     {
         //: type of base asset
@@ -91,7 +91,7 @@ case OFFER_ENTRY:
         EmptyExt ext;
     } offer;
 case SALE:
-    //: Describes properties which are equal to managed offer entry fields
+    //: Describes properties that are equal to managed offer entry fields
     struct
     {
         uint64 saleID;
@@ -122,7 +122,7 @@ default:
     EmptyExt ext;
 };
 
-//: Actions which can be applied to account rule resource
+//: Actions that can be applied to account rule resource
 enum AccountRuleAction
 {
     ANY = 1,

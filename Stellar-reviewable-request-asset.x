@@ -3,24 +3,24 @@
 namespace stellar
 {
 
-//: AssetCreationRequest is used to create asset with provided parameters
+//: AssetCreationRequest is used to create an asset with provided parameters
 struct AssetCreationRequest {
-    //: Code of the asset to create
+    //: Code of an asset to create
     AssetCode code;
-    //: Public key of the signer that will perform pre issuance
+    //: Public key of a signer that will perform pre issuance
     AccountID preissuedAssetSigner;
     //: Maximal amount to be issued
     uint64 maxIssuanceAmount;
     //: Amount to pre issue on asset creation
     uint64 initialPreissuedAmount;
-    //: Bit mask of policies to create asset with
+    //: Bit mask of policies to create an asset with
     uint32 policies;
-    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
-     //: Type of asset, selected arbitrarily. Can be used to restrict usage of asset
+     //: Type of asset, selected arbitrarily. Can be used to restrict the usage of an asset
     uint64 type;
-    //: Used to keep track of rejected requests update. On each rejected AssetCreationRequest update, sequenceNumber increases
-    uint32 sequenceNumber;
+    //: Used to keep track of rejected requests updates (`SequenceNumber` increases after each rejected AssetCreationRequest update)
+    uint32 sequenceNumber;s
     //: Number of significant decimal places
     uint32 trailingDigitsCount;
 
@@ -33,15 +33,15 @@ struct AssetCreationRequest {
     ext;
 };
 
-//: AssetUpdateRequest is used to update asset with provided parameters
+//: AssetUpdateRequest is used to update an asset with provided parameters
 struct AssetUpdateRequest {
-    //: Code of asset to update
+    //: Code of an asset to update
     AssetCode code;
-    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
-    //: New policies to set, will override existing ones
+    //: New policies to set will override the existing ones
     uint32 policies;
-    //: Used to keep track of rejected requests update. On each rejected AssetUpdateRequest update, sequenceNumber increases
+    //: Used to keep track of rejected requests update (`SequenceNumber` increases after each rejected AssetUpdateRequest update).
     uint32 sequenceNumber;
 
     //: Reserved for future use
@@ -53,14 +53,14 @@ struct AssetUpdateRequest {
     ext;
 };
 
-//: AssetChangePreissuedSigner is used to update pre issued asset signer
+//: AssetChangePreissuedSigner is used to update a pre issued asset signer
 struct AssetChangePreissuedSigner
 {
-    //: code of the asset to update
+    //: code of an asset to update
     AssetCode code;
-    //: Public key of signer which will be new pre issuer
+    //: Public key of a signer that will be the new pre issuer
     AccountID accountID;
-    //: Content signature of pre issuer signer
+    //: Content signature of a pre issuer signer
     //: Content equals hash of `<code>:<accountID>`
     DecoratedSignature signature;
 

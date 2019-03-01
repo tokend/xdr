@@ -13,8 +13,8 @@ namespace stellar
 
     Result: CreateWithdrawalRequestResult
 */
-//: Used CreateWithdrawalRequest operation creates a reviewable request,
-//: which, after admin's approval, will charge the specified amount from balance and send it to external wallet/account
+//: CreateWithdrawalRequest operation is used to create a reviewable request,
+//: which, after reviewer's approval, will charge the specified amount from balance and send it to external wallet/account
 struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
@@ -43,7 +43,7 @@ enum CreateWithdrawalRequestResultCode
     // codes considered as "failure" for the operation
     //: Trying to create a withdrawal with a 0 amount 
     INVALID_AMOUNT = -1,
-    //: Creator details is not a valid JSON string
+    //: Creator details are not in a valid JSON format
     INVALID_CREATOR_DETAILS = -2,
     //: Source balance to withdraw from is not found 
     BALANCE_NOT_FOUND = -3, // balance not found
@@ -51,7 +51,7 @@ enum CreateWithdrawalRequestResultCode
     ASSET_IS_NOT_WITHDRAWABLE = -4,
     //: Deprecated
     CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed
-    //: Fee charged on the operation and fee calculated on the operation fulfillment are mismatched
+    //: Expected fee and actual fee mismatch
     FEE_MISMATCHED = -6,
     //: Deprecated
     CONVERSION_OVERFLOW = -7,
@@ -83,7 +83,7 @@ enum CreateWithdrawalRequestResultCode
 struct CreateWithdrawalSuccess {
     //: ID of a newly created WithdrawalRequest
     uint64 requestID;
-    //: Indicates whether or not the withdrawal request was approved and applied on creation
+    //: Indicates whether or not the withdrawal request was auto approved and fulfilled
     bool fulfilled;
     //: Reserved for future use
     union switch (LedgerVersion v)
