@@ -56,6 +56,8 @@ tags:
                   
   - name: AMLAlert
     description: Defines access points to AMLAlert Reviewable Requests
+  - name: KYC
+    description: Defines access points to Change Role Reviewable Requests
   - name: Issuance
     description: Defines access points to get Issuance Reviewable Requests
   - name: Withdrawal
@@ -90,7 +92,7 @@ x-tagGroups:
     tags:
       - Account Roles
       - Account Rules
-      - Change Account Role Request
+      - KYC
       - AMLAlert
       - Limits
       - Create Manage Limits Request
