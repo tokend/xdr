@@ -6,19 +6,19 @@
     description: |
       Allows to create request to emit provided amount of specified asset to destination balance.
       Issuance request is a reviewable request. It uses tasks - bitmask, where each bit represents conditions under which
-      request can be approved. Tasks can be set or cleared both manually and automatically.
+      request can be approved. Tasks can be set or cleared both manually(by reviewer) and automatically.
       Tasks bit mask can be provided either from `KeyValueEntry` by key `issuance_tasks:<asset_code>` (which specify tasks
-      for asset) or by key `issuance_tasks:*` is there are no tasks for provided asset.
-      If field `allTasks` is set in request, `KeyValueEntry` won't be used.
+      for asset) or by key `issuance_tasks:*` if there are no issuance tasks for provided asset.
+      If field `allTasks` is set, `KeyValueEntry` won't be used.
       #### Account Role Requirements
         | Account        | Resource Type | Action  |
         | ------------- |:-------------:| -----:|
         | source      | `ASSET` | `RECEIVE_ISSUANCE` |
 
       #### Signer Role Requirements
-        | Resource Type | Action  |
-        |:-------------:| -----:|
-        | `REVIEWABLE_REQUEST` | `CREATE` |
+        | Resource Type | Reviewable Request Type |Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_ISSUANCE` | `CREATE` |
     operationId: createIssuanceRequestOp
     x-item-type: operation
     parameters:
