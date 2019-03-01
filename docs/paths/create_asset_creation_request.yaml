@@ -17,6 +17,7 @@
                     |:-------------:| -----------:| --------|
                     | `ASSET`       | `CREATE`    | Resource includes code and type of asset |
     operationId: manageAssetOp
+    x-item-type: operation
     parameters:
     - name: Manage Asset Op
       in: query
@@ -30,7 +31,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageAssetResult'

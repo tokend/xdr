@@ -18,6 +18,7 @@
         | `OFFER_ENTRY` | `CREATE` |
 
     operationId: createOffer
+    x-item-type: operation
     parameters:
       - name: ManageOfferOp
         in: query
@@ -31,7 +32,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageOfferResult'
@@ -53,6 +54,7 @@
         | `OFFER_ENTRY` | `REMOVE` |
 
     operationId: removeOfferOp
+    x-item-type: operation
     parameters:
       - name: ManageOfferOp
         in: query
@@ -66,7 +68,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageOfferResult'

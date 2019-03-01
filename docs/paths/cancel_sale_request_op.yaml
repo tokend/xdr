@@ -13,6 +13,7 @@
         |:-------------:| -----:|
         | `REVIEWABLE_REQUEST` | `CANCEL` |
     operationId: cancelSaleCreationRequestOp
+    x-item-type: operation
     parameters:
     - name: CancelSaleCreationRequestOp
       in: query
@@ -26,7 +27,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/CancelSaleCreationRequestResult'

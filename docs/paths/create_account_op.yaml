@@ -3,7 +3,6 @@
     tags:
       - Accounts
     summary: Create Account
-    x-item-type: operation
     description: |
                   Allows creating account with specific role and signers.
                   #### Account Role Requirements
@@ -16,6 +15,7 @@
                     |:-------------:| -----------:|
                     | `ACCOUNT`     | `CREATE`    |
     operationId: createAccountOp
+    x-item-type: operation
     parameters:
     - name: Create Account Op
       in: query
@@ -29,7 +29,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/CreateAccountResult'

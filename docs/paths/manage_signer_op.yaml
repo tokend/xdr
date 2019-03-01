@@ -15,6 +15,7 @@
                     |:-------------:| -----:|
                     | `SIGNER` | `MANAGE` |
     operationId: manageSignerOp
+    x-item-type: operation
     parameters:
     - name: Manage Signer Op
       in: query
@@ -28,7 +29,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageSignerResult'

@@ -19,6 +19,7 @@
                     | `BALANCE`     | `CREATE`              | source `accountID` differs from destination `accountID` |
 
     operationId: manageBalanceOp
+    x-item-type: operation
     parameters:
       - name: Manage Balance Op
         in: query
@@ -32,7 +33,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageBalanceResult'

@@ -20,6 +20,7 @@
         |:-------------:| -----:|
         | `REVIEWABLE_REQUEST` | `CREATE` |
     operationId: createIssuanceRequestOp
+    x-item-type: operation
     parameters:
     - name: CreateIssuanceRequestOp
       in: query
@@ -33,7 +34,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/CreateIssuanceRequestResult'

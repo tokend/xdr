@@ -11,6 +11,7 @@
                   #### Signer Role Requirements
                     No signer rule required beacuse only current asset pre issuer can change asset pre issuer
     operationId: manageAssetOp
+    x-item-type: operation
     parameters:
     - name: Manage Asset Op
       in: query
@@ -24,7 +25,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageAssetResult'

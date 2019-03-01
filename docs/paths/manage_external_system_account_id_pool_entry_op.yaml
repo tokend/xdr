@@ -16,6 +16,7 @@
         |:-------------:| -----:|
         | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
     operationId: manageExternalSystemAccountIdPoolEntry
+    x-item-type: operation
     parameters:
     - name: ManageExternalSystemAccountIdPoolEntryOp
       in: query
@@ -29,7 +30,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/ManageExternalSystemAccountIdPoolEntryResult'

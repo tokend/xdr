@@ -18,6 +18,7 @@
         | `ASSET`       | `SEND`       |
 
     operationId: paymentOp
+    x-item-type: operation
     parameters:
       - name: Payment Op
         in: query
@@ -31,7 +32,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/PaymentResult'

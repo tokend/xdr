@@ -16,6 +16,7 @@
         | `STAMP`       | `CREATE` |
 
     operationId: stampOp
+    x-item-type: operation
     parameters:
     - name: stamp Op
       in: query
@@ -29,7 +30,7 @@
       200:
         description: Result
         content:
-          application/vnd.api+json:
+          xdr:
             schema:
               type: object
               $ref: '#/components/schemas/StampResult'
