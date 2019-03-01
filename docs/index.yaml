@@ -27,6 +27,8 @@ tags:
                   Transactions allows you to combine several operations (even from different sources) into one atomic command (if one operation fails, whole transaction rollbacks). What is more, it's possible to specify different source account for different operation. This can be used to implement features like over-the-counter exchange (include into transaction two operations: one sending assets from A to B; one sending assets from B to A; such transaction requires signatures from both A and B).
   - name: Accounts
     description: Defines operations to manage Accounts
+  - name: Balances
+    description: Defines operations to manage Balances
   - name: Assets
     description: Defines operations to manage Assets
   - name: Fees
@@ -58,11 +60,14 @@ tags:
     description: Defines access points to get Issuance Reviewable Requests
   - name: Withdrawal
     description: Defines access points to get Withdrawal Reviewable Requests
+  - name: Payment
+    description: Defines access points to get Payments
 x-tagGroups:
   - name: Essentials
     tags:
       - Transaction
       - Accounts
+      - Balances
       - Assets
       - Fees
   - name: Asset Movements
@@ -70,6 +75,7 @@ x-tagGroups:
      - AMLAlert
      - Issuance
      - Withdrawal
+     - Payment
   - name: Access Control
     tags:
       - Signers
@@ -82,6 +88,7 @@ x-tagGroups:
       - Change Account Role Request
       - AMLAlert
       - Limits
+      - Create Manage Limits Request
   - name: Decentralized Exchange
     tags:
       - Asset Pairs

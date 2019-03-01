@@ -9,10 +9,12 @@
                   #### Account Role Requirements
                     | Account        | Resource Type| Action  |
                     | ------------- |:-------------:| -----:|
-                    | source      | `Account` | `Create` |
+                    | source      | `ACCOUNT` | `CREATE` |
 
                   #### Signer Role Requirements
-                  Rule with matching resource of type `Account` and action `Create`.
+                    | Resource Type | Rule Action |
+                    |:-------------:| -----------:|
+                    | `ACCOUNT`     | `CREATE`    |
     operationId: createAccountOp
     parameters:
     - name: Create Account Op

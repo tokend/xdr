@@ -28,7 +28,7 @@ enum EmissionFeeType
     SECONDARY_MARKET = 2
 };
 
-//: `PaymentFeeType` is a subtype of `PAYMENT_FEE`
+//: `PaymentFeeType` is a subtype of the Fee used for payments
 enum PaymentFeeType
 {
     OUTGOING = 1,
