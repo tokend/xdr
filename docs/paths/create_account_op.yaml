@@ -3,6 +3,7 @@
     tags:
       - Accounts
     summary: Create Account
+    x-item-type: operation
     description: |
                   Allows creating account with specific role and signers.
                   #### Account Role Requirements

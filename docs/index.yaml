@@ -37,7 +37,7 @@ tags:
     description: Account Role - entry that consists of [Account Rules](#tag/Account-Rules) and can be attached to account.
   - name: Account Rules
     description: |
-      Account Rule - entry that defines if `action` can be performed for [resource](#operation/AccountRuleResource).
+      Account Rule defines if `action` can be performed for [resource](#operation/AccountRuleResource).
 
       TokenD uses strict policy for rules matching. 
       List of requirements to the roles of participants is formed based on operation (transaction) details.

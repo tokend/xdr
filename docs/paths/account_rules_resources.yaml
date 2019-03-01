@@ -2,6 +2,7 @@
   get:
     tags:
       - Account Rules
+    x-item-type: entry
     summary: Account Rules Resources
     description: |
                   Describes the resources on which the account can perform an action.
