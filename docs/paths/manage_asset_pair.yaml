@@ -4,7 +4,7 @@
       - Asset Pairs
     summary: Manage Asset Pair
     description: |
-      Allows to create new asset pairs or update either policies or prices of the existing asset pairs.
+      Allows to create new asset pairs or update either policies or prices of the existing [asset pairs](#operation/assetPairResource).
       #### Account Role Requirements
         | Account        | Resource Type  | Action   |
         | -------------  |:--------------:| --------:|
