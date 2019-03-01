@@ -2,18 +2,19 @@
   get:
     tags:
       - External Systems
-    summary: manage external system pool
+    summary: Manage External System Pool Entry
     description: |
-      Allows to manage external system account id pool - create, or remove it, depending on the action,
-      specified in the operation
+      Allows to create or remove external system account id pool entry
+      External system account id pool entry can be binded to account.
+
       #### Account Role Requirements
-        | Account        | Resource Type | Action  |
-        | ------------- |:-------------:| -----:|
-        | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
+        | Account | Resource Type | Action  |
+        | ------- |:-------------:|:------:|
+        | source  | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
 
       #### Signer Role Requirements
         | Resource Type | Action  |
-        |:-------------:| -----:|
+        |:-------------:|:------:|
         | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `MANAGE` |
     operationId: manageExternalSystemAccountIdPoolEntry
     x-item-type: operation

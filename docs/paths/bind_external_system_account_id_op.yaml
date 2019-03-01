@@ -2,13 +2,15 @@
   get:
     tags:
       - External Systems
-    summary: Bind external system account ID
+    summary: Bind External System Account ID
     description: |
-      Allows to bind source account to external system account ID pool
+      Allows to bind source account to external system account ID pool.
+      Only binded account can do deposits.
+
       #### Account Role Requirements
-        | Account        | Resource Type | Action  |
-        | ------------- |:-------------:| -----:|
-        | source      | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
+        | Account | Resource Type | Action  |
+        | --------|:-------------:|:------:|
+        | source  | `EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY` | `BIND` |
 
       #### Signer Role Requirements
         | Resource Type | Action  |
