@@ -8,16 +8,16 @@
                   `CREATE_ASSET` request is used to create asset entry
 
                   #### Account Role Requirements
-                    | Account | Resource Type | Rule Action |  | Condtion |
-                    | --------|:-------------:| -----------:|  ------------|
-                    | source  | `ASSET`       | `CREATE`    | `CREATE` | `allTasks` == `null` |
-                    | source  | `ASSET`       | `CREATE`    | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+                    | Account | Resource Type | Rule Action         |  Condtion            |
+                    | --------|:-------------:| :-----------------: | ------------         |
+                    | source  | `ASSET`       | `CREATE`            | `allTasks` == `null` |
+                    | source  | `ASSET`       | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
                   #### Signer Role Requirements
                     | Resource Type | Rule Action | Details |
                     |:-------------:| -----------:| --------|
                     | `ASSET`       | `CREATE`    | Resource includes code and type of asset |
-    operationId: manageAssetOp
+    operationId: createAssetCreationRequest
     x-item-type: operation
     parameters:
     - name: Manage Asset Op

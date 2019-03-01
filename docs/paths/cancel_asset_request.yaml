@@ -12,7 +12,7 @@
                     | Resource Type | Rule Action | Details |
                     |:-------------:| -----------:| --------|
                     | `ASSET`       | `CANCEL`    | Resource includes code and type of asset |
-    operationId: manageAssetOp
+    operationId: cancelAssetRequest
     x-item-type: operation
     parameters:
     - name: Manage Asset Op

@@ -1,0 +1,35 @@
+/manageSignerRoleOp:
+  get:
+    tags:
+      - Signer Roles
+    summary: Manage Signer Role
+    description: |
+                  Allows to create, update or remove signer roles.
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  |
+                    | --------|:-------------:|:-----:|
+                    | source  | `SIGNER_ROLE` | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:|:-----:|
+                    | `SIGNER_ROLE` | `MANAGE` |
+    operationId: manageSignerRoleOp
+    x-item-type: operation
+    parameters:
+    - name: Manage Signer Role Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageSignerRoleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageSignerRoleResult'

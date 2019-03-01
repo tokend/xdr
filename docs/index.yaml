@@ -33,7 +33,7 @@ tags:
     description: Defines operations to manage Assets
   - name: Fees
     description: Defines operations to manage Fees
-  - name: Signers
+  - name: Signers 
     description: Defines operations to manage Signers
   - name: Account Roles
     description: Account Role - entry that consists of [Account Rules](#tag/Account-Rules) and can be attached to account.
@@ -48,6 +48,19 @@ tags:
       Requirement is fulfilled if account's role contains matching rule with `forbids=false`.
       If one of the matching rules has `forbids=true` - operation is rejected.
       If role does not contain any matching rules - operation is rejected.
+  - name: Signer Roles
+    description: Signer Role - entry that consists of [Signer Rules](#tag/Signer-Rules) and can be attached to signer.
+  - name: Signer Rules
+    description: |
+      Signer Rule - entry that defines if `action` can be performed for [resource](#operation/SignerRuleResource).
+
+      TokenD uses strict policy for rules matching. 
+      List of requirements to the roles of participants is formed based on operation (transaction) details.
+      If one of the requirements is not fulfilled, operation is rejected.
+      Requirement is specified for signer and consits of resource and action to be performed.
+      Requirement is fulfilled if signer's role contains matching rule with `forbids=false`.
+      If one of the matching rules has `forbids=true` - operation is rejected.
+      If role does not contain any matching rules - operation is rejected.  
   - name: Asset Pairs
     description: |
                   

@@ -1,0 +1,35 @@
+/manageAccountRuleOp:
+  get:
+    tags:
+      - Account Rules
+    summary: Manage Account Rule
+    description: |
+                  Allows to create, update or remove account rules.
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  |
+                    | --------|:-------------:|:-----:|
+                    | source  | `ACCOUNT_RULE` | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:|:-----:|
+                    | `ACCOUNT_RULE` | `MANAGE` |
+    operationId: manageAccountRuleOp
+    x-item-type: operation
+    parameters:
+    - name: Manage Account Rule Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageAccountRuleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAccountRuleResult'
