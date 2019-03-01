@@ -14,7 +14,7 @@
                     | Resource Type | Rule Action |
                     |:-------------:| -----------:|
                     | `ASSET`      | `UPDATE_MAX_ISSUANCE` |
-    operationId: manageAssetOp
+    operationId: updateMaxIssuance
     x-item-type: operation
     parameters:
     - name: Manage Asset Op

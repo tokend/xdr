@@ -14,7 +14,7 @@
                     | Resource Type | Rule Action | Details |
                     |:-------------:| -----------:| --------|
                     | `ASSET`       | `UPDATE`    | Resource includes code and type of asset |
-    operationId: manageAssetOp
+    operationId: createAssetUpdateRequest
     x-item-type: operation
     parameters:
     - name: Manage Asset Op

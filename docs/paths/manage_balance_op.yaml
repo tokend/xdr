@@ -14,7 +14,7 @@
 
                   #### Signer Role Requirements
                     | Resource Type | Rule Action           | Condition                                               |
-                    |:-------------:| ---------------------:| -                                                       |
+                    |:-------------:| :--------------------:| -                                                       |
                     | `BALANCE`     | `CREATE_FOR_OTHER`    | source `accountID` is equal to destination `accountID`  |
                     | `BALANCE`     | `CREATE`              | source `accountID` differs from destination `accountID` |
 
