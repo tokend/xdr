@@ -4,7 +4,19 @@
       - Sale
     summary: Create sale cretion request
     description: |
-      Allows to create sale creation request
+      Allows to create revieable request which on approval will create sale for base asset.
+      Quote assets are assets in which investments can be made.
+      Base asset is an asset being sold.
+      #### Sale types
+      There are 3 types of sale:
+      * Basic: For basic sale price of base asset is locked for every quote asset.
+         Amount of tokens distributed between participants depends on amount of contribution
+         and price of base asset in terms of quote asset in which contribution was made.
+      * Crowdfunding: prices are not set. If sale was successful (soft cap was reached),
+        all tokens (max amount to be sold) are distributed between participants according to their contributions.
+      * Fixed price: price is locked only in default quote asset.
+        Amount of tokens distributed between participants depends only on capitalization on sale close.
+
       #### Account Role Requirements
         | Account        | Resource Type | Action  | Condition |
         | ------------- |:-------------:| -----:| ----: |
