@@ -59,7 +59,7 @@ enum ManageOfferResultCode
     SUCCESS = 0,
     
     // codes considered as "failure" for the operation
-    //: ManageOffer operation is malformed - generated offer would be invalid
+    //: Quote amount is less than fee or new fee is less than old
     MALFORMED = -1,
     //: Asset pair does not allow to make offers
     PAIR_NOT_TRADED = -2, 
