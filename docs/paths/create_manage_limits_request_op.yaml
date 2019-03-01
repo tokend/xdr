@@ -15,6 +15,7 @@
                     |:-------------------:| -----------:|
                     | `REVIEWABLE_REQUEST`| `CREATE`    |
     operationId: createManageLimitsRequest
+    x-item-type: operation
     parameters:
       - name: Create Manage Limits Request
         in: query

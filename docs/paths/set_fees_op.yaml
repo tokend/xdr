@@ -15,6 +15,7 @@
         |:-------------:| -----------:|
         | `FEE`         | `MANAGE`    |
     operationId: setFeesOp
+    x-item-type: operation
     parameters:
       - name: Set Fees Op
         in: query

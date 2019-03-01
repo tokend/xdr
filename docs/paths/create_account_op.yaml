@@ -6,15 +6,16 @@
     description: |
                   Allows creating account with specific role and signers.
                   #### Account Role Requirements
-                    | Account        | Resource Type| Action  |
-                    | ------------- |:-------------:| -----:|
-                    | source      | `ACCOUNT` | `CREATE` |
+                    | Account        | Resource Type| Action   |
+                    | -------------- |:------------:| --------:|
+                    | source         | `ACCOUNT`    | `CREATE` |
 
                   #### Signer Role Requirements
                     | Resource Type | Rule Action |
                     |:-------------:| -----------:|
                     | `ACCOUNT`     | `CREATE`    |
     operationId: createAccountOp
+    x-item-type: entry|operation
     parameters:
     - name: Create Account Op
       in: query

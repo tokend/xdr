@@ -15,10 +15,11 @@
                   #### Signer Role Requirements
                     | Resource Type | Rule Action           | Condition                                               |
                     |:-------------:| ---------------------:| -                                                       |
-                    | `BALANCE`     | `CREATE_FOR_OTHER`    | source `accountID` is equal to destination `accountID`  |
-                    | `BALANCE`     | `CREATE`              | source `accountID` differs from destination `accountID` |
+                    | `BALANCE`     | `CREATE`              | source `accountID` is equal to destination `accountID`  |
+                    | `BALANCE`     | `CREATE_FOR_OTHER`    | source `accountID` differs from destination `accountID` |
 
     operationId: manageBalanceOp
+    x-item-type: operation
     parameters:
       - name: Manage Balance Op
         in: query

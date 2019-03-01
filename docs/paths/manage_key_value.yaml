@@ -15,6 +15,7 @@
         |:-------------:| -----------:|
         | `KEY_VALUE`   | `MANAGE`    |
     operationId: manageKeyValueOp
+    x-item-type: operation
     parameters:
       - name: Manage KeyValue Op
         in: query

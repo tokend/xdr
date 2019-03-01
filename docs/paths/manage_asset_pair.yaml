@@ -15,6 +15,7 @@
         |:--------------:| -----------:|
         | `ASSET_PAIR`   | `MANAGE`    |
     operationId: manageAssetPairOp
+    x-item-type: operation
     parameters:
       - name: Manage Asset Pair Op
         in: query

@@ -18,6 +18,7 @@
         | `ASSET`       | `SEND`       |
 
     operationId: paymentOp
+    x-item-type: operation
     parameters:
       - name: Payment Op
         in: query

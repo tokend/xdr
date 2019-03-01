@@ -15,6 +15,7 @@
                     |:-------------:| -----------:|
                     | `LIMITS_V2`   | `MANAGE`    |
     operationId: manageLimitsOp
+    x-item-type: operation
     parameters:
       - name: Manage Limits Op
         in: query
