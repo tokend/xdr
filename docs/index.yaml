@@ -73,15 +73,16 @@ x-tagGroups:
     tags:
       - Transaction
       - Accounts
-      - Balances
       - Assets
-      - Fees
+      - Payment
   - name: Asset Movements
     tags:
-     - AMLAlert
      - Issuance
      - Withdrawal
      - Payment
+     - Balances
+     - AMLAlert
+     - Fees
      - External Systems
   - name: Access Control
     tags:
