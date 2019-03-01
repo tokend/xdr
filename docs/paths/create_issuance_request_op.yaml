@@ -16,9 +16,9 @@
         | source      | `ASSET` | `RECEIVE_ISSUANCE` |
 
       #### Signer Role Requirements
-        | Resource Type | Action  |
-        |:-------------:| -----:|
-        | `REVIEWABLE_REQUEST` | `CREATE` |
+        | Resource Type | Reviewable Request Type |Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_ISSUANCE` | `CREATE` |
     operationId: createIssuanceRequestOp
     x-item-type: operation
     parameters:

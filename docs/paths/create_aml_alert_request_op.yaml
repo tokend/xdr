@@ -11,14 +11,14 @@
       Tasks bit mask can be provided either from `KeyValueEntry` by key `aml_alert_create` (which specify tasks
       for aml alert request) or field `allTasks`, then `KeyValueEntry` won't be used.
       #### Account Role Requirements
-        | Account        | Resource Type | Action  |
-        | ------------- |:-------------:| -----:|
-        | source      | `REVIEWABLE_REQUEST` | `CREATE` |
+        | Account        | Resource Type | Reviewable Request Type | Action  |
+        | ------------- |:-------------:| -----:| -----: |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_AML_ALERT` |`CREATE` |
 
       #### Signer Role Requirements
-        | Resource Type | Action  |
-        |:-------------:| -----:|
-        | `REVIEWABLE_REQUEST` | `CREATE` |
+        | Resource Type | Reviewable Request Type | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_AML_ALERT` | `CREATE` |
     operationId: createAMLAlertRequestOp
     x-item-type: operation
     parameters:

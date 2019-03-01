@@ -9,9 +9,9 @@
         Only sale creator can cancel request
       #### Signer Role Requirements
 
-        | Resource Type | Action  |
-        |:-------------:| -----:|
-        | `REVIEWABLE_REQUEST` | `CANCEL` |
+        | Resource Type | Reviewable Request Type | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_SALE` | `CANCEL` |
     operationId: cancelSaleCreationRequestOp
     x-item-type: operation
     parameters:
