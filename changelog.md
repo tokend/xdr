@@ -1,5 +1,40 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+* Comments for docs to CreateChangeRoleRequestOp
+* Comments for docs to ManageSignerRuleOp
+* Comments for docs to SignerRuleResource
+* Comments for docs to ManageSignerOp
+* Comments for docs to ManageSignerRoleOp
+* Comments for docs to CreateAccountOp
+* Comments for docs to ManageAccountRoleOp
+* Comments for docs to ManageAccountRuleOp
+* Comments for docs to AccountRuleResource
+* Comments for docs to ManageAssetOp
+* Comments for docs to CreatePreIssuanceRequestOp and preIssuanceRequest
+* Comments for docs to CreateSaleCreationRequestOp
+* Comments for docs to CheckSaleStateOp
+* Comments for docs to CancelSaleCreationRequestOp
+* Comments for docs to ManageSaleOp
+* Comments for docs to ManageOfferOp
+* Comments for docs to CreateIssuanceRequestOp
+* Comments for docs to CreateWithdrawalRequestOp
+* Comments for docs to CreateAMLAlertRequestOp
+* Comments for docs to LicenseOp
+* Comments for docs to StampOp
+* Comments for docs to ReviewRequestOp
+* Comments for docs to BindExternalSystemAccountIdOp
+* Comments for docs to ManageExternalSystemAccountIdPoolEntryOp
+* Comments for docs to ManageKeyValueOp
+* Comments for docs to ManageAssetPairOp
+* Comments for docs to ManageLimitsOp and LimitsUpdateRequest
+* Comments for docs to ManageBalanceOp
+* Comments for docs to PaymentOp
+* Comments for docs to SetFeesOp and FeeEntry
+
 ## 3.0.0-x.2
 
 ### Added

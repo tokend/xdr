@@ -1,0 +1,35 @@
+/createManageLimitsRequestOp:
+  get:
+    tags:
+      - Limits
+    summary: Manage LimitsUpdateRequest
+    description: |
+                  Allows either to create new `LimitsUpdateRequest` or update existing one
+                  #### Account Role Requirements
+                    | Account | Resource Type       | Rule Action |
+                    | --------|:-------------------:| -----------:|
+                    | source  | `REVIEWABLE_REQUEST`| `CREATE`    |
+
+                  #### Signer Role Requirements
+                    | Resource Type       | Rule Action |
+                    |:-------------------:| -----------:|
+                    | `REVIEWABLE_REQUEST`| `CREATE`    |
+    operationId: createManageLimitsRequest
+    x-item-type: operation
+    parameters:
+      - name: Create Manage Limits Request
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreateManageLimitsRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateManageLimitsRequestResult'

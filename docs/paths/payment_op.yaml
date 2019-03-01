@@ -1,0 +1,38 @@
+/paymentOp:
+  get:
+    tags:
+      - Payment
+    summary: Payment operantion
+    description: |
+      Allows to transfer some amount of asset from source balance to destination account/balance.
+
+      #### Account Role Requirements
+        | Account        | Resource Type | Action            |
+        | -------------  |:-------------:|:----------------: |
+        | source         | `ASSET`       | `SEND`            |
+        | destination    | `ASSET`       | `RECEIVE_PAYMENT` |
+
+      #### Signer Role Requirements
+        | Resource Type | Rule Action  |
+        |:-------------:|:------------:|
+        | `ASSET`       | `SEND`       |
+
+    operationId: paymentOp
+    x-item-type: operation
+    parameters:
+      - name: Payment Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/PaymentOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PaymentResult'
