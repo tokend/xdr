@@ -4,7 +4,7 @@
       - Limits
     summary: Manage LimitsUpdateRequest
     description: |
-                  Allows either to create new `LimitsUpdateRequest` or update existing one
+                  Allows either to create new `UpdateLimits` reviewable request or update existing one
                   #### Account Role Requirements
                     | Account | Resource Type       | Rule Action |
                     | --------|:-------------------:| -----------:|

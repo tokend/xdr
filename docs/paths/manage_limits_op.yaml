@@ -2,7 +2,7 @@
   get:
     tags:
       - Limits
-    summary: Manage Limits
+    summary: Manage Limits Operation
     description: |
                   Allows to create or remove the existing limits entries.
                   #### Account Role Requirements

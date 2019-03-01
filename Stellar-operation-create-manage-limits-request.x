@@ -15,17 +15,17 @@ namespace stellar
     Result: CreateManageLimitsRequestResult
 */
 
-//: `CreateManageLimitsRequestOp` is used to create reviewable request which on approval will update limits set in the system
+//: `CreateManageLimitsRequestOp` is used to create or update `UpdateLimits` reviewable request which on approval will update limits set in the system
 struct CreateManageLimitsRequestOp
 {
-    //: Body of the UpdateLimits reviewable request to be created
+    //: Body of the `UpdateLimits` reviewable request to be created
     LimitsUpdateRequest manageLimitsRequest;
 
-    //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used
+    //: (optional) Bit mask whose flags must be cleared in order for `UpdateLimits` request to be approved, which will be used
     //: instead of value from key-value pair by key `limits_update_tasks`
     uint32* allTasks;
-    //: ID of the LimitsUpdateRequest\n
-    //: If `requestID == 0` - operation creates new `LimitsUpdateRequest`, otherwise - updates existing one
+    //: ID of the `UpdateLimits` reviewable request\n
+    //: If `requestID == 0` - operation creates new `UpdateLimits` reviewable request, otherwise - updates existing one
     uint64 requestID;
 
     //: reserved for future use
@@ -56,7 +56,7 @@ enum CreateManageLimitsRequestResultCode
     LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
     //: Cannot set allTasks on rejected request update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6,
-    //: 0 is not allowed value of `allTasks`, or not allowed for value entry, got by key limits_update_tasks:<asset_code>
+    //: 0 is not allowed value of `allTasks`, or not allowed for value entry, got by key `limits_update_tasks`
     LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7
 };
 
