@@ -14,6 +14,10 @@ info:
 servers:
 - url: https://api.achilles.tokend.io
   description: TokenD Developer Environment
+x-logo:
+  url: "https://tokend.io/images/logo.svg"
+  backgroundColor: "transparent"
+  altText: "TokenD"
 # NOTE
 #
 # Add tag to x-tagGroups or it won't be displayed
