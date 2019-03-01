@@ -49,9 +49,9 @@ struct FeeEntry
     //: Percent from the operation amount that will be charged for the corresponding operation
     int64 percentFee;
 
-    //: (optional) Account from which fee would be charged
+    //: (optional) Account for which a fee is set in the system
     AccountID* accountID;
-    //: (optional) Account role from which fee would be charged
+    //: (optional) Account for which a fee is set in the system
     uint64*    accountRole;
     //: Defines a `subtype` of a fee if such exists (e.g., `OUTGOING` or `INCOMING` for `PAYMENT_FEE`)
     int64 subtype;

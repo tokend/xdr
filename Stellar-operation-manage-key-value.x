@@ -2,19 +2,19 @@
 
 namespace stellar
 {
-    //: Actions that could be performed on KeyValueEntry
+    //: Actions that can be performed on `KeyValueEntry`
     enum ManageKVAction
     {
         PUT = 1,
         REMOVE = 2
     };
 
-    //: `ManageKeyValueOp` is used to update the key-value entries presented in the system
+    //: `ManageKeyValueOp` is used to create the manage key-value operation which, if applied successfully, will update the key-value entry present in the system
     struct ManageKeyValueOp
     {
         //: `key` is the key for KeyValueEntry
         longstring key;
-        //: `action` defines an action applied to the KeyValue based on the given ManageKVAction
+        //: `action` defines an action applied to the KeyValue based on given ManageKVAction
         //: * Action `PUT` stores new value for a particular key
         //: * Action `REMOVE` removes the value by a particular key
         union switch(ManageKVAction action)
@@ -35,7 +35,7 @@ namespace stellar
         ext;
     };
 
-    //: `ManageKeyValueSuccess` represents the details returned after successful application of `ManageKeyValueOp`
+    //: `ManageKeyValueSuccess` represents details returned after the successful application of `ManageKeyValueOp`
     struct ManageKeyValueSuccess
     {
         //: reserved for future use
@@ -50,13 +50,13 @@ namespace stellar
     //: Result codes for `ManageKeyValueOp`
     enum ManageKeyValueResultCode
     {
-        //: `ManageKeyValueOp` successfully applied
+        //: `ManageKeyValueOp` is applied successfully
         SUCCESS = 0,
         //: There is no key value with such key
         NOT_FOUND = -1,
-        //: Value of the key-value entry has not allowed type
+        //: Value type of the key-value entry is forbidden for the provided key
         INVALID_TYPE = -2,
-        //: uint32 zero value is not allowed
+        //: zero value is forbidden for the provided key
         ZERO_VALUE_NOT_ALLOWED = -3
     };
 

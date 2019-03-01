@@ -12,7 +12,7 @@ namespace stellar
  Result: ManageAccountRolePermissionResult
 */
 
-//: Actions which can be performed with account rule
+//: Actions that can be performed with account rule
 enum ManageAccountRuleAction
 {
     CREATE = 0,
@@ -20,10 +20,10 @@ enum ManageAccountRuleAction
     REMOVE = 2
 };
 
-//: CreateAccountRuleData is used to pass necessary params to create new account rule
+//: CreateAccountRuleData is used to pass necessary params to create a new account rule
 struct CreateAccountRuleData
 {
-    //: Resource is used to specify entity (for some - with properties) that can be managed through operations
+    //: Resource is used to specify an entity (for some - with properties) that can be managed through operations
     AccountRuleResource resource;
     //: Value from enum that can be applied to `resource`
     AccountRuleAction action;
@@ -79,7 +79,7 @@ struct RemoveAccountRuleData
 //: ManageAccountRuleOp is used to create, update or remove account rule
 struct ManageAccountRuleOp
 {
-    //: data is used to pass one of `ManageAccountRuleAction` with needed params
+    //: data is used to pass one of `ManageAccountRuleAction` with required params
     union switch (ManageAccountRuleAction action)
     {
     case CREATE:
@@ -110,7 +110,7 @@ enum ManageAccountRuleResultCode
     // codes considered as "failure" for the operation
     //: There is no account rule with such id
     NOT_FOUND = -1,
-    //: Not allowed to remove rule if it is used at least in one role
+    //: It is not allowed to remove the rule if it is used at least in one role
     RULE_IS_USED = -2,
     //: Passed details has invalid json structure
     INVALID_DETAILS = -3
@@ -122,7 +122,7 @@ union ManageAccountRuleResult switch (ManageAccountRuleResultCode code)
     case SUCCESS:
         //: Is used to pass useful params if operation is success
         struct {
-            //: id of rule which was managed
+            //: id of the rule that was managed
             uint64 ruleID;
 
             //: reserved for future use
@@ -134,7 +134,7 @@ union ManageAccountRuleResult switch (ManageAccountRuleResultCode code)
             ext;
         } success;
     case RULE_IS_USED:
-        //: ids of roles which use rule that cannot be removed
+        //: ids of roles that use the rule that cannot be removed
         uint64 roleIDs<>;
     default:
         void;

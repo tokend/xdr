@@ -4,7 +4,7 @@
 namespace stellar
 {
 
-    //: `KeyValueEntryType` defines the type of the value in key-value entry
+    //: `KeyValueEntryType` defines the type of value in the key-value entry
     enum KeyValueEntryType
     {
         UINT32 = 1,
@@ -12,7 +12,7 @@ namespace stellar
         UINT64 = 3
     };
 
-    //: `KeyValueEntryValue` represents the value based on the given `KeyValueEntryType`
+    //: `KeyValueEntryValue` represents the value based on given `KeyValueEntryType`
     union KeyValueEntryValue switch (KeyValueEntryType type)
     {
         case UINT32:
@@ -23,13 +23,14 @@ namespace stellar
             uint64 ui64Value;
     };
 
-    //: `KeyValueEntry` is an entry that is used to store key mapped values
+    //: `KeyValueEntry` is an entry used to store key mapped values
     struct KeyValueEntry
     {
         //: String value that must be unique among other keys for kev-value pairs
         longstring key;
 
-        //: Value that corresponds to the particular key. Depends on `KeyValueEntryType`
+        //: Value that corresponds to particular key (depending on `KeyValueEntryType`, 
+        //: the value can be either uint32, or uint64, or string)
         KeyValueEntryValue value;
 
         //: reserved for future use

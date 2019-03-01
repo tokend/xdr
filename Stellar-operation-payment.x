@@ -13,11 +13,11 @@ namespace stellar
 */
 
 struct PaymentFeeData {
-    //: Fee kept from source balance
+    //: Fee to pay by source balance
     Fee sourceFee;
     //: Fee kept from destination account/balance
     Fee destinationFee;
-    //: Indicates whether or not source of the payment should pay fee for destination
+    //: Indicates whether or not the source of payment pays the destination fee
     bool sourcePaysForDest;
 
     //: reserved for future use
@@ -35,13 +35,13 @@ enum PaymentDestinationType {
     BALANCE = 1
 };
 
-//: PaymentOp is used to transfer some amount of asset from source balance to destination (account or balance   )
+//: PaymentOp is used to transfer some amount of asset from the source balance to destination account/balance
 struct PaymentOp
 {
     //: ID of the source balance of payment
     BalanceID sourceBalanceID;
 
-    //: `destination` defines type of the instance which receives the payment based on given PaymentDestinationType
+    //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
     union switch (PaymentDestinationType type) {
         case ACCOUNT:
             AccountID accountID;
@@ -49,15 +49,15 @@ struct PaymentOp
             BalanceID balanceID;
     } destination;
 
-    //: Amount of a payment
+    //: Amount of payment
     uint64 amount;
 
-    //: `feeData` defines all data about payment fee
+    //: `feeData` defines all data about the payment fee
     PaymentFeeData feeData;
 
-    //: `subject` is user-provided info about real-life subject of the payment
+    //: `subject` is a user-provided info about the real-life purpose of payment
     longstring subject;
-    //: `reference` is string formed by payment sender. Pair `reference-sender account` is unique.
+    //: `reference` is a string formed by a payment sender. `Reference-sender account` pair is unique.
     longstring reference;
 
     //: reserved for future use
@@ -78,11 +78,11 @@ enum PaymentResultCode
     // codes considered as "failure" for the operation
     //: Payment sender balance ID and payment receiver balance ID are equal or reference is longer than 64 symbols
     MALFORMED = -1,
-    //: Not enough funds in source account
+    //: Not enough funds in the source account
     UNDERFUNDED = -2,
-    //: After the payment the destination balance would go above the limit (total amount on the balance would be greater than UINT64_MAX)
+    //: After the payment fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
     LINE_FULL = -3,
-    //: There is no balance found with ID provided in `destinations.balanceID`
+    //: There is no balance found with an ID provided in `destinations.balanceID`
     DESTINATION_BALANCE_NOT_FOUND = -4,
     //: Sender balance asset and receiver balance asset are not equal
     BALANCE_ASSETS_MISMATCHED = -5,
@@ -90,19 +90,19 @@ enum PaymentResultCode
     SRC_BALANCE_NOT_FOUND = -6,
     //: Pair `reference-sender account` of the payment is not unique
     REFERENCE_DUPLICATION = -7,
-    //: Stats entry went above the account limits
+    //: Stats entry exceeded account limits
     STATS_OVERFLOW = -8,
-    //: Account would exceed its limits after the the payment
+    //: Account will exceed its limits after the payment is fulfilled
     LIMITS_EXCEEDED = -9,
-    //: Payment asset does not have `TRANSFERABLE` policy set
+    //: Payment asset does not have a `TRANSFERABLE` policy set
     NOT_ALLOWED_BY_ASSET_POLICY = -10,
-    //: Overflow during total fee to pay calculation
+    //: Overflow during total fee calculation
     INVALID_DESTINATION_FEE = -11,
     //: Payment fee amount is insufficient
     INSUFFICIENT_FEE_AMOUNT = -12,
     //: Fee charged from destination balance is greater than the payment amount
     PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
-    //: There is no account found with ID provided in `destination.accountID`
+    //: There is no account found with an ID provided in `destination.accountID`
     DESTINATION_ACCOUNT_NOT_FOUND = -14,
     //: Amount precision and asset precision are mismatched
     INCORRECT_AMOUNT_PRECISION = -15
@@ -115,7 +115,7 @@ struct PaymentResponse {
     //: ID of the destination balance
     BalanceID destinationBalanceID;
 
-    //: Code of the asset used in payment
+    //: Code of an asset used in payment
     AssetCode asset;
     //: Amount sent by the sender
     uint64 sourceSentUniversal;

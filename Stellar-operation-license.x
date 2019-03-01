@@ -10,14 +10,14 @@ Threshold: master weight
 Result: LicenseResult
 
 */
-//: License operation is used to increase allowed number of admins and due date
+//: License operation is used to increase the allowed number of admins and due date
 struct LicenseOp
 {
     //: Allowed number of admins to set in the system
     uint64 adminCount;
     //: Expiration date of the license
     uint64 dueDate;
-    //: Hash of stamped ledger  
+    //: Hash of a stamped ledger  
     Hash ledgerHash;
     //: Hash of the previous license
     Hash prevLicenseHash;
@@ -41,11 +41,11 @@ enum LicenseResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Provided ledger hash and license hash were not stamped and missing in the system.
+    //: Provided ledger hash and license hash were not stamped and are missing in the system.
     INVALID_STAMP = -1,
     //: Provided due date is in the past.
     INVALID_DUE_DATE = -2,
-    //: Not enough valid signatures to submit license (required at least one valid signature)
+    //: Not enough valid signatures to submit a license (at least one valid signature is required)
     INVALID_SIGNATURE = -3
 };
 

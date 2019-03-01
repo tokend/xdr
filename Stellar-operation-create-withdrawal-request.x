@@ -13,14 +13,14 @@ namespace stellar
 
     Result: CreateWithdrawalRequestResult
 */
-//: CreateWithdrawalRequest operation is used creates reviewable request,
-//: which after approval from admin will charge specified amount from balance and send it to external wallet/account
+//: CreateWithdrawalRequest operation is used to create a reviewable request,
+//: which, after reviewer's approval, will charge the specified amount from balance and send it to external wallet/account
 struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
     WithdrawalRequest request;
-    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used  
-    //: instead of key-value by key withdrawal_tasks:<asset_code> 
+    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used by key withdrawal_tasks:<asset_code> 
+    //: instead of key-value
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -41,17 +41,17 @@ enum CreateWithdrawalRequestResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Trying to create withdrawal with amount of 0
+    //: Trying to create a withdrawal with a 0 amount 
     INVALID_AMOUNT = -1,
-    //: Creator details either are not valid JSON
+    //: Creator details are not in a valid JSON format
     INVALID_CREATOR_DETAILS = -2,
-    //: Source balance to withdraw from not found 
+    //: Source balance to withdraw from is not found 
     BALANCE_NOT_FOUND = -3, // balance not found
-    //: Asset cannot be withdrawn, as AssetPolicy::WITHDRAWABLE is not set
+    //: Asset cannot be withdrawn because AssetPolicy::WITHDRAWABLE is not set
     ASSET_IS_NOT_WITHDRAWABLE = -4,
     //: Deprecated
     CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed
-    //: Fee provided in the operation and fee calculated on operation application are mismatched
+    //: Expected fee and actual fee mismatch
     FEE_MISMATCHED = -6,
     //: Deprecated
     CONVERSION_OVERFLOW = -7,
@@ -59,7 +59,7 @@ enum CreateWithdrawalRequestResultCode
     CONVERTED_AMOUNT_MISMATCHED = -8,
     //: Trying to lock balance, locked amount would exceed UINT64_MAX
     BALANCE_LOCK_OVERFLOW = -9,
-    //: Insufficient balance to withdraw requested amount
+    //: Insufficient balance to withdraw the requested amount
     UNDERFUNDED = -10,
     //: Non zero universal amount
     INVALID_UNIVERSAL_AMOUNT = -11,
@@ -69,11 +69,11 @@ enum CreateWithdrawalRequestResultCode
     LIMITS_EXCEEDED = -13,
     //: Deprecated
     INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
-    //: Amount withdrawn is smaller than minimal withdrawable amount set in the system
+    //: Amount withdrawn is smaller than the minimal withdrawable amount set in the system
     LOWER_BOUND_NOT_EXCEEDED = -15,
-    //: Withdrawal tasks are not set in the system, i.e. it's not allowed to perform withdraw
+    //: Withdrawal tasks are not set in the system, i.e. it's not allowed to perform withdraw operations
     WITHDRAWAL_TASKS_NOT_FOUND = -16,
-    //: Not allowed to set withdrawal tasks on request creation
+    //: Not allowed to set withdrawal tasks on the request creation
     NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17,
     //: Not allowed to set zero tasks
     WITHDRAWAL_ZERO_TASKS_NOT_ALLOWED = -18
@@ -81,9 +81,9 @@ enum CreateWithdrawalRequestResultCode
 
 //: Result of the successful withdrawal request creation
 struct CreateWithdrawalSuccess {
-    //: ID of the newly created WithdrawalRequest
+    //: ID of a newly created WithdrawalRequest
     uint64 requestID;
-    //: Indicates whether or not the withdrawal request was approved and applied on creation
+    //: Indicates whether or not the withdrawal request was auto approved and fulfilled
     bool fulfilled;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -94,7 +94,7 @@ struct CreateWithdrawalSuccess {
     ext;
 };
 
-//: Result of applying CreateWithdrawalRequst operation along with result code
+//: Result of applying CreateWithdrawalRequst operation along with the result code
 union CreateWithdrawalRequestResult switch (CreateWithdrawalRequestResultCode code)
 {
     case SUCCESS:

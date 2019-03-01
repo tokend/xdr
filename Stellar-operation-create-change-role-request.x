@@ -3,22 +3,22 @@
 namespace stellar
 {
 
-//: `CreateChangeRoleRequestOp` is used to create the reviewable request
-//: which after approval from admin will change role of `destinationAccount`
+//: `CreateChangeRoleRequestOp` is used to create reviewable requests
+//: that, with admin's approval, will change the role of `destinationAccount`
 //: from current role to `accountRoleToSet`
 struct CreateChangeRoleRequestOp
 {
     //: Set zero to create new request, set non zero to update existing request
     uint64 requestID;
 
-    //: AccountID of account which role will be changed
+    //: AccountID of an account whose role will be changed
     AccountID destinationAccount;
-    //: ID of account role which will be attached to `destinationAccount`
+    //: ID of account role that will be attached to `destinationAccount`
     uint64 accountRoleToSet;
-    //: Arbitrary stringified json object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails;
 
-    //: Bit mask which will be used instead of value from key-value entry by
+    //: Bit mask that will be used instead of the value from key-value entry by
     //: `change_role_tasks:<currentRoleID>:<accountRoleToSet>` key
     uint32* allTasks;
 
@@ -35,8 +35,8 @@ struct CreateChangeRoleRequestOp
 //: Result codes of CreateChangeRoleRequestOp
 enum CreateChangeRoleRequestResultCode
 {
-    //: Means that change role request successfully created
-    //: or auto approved if pending tasks of the request was zero
+    //: Change role request has either been successfully created
+    //: or auto approved
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -49,22 +49,22 @@ enum CreateChangeRoleRequestResultCode
     //: Only `destinationAccount` can update change role request
     //: `destinationAccount` must be equal source Account
     NOT_ALLOWED_TO_UPDATE_REQUEST = -6,
-    //: Not allowed to change `destinationAccount`, `accountRoleToSet`
+    //: It is not allowed to change `destinationAccount`, `accountRoleToSet`
     //: or set `allTasks` on update change role request
     INVALID_CHANGE_ROLE_REQUEST_DATA = -7,
-    //: `creatorDetails` must be valid json structure
+    //: `creatorDetails` must be in a valid JSON format
     INVALID_CREATOR_DETAILS = -8,
-    //: There is no value in key-value entry by `change_role_tasks` key
-    //: configuration does not allow to change role from current to `accountRoleToSet`
+    //: There is no key-value entry by `change_role_tasks` key in the system;
+    //: configuration does not allow changing the role from current to `accountRoleToSet`
     CHANGE_ROLE_TASKS_NOT_FOUND = -9
 };
 
-//: Result of operation applying
+//: Result of operation application 
 union CreateChangeRoleRequestResult switch (CreateChangeRoleRequestResultCode code)
 {
 case SUCCESS:
     struct {
-        //: ID of created or updated request
+        //: ID of a created or updated request
         uint64 requestID;
         //: True if request was auto approved (pending tasks == 0),
         //: `destinationAccount` must have new account role

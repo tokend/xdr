@@ -4,10 +4,10 @@
 
 namespace stellar
 {
-//: `LimitsUpdateRequest` represents the limits update request with details in valid JSON format. It is used in CreateManageLimitsRequestOp.
+//: Body of reviewable `LimitsUpdateRequest` contains details regarding limit updates
 struct LimitsUpdateRequest
 {
-    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by the admin
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails;
 
     //: reserved for future use

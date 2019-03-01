@@ -41,16 +41,16 @@ enum CheckSaleStateResultCode
     //: Sale was not processed, because it's still active
     NOT_READY = -2
 };
-//: Effect of performing check sale state operation
+//: Effect of performed check sale state operation
 enum CheckSaleStateEffect {
-    //: Sale hasn't reached soft cap before end time
+    //: Sale hasn't reached the soft cap before end time
     CANCELED = 1,
-    //: Sale either reached soft cap and ended or reached hard cap
+    //: Sale has either reached the soft cap and ended or reached hard cap
     CLOSED = 2,
-    //: Crowdfunding sale was successfully closed and prices for both sale and offers were updated
+    //: Crowdfunding sale was successfully closed and the price for the base asset was updated according to participants contribution
     UPDATED = 3
 };
-//: Entry for additional information regarding sale cancellation
+//: Entry for additional information regarding sale cancel
 struct SaleCanceled {
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -72,13 +72,13 @@ struct SaleUpdated {
     ext;
 };
 
-//: Entry for additional information regarding sub sale close
+//: Entry for additional information regarding sub sale closing
 struct CheckSubSaleClosedResult {
     //: Balance in base asset of the closed sale
     BalanceID saleBaseBalance;
     //: Balance in one of the quote assets of the closed sale
     BalanceID saleQuoteBalance;
-    //: Result of the individual offer made during the sale and completed on it's close
+    //: Result of an individual offer made during the sale and completed on its close
     ManageOfferSuccessResult saleDetails;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -89,11 +89,11 @@ struct CheckSubSaleClosedResult {
     ext;
 };
 
-//: Entry for additional information regarding sale close
+//: Entry for additional information regarding sale closing
 struct CheckSaleClosedResult {
     //: AccountID of the sale owner
     AccountID saleOwner;
-    //: Array of the sale participation results 
+    //: Array of individual's contribution details
     CheckSubSaleClosedResult results<>;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -108,7 +108,7 @@ struct CheckSaleStateSuccess
 {
     //: ID of the sale being checked
     uint64 saleID;
-    //: Additional information regarding resulting effect
+    //: Additional information regarding eventual result
     union switch (CheckSaleStateEffect effect)
     {
     case CANCELED:
@@ -127,7 +127,7 @@ struct CheckSaleStateSuccess
     }
     ext;
 };
-//: Result of the CheckSaleState operation along with result code
+//: Result of the CheckSaleState operation along with the result code
 union CheckSaleStateResult switch (CheckSaleStateResultCode code)
 {
 case SUCCESS:

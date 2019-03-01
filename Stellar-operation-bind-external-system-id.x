@@ -11,7 +11,7 @@ Result: BindExternalSystemAccountIdResult
 
 */
 
-//: BindExternalSystemAccountIdOp is used to bind to bind a particular account to the external system account represented by account ID taken from pool
+//: BindExternalSystemAccountIdOp is used to bind a particular account to the external system account which is represented by account ID taken from the pool
 struct BindExternalSystemAccountIdOp
 {
     //: Type of external system to bind
@@ -32,7 +32,7 @@ struct BindExternalSystemAccountIdOp
 enum BindExternalSystemAccountIdResultCode
 {
     // codes considered as "success" for the operation
-    //: Source account successfully bound to external system ID taken from pool
+    //: Source account has been successfully bound to external system ID taken from the pool
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -42,7 +42,7 @@ enum BindExternalSystemAccountIdResultCode
     NO_AVAILABLE_ID = -2
 };
 
-//: `BindExternalSystemAccountIdSuccess` represents details of successful result of operation applying
+//: `BindExternalSystemAccountIdSuccess` represents details of successful result of operation application
 struct BindExternalSystemAccountIdSuccess
 {
     //: `data` is used to pass data about account from external system ID
@@ -57,7 +57,7 @@ struct BindExternalSystemAccountIdSuccess
     ext;
 };
 
-//: Result of operation applying
+//: Result of operation application
 union BindExternalSystemAccountIdResult switch (BindExternalSystemAccountIdResultCode code)
 {
 case SUCCESS:

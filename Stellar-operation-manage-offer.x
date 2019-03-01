@@ -17,28 +17,28 @@ Result: ManageOfferResult
 //: ManageOfferOp is used to create or delete offer
 struct ManageOfferOp
 {
-    //: Balance for base asset of offer maker
+    //: Balance for base asset of an offer creator
     BalanceID baseBalance; 
     
-    //: Balance for quote asset of offer maker
+    //: Balance for quote asset of an offer creator
     BalanceID quoteBalance; 
     
-    //: Direction of the offer
+    //: Direction of an offer (to buy or to sell)
     bool isBuy;
     
-    //: Amount in base asset to buy or sell. If set to 0 - deletes the offer
+    //: Amount in base asset to buy or sell (to delete an offer, set 0)
     int64 amount; 
     
-    //: Price of base asset in terms of quote asset
+    //: Price of base asset in the ratio of quote asset
     int64 price;
     
     //: Fee in quote asset to pay 
     int64 fee;
     
-    //: ID of the offer to manage. 0 to create a new offer, otherwise edit an existing offer
+    //: ID of an offer to be managed. 0 to create a new offer, otherwise to edit an existing offer
     uint64 offerID;
     
-    //: ID of the orderBook to find match or to put offer in.
+    //: ID of an orderBook to put an offer in and to find a match in
     uint64 orderBookID;
      
     //: Reserved for future use
@@ -59,27 +59,27 @@ enum ManageOfferResultCode
     SUCCESS = 0,
     
     // codes considered as "failure" for the operation
-    //: Quote amount is less than fee or new fee is less than old
+    //: Either the quote amount is less than the fee or the new fee is less than the old one
     MALFORMED = -1,
-    //: Asset pair does not allow to make offers
+    //: Asset pair does not allow creating offers with it
     PAIR_NOT_TRADED = -2, 
-    //: Source account of the operation does not own one of the provided balances
+    //: Source account of an operation does not owns one of the provided balances
     BALANCE_NOT_FOUND = -3,
-    //: One of the balances does not hold the amount that its trying to sell
+    //: One of the balances does not hold the amount that it is trying to sell
     UNDERFUNDED = -4,
-    //: Offer would cross with another offer of the same user 
+    //: Offer will cross with another offer of the same user 
     CROSS_SELF = -5,
-    //: Overflow happened during quote amount or fee calculation
+    //: Overflow happened during the quote amount or fee calculation
     OFFER_OVERFLOW = -6,
-    //: Asset pair does not allow to make offers
+    //: Either an asset pair does not exist or base and quote assets are the same
     ASSET_PAIR_NOT_TRADABLE = -7,
-    //: Offer price violates physical price restriction
+    //: Offer price violates the physical price restriction
     PHYSICAL_PRICE_RESTRICTION = -8,
-    //: Offer price violates current price restriction
+    //: Offer price violates the current price restriction
     CURRENT_PRICE_RESTRICTION = -9,
-    //: Offer with provided offerID not found
+    //: Offer with provided offerID is not found
     NOT_FOUND = -10,
-    //: Negative fee not allowed
+    //: Negative fee is not allowed
     INVALID_PERCENT_FEE = -11,
     //: Price is too small
     INSUFFICIENT_PRICE = -12,
@@ -89,9 +89,9 @@ enum ManageOfferResultCode
     SALE_IS_NOT_STARTED_YET = -14,
     //: Sale has already ended
     SALE_ALREADY_ENDED = -15,
-    //: CurrentCap of sale + offer amount will exceed hard cap of the sale
+    //: CurrentCap of sale + offer amount will exceed the hard cap of the sale
     ORDER_VIOLATES_HARD_CAP = -16,
-    //: Can't participate in own sale
+    //: Offer creator cannot participate in their own sale
     CANT_PARTICIPATE_OWN_SALE = -17,
     //: Sale assets and assets for specified balances are mismatched
     ASSET_MISMATCHED = -18,
@@ -99,7 +99,7 @@ enum ManageOfferResultCode
     PRICE_DOES_NOT_MATCH = -19,
     //: Price must be positive
     PRICE_IS_INVALID = -20,
-    //: Offer update not allowed
+    //: Offer update is not allowed
     UPDATE_IS_NOT_ALLOWED = -21,
     //: Amount must be positive
     INVALID_AMOUNT = -22,
@@ -107,9 +107,9 @@ enum ManageOfferResultCode
     SALE_IS_NOT_ACTIVE = -23,
     //: Source must have KYC in order to participate
     REQUIRES_KYC = -24,
-    //: Source account underfunded
+    //: Source account is underfunded
     SOURCE_UNDERFUNDED = -25,
-    //: Overflow happened during balance lock
+    //: Overflow happened during the balance lock
     SOURCE_BALANCE_LOCK_OVERFLOW = -26,
     //: Source account must be verified in order to participate
     REQUIRES_VERIFICATION = -27,
@@ -128,25 +128,25 @@ enum ManageOfferEffect
 };
 
 /* This result is used when offers are taken during an operation */
-//: Used when offers are taked during operation
+//: Used when offers are taken during the operation
 struct ClaimOfferAtom
 {
     // emitted to identify the offer
-    //: Address of the account that owns matched offer
+    //: ID of an account that created the matched offer
     AccountID bAccountID;
     //: ID of the matched offer
     uint64 offerID;
-    //: Amount in base asset taken during match
+    //: Amount in base asset taken during the match
     int64 baseAmount;
-    //: Amount in quote asset taked during match
+    //: Amount in quote asset taked during the match
     int64 quoteAmount;
-    //: Fee paid by offer owner
+    //: Fee paid by an offer owner
     int64 bFeePaid;
-    //: Fee paid by source of the operation
+    //: Fee paid by the source of an operation
     int64 aFeePaid;
-    //: Balance in base asset of offer owner
+    //: Balance in base asset of an offer owner
     BalanceID baseBalance;
-    //: Balance in quote asset of offer owner
+    //: Balance in quote asset of an offer owner
     BalanceID quoteBalance;
     //: Match price
     int64 currentPrice;
@@ -162,11 +162,11 @@ struct ClaimOfferAtom
 struct ManageOfferSuccessResult
 {
 
-    //: Offers that got claimed while creating this offer
+    //: Offers that matched a created offer
     ClaimOfferAtom offersClaimed<>;
-    //: Base asset of the offer
+    //: Base asset of an offer
     AssetCode baseAsset;
-    //: Quote asset of the offer
+    //: Quote asset of an offer
     AssetCode quoteAsset;
     
     //: Effect of operation
@@ -189,7 +189,7 @@ struct ManageOfferSuccessResult
     ext;
 };
 
-//: Result of the ManageOfferOp
+//: Result of `ManageOfferOp`
 union ManageOfferResult switch (ManageOfferResultCode code)
 {
 case SUCCESS:
