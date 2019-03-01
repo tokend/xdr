@@ -13,7 +13,7 @@ Threshold: med
 Result: CheckSaleStateResult
 
 */
-//: CheckSaleState operation is used to perform check on sale state - whether it was successful or not
+//: CheckSaleState operation is used to perform check on sale state - whether the sale was successful or not
 struct CheckSaleStateOp
 {
     //:ID of the sale to check
@@ -28,7 +28,7 @@ struct CheckSaleStateOp
 };
 
 /******* CheckSaleState Result ********/
-//: Result of CheckSaleState operation
+//: Result codes of CheckSaleState operation
 enum CheckSaleStateResultCode
 {
     // codes considered as "success" for the operation

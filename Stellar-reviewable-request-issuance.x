@@ -10,8 +10,7 @@ struct PreIssuanceRequest
     AssetCode asset;
     //: Amount which will be added to current available for issuance amount
     uint64 amount;
-    //: Content signature of pre issuer signer
-    //: Content equals hash of `<reference>:<amount>:<asset>`
+    //: Pre issuer signer's signature of the `<reference>:<amount>:<asset>` hash
     DecoratedSignature signature;
     //: Unique string for such type of reviewable request
     string64 reference;

@@ -11,10 +11,10 @@ struct CreateAccountOp
     AccountID destination;
     //: ID of an another account that introduced this account into the system
     AccountID* referrer;
-    //: ID of role to be attached to account
+    //: ID of role which would be attached to account
     uint64 roleID;
 
-    //: Array of data about signers which would to be created for `destination` account
+    //: Array of data about created signers for `destination` account
     UpdateSignerData signersData<>;
 
     //: reserved for future use
@@ -50,10 +50,10 @@ enum CreateAccountResultCode
     NO_SIGNER_DATA = -6 // empty signer data array not allowed
 };
 
-//: CreateAccountSuccess is used to pass useful params if operation is success
+//: Result of successful application of `CreateAccount` operation
 struct CreateAccountSuccess
 {
-    //: Unique unsigned integer identifier of new account
+    //: Unique unsigned integer identifier of the new account
     uint64 sequentialID;
 
     //: reserved for future use

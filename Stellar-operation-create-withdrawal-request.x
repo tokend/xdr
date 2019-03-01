@@ -14,7 +14,7 @@ namespace stellar
     Result: CreateWithdrawalRequestResult
 */
 //: CreateWithdrawalRequest operation is used creates reviewable request,
-//: which after approval from admin will charge withdrawn amount from balance and send it to external wallet/account
+//: which after approval from admin will charge specified amount from balance and send it to external wallet/account
 struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
@@ -33,7 +33,7 @@ struct CreateWithdrawalRequestOp
 };
 
 /******* CreateWithdrawalRequest Result ********/
-//: CreateWithdrawalRequest result codes
+//: CreateWithdrawalRequest operation result codes
 enum CreateWithdrawalRequestResultCode
 {
     // codes considered as "success" for the operation
@@ -59,7 +59,7 @@ enum CreateWithdrawalRequestResultCode
     CONVERTED_AMOUNT_MISMATCHED = -8,
     //: Trying to lock balance, locked amount would exceed UINT64_MAX
     BALANCE_LOCK_OVERFLOW = -9,
-    //: Insuffiecient balance to withdraw requested amount
+    //: Insufficient balance to withdraw requested amount
     UNDERFUNDED = -10,
     //: Non zero universal amount
     INVALID_UNIVERSAL_AMOUNT = -11,

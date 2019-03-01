@@ -22,10 +22,10 @@ struct CreateManageLimitsRequestOp
     LimitsUpdateRequest manageLimitsRequest;
 
     //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used
-    //: instead of key-value by key `limits_update_tasks`
+    //: instead of value from key-value pair by key `limits_update_tasks`
     uint32* allTasks;
     //: ID of the LimitsUpdateRequest
-    //: If `requestID == 0` - operation creates new limits entry, otherwise - updates existing
+    //: If `requestID == 0` - operation creates new limits entry, updates the existing one otherwise
     uint64 requestID;
 
     //: reserved for future use
@@ -42,7 +42,7 @@ struct CreateManageLimitsRequestOp
 enum CreateManageLimitsRequestResultCode
 {
     // codes considered as "success" for the operation
-    //: ManageLimitsRequest was successfully created and operation was successfully applied
+    //: Operation was successfully applied and ManageLimitsRequest was successfully created
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -56,7 +56,7 @@ enum CreateManageLimitsRequestResultCode
     LIMITS_UPDATE_TASKS_NOT_FOUND = -5,
     //: Cannot set allTasks on rejected request update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6,
-    //: 0 not allowed for allTasks if set, or not allowed for value entry, got by key limits_update_tasks:<asset_code>
+    //: 0 is not allowed value of `allTasks`, or not allowed for value entry, got by key limits_update_tasks:<asset_code>
     LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7
 };
 
@@ -76,7 +76,7 @@ case SUCCESS:
             void;
         }
         ext;
-} success;
+    } success;
 default:
     void;
 };
