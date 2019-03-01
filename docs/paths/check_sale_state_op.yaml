@@ -1,0 +1,35 @@
+/checkSaleStateOp:
+  get:
+    tags:
+      - Sale
+    summary: check sale state
+    description: |
+      Allows to check state of the sale
+      #### Account Role Requirements
+        | Account        | Resource Type| Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `SALE` | `CHECK` |
+
+      #### Signer Role Requirements
+
+        | Resource Type | Action  |
+        |:-------------:| -----:|
+        | `SALE` | `CHECK` |
+    operationId: checkSaleStateOp
+    parameters:
+    - name: CheckSaleStateOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CheckSaleStateOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CheckSaleStateResult'
