@@ -72,8 +72,8 @@ struct ManageAssetOp
         {
             //: Is used to pass required fields to create an asset entry
             AssetCreationRequest createAsset;
-            //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ASSET` request to be approved, which will be used by key `asset_create_tasks`
-            //: instead of key-value
+            //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ASSET` request to be approved, which will be used 
+            //: instead of key-value by key `asset_create_tasks`
             uint32* allTasks;
 
             //: reserved for future use

@@ -11,13 +11,13 @@ Result: BindExternalSystemAccountIdResult
 
 */
 
-//: BindExternalSystemAccountIdOp is used to bind a particular account to the external system account which is represented by account ID taken from the pool
+//: BindExternalSystemAccountIdOp is used to bind a particular account to an external system account which is represented by account ID taken from the pool.
 struct BindExternalSystemAccountIdOp
 {
-    //: Type of external system to bind
+    //: Type of an external system to bind
     int32 externalSystemType;
 
-    //: Reserved for the future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -38,14 +38,14 @@ enum BindExternalSystemAccountIdResultCode
     // codes considered as "failure" for the operation
     //: (deprecated)
     MALFORMED = -1,
-    //: There is no available external system account ID pool entry for such external system type
+    //: There is no available external system account ID pool entry for such an external system type
     NO_AVAILABLE_ID = -2
 };
 
-//: `BindExternalSystemAccountIdSuccess` represents details of successful result of operation application
+//: `BindExternalSystemAccountIdSuccess` represents details of operation application successful result
 struct BindExternalSystemAccountIdSuccess
 {
-    //: `data` is used to pass data about account from external system ID
+    //: `data` is used to pass the account data from external system ID
     longstring data;
 
     //: reserved for future use
@@ -61,7 +61,6 @@ struct BindExternalSystemAccountIdSuccess
 union BindExternalSystemAccountIdResult switch (BindExternalSystemAccountIdResultCode code)
 {
 case SUCCESS:
-    //: `success` is used to pass useful fields after successful operation applying
     BindExternalSystemAccountIdSuccess success;
 default:
     void;

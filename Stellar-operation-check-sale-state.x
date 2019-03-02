@@ -13,7 +13,7 @@ Threshold: med
 Result: CheckSaleStateResult
 
 */
-//: CheckSaleState operation is used to perform check on sale state - whether the sale was successful or not
+//: `CheckSaleState` operation is used to perform a check on the sale state — whether the sale was successful or not.
 struct CheckSaleStateOp
 {
     //:ID of the sale to check
@@ -32,25 +32,25 @@ struct CheckSaleStateOp
 enum CheckSaleStateResultCode
 {
     // codes considered as "success" for the operation
-    //: CheckSaleState operation was successfully applied
+    //: `CheckSaleState` operation was successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Sale with provided ID not found
+    //: Sale with provided ID is not found.
     NOT_FOUND = -1,
-    //: Sale was not processed, because it's still active
+    //: Sale has not been processed, because it is still active.
     NOT_READY = -2
 };
 //: Effect of performed check sale state operation
 enum CheckSaleStateEffect {
-    //: Sale hasn't reached the soft cap before end time
+    //: Sale hasn't reached the soft cap before the end time.
     CANCELED = 1,
-    //: Sale has either reached the soft cap and ended or reached hard cap
+    //: Sale has either reached the soft cap and ended or reached hard cap.
     CLOSED = 2,
-    //: Crowdfunding sale was successfully closed and the price for the base asset was updated according to participants contribution
+    //: Crowdfunding sale has been successfully closed and the base asset price has been updated according to the participants contribution.
     UPDATED = 3
 };
-//: Entry for additional information regarding sale cancel
+//: Entry for additional information regarding the sale cancel
 struct SaleCanceled {
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -61,7 +61,7 @@ struct SaleCanceled {
     ext;
 };
 
-//: Entry for additional information regarding sale update
+//: Entry for additional information regarding the sale update
 struct SaleUpdated {
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -72,11 +72,11 @@ struct SaleUpdated {
     ext;
 };
 
-//: Entry for additional information regarding sub sale closing
+//: Entry for additional information regarding the sub sale closing.
 struct CheckSubSaleClosedResult {
-    //: Balance in base asset of the closed sale
+    //: Balance in the base asset of a closed sale
     BalanceID saleBaseBalance;
-    //: Balance in one of the quote assets of the closed sale
+    //: Balance in one of the quote assets of a closed sale
     BalanceID saleQuoteBalance;
     //: Result of an individual offer made during the sale and completed on its close
     ManageOfferSuccessResult saleDetails;
@@ -103,12 +103,12 @@ struct CheckSaleClosedResult {
     }
     ext;
 };
-//: Result of the successful application of CheckSaleState operation
+//: Result of `CheckSaleState` operation successful application.
 struct CheckSaleStateSuccess
 {
-    //: ID of the sale being checked
+    //: ID of a sale that is being checked.
     uint64 saleID;
-    //: Additional information regarding eventual result
+    //: Additional information regarding the effect of a sale.
     union switch (CheckSaleStateEffect effect)
     {
     case CANCELED:
@@ -127,7 +127,7 @@ struct CheckSaleStateSuccess
     }
     ext;
 };
-//: Result of the CheckSaleState operation along with the result code
+//: Result of the `CheckSaleState` operation along with the result code
 union CheckSaleStateResult switch (CheckSaleStateResultCode code)
 {
 case SUCCESS:

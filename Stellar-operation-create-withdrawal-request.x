@@ -19,8 +19,8 @@ struct CreateWithdrawalRequestOp
 {
     //: Withdrawal request to create 
     WithdrawalRequest request;
-    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used by key withdrawal_tasks:<asset_code> 
-    //: instead of key-value
+    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used 
+    //: instead of key-value by key withdrawal_tasks:<asset_code> 
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)

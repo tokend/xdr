@@ -21,30 +21,30 @@ enum FeeType
     ATOMIC_SWAP_PURCHASE_FEE = 9
 };
 
-//: (not used) `EmissionFeeType` is a subtype of `ISSUANCE_FEE`
+//: (not used) `EmissionFeeType` is a subtype of `ISSUANCE_FEE`.
 enum EmissionFeeType
 {
     PRIMARY_MARKET = 1,
     SECONDARY_MARKET = 2
 };
 
-//: `PaymentFeeType` is a subtype of the Fee used for payments
+//: `PaymentFeeType` is a subtype of `PAYMENT_FEE`.
 enum PaymentFeeType
 {
     OUTGOING = 1,
     INCOMING = 2
 };
 
-//: `FeeEntry` is used in the system configuration to set fees for different assets, operations (according to FeeType), particular account roles, particular accounts,
+//: `FeeEntry` is used in the system configuration to set fees for different assets, operations (according to `FeeType`), particular account roles, particular accounts,
 //: or globally (only if both parameters particular account role and paticular account are not specified).
 struct FeeEntry
 {
     //: Type of a particular fee depending on the operation (e.g., PAYMENT_FEE for payment operation, WITHDRAWAL_FEE for withdrawal operation, etc.)
     FeeType feeType;
-    //: Code of an asset used in the operation for which the fee will be charged
+    //: Code of an asset used in the operation for which a fee will be charged
     AssetCode asset;
 
-    //: Fixed amount of fee that will be charged for the operation
+    //: Fixed amount of fee that will be charged for an operation
     int64 fixedFee;
     //: Percent from the operation amount that will be charged for the corresponding operation
     int64 percentFee;

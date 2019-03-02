@@ -23,13 +23,13 @@ namespace stellar
             uint64 ui64Value;
     };
 
-    //: `KeyValueEntry` is an entry used to store key mapped values
+    //: `KeyValueEntry` is an entry used to store key-mapped values
     struct KeyValueEntry
     {
-        //: String value that must be unique among other keys for kev-value pairs
+        //: String value that must be unique among other keys for key-value pairs
         longstring key;
 
-        //: Value that corresponds to particular key (depending on `KeyValueEntryType`, 
+        //: Value that corresponds to a particular key (depending on `KeyValueEntryType`, 
         //: the value can be either uint32, or uint64, or string)
         KeyValueEntryValue value;
 

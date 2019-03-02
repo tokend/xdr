@@ -15,16 +15,16 @@ namespace stellar
     Result: CreateManageLimitsRequestResult
 */
 
-//: CreateManageLimitsRequestOp is used to create a reviewable request which, after approval, will update the limits set in the system
+//: CreateManageLimitsRequestOp is used to create a reviewable request which, after reviewer's approval, will update the limits set in the system
 struct CreateManageLimitsRequestOp
 {
     //: Body of the `UpdateLimits` reviewable request to be created
     LimitsUpdateRequest manageLimitsRequest;
 
-    //: (optional) Bit mask whose flags must be cleared in order for ManageLimits request to be approved, which will be used instead of value from the key-value pair 
-    //: by key `limits_update_tasks`
+    //: (optional) Bit mask whose flags must be cleared in order for `manageLimits` request to be approved, which will be used
+    //: instead of value from the key-value pair by key `limits_update_tasks`
     uint32* allTasks;
-    //: ID of the LimitsUpdateRequest
+    //: ID of `LimitsUpdateRequest`
     //: If `requestID == 0`, operation creates a new limits entry; otherwise, it updates the existing one
     uint64 requestID;
 
@@ -38,11 +38,11 @@ struct CreateManageLimitsRequestOp
 
 /******* CreateManageLimits Result ********/
 
-//: Result codes for CreateManageLimitsRequest operation
+//: Result codes for the `CreateManageLimitsRequest` operation
 enum CreateManageLimitsRequestResultCode
 {
     // codes considered as "success" for the operation
-    //: Operation was successfully applied and ManageLimitsRequest was successfully created
+    //: Operation has been successfully applied and `ManageLimitsRequest` has been successfully created
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -60,12 +60,12 @@ enum CreateManageLimitsRequestResultCode
     LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7
 };
 
-//: `CreateManageLimitsRequestResult` represents the result of the `CreateManageLimitsRequestOp` with corresponding details based on given `CreateManageLimitsRequestResultCode`
+//: `CreateManageLimitsRequestResult` represents the result of `CreateManageLimitsRequestOp` with corresponding details based on given `CreateManageLimitsRequestResultCode`.
 union CreateManageLimitsRequestResult switch (CreateManageLimitsRequestResultCode code)
 {
 case SUCCESS:
     struct {
-        //: ID of the created manage limits request
+        //: ID of a created manage limits request
         uint64 manageLimitsRequestID;
         //: Indicates whether or not the `limits update request` request was auto approved and fulfilled
         bool fulfilled;

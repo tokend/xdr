@@ -14,10 +14,10 @@ namespace stellar
 
         Result: CreateSaleCreationRequestResult
 */
-//: CreateSaleCreationRequest operation creates SaleCreationRequest or updates the rejected request
+//: `CreateSaleCreationRequest` operation creates `SaleCreationRequest` or updates the rejected request
 struct CreateSaleCreationRequestOp
 {
-    //: ID of the SaleCreationRequest. If set to 0, a new request is created
+    //: ID of `SaleCreationRequest`. If set to 0, a new request is created
     uint64 requestID;
     //: SaleCreationRequest details
     SaleCreationRequest request;

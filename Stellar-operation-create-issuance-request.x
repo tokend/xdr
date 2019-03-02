@@ -15,15 +15,15 @@ namespace stellar
   Result: CreateIssuanceRequestResult
 */
 //: CreateIssuanceRequestOp is used to create a reviewable request that, after reviewer's approval,
-//: will issue the specified amount of asset to a receiver's balance
+//: will issue the specified amount of asset to a receiver's balance.
 struct CreateIssuanceRequestOp
 {
     //: Issuance request to create
     IssuanceRequest request;
-    //: Reference of the request
+    //: Reference of a request
     string64 reference;
-    //: (optional) Bit mask whose flags must be cleared in order for IssuanceRequest to be approved, which will be used by key issuance_tasks:<asset_code>
-    //: instead of key-value
+    //: (optional) Bit mask whose flags must be cleared in order for IssuanceRequest to be approved, which will be used
+    //: instead of key-value by key issuance_tasks:<asset_code>.
     uint32* allTasks;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -35,11 +35,11 @@ struct CreateIssuanceRequestOp
 };
 
 /******* CreateIssuanceRequest Result ********/
-//: Result codes of the CreateIssuanceRequestOp
+//: Result codes of `CreateIssuanceRequestOp`
 enum CreateIssuanceRequestResultCode
 {
     // codes considered as "success" for the operation
-    //: CreateIssuanceRequest operation application was successful
+    //: `CreateIssuanceRequest` operation application has been successful
     SUCCESS = 0,
     
     // codes considered as "failure" for the operation
@@ -53,11 +53,11 @@ enum CreateIssuanceRequestResultCode
     NO_COUNTERPARTY = -4,
     //: Source of operation is not an owner of the asset 
     NOT_AUTHORIZED = -5,
-    //: Issued amount plus amount to issue will exceed max issuance amount
+    //: Issued amount plus the amount to issue will exceed the max issuance amount
     EXCEEDS_MAX_ISSUANCE_AMOUNT = -6,
-    //: Amount to issue plus amount on balance would exceed UINT64_MAX 
+    //: Amount to issue plus the amount on balance will exceed UINT64_MAX 
     RECEIVER_FULL_LINE = -7,
-    //: Creator details are not valid JSON
+    //: Creator details are not in valid JSON format
     INVALID_CREATOR_DETAILS = -8,
     //: Fee is greater than the amount to issue
     FEE_EXCEEDS_AMOUNT = -9,
@@ -79,7 +79,7 @@ struct CreateIssuanceRequestSuccess {
     uint64 requestID;
     //: Account address of the receiver
     AccountID receiver;
-    //: Indicates whether or not the Issuance request was auto approved and fulfilled
+    //: Indicates whether or not the issuance request was auto approved and fulfilled
     bool fulfilled;
     //: Paid fee
     Fee fee;

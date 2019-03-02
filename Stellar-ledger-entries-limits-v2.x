@@ -20,7 +20,7 @@ struct LimitsV2Entry
 {
     //: ID of limits entry
     uint64      id;
-    //: (optional) ID of an account role that will be imposed with limits
+    //: (optional) ID of the account role that will be imposed with limits
     uint64*     accountRole;
     //: (optional) ID of an account that will be imposed with limits
     AccountID*  accountID;
@@ -30,7 +30,7 @@ struct LimitsV2Entry
     AssetCode   assetCode;
     //: `isConvertNeeded` indicates whether or not the asset conversion is needed for the limits entry.
     //: If this field is `true`, limits are applied to all balances of an account (to every asset that account owns).
-    //: Otherwise, limits from particular limits entry are applied only to  balances with `AssetCode` provided by entry.
+    //: Otherwise, limits from particular limits entry are applied only to balances with `AssetCode` provided by entry.
     bool        isConvertNeeded;
 
     //: daily out limit

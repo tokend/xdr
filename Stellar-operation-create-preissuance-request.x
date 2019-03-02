@@ -11,14 +11,14 @@ namespace stellar
 */
 
 //: CreatePreIssuanceRequestOp is used to create a reviewable request,
-//: which, after admin's approval, will change `availableForIssuance` amount of asset
+//: which, after reviewer's approval, will change `availableForIssuance` amount of asset
 struct CreatePreIssuanceRequestOp
 {
     //: Body of PreIssuanceRequest to be created
     PreIssuanceRequest request;
 
-    //: (optional) Bit mask whose flags must be cleared in order for PreIssuanceRequest to be approved, which will be used by key `preissuance_tasks` 
-    //: instead of key-value
+    //: (optional) Bit mask whose flags must be cleared in order for PreIssuanceRequest to be approved, which will be used
+    //: instead of key-value by key `preissuance_tasks` 
     uint32* allTasks;
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -43,7 +43,7 @@ enum CreatePreIssuanceRequestResultCode
     ASSET_NOT_FOUND = -1,
     //: Preissuance request with such reference already exists
     REFERENCE_DUPLICATION = -2,      // reference is already used
-    //: Source of operation must be the owner of the asset
+    //: Source of operation must be the owner of an asset
     NOT_AUTHORIZED_UPLOAD = -3,      // tries to preissue asset for not owned asset
     //: Only current preissuer can perform preissuance
     INVALID_SIGNATURE = -4,
@@ -55,9 +55,9 @@ enum CreatePreIssuanceRequestResultCode
     INVALID_REFERENCE = -7,
     //: Preissue amount must fit the precision of an asset to be issued
     INCORRECT_AMOUNT_PRECISION = -8,  // amount does not fit this asset's precision
-    //: Preissuance tasks are not set in the system (i.e., it is not allowed to perform the preissuance)
+    //: Preissuance tasks are not set in the system (i.e., it is not allowed to perform preissuance)
     PREISSUANCE_TASKS_NOT_FOUND = -9,
-    //: `creatorDetails` must be valid json structure
+    //: `creatorDetails` must be in valid JSON format
     INVALID_CREATOR_DETAILS = -10
 };
 
@@ -65,10 +65,10 @@ enum CreatePreIssuanceRequestResultCode
 union CreatePreIssuanceRequestResult switch (CreatePreIssuanceRequestResultCode code)
 {
 case SUCCESS:
-    //: Result of successful application of `CreatePreIssuanceRequest` operation
+    //: Result of `CreatePreIssuanceRequest` operation successful application
     struct
     {
-        //: ID of created or updated request
+        //: ID of a created or updated request
         uint64 requestID;
         //: Indicates whether or not the request was auto approved and fulfilled
         bool fulfilled;
