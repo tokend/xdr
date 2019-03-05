@@ -6,7 +6,7 @@
 
 * Error codes for set fee op result
 
-## 3.0.0-x.3
+## 3.0.0
 
 ### Added
 
@@ -41,15 +41,6 @@
 * Comments for docs to PaymentOp
 * Comments for docs to SetFeesOp and FeeEntry
 
-## 3.0.0-x.2
-
-### Added
-* Result code of ManageSignersOp
-
-## 3.0.0-x.1
-
-### Added
-
 * Signer rule and role entries
 * Manage signer rule and role ops
 * Signer rule resource
@@ -74,8 +65,6 @@
 * Rename paymentV2 to payment
 * Add isBuy to rule resources
 * Add withdraw case to request resource
-
-### Deprecated
 
 ### Removed
 
