@@ -1,0 +1,43 @@
+/createWithdrawalRequestOp:
+  get:
+    tags:
+      - Withdrawal
+    summary: Create withdrawal request
+    description: |
+      Allows to create request to  withdraw assets from system. On request creation, withdrawn amount will be locked
+      on target balance.
+      For withdrawal reviewable request `REJECT` action is not allowed.
+      On `PERMANENT REJECT`, withdrawn amount is unlocked.
+      On `APPROVE`, tasks can be added and removed.
+      If `pendingTasks == 0` and action being performed is `APPROVE`, withdrawn amount is sent to external account.
+      Withdrawn amount is subtracted for `issued` field of the asset
+      Withdrawal request cannot be autoapproved, i.e. it's not allowed to set empty (zero tasks) in any way, either
+      through `KeyValueEntry` or on request creation(through `allTasks`).
+      #### Account Role Requirements
+        | Account        | Resource Type | Action  |
+        | ------------- |:-------------:| -----:|
+        | source      | `WITHDRAW` | `CREATE` |
+
+      #### Signer Role Requirements
+        | Resource Type | Reviewable Request Type | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CREATE_WITHDRAW` | `CREATE` |
+    operationId: createWithdrawalRequestOp
+    x-item-type: operation
+    parameters:
+    - name: CreateWithdrawalRequestOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateWithdrawalRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateWithdrawalRequestResult'

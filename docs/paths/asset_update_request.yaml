@@ -1,0 +1,35 @@
+/createAssetUpdateRequest:
+  get:
+    tags:
+      - Assets
+    summary: Create Request To Update Asset
+    description: |
+                  Allows to create or update `UPDATE_ASSET` reviewable request
+                  `UPDATE_ASSET` request is used to update asset entry
+
+                  #### Account Role Requirements
+                    No account rule required beacuse only asset owner can update own asset
+
+                  #### Signer Role Requirements
+                    | Resource Type | Rule Action | Details |
+                    |:-------------:| -----------:| --------|
+                    | `ASSET`       | `UPDATE`    | Resource includes code and type of asset |
+    operationId: createAssetUpdateRequest
+    x-item-type: operation
+    parameters:
+    - name: Manage Asset Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageAssetOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAssetResult'

@@ -4,12 +4,12 @@
 
 %#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-account.h"
+%#include "xdr/Stellar-ledger-entries-signer.h"
 %#include "xdr/Stellar-ledger-entries-fee.h"
 %#include "xdr/Stellar-ledger-entries-balance.h"
 %#include "xdr/Stellar-ledger-entries-asset.h"
 %#include "xdr/Stellar-ledger-entries-asset-pair.h"
 %#include "xdr/Stellar-ledger-entries-reference.h"
-%#include "xdr/Stellar-ledger-entries-account-type-limits.h"
 %#include "xdr/Stellar-ledger-entries-statistics.h"
 %#include "xdr/Stellar-ledger-entries-offer.h"
 %#include "xdr/Stellar-ledger-entries-account-limits.h"
@@ -21,11 +21,14 @@
 %#include "xdr/Stellar-ledger-entries-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
-%#include "xdr/Stellar-ledger-entries-sale-ante.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
+%#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
-%#include "xdr/Stellar-ledger-entries-account-role-permission.h"
-
+%#include "xdr/Stellar-ledger-entries-account-rule.h"
+%#include "xdr/Stellar-ledger-entries-signer-role.h"
+%#include "xdr/Stellar-ledger-entries-signer-rule.h"
+%#include "xdr/Stellar-ledger-entries-license.h"
+%#include "xdr/Stellar-ledger-entries-stamp.h"
 
 namespace stellar
 {
@@ -40,35 +43,6 @@ enum ThresholdIndexes
     HIGH = 3
 };
 
-enum LedgerEntryType
-{
-    ACCOUNT = 0,
-    FEE = 2,
-    BALANCE = 4,
-    PAYMENT_REQUEST = 5,
-    ASSET = 6,
-    REFERENCE_ENTRY = 7,
-    ACCOUNT_TYPE_LIMITS = 8,
-    STATISTICS = 9,
-    TRUST = 10,
-    ACCOUNT_LIMITS = 11,
-	ASSET_PAIR = 12,
-	OFFER_ENTRY = 13,
-	REVIEWABLE_REQUEST = 15,
-	EXTERNAL_SYSTEM_ACCOUNT_ID = 16,
-	SALE = 17,
-	ACCOUNT_KYC = 18,
-	EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY = 19,
-    KEY_VALUE = 20,
-    SALE_ANTE = 21,
-    LIMITS_V2 = 22,
-    STATISTICS_V2 = 23,
-    PENDING_STATISTICS = 24,
-    CONTRACT = 25,
-    ACCOUNT_ROLE = 26,
-    ACCOUNT_ROLE_PERMISSION = 27
-};
-
 
 struct LedgerEntry
 {
@@ -78,6 +52,8 @@ struct LedgerEntry
     {
     case ACCOUNT:
         AccountEntry account;
+    case SIGNER:
+        SignerEntry signer;
     case FEE:
         FeeEntry feeState;
     case BALANCE:
@@ -86,12 +62,8 @@ struct LedgerEntry
         AssetEntry asset;
     case REFERENCE_ENTRY:
         ReferenceEntry reference;
-    case ACCOUNT_TYPE_LIMITS:
-        AccountTypeLimitsEntry accountTypeLimits;
     case STATISTICS:
         StatisticsEntry stats;
-    case TRUST:
-        TrustEntry trust;
     case ACCOUNT_LIMITS:
         AccountLimitsEntry accountLimits;
 	case ASSET_PAIR: 
@@ -110,8 +82,6 @@ struct LedgerEntry
         AccountKYCEntry accountKYC;
     case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ExternalSystemAccountIDPoolEntry externalSystemAccountIDPoolEntry;
-    case SALE_ANTE:
-        SaleAnteEntry saleAnte;
     case LIMITS_V2:
         LimitsV2Entry limitsV2;
     case STATISTICS_V2:
@@ -120,10 +90,20 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
+    case ATOMIC_SWAP_BID:
+        AtomicSwapBidEntry atomicSwapBid;
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
-    case ACCOUNT_ROLE_PERMISSION:
-        AccountRolePermissionEntry accountRolePermission;
+    case ACCOUNT_RULE:
+        AccountRuleEntry accountRule;
+    case SIGNER_RULE:
+        SignerRuleEntry signerRule;
+    case SIGNER_ROLE:
+        SignerRoleEntry signerRole;
+    case LICENSE:
+        LicenseEntry license;
+    case STAMP:
+        StampEntry stamp;
     }
     data;
 

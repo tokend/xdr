@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-types.h"
 
@@ -8,10 +6,18 @@
 namespace stellar
 {
 
+//: Body of a reviewable AMLAlertRequest, contains parameters regarding AML alert
 struct AMLAlertRequest {
+    //: Target balance to void tokens from
     BalanceID balanceID;
+
+    //: Amount to void
     uint64 amount;
-    longstring reason;
+
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
+    longstring creatorDetails; // details set by requester
+
+    //: Reserved for future use
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

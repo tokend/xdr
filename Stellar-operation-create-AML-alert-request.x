@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-reviewable-request-AML-alert.h"
 
@@ -15,13 +13,20 @@ namespace stellar
 
     Result: CreateAMLAlertRequestResult
 */
-
+//: CreateAMLAlertRequest operation creates a reviewable request 
+//: that will void the specified amount from target balance after the reviewer's approval
 struct CreateAMLAlertRequestOp
 {
-    string64 reference;
+    //: Reference of AMLAlertRequest
+    string64 reference; // TODO longstring ?
+    //: Parameters of AMLAlertRequest
     AMLAlertRequest amlAlertRequest;
+    //: (optional) Bit mask whose flags must be cleared in order for AMLAlertRequest to be approved, which will be used by key aml_alert_tasks:<asset_code>
+    //: instead of key-value
+    uint32* allTasks;
 
-	union switch (LedgerVersion v)
+    //: Reserved for future use
+    union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
@@ -30,25 +35,40 @@ struct CreateAMLAlertRequestOp
 
 };
 
-/******* CreateSaleCreationRequest Result ********/
-
+/******* CreateAMLAlertRequest Result ********/
+//: Result codes for CreateAMLAlert operation
 enum CreateAMLAlertRequestResultCode
 {
     // codes considered as "success" for the operation
+    //: Operation has been successfully performed
     SUCCESS = 0,
+    //: Balance with provided balance ID does not exist
     BALANCE_NOT_EXIST = 1, // balance doesn't exist
-    INVALID_REASON = 2, //invalid reason for request
+    //: Creator details are not in a valid JSON format
+    INVALID_CREATOR_DETAILS = 2, //invalid reason for request
+    //: Specified amount is greater than the amount on the balance
     UNDERFUNDED = 3, //when couldn't lock balance
-	REFERENCE_DUPLICATION = 4, // reference already exists
-	INVALID_AMOUNT = 5 // amount must be positive
+    //: AML Alert request with the same reference already exists
+    REFERENCE_DUPLICATION = 4, // reference already exists
+    //: Amount must be positive
+    INVALID_AMOUNT = 5, // amount must be positive
+    //: Amount precision and asset precision set in the system are mismatched
+    INCORRECT_PRECISION = 6,
 
+    //codes considered as "failure" for the operation
+    //: Update aml alert tasks are not set in the system, i.e. it's not allowed to perform aml alert
+    AML_ALERT_TASKS_NOT_FOUND = -1
 
 };
 
+//: Result of successful application of `CreateAMLAlertRequest` operation
 struct CreateAMLAlertRequestSuccess {
-	uint64 requestID;
-
-	union switch (LedgerVersion v)
+    //: ID of a newly created reviewable request
+    uint64 requestID;
+    //: Indicates  whether or not the AMLAlert request was auto approved and fulfilled 
+    bool fulfilled;
+    //: Reserved for future use
+     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
@@ -56,7 +76,7 @@ struct CreateAMLAlertRequestSuccess {
     ext;
 };
 
-
+//: Result of `CreateAMLAlertRequest` operation application along with the result code
 union CreateAMLAlertRequestResult switch (CreateAMLAlertRequestResultCode code)
 {
     case SUCCESS:

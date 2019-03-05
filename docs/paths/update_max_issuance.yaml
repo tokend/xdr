@@ -1,0 +1,35 @@
+/updateMaxIssuance:
+  get:
+    tags:
+      - Assets
+    summary: Update Max Issuance
+    description: |
+                  Allows to change max issuance of asset
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action | Details |
+                    | --------|:-------------:| -----------:| ------------ |
+                    | source  | `ASSET`      | `UPDATE_MAX_ISSUANCE`  | Only asset owner can update max issuance of asset |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Rule Action |
+                    |:-------------:| -----------:|
+                    | `ASSET`      | `UPDATE_MAX_ISSUANCE` |
+    operationId: updateMaxIssuance
+    x-item-type: operation
+    parameters:
+    - name: Manage Asset Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageAssetOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAssetResult'

@@ -1,0 +1,35 @@
+/manageAccountRoleOp:
+  get:
+    tags:
+      - Account Roles
+    summary: Manage Account Role
+    description: |
+                  Allows to create, update or remove account roles.
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  |
+                    | --------|:-------------:|:-----:|
+                    | source  | `ACCOUNT_ROLE` | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:|:-----:|
+                    | `ACCOUNT_ROLE` | `MANAGE` |
+    operationId: manageAccountRoleOp
+    x-item-type: operation
+    parameters:
+    - name: Manage Account Role Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageAccountRoleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAccountRoleResult'

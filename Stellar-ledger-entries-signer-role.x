@@ -1,13 +1,18 @@
 %#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
 {
 
-struct PromotionUpdateRequest {
-    uint64 promotionID;
-    SaleCreationRequest newPromotionData;
+struct SignerRoleEntry
+{
+    uint64 id;
+    uint64 ruleIDs<>;
 
+    AccountID ownerID;
+
+    longstring details;
+
+    // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

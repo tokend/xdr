@@ -1,0 +1,35 @@
+/manageLimitsOp:
+  get:
+    tags:
+      - Limits
+    summary: Manage Limits Operation
+    description: |
+                  Allows to create or remove the existing limits entries.
+                  #### Account Role Requirements
+                    | Account        | Resource Type | Action   |
+                    | -------------  |:-------------:| --------:|
+                    | source         | `LIMITS_V2`   | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Rule Action |
+                    |:-------------:| -----------:|
+                    | `LIMITS_V2`   | `MANAGE`    |
+    operationId: manageLimitsOp
+    x-item-type: operation
+    parameters:
+      - name: Manage Limits Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/ManageLimitsOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageLimitsResult'

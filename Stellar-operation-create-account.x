@@ -1,79 +1,63 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
-%#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
 
 namespace stellar
 {
 
-/* CreateAccount
-Creates and funds a new account with the specified starting balance.
-
-Threshold: med
-
-Result: CreateAccountResult
-
-*/
-
-struct CreateAccountOpExtended
-{
-    ExternalSystemAccountID externalSystemIDs<>;
-    uint64* roleID;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
+//: CreateAccountOp is used to create new account
 struct CreateAccountOp
 {
-    AccountID destination; // account to create
-    AccountID recoveryKey; // recovery signer's public key
-    AccountID* referrer;     // parent account
-	AccountType accountType;
-	uint32 policies;
+    //: ID of account to be created
+    AccountID destination;
+    //: ID of an another account that introduced this account into the system.
+    //: If account with such ID does not exist or it's Admin Account. Referrer won't be set.
+    AccountID* referrer;
+    //: ID of the role that will be attached to an account
+    uint64 roleID;
 
-	 // reserved for future use
+    //: Array of data about 'destination' account signers to be created
+    UpdateSignerData signersData<>;
+
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case PASS_EXTERNAL_SYS_ACC_ID_IN_CREATE_ACC:
-        ExternalSystemAccountID externalSystemIDs<>;
-    case REPLACE_ACCOUNT_TYPES_WITH_POLICIES:
-        CreateAccountOpExtended opExt;
     }
     ext;
 };
 
 /******* CreateAccount Result ********/
 
+//: Result codes of CreateAccountOp
 enum CreateAccountResultCode
 {
-    // codes considered as "success" for the operation
-    SUCCESS = 0, // account was created
+    //: Means that `destination` account has been successfully created with signers specified in `signersData`
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,       // invalid destination
-	ACCOUNT_TYPE_MISMATCHED = -2, // account already exist and change of account type is not allowed
-	TYPE_NOT_ALLOWED = -3, // master or commission account types are not allowed
-    NAME_DUPLICATION = -4,
-    REFERRER_NOT_FOUND = -5,
-	INVALID_ACCOUNT_VERSION = -6, // if account version is higher than ledger version
-	NOT_VERIFIED_CANNOT_HAVE_POLICIES = -7,
-	EXTERNAL_SYS_ACC_NOT_ALLOWED = -8, // op contains external system account ID which should be generated on core level
-	EXTERNAL_SYS_ID_EXISTS = -9 // external system account ID already exists
+    //: Source account cannot be the same as the destination account
+    INVALID_DESTINATION = -1,
+    //: Account with such an ID already exists
+    ALREADY_EXISTS = -2, // account already exist
+    //: Sum of weights of signers with different identities must exceed the threshold (for now, 1000)
+    INVALID_WEIGHT = -3,
+    //: There is no role with such an ID
+    NO_SUCH_ROLE = -4,
+    //: Creation of a signer for an account is failed because `signersData` is invalid.
+    //: See `createSignerErrorCode`
+    INVALID_SIGNER_DATA = -5,
+    //: It is not allowed to create accounts without signers
+    NO_SIGNER_DATA = -6 // empty signer data array not allowed
 };
 
+//: Result of successful application of `CreateAccount` operation
 struct CreateAccountSuccess
 {
-	ExternalSystemAccountID externalSystemIDs<>;
-	 // reserved for future use
+    //: Unique unsigned integer identifier of the new account
+    uint64 sequentialID;
+
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -82,10 +66,14 @@ struct CreateAccountSuccess
     ext;
 };
 
+//: Result of operation application
 union CreateAccountResult switch (CreateAccountResultCode code)
 {
 case SUCCESS:
     CreateAccountSuccess success;
+case INVALID_SIGNER_DATA:
+    //: `createSignerErrorCode` is used to determine the reason of signer creation failure
+    ManageSignerResultCode createSignerErrorCode;
 default:
     void;
 };

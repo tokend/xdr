@@ -1,0 +1,35 @@
+/manageSignerRuleOp:
+  get:
+    tags:
+      - Signer Rules
+    summary: Manage Signer Rule
+    description: |
+                  Allows to create, update or remove signer rules.
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  |
+                    | --------|:-------------:|:-----:|
+                    | source  | `SIGNER_RULE` | `MANAGE` |
+
+                  #### Signer Role Requirements
+                    | Resource Type | Action  |
+                    |:-------------:|:-----:|
+                    | `SIGNER_RULE` | `MANAGE` |
+    operationId: manageSignerRuleOp
+    x-item-type: operation
+    parameters:
+    - name: Manage Signer Rule Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageSignerRuleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageSignerRuleResult'

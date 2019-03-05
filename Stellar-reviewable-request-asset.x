@@ -1,22 +1,30 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
 %#include "xdr/Stellar-types.h"
 
 namespace stellar
 {
 
+//: AssetCreationRequest is used to create an asset with provided parameters
 struct AssetCreationRequest {
-
-	AssetCode code;
-	AccountID preissuedAssetSigner;
-	uint64 maxIssuanceAmount;
-	uint64 initialPreissuedAmount;
+    //: Code of an asset to create
+    AssetCode code;
+    //: Public key of a signer that will perform pre issuance
+    AccountID preissuedAssetSigner;
+    //: Maximal amount to be issued
+    uint64 maxIssuanceAmount;
+    //: Amount to pre issue on asset creation
+    uint64 initialPreissuedAmount;
+    //: Bit mask of policies to create an asset with
     uint32 policies;
-    longstring details;
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by an admin
+    longstring creatorDetails; // details set by requester
+     //: Type of asset, selected arbitrarily. Can be used to restrict the usage of an asset
+    uint64 type;
+    //: Used to keep track of rejected requests updates (`SequenceNumber` increases after each rejected AssetCreationRequest update)
+    uint32 sequenceNumber;
+    //: Number of significant decimal places
+    uint32 trailingDigitsCount;
 
-	// reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -25,12 +33,18 @@ struct AssetCreationRequest {
     ext;
 };
 
+//: AssetUpdateRequest is used to update an asset with provided parameters
 struct AssetUpdateRequest {
-	AssetCode code;
-	longstring details;
-	uint32 policies;
+    //: Code of an asset to update
+    AssetCode code;
+    //: Arbitrary stringified JSON object that can be used to attach data to be reviewed by an admin
+    longstring creatorDetails; // details set by requester
+    //: New policies to set will override the existing ones
+    uint32 policies;
+    //: Used to keep track of rejected requests update (`SequenceNumber` increases after each rejected AssetUpdateRequest update).
+    uint32 sequenceNumber;
 
-	// reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -39,10 +53,18 @@ struct AssetUpdateRequest {
     ext;
 };
 
-struct AssetChangePreissuedSigner {
-	AssetCode code;
-	AccountID accountID;
-	// reserved for future use
+//: AssetChangePreissuedSigner is used to update a pre issued asset signer
+struct AssetChangePreissuedSigner
+{
+    //: code of an asset to update
+    AssetCode code;
+    //: Public key of a signer that will be the new pre issuer
+    AccountID accountID;
+    //: Content signature of a pre issuer signer
+    //: Content equals hash of `<code>:<accountID>`
+    DecoratedSignature signature;
+
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

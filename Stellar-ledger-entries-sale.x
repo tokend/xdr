@@ -1,17 +1,9 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-types.h"
 
 namespace stellar
 {
-
-enum SaleState {
-	NONE = 0, // default state
-	VOTING = 1, // not allowed to invest
-	PROMOTION = 2 // not allowed to invest, but allowed to change all the details
-};
 
 enum SaleType {
 	BASIC_SALE = 1, // sale creator specifies price for each quote asset
@@ -48,24 +40,16 @@ struct BasicSale {
 };
 
 
-struct SaleTypeExt {
-	union switch (SaleType saleType)
-    {
+
+union SaleTypeExt switch (SaleType saleType)
+{
 	case BASIC_SALE:
 		BasicSale basicSale;
-    case CROWD_FUNDING:
-        CrowdFundingSale crowdFundingSale;
-    case FIXED_PRICE:
-        FixedPriceSale fixedPriceSale;
-    }
-    typedSale;
+	case CROWD_FUNDING:
+		CrowdFundingSale crowdFundingSale;
+	case FIXED_PRICE:
+		FixedPriceSale fixedPriceSale;
 };
-
-struct StatableSaleExt {
-	SaleTypeExt saleTypeExt;
-	SaleState state;
-};
-
 
 struct SaleQuoteAsset {
 	AssetCode quoteAsset; // asset in which participation will be accepted
@@ -83,6 +67,7 @@ struct SaleQuoteAsset {
 struct SaleEntry
 {
 	uint64 saleID;
+	uint64 saleType;
 	AccountID ownerID;
     AssetCode baseAsset; // asset for which sale will be performed
 	uint64 startTime; // start time of the sale
@@ -96,15 +81,12 @@ struct SaleEntry
 	SaleQuoteAsset quoteAssets<100>;
 
 	BalanceID baseBalance;
+    SaleTypeExt saleTypeExt;
 
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-	case TYPED_SALE:
-		SaleTypeExt saleTypeExt;
-	case STATABLE_SALES:
-		StatableSaleExt statableSaleExt;
     }
     ext;
 };

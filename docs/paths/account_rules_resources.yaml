@@ -1,0 +1,139 @@
+/accountRulesResources:
+  get:
+    tags:
+      - Account Rules
+    x-item-type: entry
+    summary: Account Rules Resources
+    description: |
+                  Describes the resources on which the account can perform an action.
+    x-code-samples:
+      - lang: "XDR"
+        source: | 
+          //: Describes properties of some entries that can be used to restrict the use of entries
+          union AccountRuleResource switch (LedgerEntryType type)
+          {
+          case ASSET:
+              //: Describes properties which are equal to managed asset entry fields
+              struct
+              {
+                  AssetCode assetCode;
+                  uint64 assetType;
+
+                  EmptyExt ext;
+              } asset;
+          case REVIEWABLE_REQUEST:
+              //: Describes properties which are equal to managed reviewable request entry fields
+              struct
+              {
+                  //: Describes properties of some reviewable request types that
+                  //: can be used to restrict the using of reviewable requests
+                  ReviewableRequestResource details;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } reviewableRequest;
+          case ANY:
+              void;
+          case OFFER_ENTRY:
+              //: Describes properties which are equal to managed offer entry fields and their properties
+              struct
+              {
+                  //: type of base asset
+                  uint64 baseAssetType;
+                  //: type of quote asset
+                  uint64 quoteAssetType;
+
+                  //: code of base asset
+                  AssetCode baseAssetCode;
+                  //: code of quote asset
+                  AssetCode quoteAssetCode;
+
+                  bool isBuy;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } offer;
+          case SALE:
+              //: Describes properties which are equal to managed offer entry fields
+              struct
+              {
+                  uint64 saleID;
+                  uint64 saleType;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } sale;
+          case ATOMIC_SWAP_BID:
+              struct
+              {
+                  uint64 assetType;
+                  AssetCode assetCode;
+
+                  EmptyExt ext;
+              } atomicSwapBid;
+          case KEY_VALUE:
+              struct
+              {
+                  //: prefix of key
+                  longstring keyPrefix;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } keyValue;
+          default:
+              //: reserved for future extension
+              EmptyExt ext;
+          };
+
+          //: Describes properties of some reviewable request types that
+          //: can be used to restrict the using of reviewable requests
+          union ReviewableRequestResource switch (ReviewableRequestType requestType)
+          {
+          case CREATE_SALE:
+              //: is used to restrict using of reviewable request with create_sale type
+              struct
+              {
+                  //: type of sale
+                  uint64 type;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } createSale;
+          case CREATE_ISSUANCE:
+              //: is used to restrict using of reviewable request with create_issuance type
+              struct
+              {
+                  //: code of asset
+                  AssetCode assetCode;
+                  //: type of asset
+                  uint64 assetType;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } createIssuance;
+          case CREATE_WITHDRAW:
+              //: is used to restrict using of reviewable request with create_withdraw type
+              struct
+              {
+                  //: code of asset
+                  AssetCode assetCode;
+                  //: type of asset
+                  uint64 assetType;
+
+                  //: reserved for future extension
+                  EmptyExt ext;
+              } createWithdraw;
+          default:
+              //: reserved for future extension
+              EmptyExt ext;
+          };
+    operationId: AccountRuleResource
+    parameters:
+    - name: AccountRuleResource
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/AccountRuleResource'

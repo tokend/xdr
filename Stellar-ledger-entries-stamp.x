@@ -1,14 +1,15 @@
 %#include "xdr/Stellar-types.h"
 
+
 namespace stellar
 {
 
-struct SaleAnteEntry
+struct StampEntry
 {
-    uint64 saleID;
-    BalanceID participantBalanceID;
-    uint64 amount; // amount to be locked from participant balance
+    Hash ledgerHash;
+    Hash licenseHash;
 
+     // reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

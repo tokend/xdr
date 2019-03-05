@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 
@@ -64,7 +62,8 @@ enum ManageContractResultCode
     ALREADY_CONFIRMED = -6,
     INVOICE_NOT_APPROVED = -7, // all contract invoices must be approved
     DISPUTE_ALREADY_STARTED = -8,
-    CUSTOMER_BALANCE_OVERFLOW = -9
+    CUSTOMER_BALANCE_OVERFLOW = -9,
+    INCORRECT_PRECISION = -10
 };
 
 struct ManageContractResponse

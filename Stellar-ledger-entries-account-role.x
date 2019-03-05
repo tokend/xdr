@@ -1,13 +1,19 @@
 %#include "xdr/Stellar-types.h"
 
-namespace stellar {
+namespace stellar
+{
 
-struct AccountRoleEntry {
-    uint64 accountRoleID;
-    longstring accountRoleName;
+struct AccountRoleEntry
+{
+    uint64 id;
+
+    uint64 ruleIDs<>;
+
+    longstring details;
 
     // reserved for future use
-    union switch (LedgerVersion v) {
+    union switch (LedgerVersion v)
+    {
     case EMPTY_VERSION:
         void;
     }

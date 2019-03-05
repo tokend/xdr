@@ -1,6 +1,4 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
@@ -15,39 +13,46 @@ Threshold: med
 Result: CheckSaleStateResult
 
 */
-
+//: CheckSaleState operation is used to perform check on sale state - whether the sale was successful or not
 struct CheckSaleStateOp
 {
-	uint64 saleID;
-	 // reserved for future use
+    //:ID of the sale to check
+    uint64 saleID;
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;		
+        void;
     }
     ext;
 };
 
 /******* CheckSaleState Result ********/
-
+//: Result codes of CheckSaleState operation
 enum CheckSaleStateResultCode
 {
     // codes considered as "success" for the operation
-    SUCCESS = 0, // sale was processed
+    //: CheckSaleState operation was successfully applied
+    SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1, // sale was not found
-	NOT_READY = -2 // sale is not ready to be closed or canceled
+    //: Sale with provided ID not found
+    NOT_FOUND = -1,
+    //: Sale was not processed, because it's still active
+    NOT_READY = -2
 };
-
+//: Effect of performed check sale state operation
 enum CheckSaleStateEffect {
-	CANCELED = 1, // sale did not managed to go over soft cap in time
-	CLOSED = 2, // sale met hard cap or (end time and soft cap)
-	UPDATED = 3 // on check sale was modified and modifications must be saved
+    //: Sale hasn't reached the soft cap before end time
+    CANCELED = 1,
+    //: Sale has either reached the soft cap and ended or reached hard cap
+    CLOSED = 2,
+    //: Crowdfunding sale was successfully closed and the price for the base asset was updated according to participants contribution
+    UPDATED = 3
 };
-
+//: Entry for additional information regarding sale cancel
 struct SaleCanceled {
-	 // reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -56,8 +61,9 @@ struct SaleCanceled {
     ext;
 };
 
+//: Entry for additional information regarding sale update
 struct SaleUpdated {
-	 // reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -66,53 +72,62 @@ struct SaleUpdated {
     ext;
 };
 
+//: Entry for additional information regarding sub sale closing
 struct CheckSubSaleClosedResult {
-	BalanceID saleBaseBalance;
-	BalanceID saleQuoteBalance;
-	ManageOfferSuccessResult saleDetails;
-	 // reserved for future use
+    //: Balance in base asset of the closed sale
+    BalanceID saleBaseBalance;
+    //: Balance in one of the quote assets of the closed sale
+    BalanceID saleQuoteBalance;
+    //: Result of an individual offer made during the sale and completed on its close
+    ManageOfferSuccessResult saleDetails;
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;
+      void;
     }
     ext;
 };
 
+//: Entry for additional information regarding sale closing
 struct CheckSaleClosedResult {
-	AccountID saleOwner;
-	CheckSubSaleClosedResult results<>;
-	 // reserved for future use
+    //: AccountID of the sale owner
+    AccountID saleOwner;
+    //: Array of individual's contribution details
+    CheckSubSaleClosedResult results<>;
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
-    case EMPTY_VERSION:
+      case EMPTY_VERSION:
         void;
     }
     ext;
 };
-
+//: Result of the successful application of CheckSaleState operation
 struct CheckSaleStateSuccess
 {
-	uint64 saleID;
-	union switch (CheckSaleStateEffect effect)
+    //: ID of the sale being checked
+    uint64 saleID;
+    //: Additional information regarding eventual result
+    union switch (CheckSaleStateEffect effect)
     {
     case CANCELED:
         SaleCanceled saleCanceled;
-	case CLOSED:
-		CheckSaleClosedResult saleClosed;
-	case UPDATED:
-		SaleUpdated saleUpdated;
+    case CLOSED:
+        CheckSaleClosedResult saleClosed;
+    case UPDATED:
+        SaleUpdated saleUpdated;
     }
     effect;
-	 // reserved for future use
+     //: Reserved for future use
     union switch (LedgerVersion v)
     {
-    case EMPTY_VERSION:
+      case EMPTY_VERSION:
         void;
     }
     ext;
 };
-
+//: Result of the CheckSaleState operation along with the result code
 union CheckSaleStateResult switch (CheckSaleStateResultCode code)
 {
 case SUCCESS:
@@ -122,3 +137,4 @@ default:
 };
 
 }
+

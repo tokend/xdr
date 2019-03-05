@@ -1,30 +1,34 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
+
 
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-payment.h"
 
 namespace stellar
 {
-
+//: Actions that can be performed on request that is being reviewed
 enum ReviewRequestOpAction {
-	APPROVE = 1,
-	REJECT = 2,
-	PERMANENT_REJECT = 3
+    //: Approve request
+    APPROVE = 1,
+    //: Reject request
+    REJECT = 2,
+    //: Permanently reject request
+    PERMANENT_REJECT = 3
 };
 
 /* ReviewRequestOp
 
-    Approves or rejects reviewable request
+        Approves or rejects reviewable request
 
-    Threshold: high
+        Threshold: high
 
-    Result: ReviewRequestResult
+        Result: ReviewRequestResult
 */
-
-struct LimitsUpdateDetails {
+//: Review details of a Limits Update request
+struct LimitsUpdateDetails { 
+    //: Limits entry containing new limits to set 
     LimitsV2Entry newLimitsV2;
+
+    //:reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -33,34 +37,24 @@ struct LimitsUpdateDetails {
     ext;
 };
 
+//: Review details of a Withdraw Request
 struct WithdrawalDetails {
-	string externalDetails<>;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct AMLAlertDetails {
-	string comment<>;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-// DEPRECATED
-struct UpdateKYCDetails {
-    uint32 tasksToAdd;
-    uint32 tasksToRemove;
+    //: External details updated on a Withdraw review
     string externalDetails<>;
-    // Reserved for future use
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+//: Details of AML Alert 
+struct AMLAlertDetails {
+    //: Comment on reason of AML Alert
+    string comment<>;
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -76,15 +70,17 @@ struct ContractDetails {
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
-        void;
+            void;
     }
     ext;
 };
 
+//: Details of a payment reviewable request
 struct BillPayDetails {
-    PaymentOpV2 paymentDetails;
+    //: Details of payment
+    PaymentOp paymentDetails;
 
-    // reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -93,11 +89,15 @@ struct BillPayDetails {
     ext;
 };
 
+//: Details of a request review
 struct ReviewDetails {
+    //: Tasks to add to pending
     uint32 tasksToAdd;
+    //: Tasks to remove from pending
     uint32 tasksToRemove;
+    //: Details of the current review
     string externalDetails<>;
-    // Reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -106,10 +106,12 @@ struct ReviewDetails {
     ext;
 };
 
+//: Extended result of the review request operation containing details specific to a Create Sale Request
 struct SaleExtended {
+    //: ID of the newly created sale as a result of Create Sale Request successful review
     uint64 saleID;
 
-    // Reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -118,164 +120,240 @@ struct SaleExtended {
     ext;
 };
 
-struct ExtendedResult {
-    bool fulfilled;
+//: Extended result of the review request operation containing details specific to a Create Atomic Swap Bid Request
+struct ASwapBidExtended
+{
+    //: ID of the newly created bid as a result of Create Atomic Swap Bid Request successful review
+    uint64 bidID;
 
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
+//: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
+struct ASwapExtended
+{
+    //: ID of a bid to apply atomic swap to
+    uint64 bidID;
+    //: AccountID of a bid owner
+    AccountID bidOwnerID;
+    //: Account id of an atomic swap source
+    AccountID purchaserID;
+    //: Base asset for the atomic swap
+    AssetCode baseAsset;
+    //: Quote asset for the atomic swap
+    AssetCode quoteAsset;
+    //: Amount in base asset to exchange
+    uint64 baseAmount;
+    //: Amount in quote asset to exchange
+    uint64 quoteAmount;
+    //: Price of base asset in terms of quote
+    uint64 price;
+    //: Balance in base asset of a bid owner
+    BalanceID bidOwnerBaseBalanceID;
+    //: Balance in quote asset of atomic swap source
+    BalanceID purchaserBaseBalanceID;
+
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+            void;
+    }
+    ext;
+};
+
+//: Extended result of a Review Request operation containing details specific to certain request types
+struct ExtendedResult {
+    //: Indicates whether or not the request that is being reviewed was applied
+    bool fulfilled;
+    //: typeExt is used to pass ReviewableRequestType along with details specific to a request type
     union switch(ReviewableRequestType requestType) {
-    case SALE:
+    case CREATE_SALE:
         SaleExtended saleExtended;
     case NONE:
         void;
+    case CREATE_ATOMIC_SWAP_BID:
+        ASwapBidExtended aSwapBidExtended;
+    case CREATE_ATOMIC_SWAP:
+        ASwapExtended aSwapExtended;
     } typeExt;
 
-   // Reserved for future use
-   union switch (LedgerVersion v)
-   {
-   case EMPTY_VERSION:
-       void;
-   }
-   ext;
-};
-
-struct ReviewRequestOp
-{
-	uint64 requestID;
-	Hash requestHash;
-	union switch(ReviewableRequestType requestType) {
-	case WITHDRAW:
-		WithdrawalDetails withdrawal;
-    case LIMITS_UPDATE:
-        LimitsUpdateDetails limitsUpdate;
-	case TWO_STEP_WITHDRAWAL:
-		WithdrawalDetails twoStepWithdrawal;
-    case AML_ALERT:
-        AMLAlertDetails amlAlertDetails;
-    case UPDATE_KYC:
-        UpdateKYCDetails updateKYC;
-    case INVOICE:
-        BillPayDetails billPay;
-    case CONTRACT:
-        ContractDetails contract;
-	default:
-		void;
-	} requestDetails;
-	ReviewRequestOpAction action;
-	longstring reason;
-	// reserved for future use
+    //: Reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-        ReviewDetails reviewDetails;
     }
     ext;
 };
 
-/******* ReviewCoinsEmissionRequest Result ********/
-
-enum ReviewRequestResultCode
+//: Review Request operation
+struct ReviewRequestOp
 {
-    // Codes considered as "success" for the operation
-    SUCCESS = 0,
+    //: ID of a request that is being reviewed
+    uint64 requestID;
+    //: Hash of a request that is being reviewed
+    Hash requestHash;
+    //: requestDetails is used to pass request type along with details specific to it.
+    union switch(ReviewableRequestType requestType) {
+    case CREATE_WITHDRAW:
+        WithdrawalDetails withdrawal;
+    case UPDATE_LIMITS:
+        LimitsUpdateDetails limitsUpdate;
+    case CREATE_AML_ALERT:
+        AMLAlertDetails amlAlertDetails;
+    case CREATE_INVOICE:
+        BillPayDetails billPay;
+    case MANAGE_CONTRACT:
+        ContractDetails contract;
+    default:
+        void;
+    } requestDetails;
+    //: Review action defines an action performed on the pending ReviewableRequest
+    ReviewRequestOpAction action;
+    //: Contains reject reason
+    longstring reason;
+    //: Details of the ReviewRequest operation
+    ReviewDetails reviewDetails;
 
-    // Codes considered as "failure" for the operation
-    INVALID_REASON = -1,        // reason must be empty if approving and not empty if rejecting
-	INVALID_ACTION = -2,
-	HASH_MISMATCHED = -3,
-	NOT_FOUND = -4,
-	TYPE_MISMATCHED = -5,
-	REJECT_NOT_ALLOWED = -6, // reject not allowed, use permanent reject
-	INVALID_EXTERNAL_DETAILS = -7,
-	REQUESTOR_IS_BLOCKED = -8,
-	PERMANENT_REJECT_NOT_ALLOWED = -9, // permanent reject not allowed, use reject
-
-	// Asset requests
-	ASSET_ALREADY_EXISTS = -20,
-	ASSET_DOES_NOT_EXISTS = -21,
-
-	// Issuance requests
-	MAX_ISSUANCE_AMOUNT_EXCEEDED = -40,
-	INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -41,
-	FULL_LINE = -42, // can't fund balance - total funds exceed UINT64_MAX
-	SYSTEM_TASKS_NOT_ALLOWED = -43,
-
-	// Sale creation requests
-	BASE_ASSET_DOES_NOT_EXISTS = -50,
-	HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -51,
-	INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -52,
-
-	// Update KYC requests
-	NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -60,
-
-	// Update sale details, end time and promotion requests
-	SALE_NOT_FOUND = -70,
-
-	// Promotion update requests
-	INVALID_SALE_STATE = -80, // sale state must be "PROMOTION"
-
-	// Update sale end time requests
-    INVALID_SALE_NEW_END_TIME = -90, // new end time is before start time or current ledger close time
-
-    // Invoice requests
-    AMOUNT_MISMATCHED = -101, // amount does not match
-    DESTINATION_BALANCE_MISMATCHED = -102, // invoice balance and payment balance do not match
-    NOT_ALLOWED_ACCOUNT_DESTINATION = -103,
-    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -104, // not allowed shift fee responsibility to destination
-    SOURCE_BALANCE_MISMATCHED = -105, // source balance must match invoice sender account
-    CONTRACT_NOT_FOUND = -106,
-    INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -107,
-    INVOICE_ALREADY_APPROVED = -108,
-
-    // codes considered as "failure" for the payment operation
-    PAYMENT_V2_MALFORMED = -110, // bad input, requestID must be > 0
-    UNDERFUNDED = -111, // not enough funds in source account
-    LINE_FULL = -112, // destination would go above their limit
-    DESTINATION_BALANCE_NOT_FOUND = -113,
-    BALANCE_ASSETS_MISMATCHED = -114,
-    SRC_BALANCE_NOT_FOUND = -115, // source balance not found
-    REFERENCE_DUPLICATION = -116,
-    STATS_OVERFLOW = -117,
-    LIMITS_EXCEEDED = -118,
-    NOT_ALLOWED_BY_ASSET_POLICY = -119,
-    INVALID_DESTINATION_FEE = -120,
-    INVALID_DESTINATION_FEE_ASSET = -121, // destination fee asset must be the same as source balance asset
-    FEE_ASSET_MISMATCHED = -122,
-    INSUFFICIENT_FEE_AMOUNT = -123,
-    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -124,
-    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -125,
-    DESTINATION_ACCOUNT_NOT_FOUND = -126,
-
-    // Limits update requests
-    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 130, // limits cannot be created for account ID and account type simultaneously
-    INVALID_LIMITS = 131,
-
-    // Contract requests
-    CONTRACT_DETAILS_TOO_LONG = -140 // customer details reached length limit
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
 };
 
+/******* ReviewRequest Result ********/
+//: Result code of the ReviewRequest operation
+enum ReviewRequestResultCode
+{
+    //: Codes considered as "success" for an operation
+    //: Operation is applied successfuly 
+    SUCCESS = 0,
+
+    //: Codes considered as "failure" for an operation
+    //: Reject reason must be empty on approve and not empty on reject/permanent 
+    INVALID_REASON = -1,
+    //: Unknown action to perform on ReviewableRequest
+    INVALID_ACTION = -2,
+    //: Actual hash of the request and provided hash are mismatched
+    HASH_MISMATCHED = -3,
+    //: ReviewableRequest is not found
+    NOT_FOUND = -4,
+    //: Actual type of a reviewable request and provided type are mismatched
+    TYPE_MISMATCHED = -5,
+    //: Reject is not allowed. Only permanent reject should be used
+    REJECT_NOT_ALLOWED = -6,
+    //: External details must be a valid JSON
+    INVALID_EXTERNAL_DETAILS = -7,
+    //: Source of ReviewableRequest is blocked
+    REQUESTOR_IS_BLOCKED = -8,
+    //: Permanent reject is not allowed. Only reject should be used
+    PERMANENT_REJECT_NOT_ALLOWED = -9,
+    //: Trying to remove tasks which are not set
+    REMOVING_NOT_SET_TASKS = -100,// cannot remove tasks which are not set
+
+    //: Asset requests
+    //: Trying to create an asset that already exists
+    ASSET_ALREADY_EXISTS = -200,
+    //: Trying to update an asset that does not exist
+    ASSET_DOES_NOT_EXISTS = -210,
+
+    //: Issuance requests
+    //: After the issuance request application, issued amount will exceed max issuance amount
+    MAX_ISSUANCE_AMOUNT_EXCEEDED = -400,
+    //: Trying to issue more than it is available for issuance
+    INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
+    //: Funding account will exceed UINT64_MAX
+    FULL_LINE = -420,
+    //: It is not allowed to set system tasks
+    SYSTEM_TASKS_NOT_ALLOWED = -430,
+    //: Incorrect amount precision
+    INCORRECT_PRECISION = -440,
+
+    //: Sale creation requests
+    //: Trying to create a sale for a base asset that does not exist
+    BASE_ASSET_DOES_NOT_EXISTS = -500,
+    //: Trying to create a sale with hard cap that will exceed max issuance amount
+    HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
+    //: Trying to create a sale with preissued amount that is less than the hard cap
+    INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
+    //: Trying to create a sale for a base asset that cannot be found
+    BASE_ASSET_NOT_FOUND = -530,
+    //: Trying to create a sale with one of the quote assets that doesn't exist
+    QUOTE_ASSET_NOT_FOUND = -550,
+
+    //: Change role 
+    //: Trying to remove zero tasks
+    NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
+
+    //: Update sale details
+    //: Trying to update details of a non-existing sale
+    SALE_NOT_FOUND = -700,
+
+    //: Deprecated: Invoice requests
+    AMOUNT_MISMATCHED = -1010, // amount does not match
+    DESTINATION_BALANCE_MISMATCHED = -1020, // invoice balance and payment balance do not match
+    NOT_ALLOWED_ACCOUNT_DESTINATION = -1030,
+    REQUIRED_SOURCE_PAY_FOR_DESTINATION = -1040, // not allowed shift fee responsibility to destination
+    SOURCE_BALANCE_MISMATCHED = -1050, // source balance must match invoice sender account
+    CONTRACT_NOT_FOUND = -1060,
+    INVOICE_RECEIVER_BALANCE_LOCK_AMOUNT_OVERFLOW = -1070,
+    INVOICE_ALREADY_APPROVED = -1080,
+
+    // codes considered as "failure" for the payment operation
+    //: Deprecated: Invoice requests
+    PAYMENT_V2_MALFORMED = -1100,
+    UNDERFUNDED = -1110,
+    LINE_FULL = -1120,
+    DESTINATION_BALANCE_NOT_FOUND = -1130,
+    BALANCE_ASSETS_MISMATCHED = -1140,
+    SRC_BALANCE_NOT_FOUND = -1150,
+    REFERENCE_DUPLICATION = -1160,
+    STATS_OVERFLOW = -1170,
+    LIMITS_EXCEEDED = -1180,
+    NOT_ALLOWED_BY_ASSET_POLICY = -1190,
+    INVALID_DESTINATION_FEE = -1200,
+    INVALID_DESTINATION_FEE_ASSET = -1210, // destination fee asset must be the same as source balance asset
+    FEE_ASSET_MISMATCHED = -1220,
+    INSUFFICIENT_FEE_AMOUNT = -1230,
+    BALANCE_TO_CHARGE_FEE_FROM_NOT_FOUND = -1240,
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -1250,
+    DESTINATION_ACCOUNT_NOT_FOUND = -1260,
+
+    //: Limits update requests
+    //: Trying to create a limits update request for both account and account type at the same time
+    CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 1300,
+    //: Trying to set invalid limits, i.e. with dayly limit greater than weekly limit
+    INVALID_LIMITS = 1310,
+
+    //: Deprecated: Contract requests
+    CONTRACT_DETAILS_TOO_LONG = -1400, // customer details reached length limit
+
+    // Atomic swap
+    BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
+    QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
+    ASSETS_ARE_EQUAL = -1502,
+    ASWAP_BID_UNDERFUNDED = -1503,
+    ASWAP_PURCHASER_FULL_LINE = -1504
+
+};
+//: Result of applying the review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
-	struct {
-		// reserved for future use
-		union switch (LedgerVersion v)
-		{
-		case ADD_SALE_ID_REVIEW_REQUEST_RESULT:
-		    uint64 saleID;
-		case ADD_REVIEW_INVOICE_REQUEST_PAYMENT_RESPONSE:
-		    PaymentV2Response paymentV2Response;
-		case ADD_CONTRACT_ID_REVIEW_REQUEST_RESULT:
-		    uint64 contractID;
-		case EMPTY_VERSION:
-			void;
-        case ADD_TASKS_TO_REVIEWABLE_REQUEST:
-            ExtendedResult extendedResult;
-		}
-		ext;
-	} success;
+    ExtendedResult success;
 default:
     void;
 };
 
 }
+

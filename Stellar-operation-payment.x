@@ -1,7 +1,3 @@
-// Copyright 2015 Stellar Development Foundation and contributors. Licensed
-// under the Apache License, Version 2.0. See the COPYING file at the root
-// of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
-
 %#include "xdr/Stellar-ledger-entries.h"
 
 namespace stellar
@@ -16,35 +12,15 @@ namespace stellar
     Result: PaymentResult
 */
 
-struct InvoiceReference {
-    uint64 invoiceID;
-    bool accept;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct FeeData {
-    int64 paymentFee;
-    int64 fixedFee;
-	// reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 struct PaymentFeeData {
-    FeeData sourceFee;
-    FeeData destinationFee;
-    bool sourcePaysForDest;    // if true source account pays fee, else destination
-	// reserved for future use
+    //: Fee to pay by source balance
+    Fee sourceFee;
+    //: Fee kept from destination account/balance
+    Fee destinationFee;
+    //: Indicates whether or not the source of payment pays the destination fee
+    bool sourcePaysForDest;
+
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -53,21 +29,38 @@ struct PaymentFeeData {
     ext;
 };
 
+//: Defines the type of destination of the payment
+enum PaymentDestinationType {
+    ACCOUNT = 0,
+    BALANCE = 1
+};
 
+//: PaymentOp is used to transfer some amount of asset from the source balance to destination account/balance
 struct PaymentOp
 {
+    //: ID of the source balance of payment
     BalanceID sourceBalanceID;
-    BalanceID destinationBalanceID;
-    int64 amount;          // amount they end up with
 
+    //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
+    union switch (PaymentDestinationType type) {
+        case ACCOUNT:
+            AccountID accountID;
+        case BALANCE:
+            BalanceID balanceID;
+    } destination;
+
+    //: Amount of payment
+    uint64 amount;
+
+    //: `feeData` defines all data about the payment fee
     PaymentFeeData feeData;
 
-    string256 subject;
-    string64 reference;
-    
-    InvoiceReference* invoiceReference;
+    //: `subject` is a user-provided info about the real-life purpose of payment
+    longstring subject;
+    //: `reference` is a string formed by a payment sender. `Reference-sender account` pair is unique.
+    longstring reference;
 
-	// reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -75,40 +68,66 @@ struct PaymentOp
     }
     ext;
 };
-
-/******* Payment Result ********/
 
 enum PaymentResultCode
 {
     // codes considered as "success" for the operation
-    SUCCESS = 0, // payment successfuly completed
+    //: Payment was successfully completed
+    SUCCESS = 0, // payment successfully completed
 
     // codes considered as "failure" for the operation
-    MALFORMED = -1,       // bad input
-    UNDERFUNDED = -2,     // not enough funds in source account
-    LINE_FULL = -3,       // destination would go above their limit
-	FEE_MISMATCHED = -4,   // fee is not equal to expected fee
-    BALANCE_NOT_FOUND = -5, // destination balance not found
-    BALANCE_ACCOUNT_MISMATCHED = -6,
-    BALANCE_ASSETS_MISMATCHED = -7,
-	SRC_BALANCE_NOT_FOUND = -8, // source balance not found
-    REFERENCE_DUPLICATION = -9,
-    STATS_OVERFLOW = -10,
-    LIMITS_EXCEEDED = -11,
-    NOT_ALLOWED_BY_ASSET_POLICY = -12,
-    INVOICE_NOT_FOUND = -13,
-    INVOICE_WRONG_AMOUNT = -14,
-    INVOICE_BALANCE_MISMATCH = -15,
-    INVOICE_ACCOUNT_MISMATCH = -16,
-    INVOICE_ALREADY_PAID = -17,
-    PAYMENT_V1_NO_LONGER_SUPPORTED = -18
+    //: Payment sender balance ID and payment receiver balance ID are equal or reference is longer than 64 symbols
+    MALFORMED = -1,
+    //: Not enough funds in the source account
+    UNDERFUNDED = -2,
+    //: After the payment fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
+    LINE_FULL = -3,
+    //: There is no balance found with an ID provided in `destinations.balanceID`
+    DESTINATION_BALANCE_NOT_FOUND = -4,
+    //: Sender balance asset and receiver balance asset are not equal
+    BALANCE_ASSETS_MISMATCHED = -5,
+    //: There is no balance found with ID provided in `sourceBalanceID`
+    SRC_BALANCE_NOT_FOUND = -6,
+    //: Pair `reference-sender account` of the payment is not unique
+    REFERENCE_DUPLICATION = -7,
+    //: Stats entry exceeded account limits
+    STATS_OVERFLOW = -8,
+    //: Account will exceed its limits after the payment is fulfilled
+    LIMITS_EXCEEDED = -9,
+    //: Payment asset does not have a `TRANSFERABLE` policy set
+    NOT_ALLOWED_BY_ASSET_POLICY = -10,
+    //: Overflow during total fee calculation
+    INVALID_DESTINATION_FEE = -11,
+    //: Payment fee amount is insufficient
+    INSUFFICIENT_FEE_AMOUNT = -12,
+    //: Fee charged from destination balance is greater than the payment amount
+    PAYMENT_AMOUNT_IS_LESS_THAN_DEST_FEE = -13,
+    //: There is no account found with an ID provided in `destination.accountID`
+    DESTINATION_ACCOUNT_NOT_FOUND = -14,
+    //: Amount precision and asset precision are mismatched
+    INCORRECT_AMOUNT_PRECISION = -15
 };
 
+//: `PaymentResponse` defines the response on the corresponding PaymentOp
 struct PaymentResponse {
+    //: ID of the destination account
     AccountID destination;
-    uint64 paymentID;
+    //: ID of the destination balance
+    BalanceID destinationBalanceID;
+
+    //: Code of an asset used in payment
     AssetCode asset;
-    // reserved for future use
+    //: Amount sent by the sender
+    uint64 sourceSentUniversal;
+    //: Unique ID of the payment
+    uint64 paymentID;
+
+    //: Fee charged from the source balance
+    Fee actualSourcePaymentFee;
+    //: Fee charged from the destination balance
+    Fee actualDestinationPaymentFee;
+
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

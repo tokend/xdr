@@ -4,10 +4,7 @@
 
 %#include "xdr/Stellar-ledger-entries.h"
 %#include "xdr/Stellar-operation-create-account.h"
-%#include "xdr/Stellar-operation-payment.h"
-%#include "xdr/Stellar-operation-set-options.h"
 %#include "xdr/Stellar-operation-set-fees.h"
-%#include "xdr/Stellar-operation-manage-account.h"
 %#include "xdr/Stellar-operation-create-withdrawal-request.h"
 %#include "xdr/Stellar-operation-manage-balance.h"
 %#include "xdr/Stellar-operation-manage-asset.h"
@@ -15,7 +12,6 @@
 %#include "xdr/Stellar-operation-create-issuance-request.h"
 %#include "xdr/Stellar-operation-manage-limits.h"
 %#include "xdr/Stellar-operation-manage-asset-pair.h"
-%#include "xdr/Stellar-operation-direct-debit.h"
 %#include "xdr/Stellar-operation-manage-offer.h"
 %#include "xdr/Stellar-operation-manage-invoice-request.h"
 %#include "xdr/Stellar-operation-review-request.h"
@@ -25,44 +21,46 @@
 %#include "xdr/Stellar-operation-payout.h"
 %#include "xdr/Stellar-operation-create-AML-alert-request.h"
 %#include "xdr/Stellar-operation-manage-key-value.h"
-%#include "xdr/Stellar-operation-create-KYC-request.h"
+%#include "xdr/Stellar-operation-create-change-role-request.h"
 %#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
 %#include "xdr/Stellar-operation-bind-external-system-id.h"
-%#include "xdr/Stellar-operation-payment-v2.h"
+%#include "xdr/Stellar-operation-payment.h"
 %#include "xdr/Stellar-operation-manage-sale.h"
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-create-aswap-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
-%#include "xdr/Stellar-operation-manage-account-role-permission.h"
 %#include "xdr/Stellar-operation-create-reference.h"
+%#include "xdr/Stellar-operation-manage-account-rule.h"
+%#include "xdr/Stellar-operation-manage-signer-role.h"
+%#include "xdr/Stellar-operation-manage-signer-rule.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
+%#include "xdr/Stellar-operation-license.h"
+%#include "xdr/Stellar-operation-stamp.h"
 
 namespace stellar
 {
 
 
-/* An operation is the lowest unit of work that a transaction does */
+//: An operation is the lowest unit of work that a transaction does
 struct Operation
 {
-    // sourceAccount is the account used to run the operation
-    // if not set, the runtime defaults to "sourceAccount" specified at
-    // the transaction level
+    //: sourceAccount is the account used to run the operation
+    //: if not set, the runtime defaults to "sourceAccount" specified at
+    //: the transaction level
     AccountID* sourceAccount;
 
     union switch (OperationType type)
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-    case PAYMENT:
-        PaymentOp paymentOp;
-    case SET_OPTIONS:
-        SetOptionsOp setOptionsOp;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
         SetFeesOp setFeesOp;
-	case MANAGE_ACCOUNT:
-		ManageAccountOp manageAccountOp;
 	case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestOp createWithdrawalRequestOp;
 	case MANAGE_BALANCE:
@@ -73,8 +71,6 @@ struct Operation
         CreatePreIssuanceRequestOp createPreIssuanceRequest;
     case MANAGE_LIMITS:
         ManageLimitsOp manageLimitsOp;
-    case DIRECT_DEBIT:
-        DirectDebitOp directDebitOp;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairOp manageAssetPairOp;
 	case MANAGE_OFFER:
@@ -93,14 +89,14 @@ struct Operation
 	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueOp manageKeyValueOp;
-	case CREATE_KYC_REQUEST:
-		CreateUpdateKYCRequestOp createUpdateKYCRequestOp;
+	case CREATE_CHANGE_ROLE_REQUEST:
+		CreateChangeRoleRequestOp createChangeRoleRequestOp;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
-    case PAYMENT_V2:
-        PaymentOpV2 paymentOpV2;
+    case PAYMENT:
+        PaymentOp paymentOp;
     case MANAGE_SALE:
         ManageSaleOp manageSaleOp;
     case CREATE_MANAGE_LIMITS_REQUEST:
@@ -111,12 +107,28 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidOp cancelASwapBidOp;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestOp createASwapRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
-        ManageAccountRolePermissionOp manageAccountRolePermissionOp;
     case CREATE_REFERENCE:
         CreateReferenceOp createReferenceOp;
+    case MANAGE_ACCOUNT_RULE:
+        ManageAccountRuleOp manageAccountRuleOp;
+    case MANAGE_SIGNER:
+        ManageSignerOp manageSignerOp;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleOp manageSignerRoleOp;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleOp manageSignerRuleOp;
+    case STAMP:
+        StampOp stampOp;
+    case LICENSE:
+        LicenseOp licenseOp;
     }
     body;
 };
@@ -146,30 +158,32 @@ case MEMO_RETURN:
 
 struct TimeBounds
 {
+    //: specifies inclusive min ledger close time after which transaction is valid
     uint64 minTime;
+    //: specifies inclusive max ledger close time before which transaction is valid.
+    //: note: transaction will be rejected if max time exceeds close time of current ledger on more then [`tx_expiration_period`](https://tokend.gitlab.io/horizon/#operation/info)
     uint64 maxTime; // 0 here means no maxTime
 };
 
-/* a transaction is a container for a set of operations
-    - is executed by an account
-    - fees are collected from the account
-    - operations are executed in order as one ACID transaction
-          either all operations are applied or none are
-          if any returns a failing code
-*/
-
+//: Transaction is a container for a set of operations
+//:    - is executed by an account
+//:    - operations are executed in order as one ACID transaction
+//: (either all operations are applied or none are if any returns a failing code)
 struct Transaction
 {
-    // account used to run the transaction
+    //: account used to run the transaction
     AccountID sourceAccount;
 
+    //: random number used to ensure there is no hash collisions
     Salt salt;
 
-    // validity range (inclusive) for the last ledger close time
+    //: validity range (inclusive) for the last ledger close time
     TimeBounds timeBounds;
 
+    //: allows to attach additional data to the transactions
     Memo memo;
 
+    //: list of operations to be applied. Max size is 100
     Operation operations<100>;
 
     // reserved for future use
@@ -177,8 +191,6 @@ struct Transaction
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        uint64 maxTotalFee;
     }
     ext;
 };
@@ -187,6 +199,7 @@ struct Transaction
 struct TransactionEnvelope
 {
     Transaction tx;
+    //: list of signatures used to authorize transaction
     DecoratedSignature signatures<20>;
 };
 
@@ -204,7 +217,26 @@ enum OperationResultCode
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
     opBAD_AUTH_EXTRA = -8,
-    opNO_ROLE_PERMISSION = -9 // not allowed for this role of source account
+    opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
+    opNO_ENTRY = -10,
+    opNOT_SUPPORTED = -11,
+    opLICENSE_VIOLATION = -12, // number of admins is greater than allowed
+    //: operation was skipped cause of failure validation of previous operation
+    opSKIPPED = -13
+};
+
+//: Defines requirements for tx or operation which were not fulfilled 
+struct AccountRuleRequirement
+{
+	//: defines resources to which access was denied
+    AccountRuleResource resource;
+	//: defines action which was denied
+    AccountRuleAction action;
+	//: defines account for which requirements were not met
+	AccountID account;
+
+	//: reserved for future extension
+    EmptyExt ext;
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -214,16 +246,10 @@ case opINNER:
     {
     case CREATE_ACCOUNT:
         CreateAccountResult createAccountResult;
-    case PAYMENT:
-        PaymentResult paymentResult;
-    case SET_OPTIONS:
-        SetOptionsResult setOptionsResult;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
         SetFeesResult setFeesResult;
-	case MANAGE_ACCOUNT:
-		ManageAccountResult manageAccountResult;
     case CREATE_WITHDRAWAL_REQUEST:
 		CreateWithdrawalRequestResult createWithdrawalRequestResult;
     case MANAGE_BALANCE:
@@ -234,8 +260,6 @@ case opINNER:
         CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
     case MANAGE_LIMITS:
         ManageLimitsResult manageLimitsResult;
-    case DIRECT_DEBIT:
-        DirectDebitResult directDebitResult;
 	case MANAGE_ASSET_PAIR:
 		ManageAssetPairResult manageAssetPairResult;
 	case MANAGE_OFFER:
@@ -254,14 +278,14 @@ case opINNER:
 	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueResult manageKeyValueResult;
-	case CREATE_KYC_REQUEST:
-	    CreateUpdateKYCRequestResult createUpdateKYCRequestResult;
+	case CREATE_CHANGE_ROLE_REQUEST:
+	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
     case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
         ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
     case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
         BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
-    case PAYMENT_V2:
-        PaymentV2Result paymentV2Result;
+    case PAYMENT:
+        PaymentResult paymentResult;
     case MANAGE_SALE:
         ManageSaleResult manageSaleResult;
     case CREATE_MANAGE_LIMITS_REQUEST:
@@ -272,14 +296,34 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
+    case CREATE_ASWAP_BID_REQUEST:
+        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
+    case CANCEL_ASWAP_BID:
+        CancelASwapBidResult cancelASwapBidResult;
+    case CREATE_ASWAP_REQUEST:
+        CreateASwapRequestResult createASwapRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
-    case MANAGE_ACCOUNT_ROLE_PERMISSION:
-        ManageAccountRolePermissionResult manageAccountRolePermissionResult;
     case CREATE_REFERENCE:
         CreateReferenceResult createReferenceResult;
+    case MANAGE_ACCOUNT_RULE:
+        ManageAccountRuleResult manageAccountRuleResult;
+    case MANAGE_SIGNER:
+        ManageSignerResult manageSignerResult;
+    case MANAGE_SIGNER_ROLE:
+        ManageSignerRoleResult manageSignerRoleResult;
+    case MANAGE_SIGNER_RULE:
+        ManageSignerRuleResult manageSignerRuleResult;
+    case STAMP:
+        StampResult stampResult;
+    case LICENSE:
+        LicenseResult licenseResult;
     }
     tr;
+case opNO_ENTRY:
+    LedgerEntryType entryType;
+case opNO_ROLE_PERMISSION:
+    AccountRuleRequirement requirement;
 default:
     void;
 };
@@ -294,35 +338,23 @@ enum TransactionResultCode
     txTOO_LATE = -3,          // ledger closeTime after maxTime
     txMISSING_OPERATION = -4, // no operation was specified
 
-    txBAD_AUTH = -5,             // too few valid signatures / wrong network
-    txNO_ACCOUNT = -6,           // source account not found
-    txBAD_AUTH_EXTRA = -7,       // unused signatures attached to transaction
-    txINTERNAL_ERROR = -8,       // an unknown error occured
-	txACCOUNT_BLOCKED = -9,      // account is blocked and cannot be source of tx
-    txDUPLICATION = -10,         // if timing is stored
-    txINSUFFICIENT_FEE = -11,    // the actual total fee amount is greater than the max total fee amount, provided by the source
-    txSOURCE_UNDERFUNDED = -12,  // not enough tx fee asset on source balance
-    txCOMMISSION_LINE_FULL = -13 // commission tx fee asset balance amount overflow
+    txBAD_AUTH = -5,                   // too few valid signatures / wrong network
+    txNO_ACCOUNT = -6,                 // source account not found
+    txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
+    txINTERNAL_ERROR = -8,             // an unknown error occurred
+    txACCOUNT_BLOCKED = -9,            // account is blocked and cannot be source of tx
+    txDUPLICATION = -10,               // if timing is stored
+    txINSUFFICIENT_FEE = -11,          // the actual total fee amount is greater than the max total fee amount, provided by the source
+    txSOURCE_UNDERFUNDED = -12,        // not enough tx fee asset on source balance
+    txCOMMISSION_LINE_FULL = -13,      // commission tx fee asset balance amount overflow
+    txFEE_INCORRECT_PRECISION = -14,   // fee amount is incompatible with asset precision
+    txNO_ROLE_PERMISSION = -15         // account role has not rule that allows send transaction
 };
 
 struct OperationFee
 {
     OperationType operationType;
     uint64 amount;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-struct TransactionFee
-{
-    AssetCode assetCode;
-    OperationFee operationFees<100>;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -342,6 +374,8 @@ struct TransactionResult
     case txSUCCESS:
     case txFAILED:
         OperationResult results<>;
+    case txNO_ROLE_PERMISSION:
+        AccountRuleRequirement requirement;
     default:
         void;
     }
@@ -352,8 +386,6 @@ struct TransactionResult
     {
     case EMPTY_VERSION:
         void;
-    case ADD_TRANSACTION_FEE:
-        TransactionFee transactionFee;
     }
     ext;
 };
