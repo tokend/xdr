@@ -5,6 +5,11 @@
 ### Added
 
 * Error codes for set fee op result
+
+## 3.0.0-x.3
+
+### Added
+
 * Comments for docs to CreateChangeRoleRequestOp
 * Comments for docs to ManageSignerRuleOp
 * Comments for docs to SignerRuleResource
