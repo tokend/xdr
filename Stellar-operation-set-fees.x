@@ -74,9 +74,14 @@ namespace stellar
         //: Calculated fee hash differs from a hash taken from the database
         INVALID_FEE_HASH = -17,
         //: Fixed fee amount must fit asset precision
-        INVALID_AMOUNT_PRECISION = -18
+        INVALID_AMOUNT_PRECISION = -18,
+        //: There is no account with passed ID
+        ACCOUNT_NOT_FOUND = -19,
+        //: There is no role with passed ID
+        ROLE_NOT_FOUND = -20
     };
-    
+
+    //: Is used to pass result of operation applying
     union SetFeesResult switch (SetFeesResultCode code)
     {
         case SUCCESS:
