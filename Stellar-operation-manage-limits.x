@@ -84,12 +84,12 @@ enum ManageLimitsResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: (reserved for future use) Invalid input
-    MALFORMED = -1,
+    //: There is no account with passed ID
+    ACCOUNT_NOT_FOUND = -1,
     //: Limits entry is not found
     NOT_FOUND = -2,
-    //: (reserved for future use) Limits entry already exists
-    ALREADY_EXISTS = -3,
+    //: There is no role with passed ID
+    ROLE_NOT_FOUND = -3,
     //: Limits cannot be created for account ID and account role simultaneously
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = -4, // FIXME ACC_ROLE ?
     //: Limits entry is invalid (e.g. weeklyOut is less than dailyOut)

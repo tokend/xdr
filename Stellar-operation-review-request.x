@@ -334,6 +334,10 @@ enum ReviewRequestResultCode
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 1300,
     //: Trying to set invalid limits, i.e. with dayly limit greater than weekly limit
     INVALID_LIMITS = 1310,
+    //: There is no account with passed ID for limits update request
+    ACCOUNT_NOT_FOUND = -1311,
+    //: There is no role with passed ID for limits update request
+    ROLE_NOT_FOUND = -1312,
 
     //: Deprecated: Contract requests
     CONTRACT_DETAILS_TOO_LONG = -1400, // customer details reached length limit

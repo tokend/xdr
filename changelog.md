@@ -5,6 +5,7 @@
 ### Added
 
 * Error codes for set fee op result
+* Error codes for manage limits and review limits request ops results
 
 ## 3.0.0
 
