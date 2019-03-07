@@ -8,7 +8,7 @@
                   `CHANGE_ROLE` request is used to change role of account.
 
                   #### Account Role Requirements
-                    | Account | Resource Type | Action  | Condtion |
+                    | Account | Resource Type | Action  | Condition |
                     | --------|:-------------:|:-----:| ------------|
                     | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks` == `null` |
                     | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks` != `null` |

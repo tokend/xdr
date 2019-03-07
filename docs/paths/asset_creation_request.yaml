@@ -8,7 +8,7 @@
                   `CREATE_ASSET` request is used to create asset entry
 
                   #### Account Role Requirements
-                    | Account | Resource Type | Rule Action         |  Condtion            |
+                    | Account | Resource Type | Rule Action         |  Condition           |
                     | --------|:-------------:| :-----------------: | ------------         |
                     | source  | `ASSET`       | `CREATE`            | `allTasks` == `null` |
                     | source  | `ASSET`       | `CREATE_WITH_TASKS` | `allTasks` != `null` |
