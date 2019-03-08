@@ -5,25 +5,26 @@
     x-item-type: entry
     summary: Key Value System Keys
     description: |
-                  Reserved keys (or key prefixes) which are used for system configuration
+                  Reserved keys (or key prefixes) which are used for system configuration.
+                  Instead of certain value `*` can be allowed and means than any parameter is appropriate.
 
                   Key value for reviewable request:
-                  * `change_role_tasks:<currentAccountRoleID>:<accountRoleToSet>`
-                  * `issuance_tasks:<assetCode>`
-                  * `withdrawal_tasks:<assetCode>`
-                  * `preissuance_tasks:<assetCode>`
+                  * `change_role_tasks:<currentAccountRoleID>:<accountRoleToSet>` (`*` is allowed)
+                  * `issuance_tasks:<assetCode>` (`*` is allowed)
+                  * `withdrawal_tasks:<assetCode>` (`*` is allowed)
+                  * `preissuance_tasks:<assetCode>` (`*` is allowed)
                   * `asset_create_tasks`
                   * `asset_update_tasks`
-                  * `sale_create_tasks:<assetCode>`
-                  * `sale_update_tasks:<saleID>`
+                  * `sale_create_tasks:<assetCode>` (`*` is allowed)
+                  * `sale_update_tasks:<saleID>` (`*` is allowed)
                   * `aml_alert_create`
                   * `limits_update_tasks`
 
                   Deposits:
-                  * `ext_sys_exp_period:<externalSytemType>`
+                  * `ext_sys_exp_period:<externalSytemType>` (`*` is NOT allowed)
 
                   Withdraw:
-                  * `withdraw_lower_bound:<assetCode>`
+                  * `withdraw_lower_bound:<assetCode>` (`*` is allowed)
     x-code-samples:
       - lang: "C++"
         source: |
