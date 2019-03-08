@@ -3,6 +3,10 @@ info:
   title: XDR
   description: |
     This repo defines structures used to communicate with `Core` of TokenD based networks.
+  x-logo:
+    url: "https://tokend.io/images/logo.svg"
+    backgroundColor: "transparent"
+    altText: "TokenD"
   contact:
     email: dev@distributedlab.com
     url: https://tokend.io
@@ -14,10 +18,6 @@ info:
 servers:
 - url: https://api.achilles.tokend.io
   description: TokenD Developer Environment
-x-logo:
-  url: "https://tokend.io/images/logo.svg"
-  backgroundColor: "transparent"
-  altText: "TokenD"
 # NOTE
 #
 # Add tag to x-tagGroups or it won't be displayed

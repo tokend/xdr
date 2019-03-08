@@ -1,0 +1,32 @@
+/keyValueSystemKeys:
+  get:
+    tags:
+      - KeyValue
+    x-item-type: entry
+    summary: Key Value System Keys
+    description: |
+                  Reserved keys (or key prefixes) which are used for system configuration
+    x-code-samples:
+      - lang: "C++"
+        source: |
+          char const * changeRoleTasks = "change_role_tasks";
+          char const * externalSystemPrefix = "ext_sys_exp_period";
+          char const * issuanceTasksPrefix = "issuance_tasks";
+          char const * withdrawalTasksPrefix = "withdrawal_tasks";
+          char const * preIssuanceTasksPrefix = "preissuance_tasks";
+          char const * assetCreateTasks = "asset_create_tasks";
+          char const * assetUpdateTasks = "asset_update_tasks";
+          char const * saleUpdateDetailsTasksPrefix = "sale_update_tasks";
+          char const * saleCreateTasksPrefix = "sale_create_tasks";
+          char const * amlAlertCreateTasks = "aml_alert_create";
+          char const * limitsUpdateTasks = "limits_update_tasks";
+          char const * withdrawLowerBoundPrefix = "withdraw_lower_bound";
+    operationId: KeyValueSystemKeys
+    parameters:
+    - name: Key Value System Keys
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
