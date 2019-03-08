@@ -6,6 +6,24 @@
     summary: Key Value System Keys
     description: |
                   Reserved keys (or key prefixes) which are used for system configuration
+
+                  Key value for reviewable request:
+                  * `change_role_tasks:<currentAccountRoleID>:<accountRoleToSet>`
+                  * `issuance_tasks:<assetCode>`
+                  * `withdrawal_tasks:<assetCode>`
+                  * `preissuance_tasks:<assetCode>`
+                  * `asset_create_tasks`
+                  * `asset_update_tasks`
+                  * `sale_create_tasks:<assetCode>`
+                  * `sale_update_tasks:<saleID>`
+                  * `aml_alert_create`
+                  * `limits_update_tasks`
+
+                  Deposits:
+                  * `ext_sys_exp_period:<externalSytemType>`
+
+                  Withdraw:
+                  * `withdraw_lower_bound:<assetCode>`
     x-code-samples:
       - lang: "C++"
         source: |
