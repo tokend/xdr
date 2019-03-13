@@ -6,6 +6,8 @@
 
 * Error codes for set fee op result
 * Error codes for manage limits and review limits request ops results
+* Error codes and useful fields in success result for create atomic swap bid and atomic swap request operations
+* `CREATE_ATOMIC_SWAP_BID` case to reviewable request resource
 
 ## 3.0.0
 
