@@ -41,6 +41,18 @@ case CREATE_WITHDRAW:
         //: reserved for future extension
         EmptyExt ext;
     } createWithdraw;
+case CREATE_ATOMIC_SWAP_BID:
+    //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+    struct
+    {
+        //: code of asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } createAtomicSwapBid;
 default:
     //: reserved for future extension
     EmptyExt ext;

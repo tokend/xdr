@@ -38,13 +38,18 @@ enum CreateASwapRequestResultCode
     ATOMIC_SWAP_TASKS_NOT_FOUND = -6,
     NOT_ALLOWED_BY_ASSET_POLICY = -7,
     BID_IS_CANCELLED = -8,
-    CANNOT_CREATE_ASWAP_REQUEST_FOR_OWN_BID = -9
+    CANNOT_CREATE_ASWAP_REQUEST_FOR_OWN_BID = -9,
+    //: 0 value is received from key value entry by `atomic_swap_tasks` key
+    ATOMIC_SWAP_ZERO_TASKS_NOT_ALLOWED = -10,
+    //: Base amount precision and asset precision set in the system are mismatched
+    INCORRECT_PRECISION = -11
 };
 
 struct CreateASwapRequestSuccess
 {
     uint64 requestID;
     AccountID bidOwnerID;
+    uint64 quoteAmount;
 
     union switch (LedgerVersion v)
     {

@@ -35,6 +35,8 @@ enum CancelASwapBidResultCode
 
 struct CancelASwapBidResultSuccess
 {
+    uint64 lockedAmount;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:

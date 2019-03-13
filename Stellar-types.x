@@ -7,7 +7,8 @@ namespace stellar
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	CHECK_SET_FEE_ACCOUNT_EXISTING = 1
+	CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
+	ATOMIC_SWAP_RETURNING = 2
 };
 
 union EmptyExt switch (LedgerVersion v)

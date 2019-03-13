@@ -17,6 +17,7 @@ struct CreateASwapBidCreationRequestOp
 {
     ASwapBidCreationRequest request;
 
+    uint32* allTasks;
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -43,13 +44,17 @@ enum CreateASwapBidCreationRequestResultCode
     ASSETS_ARE_EQUAL = -10, // base and quote assets are the same
     BASE_BALANCE_UNDERFUNDED = -11,
     INVALID_QUOTE_ASSET = -12, // one of the quote assets is invalid
-    NOT_ALLOWED_BY_ASSET_POLICY = -13
+    NOT_ALLOWED_BY_ASSET_POLICY = -13,
+    //: There is no key-value entry by `atomic_swap_bid_tasks` key in the system;
+    //: configuration does not allow create atomic swap bids
+    ATOMIC_SWAP_BID_TASKS_NOT_FOUND = -14
 };
 
 struct CreateASwapBidCreationRequestSuccess
 {
     uint64 requestID;
     bool fulfilled;
+    AssetCode baseAsset;
 
     union switch (LedgerVersion v)
     {
