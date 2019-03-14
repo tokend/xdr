@@ -1,0 +1,51 @@
+/keyValueSystemKeys:
+  get:
+    tags:
+      - KeyValue
+    x-item-type: entry
+    summary: Key Value System Keys
+    description: |
+                  Reserved keys (or key prefixes) which are used for system configuration.
+                  Instead of certain value `*` can be allowed and means than any parameter is appropriate.
+
+                  Key value for reviewable request:
+                  * `change_role_tasks:<currentAccountRoleID>:<accountRoleToSet>` (`*` is allowed)
+                  * `issuance_tasks:<assetCode>` (`*` is allowed)
+                  * `withdrawal_tasks:<assetCode>` (`*` is allowed)
+                  * `preissuance_tasks:<assetCode>` (`*` is allowed)
+                  * `asset_create_tasks`
+                  * `asset_update_tasks`
+                  * `sale_create_tasks:<assetCode>` (`*` is allowed)
+                  * `sale_update_tasks:<saleID>` (`*` is allowed)
+                  * `aml_alert_create`
+                  * `limits_update_tasks`
+
+                  Deposits:
+                  * `ext_sys_exp_period:<externalSytemType>` (`*` is NOT allowed)
+
+                  Withdraw:
+                  * `withdraw_lower_bound:<assetCode>` (`*` is allowed)
+    x-code-samples:
+      - lang: "C++"
+        source: |
+          char const * changeRoleTasks = "change_role_tasks";
+          char const * externalSystemPrefix = "ext_sys_exp_period";
+          char const * issuanceTasksPrefix = "issuance_tasks";
+          char const * withdrawalTasksPrefix = "withdrawal_tasks";
+          char const * preIssuanceTasksPrefix = "preissuance_tasks";
+          char const * assetCreateTasks = "asset_create_tasks";
+          char const * assetUpdateTasks = "asset_update_tasks";
+          char const * saleUpdateDetailsTasksPrefix = "sale_update_tasks";
+          char const * saleCreateTasksPrefix = "sale_create_tasks";
+          char const * amlAlertCreateTasks = "aml_alert_create";
+          char const * limitsUpdateTasks = "limits_update_tasks";
+          char const * withdrawLowerBoundPrefix = "withdraw_lower_bound";
+    operationId: KeyValueSystemKeys
+    parameters:
+    - name: Key Value System Keys
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
