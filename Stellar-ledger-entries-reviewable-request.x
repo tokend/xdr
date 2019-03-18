@@ -13,6 +13,7 @@
 %#include "xdr/Stellar-reviewable-request-contract.h"
 %#include "xdr/Stellar-reviewable-request-atomic-swap.h"
 %#include "xdr/Stellar-reviewable-request-atomic-swap-bid.h"
+%#include "xdr/Stellar-reviewable-request-create-poll.h"
 
 namespace stellar
 {
@@ -33,6 +34,7 @@ enum ReviewableRequestType
 	CREATE_INVOICE = 11,
 	MANAGE_CONTRACT = 12,
 	UPDATE_ASSET = 13,
+	CREATE_POLL = 14,
 	CREATE_ATOMIC_SWAP_BID = 16,
 	CREATE_ATOMIC_SWAP = 17
 };
@@ -93,6 +95,8 @@ struct ReviewableRequestEntry {
             ASwapBidCreationRequest aSwapBidCreationRequest;
         case CREATE_ATOMIC_SWAP:
             ASwapRequest aSwapRequest;
+        case CREATE_POLL:
+            CreatePollRequest createPollRequest;
 	} body;
 
 	TasksExt tasks;

@@ -171,7 +171,8 @@ enum OperationType
     MANAGE_SIGNER_ROLE = 39,
     MANAGE_SIGNER_RULE = 40,
     STAMP = 41,
-    LICENSE = 42
+    LICENSE = 42,
+    MANAGE_CREATE_POLL_REQUEST = 43
 };
 
 struct DecoratedSignature
