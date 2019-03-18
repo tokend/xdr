@@ -74,7 +74,8 @@ enum LedgerEntryType
     SIGNER_RULE = 30,
     SIGNER_ROLE = 31,
     STAMP = 32,
-    LICENSE = 33
+    LICENSE = 33,
+    POLL = 34
 };
 
 // variable size as the size depends on the signature scheme used

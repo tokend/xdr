@@ -29,6 +29,7 @@
 %#include "xdr/Stellar-ledger-entries-signer-rule.h"
 %#include "xdr/Stellar-ledger-entries-license.h"
 %#include "xdr/Stellar-ledger-entries-stamp.h"
+%#include "xdr/Stellar-ledger-entries-poll.h"
 
 namespace stellar
 {
@@ -104,6 +105,8 @@ struct LedgerEntry
         LicenseEntry license;
     case STAMP:
         StampEntry stamp;
+    case POLL:
+        PollEntry poll;
     }
     data;
 
