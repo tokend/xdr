@@ -3,19 +3,13 @@
 namespace stellar
 {
 
-/* Cancels an atomic swap bid
-
-Threshold: high
-
-Result: CancelASwapBidResult
-
-*/
-
+//: CancelASwapBidOp is used to cancel existing atomic swap bid
 struct CancelASwapBidOp
 {
+    //: id of existing atomic swap bid
     uint64 bidID;
 
-    // reserved for future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -23,20 +17,27 @@ struct CancelASwapBidOp
     } ext;
 };
 
+//: Result codes of CancelASwapBidOp
 enum CancelASwapBidResultCode
 {
-    // codes considered as "success" for the operation
+    //: Atomic swap bid was successfully removed or marked as canceled
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
+    //: There is no atomic swap bid with such id
     NOT_FOUND = -1, // atomic swap bid does not exist
+    //: Not allowed to mark canceled atomic swap bid as canceled
     ALREADY_CANCELLED = -2 // atomic swap bid already cancelled
 };
 
+//: Success result of CancelASwapBidOp application
 struct CancelASwapBidResultSuccess
 {
+    //: Sum of `CREATE_ATOMIC_SWAP` requests' base amounts which are waiting for applying.
+    //: Zero means that bid successfully removed
     uint64 lockedAmount;
 
+    //: reserved for the future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -44,9 +45,11 @@ struct CancelASwapBidResultSuccess
     } ext;
 };
 
+//: Result of CancelASwapBidOp application
 union CancelASwapBidResult switch (CancelASwapBidResultCode code)
 {
 case SUCCESS:
+    //: is used to pass useful fields after successful operation applying
     CancelASwapBidResultSuccess success;
 default:
     void;
