@@ -22,6 +22,11 @@ struct PollEntry
     uint64 numberOfChoices;
     PollSpecification specification;
 
+    uint64 startTime;
+    uint64 endTime;
+
+    AccountID ownerID;
+
     longstring details;
 
     EmptyExt ext;
