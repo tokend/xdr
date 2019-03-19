@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+* Poll entry and `CREATE_POLL` request
+* Manage `CREATE_POLL` request operation
+
 ## 3.0.1-x.0
 
 ### Added

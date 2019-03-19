@@ -379,6 +379,12 @@ case LICENSE:
             void;
         } ext;
     } license;
+case POLL:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } poll;
 };
 
 enum BucketEntryType
