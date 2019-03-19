@@ -41,7 +41,7 @@
 %#include "xdr/Stellar-operation-stamp.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
-%#include "xdr/Stellar-operation-check-poll.h"
+%#include "xdr/Stellar-operation-finish-poll.h"
 
 namespace stellar
 {
