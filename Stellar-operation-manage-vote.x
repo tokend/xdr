@@ -1,4 +1,4 @@
-%#include "xdr/Stellar-ledger-entries-poll.h"
+%#include "xdr/Stellar-ledger-entries-vote.h"
 
 namespace stellar
 {
@@ -13,7 +13,7 @@ struct CreateVoteData
 {
     uint64 pollID;
 
-    // smth else
+    Vote vote;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -61,8 +61,8 @@ enum ManageVoteResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-
-    NOT_FOUND = -2, // not found contract request, when try to remove
+    INVALID_VOTE = -1 // vote option is invalid
+    NOT_FOUND = -2, // poll not found
 
 
 };

@@ -107,6 +107,8 @@ struct LedgerEntry
         StampEntry stamp;
     case POLL:
         PollEntry poll;
+    case VOTE:
+        VoteEntry voteEntry;
     }
     data;
 
