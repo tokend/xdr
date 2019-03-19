@@ -40,6 +40,7 @@
 %#include "xdr/Stellar-operation-license.h"
 %#include "xdr/Stellar-operation-stamp.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
+%#include "xdr/Stellar-operation-manage-vote.h"
 
 namespace stellar
 {
@@ -129,6 +130,8 @@ struct Operation
         LicenseOp licenseOp;
     case MANAGE_CREATE_POLL_REQUEST:
         ManageCreatePollRequestOp manageCreatePollRequestOp;
+    case MANAGE_VOTE:
+        ManageVoteOp manageVoteOp;
     }
     body;
 };
@@ -318,6 +321,8 @@ case opINNER:
         LicenseResult licenseResult;
     case MANAGE_CREATE_POLL_REQUEST:
         ManageCreatePollRequestResult manageCreatePollRequestResult;
+    case MANAGE_VOTE:
+        ManageVoteResult manageVoteResult;
     }
     tr;
 case opNO_ENTRY:

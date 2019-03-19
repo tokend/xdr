@@ -385,6 +385,12 @@ case POLL:
 
         EmptyExt ext;
     } poll;
+case VOTE:
+    struct {
+        uint64 ID;
+
+        EmptyExt ext;
+    } vote;
 };
 
 enum BucketEntryType

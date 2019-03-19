@@ -75,7 +75,8 @@ enum LedgerEntryType
     SIGNER_ROLE = 31,
     STAMP = 32,
     LICENSE = 33,
-    POLL = 34
+    POLL = 34,
+    VOTE = 35
 };
 
 // variable size as the size depends on the signature scheme used
@@ -172,7 +173,8 @@ enum OperationType
     MANAGE_SIGNER_RULE = 40,
     STAMP = 41,
     LICENSE = 42,
-    MANAGE_CREATE_POLL_REQUEST = 43
+    MANAGE_CREATE_POLL_REQUEST = 43,
+    MANAGE_VOTE = 44
 };
 
 struct DecoratedSignature
