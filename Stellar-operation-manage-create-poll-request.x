@@ -23,7 +23,7 @@ struct CreatePollRequestData
     ext;
 };
 
-struct RemoveCreatePollRequestData
+struct RemovePollRequestData
 {
     uint64 requestID;
 
@@ -43,7 +43,7 @@ struct ManageCreatePollRequestOp
     case CREATE:
         CreatePollRequestData createData;
     case REMOVE:
-        RemoveCreatePollRequestData removeData;
+        RemovePollRequestData removeData;
     }
     data;
 
