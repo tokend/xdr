@@ -13,7 +13,7 @@ struct CreateVoteData
 {
     uint64 pollID;
 
-    Vote vote;
+    VoteData data;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -61,8 +61,8 @@ enum ManageVoteResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    INVALID_VOTE = -1 // vote option is invalid
-    NOT_FOUND = -2, // poll not found
+    INVALID_VOTE = -1, // vote option is invalid
+    NOT_FOUND = -2 // poll not found
 
 
 };

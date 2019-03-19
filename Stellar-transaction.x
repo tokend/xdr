@@ -40,6 +40,7 @@
 %#include "xdr/Stellar-operation-license.h"
 %#include "xdr/Stellar-operation-stamp.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
+%#include "xdr/Stellar-operation-manage-vote.h"
 
 namespace stellar
 {

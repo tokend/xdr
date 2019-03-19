@@ -3,33 +3,38 @@
 namespace stellar
 {
 
-struct VoteEntry
+
+struct SingleChoiceVote
 {
-    uint64 ID;
-
-    Vote vote;
-
-    longstring details;
-    EmptyExt ext;
-};
-
-union switch Vote (p PollType)
-{
-case SINGLE_CHOICE:
-    SingleChoiceVote single;
-//case MULTIPLE_CHOICE:
-//    MultipleChoiceVote multiple;
-};
-
-struct SingleChoiceVote {
     uint64 choice;
     EmptyExt ext;
 };
 
 /*
 struct MultipleChoiceVote {
-    uint64<> choices;
+    uint64 choices<>;
     EmptyExt ext;
 };
 */
+
+
+union VoteData switch (PollType p)
+{
+case SINGLE_CHOICE:
+    SingleChoiceVote single;
+default:
+    void;
+//case MULTIPLE_CHOICE:
+//    MultipleChoiceVote multiple;
+};
+
+struct VoteEntry
+{
+    uint64 ID;
+
+    VoteData data;
+
+    longstring details;
+    EmptyExt ext;
+};
 }
