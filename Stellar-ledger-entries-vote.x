@@ -32,6 +32,8 @@ struct VoteEntry
 {
     uint64 id;
 
+    uint64 pollID;
+
     VoteData data;
 
     longstring details;
