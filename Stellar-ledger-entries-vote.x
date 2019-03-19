@@ -5,7 +5,7 @@ namespace stellar
 
 struct VoteEntry
 {
-    uint64 pollID;
+    uint64 ID;
 
     Vote vote;
 
