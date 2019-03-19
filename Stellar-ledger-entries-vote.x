@@ -31,9 +31,10 @@ struct VoteEntry
     uint64 id;
     uint64 pollId;
 
+    AccountID voter;
+
     VoteData data;
 
-    longstring details;
     EmptyExt ext;
 };
 }
