@@ -29,9 +29,9 @@ case SINGLE_CHOICE:
 struct VoteEntry
 {
     uint64 id;
-    uint64 pollId;
+    uint64 pollID;
 
-    AccountID voter;
+    AccountID voterID;
 
     VoteData data;
 

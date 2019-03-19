@@ -15,6 +15,9 @@ struct CreatePollRequest
     uint64 startTime;
     uint64 endTime;
 
+    AccountID resultProviderID;
+    bool signatureRequired;
+
     //: reserved for future use
     union switch (LedgerVersion v)
     {

@@ -6,7 +6,7 @@
 
 * Poll entry and `CREATE_POLL` request
 * Manage `CREATE_POLL` request operation
-* Check poll operation
+* Finish poll operation
 * Manage vote operation and vote entry
 
 ## 3.0.1-x.0

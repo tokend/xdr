@@ -26,6 +26,9 @@ struct PollEntry
     uint64 endTime;
 
     AccountID ownerID;
+    AccountID resultProviderID;
+
+    bool signatureRequired;
 
     longstring details;
 
