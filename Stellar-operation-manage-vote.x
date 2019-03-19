@@ -62,7 +62,9 @@ enum ManageVoteResultCode
 
     // codes considered as "failure" for the operation
     INVALID_VOTE = -1, // vote option is invalid
-    NOT_FOUND = -2 // poll not found
+    POLL_NOT_FOUND = -2, // poll not found
+    VOTE_EXISTS = -3, // vote to remove  not found
+    POLL_TYPE_MISMATCHED = -4
 
 
 };
