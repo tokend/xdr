@@ -387,7 +387,8 @@ case POLL:
     } poll;
 case VOTE:
     struct {
-        uint64 id;
+        uint64 pollID;
+        AccountID voterID;
 
         EmptyExt ext;
     } vote;

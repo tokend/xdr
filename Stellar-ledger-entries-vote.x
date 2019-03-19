@@ -28,7 +28,6 @@ case SINGLE_CHOICE:
 
 struct VoteEntry
 {
-    uint64 id;
     uint64 pollID;
 
     AccountID voterID;

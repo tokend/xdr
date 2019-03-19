@@ -25,7 +25,7 @@ struct CreateVoteData
 
 struct RemoveVoteData
 {
-    uint64 voteID;
+    uint64 pollID;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -64,14 +64,14 @@ enum ManageVoteResultCode
     INVALID_VOTE = -1, // vote option is invalid
     POLL_NOT_FOUND = -2, // poll not found
     VOTE_EXISTS = -3, // vote to remove  not found
-    POLL_TYPE_MISMATCHED = -4
-
-
+    POLL_TYPE_MISMATCHED = -4,
+    POLL_NOT_READY = -5,
+    POLL_ENDED = -6
 };
 
 struct CreateVoteResponse
 {
-    uint64 voteID;
+    uint64 pollID;
 
     union switch (LedgerVersion v)
     {
