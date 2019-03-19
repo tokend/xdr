@@ -104,6 +104,17 @@ case KEY_VALUE:
         //: reserved for future extension
         EmptyExt ext;
     } keyValue;
+case POLL:
+    struct
+    {
+        //: ID of the poll
+        uint64 pollID;
+
+        uint64 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } poll;
 case VOTE:
     struct
     {
