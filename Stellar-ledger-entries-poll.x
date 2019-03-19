@@ -28,7 +28,7 @@ struct PollEntry
     AccountID ownerID;
     AccountID resultProviderID;
 
-    bool signatureRequired;
+    bool voteConfirmationRequired;
 
     longstring details;
 

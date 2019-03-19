@@ -16,7 +16,7 @@ struct CreatePollRequest
     uint64 endTime;
 
     AccountID resultProviderID;
-    bool signatureRequired;
+    bool voteConfirmationRequired;
 
     //: reserved for future use
     union switch (LedgerVersion v)
