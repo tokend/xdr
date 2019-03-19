@@ -387,7 +387,7 @@ case POLL:
     } poll;
 case VOTE:
     struct {
-        uint64 ID;
+        uint64 id;
 
         EmptyExt ext;
     } vote;
