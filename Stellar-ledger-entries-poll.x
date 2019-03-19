@@ -8,7 +8,7 @@ enum PollType
     SINGLE_CHOICE = 0
 };
 
-union PollSpecification switch (PollType type)
+union PollData switch (PollType type)
 {
 case SINGLE_CHOICE:
     EmptyExt ext;
@@ -20,7 +20,7 @@ struct PollEntry
     uint64 permissionType;
 
     uint64 numberOfChoices;
-    PollSpecification specification;
+    PollData data;
 
     uint64 startTime;
     uint64 endTime;

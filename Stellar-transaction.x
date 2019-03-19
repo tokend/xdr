@@ -41,6 +41,7 @@
 %#include "xdr/Stellar-operation-stamp.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
+%#include "xdr/Stellar-operation-check-poll.h"
 
 namespace stellar
 {
@@ -132,6 +133,8 @@ struct Operation
         ManageCreatePollRequestOp manageCreatePollRequestOp;
     case MANAGE_VOTE:
         ManageVoteOp manageVoteOp;
+    case CHECK_POLL:
+        CheckPollOp checkPollOp;
     }
     body;
 };
@@ -323,6 +326,8 @@ case opINNER:
         ManageCreatePollRequestResult manageCreatePollRequestResult;
     case MANAGE_VOTE:
         ManageVoteResult manageVoteResult;
+    case CHECK_POLL:
+        CheckPollResult checkPollResult;
     }
     tr;
 case opNO_ENTRY:

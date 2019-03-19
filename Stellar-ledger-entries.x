@@ -109,7 +109,7 @@ struct LedgerEntry
     case POLL:
         PollEntry poll;
     case VOTE:
-        VoteEntry voteEntry;
+        VoteEntry vote;
     }
     data;
 

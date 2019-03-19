@@ -8,7 +8,7 @@ struct CreatePollRequest
     uint64 permissionType;
 
     uint64 numberOfChoices;
-    PollSpecification specification;
+    PollData data;
 
     longstring creatorDetails; // details set by requester
 

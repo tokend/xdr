@@ -30,7 +30,7 @@ default:
 
 struct VoteEntry
 {
-    uint64 ID;
+    uint64 id;
 
     VoteData data;
 
