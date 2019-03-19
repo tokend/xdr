@@ -22,8 +22,6 @@ union VoteData switch (PollType p)
 {
 case SINGLE_CHOICE:
     SingleChoiceVote single;
-default:
-    void;
 //case MULTIPLE_CHOICE:
 //    MultipleChoiceVote multiple;
 };

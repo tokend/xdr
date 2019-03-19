@@ -23,6 +23,19 @@ struct CreatePollRequestData
     ext;
 };
 
+struct RemoveCreatePollRequestData
+{
+    uint64 requestID;
+
+    //: reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 struct ManageCreatePollRequestOp
 {
     union switch (ManageCreatePollRequestAction action)
@@ -30,7 +43,7 @@ struct ManageCreatePollRequestOp
     case CREATE:
         CreatePollRequestData createData;
     case REMOVE:
-        uint64 requestID;
+        RemoveCreatePollRequestData removeData;
     }
     data;
 
