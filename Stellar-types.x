@@ -175,7 +175,7 @@ enum OperationType
     LICENSE = 42,
     MANAGE_CREATE_POLL_REQUEST = 43,
     MANAGE_VOTE = 44,
-    CHECK_POLL = 45
+    FINISH_POLL = 45
 };
 
 struct DecoratedSignature

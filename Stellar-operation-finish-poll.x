@@ -26,7 +26,7 @@ struct FinishPollOp
 };
 
 
-enum CheckPollResultCode
+enum FinishPollResultCode
 {
     // codes considered as "success" for the operation
 
@@ -39,7 +39,7 @@ enum CheckPollResultCode
     NOT_READY = -2
 };
 
-union CheckPollResult switch (CheckPollResultCode code)
+union FinishPollResult switch (FinishPollResultCode code)
 {
 case SUCCESS:
     EmptyExt ext;

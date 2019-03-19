@@ -133,8 +133,8 @@ struct Operation
         ManageCreatePollRequestOp manageCreatePollRequestOp;
     case MANAGE_VOTE:
         ManageVoteOp manageVoteOp;
-    case CHECK_POLL:
-        CheckPollOp checkPollOp;
+    case FINISH_POLL:
+        FinishPollOp finishPollOp;
     }
     body;
 };
@@ -326,8 +326,8 @@ case opINNER:
         ManageCreatePollRequestResult manageCreatePollRequestResult;
     case MANAGE_VOTE:
         ManageVoteResult manageVoteResult;
-    case CHECK_POLL:
-        CheckPollResult checkPollResult;
+    case FINISH_POLL:
+        FinishPollResult finishPollResult;
     }
     tr;
 case opNO_ENTRY:
