@@ -65,7 +65,7 @@ enum ManageVoteResultCode
     POLL_NOT_FOUND = -2, // poll not found
     VOTE_EXISTS = -3, // vote to remove  not found
     POLL_TYPE_MISMATCHED = -4,
-    POLL_NOT_READY = -5,
+    POLL_NOT_STARTED = -5,
     POLL_ENDED = -6
 };
 
