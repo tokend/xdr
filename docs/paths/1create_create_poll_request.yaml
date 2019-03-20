@@ -1,0 +1,38 @@
+/createCreatePollRequest:
+  get:
+    tags:
+      - Polls
+    summary: Create Request For Poll Creation
+    description: |
+                  Allows to create `CREATE_POLL` reviewable request
+                  `CREATE_POLL` request is used to create poll entry
+
+                  #### Account Role Requirements
+                    | Account | Resource Type        | Reviewable Request Type | Rule Action         |  Condition           |
+                    | --------|:--------------------:|:-----------------------:|:-------------------:| ------------         |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CREATE`            | `allTasks` == `null` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+                  #### Signer Role Requirements
+                    | Resource Type        | Reviewable Request Type | Rule Action | Details |
+                    |:--------------------:|:-----------------------:|:-----------:| --------|
+                    | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CREATE`    | Resource includes pemission type of poll |
+    operationId: createCreatePollRequest
+    x-item-type: operation
+    parameters:
+    - name: Manage Create Poll Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageCreatePollRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageCreatePollRequestResult'
