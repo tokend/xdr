@@ -42,8 +42,10 @@ case CREATE_WITHDRAW:
         EmptyExt ext;
     } createWithdraw;
 case CREATE_POLL:
+    //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
     {
+        //: permission type of poll
         uint64 permissionType;
 
         //: reserved for future extension
@@ -131,6 +133,7 @@ case POLL:
         //: ID of the poll
         uint64 pollID;
 
+        //: permission type of poll
         uint64 permissionType;
 
         //: reserved for future extension
@@ -142,6 +145,7 @@ case VOTE:
         //: ID of the poll
         uint64 pollID;
 
+        //: permission type of poll
         uint64 permissionType;
 
         //: reserved for future extension

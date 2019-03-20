@@ -7,7 +7,7 @@ namespace stellar
 enum ManageCreatePollRequestAction
 {
     CREATE = 0,
-    REMOVE = 1
+    CANCEL = 1
 };
 
 //: CreatePollRequestData is used to pass necessary data to create a `CREATE_POLL` request
@@ -29,8 +29,8 @@ struct CreatePollRequestData
     ext;
 };
 
-//: RemovePollRequestData is used to pass necessary data to remove a `CREATE_POLL` request
-struct RemovePollRequestData
+//: CancelPollRequestData is used to pass necessary data to remove a `CREATE_POLL` request
+struct CancelPollRequestData
 {
     uint64 requestID;
 
@@ -51,8 +51,8 @@ struct ManageCreatePollRequestOp
     {
     case CREATE:
         CreatePollRequestData createData;
-    case REMOVE:
-        RemovePollRequestData removeData;
+    case CANCEL:
+        CancelPollRequestData removeData;
     }
     data;
 
@@ -110,7 +110,7 @@ struct ManageCreatePollRequestSuccessResult
     {
     case CREATE:
         CreatePollRequestResponse response;
-    case REMOVE:
+    case CANCEL:
         void;
     } details;
 

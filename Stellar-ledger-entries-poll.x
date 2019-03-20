@@ -3,11 +3,13 @@
 namespace stellar
 {
 
+//: Functional type of poll
 enum PollType
 {
     SINGLE_CHOICE = 0
 };
 
+//: PollData is used to pass `PollType` with necessary params
 union PollData switch (PollType type)
 {
 case SINGLE_CHOICE:
