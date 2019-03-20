@@ -1,0 +1,37 @@
+/createVote:
+  get:
+    tags:
+      - Votes
+    summary: Create Vote
+    description: |
+                  Allows to create (send) vote
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action |
+                    | --------|:-------------:|:-----------:|
+                    | source  | `VOTE`        | `CREATE`    |
+
+                  #### Signer Role Requirements
+                   | Account        | Resource Type | Rule Action        | Condition |
+                   | -------------- |:-------------:|:------------------:| --------|
+                   | source         | `VOTE`        | `CREATE`           | Always |
+                   | resultProvider | `VOTE`        | `CREATE_FOR_OTHER` | `voteConfirmationRequired == true` |
+    operationId: createVote
+    x-item-type: operation
+    parameters:
+    - name: Manage Vote Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageVoteOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageVoteResult'
