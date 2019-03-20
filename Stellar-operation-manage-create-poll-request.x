@@ -77,10 +77,13 @@ enum ManageCreatePollRequestResultCode
     INVALID_CREATOR_DETAILS = -1,
     //: There is no `CREATE_POLL` request with such id
     NOT_FOUND = -2,
-
+    INVALID_DATES = -3,
+    INVALID_START_TIME = -4,
+    INVALID_END_TIME = -5,
     //: There is no key-value entry by `create_poll_tasks:<permissionType>` key in the system;
     //: configuration does not allow to create `CREATE_POLL` request with such `permissionType`
-    CREATE_POLL_TASKS_NOT_FOUND = -6
+    CREATE_POLL_TASKS_NOT_FOUND = -6,
+    RESULT_PROVIDER_NOT_FOUND = -7
 };
 
 //: CreatePollRequestResponse is used to pass useful fields after `CREATE_POLL` request creation
