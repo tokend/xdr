@@ -52,7 +52,7 @@ struct ManageCreatePollRequestOp
     case CREATE:
         CreatePollRequestData createData;
     case CANCEL:
-        CancelPollRequestData removeData;
+        CancelPollRequestData cancelData;
     }
     data;
 
