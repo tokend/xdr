@@ -36,7 +36,11 @@ enum FinishPollResultCode
     //: Poll with provided ID not found
     NOT_FOUND = -1,
 
-    NOT_READY = -2
+    NOT_READY = -2,
+
+    INVALID = -3,
+
+    NOT_AUTHORIZED = -4
 };
 
 union FinishPollResult switch (FinishPollResultCode code)
