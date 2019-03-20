@@ -110,6 +110,7 @@ case POLL:
         //: ID of the poll
         uint64 pollID;
 
+        //: permission type of poll
         uint64 permissionType;
 
         //: reserved for future extension
@@ -121,6 +122,7 @@ case VOTE:
         //: ID of the poll
         uint64 pollID;
 
+        //: permission type of poll
         uint64 permissionType;
 
         //: reserved for future extension
