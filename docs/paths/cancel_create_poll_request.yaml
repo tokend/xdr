@@ -1,0 +1,34 @@
+/cancelCreatePollRequest:
+  get:
+    tags:
+      - Polls
+    summary: Cancel Request For Poll Cretion
+    description: |
+                  Allows to cancel (remove) `CREATE_POLL` reviewable request
+
+                  #### Account Role Requirements
+                    Only `CREATE_POLL` request creator can cancel request
+
+                  #### Signer Role Requirements
+                    | Resource Type        | Reviewable Request Type | Rule Action |
+                    |:--------------------:|:-----------------------:| -----------:|
+                    | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CANCEL`    |
+    operationId: cancelCreatePollRequest
+    x-item-type: operation
+    parameters:
+    - name: Manage Create Poll Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageCreatePollRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageCreatePollRequestResult'
