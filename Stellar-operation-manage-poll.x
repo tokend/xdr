@@ -6,8 +6,8 @@ namespace stellar
 //: Actions that can be applied to a `CREATE_POLL` request
 enum ManagePollAction
 {
-    CREATE_REQUEST = 0,
-    CANCEL_REQUEST = 1,
+    CREATE_POLL_CREATION_REQUEST = 0,
+    CANCEL_POLL_CREATION_REQUEST = 1,
     CLOSE = 2//,
 //    UPDATE_END_TIME = 3
 };
@@ -80,9 +80,9 @@ struct ManagePollOp
     //: data is used to pass one of `ManagePollAction` with required params
     union switch (ManagePollAction action)
     {
-    case CREATE_REQUEST:
+    case CREATE_POLL_CREATION_REQUEST:
         CreatePollRequestData createData;
-    case CANCEL_REQUEST:
+    case CANCEL_POLL_CREATION_REQUEST:
         CancelPollRequestData cancelData;
     case CLOSE:
         ClosePollData closeData;
@@ -146,9 +146,9 @@ struct ManagePollSuccessResult
     //: `details` id used to pass useful fields
     union switch (ManagePollAction action)
     {
-    case CREATE_REQUEST:
+    case CREATE_POLL_CREATION_REQUEST:
         CreatePollRequestResponse response;
-    case CANCEL_REQUEST:
+    case CANCEL_POLL_CREATION_REQUEST:
         void;
     case CLOSE:
         void;
