@@ -75,13 +75,15 @@ enum ManageVoteResultCode
     //: There is no with such id
     POLL_NOT_FOUND = -2, // poll not found
     //: Not allowed to create (send) two votes for one poll
-    VOTE_EXISTS = -3, // vote to remove  not found
+    VOTE_EXISTS = -3,
     //: Not allowed to create (send) vote with functional type that is different from the poll functional type
     POLL_TYPE_MISMATCHED = -4,
     //: Not allowed to vote in poll which not started yet
     POLL_NOT_STARTED = -5,
     //: Not allowed to vote in poll which already was ended
-    POLL_ENDED = -6
+    POLL_ENDED = -6,
+    //: There is no vote from source account in such poll
+    VOTE_NOT_FOUND = -7 // vote to remove  not found
 };
 
 //: Result of ManageVoteOp application

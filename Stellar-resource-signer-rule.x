@@ -149,7 +149,8 @@ enum SignerRuleAction
     PARTICIPATE = 11,
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
-    CHECK = 14
+    CHECK = 14,
+    CLOSE = 15
 };
 
 

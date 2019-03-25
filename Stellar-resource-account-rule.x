@@ -173,7 +173,9 @@ enum AccountRuleAction
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
-    CANCEL = 15
+    CANCEL = 15,
+    CLOSE = 16,
+    REMOVE = 17
 };
 
 }
