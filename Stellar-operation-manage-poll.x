@@ -21,9 +21,6 @@ enum PollResult
 //: ClosePollData is used to submit poll results
 struct ClosePollData
 {
-    //: ID of poll to close
-    uint64 pollID;
-
     //: result of voting
     PollResult result;
 
@@ -53,6 +50,7 @@ struct UpdatePollEndTimeData
 };
 struct ManagePollOp
 {
+    //: ID of poll to manage
     uint64 pollID;
 
     union switch (ManagePollAction action)
