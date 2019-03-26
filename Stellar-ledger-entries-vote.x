@@ -18,7 +18,7 @@ struct MultipleChoiceVote {
 */
 
 
-union VoteData switch (PollType p)
+union VoteData switch (PollType pollType)
 {
 case SINGLE_CHOICE:
     SingleChoiceVote single;
