@@ -70,8 +70,8 @@ enum ManageVoteResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //:
-    INVALID_VOTE = -1, // vote option is invalid
+    //: There is no vote from source account in such poll
+    VOTE_NOT_FOUND = -7 // vote to remove  not found
     //: There is no with such id
     POLL_NOT_FOUND = -2, // poll not found
     //: Not allowed to create (send) two votes for one poll
@@ -81,9 +81,7 @@ enum ManageVoteResultCode
     //: Not allowed to vote in poll which not started yet
     POLL_NOT_STARTED = -5,
     //: Not allowed to vote in poll which already was ended
-    POLL_ENDED = -6,
-    //: There is no vote from source account in such poll
-    VOTE_NOT_FOUND = -7 // vote to remove  not found
+    POLL_ENDED = -6
 };
 
 //: Result of ManageVoteOp application

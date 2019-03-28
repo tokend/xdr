@@ -3,6 +3,7 @@
 namespace stellar
 {
 
+//: Actions that can be applied to a poll
 enum ManagePollAction
 {
     CLOSE = 0
@@ -48,11 +49,14 @@ struct UpdatePollEndTimeData
     }
     ext;
 };
+
+//: ManagePollOp is used to close (in future: update end time or remove) the poll
 struct ManagePollOp
 {
     //: ID of poll to manage
     uint64 pollID;
 
+    //: data is used to pass one of `ManagePollAction` with required params
     union switch (ManagePollAction action)
     {
     case CLOSE:
@@ -73,20 +77,22 @@ struct ManagePollOp
     ext;
 };
 
-
-
+//: Result codes of ManagePollOp
 enum ManagePollResultCode
 {
-    // codes considered as "success" for the operation
+    //: Specified action in `data` of ManagePollOp was successfully executed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1, // not found contract request, when try to remove
+    //: There is no poll with such id
+    NOT_FOUND = -1,
+    //: Not allowed to close poll which
     POLL_NOT_READY = -2,
+    //: Only result provider is allowed to close poll
     NOT_AUTHORIZED_TO_CLOSE_POLL = -3
-
 };
 
+//: Result of operation application
 union ManagePollResult switch (ManagePollResultCode code)
 {
 case SUCCESS:

@@ -32,6 +32,7 @@ struct CreatePollRequestData
 //: CancelPollRequestData is used to pass necessary data to remove a `CREATE_POLL` request
 struct CancelPollRequestData
 {
+    //: ID of `CREATE_POLL` request to remove
     uint64 requestID;
 
     //: reserved for future use
@@ -77,13 +78,15 @@ enum ManageCreatePollRequestResultCode
     INVALID_CREATOR_DETAILS = -1,
     //: There is no `CREATE_POLL` request with such id
     NOT_FOUND = -2,
+    //: Not allowed to create poll which has `endTime` not later than `startTime`
     INVALID_DATES = -3,
+    //: Not allowed to create poll which `startTime` early that currentTime
     INVALID_START_TIME = -4,
-    INVALID_END_TIME = -5,
+    //: There is no account which such id
+    RESULT_PROVIDER_NOT_FOUND = -5
     //: There is no key-value entry by `create_poll_tasks:<permissionType>` key in the system;
     //: configuration does not allow to create `CREATE_POLL` request with such `permissionType`
-    CREATE_POLL_TASKS_NOT_FOUND = -6,
-    RESULT_PROVIDER_NOT_FOUND = -7
+    CREATE_POLL_TASKS_NOT_FOUND = -6
 };
 
 //: CreatePollRequestResponse is used to pass useful fields after `CREATE_POLL` request creation
