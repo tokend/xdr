@@ -1,29 +1,31 @@
-/finishPoll:
+/closePoll:
   get:
     tags:
       - Polls
-    summary: Finish Poll
+    summary: Close Poll
     description: |
-                  Allows to submit poll result
+                  Allows to submit poll result. Only `resultProvider` can sumbit poll result
 
                   #### Account Role Requirements
-                    Only `resultProvider` can sumbit poll result
+                    | Account | Resource Type | Rule Action |
+                    | --------|:-------------:|:-----------:|
+                    | source  | `POLL`        | `CLOSE`    |
 
                   #### Signer Role Requirements
                     | Resource Type  | Rule Action |
                     |:--------------:|:-----------:|
-                    | `POLL`         | `FINISH`    |
-    operationId: finishPoll
+                    | `POLL`         | `CLOSE`    |
+    operationId: closePoll
     x-item-type: operation
     parameters:
-    - name: Finish Poll Op
+    - name: Manage Poll Op
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/FinishPollOp'
+        $ref: '#/components/schemas/ManagePollOp'
     responses:
       200:
         description: Result
@@ -31,4 +33,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/FinishPollResult'
+              $ref: '#/components/schemas/ManagePollResult'

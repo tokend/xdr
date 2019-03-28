@@ -4,7 +4,7 @@
       - Polls
     summary: Create Request For Poll Creation
     description: |
-                  Allows to create `CREATE_POLL` reviewable request
+                  Allows to create `CREATE_POLL` reviewable request.
                   `CREATE_POLL` request is used to create poll entry
 
                   #### Account Role Requirements
