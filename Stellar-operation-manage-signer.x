@@ -56,7 +56,7 @@ struct ManageSignerOp
     union switch (ManageSignerAction action)
     {
     case CREATE:
-        UpdateSignerData createData;POLL_NOT_READY
+        UpdateSignerData createData;
     case UPDATE:
         UpdateSignerData updateData;
     case REMOVE:

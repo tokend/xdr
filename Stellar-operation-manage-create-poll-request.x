@@ -83,7 +83,7 @@ enum ManageCreatePollRequestResultCode
     //: Not allowed to create poll which `startTime` early that currentTime
     INVALID_START_TIME = -4,
     //: There is no account which such id
-    RESULT_PROVIDER_NOT_FOUND = -5
+    RESULT_PROVIDER_NOT_FOUND = -5,
     //: There is no key-value entry by `create_poll_tasks:<permissionType>` key in the system;
     //: configuration does not allow to create `CREATE_POLL` request with such `permissionType`
     CREATE_POLL_TASKS_NOT_FOUND = -6
