@@ -72,7 +72,7 @@ enum ManageVoteResultCode
     // codes considered as "failure" for the operation
     //: There is no vote from source account in such poll
     VOTE_NOT_FOUND = -1, // vote to remove  not found
-    //: There is no with such id
+    //: There is no poll with such id
     POLL_NOT_FOUND = -2, // poll not found
     //: Not allowed to create (send) two votes for one poll
     VOTE_EXISTS = -3,
