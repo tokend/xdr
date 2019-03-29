@@ -111,7 +111,7 @@ case POLL:
         uint64 pollID;
 
         //: permission type of poll
-        uint64 permissionType;
+        uint32 permissionType;
 
         //: reserved for future extension
         EmptyExt ext;
@@ -123,7 +123,7 @@ case VOTE:
         uint64 pollID;
 
         //: permission type of poll
-        uint64 permissionType;
+        uint32 permissionType;
 
         //: reserved for future extension
         EmptyExt ext;
