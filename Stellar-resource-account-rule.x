@@ -46,7 +46,7 @@ case CREATE_POLL:
     struct
     {
         //: permission type of poll
-        uint64 permissionType;
+        uint32 permissionType;
 
         //: reserved for future extension
         EmptyExt ext;
