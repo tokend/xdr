@@ -19,9 +19,9 @@ case SINGLE_CHOICE:
 struct PollEntry
 {
     uint64 id;
-    uint64 permissionType;
+    uint32 permissionType;
 
-    uint64 numberOfChoices;
+    uint32 numberOfChoices;
     PollData data;
 
     uint64 startTime;

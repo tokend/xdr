@@ -7,10 +7,10 @@ namespace stellar
 struct CreatePollRequest
 {
     //: is used to restrict using of poll through rules
-    uint64 permissionType;
+    uint32 permissionType;
 
-    //: Count of allowed choices
-    uint64 numberOfChoices;
+    //: Number of allowed choices
+    uint32 numberOfChoices;
 
     //: Specification of poll
     PollData data;

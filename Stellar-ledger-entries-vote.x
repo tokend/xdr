@@ -6,7 +6,7 @@ namespace stellar
 
 struct SingleChoiceVote
 {
-    uint64 choice;
+    uint32 choice;
     EmptyExt ext;
 };
 
