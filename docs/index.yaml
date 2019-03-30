@@ -85,6 +85,10 @@ tags:
     description: Defines access points to get operations related to sales
   - name: External Systems
     descriptions: Defines access points to get operations related to external systems
+  - name: Polls
+    description: Defines access points to operations related to polls
+  - name: Votes
+    description: Defines access points to operations related to votes
 x-tagGroups:
   - name: Essentials
     tags:
@@ -130,3 +134,7 @@ x-tagGroups:
       - Requests
       - Licensing
       - WIP
+  - name: Voting
+    tags:
+      - Polls
+      - Votes

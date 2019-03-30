@@ -41,6 +41,16 @@ case CREATE_WITHDRAW:
         //: reserved for future extension
         EmptyExt ext;
     } createWithdraw;
+case CREATE_POLL:
+    //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
+    struct
+    {
+        //: permission type of poll
+        uint32 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } createPoll;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -117,6 +127,30 @@ case KEY_VALUE:
         //: reserved for future extension
         EmptyExt ext;
     } keyValue;
+case POLL:
+    struct
+    {
+        //: ID of the poll
+        uint64 pollID;
+
+        //: permission type of poll
+        uint32 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } poll;
+case VOTE:
+    struct
+    {
+        //: ID of the poll
+        uint64 pollID;
+
+        //: permission type of poll
+        uint32 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } vote;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -139,7 +173,9 @@ enum AccountRuleAction
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
-    CANCEL = 15
+    CANCEL = 15,
+    CLOSE = 16,
+    REMOVE = 17
 };
 
 }
