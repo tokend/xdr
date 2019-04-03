@@ -101,6 +101,9 @@ struct CreatePollRequestResponse
     //: True means that poll was successfully created
     bool fulfilled;
 
+    //: ID of created poll if request was fulfilled
+    uint64* pollID;
+
     //: reserved for the future use
     union switch (LedgerVersion v)
     {
