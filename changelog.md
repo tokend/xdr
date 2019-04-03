@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.1
+
+### Added
+
+* Add optional pollID field in CreatePollRequestResponse result
+
 ## 3.1.0
 
 ### Added
