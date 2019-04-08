@@ -4,7 +4,7 @@
       - Votes
     summary: Remove Vote
     description: |
-                  Allows to remove (cancel) own vote
+                  Allows removing (cancelling) a vote
 
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action |

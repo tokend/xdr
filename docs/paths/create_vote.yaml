@@ -4,7 +4,7 @@
       - Votes
     summary: Create Vote
     description: |
-                  Allows to create (send) vote
+                  Allows creating (sending) a vote
 
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action |
