@@ -5,7 +5,7 @@
 
 namespace stellar
 {
-//: Actions that can be performed on request that is being reviewed
+//: Actions that can be performed with the request that is being reviewed
 enum ReviewRequestOpAction {
     //: Approve request
     APPROVE = 1,
@@ -23,7 +23,7 @@ enum ReviewRequestOpAction {
 
         Result: ReviewRequestResult
 */
-//: Review details of a Limits Update request
+//: Review details of the Limits Update request
 struct LimitsUpdateDetails { 
     //: Limits entry containing new limits to set 
     LimitsV2Entry newLimitsV2;
@@ -37,9 +37,9 @@ struct LimitsUpdateDetails {
     ext;
 };
 
-//: Review details of a Withdraw Request
+//: Review details of the Withdraw Request
 struct WithdrawalDetails {
-    //: External details updated on a Withdraw review
+    //: External details updated in the Withdraw review
     string externalDetails<>;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -50,9 +50,9 @@ struct WithdrawalDetails {
     ext;
 };
 
-//: Details of AML Alert 
+//: Details of the AML Alert 
 struct AMLAlertDetails {
-    //: Comment on reason of AML Alert
+    //: Comment containing the reason of AML Alert
     string comment<>;
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -75,9 +75,9 @@ struct ContractDetails {
     ext;
 };
 
-//: Details of a payment reviewable request
+//: Details of the payment reviewable request
 struct BillPayDetails {
-    //: Details of payment
+    //: Details of a payment
     PaymentOp paymentDetails;
 
     //: Reserved for future use
@@ -89,7 +89,7 @@ struct BillPayDetails {
     ext;
 };
 
-//: Details of a request review
+//: Details of the request review
 struct ReviewDetails {
     //: Tasks to add to pending
     uint32 tasksToAdd;
@@ -106,9 +106,9 @@ struct ReviewDetails {
     ext;
 };
 
-//: Extended result of the review request operation containing details specific to a Create Sale Request
+//: Extended result of the review request operation containing details specific to the Create Sale Request
 struct SaleExtended {
-    //: ID of the newly created sale as a result of Create Sale Request successful review
+    //: ID of the newly created sale as a result of the Create Sale Request successful review
     uint64 saleID;
 
     //: Reserved for future use
@@ -120,10 +120,10 @@ struct SaleExtended {
     ext;
 };
 
-//: Extended result of the review request operation containing details specific to a Create Atomic Swap Bid Request
+//: Extended result of the review request operation containing details specific to the Create Atomic Swap Bid Request
 struct ASwapBidExtended
 {
-    //: ID of the newly created bid as a result of Create Atomic Swap Bid Request successful review
+    //: ID of the newly created bid as a result of the Create Atomic Swap Bid Request successful review
     uint64 bidID;
 
     //: Reserved for future use
@@ -135,7 +135,7 @@ struct ASwapBidExtended
     ext;
 };
 
-//: Extended result of the review request operation containing details specific to a `CREATE_POLL` request
+//: Extended result of the review request operation containing details specific to the `CREATE_POLL` request
 struct CreatePollExtended
 {
     //: ID of the newly created poll
@@ -150,18 +150,18 @@ struct CreatePollExtended
     ext;
 };
 
-//: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
+//: Extended result of the review request operation containing details specific to the Create Atomic Swap Request
 struct ASwapExtended
 {
     //: ID of a bid to apply atomic swap to
     uint64 bidID;
-    //: AccountID of a bid owner
+    //: AccountID of the bid owner
     AccountID bidOwnerID;
-    //: Account id of an atomic swap source
+    //: Account id of the atomic swap source
     AccountID purchaserID;
-    //: Base asset for the atomic swap
+    //: Base asset for an atomic swap
     AssetCode baseAsset;
-    //: Quote asset for the atomic swap
+    //: Quote asset for an atomic swap
     AssetCode quoteAsset;
     //: Amount in base asset to exchange
     uint64 baseAmount;
@@ -171,7 +171,7 @@ struct ASwapExtended
     uint64 price;
     //: Balance in base asset of a bid owner
     BalanceID bidOwnerBaseBalanceID;
-    //: Balance in quote asset of atomic swap source
+    //: Balance in quote asset of an atomic swap source
     BalanceID purchaserBaseBalanceID;
 
     //: Reserved for future use
@@ -183,11 +183,11 @@ struct ASwapExtended
     ext;
 };
 
-//: Extended result of a Review Request operation containing details specific to certain request types
+//: Extended result of the Review Request operation containing details specific to certain request types
 struct ExtendedResult {
     //: Indicates whether or not the request that is being reviewed was applied
     bool fulfilled;
-    //: typeExt is used to pass ReviewableRequestType along with details specific to a request type
+    //: typeExt is used to pass ReviewableRequestType along with details specific to the request type
     union switch(ReviewableRequestType requestType) {
     case CREATE_SALE:
         SaleExtended saleExtended;
@@ -234,7 +234,7 @@ struct ReviewRequestOp
     } requestDetails;
     //: Review action defines an action performed on the pending ReviewableRequest
     ReviewRequestOpAction action;
-    //: Contains reject reason
+    //: Contains the reject reason
     longstring reason;
     //: Details of the ReviewRequest operation
     ReviewDetails reviewDetails;
@@ -261,11 +261,11 @@ enum ReviewRequestResultCode
     INVALID_REASON = -1,
     //: Unknown action to perform on ReviewableRequest
     INVALID_ACTION = -2,
-    //: Actual hash of the request and provided hash are mismatched
+    //: Actual hash of the request and the provided hash are mismatched
     HASH_MISMATCHED = -3,
     //: ReviewableRequest is not found
     NOT_FOUND = -4,
-    //: Actual type of a reviewable request and provided type are mismatched
+    //: Actual type of a reviewable request and the provided type are mismatched
     TYPE_MISMATCHED = -5,
     //: Reject is not allowed. Only permanent reject should be used
     REJECT_NOT_ALLOWED = -6,
@@ -285,7 +285,7 @@ enum ReviewRequestResultCode
     ASSET_DOES_NOT_EXISTS = -210,
 
     //: Issuance requests
-    //: After the issuance request application, issued amount will exceed max issuance amount
+    //: After the issuance request application, issued amount will exceed the max issuance amount
     MAX_ISSUANCE_AMOUNT_EXCEEDED = -400,
     //: Trying to issue more than it is available for issuance
     INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
@@ -297,9 +297,9 @@ enum ReviewRequestResultCode
     INCORRECT_PRECISION = -440,
 
     //: Sale creation requests
-    //: Trying to create a sale for a base asset that does not exist
+    //: Trying to create a sale for the base asset that does not exist
     BASE_ASSET_DOES_NOT_EXISTS = -500,
-    //: Trying to create a sale with hard cap that will exceed max issuance amount
+    //: Trying to create a sale with hard cap that will exceed the max issuance amount
     HARD_CAP_WILL_EXCEED_MAX_ISSUANCE = -510,
     //: Trying to create a sale with preissued amount that is less than the hard cap
     INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
@@ -349,7 +349,7 @@ enum ReviewRequestResultCode
     //: Limits update requests
     //: Trying to create a limits update request for both account and account type at the same time
     CANNOT_CREATE_FOR_ACC_ID_AND_ACC_TYPE = 1300,
-    //: Trying to set invalid limits, i.e. with dayly limit greater than weekly limit
+    //: Trying to set invalid limits, i.e. with a dayly limit greater than the weekly limit
     INVALID_LIMITS = 1310,
     //: There is no account with passed ID for limits update request
     ACCOUNT_NOT_FOUND = -1311,
@@ -367,7 +367,7 @@ enum ReviewRequestResultCode
     ASWAP_PURCHASER_FULL_LINE = -1504
 
 };
-//: Result of applying the review request with result code
+//: Result of applying the review request with the result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:

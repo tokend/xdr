@@ -2,9 +2,9 @@
   get:
     tags:
       - Polls
-    summary: Cancel Request For Poll Cretion
+    summary: Cancel Request For the Poll Creation
     description: |
-                  Allows to cancel (remove) `CREATE_POLL` reviewable request
+                  Allows canceling (removing) `CREATE_POLL` reviewable request
 
                   #### Account Role Requirements
                     Only `CREATE_POLL` request creator can cancel request

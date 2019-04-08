@@ -47,7 +47,7 @@ namespace stellar
 {
 
 
-//: An operation is the lowest unit of work that a transaction does
+//: Operation is the lowest unit of work a transaction performs
 struct Operation
 {
     //: sourceAccount is the account used to run the operation
@@ -166,21 +166,21 @@ struct TimeBounds
 {
     //: specifies inclusive min ledger close time after which transaction is valid
     uint64 minTime;
-    //: specifies inclusive max ledger close time before which transaction is valid.
-    //: note: transaction will be rejected if max time exceeds close time of current ledger on more then [`tx_expiration_period`](https://tokend.gitlab.io/horizon/#operation/info)
+    //: specifies inclusive max ledger close time before which transaction is valid
+    //: note: transaction will be rejected if max time exceeds close time of a current ledger on more then [`tx_expiration_period`](https://tokend.gitlab.io/horizon/#operation/info)
     uint64 maxTime; // 0 here means no maxTime
 };
 
 //: Transaction is a container for a set of operations
 //:    - is executed by an account
-//:    - operations are executed in order as one ACID transaction
+//:    - operations are executed in an order as one ACID transaction
 //: (either all operations are applied or none are if any returns a failing code)
 struct Transaction
 {
     //: account used to run the transaction
     AccountID sourceAccount;
 
-    //: random number used to ensure there is no hash collisions
+    //: random number used to ensure there are no hash collisions
     Salt salt;
 
     //: validity range (inclusive) for the last ledger close time
@@ -205,7 +205,7 @@ struct Transaction
 struct TransactionEnvelope
 {
     Transaction tx;
-    //: list of signatures used to authorize transaction
+    //: list of signatures used to authorize a transaction
     DecoratedSignature signatures<20>;
 };
 

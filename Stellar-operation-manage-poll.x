@@ -12,7 +12,7 @@ enum ManagePollAction
 };
 
 
-//: PollResult is used to specify result of voting
+//: PollResult is used to specify the result of voting
 enum PollResult
 {
     PASSED = 0,
@@ -50,13 +50,13 @@ struct UpdatePollEndTimeData
     ext;
 };
 
-//: ManagePollOp is used to close (in future: update end time or remove) the poll
+//: ManagePollOp is used to close the poll. In the future, it could be used to update the end time in or remove the poll.
 struct ManagePollOp
 {
-    //: ID of poll to manage
+    //: ID of a poll to manage
     uint64 pollID;
 
-    //: data is used to pass one of `ManagePollAction` with required params
+    //: data used to pass one of `ManagePollAction` with required params
     union switch (ManagePollAction action)
     {
     case CLOSE:
@@ -80,15 +80,15 @@ struct ManagePollOp
 //: Result codes of ManagePollOp
 enum ManagePollResultCode
 {
-    //: Specified action in `data` of ManagePollOp was successfully executed
+    //: Specified action in `data` of ManagePollOp has been successfully executed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: There is no poll with such id
+    //: There is no poll with such an id
     NOT_FOUND = -1,
-    //: Not allowed to close poll which
+    //: It is not allowed to close poll which has 
     POLL_NOT_READY = -2,
-    //: Only result provider is allowed to close poll
+    //: Only the result provider is allowed to close the poll
     NOT_AUTHORIZED_TO_CLOSE_POLL = -3
 };
 

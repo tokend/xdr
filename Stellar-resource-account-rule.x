@@ -42,7 +42,7 @@ case CREATE_WITHDRAW:
         EmptyExt ext;
     } createWithdraw;
 case CREATE_POLL:
-    //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
+    //: is used to restrict the creation of a `CREATE_POLL` reviewable request type
     struct
     {
         //: permission type of poll
@@ -60,7 +60,7 @@ default:
 union AccountRuleResource switch (LedgerEntryType type)
 {
 case ASSET:
-    //: Describes properties that are equal to managed asset entry fields
+    //: Describes properties that are equal to the managed asset entry fields
     struct
     {
         AssetCode assetCode;
@@ -69,7 +69,7 @@ case ASSET:
         EmptyExt ext;
     } asset;
 case REVIEWABLE_REQUEST:
-    //: Describes properties that are equal to managed reviewable request entry fields
+    //: Describes properties that are equal to the managed reviewable request entry fields
     struct
     {
         //: Describes properties of some reviewable request types that
@@ -82,17 +82,17 @@ case REVIEWABLE_REQUEST:
 case ANY:
     void;
 case OFFER_ENTRY:
-    //: Describes properties that are equal to managed offer entry fields and their properties
+    //: Describes properties that are equal to the managed offer entry fields and their properties
     struct
     {
-        //: type of base asset
+        //: type of a base asset
         uint64 baseAssetType;
-        //: type of quote asset
+        //: type of a quote asset
         uint64 quoteAssetType;
 
-        //: code of base asset
+        //: code of a abase asset
         AssetCode baseAssetCode;
-        //: code of quote asset
+        //: code of a quote asset
         AssetCode quoteAssetCode;
 
         bool isBuy;
@@ -101,7 +101,7 @@ case OFFER_ENTRY:
         EmptyExt ext;
     } offer;
 case SALE:
-    //: Describes properties that are equal to managed offer entry fields
+    //: Describes properties that are equal to the managed offer entry fields
     struct
     {
         uint64 saleID;
@@ -121,7 +121,7 @@ case ATOMIC_SWAP_BID:
 case KEY_VALUE:
     struct
     {
-        //: prefix of key
+        //: prefix of a key
         longstring keyPrefix;
 
         //: reserved for future extension
@@ -130,10 +130,10 @@ case KEY_VALUE:
 case POLL:
     struct
     {
-        //: ID of the poll
+        //: ID of a poll
         uint64 pollID;
 
-        //: permission type of poll
+        //: permission type of a poll
         uint32 permissionType;
 
         //: reserved for future extension
@@ -142,10 +142,10 @@ case POLL:
 case VOTE:
     struct
     {
-        //: ID of the poll
+        //: ID of a poll
         uint64 pollID;
 
-        //: permission type of poll
+        //: permission type of a poll
         uint32 permissionType;
 
         //: reserved for future extension
@@ -156,7 +156,7 @@ default:
     EmptyExt ext;
 };
 
-//: Actions that can be applied to account rule resource
+//: Actions that can be applied to the account rule resource
 enum AccountRuleAction
 {
     ANY = 1,

@@ -4,7 +4,7 @@
       - Polls
     summary: Close Poll
     description: |
-                  Allows to submit poll result. Only `resultProvider` can sumbit poll result
+                  Allows submitting the poll result. Only `resultProvider` can sumbit the poll result
 
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action |

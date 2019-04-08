@@ -2,10 +2,10 @@
   get:
     tags:
       - Polls
-    summary: Create Request For Poll Creation
+    summary: Create Request For the Poll Creation
     description: |
-                  Allows to create `CREATE_POLL` reviewable request.
-                  `CREATE_POLL` request is used to create poll entry
+                  Allows creating `CREATE_POLL` reviewable request.
+                  `CREATE_POLL` request is used to create the poll entry
 
                   #### Account Role Requirements
                     | Account | Resource Type        | Reviewable Request Type | Rule Action         |  Condition           |

@@ -20,7 +20,7 @@ namespace stellar
 
 enum ReviewableRequestType
 {
-	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
+	NONE = 0, // use this request type in the ReviewRequestOp extended result if additional info is not required
 	ANY = 1,
 	CREATE_PRE_ISSUANCE = 2,
 	CREATE_ISSUANCE = 3,

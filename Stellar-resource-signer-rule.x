@@ -38,14 +38,14 @@ case OFFER_ENTRY:
     //: Describes properties that are equal to managed offer entry fields and their properties
     struct
     {
-        //: type of base asset
+        //: type of a base asset
         uint64 baseAssetType;
-        //: type of quote asset
+        //: type of a quote asset
         uint64 quoteAssetType;
 
-        //: code of base asset
+        //: code of a base asset
         AssetCode baseAssetCode;
-        //: code of quote asset
+        //: code of a quote asset
         AssetCode quoteAssetCode;
 
         bool isBuy;
@@ -81,7 +81,7 @@ case SIGNER_ROLE:
     //: Describes properties that are equal to managed signer role entry fields
     struct
     {
-        //: For signer role creating resource will be triggered if `roleID` equals `0`
+        //: Will be triggered for the signer role creating resource if `roleID` equals `0`
         uint64 roleID;
 
         EmptyExt ext;
@@ -95,7 +95,7 @@ case SIGNER:
         EmptyExt ext;
     } signer;
 case KEY_VALUE:
-    //: Describes properties that are equal to managed key value entry fields
+    //: Describes properties that are equal to managed key-value entry fields
     struct
     {
         //: prefix of key
@@ -107,10 +107,10 @@ case KEY_VALUE:
 case POLL:
     struct
     {
-        //: ID of the poll
+        //: ID of a poll
         uint64 pollID;
 
-        //: permission type of poll
+        //: permission type of a poll
         uint32 permissionType;
 
         //: reserved for future extension
@@ -119,10 +119,10 @@ case POLL:
 case VOTE:
     struct
     {
-        //: ID of the poll
+        //: ID of a poll
         uint64 pollID;
 
-        //: permission type of poll
+        //: permission type of a poll
         uint32 permissionType;
 
         //: reserved for future extension
@@ -133,7 +133,7 @@ default:
     EmptyExt ext;
 };
 
-//: Actions that can be applied to a signer rule resource
+//: Actions that can be applied to the signer rule resource
 enum SignerRuleAction
 {
     ANY = 1,

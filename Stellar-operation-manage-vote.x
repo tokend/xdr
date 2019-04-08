@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-//: Actions that can be applied to a vote entry
+//: Actions that can be applied to the vote entry
 enum ManageVoteAction
 {
     CREATE = 0,
@@ -13,10 +13,10 @@ enum ManageVoteAction
 //: CreateVoteData is used to pass needed params to create (send) vote
 struct CreateVoteData
 {
-    //: ID of poll to vote in
+    //: ID of a poll to vote in
     uint64 pollID;
 
-    //: `data` is used to pass choice with functional type of poll
+    //: `data` is used to pass choice with functional type of a poll
     VoteData data;
 
     //: reserved for future use
@@ -27,10 +27,10 @@ struct CreateVoteData
     } ext;
 };
 
-//: RemoveVoteData is used to pass needed params to remove (cancel) own vote
+//: RemoveVoteData is used to pass needed params to remove (cancel) a vote
 struct RemoveVoteData
 {
-    //: ID of poll
+    //: ID of a poll
     uint64 pollID;
 
     //: reserved for future use
@@ -41,7 +41,7 @@ struct RemoveVoteData
     } ext;
 };
 
-//: ManageVoteOp is used to create (send) or remove (cancel) vote
+//: ManageVoteOp is used to create (send) or remove (cancel) the vote
 struct ManageVoteOp
 {
     //: `data` is used to pass `ManageVoteAction` with needed params
@@ -66,25 +66,25 @@ struct ManageVoteOp
 enum ManageVoteResultCode
 {
     // codes considered as "success" for the operation
-    //: Specified action in `data` of ManageVoteOp was successfully executed
+    //: Specified action in `data` of ManageVoteOp has been successfully executed
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: There is no vote from source account in such poll
+    //: There is no vote from the source account in such poll
     VOTE_NOT_FOUND = -1, // vote to remove  not found
-    //: There is no poll with such id
+    //: There is no poll with such an id
     POLL_NOT_FOUND = -2, // poll not found
-    //: Not allowed to create (send) two votes for one poll
+    //: It is not allowed to create (send) two votes for one poll
     VOTE_EXISTS = -3,
-    //: Not allowed to create (send) vote with functional type that is different from the poll functional type
+    //: It is not allowed to create (send) vote with functional type that is different from the poll functional type
     POLL_TYPE_MISMATCHED = -4,
-    //: Not allowed to vote in poll which not started yet
+    //: It is not allowed to vote in a poll which has not started yet
     POLL_NOT_STARTED = -5,
-    //: Not allowed to vote in poll which already was ended
+    //: It is not allowed to vote in a poll which has already ended
     POLL_ENDED = -6
 };
 
-//: Result of ManageVoteOp application
+//: Result of the ManageVoteOp application
 union ManageVoteResult switch (ManageVoteResultCode code)
 {
 case SUCCESS:

@@ -16,7 +16,7 @@ struct CreatePollRequestData
     //: Body of `CREATE_POLL` request
     CreatePollRequest request;
 
-    //: Bit mask that will be used instead of the value from key-value entry by
+    //: Bit mask that will be used instead of the value from the key-value entry by the
     //: `create_poll_tasks:<permissionType>` key
     uint32* allTasks;
 
@@ -32,7 +32,7 @@ struct CreatePollRequestData
 //: CancelPollRequestData is used to pass necessary data to remove a `CREATE_POLL` request
 struct CancelPollRequestData
 {
-    //: ID of `CREATE_POLL` request to remove
+    //: ID of the `CREATE_POLL` request to remove
     uint64 requestID;
 
     //: reserved for future use
@@ -74,37 +74,37 @@ enum ManageCreatePollRequestResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Passed details have invalid json structure
+    //: Passed details have an invalid json structure
     INVALID_CREATOR_DETAILS = -1,
     //: There is no `CREATE_POLL` request with such id
     NOT_FOUND = -2,
-    //: Not allowed to create poll which has `endTime` not later than `startTime`
+    //: It is not allowed to create poll with `endTime` not later than `startTime`
     INVALID_DATES = -3,
-    //: Not allowed to create poll which `endTime` early than currentTime
+    //: It is not allowed to create poll with `endTime` earlier than currentTime
     INVALID_END_TIME = -4,
-    //: There is no account which such id
+    //: There is no account with such id
     RESULT_PROVIDER_NOT_FOUND = -5,
     //: There is no key-value entry by `create_poll_tasks:<permissionType>` key in the system;
-    //: configuration does not allow to create `CREATE_POLL` request with such `permissionType`
+    //: configuration does not allow creating `CREATE_POLL` request with such `permissionType`
     CREATE_POLL_TASKS_NOT_FOUND = -6,
-    //: Not allowed to create poll with zero number of choices
+    //: It is not allowed to create poll with zero number of choices
     INVALID_NUMBER_OF_CHOICES = -7
 };
 
-//: CreatePollRequestResponse is used to pass useful fields after `CREATE_POLL` request creation
+//: CreatePollRequestResponse is used to pass useful fields after the `CREATE_POLL` request creation
 struct CreatePollRequestResponse
 {
     //: ID of a created request
     uint64 requestID;
 
     //: Indicates whether or not the `CREATE_POLL` request was auto approved and fulfilled
-    //: True means that poll was successfully created
+    //: True means that poll has been successfully created
     bool fulfilled;
 
-    //: ID of created poll if request was fulfilled
+    //: ID of a created poll if the request was fulfilled
     uint64* pollID;
 
-    //: reserved for the future use
+    //: reserved for future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -134,7 +134,7 @@ struct ManageCreatePollRequestSuccessResult
     ext;
 };
 
-//: Result of ManageCreatePollRequestOp application
+//: Result of the ManageCreatePollRequestOp application
 union ManageCreatePollRequestResult switch (ManageCreatePollRequestResultCode code)
 {
 case SUCCESS:
