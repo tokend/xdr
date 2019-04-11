@@ -7,7 +7,8 @@ namespace stellar
 
 enum LedgerVersion {
 	EMPTY_VERSION = 0,
-	CHECK_SET_FEE_ACCOUNT_EXISTING = 1
+	CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
+	RATIONAL_PRICE = 2
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -183,5 +184,12 @@ struct DecoratedSignature
     SignatureHint hint;  // last 4 bytes of the public key, used as a hint
     Signature signature; // actual signature
 };
+
+
+struct Price {
+    int64 n;
+    int64 d;
+};
+
 
 }

@@ -60,6 +60,8 @@ struct SaleQuoteAsset {
     {
     case EMPTY_VERSION:
         void;
+    case RATIONAL_PRICE:
+        Price price;
     }
     ext;
 };
