@@ -88,6 +88,7 @@ enum LedgerVersion {
 	FIX_UPDATE_EXPIRATION_DATE = 54,
 	FIX_CHECKING_ITSALE_REFERENCE = 55,
     ADD_LEAD_MARKET_MAKER = 56,
+    FIX_PAYMENT_STATS = 57,
     REPLACE_ACCOUNT_TYPES_WITH_POLICIES = 999999 // do not use it yet, there are features to be improved
 };
 
