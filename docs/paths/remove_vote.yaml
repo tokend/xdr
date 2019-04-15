@@ -1,0 +1,36 @@
+/removeVote:
+  get:
+    tags:
+      - Votes
+    summary: Remove Vote
+    description: |
+                  Allows to remove (cancel) own vote
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action |
+                    | --------|:-------------:|:-----------:|
+                    | source  | `VOTE`        | `REMOVE`    |
+
+                  #### Signer Role Requirements
+                   | Account | Resource Type | Rule Action |
+                   | --------|:-------------:|:-----------:|
+                   | source  | `VOTE`        | `REMOVE`    |
+    operationId: removeVote
+    x-item-type: operation
+    parameters:
+    - name: Manage Vote Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManageVoteOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageVoteResult'

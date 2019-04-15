@@ -1,6 +1,21 @@
 # Changelog
 
-## Unreleased
+## 3.1.1
+
+### Added
+
+* Add optional pollID field in CreatePollRequestResponse result
+
+## 3.1.0
+
+### Added
+
+* Poll entry and `CREATE_POLL` request
+* Manage `CREATE_POLL` request operation
+* Manage poll operation
+* Manage vote operation and vote entry
+
+## 3.0.1-x.0
 
 ### Added
 

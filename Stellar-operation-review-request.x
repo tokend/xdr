@@ -135,6 +135,21 @@ struct ASwapBidExtended
     ext;
 };
 
+//: Extended result of the review request operation containing details specific to a `CREATE_POLL` request
+struct CreatePollExtended
+{
+    //: ID of the newly created poll
+    uint64 pollID;
+
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 //: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
 struct ASwapExtended
 {
@@ -182,6 +197,8 @@ struct ExtendedResult {
         ASwapBidExtended aSwapBidExtended;
     case CREATE_ATOMIC_SWAP:
         ASwapExtended aSwapExtended;
+    case CREATE_POLL:
+        CreatePollExtended createPoll;
     } typeExt;
 
     //: Reserved for future use
