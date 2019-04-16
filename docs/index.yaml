@@ -102,7 +102,6 @@ x-tagGroups:
      - Withdrawal
      - Payment
      - Balances
-     - AMLAlert
      - Fees
      - External Systems
   - name: Access Control
