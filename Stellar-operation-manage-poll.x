@@ -6,9 +6,9 @@ namespace stellar
 //: Actions that can be applied to a poll
 enum ManagePollAction
 {
-    CLOSE = 0
-//    UPDATE_END_TIME = 1,
-//    REMOVE = 2,
+    CLOSE = 0,
+    UPDATE_END_TIME = 1,
+    CANCEL = 2
 };
 
 
@@ -61,10 +61,10 @@ struct ManagePollOp
     {
     case CLOSE:
         ClosePollData closePollData;
-//    case UPDATE_END_TIME:
-//        UpdatePollEndTimeData updateTimeData;
-//    case REMOVE:
-//        EmptyExt ext;
+    case UPDATE_END_TIME:
+        UpdatePollEndTimeData updateTimeData;
+    case CANCEL:
+        EmptyExt ext;
     }
     data;
 
@@ -89,7 +89,9 @@ enum ManagePollResultCode
     //: Not allowed to close poll which
     POLL_NOT_READY = -2,
     //: Only result provider is allowed to close poll
-    NOT_AUTHORIZED_TO_CLOSE_POLL = -3
+    NOT_AUTHORIZED_TO_CLOSE_POLL = -3,
+    //: End time is in the past
+    INVALID_END_TIME = -4
 };
 
 //: Result of operation application
