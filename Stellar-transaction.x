@@ -136,8 +136,8 @@ struct Operation
         ManagePollOp managePollOp;
     case MANAGE_VOTE:
         ManageVoteOp manageVoteOp;
-    case MANAGE_PARTICIPATION_ACCOUNT_RULE:
-        ManageParticipationAccountRuleOp manageParticipationAccountRuleOp;
+    case MANAGE_ACCOUNT_SPECIFIC_RULE:
+        ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
     }
     body;
 };
@@ -331,8 +331,8 @@ case opINNER:
         ManageCreatePollRequestResult manageCreatePollRequestResult;
     case MANAGE_VOTE:
         ManageVoteResult manageVoteResult;
-    case MANAGE_PARTICIPATION_ACCOUNT_RULE:
-        ManageParticipationAccountRuleResult manageParticipationAccountRuleResult;
+    case MANAGE_ACCOUNT_SPECIFIC_RULE:
+        ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
     }
     tr;
 case opNO_ENTRY:

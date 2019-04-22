@@ -297,7 +297,7 @@ case VOTE:
 
         EmptyExt ext;
     } vote;
-case PARTICIPATION_ACCOUNT_RULE:
+case ACCOUNT_SPECIFIC_RULE:
     struct {
         uint64 id;
 

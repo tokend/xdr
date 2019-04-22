@@ -55,7 +55,7 @@ struct SaleCreationRequest
     case EMPTY_VERSION:
         void;
     case ADD_SALE_WHITELISTS:
-        CreateParticipationAccountRuleData participationRules<200>;
+        CreateAccountSpecificRuleData participationRules<>;
     }
     ext;
 };

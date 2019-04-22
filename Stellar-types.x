@@ -79,7 +79,7 @@ enum LedgerEntryType
     LICENSE = 33,
     POLL = 34,
     VOTE = 35,
-    PARTICIPATION_ACCOUNT_RULE = 36
+    ACCOUNT_SPECIFIC_RULE = 36
 };
 
 // variable size as the size depends on the signature scheme used
@@ -179,7 +179,7 @@ enum OperationType
     MANAGE_CREATE_POLL_REQUEST = 43,
     MANAGE_POLL = 44,
     MANAGE_VOTE = 45,
-    MANAGE_PARTICIPATION_ACCOUNT_RULE = 46
+    MANAGE_ACCOUNT_SPECIFIC_RULE = 46
 };
 
 struct DecoratedSignature

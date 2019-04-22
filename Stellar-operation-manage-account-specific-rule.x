@@ -4,14 +4,14 @@ namespace stellar
 {
 
 //: Actions that can be performed with account rule
-enum ManageParticipationAccountRuleAction
+enum ManageAccountSpecificRuleAction
 {
     CREATE = 0,
     REMOVE = 1
 };
 
 //: CreateAccountRuleData is used to pass necessary params to create a new account rule
-struct CreateParticipationAccountRuleData
+struct CreateAccountSpecificRuleData
 {
     //: Resource is used to specify an entity (for some - with properties) that can be managed through operations
     LedgerKey ledgerKey;
@@ -29,7 +29,7 @@ struct CreateParticipationAccountRuleData
 };
 
 //: RemoveAccountRuleData is used to pass necessary params to remove existing account rule
-struct RemoveParticipationAccountRuleData
+struct RemoveAccountSpecificRuleData
 {
     //: Identifier of existing account rule
     uint64 ruleID;
@@ -43,15 +43,15 @@ struct RemoveParticipationAccountRuleData
 };
 
 //: ManageAccountRuleOp is used to create, update or remove account rule
-struct ManageParticipationAccountRuleOp
+struct ManageAccountSpecificRuleOp
 {
     //: data is used to pass one of `ManageAccountRuleAction` with required params
-    union switch (ManageParticipationAccountRuleAction action)
+    union switch (ManageAccountSpecificRuleAction action)
     {
     case CREATE:
-        CreateParticipationAccountRuleData createData;
+        CreateAccountSpecificRuleData createData;
     case REMOVE:
-        RemoveParticipationAccountRuleData removeData;
+        RemoveAccountSpecificRuleData removeData;
     } data;
 
     //: reserved for future use
@@ -66,7 +66,7 @@ struct ManageParticipationAccountRuleOp
 /******* ManageAccountRolePermissionOp Result ********/
 
 //: Result codes of ManageAccountRuleResultCode
-enum ManageParticipationAccountRuleResultCode
+enum ManageAccountSpecificRuleResultCode
 {
     //: Means that specified action in `data` of ManageAccountRuleOp was successfully performed
     SUCCESS = 0,
@@ -77,7 +77,7 @@ enum ManageParticipationAccountRuleResultCode
 };
 
 //: Result of operation applying
-union ManageParticipationAccountRuleResult switch (ManageParticipationAccountRuleResultCode code)
+union ManageAccountSpecificRuleResult switch (ManageAccountSpecificRuleResultCode code)
 {
 case SUCCESS:
     //: Is used to pass useful params if operation is success

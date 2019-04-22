@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-struct ParticipationAccountRuleEntry
+struct AccountSpecificRuleEntry
 {
     uint64 id;
 
