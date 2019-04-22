@@ -11,12 +11,12 @@ case ACCOUNT:
     struct
     {
         AccountID accountID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        union switch (LedgerVersion v)
+       {
+       case EMPTY_VERSION:
+          void;
+       }
+       ext;
     } account;
 case SIGNER:
     struct
@@ -34,36 +34,36 @@ case SIGNER:
 case FEE:
     struct {
         Hash hash;
-		int64 lowerBound;
-		int64 upperBound;
-		 union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        int64 lowerBound;
+        int64 upperBound;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
     } feeState;
 case BALANCE:
     struct
     {
-		BalanceID balanceID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        BalanceID balanceID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
     } balance;
 case ASSET:
     struct
     {
-		AssetCode code;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        AssetCode code;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
     } asset;
 case REFERENCE_ENTRY:
     struct
@@ -98,30 +98,30 @@ case ACCOUNT_LIMITS:
 		ext;
     } accountLimits;
 case ASSET_PAIR:
-	struct {
-         AssetCode base;
-		 AssetCode quote;
-		 union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+    struct {
+        AssetCode base;
+        AssetCode quote;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
     } assetPair;
 case OFFER_ENTRY:
-	struct {
-		uint64 offerID;
-		AccountID ownerID;
-	} offer;
+    struct {
+        uint64 offerID;
+        AccountID ownerID;
+    } offer;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
     } reviewableRequest;
 case EXTERNAL_SYSTEM_ACCOUNT_ID:
 	struct {
@@ -135,22 +135,22 @@ case EXTERNAL_SYSTEM_ACCOUNT_ID:
 		ext;
 	} externalSystemAccountID;
 case SALE:
-	struct {
-		uint64 saleID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} sale;
+    struct {
+        uint64 saleID;
+        union switch (LedgerVersion v)
+        {
+        case EMPTY_VERSION:
+            void;
+        }
+        ext;
+    } sale;
 case KEY_VALUE:
     struct {
         longstring key;
         union switch (LedgerVersion v)
         {
-        	case EMPTY_VERSION:
-        		void;
+        case EMPTY_VERSION:
+            void;
         }
         ext;
     } keyValue;
