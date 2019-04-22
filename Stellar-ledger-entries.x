@@ -31,6 +31,7 @@
 %#include "xdr/Stellar-ledger-entries-stamp.h"
 %#include "xdr/Stellar-ledger-entries-poll.h"
 %#include "xdr/Stellar-ledger-entries-vote.h"
+%#include "xdr/Stellar-ledger-entries-participation-account-rule.h"
 
 namespace stellar
 {
@@ -110,6 +111,8 @@ struct LedgerEntry
         PollEntry poll;
     case VOTE:
         VoteEntry vote;
+    case PARTICIPATION_ACCOUNT_RULE:
+        ParticipationAccountRuleEntry participationAccountRule;
     }
     data;
 

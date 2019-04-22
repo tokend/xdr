@@ -42,6 +42,7 @@
 %#include "xdr/Stellar-operation-manage-poll.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
+%#include "xdr/Stellar-operation-manage-participation-account-rule.h"
 
 namespace stellar
 {
@@ -135,6 +136,8 @@ struct Operation
         ManagePollOp managePollOp;
     case MANAGE_VOTE:
         ManageVoteOp manageVoteOp;
+    case MANAGE_PARTICIPATION_ACCOUNT_RULE:
+        ManageParticipationAccountRuleOp manageParticipationAccountRuleOp;
     }
     body;
 };
@@ -328,6 +331,8 @@ case opINNER:
         ManageCreatePollRequestResult manageCreatePollRequestResult;
     case MANAGE_VOTE:
         ManageVoteResult manageVoteResult;
+    case MANAGE_PARTICIPATION_ACCOUNT_RULE:
+        ManageParticipationAccountRuleResult manageParticipationAccountRuleResult;
     }
     tr;
 case opNO_ENTRY:
