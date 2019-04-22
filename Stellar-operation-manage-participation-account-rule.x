@@ -46,7 +46,7 @@ struct RemoveParticipationAccountRuleData
 struct ManageParticipationAccountRuleOp
 {
     //: data is used to pass one of `ManageAccountRuleAction` with required params
-    union switch (ManageAccountRuleAction action)
+    union switch (ManageParticipationAccountRuleAction action)
     {
     case CREATE:
         CreateParticipationAccountRuleData createData;
@@ -73,7 +73,7 @@ enum ManageParticipationAccountRuleResultCode
 
     // codes considered as "failure" for the operation
     //: There is no account rule with such id
-    NOT_FOUND = -1,
+    NOT_FOUND = -1
 };
 
 //: Result of operation applying

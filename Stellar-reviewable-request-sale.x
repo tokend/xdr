@@ -1,6 +1,6 @@
 
 
-%#include "xdr/Stellar-types.h"
+%#include "xdr/Stellar-operation-manage-participation-account-rule.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
@@ -54,6 +54,8 @@ struct SaleCreationRequest
     {
     case EMPTY_VERSION:
         void;
+    case ADD_SALE_WHITELISTS:
+        CreateParticipationAccountRuleData participationRules<200>;
     }
     ext;
 };
