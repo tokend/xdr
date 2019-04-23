@@ -112,7 +112,7 @@ struct LedgerEntry
     case VOTE:
         VoteEntry vote;
     case ACCOUNT_SPECIFIC_RULE:
-        AccountSpecificRuleEntry participationAccountRule;
+        AccountSpecificRuleEntry accountSpecificRule;
     }
     data;
 

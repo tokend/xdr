@@ -302,6 +302,6 @@ case ACCOUNT_SPECIFIC_RULE:
         uint64 id;
 
         EmptyExt ext;
-    } participationAccountRule;
+    } accountSpecificRule;
 };
 }
