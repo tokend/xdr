@@ -50,7 +50,7 @@ struct UpdatePollEndTimeData
     ext;
 };
 
-//: ManagePollOp is used to close (in future: update end time or remove) the poll
+//: ManagePollOp is used to close,  update end time or cancel the poll
 struct ManagePollOp
 {
     //: ID of poll to manage
