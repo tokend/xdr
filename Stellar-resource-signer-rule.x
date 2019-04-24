@@ -150,7 +150,8 @@ enum SignerRuleAction
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
-    CLOSE = 15
+    CLOSE = 15,
+    UPDATE_END_TIME = 16
 };
 
 
