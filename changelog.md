@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased 
+###Added
+* Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
+* Account rule action `UPDATE_END_TIME`
+* Signer rule action `UPDATE_END_TIME`
+
 ## 3.1.2
 ### Added
 * Added new ledger version to fix payment statistics v2
