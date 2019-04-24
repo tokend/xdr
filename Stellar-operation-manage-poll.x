@@ -91,7 +91,11 @@ enum ManagePollResultCode
     //: Only result provider is allowed to close poll
     NOT_AUTHORIZED_TO_CLOSE_POLL = -3,
     //: End time is in the past
-    INVALID_END_TIME = -4
+    INVALID_END_TIME = -4,
+    //:Only poll owner and admin can cancel poll
+    NOT_AUTHORIZED_TO_CANCEL_POLL = -5,
+    //:Only poll owner can update end time
+    NOT_AUTHORIZED_TO_UPDATE_POLL_END_TIME = -6
 };
 
 //: Result of operation application
