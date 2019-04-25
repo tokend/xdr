@@ -18,17 +18,17 @@ enum ManageBalanceAction
 {
     //: Create new balance
     CREATE = 0,
-    //: Delete existing balance by ID
+    //: Delete existing balance by ID. Is reserved and not implemented yet.
     DELETE_BALANCE = 1,
     //: Ensures that the balance will not be created if the balance of the provided asset exists and is attached to the provided account
     CREATE_UNIQUE = 2
 };
 
-//: `ManageBalanceOp` applies an `action` of the `ManageBalanceAction` type on the balance of a particular `asset` (referenced to by its AssetCode) 
+//: `ManageBalanceOp` applies an `action` of the `ManageBalanceAction` type on the balance of a particular `asset` (referenced to by its AssetCode)
 //: of the `destination` account (referenced to by its AccountID)
 struct ManageBalanceOp
 {
-    //: Defines a ManageBalanceAction to be performed
+    //: Defines a ManageBalanceAction to be performed. `DELETE_BALANCE` is reserved and not implemented yet.
     ManageBalanceAction action;
     //: Defines an account whose balance will be managed
     AccountID destination;
