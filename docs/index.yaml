@@ -9,12 +9,12 @@ info:
     altText: "TokenD"
   contact:
     email: dev@distributedlab.com
-    url: https://tokend.io
+    url: https://tokend.atlassian.net/servicedesk/customer/portals
     name: Support
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 3.0.1
+  version: 3.1.2
 servers:
 - url: https://api.achilles.tokend.io
   description: TokenD Developer Environment
@@ -102,7 +102,6 @@ x-tagGroups:
      - Withdrawal
      - Payment
      - Balances
-     - AMLAlert
      - Fees
      - External Systems
   - name: Access Control
