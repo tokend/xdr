@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+* Invest fee
+
 ## 3.1.2
 ### Added
 * Added new ledger version to fix payment statistics v2
