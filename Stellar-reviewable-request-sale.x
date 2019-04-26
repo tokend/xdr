@@ -1,6 +1,4 @@
 
-
-%#include "xdr/Stellar-operation-manage-participation-account-rule.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
@@ -19,6 +17,23 @@ struct SaleCreationRequestQuoteAsset {
     }
     ext;
 };
+
+//: CreateAccountRuleData is used to pass necessary params to create a new account rule
+struct CreateAccountSaleRuleData
+{
+    //: Value from enum that can be applied to `resource`
+    AccountID* accountID;
+    //: True if such `action` on such `resource` is prohibited, otherwise allows
+    bool forbids;
+
+    //: reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
 //: SaleCreationRequest is used to create a sale with provided parameters
 struct SaleCreationRequest
 {   
@@ -55,7 +70,7 @@ struct SaleCreationRequest
     case EMPTY_VERSION:
         void;
     case ADD_SALE_WHITELISTS:
-        CreateAccountSpecificRuleData participationRules<>;
+        CreateAccountSaleRuleData saleRules<>;
     }
     ext;
 };

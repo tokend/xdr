@@ -75,7 +75,11 @@ enum CreateSaleCreationRequestResultCode
     //: It is not allowed to set all tasks on rejected SaleCreationRequest update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15,
     //: Auto review failed due to a particular reason (e.g., hard cap exceeded either max issuance amount or preissued amount of an asset)
-    AUTO_REVIEW_FAILED = -16 
+    AUTO_REVIEW_FAILED = -16,
+    EXCEEDED_MAX_RULES_SIZE = -17,
+    GLOBAL_SPECIFIC_RULE_DUPLICATION = -18,
+    ACCOUNT_SPECIFIC_RULE_DUPLICATION = -19
+
 };
 
 //: Result of the successful application of CreateSaleCreationRequest operation

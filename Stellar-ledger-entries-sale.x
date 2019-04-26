@@ -86,6 +86,7 @@ struct SaleEntry
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
+    case ADD_SALE_WHITELISTS:
         void;
     }
     ext;

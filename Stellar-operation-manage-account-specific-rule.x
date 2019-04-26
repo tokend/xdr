@@ -73,7 +73,12 @@ enum ManageAccountSpecificRuleResultCode
 
     // codes considered as "failure" for the operation
     //: There is no account rule with such id
-    NOT_FOUND = -1
+    NOT_FOUND = -1,
+    SALE_NOT_FOUND = -2,
+    NOT_AUTHORIZED = -3,
+    ALREADY_EXISTS = -4,
+    REVERSED_ALREADY_EXISTS = -5,
+    ENTRY_TYPE_NOT_SUPPORTED = -6
 };
 
 //: Result of operation applying

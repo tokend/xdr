@@ -42,7 +42,7 @@
 %#include "xdr/Stellar-operation-manage-poll.h"
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
-%#include "xdr/Stellar-operation-manage-participation-account-rule.h"
+%#include "xdr/Stellar-operation-manage-account-specific-rule.h"
 
 namespace stellar
 {
