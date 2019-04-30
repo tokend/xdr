@@ -4,7 +4,7 @@
       - Polls
     summary: Update Poll end time
     description: |
-                  Allows update poll end time. Only admin or poll owner can cancel poll.
+                  Allows update poll end time. Only admin or poll owner can update poll end time.
 
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action |
