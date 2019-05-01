@@ -78,7 +78,9 @@ enum ManageAccountSpecificRuleResultCode
     NOT_AUTHORIZED = -3,
     ALREADY_EXISTS = -4,
     REVERSED_ALREADY_EXISTS = -5,
-    ENTRY_TYPE_NOT_SUPPORTED = -6
+    ENTRY_TYPE_NOT_SUPPORTED = -6,
+    ACCOUNT_NOT_FOUND = -7,
+    SPECIFIC_RULE_NOT_SUPPORTED = -8
 };
 
 //: Result of operation applying

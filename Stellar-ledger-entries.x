@@ -31,7 +31,7 @@
 %#include "xdr/Stellar-ledger-entries-stamp.h"
 %#include "xdr/Stellar-ledger-entries-poll.h"
 %#include "xdr/Stellar-ledger-entries-vote.h"
-%#include "xdr/Stellar-ledger-entries-participation-account-rule.h"
+%#include "xdr/Stellar-ledger-entries-account-specific-rule.h"
 
 namespace stellar
 {
