@@ -76,7 +76,9 @@ enum CreateSaleCreationRequestResultCode
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15,
     //: Auto review failed due to a particular reason (e.g., hard cap exceeded either max issuance amount or preissued amount of an asset)
     AUTO_REVIEW_FAILED = -16,
+    //: Not allowed to pass more account sale rule than allowed by `max_sale_rules_length` key value
     EXCEEDED_MAX_RULES_SIZE = -17,
+    //: Not allowed to
     GLOBAL_SPECIFIC_RULE_DUPLICATION = -18,
     ACCOUNT_SPECIFIC_RULE_DUPLICATION = -19
 
