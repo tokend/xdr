@@ -80,7 +80,8 @@ enum ManageAccountSpecificRuleResultCode
     REVERSED_ALREADY_EXISTS = -5,
     ENTRY_TYPE_NOT_SUPPORTED = -6,
     ACCOUNT_NOT_FOUND = -7,
-    SPECIFIC_RULE_NOT_SUPPORTED = -8
+    SPECIFIC_RULE_NOT_SUPPORTED = -8,
+    REMOVING_GLOBAL_RULE_FORBIDDEN = -9
 };
 
 //: Result of operation applying
