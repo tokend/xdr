@@ -4,7 +4,7 @@
       - Balances
     summary: Manage Balance
     description: |
-                  Allows either to create new balance or remove existing one.
+                  Allows to create new balance.
 
                   #### Account Role Requirements
                     | Account        | Resource Type | Action            | Condition                                               |

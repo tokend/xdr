@@ -5,11 +5,13 @@
 namespace stellar
 {
 
-enum LedgerVersion {
-	EMPTY_VERSION = 0,
-	CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
-	FIX_PAYMENT_STATS = 2,
-	ADD_SALE_WHITELISTS = 3
+enum LedgerVersion
+{
+    EMPTY_VERSION = 0,
+    CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
+    FIX_PAYMENT_STATS = 2,
+    ADD_INVEST_FEE = 3,
+    ADD_SALE_WHITELISTS = 4
 };
 
 union EmptyExt switch (LedgerVersion v)
