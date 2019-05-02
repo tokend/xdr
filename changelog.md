@@ -1,9 +1,11 @@
 # Changelog
 
-## Unreleased
-
-### Added
-
+## Unreleased 
+## 3.2.0
+###Added
+* Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
+* Account rule action `UPDATE_END_TIME`
+* Signer rule action `UPDATE_END_TIME`
 * Invest fee
 
 ## 3.1.2
