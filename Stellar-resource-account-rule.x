@@ -175,7 +175,8 @@ enum AccountRuleAction
     CHECK = 14,
     CANCEL = 15,
     CLOSE = 16,
-    REMOVE = 17
+    REMOVE = 17,
+    UPDATE_END_TIME = 18
 };
 
 }
