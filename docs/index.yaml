@@ -113,6 +113,7 @@ x-tagGroups:
     tags:
       - Account Roles
       - Account Rules
+      - Account Specific Rules
       - KYC
       - AMLAlert
       - Limits
