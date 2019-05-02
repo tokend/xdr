@@ -9,7 +9,8 @@ enum LedgerVersion {
 	EMPTY_VERSION = 0,
 	CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
 	FIX_PAYMENT_STATS = 2,
-	ADD_INVEST_FEE = 3
+	ADD_INVEST_FEE = 3,
+	ASSET_PAIR_RESTRICTIONS = 4
 };
 
 union EmptyExt switch (LedgerVersion v)
