@@ -71,7 +71,7 @@ struct SaleCreationRequest
     case EMPTY_VERSION:
         void;
     case ADD_SALE_WHITELISTS:
-        //: array of rules which determine sale participation
+        //: array of rules that define participation rules. One global rule must be specified. 
         CreateAccountSaleRuleData saleRules<>;
     }
     ext;

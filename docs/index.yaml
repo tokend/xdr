@@ -89,6 +89,10 @@ tags:
     description: Defines access points to operations related to polls
   - name: Votes
     description: Defines access points to operations related to votes
+  - name: Account Specific Rules
+    description: |
+      `Account Specific Rules` are similar in functionality to `Account Rules` - they define permissions to interact with various TokenD entities on account level. The main difference between `Account Specific Rules` and `Account Rules` is that with `Account Specific Rules` it's possible to define permissions for particular account without need to create separate role for this account. What is more, `Account Specific Rules` are managed by both Admins and entry owners. 
+      Main use case for this feature is white/black lists for particular entity. In current version it's only possible to manage white/black lists for sales.
 x-tagGroups:
   - name: Essentials
     tags:
