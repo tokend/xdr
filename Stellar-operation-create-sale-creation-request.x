@@ -75,7 +75,17 @@ enum CreateSaleCreationRequestResultCode
     //: It is not allowed to set all tasks on rejected SaleCreationRequest update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15,
     //: Auto review failed due to a particular reason (e.g., hard cap exceeded either max issuance amount or preissued amount of an asset)
-    AUTO_REVIEW_FAILED = -16 
+    AUTO_REVIEW_FAILED = -16,
+    //: Not allowed to pass more account sale rule than allowed by `max_sale_rules_number` key value
+    EXCEEDED_MAX_RULES_SIZE = -17,
+    //: Not allowed to pass rules with the same ledger key and null accountID
+    GLOBAL_SPECIFIC_RULE_DUPLICATION = -18,
+    //: Not allowed to pass rules with the same accountID and ledger key
+    ACCOUNT_SPECIFIC_RULE_DUPLICATION = -19,
+    //: Not allowed to pass rules with out global one (`accountID == null`)
+    GLOBAL_SPECIFIC_RULE_REQUIRED = -20,
+    //: There is no account with id specified in sale rules
+    ACCOUNT_NOT_FOUND = -21
 };
 
 //: Result of the successful application of CreateSaleCreationRequest operation

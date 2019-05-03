@@ -2,7 +2,7 @@
   get:
     tags:
       -  Licensing
-    summary: license
+    summary: License
     description: |
       License is used to increase allowed number of admins and set new due date.
       Auxilary signatures are used to validate license authenticity.

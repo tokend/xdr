@@ -1,0 +1,35 @@
+/createAccountSpecificRuleOp:
+  get:
+    tags:
+      - Account Specific Rules
+    summary: Create Account Specific Rule
+    description: |
+      Allows to create account specific rules.
+      Only rules for sales now supported.
+
+      #### Account Role Requirements
+        No account rule required beacuse only entry owner or admin can create specific rules
+
+      #### Signer Role Requirements
+        | Resource Type | Action  |
+        |:-------------:|:-----:|
+        | `ACCOUNT_SPECIFIC_RULE` | `CREATE` |
+    operationId: createAccountSpecificRuleOp
+    x-item-type: operation
+    parameters:
+      - name: Manage Account Specific Rule Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/ManageAccountSpecificRuleOp'
+    responses:
+      200:
+        description: Result
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManageAccountSpecificRuleResult'
