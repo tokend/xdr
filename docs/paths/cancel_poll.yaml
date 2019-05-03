@@ -1,0 +1,36 @@
+/cancelPoll:
+  get:
+    tags:
+      - Polls
+    summary: Cancel Poll
+    description: |
+                  Allows to cancel poll. Only admin or poll owner can cancel poll.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action |
+                    | --------|:-------------:|:-----------:|
+                    | source  | `POLL`        | `CANCEL`    |
+
+                  #### Signer Role Requirements
+                    | Resource Type  | Rule Action |
+                    |:--------------:|:-----------:|
+                    | `POLL`         | `CANCEL`    |
+    operationId: closePoll
+    x-item-type: operation
+    parameters:
+    - name: Manage Poll Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManagePollOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManagePollResult'

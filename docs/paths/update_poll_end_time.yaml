@@ -1,0 +1,36 @@
+/updatePollEndTime:
+  get:
+    tags:
+      - Polls
+    summary: Update Poll end time
+    description: |
+                  Allows update poll end time. Only admin or poll owner can update poll end time.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action |
+                    | --------|:-------------:|:-----------:|
+                    | source  | `POLL`        | `UPDATE_END_TIME`    |
+
+                  #### Signer Role Requirements
+                    | Resource Type  | Rule Action |
+                    |:--------------:|:-----------:|
+                    | `POLL`         | `UPDATE_END_TIME`    |
+    operationId: updatePollEndTime
+    x-item-type: operation
+    parameters:
+    - name: Manage Poll Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/ManagePollOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ManagePollResult'
