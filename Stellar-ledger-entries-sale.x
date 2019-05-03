@@ -87,6 +87,8 @@ struct SaleEntry
     {
     case EMPTY_VERSION:
         void;
+    case ADD_SALE_WHITELISTS:
+        void;
     }
     ext;
 };

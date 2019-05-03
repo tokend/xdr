@@ -114,7 +114,9 @@ enum ManageOfferResultCode
     //: Source account must be verified in order to participate
     REQUIRES_VERIFICATION = -27,
     //: Precision set in the system and precision of the amount are mismatched
-    INCORRECT_AMOUNT_PRECISION = -28
+    INCORRECT_AMOUNT_PRECISION = -28,
+    //: Sale specific rule forbids to participate in sale for source account
+    SPECIFIC_RULE_FORBIDS = -29
 };
 
 enum ManageOfferEffect

@@ -2,7 +2,7 @@
   get:
     tags:
       - Order Books
-    summary: create offer
+    summary: Create offer
     description: |
       Allows to create offer with provided parameters
       #### Account Role Requirements

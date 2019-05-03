@@ -5,11 +5,13 @@
 namespace stellar
 {
 
-enum LedgerVersion {
-	EMPTY_VERSION = 0,
-	CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
-	FIX_PAYMENT_STATS = 2,
-	ADD_INVEST_FEE = 3
+enum LedgerVersion
+{
+    EMPTY_VERSION = 0,
+    CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
+    FIX_PAYMENT_STATS = 2,
+    ADD_INVEST_FEE = 3,
+    ADD_SALE_WHITELISTS = 4
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -78,7 +80,8 @@ enum LedgerEntryType
     STAMP = 32,
     LICENSE = 33,
     POLL = 34,
-    VOTE = 35
+    VOTE = 35,
+    ACCOUNT_SPECIFIC_RULE = 36
 };
 
 // variable size as the size depends on the signature scheme used
@@ -177,7 +180,8 @@ enum OperationType
     LICENSE = 42,
     MANAGE_CREATE_POLL_REQUEST = 43,
     MANAGE_POLL = 44,
-    MANAGE_VOTE = 45
+    MANAGE_VOTE = 45,
+    MANAGE_ACCOUNT_SPECIFIC_RULE = 46
 };
 
 struct DecoratedSignature
