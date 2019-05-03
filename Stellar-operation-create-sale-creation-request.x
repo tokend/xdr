@@ -83,7 +83,9 @@ enum CreateSaleCreationRequestResultCode
     //: Not allowed to pass rules with the same accountID and ledger key
     ACCOUNT_SPECIFIC_RULE_DUPLICATION = -19,
     //: Not allowed to pass rules with out global one (`accountID == null`)
-    GLOBAL_SPECIFIC_RULE_REQUIRED = 20
+    GLOBAL_SPECIFIC_RULE_REQUIRED = -20,
+    //: There is no account with id specified in sale rules
+    ACCOUNT_NOT_FOUND = -21
 };
 
 //: Result of the successful application of CreateSaleCreationRequest operation
