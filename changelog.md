@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased 
+## Unreleased
+## 3.3.0-x.0
+### Added
+* Account Specific Rules Creation and Removal
+* Account Specific Rules for sales
 ## 3.2.0
 ###Added
 * Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
