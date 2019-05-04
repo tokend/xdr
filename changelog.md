@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+
+### Added
+* Error codes for create change role request
+* Error codes for review request
+
 ## 3.3.0-x.0
 ### Added
 * Account Specific Rules Creation and Removal
