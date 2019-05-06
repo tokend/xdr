@@ -11,7 +11,8 @@ enum LedgerVersion
     CHECK_SET_FEE_ACCOUNT_EXISTING = 1,
     FIX_PAYMENT_STATS = 2,
     ADD_INVEST_FEE = 3,
-    ADD_SALE_WHITELISTS = 4
+    ADD_SALE_WHITELISTS = 4,
+    FIX_CHANGE_TO_NON_EXISTING_ROLE = 5
 };
 
 union EmptyExt switch (LedgerVersion v)
