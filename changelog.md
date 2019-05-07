@@ -3,8 +3,10 @@
 ## Unreleased
 
 ### Added
+* Error codes for create change role request
+* Error codes for review request
+* New LedgerVersion to fix change to unexisting role
 * Added new ledger version to fix deposit statistics v2
-
 
 ## 3.3.0-x.0
 ### Added
