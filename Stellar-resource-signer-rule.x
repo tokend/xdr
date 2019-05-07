@@ -128,6 +128,22 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
+case ACCOUNT_SPECIFIC_RULE:
+    struct
+    {
+        //: ID of the account specific rule
+        uint64 ruleID;
+        //: Describes properties of some ledger key that
+        //: can be used to restrict the usage of account specific rules
+        LedgerKey ledgerKey;
+        //: Specific account ID to apply rule to
+        AccountID* accountID;
+        //: True if such rule is deniable, otherwise allows
+        bool forbids;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } accountSpecificRule;
 default:
     //: reserved for future extension
     EmptyExt ext;
