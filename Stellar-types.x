@@ -12,7 +12,9 @@ enum LedgerVersion
     FIX_PAYMENT_STATS = 2,
     ADD_INVEST_FEE = 3,
     ADD_SALE_WHITELISTS = 4,
-    ASSET_PAIR_RESTRICTIONS = 5
+    ASSET_PAIR_RESTRICTIONS = 5,
+    FIX_CHANGE_TO_NON_EXISTING_ROLE = 6
+
 };
 
 union EmptyExt switch (LedgerVersion v)
