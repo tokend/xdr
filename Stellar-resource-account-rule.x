@@ -155,8 +155,6 @@ case VOTE:
 case ACCOUNT_SPECIFIC_RULE:
     struct
     {
-        //: ID of the account specific rule
-        uint64 ruleID;
         //: Describes properties of some ledger key that
         //: can be used to restrict the usage of account specific rules
         LedgerKey ledgerKey;
