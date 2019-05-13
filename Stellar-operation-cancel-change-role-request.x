@@ -6,8 +6,6 @@ namespace stellar
 
    Cancels change role reviable request
 
-   Threshold: high
-
    Result: CancelChangeRoleRequestResult
 */
 
