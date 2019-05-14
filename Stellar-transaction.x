@@ -43,6 +43,8 @@
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
+%#include "xdr/Stellar-operation-create-kyc-recovery-request.h"
+%#include "xdr/Stellar-operation-initiate-kyc-recovery.h"
 
 namespace stellar
 {
@@ -138,6 +140,10 @@ struct Operation
         ManageVoteOp manageVoteOp;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     }
     body;
 };
@@ -333,6 +339,10 @@ case opINNER:
         ManageVoteResult manageVoteResult;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     }
     tr;
 case opNO_ENTRY:
