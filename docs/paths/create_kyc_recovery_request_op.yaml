@@ -1,0 +1,38 @@
+/createKYCRecoveryRequestOp:
+  get:
+    tags:
+      - KYC
+    summary: Create KYC Recovery Request
+    description: |
+                  Allows creating `KYC_RECOVERY` reviewable request.
+                  `KYC_RECOVERY` request is used to add new signers for the account.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  | Condition |
+                    | --------|:-------------:|:-----:| ------------|
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks == null` && `targetAccount == source` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks != null` \|\| `targetAccount != source` |
+
+                  #### Signer Role Requirements
+                    | Resource Type| Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createKYCRecoveryRequestOp
+    x-item-type: operation
+    parameters:
+    - name: Create KYC Recovery Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateKycRecoveryRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateKycRecoveryRequestResult'

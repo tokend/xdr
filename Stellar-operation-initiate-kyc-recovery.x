@@ -4,8 +4,9 @@ namespace stellar
 //: InitiateKYCRecoveryOp is used to start KYC recovery process
 struct InitiateKYCRecoveryOp
 {
+    //: Address of account to be recovered
     AccountID account;
-
+    //: New signer to set
     PublicKey singer;
 
     //: reserved for future use
@@ -22,9 +23,11 @@ enum InitiateKYCRecoveryResultCode
     //: Means that KYC recovery was successfully initiated
     SUCCESS = 0,
 
+    //: KYC target account not found
     NOT_FOUND = -1,
+    //: Only admin can submit InitiateKYCRecovery
     NOT_AUTHORIZED = -2,
-    //:
+    //: System configuration forbids KYC recovery
     RECOVERY_NOT_ALLOWED = -3,
     //: Either, there is no entry by key `kyc_recovery_account_role`, or such role does not exists
     RECOVERY_ACCOUNT_ROLE_NOT_FOUND = -4

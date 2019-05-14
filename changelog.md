@@ -6,6 +6,9 @@
 * Error codes for create change role request
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
 
 ## 3.3.0-x.0
 ### Added

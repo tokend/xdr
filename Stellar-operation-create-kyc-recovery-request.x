@@ -4,13 +4,14 @@
 namespace stellar
 {
 
-//: CreateAccountSpecificRuleData is used to pass necessary params to create a new account specific rule
+//: CreateKYCRecoveryRequestOp to create KYC recovery request and set new signers for account
 struct CreateKYCRecoveryRequestOp
 {
+    //: ID of a reviewable request. If set 0, request is created, else - request is updated
     uint64 requestID;
-
+    //: Account for which signers will be set
     AccountID targetAccount;
-
+    //: New signers to set
     UpdateSignerData signersData<>;
 
      //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
@@ -40,7 +41,7 @@ enum CreateKYCRecoveryRequestResultCode
     KYC_RECOVERY_TASKS_NOT_FOUND = -2,
     //: Not allowed to set tasks
     NOT_ALLOWED_TO_SET_KYC_RECOVERY_TASKS = -3,
-    //: Not allowed to provide empty slice
+    //: Not allowed to provide empty slice of signers
     INVALID_SIGNER_DATA = -4,
     //: Signer has weight > threshold
     INVALID_WEIGHT = -5,
@@ -48,23 +49,25 @@ enum CreateKYCRecoveryRequestResultCode
     INVALID_DETAILS = -6,
     //: Request with provided parameters already exists
     REQUEST_ALREADY_EXISTS = -7,
-    //
+    //: Account with provided account address does not exist
     TARGET_ACCOUNT_NOT_FOUND = -8,
+    //: Either target account or admin can submit this operation
     NOT_AUTHORIZED = -9,
-        //:
+    //: System configuration forbids KYC recovery
     RECOVERY_NOT_ALLOWED = -10,
     //: Either, there is no entry by key `kyc_recovery_account_role`, or such role does not exists
     RECOVERY_ACCOUNT_ROLE_NOT_FOUND = -11,
-
+    //: Account role differs from expected
     TARGET_ACCOUNT_NOT_IN_RECOVERY_ROLE = -12,
-
+    //: Only target account can update rejected request
     NOT_ALLOWED_TO_UPDATE_REQUEST = -13,
+    //: There is no request with such ID
+    KYC_RECOVERY_REQUEST_NOT_FOUND = -16,
+    //: It is forbidden to change target account on update
+    INVALID_UPDATE_DATA = -16,
+    //: It is forbidden to set `allTasks` on update
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -17
 
-    PENDING_REQUEST_UPDATE_NOT_ALLOWED = -14,
-
-    REQUEST_DOES_NOT_EXIST = -15,
-
-    INVALID_UPDATE_DATA = -16
 };
 
 //: Result of operation applying

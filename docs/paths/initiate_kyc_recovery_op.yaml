@@ -1,0 +1,35 @@
+/initiateKYCRecoveryOp:
+  get:
+    tags:
+      - KYC
+    summary: Initiate KYC recovery
+    description: |
+                  Allows to initiate KYC recovery process. Deletes all of the account signers, sets new signer for account,
+                  changes account role to `recovery`,
+
+                  #### Account Role Requirements
+                    Only admin can perform this operation
+
+                  #### Signer Role Requirements
+                    | Resource Type| Action  |
+                    |:-------------:| -----:|
+                    | `ACCOUNT_KYC` | `CREATE_FOR_OTHER` |
+    operationId: initiateKYCRecoveryOp
+    x-item-type: operation
+    parameters:
+    - name: Initiate KYC Recovery Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/InitiateKycRecoveryOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/InitiateKycRecoveryResult'
