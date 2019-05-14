@@ -64,9 +64,9 @@ enum CreateKYCRecoveryRequestResultCode
     //: There is no request with such ID
     KYC_RECOVERY_REQUEST_NOT_FOUND = -16,
     //: It is forbidden to change target account on update
-    INVALID_UPDATE_DATA = -16,
+    INVALID_UPDATE_DATA = -17,
     //: It is forbidden to set `allTasks` on update
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -17
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18
 
 };
 
