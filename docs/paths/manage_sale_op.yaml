@@ -2,7 +2,7 @@
   get:
     tags:
       - Sale
-    summary: create UpdateSaleDetailsRequest
+    summary: Create UpdateSaleDetailsRequest
     description: |
       Allows to create reviewable request which after approval will update sale details
       #### Account Role Requirements
@@ -36,7 +36,7 @@
   get:
     tags:
       - Sale
-    summary: cancel active sale
+    summary: Cancel active sale
     description: |
       Allows to cancel sale
       #### Account Role Requirements

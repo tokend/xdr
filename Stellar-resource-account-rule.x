@@ -42,17 +42,33 @@ case CREATE_WITHDRAW:
         EmptyExt ext;
     } createWithdraw;
 case CREATE_ATOMIC_SWAP_BID:
-    //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    case ATOMIC_SWAP_RETURNING:
+        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+        struct
+        {
+            //: code of asset
+            AssetCode assetCode;
+            //: type of asset
+            uint64 assetType;
+
+            //: reserved for future extension
+            EmptyExt ext;
+        } createAtomicSwapBid;
+    } ext;
+case CREATE_POLL:
+    //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
     {
-        //: code of asset
-        AssetCode assetCode;
-        //: type of asset
-        uint64 assetType;
+        //: permission type of poll
+        uint32 permissionType;
 
         //: reserved for future extension
         EmptyExt ext;
-    } createAtomicSwapBid;
+    } createPoll;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -129,6 +145,30 @@ case KEY_VALUE:
         //: reserved for future extension
         EmptyExt ext;
     } keyValue;
+case POLL:
+    struct
+    {
+        //: ID of the poll
+        uint64 pollID;
+
+        //: permission type of poll
+        uint32 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } poll;
+case VOTE:
+    struct
+    {
+        //: ID of the poll
+        uint64 pollID;
+
+        //: permission type of poll
+        uint32 permissionType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } vote;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -151,7 +191,10 @@ enum AccountRuleAction
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
-    CANCEL = 15
+    CANCEL = 15,
+    CLOSE = 16,
+    REMOVE = 17,
+    UPDATE_END_TIME = 18
 };
 
 }

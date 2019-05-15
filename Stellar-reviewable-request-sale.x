@@ -1,6 +1,4 @@
 
-
-%#include "xdr/Stellar-types.h"
 %#include "xdr/Stellar-ledger-entries-sale.h"
 
 namespace stellar
@@ -19,6 +17,23 @@ struct SaleCreationRequestQuoteAsset {
     }
     ext;
 };
+
+//: CreateAccountSaleRuleData is used to pass necessary params to create a new account sale rule
+struct CreateAccountSaleRuleData
+{
+    //: Certain account for which rule is applied, null means rule is global
+    AccountID* accountID;
+    //: True if such rule is deniable, otherwise allows
+    bool forbids;
+
+    //: reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
 //: SaleCreationRequest is used to create a sale with provided parameters
 struct SaleCreationRequest
 {   
@@ -49,11 +64,15 @@ struct SaleCreationRequest
     uint32 sequenceNumber;
     //: Array of quote assets that are available for participation
     SaleCreationRequestQuoteAsset quoteAssets<100>;
-    //: Reserved for future use
+    //: Use `EMPTY_VERSION` to allow anyone participate in sale,
+    //: use `ADD_SALE_WHITELISTS` to specify sale participation rules
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
+    case ADD_SALE_WHITELISTS:
+        //: array of rules that define participation rules. One global rule must be specified. 
+        CreateAccountSaleRuleData saleRules<>;
     }
     ext;
 };

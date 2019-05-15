@@ -6,6 +6,39 @@
 
 * Error codes and useful fields in success result for create atomic swap bid and atomic swap request operations
 * `CREATE_ATOMIC_SWAP_BID` case to reviewable request resource
+* Error codes for create change role request
+* Error codes for review request
+* New LedgerVersion to fix change to unexisting role
+
+## 3.3.0-x.0
+### Added
+* Account Specific Rules Creation and Removal
+* Account Specific Rules for sales
+## 3.2.0
+###Added
+* Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
+* Account rule action `UPDATE_END_TIME`
+* Signer rule action `UPDATE_END_TIME`
+* Invest fee
+
+## 3.1.2
+### Added
+* Added new ledger version to fix payment statistics v2
+
+## 3.1.1
+
+### Added
+
+* Add optional pollID field in CreatePollRequestResponse result
+
+## 3.1.0
+
+### Added
+
+* Poll entry and `CREATE_POLL` request
+* Manage `CREATE_POLL` request operation
+* Manage poll operation
+* Manage vote operation and vote entry
 
 ## 3.0.1-x.0
 

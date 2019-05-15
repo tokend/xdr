@@ -10,8 +10,8 @@
                   #### Account Role Requirements
                     | Account | Resource Type | Action  | Condition |
                     | --------|:-------------:|:-----:| ------------|
-                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks` == `null` |
-                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks == null` && `destAccountID == source` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks != null` \|\| `destAccountID != source` |
 
                   #### Signer Role Requirements
                     | Resource Type| Action  |

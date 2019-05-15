@@ -56,7 +56,9 @@ enum CreateChangeRoleRequestResultCode
     INVALID_CREATOR_DETAILS = -8,
     //: There is no key-value entry by `change_role_tasks` key in the system;
     //: configuration does not allow changing the role from current to `accountRoleToSet`
-    CHANGE_ROLE_TASKS_NOT_FOUND = -9
+    CHANGE_ROLE_TASKS_NOT_FOUND = -9,
+    //: There is no account role with provided id
+    ACCOUNT_ROLE_TO_SET_DOES_NOT_EXIST = -10
 };
 
 //: Result of operation application 
