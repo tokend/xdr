@@ -84,7 +84,8 @@ enum LedgerEntryType
     LICENSE = 33,
     POLL = 34,
     VOTE = 35,
-    ACCOUNT_SPECIFIC_RULE = 36
+    ACCOUNT_SPECIFIC_RULE = 36,
+    INITIATE_KYC_RECOVERY = 37
 };
 
 // variable size as the size depends on the signature scheme used
