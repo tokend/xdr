@@ -4,11 +4,11 @@
 namespace stellar
 {
 
-//: CreateASwapRequestOp is used to create `CREATE_ATOMIC_SWAP` request
-struct CreateASwapRequestOp
+//: CreateAtomicSwapRequestOp is used to create `CREATE_ATOMIC_SWAP` request
+struct CreateAtomicSwapRequestOp
 {
     //: Body of request which will be created
-    ASwapRequest request;
+    AtomicSwapRequest request;
 
     //: reserved for the future use
     union switch (LedgerVersion v)
@@ -18,8 +18,8 @@ struct CreateASwapRequestOp
     } ext;
 };
 
-//: Result codes of CreateASwapRequestOp
-enum CreateASwapRequestResultCode
+//: Result codes of CreateAtomicSwapRequestOp
+enum CreateAtomicSwapRequestResultCode
 {
     //: request was successfully created
     SUCCESS = 0,
@@ -49,7 +49,7 @@ enum CreateASwapRequestResultCode
 };
 
 //: Success request of CreateASwapRequestOp application
-struct CreateASwapRequestSuccess
+struct CreateAtomicSwapRequestSuccess
 {
     //: id of created request
     uint64 requestID;
@@ -67,11 +67,11 @@ struct CreateASwapRequestSuccess
 };
 
 //: Result of CreateASwapRequestOp application
-union CreateASwapRequestResult switch (CreateASwapRequestResultCode code)
+union CreateAtomicSwapRequestResult switch (CreateAtomicSwapRequestResultCode code)
 {
 case SUCCESS:
     //: is used to pass useful fields after successful operation applying
-    CreateASwapRequestSuccess success;
+    CreateAtomicSwapRequestSuccess success;
 default:
     void;
 };

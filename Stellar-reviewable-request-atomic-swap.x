@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-struct ASwapRequest
+struct AtomicSwapRequest
 {
     uint64 bidID;
     uint64 baseAmount;

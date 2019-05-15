@@ -4,11 +4,11 @@
 namespace stellar
 {
 
-//: CreateASwapBidCreationRequestOp is used to create `CREATE_ATOMIC_SWAP_BID` request
-struct CreateASwapBidCreationRequestOp
+//: CreateAtomicSwapBidCreationRequestOp is used to create `CREATE_ATOMIC_SWAP_BID` request
+struct CreateAtomicSwapBidCreationRequestOp
 {
     //: Body of request which will be created
-    ASwapBidCreationRequest request;
+    AtomicSwapBidCreationRequest request;
 
     //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ATOMIC_SWAP_BID` request to be approved,
     //: which will be used instead of key-value by `atomic_swap_bid_tasks` key
@@ -22,8 +22,8 @@ struct CreateASwapBidCreationRequestOp
     ext;
 };
 
-//: Result codes of CreateASwapBidCreationRequestOp
-enum CreateASwapBidCreationRequestResultCode
+//: Result codes of CreateAtomicSwapBidCreationRequestOp
+enum CreateAtomicSwapBidCreationRequestResultCode
 {
     //: `CREATE_ATOMIC_SWAP_BID` request has either been successfully created
     //: or auto approved
@@ -60,7 +60,7 @@ enum CreateASwapBidCreationRequestResultCode
 };
 
 //: Success result of CreateASwapBidCreationRequestOp application
-struct CreateASwapBidCreationRequestSuccess
+struct CreateAtomicSwapBidCreationRequestSuccess
 {
     //: id of created request
     uint64 requestID;
@@ -75,12 +75,12 @@ struct CreateASwapBidCreationRequestSuccess
     } ext;
 };
 
-//: Result of CreateASwapBidCreationRequestOp application
-union CreateASwapBidCreationRequestResult switch (CreateASwapBidCreationRequestResultCode code)
+//: Result of CreateAtomicSwapBidCreationRequestOp application
+union CreateAtomicSwapBidCreationRequestResult switch (CreateAtomicSwapBidCreationRequestResultCode code)
 {
 case SUCCESS:
     //: is used to pass useful fields after successful operation applying
-    CreateASwapBidCreationRequestSuccess success;
+    CreateAtomicSwapBidCreationRequestSuccess success;
 default:
     void;
 };

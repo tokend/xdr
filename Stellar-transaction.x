@@ -110,12 +110,12 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidOp cancelASwapBidOp;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestOp createASwapRequestOp;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidCreationRequestOp createAtomicSwapBidCreationRequestOp;
+    case CANCEL_ATOMIC_SWAP_BID:
+        CancelAtomicSwapBidOp cancelAtomicSwapBidOp;
+    case CREATE_ATOMIC_SWAP_REQUEST:
+        CreateAtomicSwapRequestOp createAtomicSwapRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
@@ -305,12 +305,12 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidResult cancelASwapBidResult;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestResult createASwapRequestResult;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidCreationRequestResult createAtomicSwapBidCreationRequestResult;
+    case CANCEL_ATOMIC_SWAP_BID:
+        CancelAtomicSwapBidResult cancelAtomicSwapBidResult;
+    case CREATE_ATOMIC_SWAP_REQUEST:
+        CreateAtomicSwapRequestResult createAtomicSwapRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:

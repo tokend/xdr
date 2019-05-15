@@ -4,13 +4,13 @@
 namespace stellar
 {
 
-struct ASwapBidCreationRequest
+struct AtomicSwapBidCreationRequest
 {
     BalanceID baseBalance;
     uint64 amount;
     longstring creatorDetails; // details set by requester
 
-    ASwapBidQuoteAsset quoteAssets<>;
+    AtomicSwapBidQuoteAsset quoteAssets<>;
 
     // reserved for future use
     union switch (LedgerVersion v)

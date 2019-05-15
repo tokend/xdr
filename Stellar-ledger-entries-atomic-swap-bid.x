@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-struct ASwapBidQuoteAsset
+struct AtomicSwapBidQuoteAsset
 {
     AssetCode quoteAsset;
     uint64 price;
@@ -30,7 +30,7 @@ struct AtomicSwapBidEntry
 
     longstring details;
 
-    ASwapBidQuoteAsset quoteAssets<>;
+    AtomicSwapBidQuoteAsset quoteAssets<>;
 
     // reserved for future use
     union switch (LedgerVersion v)

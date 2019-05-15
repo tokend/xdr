@@ -92,9 +92,9 @@ struct ReviewableRequestEntry {
         case MANAGE_CONTRACT:
             ContractRequest contractRequest;
         case CREATE_ATOMIC_SWAP_BID:
-            ASwapBidCreationRequest aSwapBidCreationRequest;
+            AtomicSwapBidCreationRequest atomicSwapBidCreationRequest;
         case CREATE_ATOMIC_SWAP:
-            ASwapRequest aSwapRequest;
+            AtomicSwapRequest atomicSwapRequest;
         case CREATE_POLL:
             CreatePollRequest createPollRequest;
 	} body;
