@@ -311,6 +311,9 @@ enum ReviewRequestResultCode
     //: Change role 
     //: Trying to remove zero tasks
     NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
+    //: There is no account role with provided id
+    ACCOUNT_ROLE_TO_SET_DOES_NOT_EXIST = -610,
+
 
     //: Update sale details
     //: Trying to update details of a non-existing sale
