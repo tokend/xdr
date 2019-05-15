@@ -58,7 +58,7 @@ case CREATE_ATOMIC_SWAP_BID:
             //: reserved for future extension
             EmptyExt ext;
         } createAtomicSwapBid;
-    } ext;
+    } createAtomicSwapBidExt;
 case CREATE_POLL:
     //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
