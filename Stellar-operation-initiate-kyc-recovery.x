@@ -7,7 +7,7 @@ struct InitiateKYCRecoveryOp
     //: Address of account to be recovered
     AccountID account;
     //: New signer to set
-    PublicKey singer;
+    PublicKey signer;
 
     //: reserved for future use
     union switch (LedgerVersion v)
