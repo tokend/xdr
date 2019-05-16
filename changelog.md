@@ -7,6 +7,7 @@
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
 * Operation to cancel change role request
+* New ledger version to fix creating reverse pairs while creating sale
 
 ## 3.3.0-x.0
 ### Added
