@@ -121,7 +121,7 @@ struct SaleExtended {
 };
 
 //: Extended result of the review request operation containing details specific to a Create Atomic Swap Bid Request
-struct ASwapBidExtended
+struct AtomicSwapBidExtended
 {
     //: ID of the newly created bid as a result of Create Atomic Swap Bid Request successful review
     uint64 bidID;
@@ -151,7 +151,7 @@ struct CreatePollExtended
 };
 
 //: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
-struct ASwapExtended
+struct AtomicSwapExtended
 {
     //: ID of a bid to apply atomic swap to
     uint64 bidID;
@@ -194,9 +194,9 @@ struct ExtendedResult {
     case NONE:
         void;
     case CREATE_ATOMIC_SWAP_BID:
-        ASwapBidExtended aSwapBidExtended;
+        AtomicSwapBidExtended atomicSwapBidExtended;
     case CREATE_ATOMIC_SWAP:
-        ASwapExtended aSwapExtended;
+        AtomicSwapExtended atomicSwapExtended;
     case CREATE_POLL:
         CreatePollExtended createPoll;
     } typeExt;
