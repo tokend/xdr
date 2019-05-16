@@ -7,6 +7,7 @@
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
 * Operation to cancel change role request
+* New LedgerVersion to fix checking permissions to set allTasks
 
 ## 3.3.0-x.0
 ### Added
