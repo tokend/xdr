@@ -1,4 +1,4 @@
-/createASwapBidCreationRequestOp:
+/createAtomicSwapBidCreationRequestOp:
   get:
     tags:
       - Atomic Swap
@@ -19,17 +19,17 @@
         |:--------------------:|:---------------------:|:------: |
         | `REVIEWABLE_REQUEST` | `CREATE_ATOMIC_SWAP_BID` |`CREATE` |
 
-    operationId: createASwapBidCreationRequestOp
+    operationId: createAtomicSwapBidCreationRequestOp
     x-item-type: operation
     parameters:
-    - name: Create ASwap Bid Creation Request Op
+    - name: Create Atomic Swap Bid Creation Request Op
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/CreateASwapBidCreationRequestOp'
+        $ref: '#/components/schemas/CreateAtomicSwapBidCreationRequestOp'
     responses:
       200:
         description: Result
@@ -37,4 +37,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/CreateASwapBidCreationRequestResult'
+              $ref: '#/components/schemas/CreateAtomicSwapBidCreationRequestResult'

@@ -1,31 +1,32 @@
-/cancelASwapBidOp:
+/cancelAtomicSwapBidOp:
   get:
     tags:
       - Atomic Swap
     summary: Cancel Atomic Swap Bid Op
     description: |
-                  Allows to cancel atomic swap bid. If atomic swap bid has non zero locked amount
-                  (it means that `CREATE_ATOMIC_SWAP` request is being processed)
-                  It will be marked as canceled and will be removed after all `CREATE_ATOMIC_SWAP` request will be approved of permament rejected
+        Allows to cancel atomic swap bid. If atomic swap bid has non zero locked amount
+        (it means that `CREATE_ATOMIC_SWAP` request is being processed).
+        It will be marked as canceled and will be removed after all
+        `CREATE_ATOMIC_SWAP` request will be approved of permament rejected.
 
-                  #### Account Role Requirements
-                    No account rule required beacuse only bid owner can perform such operation.
+        #### Account Role Requirements
+          No account rule required because only bid owner can perform such operation.
 
-                  #### Signer Role Requirements
-                    | Resource Type     | Action  |
-                    |:-----------------:|:-------:|
-                    | `ATOMIC_SWAP_BID` | `CANCEL` |
-    operationId: cancelASwapBidOp
+        #### Signer Role Requirements
+          | Resource Type     | Action  |
+          |:-----------------:|:-------:|
+          | `ATOMIC_SWAP_BID` | `CANCEL` |
+    operationId: cancelAtomicSwapBidOp
     x-item-type: operation
     parameters:
-    - name: Cancel ASwap Bid Op
+    - name: Cancel Atomic Swap Bid Op
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/CancelASwapBidOp'
+        $ref: '#/components/schemas/CancelAtomicSwapBidOp'
     responses:
       200:
         description: Result
@@ -33,4 +34,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/CancelASwapBidResult'
+              $ref: '#/components/schemas/CancelAtomicSwapBidResult'

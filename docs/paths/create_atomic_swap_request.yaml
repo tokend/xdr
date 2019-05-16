@@ -1,4 +1,4 @@
-/createASwapRequestOp:
+/createAtomicSwapRequestOp:
   get:
     tags:
       - Atomic Swap
@@ -18,17 +18,17 @@
         |:-------------:|:----------:|
         | `ASSET`       | `RECEIVE_ATOMIC_SWAP` |
 
-    operationId: createASwapRequestOp
+    operationId: createAtomicSwapRequestOp
     x-item-type: operation
     parameters:
-    - name: Create ASwap Request Op
+    - name: Create Atomic Swap Request Op
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/CreateASwapRequestOp'
+        $ref: '#/components/schemas/CreateAtomicSwapRequestOp'
     responses:
       200:
         description: Result
@@ -36,4 +36,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/CreateASwapRequestResult'
+              $ref: '#/components/schemas/CreateAtomicSwapRequestResult'
