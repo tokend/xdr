@@ -32,17 +32,17 @@ struct CreateKYCRecoveryRequestOp
 //: Result codes of CreateKYCRecoveryRequestOp
 enum CreateKYCRecoveryRequestResultCode
 {
-    //: Means that specified action in `data` of ManageAccountSpecificRuleOp was successfully performed
+    //: KYC Recovery request was successfully created
     SUCCESS = 0,
 
     //: Creator details are not in a valid JSON format
     INVALID_CREATOR_DETAILS = -1,
     //: KYC recovery tasks are not set in the system
     KYC_RECOVERY_TASKS_NOT_FOUND = -2,
-    //: Not allowed to set tasks
-    NOT_ALLOWED_TO_SET_KYC_RECOVERY_TASKS = -3,
     //: Not allowed to provide empty slice of signers
-    INVALID_SIGNER_DATA = -4,
+    NO_SIGNER_DATA = -3,
+    //: SignerData contains duplicates
+    SIGNER_DUPLICATION = -4,
     //: Signer has weight > threshold
     INVALID_WEIGHT = -5,
     //: Signer has invalid details
@@ -51,8 +51,6 @@ enum CreateKYCRecoveryRequestResultCode
     REQUEST_ALREADY_EXISTS = -7,
     //: Account with provided account address does not exist
     TARGET_ACCOUNT_NOT_FOUND = -8,
-    //: Either target account or admin can submit this operation
-    NOT_AUTHORIZED = -9,
     //: System configuration forbids KYC recovery
     RECOVERY_NOT_ALLOWED = -10,
     //: Either, there is no entry by key `kyc_recovery_account_role`, or such role does not exists
@@ -67,7 +65,6 @@ enum CreateKYCRecoveryRequestResultCode
     INVALID_UPDATE_DATA = -17,
     //: It is forbidden to set `allTasks` on update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -18
-
 };
 
 //: Result of operation applying

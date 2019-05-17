@@ -25,12 +25,10 @@ enum InitiateKYCRecoveryResultCode
 
     //: KYC target account not found
     NOT_FOUND = -1,
-    //: Only admin can submit InitiateKYCRecovery
-    NOT_AUTHORIZED = -2,
     //: System configuration forbids KYC recovery
-    RECOVERY_NOT_ALLOWED = -3,
-    //: Either, there is no entry by key `kyc_recovery_account_role`, or such role does not exists
-    RECOVERY_ACCOUNT_ROLE_NOT_FOUND = -4
+    RECOVERY_NOT_ALLOWED = -2,
+    //: Either, there is no entry by key `kyc_recovery_signer_role`, or such role does not exists
+    RECOVERY_SIGNER_ROLE_NOT_FOUND = -3
 };
 
 //: Result of operation applying
