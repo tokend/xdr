@@ -11,6 +11,7 @@
 * Operation to cancel change role request
 * New ledger version to fix creating reverse pairs while creating sale
 * New LedgerVersion to fix checking permissions to set allTasks
+* New LedgerVersion to fix getting expiration time from KeyValue storage on external account prolongation
 
 ## 3.3.0-x.0
 ### Added
