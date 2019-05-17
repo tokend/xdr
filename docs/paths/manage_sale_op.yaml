@@ -6,7 +6,11 @@
     description: |
       Allows to create reviewable request which after approval will update sale details
       #### Account Role Requirements
-        Only sale owner or admin are able to manage sale
+        | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+        | ------------- |:-------------:| -----:| -----: | -----: |
+        | source      | `REVIEWABLE_REQUEST` | `UPDATE_SALE_DETAILS` | `CREATE`            | `allTasks` == `null` |
+        | source      | `REVIEWABLE_REQUEST` | `UPDATE_SALE_DETAILS` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
       #### Signer Role Requirements
 
         | Resource Type | Action  |
