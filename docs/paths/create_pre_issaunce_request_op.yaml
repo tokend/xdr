@@ -2,13 +2,16 @@
   get:
     tags:
       - Issuance
-    summary: Create Pre Issuance Request 
+    summary: Create Pre Issuance Request
     description: |
                   Allows creating `CREATE_PRE_ISSUANCE` reviewable request.
                   `CREATE_PRE_ISSUANCE` request is used to increase available for issuance amount of asset.
 
                   #### Account Role Requirements
-                    No account rule required beacuse only asset pre issuer can do pre issuance.
+                    | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+                    | ------------- |:-------------:| -----:| -----: | -----: |
+                    | source      | `REVIEWABLE_REQUEST` | `CREATE_PRE_ISSUANCE` | `CREATE`            | `allTasks` == `null` |
+                    | source      | `REVIEWABLE_REQUEST` | `CREATE_PRE_ISSUANCE` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
                   #### Signer Role Requirements
                     No singer rule required beacuse only asset pre issuer can do pre issuance.
