@@ -14,7 +14,8 @@ enum LedgerVersion
     ADD_SALE_WHITELISTS = 4,
     ASSET_PAIR_RESTRICTIONS = 5,
     FIX_CHANGE_TO_NON_EXISTING_ROLE = 6,
-    UNLIMITED_ADMIN_COUNT = 7,
+    FIX_REVERSE_SALE_PAIR = 7,
+    UNLIMITED_ADMIN_COUNT = 8
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -184,7 +185,8 @@ enum OperationType
     MANAGE_CREATE_POLL_REQUEST = 43,
     MANAGE_POLL = 44,
     MANAGE_VOTE = 45,
-    MANAGE_ACCOUNT_SPECIFIC_RULE = 46
+    MANAGE_ACCOUNT_SPECIFIC_RULE = 46,
+    CANCEL_CHANGE_ROLE_REQUEST = 47
 };
 
 struct DecoratedSignature
