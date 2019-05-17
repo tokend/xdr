@@ -8,7 +8,10 @@
                   `UPDATE_ASSET` request is used to update asset entry
 
                   #### Account Role Requirements
-                    No account rule required beacuse only asset owner can update own asset
+                    | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+                    | ------------- |:-------------:| -----:| -----: | -----: |
+                    | source      | `REVIEWABLE_REQUEST` | `UPDATE_ASSET` | `CREATE`            | `allTasks` == `null` |
+                    | source      | `REVIEWABLE_REQUEST` | `UPDATE_ASSET` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
                   #### Signer Role Requirements
                     | Resource Type | Rule Action | Details |
