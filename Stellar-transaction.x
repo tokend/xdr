@@ -43,6 +43,7 @@
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
+%#include "xdr/Stellar-operation-cancel-change-role-request.h"
 %#include "xdr/Stellar-operation-create-kyc-recovery-request.h"
 %#include "xdr/Stellar-operation-initiate-kyc-recovery.h"
 
@@ -140,6 +141,8 @@ struct Operation
         ManageVoteOp manageVoteOp;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
+    case CANCEL_CHANGE_ROLE_REQUEST:
+        CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
@@ -240,7 +243,7 @@ enum OperationResultCode
     opSKIPPED = -13
 };
 
-//: Defines requirements for tx or operation which were not fulfilled 
+//: Defines requirements for tx or operation which were not fulfilled
 struct AccountRuleRequirement
 {
 	//: defines resources to which access was denied
@@ -339,6 +342,8 @@ case opINNER:
         ManageVoteResult manageVoteResult;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
+    case CANCEL_CHANGE_ROLE_REQUEST:
+        CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:

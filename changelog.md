@@ -6,6 +6,12 @@
 * Error codes for create change role request
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
+* New ledger version to fix positive error codes of create aml alert request
+* New AML Alert error codes
+* Operation to cancel change role request
+* New ledger version to fix creating reverse pairs while creating sale
+* New LedgerVersion to fix checking permissions to set allTasks
+* New LedgerVersion to fix getting expiration time from KeyValue storage on external account prolongation
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
