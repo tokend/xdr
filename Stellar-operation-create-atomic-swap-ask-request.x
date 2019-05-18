@@ -1,14 +1,14 @@
 %#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-reviewable-request-atomic-swap.h"
+%#include "xdr/Stellar-reviewable-request-atomic-swap-ask.h"
 
 namespace stellar
 {
 
-//: CreateAtomicSwapRequestOp is used to create `CREATE_ATOMIC_SWAP` request
-struct CreateAtomicSwapRequestOp
+//: CreateAtomicSwapAskRequestOp is used to create `CREATE_ATOMIC_SWAP` request
+struct CreateAtomicSwapAskRequestOp
 {
     //: Body of request which will be created
-    AtomicSwapRequest request;
+    CreateAtomicSwapAskRequest request;
 
     //: reserved for the future use
     union switch (LedgerVersion v)
@@ -19,7 +19,7 @@ struct CreateAtomicSwapRequestOp
 };
 
 //: Result codes of CreateAtomicSwapRequestOp
-enum CreateAtomicSwapRequestResultCode
+enum CreateAtomicSwapAskRequestResultCode
 {
     //: request was successfully created
     SUCCESS = 0,
@@ -43,13 +43,15 @@ enum CreateAtomicSwapRequestResultCode
     //: Not allowed to create `CREATE_ATOMIC_SWAP` request for atomic swap bid which is marked as `canceled`
     BID_IS_CANCELLED = -8,
     //: Not allowed to create `CREATE_ATOMIC_SWAP` request for own atomic swap bid
-    CANNOT_CREATE_ASWAP_REQUEST_FOR_OWN_BID = -9,
+    SOURCE_ACCOUNT_EQUALS_BID_OWNER = -9,
     //: 0 value is received from key value entry by `atomic_swap_tasks` key
-    ATOMIC_SWAP_ZERO_TASKS_NOT_ALLOWED = -10
+    ATOMIC_SWAP_ZERO_TASKS_NOT_ALLOWED = -10,
+    //: Not allowed to create atomic swap ask in which product of `baseAmount` and price of the `quoteAsset` exceeds MAX_INT64 value
+    QUOTE_AMOUNT_OVERFLOWS = -11
 };
 
-//: Success request of CreateASwapRequestOp application
-struct CreateAtomicSwapRequestSuccess
+//: Success request of CreateAtomicSwapAskRequestOp application
+struct CreateAtomicSwapAskRequestSuccess
 {
     //: id of created request
     uint64 requestID;
@@ -66,12 +68,12 @@ struct CreateAtomicSwapRequestSuccess
     } ext;
 };
 
-//: Result of CreateASwapRequestOp application
-union CreateAtomicSwapRequestResult switch (CreateAtomicSwapRequestResultCode code)
+//: Result of CreateAtomicSwapAskRequestOp application
+union CreateAtomicSwapAskRequestResult switch (CreateAtomicSwapAskRequestResultCode code)
 {
 case SUCCESS:
     //: is used to pass useful fields after successful operation applying
-    CreateAtomicSwapRequestSuccess success;
+    CreateAtomicSwapAskRequestSuccess success;
 default:
     void;
 };

@@ -29,9 +29,9 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-bid-request.h"
 %#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
-%#include "xdr/Stellar-operation-create-aswap-request.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-ask-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-rule.h"
 %#include "xdr/Stellar-operation-manage-signer-role.h"
@@ -111,11 +111,11 @@ struct Operation
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
     case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidCreationRequestOp createAtomicSwapBidCreationRequestOp;
+        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
     case CANCEL_ATOMIC_SWAP_BID:
         CancelAtomicSwapBidOp cancelAtomicSwapBidOp;
-    case CREATE_ATOMIC_SWAP_REQUEST:
-        CreateAtomicSwapRequestOp createAtomicSwapRequestOp;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestOp createAtomicSwapAskRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
@@ -306,11 +306,11 @@ case opINNER:
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
     case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidCreationRequestResult createAtomicSwapBidCreationRequestResult;
+        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
     case CANCEL_ATOMIC_SWAP_BID:
         CancelAtomicSwapBidResult cancelAtomicSwapBidResult;
-    case CREATE_ATOMIC_SWAP_REQUEST:
-        CreateAtomicSwapRequestResult createAtomicSwapRequestResult;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestResult createAtomicSwapAskRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:

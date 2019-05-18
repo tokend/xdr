@@ -151,13 +151,13 @@ struct CreatePollExtended
 };
 
 //: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
-struct AtomicSwapExtended
+struct AtomicSwapAskExtended
 {
     //: ID of a bid to apply atomic swap to
     uint64 bidID;
     //: AccountID of a bid owner
     AccountID bidOwnerID;
-    //: Account id of an atomic swap source
+    //: Account id of an ask owner
     AccountID purchaserID;
     //: Base asset for the atomic swap
     AssetCode baseAsset;
@@ -171,8 +171,8 @@ struct AtomicSwapExtended
     uint64 price;
     //: Balance in base asset of a bid owner
     BalanceID bidOwnerBaseBalanceID;
-    //: Balance in quote asset of atomic swap source
-    BalanceID purchaserBaseBalanceID;
+    //: Balance in base asset of an ask owner
+    BalanceID askOwnerBaseBalanceID;
 
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -195,8 +195,8 @@ struct ExtendedResult {
         void;
     case CREATE_ATOMIC_SWAP_BID:
         AtomicSwapBidExtended atomicSwapBidExtended;
-    case CREATE_ATOMIC_SWAP:
-        AtomicSwapExtended atomicSwapExtended;
+    case CREATE_ATOMIC_SWAP_ASK:
+        AtomicSwapAskExtended atomicSwapAskExtended;
     case CREATE_POLL:
         CreatePollExtended createPoll;
     } typeExt;
@@ -365,9 +365,7 @@ enum ReviewRequestResultCode
     // Atomic swap
     BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
     QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
-    ASSETS_ARE_EQUAL = -1502,
-    ASWAP_BID_UNDERFUNDED = -1503,
-    ASWAP_PURCHASER_FULL_LINE = -1504
+    ATOMIC_SWAP_ASK_OWNER_FULL_LINE = -1504
 
 };
 //: Result of applying the review request with result code

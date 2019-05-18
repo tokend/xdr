@@ -4,11 +4,11 @@
 namespace stellar
 {
 
-//: CreateAtomicSwapBidCreationRequestOp is used to create `CREATE_ATOMIC_SWAP_BID` request
-struct CreateAtomicSwapBidCreationRequestOp
+//: CreateAtomicSwapBidRequestOp is used to create `CREATE_ATOMIC_SWAP_BID` request
+struct CreateAtomicSwapBidRequestOp
 {
     //: Body of request which will be created
-    AtomicSwapBidCreationRequest request;
+    CreateAtomicSwapBidRequest request;
 
     //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ATOMIC_SWAP_BID` request to be approved,
     //: which will be used instead of key-value by `atomic_swap_bid_tasks` key
@@ -22,8 +22,8 @@ struct CreateAtomicSwapBidCreationRequestOp
     ext;
 };
 
-//: Result codes of CreateAtomicSwapBidCreationRequestOp
-enum CreateAtomicSwapBidCreationRequestResultCode
+//: Result codes of CreateAtomicSwapBidRequestOp
+enum CreateAtomicSwapBidRequestResultCode
 {
     //: `CREATE_ATOMIC_SWAP_BID` request has either been successfully created
     //: or auto approved
@@ -36,8 +36,8 @@ enum CreateAtomicSwapBidCreationRequestResultCode
     INVALID_PRICE = -2, // price is equal to 0
     //: Not allowed to create atomic swap bid with json invalid details
     INVALID_DETAILS = -3,
-    //: Not allowed to create atomic swap bid in which product of `baseAmount` and price of one `quoteAsset` exceeds MAX_INT64 value
-    ATOMIC_SWAP_BID_OVERFLOW = -4,
+    //: Not allowed to create atomic swap bid in which product of baseAmount precision does not matched precision of base asset
+    INCORRECT_PRECISION = -4,
     //: There is no asset with such code
     BASE_ASSET_NOT_FOUND = -5, // base asset does not exist
     //: Not allowed to use asset as base asset for atomic swap bid which has not `CAN_BE_BASE_IN_ATOMIC_SWAP` policy
@@ -60,7 +60,7 @@ enum CreateAtomicSwapBidCreationRequestResultCode
 };
 
 //: Success result of CreateASwapBidCreationRequestOp application
-struct CreateAtomicSwapBidCreationRequestSuccess
+struct CreateAtomicSwapBidRequestSuccess
 {
     //: id of created request
     uint64 requestID;
@@ -76,11 +76,11 @@ struct CreateAtomicSwapBidCreationRequestSuccess
 };
 
 //: Result of CreateAtomicSwapBidCreationRequestOp application
-union CreateAtomicSwapBidCreationRequestResult switch (CreateAtomicSwapBidCreationRequestResultCode code)
+union CreateAtomicSwapBidRequestResult switch (CreateAtomicSwapBidRequestResultCode code)
 {
 case SUCCESS:
     //: is used to pass useful fields after successful operation applying
-    CreateAtomicSwapBidCreationRequestSuccess success;
+    CreateAtomicSwapBidRequestSuccess success;
 default:
     void;
 };

@@ -11,7 +11,7 @@
 %#include "xdr/Stellar-reviewable-request-update-sale-details.h"
 %#include "xdr/Stellar-reviewable-request-invoice.h"
 %#include "xdr/Stellar-reviewable-request-contract.h"
-%#include "xdr/Stellar-reviewable-request-atomic-swap.h"
+%#include "xdr/Stellar-reviewable-request-atomic-swap-ask.h"
 %#include "xdr/Stellar-reviewable-request-atomic-swap-bid.h"
 %#include "xdr/Stellar-reviewable-request-create-poll.h"
 
@@ -36,7 +36,7 @@ enum ReviewableRequestType
 	UPDATE_ASSET = 13,
 	CREATE_POLL = 14,
 	CREATE_ATOMIC_SWAP_BID = 16,
-	CREATE_ATOMIC_SWAP = 17
+	CREATE_ATOMIC_SWAP_ASK = 17
 };
 
 struct TasksExt {
@@ -92,9 +92,9 @@ struct ReviewableRequestEntry {
         case MANAGE_CONTRACT:
             ContractRequest contractRequest;
         case CREATE_ATOMIC_SWAP_BID:
-            AtomicSwapBidCreationRequest atomicSwapBidCreationRequest;
-        case CREATE_ATOMIC_SWAP:
-            AtomicSwapRequest atomicSwapRequest;
+            CreateAtomicSwapBidRequest createAtomicSwapBidRequest;
+        case CREATE_ATOMIC_SWAP_ASK:
+            CreateAtomicSwapAskRequest createAtomicSwapAskRequest;
         case CREATE_POLL:
             CreatePollRequest createPollRequest;
 	} body;
