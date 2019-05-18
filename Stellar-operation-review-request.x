@@ -370,6 +370,7 @@ enum ReviewRequestResultCode
     ASWAP_PURCHASER_FULL_LINE = -1504,
 
     //KYC
+    //:Signer data is invalid - either weight is wrong or details are invalid
     INVALID_SIGNER_DATA = -1600
 
 };

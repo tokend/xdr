@@ -4,16 +4,17 @@
       - KYC
     summary: Initiate KYC recovery
     description: |
-                  Allows to initiate KYC recovery process. Deletes all of the account signers, sets new signer for account,
-                  changes account role to `recovery`,
-
+                  Allows to initiate KYC recovery process. KYC recovery is the process of changing all of the account
+                  signers. `InitiateKYCRecovery` deletes all existing signers of account and creates the new one with
+                  `publicKey` provided in operation.
                   #### Account Role Requirements
-                    Only admin can perform this operation
-
+                    | Account | Resource Type           |  Rule Action      |
+                    | --------|:-----------------------:|:-----------------:|
+                    | source  | `INITIATE_KYC_RECOVERY` | `CREATE`          |
                   #### Signer Role Requirements
-                    | Resource Type| Action  |
-                    |:-------------:| -----:|
-                    | `ACCOUNT_KYC` | `CREATE_FOR_OTHER` |
+                    | Resource Type           | Action   | Details                                  |
+                    |:-----------------------:|:--------:|:----------------------------------------:|
+                    | `INITIATE_KYC_RECOVERY` | `CREATE` | Resource includes id of the account role |
     operationId: initiateKYCRecoveryOp
     x-item-type: operation
     parameters:
