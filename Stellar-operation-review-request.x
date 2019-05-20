@@ -158,7 +158,7 @@ struct AtomicSwapAskExtended
     //: AccountID of a bid owner
     AccountID bidOwnerID;
     //: Account id of an ask owner
-    AccountID purchaserID;
+    AccountID askOwnerID;
     //: Base asset for the atomic swap
     AssetCode baseAsset;
     //: Quote asset for the atomic swap
@@ -173,6 +173,8 @@ struct AtomicSwapAskExtended
     BalanceID bidOwnerBaseBalanceID;
     //: Balance in base asset of an ask owner
     BalanceID askOwnerBaseBalanceID;
+    //: Amount which was unlocked on bid owner base balance after bid removing
+    uint64 unlockedAmount;
 
     //: Reserved for future use
     union switch (LedgerVersion v)

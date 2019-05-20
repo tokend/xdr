@@ -59,6 +59,24 @@ case CREATE_ATOMIC_SWAP_BID:
             EmptyExt ext;
         } createAtomicSwapBid;
     } createAtomicSwapBidExt;
+case CREATE_ATOMIC_SWAP_ASK:
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    case ATOMIC_SWAP_RETURNING:
+        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+        struct
+        {
+            //: code of asset
+            AssetCode assetCode;
+            //: type of asset
+            uint64 assetType;
+
+            //: reserved for future extension
+            EmptyExt ext;
+        } createAtomicSwapAsk;
+    } createAtomicSwapAskExt;
 case CREATE_POLL:
     //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
