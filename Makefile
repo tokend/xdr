@@ -1,4 +1,4 @@
-all: xdrgen docs/build/openapi.yaml
+all: bundler docs/build/openapi.yaml
 	redoc-cli bundle docs/build/openapi.yaml -t ./docs/html/index.hbs -o docs/index.html \
     --options.item-types-instead-of-operations=true \
         --options.root-param-name-as-group-header=true \
@@ -44,5 +44,6 @@ docs/build/openapi.yaml: docs/index.yaml docs/build/paths.yaml docs/build/tokend
 clean:
 	rm -rf docs/build/*
 
-xdrgen:
-	bundle install --path ./vendor --force
+bundler:
+	bundle install --path ./vendor
+	bundle update xdrgen
