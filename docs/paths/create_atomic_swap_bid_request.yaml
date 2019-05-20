@@ -29,7 +29,7 @@
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/CreateAtomicSwapBidCreationRequestOp'
+        $ref: '#/components/schemas/CreateAtomicSwapBidRequestOp'
     responses:
       200:
         description: Result
@@ -37,4 +37,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/CreateAtomicSwapBidCreationRequestResult'
+              $ref: '#/components/schemas/CreateAtomicSwapBidRequestResult'

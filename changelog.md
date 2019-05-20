@@ -5,17 +5,28 @@
 ### Added
 
 * Error codes and useful fields in success result for create atomic swap bid and atomic swap request operations
-* `CREATE_ATOMIC_SWAP_BID` case to reviewable request resource
+* `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
+
+## 3.3.0
+
+### Added
+
 * Error codes for create change role request
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
-
-## 3.3.0-x.0
-### Added
+* New ledger version to fix positive error codes of create aml alert request
+* New AML Alert error codes
+* Operation to cancel change role request
+* New ledger version to fix creating reverse pairs while creating sale
+* New LedgerVersion to fix checking permissions to set allTasks
+* New LedgerVersion to fix getting expiration time from KeyValue storage on external account prolongation
 * Account Specific Rules Creation and Removal
 * Account Specific Rules for sales
+
 ## 3.2.0
-###Added
+
+### Added
+
 * Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
 * Account rule action `UPDATE_END_TIME`
 * Signer rule action `UPDATE_END_TIME`

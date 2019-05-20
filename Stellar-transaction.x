@@ -43,6 +43,7 @@
 %#include "xdr/Stellar-operation-manage-create-poll-request.h"
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
+%#include "xdr/Stellar-operation-cancel-change-role-request.h"
 
 namespace stellar
 {
@@ -138,6 +139,8 @@ struct Operation
         ManageVoteOp manageVoteOp;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
+    case CANCEL_CHANGE_ROLE_REQUEST:
+        CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
     }
     body;
 };
@@ -234,7 +237,7 @@ enum OperationResultCode
     opSKIPPED = -13
 };
 
-//: Defines requirements for tx or operation which were not fulfilled 
+//: Defines requirements for tx or operation which were not fulfilled
 struct AccountRuleRequirement
 {
 	//: defines resources to which access was denied
@@ -333,6 +336,8 @@ case opINNER:
         ManageVoteResult manageVoteResult;
     case MANAGE_ACCOUNT_SPECIFIC_RULE:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
+    case CANCEL_CHANGE_ROLE_REQUEST:
+        CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
     }
     tr;
 case opNO_ENTRY:

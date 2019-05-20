@@ -2,7 +2,7 @@
   get:
     tags:
       - Atomic Swap
-    summary: Create Atomic Swap request
+    summary: Create Atomic Swap Ask request
     description: |
       Allows to create `CREATE_ATOMIC_SWAP` request, which approving means:
         * external system currency was received by atomic swap bid owner
@@ -14,21 +14,21 @@
         | source  | `ASSET`       | `RECEIVE_ATOMIC_SWAP` |
 
       #### Signer Role Requirements
-        | Resource Type | Action     |
-        |:-------------:|:----------:|
-        | `ASSET`       | `RECEIVE_ATOMIC_SWAP` |
+        | Resource Type        | ReviewableRequestType | Action  |
+        |:--------------------:|:---------------------:|:------: |
+        | `REVIEWABLE_REQUEST` | `CREATE_ATOMIC_SWAP_ASK` |`CREATE` |
 
-    operationId: createAtomicSwapRequestOp
+    operationId: createAtomicSwapAskRequestOp
     x-item-type: operation
     parameters:
-    - name: Create Atomic Swap Request Op
+    - name: Create Atomic Swap Ask Request Op
       in: query
       required: false
       style: form
       explode: true
       schema:
         type: object
-        $ref: '#/components/schemas/CreateAtomicSwapRequestOp'
+        $ref: '#/components/schemas/CreateAtomicSwapAskRequestOp'
     responses:
       200:
         description: Result
@@ -36,4 +36,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/CreateAtomicSwapRequestResult'
+              $ref: '#/components/schemas/CreateAtomicSwapAskRequestResult'
