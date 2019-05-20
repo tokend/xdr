@@ -53,16 +53,14 @@ enum CreateKYCRecoveryRequestResultCode
     TARGET_ACCOUNT_NOT_FOUND = -8,
     //: System configuration forbids KYC recovery
     RECOVERY_NOT_ALLOWED = -10,
-    //: Either, there is no entry by key `kyc_recovery_account_role`, or such role does not exists
-    RECOVERY_SIGNER_ROLE_NOT_FOUND = -11,
     //: Only target account can update request
-    NOT_ALLOWED_TO_UPDATE_REQUEST = -12,
+    NOT_ALLOWED_TO_UPDATE_REQUEST = -11,
     //: There is no request with such ID
-    REQUEST_NOT_FOUND = -13,
+    REQUEST_NOT_FOUND = -12,
     //: It is forbidden to change target account on update
-    INVALID_UPDATE_DATA = -14,
+    INVALID_UPDATE_DATA = -13,
     //: It is forbidden to set `allTasks` on update
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -15
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -14
 };
 
 //: Result of operation applying
