@@ -3,6 +3,14 @@
 ## Unreleased
 
 ### Added
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
+
+## 3.3.0
+
+### Added
+
 * Error codes for create change role request
 * Error codes for review request
 * New LedgerVersion to fix change to unexisting role
@@ -12,16 +20,13 @@
 * New ledger version to fix creating reverse pairs while creating sale
 * New LedgerVersion to fix checking permissions to set allTasks
 * New LedgerVersion to fix getting expiration time from KeyValue storage on external account prolongation
-* `InitiateKYCRecovery` operation
-* `KYC_Recovery` reviewable request
-* `CreateKYCRecoveryRequest` operation
-
-## 3.3.0-x.0
-### Added
 * Account Specific Rules Creation and Removal
 * Account Specific Rules for sales
+
 ## 3.2.0
-###Added
+
+### Added
+
 * Manage poll actions: `CLOSE`, `UPDATE_END_TIME`
 * Account rule action `UPDATE_END_TIME`
 * Signer rule action `UPDATE_END_TIME`
