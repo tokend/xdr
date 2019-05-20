@@ -133,6 +133,9 @@ case INITIATE_KYC_RECOVERY:
     {
         //: Role id
         uint64 roleID;
+
+        //: reserved for future extension
+        EmptyExt ext;
     } initiateKYCRecovery;
 default:
     //: reserved for future extension
@@ -157,7 +160,9 @@ enum SignerRuleAction
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
     CLOSE = 15,
-    UPDATE_END_TIME = 16
+    UPDATE_END_TIME = 16,
+    CREATE_WITH_TASKS = 17,
+    CREATE_FOR_OTHER_WITH_TASKS = 18
 };
 
 

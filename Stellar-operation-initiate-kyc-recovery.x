@@ -23,12 +23,10 @@ enum InitiateKYCRecoveryResultCode
     //: Means that KYC recovery was successfully initiated
     SUCCESS = 0,
 
-    //: KYC target account not found
-    NOT_FOUND = -1,
     //: System configuration forbids KYC recovery
-    RECOVERY_NOT_ALLOWED = -2,
+    RECOVERY_NOT_ALLOWED = -1,
     //: Either, there is no entry by key `kyc_recovery_signer_role`, or such role does not exists
-    RECOVERY_SIGNER_ROLE_NOT_FOUND = -3
+    RECOVERY_SIGNER_ROLE_NOT_FOUND = -2
 };
 
 //: Result of operation applying

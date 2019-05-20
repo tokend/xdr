@@ -17,7 +17,7 @@ struct CreateKYCRecoveryRequestOp
      //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
 
-    //: (optional) Bit mask whose flags must be cleared in order for PreIssuanceRequest to be approved, which will be used by key `preissuance_tasks`
+    //: (optional) Bit mask whose flags must be cleared in order for KYC recovery request to be approved, which will be used by key `create_kyc_recovery_tasks`
     //: instead of key-value
     uint32* allTasks;
 

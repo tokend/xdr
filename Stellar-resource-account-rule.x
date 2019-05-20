@@ -151,6 +151,15 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
+case INITIATE_KYC_RECOVERY:
+    struct
+    {
+        //: Role id
+        uint64 roleID;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } initiateKYCRecovery;
 default:
     //: reserved for future extension
     EmptyExt ext;

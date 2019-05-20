@@ -5,7 +5,7 @@
     summary: Create KYC Recovery Request
     description: |
                   Allows creating `KYC_RECOVERY` reviewable request.
-                  `KYC_RECOVERY` request is used to perform account recovery, i.e. add new signers for the account.
+                  `KYC_RECOVERY` request is used to finish account recovery, i.e. add new signers for the account.
                   `KYC_RECOVERY` can be created by either admin, or some account. On request creation `requestor` is
                   being set to `targetAccount`. It can be updated by `targetAccount` (providing additional kyc data)
                   and is being reviewed by admin.
