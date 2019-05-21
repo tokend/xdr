@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Added
+* Rule entries for `AccountSpecificRule`
+
 ## 3.3.0
 
 ### Added
