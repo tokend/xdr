@@ -11,9 +11,11 @@
       for asset) or by key `issuance_tasks:*` if there are no issuance tasks for provided asset.
       If field `allTasks` is set, `KeyValueEntry` won't be used.
       #### Account Role Requirements
-        | Account        | Resource Type | Action  |
-        | ------------- |:-------------:| -----:|
-        | source      | `ASSET` | `RECEIVE_ISSUANCE` |
+        | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+        | ------------- |:-------------:| -----:| -----: | -----: |
+        | receiver    | `ASSET`              | `RECEIVE_ISSUANCE` | -                   | -                    |
+        | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS`    | `CREATE`            | `allTasks` == `null` |
+        | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS`    | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
       #### Signer Role Requirements
         | Resource Type | Reviewable Request Type |Action  |
