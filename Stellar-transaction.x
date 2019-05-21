@@ -44,6 +44,7 @@
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
 %#include "xdr/Stellar-operation-cancel-change-role-request.h"
+%#include "xdr/Stellar-operation-remove-asset-pair.h"
 
 namespace stellar
 {
@@ -141,6 +142,8 @@ struct Operation
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
+    case REMOVE_ASSET_PAIR:
+        RemoveAssetPairOp removeAssetPairOp;
     }
     body;
 };
@@ -338,6 +341,8 @@ case opINNER:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
+    case REMOVE_ASSET_PAIR:
+        RemoveAssetPairResult removeAssetPairResult;
     }
     tr;
 case opNO_ENTRY:

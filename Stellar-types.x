@@ -189,7 +189,8 @@ enum OperationType
     MANAGE_POLL = 44,
     MANAGE_VOTE = 45,
     MANAGE_ACCOUNT_SPECIFIC_RULE = 46,
-    CANCEL_CHANGE_ROLE_REQUEST = 47
+    CANCEL_CHANGE_ROLE_REQUEST = 47,
+    REMOVE_ASSET_PAIR = 48
 };
 
 struct DecoratedSignature
