@@ -6,9 +6,10 @@
     description: |
                   Allows either to create new `UpdateLimits` reviewable request or update existing one
                   #### Account Role Requirements
-                    | Account | Resource Type       | Rule Action |
-                    | --------|:-------------------:| -----------:|
-                    | source  | `REVIEWABLE_REQUEST`| `CREATE`    |
+                    | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+                    | ------------- |:-------------:| -----:| -----: | -----: |
+                    | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS` | `CREATE`            | `allTasks` == `null` |
+                    | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
                   #### Signer Role Requirements
                     | Resource Type       | Rule Action |
