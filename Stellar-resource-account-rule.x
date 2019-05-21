@@ -152,19 +152,22 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
-case ACCOUNT_SPECIFIC_RULE:
-    struct
-    {
-        //: Describes properties of some ledger key that
-        //: can be used to restrict the usage of account specific rules
-        LedgerKey ledgerKey;
-
-        //: reserved for future extension
-        EmptyExt ext;
-    } accountSpecificRule;
 default:
-    //: reserved for future extension
-    EmptyExt ext;
+    union switch(LedgerVersion v) {
+    case EMPTY_VERSION:
+        void;
+    case ADD_ACC_SPECIFIC_RULE_RESOURCE:
+      struct
+        {
+            //: Describes properties of some ledger key that
+            //: can be used to restrict the usage of account specific rules
+            LedgerKey ledgerKey;
+
+            //: reserved for future extension
+            EmptyExt ext;
+        } accountSpecificRule;
+    }
+    ext;
 };
 
 //: Actions that can be applied to account rule resource

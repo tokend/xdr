@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Added
+* New ledger version to handle rules for `AccountSpecificRule`
 * Rule entries for `AccountSpecificRule`
 
 ## 3.3.0
