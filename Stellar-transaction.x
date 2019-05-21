@@ -44,6 +44,8 @@
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
 %#include "xdr/Stellar-operation-cancel-change-role-request.h"
+%#include "xdr/Stellar-operation-create-kyc-recovery-request.h"
+%#include "xdr/Stellar-operation-initiate-kyc-recovery.h"
 
 namespace stellar
 {
@@ -141,6 +143,10 @@ struct Operation
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     }
     body;
 };
@@ -338,6 +344,10 @@ case opINNER:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     }
     tr;
 case opNO_ENTRY:

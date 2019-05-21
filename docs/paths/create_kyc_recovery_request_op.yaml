@@ -1,0 +1,43 @@
+/createKYCRecoveryRequestOp:
+  get:
+    tags:
+      - KYC
+    summary: Create KYC Recovery Request
+    description: |
+                  Allows creating `KYC_RECOVERY` reviewable request.
+                  `KYC_RECOVERY` request is used to finish account recovery, i.e. add new signers for the account.
+                  `KYC_RECOVERY` can be created by either admin, or some account. On request creation `requestor` is
+                  being set to `targetAccount`. It can be updated by `targetAccount` (providing additional kyc data)
+                  and is being reviewed by admin.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  | Condition |
+                    | --------|:-------------:|:-----:| ------------|
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks == null` && `targetAccount == source` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks != null` \|\| `targetAccount == source` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_FOR_OTHER` | `allTasks == null` && `targetAccount != source` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_FOR_OTHER_WITH_TASKS` | `allTasks != null` \|\| `targetAccount != source` |
+
+                  #### Signer Role Requirements
+                    | Resource Type| Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createKYCRecoveryRequestOp
+    x-item-type: operation
+    parameters:
+    - name: Create KYC Recovery Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateKycRecoveryRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateKycRecoveryRequestResult'

@@ -18,7 +18,8 @@ enum LedgerVersion
     FIX_NOT_CHECKING_SET_TASKS_PERMISSIONS = 8,
     UNLIMITED_ADMIN_COUNT = 9,
     FIX_AML_ALERT_ERROR_CODES = 10,
-    FIX_EXT_SYS_ACC_EXPIRATION_TIME = 11
+    FIX_EXT_SYS_ACC_EXPIRATION_TIME = 11,
+    FIX_CHANGE_ROLE_REJECT_TASKS = 12
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -88,7 +89,8 @@ enum LedgerEntryType
     LICENSE = 33,
     POLL = 34,
     VOTE = 35,
-    ACCOUNT_SPECIFIC_RULE = 36
+    ACCOUNT_SPECIFIC_RULE = 36,
+    INITIATE_KYC_RECOVERY = 37
 };
 
 // variable size as the size depends on the signature scheme used
@@ -189,7 +191,9 @@ enum OperationType
     MANAGE_POLL = 44,
     MANAGE_VOTE = 45,
     MANAGE_ACCOUNT_SPECIFIC_RULE = 46,
-    CANCEL_CHANGE_ROLE_REQUEST = 47
+    CANCEL_CHANGE_ROLE_REQUEST = 47,
+    INITIATE_KYC_RECOVERY = 48,
+    CREATE_KYC_RECOVERY_REQUEST = 49
 };
 
 struct DecoratedSignature

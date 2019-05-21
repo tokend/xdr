@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Added
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
+
 ## 3.3.0
 
 ### Added
