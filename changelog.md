@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+* Added operation to remove asset pair
+
 ## 3.3.0
 
 ### Added
