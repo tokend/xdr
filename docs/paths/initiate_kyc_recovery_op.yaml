@@ -8,9 +8,10 @@
                   signers. `InitiateKYCRecovery` deletes all existing signers of account and creates the new one with
                   `publicKey` provided in operation with role got by key `kyc_recovery_signer_role`.
                   #### Account Role Requirements
-                    | Account | Resource Type           |  Rule Action      |
-                    | --------|:-----------------------:|:-----------------:|
-                    | source  | `INITIATE_KYC_RECOVERY` | `CREATE`          |
+                    | Account | Resource Type           |  Rule Action      | Details |
+                    | --------|:-----------------------:|:-----------------:|:----------------------------------------:|
+                    | source  | `INITIATE_KYC_RECOVERY` | `CREATE`          | Resource includes id of the account role |
+
                   #### Signer Role Requirements
                     | Resource Type           | Action   | Details                                  |
                     |:-----------------------:|:--------:|:----------------------------------------:|
