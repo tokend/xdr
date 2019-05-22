@@ -36,7 +36,9 @@ enum RemoveAssetPairResultCode
     //: Asset pair can't be deleted as it has active orders
     HAS_ACTIVE_OFFERS = -2,
     //: Asset pair can't be deleted as it has active sales
-    HAS_ACTIVE_SALES = -3
+    HAS_ACTIVE_SALES = -3,
+    //: Base or Quote asset is invalid
+    INVALID_ASSET_CODE = -4
 };
 
 //: Result of successful `RemoveAssetPairOp` application
