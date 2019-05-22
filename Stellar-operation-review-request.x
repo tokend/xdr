@@ -367,7 +367,11 @@ enum ReviewRequestResultCode
     QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
     ASSETS_ARE_EQUAL = -1502,
     ASWAP_BID_UNDERFUNDED = -1503,
-    ASWAP_PURCHASER_FULL_LINE = -1504
+    ASWAP_PURCHASER_FULL_LINE = -1504,
+
+    //KYC
+    //:Signer data is invalid - either weight is wrong or details are invalid
+    INVALID_SIGNER_DATA = -1600
 
 };
 //: Result of applying the review request with result code

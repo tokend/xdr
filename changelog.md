@@ -3,6 +3,9 @@
 ## Unreleased
 
 ### Added
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
 * New ledger version to handle rules for `AccountSpecificRule`
 * Rule entries for `AccountSpecificRule`
 

@@ -152,6 +152,15 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
+case INITIATE_KYC_RECOVERY:
+    struct
+    {
+        //: Role id
+        uint64 roleID;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } initiateKYCRecovery;
 default:
     union switch(LedgerVersion v) {
     case EMPTY_VERSION:
@@ -190,7 +199,8 @@ enum AccountRuleAction
     CANCEL = 15,
     CLOSE = 16,
     REMOVE = 17,
-    UPDATE_END_TIME = 18
+    UPDATE_END_TIME = 18,
+    CREATE_FOR_OTHER_WITH_TASKS = 19
 };
 
 }
