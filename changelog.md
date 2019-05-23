@@ -4,7 +4,10 @@
 
 ### Added
 
-* Added operation to remove asset pair
+* `RemoveAssetPairOp` operation
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
 
 ## 3.3.0
 

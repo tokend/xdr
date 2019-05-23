@@ -1,0 +1,37 @@
+/initiateKYCRecoveryOp:
+  get:
+    tags:
+      - KYC
+    summary: Initiate KYC recovery
+    description: |
+                  Allows to initiate KYC recovery process. KYC recovery is the process of changing all of the account
+                  signers. `InitiateKYCRecovery` deletes all existing signers of account and creates the new one with
+                  `publicKey` provided in operation with role got by key `kyc_recovery_signer_role`.
+                  #### Account Role Requirements
+                    | Account | Resource Type           |  Rule Action      | Details |
+                    | --------|:-----------------------:|:-----------------:|:----------------------------------------:|
+                    | source  | `INITIATE_KYC_RECOVERY` | `CREATE`          | Resource includes id of the account role |
+
+                  #### Signer Role Requirements
+                    | Resource Type           | Action   | Details                                  |
+                    |:-----------------------:|:--------:|:----------------------------------------:|
+                    | `INITIATE_KYC_RECOVERY` | `CREATE` | Resource includes id of the account role |
+    operationId: initiateKYCRecoveryOp
+    x-item-type: operation
+    parameters:
+    - name: Initiate KYC Recovery Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/InitiateKycRecoveryOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/InitiateKycRecoveryResult'
