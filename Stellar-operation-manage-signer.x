@@ -88,7 +88,9 @@ enum ManageSignerResultCode
     //: Source account does not have a signer with the provided public key
     NOT_FOUND = -5, // there is no signer with such public key
     //: only occurs during the creation of signers for admins if the number of signers exceeds the number specified in a license
-	NUMBER_OF_ADMINS_EXCEEDS_LICENSE = -6
+	NUMBER_OF_ADMINS_EXCEEDS_LICENSE = -6,
+	//: Number of signers of account exceeds allowed
+	NUMBER_OF_SIGNERS_EXCEEDS_ALLOWED = -7
 };
 
 //: Result of operation application

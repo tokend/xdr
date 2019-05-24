@@ -60,7 +60,9 @@ enum CreateKYCRecoveryRequestResultCode
     //: It is forbidden to change target account on update
     INVALID_UPDATE_DATA = -13,
     //: It is forbidden to set `allTasks` on update
-    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -14
+    NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -14,
+    //: Number of signers of account exceeds allowed
+    NUMBER_OF_SIGNERS_EXCEEDS_ALLOWED = -15
 };
 
 //: Result of operation applying
