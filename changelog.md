@@ -6,6 +6,7 @@
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
+* New LedgerVersion to fix investment fee
 
 ## 3.3.0
 
