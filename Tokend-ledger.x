@@ -11,9 +11,9 @@ namespace stellar
 
 typedef opaque UpgradeType<128>;
 
-/* TokendValue is the value used by SCP to reach consensus on a given ledger
+/* StellarValue is the value used by SCP to reach consensus on a given ledger
 */
-struct TokendValue
+struct StellarValue
 {
     Hash txSetHash;   // transaction set to apply to previous ledger
     uint64 closeTime; // network close time
@@ -47,7 +47,7 @@ struct LedgerHeader
 {
     uint32 ledgerVersion;    // the protocol version of the ledger
     Hash previousLedgerHash; // hash of the previous ledger header
-    TokendValue scpValue;   // what consensus agreed to
+    StellarValue scpValue;   // what consensus agreed to
     Hash txSetResultHash;    // the TransactionResultSet that led to this ledger
     Hash bucketListHash;     // hash of the ledger state
 
@@ -78,7 +78,7 @@ struct LedgerHeader
 };
 
 /* Ledger upgrades
-note that the `upgrades` field from TokendValue is normalized such that
+note that the `upgrades` field from StellarValue is normalized such that
 it only contains one entry per LedgerUpgradeType, and entries are sorted
 in ascending order
 */
