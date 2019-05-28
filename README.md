@@ -8,7 +8,7 @@ All notable changes to this project will be documented in [this file](https://gi
 
 ## Notes
 
-This repo has been forked from [Stellar XDR](https://github.com/stellar/Tokend-core)
+This repo has been forked from [Stellar XDR](https://github.com/stellar/stellar-core)
 
 ## Generate docs 
 
