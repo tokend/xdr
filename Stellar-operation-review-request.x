@@ -121,10 +121,10 @@ struct SaleExtended {
 };
 
 //: Extended result of the review request operation containing details specific to a Create Atomic Swap Bid Request
-struct AtomicSwapBidExtended
+struct AtomicSwapAskExtended
 {
-    //: ID of the newly created bid as a result of Create Atomic Swap Bid Request successful review
-    uint64 bidID;
+    //: ID of the newly created ask as a result of Create Atomic Swap Ask Request successful review
+    uint64 askID;
 
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -151,14 +151,14 @@ struct CreatePollExtended
 };
 
 //: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
-struct AtomicSwapAskExtended
+struct AtomicSwapBidExtended
 {
-    //: ID of a bid to apply atomic swap to
-    uint64 bidID;
-    //: AccountID of a bid owner
-    AccountID bidOwnerID;
-    //: Account id of an ask owner
+    //: ID of a ask to apply atomic swap to
+    uint64 askID;
+    //: AccountID of a ask owner
     AccountID askOwnerID;
+    //: Account id of an bid owner
+    AccountID bidOwnerID;
     //: Base asset for the atomic swap
     AssetCode baseAsset;
     //: Quote asset for the atomic swap
@@ -169,10 +169,10 @@ struct AtomicSwapAskExtended
     uint64 quoteAmount;
     //: Price of base asset in terms of quote
     uint64 price;
-    //: Balance in base asset of a bid owner
-    BalanceID bidOwnerBaseBalanceID;
-    //: Balance in base asset of an ask owner
+    //: Balance in base asset of a ask owner
     BalanceID askOwnerBaseBalanceID;
+    //: Balance in base asset of an bid owner
+    BalanceID bidOwnerBaseBalanceID;
     //: Amount which was unlocked on bid owner base balance after bid removing
     uint64 unlockedAmount;
 
@@ -367,7 +367,11 @@ enum ReviewRequestResultCode
     // Atomic swap
     BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
     QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
-    ATOMIC_SWAP_ASK_OWNER_FULL_LINE = -1504
+    ATOMIC_SWAP_BID_OWNER_FULL_LINE = -1504,
+
+    //KYC
+    //:Signer data is invalid - either weight is wrong or details are invalid
+    INVALID_SIGNER_DATA = -1600
 
 };
 //: Result of applying the review request with result code

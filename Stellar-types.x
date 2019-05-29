@@ -19,7 +19,8 @@ enum LedgerVersion
     UNLIMITED_ADMIN_COUNT = 9,
     FIX_AML_ALERT_ERROR_CODES = 10,
     FIX_EXT_SYS_ACC_EXPIRATION_TIME = 11,
-    ATOMIC_SWAP_RETURNING = 12
+    FIX_CHANGE_ROLE_REJECT_TASKS = 12,
+    ATOMIC_SWAP_RETURNING = 13
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -81,7 +82,7 @@ enum LedgerEntryType
     CONTRACT = 25,
     ACCOUNT_ROLE = 26,
     ACCOUNT_RULE = 27,
-    ATOMIC_SWAP_BID = 28,
+    ATOMIC_SWAP_ASK = 28,
     TRANSACTION = 29, // is used for account rule resource
     SIGNER_RULE = 30,
     SIGNER_ROLE = 31,
@@ -89,7 +90,8 @@ enum LedgerEntryType
     LICENSE = 33,
     POLL = 34,
     VOTE = 35,
-    ACCOUNT_SPECIFIC_RULE = 36
+    ACCOUNT_SPECIFIC_RULE = 36,
+    INITIATE_KYC_RECOVERY = 37
 };
 
 // variable size as the size depends on the signature scheme used
@@ -178,9 +180,9 @@ enum OperationType
     PAYOUT = 32,
     MANAGE_ACCOUNT_ROLE = 33,
     MANAGE_ACCOUNT_RULE = 34,
-    CREATE_ATOMIC_SWAP_BID_REQUEST = 35,
-    CANCEL_ATOMIC_SWAP_BID = 36,
-    CREATE_ATOMIC_SWAP_ASK_REQUEST = 37,
+    CREATE_ATOMIC_SWAP_ASK_REQUEST = 35,
+    CANCEL_ATOMIC_SWAP_ASK = 36,
+    CREATE_ATOMIC_SWAP_BID_REQUEST = 37,
     MANAGE_SIGNER = 38,
     MANAGE_SIGNER_ROLE = 39,
     MANAGE_SIGNER_RULE = 40,
@@ -190,7 +192,9 @@ enum OperationType
     MANAGE_POLL = 44,
     MANAGE_VOTE = 45,
     MANAGE_ACCOUNT_SPECIFIC_RULE = 46,
-    CANCEL_CHANGE_ROLE_REQUEST = 47
+    CANCEL_CHANGE_ROLE_REQUEST = 47,
+    INITIATE_KYC_RECOVERY = 48,
+    CREATE_KYC_RECOVERY_REQUEST = 49
 };
 
 struct DecoratedSignature

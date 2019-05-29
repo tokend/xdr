@@ -41,24 +41,6 @@ case CREATE_WITHDRAW:
         //: reserved for future extension
         EmptyExt ext;
     } createWithdraw;
-case CREATE_ATOMIC_SWAP_BID:
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    case ATOMIC_SWAP_RETURNING:
-        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
-        struct
-        {
-            //: code of asset
-            AssetCode assetCode;
-            //: type of asset
-            uint64 assetType;
-
-            //: reserved for future extension
-            EmptyExt ext;
-        } createAtomicSwapBid;
-    } createAtomicSwapBidExt;
 case CREATE_ATOMIC_SWAP_ASK:
     union switch (LedgerVersion v)
     {
@@ -77,6 +59,24 @@ case CREATE_ATOMIC_SWAP_ASK:
             EmptyExt ext;
         } createAtomicSwapAsk;
     } createAtomicSwapAskExt;
+case CREATE_ATOMIC_SWAP_BID:
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    case ATOMIC_SWAP_RETURNING:
+        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+        struct
+        {
+            //: code of asset
+            AssetCode assetCode;
+            //: type of asset
+            uint64 assetType;
+
+            //: reserved for future extension
+            EmptyExt ext;
+        } createAtomicSwapBid;
+    } createAtomicSwapBidExt;
 case CREATE_POLL:
     //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
@@ -146,14 +146,14 @@ case SALE:
         //: reserved for future extension
         EmptyExt ext;
     } sale;
-case ATOMIC_SWAP_BID:
+case ATOMIC_SWAP_ASK:
     struct
     {
         uint64 assetType;
         AssetCode assetCode;
 
         EmptyExt ext;
-    } atomicSwapBid;
+    } atomicSwapAsk;
 case KEY_VALUE:
     struct
     {
@@ -187,6 +187,15 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
+case INITIATE_KYC_RECOVERY:
+    struct
+    {
+        //: Role id
+        uint64 roleID;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } initiateKYCRecovery;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -212,7 +221,8 @@ enum AccountRuleAction
     CANCEL = 15,
     CLOSE = 16,
     REMOVE = 17,
-    UPDATE_END_TIME = 18
+    UPDATE_END_TIME = 18,
+    CREATE_FOR_OTHER_WITH_TASKS = 19
 };
 
 }

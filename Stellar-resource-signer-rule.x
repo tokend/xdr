@@ -61,14 +61,14 @@ case SALE:
 
         EmptyExt ext;
     } sale;
-case ATOMIC_SWAP_BID:
+case ATOMIC_SWAP_ASK:
     struct
     {
         uint64 assetType;
         AssetCode assetCode;
 
         EmptyExt ext;
-    } atomicSwapBid;
+    } atomicSwapAsk;
 case SIGNER_RULE:
     //: Describes properties that are equal to managed signer rule entry fields
     struct
@@ -128,6 +128,15 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
+case INITIATE_KYC_RECOVERY:
+    struct
+    {
+        //: Role id
+        uint64 roleID;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } initiateKYCRecovery;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -151,7 +160,9 @@ enum SignerRuleAction
     UPDATE_MAX_ISSUANCE = 13,
     CHECK = 14,
     CLOSE = 15,
-    UPDATE_END_TIME = 16
+    UPDATE_END_TIME = 16,
+    CREATE_WITH_TASKS = 17,
+    CREATE_FOR_OTHER_WITH_TASKS = 18
 };
 
 

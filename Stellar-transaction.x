@@ -30,7 +30,7 @@
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
 %#include "xdr/Stellar-operation-create-atomic-swap-bid-request.h"
-%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-ask.h"
 %#include "xdr/Stellar-operation-create-atomic-swap-ask-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-rule.h"
@@ -44,6 +44,8 @@
 %#include "xdr/Stellar-operation-manage-vote.h"
 %#include "xdr/Stellar-operation-manage-account-specific-rule.h"
 %#include "xdr/Stellar-operation-cancel-change-role-request.h"
+%#include "xdr/Stellar-operation-create-kyc-recovery-request.h"
+%#include "xdr/Stellar-operation-initiate-kyc-recovery.h"
 
 namespace stellar
 {
@@ -111,12 +113,12 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
-    case CANCEL_ATOMIC_SWAP_BID:
-        CancelAtomicSwapBidOp cancelAtomicSwapBidOp;
     case CREATE_ATOMIC_SWAP_ASK_REQUEST:
         CreateAtomicSwapAskRequestOp createAtomicSwapAskRequestOp;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskOp cancelAtomicSwapAskOp;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
@@ -141,6 +143,10 @@ struct Operation
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     }
     body;
 };
@@ -308,12 +314,12 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
-    case CANCEL_ATOMIC_SWAP_BID:
-        CancelAtomicSwapBidResult cancelAtomicSwapBidResult;
     case CREATE_ATOMIC_SWAP_ASK_REQUEST:
         CreateAtomicSwapAskRequestResult createAtomicSwapAskRequestResult;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskResult cancelAtomicSwapAskResult;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:
@@ -338,6 +344,10 @@ case opINNER:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
+    case CREATE_KYC_RECOVERY_REQUEST:
+        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
+    case INITIATE_KYC_RECOVERY:
+        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     }
     tr;
 case opNO_ENTRY:

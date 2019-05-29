@@ -3,9 +3,23 @@
 ## Unreleased
 
 ### Added
+<<<<<<< HEAD
 
 * Error codes and useful fields in success result for create atomic swap bid and atomic swap request operations
 * `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
+=======
+* `InitiateKYCRecovery` operation
+* `KYC_Recovery` reviewable request
+* `CreateKYCRecoveryRequest` operation
+
+## 3.3.1
+
+### Fixed
+* Updated xdrgen for docs generation to resolve issue with union switches showing redundant arms
+
+### Added
+* Shortcut to contact support
+>>>>>>> master
 
 ## 3.3.0
 

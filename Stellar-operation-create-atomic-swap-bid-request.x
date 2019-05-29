@@ -10,62 +10,55 @@ struct CreateAtomicSwapBidRequestOp
     //: Body of request which will be created
     CreateAtomicSwapBidRequest request;
 
-    //: (optional) Bit mask whose flags must be cleared in order for `CREATE_ATOMIC_SWAP_BID` request to be approved,
-    //: which will be used instead of key-value by `atomic_swap_bid_tasks` key
-    uint32* allTasks;
     //: reserved for the future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
-    }
-    ext;
+    } ext;
 };
 
 //: Result codes of CreateAtomicSwapBidRequestOp
 enum CreateAtomicSwapBidRequestResultCode
 {
-    //: `CREATE_ATOMIC_SWAP_BID` request has either been successfully created
-    //: or auto approved
+    //: request was successfully created
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    //: Not allowed to create atomic swap bid with zero amount
-    INVALID_AMOUNT = -1, // amount is equal to 0
-    //: Not allowed to create atomic swap bid with quote asset price equals zero
-    INVALID_PRICE = -2, // price is equal to 0
-    //: Not allowed to create atomic swap bid with json invalid details
-    INVALID_DETAILS = -3,
-    //: Not allowed to create atomic swap bid in which product of baseAmount precision does not matched precision of base asset
-    INCORRECT_PRECISION = -4,
-    //: There is no asset with such code
-    BASE_ASSET_NOT_FOUND = -5, // base asset does not exist
-    //: Not allowed to use asset as base asset for atomic swap bid which has not `CAN_BE_BASE_IN_ATOMIC_SWAP` policy
-    BASE_ASSET_CANNOT_BE_SWAPPED = -6,
-    //: There is no asset with such code
-    QUOTE_ASSET_NOT_FOUND = -7, // quote asset does not exist
-    //: Not allowed to use asset as base asset for atomic swap bid which has not `CAN_BE_QUOTE_IN_ATOMIC_SWAP` policy
-    QUOTE_ASSET_CANNOT_BE_SWAPPED = -8,
-    //: There is no balance with such id and source account as owner
-    BASE_BALANCE_NOT_FOUND = -9,
-    //: Not allowed to create atomic swap bid in which base and quote assets are the same
-    ASSETS_ARE_EQUAL = -10, // base and quote assets are the same
-    //: There is not enough amount on `baseBalance` or `baseAmount` precision does not fit asset precision
-    BASE_BALANCE_UNDERFUNDED = -11,
-    //: Not allowed to pass invalid or duplicated quote asset codes
-    INVALID_QUOTE_ASSET = -12, // one of the quote assets is invalid
+    //: Not allowed to create `CREATE_ATOMIC_SWAP` request with zero base amount
+    INVALID_BASE_AMOUNT = -1,
+    //: Not allowed to pass invalid quote asset code
+    INVALID_QUOTE_ASSET = -2,
+    //: There is no atomic swap bid with such id
+    ASK_NOT_FOUND = -3,
+    //: There is no quote asset with such code
+    QUOTE_ASSET_NOT_FOUND = -4,
+    //: Not allowed to create `CREATE_ATOMIC_SWAP_BID` request with amount which exceeds available amount of atomic swap ask
+    ASK_UNDERFUNDED = -5, // ask has not enough base amount available for lock
     //: There is no key-value entry by `atomic_swap_bid_tasks` key in the system;
-    //: configuration does not allow create atomic swap bids
-    ATOMIC_SWAP_BID_TASKS_NOT_FOUND = -13
+    //: configuration does not allow create `CREATE_ATOMIC_SWAP_BID` request
+    ATOMIC_SWAP_BID_TASKS_NOT_FOUND = -6,
+    //: Base amount precision and asset precision are mismatched
+    INCORRECT_PRECISION = -7,
+    //: Not allowed to create `CREATE_ATOMIC_SWAP_BID` request for atomic swap ask which is marked as `canceled`
+    ASK_IS_CANCELLED = -8,
+    //: Not allowed to create `CREATE_ATOMIC_SWAP_BID` request for own atomic swap ask
+    SOURCE_ACCOUNT_EQUALS_ASK_OWNER = -9,
+    //: 0 value is received from key value entry by `atomic_swap_bid_tasks` key
+    ATOMIC_SWAP_BID_ZERO_TASKS_NOT_ALLOWED = -10,
+    //: Not allowed to create atomic swap ask in which product of `baseAmount` and price of the `quoteAsset` exceeds MAX_INT64 value
+    QUOTE_AMOUNT_OVERFLOWS = -11
 };
 
-//: Success result of CreateASwapBidCreationRequestOp application
+//: Success request of CreateAtomicSwapBidRequestOp application
 struct CreateAtomicSwapBidRequestSuccess
 {
     //: id of created request
     uint64 requestID;
-    //: Indicates whether or not the `CREATE_ATOMIC_SWAP_BID` request was auto approved and fulfilled
-    bool fulfilled;
+    //: id of ask owner
+    AccountID askOwnerID;
+    //: amount in quote asset which required for request applying
+    uint64 quoteAmount;
 
     //: reserved for the future use
     union switch (LedgerVersion v)
@@ -75,7 +68,7 @@ struct CreateAtomicSwapBidRequestSuccess
     } ext;
 };
 
-//: Result of CreateAtomicSwapBidCreationRequestOp application
+//: Result of CreateAtomicSwapBidRequestOp application
 union CreateAtomicSwapBidRequestResult switch (CreateAtomicSwapBidRequestResultCode code)
 {
 case SUCCESS:
