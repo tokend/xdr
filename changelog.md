@@ -9,6 +9,14 @@
 * New LedgerVersion to fix same asset pair creation
 * New `ManageAssetPairOp` error code
 
+## 3.3.1
+
+### Fixed
+* Updated xdrgen for docs generation to resolve issue with union switches showing redundant arms
+
+### Added
+* Shortcut to contact support
+
 ## 3.3.0
 
 ### Added
