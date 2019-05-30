@@ -1,28 +1,27 @@
-/createAtomicSwapBidCreationRequestOp:
+/createAtomicSwapBidRequestOp:
   get:
     tags:
       - Atomic Swap
     summary: Create Atomic Swap Bid request
     description: |
-      Allows to create `CREATE_ATOMIC_SWAP_BID` request, which approving creates atomic swap bid.
-      Other accounts will have possibite to create `CREATE_ATOMIC_SWAP` request for such bid to
-      buy atomic swap bid base asset for the external system currency
+      Allows to create `CREATE_ATOMIC_SWAP_BID` request, which approving means:
+        * external system currency was received by atomic swap ask owner
+        * requestor receives amout of atomic swap ask base asset
 
       #### Account Role Requirements
-        | Account | Resource Type     | Action   | Condition |
-        | --------|:-----------------:|:--------:|:---------:|
-        | source  | `ATOMIC_SWAP_BID` | `CREATE`  | `allTasks` == `null` |
-        | source  | `ATOMIC_SWAP_BID` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+        | Account | Resource Type | Action   |
+        | --------|:-------------:|:--------:|
+        | source  | `ASSET`       | `RECEIVE_ATOMIC_SWAP` |
 
       #### Signer Role Requirements
         | Resource Type        | ReviewableRequestType | Action  |
         |:--------------------:|:---------------------:|:------: |
         | `REVIEWABLE_REQUEST` | `CREATE_ATOMIC_SWAP_BID` |`CREATE` |
 
-    operationId: createAtomicSwapBidCreationRequestOp
+    operationId: createAtomicSwapBidRequestOp
     x-item-type: operation
     parameters:
-    - name: Create Atomic Swap Bid Creation Request Op
+    - name: Create Atomic Swap Bid Request Op
       in: query
       required: false
       style: form

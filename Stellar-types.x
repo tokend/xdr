@@ -20,7 +20,8 @@ enum LedgerVersion
     FIX_AML_ALERT_ERROR_CODES = 10,
     FIX_EXT_SYS_ACC_EXPIRATION_TIME = 11,
     FIX_CHANGE_ROLE_REJECT_TASKS = 12,
-    ATOMIC_SWAP_RETURNING = 13
+    FIX_SAME_ASSET_PAIR = 13,
+    ATOMIC_SWAP_RETURNING = 14
 };
 
 union EmptyExt switch (LedgerVersion v)

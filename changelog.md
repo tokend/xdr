@@ -11,6 +11,8 @@
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
+* New LedgerVersion to fix same asset pair creation
+* New `ManageAssetPairOp` error code
 
 ## 3.3.1
 
