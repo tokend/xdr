@@ -43,8 +43,8 @@
           char const * amlAlertCreateTasks = "aml_alert_create";
           char const * limitsUpdateTasks = "limits_update_tasks";
           char const * withdrawLowerBoundPrefix = "withdraw_lower_bound";
-          char const * atomicSwapTasksPrefix = "atomic_swap_tasks";
-          char const * atomicSwapBidTasks = "atomic_swap_bid_tasks";
+          char const * atomicSwapAskTasks = "atomic_swap_ask_tasks";
+          char const * atomicSwapBidTasksPrefix = "atomic_swap_bid_tasks";
           char const * createPollTasks = "create_poll_tasks";
     operationId: KeyValueSystemKeys
     parameters:
