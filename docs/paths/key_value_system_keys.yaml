@@ -19,8 +19,8 @@
                   * `sale_update_tasks:<saleID>` (`*` is allowed)
                   * `aml_alert_create`
                   * `limits_update_tasks`
-                  * `atomic_swap_tasks`
-                  * `atomic_swap_bid_tasks`
+                  * `atomic_swap_ask_tasks`
+                  * `atomic_swap_bid_tasks:<quote_asset>` (`*` is allowed)
                   * `create_poll_tasks:<permissionType>` (`*` is allowed)
 
                   Deposits:

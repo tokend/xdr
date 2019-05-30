@@ -47,7 +47,7 @@ case CREATE_ATOMIC_SWAP_ASK:
     case EMPTY_VERSION:
         void;
     case ATOMIC_SWAP_RETURNING:
-        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+        //: is used to restrict the usage of a reviewable request with create_atomic_swap_ask type
         struct
         {
             //: code of asset

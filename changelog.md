@@ -3,16 +3,18 @@
 ## Unreleased
 
 ### Added
-<<<<<<< HEAD
 
-* Error codes and useful fields in success result for create atomic swap bid and atomic swap request operations
+* Error codes and useful fields in success result for create atomic swap bid and atomic swap ask request operations
 * `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
-=======
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
 * New LedgerVersion to fix same asset pair creation
 * New `ManageAssetPairOp` error code
+
+### Changed
+
+* atomic swap ask and atomic swap bid structs' names
 
 ## 3.3.1
 
@@ -21,7 +23,6 @@
 
 ### Added
 * Shortcut to contact support
->>>>>>> master
 
 ## 3.3.0
 
