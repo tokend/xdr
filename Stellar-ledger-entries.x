@@ -22,7 +22,7 @@
 %#include "xdr/Stellar-ledger-entries-statistics-v2.h"
 %#include "xdr/Stellar-ledger-entries-pending-statistics.h"
 %#include "xdr/Stellar-ledger-entries-contract.h"
-%#include "xdr/Stellar-ledger-entries-atomic-swap-bid.h"
+%#include "xdr/Stellar-ledger-entries-atomic-swap-ask.h"
 %#include "xdr/Stellar-ledger-entries-account-role.h"
 %#include "xdr/Stellar-ledger-entries-account-rule.h"
 %#include "xdr/Stellar-ledger-entries-signer-role.h"
@@ -93,8 +93,8 @@ struct LedgerEntry
         PendingStatisticsEntry pendingStatistics;
     case CONTRACT:
         ContractEntry contract;
-    case ATOMIC_SWAP_BID:
-        AtomicSwapBidEntry atomicSwapBid;
+    case ATOMIC_SWAP_ASK:
+        AtomicSwapAskEntry atomicSwapAsk;
     case ACCOUNT_ROLE:
         AccountRoleEntry accountRole;
     case ACCOUNT_RULE:

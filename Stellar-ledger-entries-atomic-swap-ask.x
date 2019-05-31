@@ -3,11 +3,14 @@
 namespace stellar
 {
 
-struct ASwapBidQuoteAsset
+//: AtomicSwapAskQuoteAsset represents asset with price which can be used to buy base asset
+struct AtomicSwapAskQuoteAsset
 {
+    //: Code of quote asset
     AssetCode quoteAsset;
+    //: amount of quote asset which is needed to buy one base asset
     uint64 price;
-
+    //: reserved for the future use
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -16,9 +19,9 @@ struct ASwapBidQuoteAsset
     ext;
 };
 
-struct AtomicSwapBidEntry
+struct AtomicSwapAskEntry
 {
-    uint64 bidID;
+    uint64 id;
     AccountID ownerID;
     AssetCode baseAsset;
     BalanceID baseBalance;
@@ -30,7 +33,7 @@ struct AtomicSwapBidEntry
 
     longstring details;
 
-    ASwapBidQuoteAsset quoteAssets<>;
+    AtomicSwapAskQuoteAsset quoteAssets<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
