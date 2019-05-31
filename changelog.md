@@ -9,6 +9,7 @@
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
+* New LedgerVersion to fix investment fee
 * New LedgerVersion to fix same asset pair creation
 * New `ManageAssetPairOp` error code
 

@@ -21,7 +21,8 @@ enum LedgerVersion
     FIX_EXT_SYS_ACC_EXPIRATION_TIME = 11,
     FIX_CHANGE_ROLE_REJECT_TASKS = 12,
     FIX_SAME_ASSET_PAIR = 13,
-    ATOMIC_SWAP_RETURNING = 14
+    ATOMIC_SWAP_RETURNING = 14,
+    FIX_INVEST_FEE = 15
 };
 
 union EmptyExt switch (LedgerVersion v)
