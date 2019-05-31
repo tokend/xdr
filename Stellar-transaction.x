@@ -29,9 +29,9 @@
 %#include "xdr/Stellar-operation-create-manage-limits-request.h"
 %#include "xdr/Stellar-operation-manage-contract.h"
 %#include "xdr/Stellar-operation-manage-contract-request.h"
-%#include "xdr/Stellar-operation-create-aswap-bid-creation-request.h"
-%#include "xdr/Stellar-operation-cancel-atomic-swap-bid.h"
-%#include "xdr/Stellar-operation-create-aswap-request.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-bid-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-ask.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-ask-request.h"
 %#include "xdr/Stellar-operation-manage-account-role.h"
 %#include "xdr/Stellar-operation-manage-account-rule.h"
 %#include "xdr/Stellar-operation-manage-signer-role.h"
@@ -113,12 +113,12 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidOp cancelASwapBidOp;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestOp createASwapRequestOp;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestOp createAtomicSwapAskRequestOp;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskOp cancelAtomicSwapAskOp;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
@@ -314,12 +314,12 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidResult cancelASwapBidResult;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestResult createASwapRequestResult;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestResult createAtomicSwapAskRequestResult;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskResult cancelAtomicSwapAskResult;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:

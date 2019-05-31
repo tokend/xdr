@@ -61,14 +61,14 @@ case SALE:
 
         EmptyExt ext;
     } sale;
-case ATOMIC_SWAP_BID:
+case ATOMIC_SWAP_ASK:
     struct
     {
         uint64 assetType;
         AssetCode assetCode;
 
         EmptyExt ext;
-    } atomicSwapBid;
+    } atomicSwapAsk;
 case SIGNER_RULE:
     //: Describes properties that are equal to managed signer rule entry fields
     struct

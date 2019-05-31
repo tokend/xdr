@@ -108,6 +108,7 @@ x-tagGroups:
      - Balances
      - Fees
      - External Systems
+     - Atomic Swap
   - name: Access Control
     tags:
       - Signers

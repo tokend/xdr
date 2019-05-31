@@ -19,6 +19,9 @@
                   * `sale_update_tasks:<saleID>` (`*` is allowed)
                   * `aml_alert_create`
                   * `limits_update_tasks`
+                  * `atomic_swap_ask_tasks`
+                  * `atomic_swap_bid_tasks:<quote_asset>` (`*` is allowed)
+                  * `create_poll_tasks:<permissionType>` (`*` is allowed)
 
                   Deposits:
                   * `ext_sys_exp_period:<externalSytemType>` (`*` is NOT allowed)
@@ -40,6 +43,9 @@
           char const * amlAlertCreateTasks = "aml_alert_create";
           char const * limitsUpdateTasks = "limits_update_tasks";
           char const * withdrawLowerBoundPrefix = "withdraw_lower_bound";
+          char const * atomicSwapAskTasks = "atomic_swap_ask_tasks";
+          char const * atomicSwapBidTasksPrefix = "atomic_swap_bid_tasks";
+          char const * createPollTasks = "create_poll_tasks";
     operationId: KeyValueSystemKeys
     parameters:
     - name: Key Value System Keys
