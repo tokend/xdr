@@ -1,4 +1,4 @@
-%#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/ledger-entries.h"
 
 namespace stellar
 {

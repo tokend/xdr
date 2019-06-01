@@ -1,5 +1,5 @@
-%#include "xdr/Stellar-ledger-entries.h"
-%#include "xdr/Stellar-reviewable-request-atomic-swap-bid.h"
+%#include "xdr/ledger-entries.h"
+%#include "xdr/reviewable-request-atomic-swap-bid.h"
 
 namespace stellar
 {

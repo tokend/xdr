@@ -1,5 +1,5 @@
-%#include "xdr/Stellar-types.h"
-%#include "xdr/Stellar-ledger-entries-atomic-swap-ask.h"
+%#include "xdr/types.h"
+%#include "xdr/ledger-entries-atomic-swap-ask.h"
 
 namespace stellar
 {
