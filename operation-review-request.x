@@ -121,10 +121,10 @@ struct SaleExtended {
 };
 
 //: Extended result of the review request operation containing details specific to a Create Atomic Swap Bid Request
-struct ASwapBidExtended
+struct AtomicSwapAskExtended
 {
-    //: ID of the newly created bid as a result of Create Atomic Swap Bid Request successful review
-    uint64 bidID;
+    //: ID of the newly created ask as a result of Create Atomic Swap Ask Request successful review
+    uint64 askID;
 
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -151,14 +151,14 @@ struct CreatePollExtended
 };
 
 //: Extended result of a review request operation containing details specific to a Create Atomic Swap Request
-struct ASwapExtended
+struct AtomicSwapBidExtended
 {
-    //: ID of a bid to apply atomic swap to
-    uint64 bidID;
-    //: AccountID of a bid owner
+    //: ID of a ask to apply atomic swap to
+    uint64 askID;
+    //: AccountID of a ask owner
+    AccountID askOwnerID;
+    //: Account id of an bid owner
     AccountID bidOwnerID;
-    //: Account id of an atomic swap source
-    AccountID purchaserID;
     //: Base asset for the atomic swap
     AssetCode baseAsset;
     //: Quote asset for the atomic swap
@@ -169,10 +169,12 @@ struct ASwapExtended
     uint64 quoteAmount;
     //: Price of base asset in terms of quote
     uint64 price;
-    //: Balance in base asset of a bid owner
+    //: Balance in base asset of a ask owner
+    BalanceID askOwnerBaseBalanceID;
+    //: Balance in base asset of an bid owner
     BalanceID bidOwnerBaseBalanceID;
-    //: Balance in quote asset of atomic swap source
-    BalanceID purchaserBaseBalanceID;
+    //: Amount which was unlocked on bid owner base balance after bid removing
+    uint64 unlockedAmount;
 
     //: Reserved for future use
     union switch (LedgerVersion v)
@@ -194,9 +196,9 @@ struct ExtendedResult {
     case NONE:
         void;
     case CREATE_ATOMIC_SWAP_BID:
-        ASwapBidExtended aSwapBidExtended;
-    case CREATE_ATOMIC_SWAP:
-        ASwapExtended aSwapExtended;
+        AtomicSwapBidExtended atomicSwapBidExtended;
+    case CREATE_ATOMIC_SWAP_ASK:
+        AtomicSwapAskExtended atomicSwapAskExtended;
     case CREATE_POLL:
         CreatePollExtended createPoll;
     } typeExt;
@@ -365,9 +367,7 @@ enum ReviewRequestResultCode
     // Atomic swap
     BASE_ASSET_CANNOT_BE_SWAPPED = -1500,
     QUOTE_ASSET_CANNOT_BE_SWAPPED = -1501,
-    ASSETS_ARE_EQUAL = -1502,
-    ASWAP_BID_UNDERFUNDED = -1503,
-    ASWAP_PURCHASER_FULL_LINE = -1504,
+    ATOMIC_SWAP_BID_OWNER_FULL_LINE = -1504,
 
     //KYC
     //:Signer data is invalid - either weight is wrong or details are invalid

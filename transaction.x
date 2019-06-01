@@ -2,50 +2,50 @@
 // under the Apache License, Version 2.0. See the COPYING file at the root
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
-%#include "xdr/ledger-entries.h"
-%#include "xdr/operation-create-account.h"
-%#include "xdr/operation-set-fees.h"
-%#include "xdr/operation-create-withdrawal-request.h"
-%#include "xdr/operation-manage-balance.h"
-%#include "xdr/operation-manage-asset.h"
-%#include "xdr/operation-create-preissuance-request.h"
-%#include "xdr/operation-create-issuance-request.h"
-%#include "xdr/operation-manage-limits.h"
-%#include "xdr/operation-manage-asset-pair.h"
-%#include "xdr/operation-manage-offer.h"
-%#include "xdr/operation-manage-invoice-request.h"
-%#include "xdr/operation-review-request.h"
-%#include "xdr/operation-create-sale-creation-request.h"
-%#include "xdr/operation-cancel-sale-creation-request.h"
-%#include "xdr/operation-check-sale-state.h"
-%#include "xdr/operation-payout.h"
-%#include "xdr/operation-create-AML-alert-request.h"
-%#include "xdr/operation-manage-key-value.h"
-%#include "xdr/operation-create-change-role-request.h"
-%#include "xdr/operation-manage-external-system-id-pool-entry.h"
-%#include "xdr/operation-bind-external-system-id.h"
-%#include "xdr/operation-payment.h"
-%#include "xdr/operation-manage-sale.h"
-%#include "xdr/operation-create-manage-limits-request.h"
-%#include "xdr/operation-manage-contract.h"
-%#include "xdr/operation-manage-contract-request.h"
-%#include "xdr/operation-create-aswap-bid-creation-request.h"
-%#include "xdr/operation-cancel-atomic-swap-bid.h"
-%#include "xdr/operation-create-aswap-request.h"
-%#include "xdr/operation-manage-account-role.h"
-%#include "xdr/operation-manage-account-rule.h"
-%#include "xdr/operation-manage-signer-role.h"
-%#include "xdr/operation-manage-signer-rule.h"
-%#include "xdr/operation-manage-signer.h"
-%#include "xdr/operation-license.h"
-%#include "xdr/operation-stamp.h"
-%#include "xdr/operation-manage-poll.h"
-%#include "xdr/operation-manage-create-poll-request.h"
-%#include "xdr/operation-manage-vote.h"
-%#include "xdr/operation-manage-account-specific-rule.h"
-%#include "xdr/operation-cancel-change-role-request.h"
-%#include "xdr/operation-create-kyc-recovery-request.h"
-%#include "xdr/operation-initiate-kyc-recovery.h"
+%#include "xdr/Stellar-ledger-entries.h"
+%#include "xdr/Stellar-operation-create-account.h"
+%#include "xdr/Stellar-operation-set-fees.h"
+%#include "xdr/Stellar-operation-create-withdrawal-request.h"
+%#include "xdr/Stellar-operation-manage-balance.h"
+%#include "xdr/Stellar-operation-manage-asset.h"
+%#include "xdr/Stellar-operation-create-preissuance-request.h"
+%#include "xdr/Stellar-operation-create-issuance-request.h"
+%#include "xdr/Stellar-operation-manage-limits.h"
+%#include "xdr/Stellar-operation-manage-asset-pair.h"
+%#include "xdr/Stellar-operation-manage-offer.h"
+%#include "xdr/Stellar-operation-manage-invoice-request.h"
+%#include "xdr/Stellar-operation-review-request.h"
+%#include "xdr/Stellar-operation-create-sale-creation-request.h"
+%#include "xdr/Stellar-operation-cancel-sale-creation-request.h"
+%#include "xdr/Stellar-operation-check-sale-state.h"
+%#include "xdr/Stellar-operation-payout.h"
+%#include "xdr/Stellar-operation-create-AML-alert-request.h"
+%#include "xdr/Stellar-operation-manage-key-value.h"
+%#include "xdr/Stellar-operation-create-change-role-request.h"
+%#include "xdr/Stellar-operation-manage-external-system-id-pool-entry.h"
+%#include "xdr/Stellar-operation-bind-external-system-id.h"
+%#include "xdr/Stellar-operation-payment.h"
+%#include "xdr/Stellar-operation-manage-sale.h"
+%#include "xdr/Stellar-operation-create-manage-limits-request.h"
+%#include "xdr/Stellar-operation-manage-contract.h"
+%#include "xdr/Stellar-operation-manage-contract-request.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-bid-request.h"
+%#include "xdr/Stellar-operation-cancel-atomic-swap-ask.h"
+%#include "xdr/Stellar-operation-create-atomic-swap-ask-request.h"
+%#include "xdr/Stellar-operation-manage-account-role.h"
+%#include "xdr/Stellar-operation-manage-account-rule.h"
+%#include "xdr/Stellar-operation-manage-signer-role.h"
+%#include "xdr/Stellar-operation-manage-signer-rule.h"
+%#include "xdr/Stellar-operation-manage-signer.h"
+%#include "xdr/Stellar-operation-license.h"
+%#include "xdr/Stellar-operation-stamp.h"
+%#include "xdr/Stellar-operation-manage-poll.h"
+%#include "xdr/Stellar-operation-manage-create-poll-request.h"
+%#include "xdr/Stellar-operation-manage-vote.h"
+%#include "xdr/Stellar-operation-manage-account-specific-rule.h"
+%#include "xdr/Stellar-operation-cancel-change-role-request.h"
+%#include "xdr/Stellar-operation-create-kyc-recovery-request.h"
+%#include "xdr/Stellar-operation-initiate-kyc-recovery.h"
 
 namespace stellar
 {
@@ -113,12 +113,12 @@ struct Operation
         ManageContractOp manageContractOp;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestOp createASwapBidCreationRequestOp;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidOp cancelASwapBidOp;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestOp createASwapRequestOp;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestOp createAtomicSwapAskRequestOp;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskOp cancelAtomicSwapAskOp;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
@@ -314,12 +314,12 @@ case opINNER:
         ManageContractResult manageContractResult;
     case CANCEL_SALE_REQUEST:
         CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case CREATE_ASWAP_BID_REQUEST:
-        CreateASwapBidCreationRequestResult createASwapBidCreationRequestResult;
-    case CANCEL_ASWAP_BID:
-        CancelASwapBidResult cancelASwapBidResult;
-    case CREATE_ASWAP_REQUEST:
-        CreateASwapRequestResult createASwapRequestResult;
+    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
+        CreateAtomicSwapAskRequestResult createAtomicSwapAskRequestResult;
+    case CANCEL_ATOMIC_SWAP_ASK:
+        CancelAtomicSwapAskResult cancelAtomicSwapAskResult;
+    case CREATE_ATOMIC_SWAP_BID_REQUEST:
+        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:

@@ -79,7 +79,9 @@ enum ManageAssetPairResultCode
     //: `policies` field is invalid (`policies < 0`)
     INVALID_POLICIES = -6,
     //: Asset with such code is not found
-    ASSET_NOT_FOUND = -7
+    ASSET_NOT_FOUND = -7,
+    //: Not allowed for base and quote asset to be the same
+    SAME_ASSET = -8
 };
 
 //: `ManageAssetPairSuccess` represents a successful result of `ManageAssetPairOp`

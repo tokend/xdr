@@ -214,16 +214,16 @@ case CONTRACT:
         }
         ext;
     } contract;
-case ATOMIC_SWAP_BID:
+case ATOMIC_SWAP_ASK:
     struct {
-        uint64 bidID;
+        uint64 id;
         union switch (LedgerVersion v)
         {
         case EMPTY_VERSION:
             void;
         }
         ext;
-    } atomicSwapBid;
+    } atomicSwapAsk;
 case ACCOUNT_ROLE:
     struct {
         uint64 id;
