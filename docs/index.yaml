@@ -14,9 +14,9 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 3.3.0-x.0
+  version: 3.3.1
 servers:
-- url: https://api.achilles.tokend.io
+- url: https://api.demo.tokend.io
   description: TokenD Developer Environment
 # NOTE
 #
@@ -108,6 +108,7 @@ x-tagGroups:
      - Balances
      - Fees
      - External Systems
+     - Atomic Swap
   - name: Access Control
     tags:
       - Signers
