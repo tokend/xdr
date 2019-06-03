@@ -307,6 +307,8 @@ enum ReviewRequestResultCode
     INSUFFICIENT_PREISSUED_FOR_HARD_CAP = -520,
     //: Trying to create a sale for a base asset that cannot be found
     BASE_ASSET_NOT_FOUND = -530,
+    //: There is no asset pair between default quote asset and quote asset
+    ASSET_PAIR_NOT_FOUND = -540,
     //: Trying to create a sale with one of the quote assets that doesn't exist
     QUOTE_ASSET_NOT_FOUND = -550,
 
