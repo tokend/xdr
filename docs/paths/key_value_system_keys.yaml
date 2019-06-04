@@ -19,6 +19,9 @@
                   * `sale_update_tasks:<saleID>` (`*` is allowed)
                   * `aml_alert_create`
                   * `limits_update_tasks`
+                  * `atomic_swap_ask_tasks`
+                  * `atomic_swap_bid_tasks:<quote_asset>` (`*` is allowed)
+                  * `create_poll_tasks:<permissionType>` (`*` is allowed)
 
                   Deposits:
                   * `ext_sys_exp_period:<externalSytemType>` (`*` is NOT allowed)
@@ -28,18 +31,26 @@
     x-code-samples:
       - lang: "C++"
         source: |
-          char const * changeRoleTasks = "change_role_tasks";
-          char const * externalSystemPrefix = "ext_sys_exp_period";
-          char const * issuanceTasksPrefix = "issuance_tasks";
-          char const * withdrawalTasksPrefix = "withdrawal_tasks";
-          char const * preIssuanceTasksPrefix = "preissuance_tasks";
-          char const * assetCreateTasks = "asset_create_tasks";
-          char const * assetUpdateTasks = "asset_update_tasks";
-          char const * saleUpdateDetailsTasksPrefix = "sale_update_tasks";
-          char const * saleCreateTasksPrefix = "sale_create_tasks";
-          char const * amlAlertCreateTasks = "aml_alert_create";
-          char const * limitsUpdateTasks = "limits_update_tasks";
-          char const * withdrawLowerBoundPrefix = "withdraw_lower_bound";
+          char const *changeRoleTasks = "change_role_tasks";
+          char const *externalSystemPrefix = "ext_sys_exp_period";
+          char const *issuanceTasksPrefix = "issuance_tasks";
+          char const *withdrawalTasksPrefix = "withdrawal_tasks";
+          char const *preIssuanceTasksPrefix = "preissuance_tasks";
+          char const *assetCreateTasks = "asset_create_tasks";
+          char const *assetUpdateTasks = "asset_update_tasks";
+          char const *saleUpdateDetailsTasksPrefix = "sale_update_tasks";
+          char const *saleCreateTasksPrefix = "sale_create_tasks";
+          char const *amlAlertCreateTasks = "aml_alert_create";
+          char const *limitsUpdateTasks = "limits_update_tasks";
+          char const *atomicSwapTasksPrefix = "atomic_swap_bid_tasks";
+          char const *atomicSwapAskTasks = "atomic_swap_ask_tasks";
+          char const *withdrawLowerBoundPrefix = "withdraw_lower_bound";
+          char const *maxSaleRulesNumbersKey = "max_sale_rules_number";
+          char const *createPollTasks = "create_poll_tasks";
+          char const *createKycRecoveryTasks = "create_kyc_recovery_tasks";
+          char const *kycRecoveryEnabled = "kyc_recovery_enabled";
+          char const *kycRecoverySignerRole = "kyc_recovery_signer_role";
+
     operationId: KeyValueSystemKeys
     parameters:
     - name: Key Value System Keys

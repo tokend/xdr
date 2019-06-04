@@ -1,0 +1,35 @@
+/removeAssetPairOp:
+  get:
+    tags:
+      - Asset Pairs
+    summary: Remove Asset Pair
+    description: |
+      Removes [asset pairs](#operation/assetPairResource).
+      #### Account Role Requirements
+        | Account        | Resource Type  | Action   |
+        | -------------  |:--------------:| --------:|
+        | source         | `ASSET_PAIR`   | `REMOVE` |
+
+      #### Signer Role Requirements
+        | Resource Type  | Rule Action |
+        |:--------------:| -----------:|
+        | `ASSET_PAIR`   | `REMOVE`    |
+    operationId: removeAssetPairOp
+    x-item-type: operation
+    parameters:
+      - name: Remove Asset Pair Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/RemoveAssetPairOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/RemoveAssetPairResult'
