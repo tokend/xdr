@@ -1,4 +1,4 @@
-%#include "xdr/types.h"
+%#include "xdr/ledger-keys.h"
 
 namespace stellar
 {
@@ -196,6 +196,22 @@ case INITIATE_KYC_RECOVERY:
         //: reserved for future extension
         EmptyExt ext;
     } initiateKYCRecovery;
+case ACCOUNT_SPECIFIC_RULE:
+    union switch(LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    case ADD_ACC_SPECIFIC_RULE_RESOURCE:
+        struct
+        {
+            //: Describes properties of some ledger key that
+            //: can be used to restrict the usage of account specific rules
+            LedgerKey ledgerKey;
+
+            //: reserved for future extension
+            EmptyExt ext;
+        } accountSpecificRule;
+    } accountSpecificRuleExt;
 default:
     //: reserved for future extension
     EmptyExt ext;

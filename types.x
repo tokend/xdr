@@ -22,7 +22,8 @@ enum LedgerVersion
     FIX_CHANGE_ROLE_REJECT_TASKS = 12,
     FIX_SAME_ASSET_PAIR = 13,
     ATOMIC_SWAP_RETURNING = 14,
-    FIX_INVEST_FEE = 15
+    FIX_INVEST_FEE = 15,
+    ADD_ACC_SPECIFIC_RULE_RESOURCE = 16
 };
 
 union EmptyExt switch (LedgerVersion v)

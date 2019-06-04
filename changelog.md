@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+* New ledger version to handle rules for `AccountSpecificRule`
+* Rule entries for `AccountSpecificRule`
+
 ## 3.4.0-x.0
 
 ### Added
