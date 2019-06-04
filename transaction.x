@@ -46,6 +46,7 @@
 %#include "xdr/operation-cancel-change-role-request.h"
 %#include "xdr/operation-create-kyc-recovery-request.h"
 %#include "xdr/operation-initiate-kyc-recovery.h"
+%#include "xdr/operation-remove-asset-pair.h"
 
 namespace stellar
 {
@@ -143,6 +144,8 @@ struct Operation
         ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
+    case REMOVE_ASSET_PAIR:
+        RemoveAssetPairOp removeAssetPairOp;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
@@ -344,6 +347,8 @@ case opINNER:
         ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
     case CANCEL_CHANGE_ROLE_REQUEST:
         CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
+    case REMOVE_ASSET_PAIR:
+        RemoveAssetPairResult removeAssetPairResult;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:

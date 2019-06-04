@@ -4,6 +4,7 @@
 
 ### Added
 
+* `RemoveAssetPairOp` operation
 * Error codes and useful fields in success result for create atomic swap bid and atomic swap ask request operations
 * `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
 * `InitiateKYCRecovery` operation
