@@ -3,11 +3,35 @@
 ## Unreleased
 
 ### Added
+
+* New ledger version to handle rules for `AccountSpecificRule`
+* Rule entries for `AccountSpecificRule`
+
+## 3.4.0-x.0
+
+### Added
+
+* `RemoveAssetPairOp` operation
+* Error codes and useful fields in success result for create atomic swap bid and atomic swap ask request operations
+* `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
 * `InitiateKYCRecovery` operation
 * `KYC_Recovery` reviewable request
 * `CreateKYCRecoveryRequest` operation
-* New ledger version to handle rules for `AccountSpecificRule`
-* Rule entries for `AccountSpecificRule`
+* New LedgerVersion to fix investment fee
+* New LedgerVersion to fix same asset pair creation
+* New `ManageAssetPairOp` error code
+
+### Changed
+
+* atomic swap ask and atomic swap bid structs' names
+
+## 3.3.1
+
+### Fixed
+* Updated xdrgen for docs generation to resolve issue with union switches showing redundant arms
+
+### Added
+* Shortcut to contact support
 
 ## 3.3.0
 
