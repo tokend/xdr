@@ -1,0 +1,37 @@
+/cancelAtomicSwapAskOp:
+  get:
+    tags:
+      - Atomic Swap
+    summary: Cancel Atomic Swap Ask Op
+    description: |
+        Allows to cancel atomic swap bid. If atomic swap bid has non zero locked amount
+        (it means that `CREATE_ATOMIC_SWAP_BID` request is being processed).
+        It will be marked as canceled and will be removed after all
+        `CREATE_ATOMIC_SWAP_BID` request will be approved of permament rejected.
+
+        #### Account Role Requirements
+          No account rule required because only bid owner can perform such operation.
+
+        #### Signer Role Requirements
+          | Resource Type     | Action  |
+          |:-----------------:|:-------:|
+          | `ATOMIC_SWAP_ASK` | `CANCEL` |
+    operationId: cancelAtomicSwapAskOp
+    x-item-type: operation
+    parameters:
+    - name: Cancel Atomic Swap Ask Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CancelAtomicSwapAskOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CancelAtomicSwapAskResult'

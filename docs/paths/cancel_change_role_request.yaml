@@ -1,0 +1,33 @@
+/cancelChangeRoleRequestOp:
+  get:
+    tags:
+      - KYC
+    summary: Cancel change role request
+    description: |
+      Allows to cancel change role reviewable request
+      #### Account Role Requirements
+        Only reviewable request creator can cancel request
+      #### Signer Role Requirements
+
+        | Resource Type | Reviewable Request Type | Action  |
+        |:-------------:| -----:| -----: |
+        | `REVIEWABLE_REQUEST` | `CHANGE_ROLE` | `CANCEL` |
+    operationId: cancelChangeRoleRequestOp
+    x-item-type: operation
+    parameters:
+    - name: CancelChangeRoleRequestOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CancelChangeRoleRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CancelChangeRoleRequestResult'
