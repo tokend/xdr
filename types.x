@@ -24,7 +24,8 @@ enum LedgerVersion
     ATOMIC_SWAP_RETURNING = 14,
     FIX_INVEST_FEE = 15,
     ADD_ACC_SPECIFIC_RULE_RESOURCE = 16,
-    FIX_DEPOSIT_STATS = 17
+    FIX_SIGNER_CHANGES_REMOVE = 17,
+    FIX_DEPOSIT_STATS = 18
 };
 
 union EmptyExt switch (LedgerVersion v)
