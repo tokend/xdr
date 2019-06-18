@@ -12,6 +12,7 @@
 
 * New ledger version to handle rules for `AccountSpecificRule`
 * Rule entries for `AccountSpecificRule`
+* Added new ledger version to fix deposit statistics v2
 
 ## 3.4.0-x.0
 
