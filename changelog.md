@@ -5,6 +5,7 @@
 ### Added
 
 * New ledger version
+* New ledger version added to fix create kyc recovery permissions 
 
 ## 3.4.0-x.1
 

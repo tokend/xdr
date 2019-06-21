@@ -25,7 +25,8 @@ enum LedgerVersion
     FIX_INVEST_FEE = 15,
     ADD_ACC_SPECIFIC_RULE_RESOURCE = 16,
     FIX_SIGNER_CHANGES_REMOVE = 17,
-    FIX_DEPOSIT_STATS = 18
+    FIX_DEPOSIT_STATS = 18,
+    FIX_CREATE_KYC_RECOVERY_PERMISSIONS = 19
 };
 
 union EmptyExt switch (LedgerVersion v)
