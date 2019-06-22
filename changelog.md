@@ -7,18 +7,13 @@
 * New ledger version
 * New ledger version added to fix create kyc recovery permissions 
 
-## 3.4.0-x.1
+## 3.4.0
 
 ### Added
 
 * New ledger version to handle rules for `AccountSpecificRule`
 * Rule entries for `AccountSpecificRule`
 * Added new ledger version to fix deposit statistics v2
-
-## 3.4.0-x.0
-
-### Added
-
 * `RemoveAssetPairOp` operation
 * Error codes and useful fields in success result for create atomic swap bid and atomic swap ask request operations
 * `CREATE_ATOMIC_SWAP_BID` and `CREATE_ATOMIC_SWAP_ASK` case to reviewable request resource
