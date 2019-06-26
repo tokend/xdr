@@ -1,4 +1,5 @@
 %#include "xdr/types.h"
+%#include "xdr/ledger-entries-poll.h"
 
 namespace stellar
 {
