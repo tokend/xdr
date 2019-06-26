@@ -57,7 +57,7 @@ struct CancelChangeRoleSuccess {
 union CancelChangeRoleRequestResult switch (CancelChangeRoleRequestResultCode code)
 {
     case SUCCESS:
-        CancelSaleCreationSuccess success;
+        CancelChangeRoleSuccess success;
     default:
         void;
 };
