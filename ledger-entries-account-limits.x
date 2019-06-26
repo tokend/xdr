@@ -1,4 +1,5 @@
 %#include "xdr/types.h"
+%#include "xdr/ledger-entries-account.h"
 
 namespace stellar
 {
