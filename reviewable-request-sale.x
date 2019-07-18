@@ -5,7 +5,7 @@ namespace stellar
 {
 //: SaleCreationRequestQuoteAsset is a structure that contains an asset code with price
 struct SaleCreationRequestQuoteAsset {
-    //: AssetCode of quote asset 
+    //: AssetCode of quote asset
     AssetCode quoteAsset; // asset in which participation will be accepted
     //: Price of sale base asset in relation to a quote asset
     uint64 price; // price for 1 baseAsset in relation to a quote asset
@@ -36,11 +36,8 @@ struct CreateAccountSaleRuleData
 
 //: SaleCreationRequest is used to create a sale with provided parameters
 struct SaleCreationRequest
-{   
-    //: Type of sale
-    //: 1: basic sale
-    //: 2: crowdfunding sale
-    //: 3: fixed price sale
+{
+    //: Some custom sale type that can be used while setting account rules 
     uint64 saleType;
     //: Asset code of an asset to sell on sale
     AssetCode baseAsset; // asset for which sale will be performed
@@ -58,7 +55,7 @@ struct SaleCreationRequest
     longstring creatorDetails; // details set by requester
     //: Parameters specific to a particular sale type
     SaleTypeExt saleTypeExt;
-    //: 
+    //:
     uint64 requiredBaseAssetForHardCap;
     //: Used to keep track of rejected requests updates. `SequenceNumber` increases after each rejected SaleCreationRequest update.
     uint32 sequenceNumber;
@@ -71,7 +68,7 @@ struct SaleCreationRequest
     case EMPTY_VERSION:
         void;
     case ADD_SALE_WHITELISTS:
-        //: array of rules that define participation rules. One global rule must be specified. 
+        //: array of rules that define participation rules. One global rule must be specified.
         CreateAccountSaleRuleData saleRules<>;
     }
     ext;
