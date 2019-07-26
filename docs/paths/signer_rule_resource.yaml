@@ -29,52 +29,8 @@
 
                   EmptyExt ext;
               } reviewableRequest;
-          case ASSET:
-              //: Describes properties which are equal to managed asset entry fields
-              struct
-              {
-                  AssetCode assetCode;
-                  uint64 assetType;
-
-                  EmptyExt ext;
-              } asset;
           case ANY:
               void;
-          case OFFER_ENTRY:
-              //: Describes properties which are equal to managed offer entry fields and their properties
-              struct
-              {
-                  //: type of base asset
-                  uint64 baseAssetType;
-                  //: type of quote asset
-                  uint64 quoteAssetType;
-
-                  //: code of base asset
-                  AssetCode baseAssetCode;
-                  //: code of quote asset
-                  AssetCode quoteAssetCode;
-
-                  bool isBuy;
-
-                  EmptyExt ext;
-              } offer;
-          case SALE:
-              //: Describes properties which are equal to managed offer entry fields
-              struct
-              {
-                  uint64 saleID;
-                  uint64 saleType;
-
-                  EmptyExt ext;
-              } sale;
-          case ATOMIC_SWAP_BID:
-              struct
-              {
-                  uint64 assetType;
-                  AssetCode assetCode;
-
-                  EmptyExt ext;
-              } atomicSwapBid;
           case SIGNER_RULE:
               //: Describes properties which are equal to managed signer rule entry fields
               struct

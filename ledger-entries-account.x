@@ -7,22 +7,6 @@
 namespace stellar
 {
 
-struct Limits
-{
-    int64 dailyOut;
-    int64 weeklyOut;
-    int64 monthlyOut;
-    int64 annualOut;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
 
 /* AccountEntry
 
@@ -40,7 +24,7 @@ struct AccountEntry
     // Referral marketing
     AccountID* referrer; // parent account
 
-    // sequenctial ID - unique identifier of the account, used by ingesting applications to
+    // sequential ID - unique identifier of the account, used by ingesting applications to
     // identify account, while keeping size of index small
     uint64 sequentialID;
 

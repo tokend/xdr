@@ -24,52 +24,8 @@ case REVIEWABLE_REQUEST:
 
         EmptyExt ext;
     } reviewableRequest;
-case ASSET:
-    //: Describes properties that are equal to managed asset entry fields
-    struct
-    {
-        AssetCode assetCode;
-        uint64 assetType;
-
-        EmptyExt ext;
-    } asset;
 case ANY:
     void;
-case OFFER_ENTRY:
-    //: Describes properties that are equal to managed offer entry fields and their properties
-    struct
-    {
-        //: type of base asset
-        uint64 baseAssetType;
-        //: type of quote asset
-        uint64 quoteAssetType;
-
-        //: code of base asset
-        AssetCode baseAssetCode;
-        //: code of quote asset
-        AssetCode quoteAssetCode;
-
-        bool isBuy;
-
-        EmptyExt ext;
-    } offer;
-case SALE:
-    //: Describes properties that are equal to managed offer entry fields
-    struct
-    {
-        uint64 saleID;
-        uint64 saleType;
-
-        EmptyExt ext;
-    } sale;
-case ATOMIC_SWAP_ASK:
-    struct
-    {
-        uint64 assetType;
-        AssetCode assetCode;
-
-        EmptyExt ext;
-    } atomicSwapAsk;
 case SIGNER_RULE:
     //: Describes properties that are equal to managed signer rule entry fields
     struct
@@ -105,30 +61,6 @@ case KEY_VALUE:
         //: reserved for future extension
         EmptyExt ext;
     } keyValue;
-case POLL:
-    struct
-    {
-        //: ID of the poll
-        uint64 pollID;
-
-        //: permission type of poll
-        uint32 permissionType;
-
-        //: reserved for future extension
-        EmptyExt ext;
-    } poll;
-case VOTE:
-    struct
-    {
-        //: ID of the poll
-        uint64 pollID;
-
-        //: permission type of poll
-        uint32 permissionType;
-
-        //: reserved for future extension
-        EmptyExt ext;
-    } vote;
 case INITIATE_KYC_RECOVERY:
     struct
     {
@@ -138,23 +70,6 @@ case INITIATE_KYC_RECOVERY:
         //: reserved for future extension
         EmptyExt ext;
     } initiateKYCRecovery;
-case ACCOUNT_SPECIFIC_RULE:
-    //: reserved for future extension
-    union switch(LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    case ADD_ACC_SPECIFIC_RULE_RESOURCE:
-        struct
-        {
-            //: Describes properties of some ledger key that
-            //: can be used to restrict the usage of account specific rules
-            LedgerKey ledgerKey;
-
-            //: reserved for future extension
-            EmptyExt ext;
-        } accountSpecificRule;
-    } accountSpecificRuleExt;
 default:
     //: reserved for future extension
     EmptyExt ext;

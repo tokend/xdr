@@ -32,4 +32,4 @@
           xdr:
             schema:
               type: object
-              $ref: '#/components/schemas/ManageLimitsResult'
+              $ref: '#/components/schemas/ManageKeyValueResult'

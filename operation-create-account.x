@@ -16,7 +16,7 @@ struct CreateAccountOp
     uint64 roleID;
 
     //: Array of data about 'destination' account signers to be created
-    UpdateSignerData signersData<>;
+    SignerData signersData<>;
 
     //: reserved for future use
     union switch (LedgerVersion v)

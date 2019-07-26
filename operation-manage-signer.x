@@ -18,8 +18,8 @@ enum ManageSignerAction
     REMOVE = 2
 };
 
-//: UpdateSignerData is used to pass necessary data to create or update the signer
-struct UpdateSignerData
+//: SignerData is used to pass necessary data to create or update the signer
+struct SignerData
 {
     //: Public key of a signer
     PublicKey publicKey;
@@ -56,9 +56,9 @@ struct ManageSignerOp
     union switch (ManageSignerAction action)
     {
     case CREATE:
-        UpdateSignerData createData;
+        SignerData createData;
     case UPDATE:
-        UpdateSignerData updateData;
+        SignerData updateData;
     case REMOVE:
         RemoveSignerData removeData;
     }
@@ -86,9 +86,7 @@ enum ManageSignerResultCode
     //: It is not allowed to set weight more than 1000
     INVALID_WEIGHT = -4, // more than 1000
     //: Source account does not have a signer with the provided public key
-    NOT_FOUND = -5, // there is no signer with such public key
-    //: only occurs during the creation of signers for admins if the number of signers exceeds the number specified in a license
-	NUMBER_OF_ADMINS_EXCEEDS_LICENSE = -6
+    NOT_FOUND = -5 // there is no signer with such public key
 };
 
 //: Result of operation application

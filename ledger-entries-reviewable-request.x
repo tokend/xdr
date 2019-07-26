@@ -1,19 +1,7 @@
 
 
 %#include "xdr/types.h"
-%#include "xdr/reviewable-request-asset.h"
-%#include "xdr/reviewable-request-issuance.h"
-%#include "xdr/reviewable-request-withdrawal.h"
-%#include "xdr/reviewable-request-sale.h"
 %#include "xdr/reviewable-request-change-role.h"
-%#include "xdr/reviewable-request-limits-update.h"
-%#include "xdr/reviewable-request-AML-alert.h"
-%#include "xdr/reviewable-request-update-sale-details.h"
-%#include "xdr/reviewable-request-invoice.h"
-%#include "xdr/reviewable-request-contract.h"
-%#include "xdr/reviewable-request-atomic-swap-ask.h"
-%#include "xdr/reviewable-request-atomic-swap-bid.h"
-%#include "xdr/reviewable-request-create-poll.h"
 %#include "xdr/reviewable-request-kyc-recovery.h"
 
 namespace stellar
@@ -23,22 +11,8 @@ enum ReviewableRequestType
 {
 	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
 	ANY = 1,
-	CREATE_PRE_ISSUANCE = 2,
-	CREATE_ISSUANCE = 3,
-	CREATE_WITHDRAW = 4,
-	CREATE_SALE = 5,
-	UPDATE_LIMITS = 6,
-    CREATE_AML_ALERT = 7,
-	CHANGE_ROLE = 8,
-	UPDATE_SALE_DETAILS = 9,
-	CREATE_ASSET = 10,
-	CREATE_INVOICE = 11,
-	MANAGE_CONTRACT = 12,
-	UPDATE_ASSET = 13,
-	CREATE_POLL = 14,
-	CREATE_ATOMIC_SWAP_ASK = 16,
-	CREATE_ATOMIC_SWAP_BID = 17,
-	KYC_RECOVERY = 18
+	CHANGE_ROLE = 2,
+	KYC_RECOVERY = 3
 };
 
 struct TasksExt {
@@ -69,36 +43,8 @@ struct ReviewableRequestEntry {
 	int64 createdAt; // when request was created
 
 	union switch (ReviewableRequestType type) {
-		case CREATE_ASSET:
-			AssetCreationRequest assetCreationRequest;
-		case UPDATE_ASSET:
-			AssetUpdateRequest assetUpdateRequest;
-		case CREATE_PRE_ISSUANCE:
-			PreIssuanceRequest preIssuanceRequest;
-		case CREATE_ISSUANCE:
-			IssuanceRequest issuanceRequest;
-		case CREATE_WITHDRAW:
-			WithdrawalRequest withdrawalRequest;
-		case CREATE_SALE:
-			SaleCreationRequest saleCreationRequest;
-        case UPDATE_LIMITS:
-            LimitsUpdateRequest limitsUpdateRequest;
-        case CREATE_AML_ALERT:
-            AMLAlertRequest amlAlertRequest;
         case CHANGE_ROLE:
             ChangeRoleRequest changeRoleRequest;
-        case UPDATE_SALE_DETAILS:
-            UpdateSaleDetailsRequest updateSaleDetailsRequest;
-        case CREATE_INVOICE:
-            InvoiceRequest invoiceRequest;
-        case MANAGE_CONTRACT:
-            ContractRequest contractRequest;
-        case CREATE_ATOMIC_SWAP_ASK:
-            CreateAtomicSwapAskRequest createAtomicSwapAskRequest;
-        case CREATE_ATOMIC_SWAP_BID:
-            CreateAtomicSwapBidRequest createAtomicSwapBidRequest;
-        case CREATE_POLL:
-            CreatePollRequest createPollRequest;
         case KYC_RECOVERY:
             KYCRecoveryRequest kycRecoveryRequest;
 	} body;

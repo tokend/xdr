@@ -55,9 +55,6 @@ struct LedgerHeader
 
     IdGenerator idGenerators<>; // generators of ids
 
-    uint32 baseFee;     // base fee per operation in stroops
-    uint32 baseReserve; // account base reserve in stroops
-
     uint32 maxTxSetSize; // maximum size a transaction set can be
 
     int64 txExpirationPeriod;
