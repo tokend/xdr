@@ -223,17 +223,17 @@ enum TransactionResultCode
 
 struct TransactionResult
 {
-//    union switch (TransactionResultCode code)
-//    {
-//    case txSUCCESS:
-//    case txFAILED:
-//        OperationResult results<>;
-//    case txNO_ROLE_PERMISSION:
-//        AccountRuleRequirement requirement;
-//    default:
-//        void;
-//    }
-//    result;
+    union switch (TransactionResultCode code)
+    {
+    case txSUCCESS:
+    case txFAILED:
+        OperationResult results<>;
+    case txNO_ROLE_PERMISSION:
+        AccountRuleRequirement requirement;
+    default:
+        void;
+    }
+    result;
 
     //: reserved for future use
     EmptyExt ext;
