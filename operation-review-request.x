@@ -47,7 +47,7 @@ struct ExtendedResult {
     //: typeExt is used to pass ReviewableRequestType along with details specific to a request type
     union switch(ReviewableRequestType requestType) 
     {
-    case NONE:
+    default:
         void;
     } typeExt;
 
@@ -70,7 +70,7 @@ struct ReviewRequestOp
     //: requestDetails is used to pass request type along with details specific to it.
     union switch(ReviewableRequestType requestType) 
     {
-    case NONE:
+    default:
         void;
     } requestDetails;
     //: Review action defines an action performed on the pending ReviewableRequest

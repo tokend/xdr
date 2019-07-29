@@ -8,8 +8,7 @@ namespace stellar
 //: can be used to restrict the usage of reviewable requests
 union ReviewableRequestResource switch (ReviewableRequestType requestType)
 {
-case NONE:
-    //: reserved for future extension
+default:
     EmptyExt ext;
 };
 
