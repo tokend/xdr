@@ -11,10 +11,8 @@ case REVIEWABLE_REQUEST:
     //: Describes properties that are equal to managed reviewable request entry fields
     struct
     {
-        //: Describes properties of some reviewable request types that
-        //: can be used to restrict the usage of reviewable requests
-        ReviewableRequestResource details;
-
+        //: Type of request
+        ReviewableRequestType requestType;
         //: Bit mask of tasks that is allowed to add to reviewable request pending tasks
         uint64 tasksToAdd;
         //: Bit mask of tasks that is allowed to remove from reviewable request pending tasks

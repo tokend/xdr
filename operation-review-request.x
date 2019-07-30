@@ -44,13 +44,6 @@ struct ReviewDetails {
 struct ExtendedResult {
     //: Indicates whether or not the request that is being reviewed was applied
     bool fulfilled;
-    //: typeExt is used to pass ReviewableRequestType along with details specific to a request type
-    union switch(ReviewableRequestType requestType) 
-    {
-    default:
-        void;
-    } typeExt;
-
     //: Reserved for future use
     union switch (LedgerVersion v)
     {
@@ -67,12 +60,8 @@ struct ReviewRequestOp
     uint64 requestID;
     //: Hash of a request that is being reviewed
     Hash requestHash;
-    //: requestDetails is used to pass request type along with details specific to it.
-    union switch(ReviewableRequestType requestType) 
-    {
-    default:
-        void;
-    } requestDetails;
+    //: Type of request to review
+    ReviewableRequestType requestType;
     //: Review action defines an action performed on the pending ReviewableRequest
     ReviewRequestOpAction action;
     //: Contains reject reason

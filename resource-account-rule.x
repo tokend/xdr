@@ -4,25 +4,13 @@
 namespace stellar
 {
 
-//: Describes properties of some reviewable request types that
-//: can be used to restrict the usage of reviewable requests
-union ReviewableRequestResource switch (ReviewableRequestType requestType)
-{
-default:
-    EmptyExt ext;
-};
-
 //: Describes properties of some entries that can be used to restrict the usage of entries
 union AccountRuleResource switch (LedgerEntryType type)
 {
 case REVIEWABLE_REQUEST:
-    //: Describes properties that are equal to managed reviewable request entry fields
-    struct
-    {
-        //: Describes properties of some reviewable request types that
-        //: can be used to restrict the usage of reviewable requests
-        ReviewableRequestResource details;
-
+    struct {
+        //: type of request
+        ReviewableRequestType requestType;
         //: reserved for future extension
         EmptyExt ext;
     } reviewableRequest;
