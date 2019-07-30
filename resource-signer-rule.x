@@ -129,32 +129,16 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
-case INITIATE_KYC_RECOVERY:
+case ACCOUNT_SPECIFIC_RULE:
     struct
     {
-        //: Role id
-        uint64 roleID;
+        //: Describes properties of some ledger key that
+        //: can be used to restrict the usage of account specific rules
+        LedgerKey ledgerKey;
 
         //: reserved for future extension
         EmptyExt ext;
-    } initiateKYCRecovery;
-case ACCOUNT_SPECIFIC_RULE:
-    //: reserved for future extension
-    union switch(LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    case ADD_ACC_SPECIFIC_RULE_RESOURCE:
-        struct
-        {
-            //: Describes properties of some ledger key that
-            //: can be used to restrict the usage of account specific rules
-            LedgerKey ledgerKey;
-
-            //: reserved for future extension
-            EmptyExt ext;
-        } accountSpecificRule;
-    } accountSpecificRuleExt;
+    } accountSpecificRule;
 default:
     //: reserved for future extension
     EmptyExt ext;

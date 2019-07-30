@@ -43,41 +43,29 @@ case CREATE_WITHDRAW:
         EmptyExt ext;
     } createWithdraw;
 case CREATE_ATOMIC_SWAP_ASK:
-    union switch (LedgerVersion v)
+//: is used to restrict the usage of a reviewable request with create_atomic_swap_ask type
+    struct
     {
-    case EMPTY_VERSION:
-        void;
-    case ATOMIC_SWAP_RETURNING:
-        //: is used to restrict the usage of a reviewable request with create_atomic_swap_ask type
-        struct
-        {
-            //: code of asset
-            AssetCode assetCode;
-            //: type of asset
-            uint64 assetType;
+        //: code of asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
 
-            //: reserved for future extension
-            EmptyExt ext;
-        } createAtomicSwapAsk;
-    } createAtomicSwapAskExt;
+        //: reserved for future extension
+        EmptyExt ext;
+    } createAtomicSwapAsk;
 case CREATE_ATOMIC_SWAP_BID:
-    union switch (LedgerVersion v)
+//: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
+    struct
     {
-    case EMPTY_VERSION:
-        void;
-    case ATOMIC_SWAP_RETURNING:
-        //: is used to restrict the usage of a reviewable request with create_atomic_swap_bid type
-        struct
-        {
-            //: code of asset
-            AssetCode assetCode;
-            //: type of asset
-            uint64 assetType;
+        //: code of asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
 
-            //: reserved for future extension
-            EmptyExt ext;
-        } createAtomicSwapBid;
-    } createAtomicSwapBidExt;
+        //: reserved for future extension
+        EmptyExt ext;
+    } createAtomicSwapBid;
 case CREATE_POLL:
     //: is used to restrict the creating of a `CREATE_POLL` reviewable request type
     struct
@@ -188,31 +176,16 @@ case VOTE:
         //: reserved for future extension
         EmptyExt ext;
     } vote;
-case INITIATE_KYC_RECOVERY:
+case ACCOUNT_SPECIFIC_RULE:
     struct
     {
-        //: Role id
-        uint64 roleID;
+        //: Describes properties of some ledger key that
+        //: can be used to restrict the usage of account specific rules
+        LedgerKey ledgerKey;
 
         //: reserved for future extension
         EmptyExt ext;
-    } initiateKYCRecovery;
-case ACCOUNT_SPECIFIC_RULE:
-    union switch(LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    case ADD_ACC_SPECIFIC_RULE_RESOURCE:
-        struct
-        {
-            //: Describes properties of some ledger key that
-            //: can be used to restrict the usage of account specific rules
-            LedgerKey ledgerKey;
-
-            //: reserved for future extension
-            EmptyExt ext;
-        } accountSpecificRule;
-    } accountSpecificRuleExt;
+    } accountSpecificRule;
 default:
     //: reserved for future extension
     EmptyExt ext;

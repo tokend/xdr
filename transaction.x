@@ -3,7 +3,6 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/ledger-entries.h"
-%#include "xdr/operation-create-account.h"
 %#include "xdr/operation-set-fees.h"
 %#include "xdr/operation-create-withdrawal-request.h"
 %#include "xdr/operation-manage-balance.h"
@@ -44,8 +43,6 @@
 %#include "xdr/operation-manage-vote.h"
 %#include "xdr/operation-manage-account-specific-rule.h"
 %#include "xdr/operation-cancel-change-role-request.h"
-%#include "xdr/operation-create-kyc-recovery-request.h"
-%#include "xdr/operation-initiate-kyc-recovery.h"
 %#include "xdr/operation-remove-asset-pair.h"
 
 namespace stellar
@@ -62,8 +59,6 @@ struct Operation
 
     union switch (OperationType type)
     {
-    case CREATE_ACCOUNT:
-        CreateAccountOp createAccountOp;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestOp createIssuanceRequestOp;
     case SET_FEES:
@@ -146,10 +141,6 @@ struct Operation
         CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
     case REMOVE_ASSET_PAIR:
         RemoveAssetPairOp removeAssetPairOp;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     }
     body;
 };
@@ -265,8 +256,6 @@ union OperationResult switch (OperationResultCode code)
 case opINNER:
     union switch (OperationType type)
     {
-    case CREATE_ACCOUNT:
-        CreateAccountResult createAccountResult;
 	case CREATE_ISSUANCE_REQUEST:
 		CreateIssuanceRequestResult createIssuanceRequestResult;
     case SET_FEES:
@@ -349,10 +338,6 @@ case opINNER:
         CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
     case REMOVE_ASSET_PAIR:
         RemoveAssetPairResult removeAssetPairResult;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     }
     tr;
 case opNO_ENTRY:
