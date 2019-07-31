@@ -188,9 +188,9 @@ struct DecoratedSignature
 
 enum AccessDefinitionType
 {
-    NONE = 1,
-    WHITELIST = 2,
-    BLACKLIST = 3
+    NONE = 0,
+    WHITELIST = 1,
+    BLACKLIST = 2
 };
 
 }
