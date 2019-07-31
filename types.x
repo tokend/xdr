@@ -7,7 +7,8 @@ namespace stellar
 
 enum LedgerVersion
 {
-    EMPTY_VERSION = 0
+    EMPTY_VERSION = 0,
+    ADD_SALE_WHITELISTS = 1
 };
 
 union EmptyExt switch (LedgerVersion v)
@@ -184,13 +185,6 @@ struct DecoratedSignature
 {
     SignatureHint hint;  // last 4 bytes of the public key, used as a hint
     Signature signature; // actual signature
-};
-
-enum AccessDefinitionType
-{
-    NONE = 0,
-    WHITELIST = 1,
-    BLACKLIST = 2
 };
 
 }
