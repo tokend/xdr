@@ -80,13 +80,14 @@ struct SaleEntry
 	longstring details; // sale specific details
 	SaleQuoteAsset quoteAssets<100>;
 
-    AccessDefinitionType accessDefinition;
 	BalanceID baseBalance;
     SaleTypeExt saleTypeExt;
 
 	union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
+        void;
+    case ADD_SALE_WHITELISTS:
         void;
     }
     ext;
