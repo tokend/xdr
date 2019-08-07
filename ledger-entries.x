@@ -32,6 +32,7 @@
 %#include "xdr/ledger-entries-poll.h"
 %#include "xdr/ledger-entries-vote.h"
 %#include "xdr/ledger-entries-account-specific-rule.h"
+%#include "xdr/ledger-entries-data.h"
 
 namespace stellar
 {
@@ -113,6 +114,8 @@ struct LedgerEntry
         VoteEntry vote;
     case ACCOUNT_SPECIFIC_RULE:
         AccountSpecificRuleEntry accountSpecificRule;
+    case DATA:
+        DataEntry data;
     }
     data;
 

@@ -303,5 +303,11 @@ case ACCOUNT_SPECIFIC_RULE:
 
         EmptyExt ext;
     } accountSpecificRule;
+case DATA:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } data;
 };
 }

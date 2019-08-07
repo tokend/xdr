@@ -1,3 +1,6 @@
+%#include "xdr/types.h"
+
+
 struct CreateDataOp 
 {
     longstring data;
@@ -12,10 +15,17 @@ enum CreateDataResultCode
     INVALID_DATA = -1
 };
 
+struct CreateDataSuccess 
+{
+    uint64 dataID;
+
+    EmptyExt ext;
+};
+
 union CreateDataResult switch (CreateDataResultCode code)
 {
     case SUCCESS:
-        EmptyExt;
+        CreateDataSuccess success;
     default:
         void;
 };
