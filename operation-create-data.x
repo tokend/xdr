@@ -1,9 +1,11 @@
 %#include "xdr/types.h"
 
-
+namespace stellar 
+{
+    
 struct CreateDataOp 
 {
-    longstring data;
+    longstring value;
 
     EmptyExt ext;
 };
@@ -29,3 +31,4 @@ union CreateDataResult switch (CreateDataResultCode code)
     default:
         void;
 };
+}
