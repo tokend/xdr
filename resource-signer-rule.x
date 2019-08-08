@@ -155,6 +155,12 @@ case ACCOUNT_SPECIFIC_RULE:
             EmptyExt ext;
         } accountSpecificRule;
     } accountSpecificRuleExt;
+case DATA:
+    struct 
+    {
+        uint64 type;
+        EmptyExt ext;
+    } data;
 default:
     //: reserved for future extension
     EmptyExt ext;

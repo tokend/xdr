@@ -48,6 +48,8 @@
 %#include "xdr/operation-initiate-kyc-recovery.h"
 %#include "xdr/operation-remove-asset-pair.h"
 %#include "xdr/operation-create-data.h"
+%#include "xdr/operation-update-data.h"
+%#include "xdr/operation-remove-data.h"
 
 namespace stellar
 {
@@ -153,6 +155,10 @@ struct Operation
         CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     case CREATE_DATA:
         CreateDataOp createDataOp;
+    case UPDATE_DATA:
+        UpdateDataOp updateDataOp;
+    case REMOVE_DATA:
+        RemoveDataOp removeDataOp;
     }
     body;
 };
@@ -358,6 +364,10 @@ case opINNER:
         InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     case CREATE_DATA:
         CreateDataResult createDataResult;
+    case UPDATE_DATA:
+        UpdateDataResult updateDataResult;
+    case REMOVE_DATA:
+        RemoveDataResult removeDataResult;
     }
     tr;
 case opNO_ENTRY:

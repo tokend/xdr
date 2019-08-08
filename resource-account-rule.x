@@ -213,6 +213,12 @@ case ACCOUNT_SPECIFIC_RULE:
             EmptyExt ext;
         } accountSpecificRule;
     } accountSpecificRuleExt;
+case DATA:
+    struct 
+    {
+        uint64 type;
+        EmptyExt ext;
+    } data;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -239,7 +245,8 @@ enum AccountRuleAction
     CLOSE = 16,
     REMOVE = 17,
     UPDATE_END_TIME = 18,
-    CREATE_FOR_OTHER_WITH_TASKS = 19
+    CREATE_FOR_OTHER_WITH_TASKS = 19,
+    UPDATE = 20
 };
 
 }

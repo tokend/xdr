@@ -5,6 +5,7 @@ namespace stellar
     
 struct CreateDataOp 
 {
+    uint64 type;
     longstring value;
 
     EmptyExt ext;
