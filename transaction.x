@@ -4,17 +4,10 @@
 
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-create-account.h"
-%#include "xdr/operation-review-request.h"
-%#include "xdr/operation-manage-key-value.h"
-%#include "xdr/operation-create-change-role-request.h"
-%#include "xdr/operation-manage-account-role.h"
-%#include "xdr/operation-manage-account-rule.h"
-%#include "xdr/operation-manage-signer-role.h"
-%#include "xdr/operation-manage-signer-rule.h"
-%#include "xdr/operation-manage-signer.h"
-%#include "xdr/operation-cancel-change-role-request.h"
-%#include "xdr/operation-create-kyc-recovery-request.h"
-%#include "xdr/operation-initiate-kyc-recovery.h"
+%#include "xdr/operation-change-public-key.h"
+%#include "xdr/operation-recovery.h"
+%#include "xdr/operation-put-data.h"
+%#include "xdr/operation-confirm-data.h"
 
 namespace stellar
 {
@@ -32,28 +25,14 @@ struct Operation
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-	case REVIEW_REQUEST:
-		ReviewRequestOp reviewRequestOp;
-	case MANAGE_KEY_VALUE:
-	    ManageKeyValueOp manageKeyValueOp;
-	case CREATE_CHANGE_ROLE_REQUEST:
-		CreateChangeRoleRequestOp createChangeRoleRequestOp;
-    case MANAGE_ACCOUNT_ROLE:
-        ManageAccountRoleOp manageAccountRoleOp;
-    case MANAGE_ACCOUNT_RULE:
-        ManageAccountRuleOp manageAccountRuleOp;
-    case MANAGE_SIGNER:
-        ManageSignerOp manageSignerOp;
-    case MANAGE_SIGNER_ROLE:
-        ManageSignerRoleOp manageSignerRoleOp;
-    case MANAGE_SIGNER_RULE:
-        ManageSignerRuleOp manageSignerRuleOp;
-    case CANCEL_CHANGE_ROLE_REQUEST:
-        CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
+    case CHANGE_KEY:
+        ChangeKeyOp changeKeyOp;
+    case RECOVERY:
+        RecoveryOp recoveryOp;
+    case PUT_DATA:
+        PutDataOp putDataOp;
+    case CONFIRM_DATA:
+        ConfirmDataOp confirmDataOp;
     }
     body;
 };
@@ -142,25 +121,9 @@ enum OperationResultCode
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
     opBAD_AUTH_EXTRA = -8,
-    opNO_ROLE_PERMISSION = -9, // not allowed for this role of source account
-    opNO_ENTRY = -10,
     opNOT_SUPPORTED = -11,
     //: operation was skipped cause of failure validation of previous operation
     opSKIPPED = -12
-};
-
-//: Defines requirements for tx or operation which were not fulfilled
-struct AccountRuleRequirement
-{
-	//: defines resources to which access was denied
-    AccountRuleResource resource;
-	//: defines action which was denied
-    AccountRuleAction action;
-	//: defines account for which requirements were not met
-	AccountID account;
-
-	//: reserved for future extension
-    EmptyExt ext;
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -170,34 +133,16 @@ case opINNER:
     {
     case CREATE_ACCOUNT:
         CreateAccountResult createAccountResult;
-	case REVIEW_REQUEST:
-		ReviewRequestResult reviewRequestResult;
-	case MANAGE_KEY_VALUE:
-	    ManageKeyValueResult manageKeyValueResult;
-	case CREATE_CHANGE_ROLE_REQUEST:
-	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
-    case MANAGE_ACCOUNT_ROLE:
-        ManageAccountRoleResult manageAccountRoleResult;
-    case MANAGE_ACCOUNT_RULE:
-        ManageAccountRuleResult manageAccountRuleResult;
-    case MANAGE_SIGNER:
-        ManageSignerResult manageSignerResult;
-    case MANAGE_SIGNER_ROLE:
-        ManageSignerRoleResult manageSignerRoleResult;
-    case MANAGE_SIGNER_RULE:
-        ManageSignerRuleResult manageSignerRuleResult;
-    case CANCEL_CHANGE_ROLE_REQUEST:
-        CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
+    case RECOVERY:
+        RecoveryResult recoveryResult;
+	case CHANGE_KEY:
+        ChangeKeyResult changeKeyResult;
+    case PUT_DATA:
+        PutDataResult putDataResult;
+    case CONFIRM_DATA:
+        ConfirmDataResult confirmDataResult;
     }
     tr;
-case opNO_ENTRY:
-    LedgerEntryType entryType;
-case opNO_ROLE_PERMISSION:
-    AccountRuleRequirement requirement;
 default:
     void;
 };
@@ -217,8 +162,7 @@ enum TransactionResultCode
     txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
     txINTERNAL_ERROR = -8,             // an unknown error occurred
     txACCOUNT_BLOCKED = -9,            // account is blocked and cannot be source of tx
-    txDUPLICATION = -10,               // if timing is stored
-    txNO_ROLE_PERMISSION = -11         // account role has not rule that allows send transaction
+    txDUPLICATION = -10               // if timing is stored
 };
 
 struct TransactionResult
@@ -228,8 +172,6 @@ struct TransactionResult
     case txSUCCESS:
     case txFAILED:
         OperationResult results<>;
-    case txNO_ROLE_PERMISSION:
-        AccountRuleRequirement requirement;
     default:
         void;
     }

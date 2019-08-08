@@ -19,16 +19,18 @@ namespace stellar
 
 struct AccountEntry
 {
-    AccountID accountID;      // master public key for this account
+    AccountID accountID;
+
+    PublicKey publicKey;
 
     // Referral marketing
     AccountID* referrer; // parent account
 
+
+
     // sequential ID - unique identifier of the account, used by ingesting applications to
     // identify account, while keeping size of index small
     uint64 sequentialID;
-
-	uint64 roleID;
 
     // reserved for future use
     union switch (LedgerVersion v)

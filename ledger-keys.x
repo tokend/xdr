@@ -12,106 +12,23 @@ case ACCOUNT:
     {
         AccountID accountID;
         union switch (LedgerVersion v)
-       {
-       case EMPTY_VERSION:
-          void;
-       }
+        {
+        case EMPTY_VERSION:
+            void;
+        }
        ext;
     } account;
-case SIGNER:
-    struct
-    {
-        PublicKey pubKey;
-        AccountID accountID;
+case MASKED_DATA:
+    struct {
+        uint64 id;
 
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } signer;
-case REFERENCE_ENTRY:
-    struct
-    {
-		AccountID sender;
-		string64 reference;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } reference;
-case REVIEWABLE_REQUEST:
+        EmptyExt ext;
+    } maskedData;
+case RECOVERY:
     struct {
-        uint64 requestID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } reviewableRequest;
-case KEY_VALUE:
-    struct {
-        longstring key;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } keyValue;
-case ACCOUNT_KYC:
-    struct {
-        AccountID accountID;
-        union switch(LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } accountKYC;
-case ACCOUNT_ROLE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } accountRole;
-case ACCOUNT_RULE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } accountRule;
-case SIGNER_ROLE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } signerRole;
-case SIGNER_RULE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } signerRule;
+        AccountID target;
+
+        EmptyExt ext;
+    } recovery;
 };
 }

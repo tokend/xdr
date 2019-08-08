@@ -4,15 +4,8 @@
 
 %#include "xdr/types.h"
 %#include "xdr/ledger-entries-account.h"
-%#include "xdr/ledger-entries-signer.h"
-%#include "xdr/ledger-entries-reference.h"
-%#include "xdr/ledger-entries-reviewable-request.h"
-%#include "xdr/ledger-entries-key-value.h"
-%#include "xdr/ledger-entries-account-KYC.h"
-%#include "xdr/ledger-entries-account-role.h"
-%#include "xdr/ledger-entries-account-rule.h"
-%#include "xdr/ledger-entries-signer-role.h"
-%#include "xdr/ledger-entries-signer-rule.h"
+%#include "xdr/ledger-entries-masked-data.h"
+%#include "xdr/ledger-entries-recovery.h"
 
 namespace stellar
 {
@@ -26,24 +19,10 @@ struct LedgerEntry
     {
     case ACCOUNT:
         AccountEntry account;
-    case SIGNER:
-        SignerEntry signer;
-    case REFERENCE_ENTRY:
-        ReferenceEntry reference;
-	case REVIEWABLE_REQUEST:
-		ReviewableRequestEntry reviewableRequest;
-	case KEY_VALUE:
-	    KeyValueEntry keyValue;
-	case ACCOUNT_KYC:
-        AccountKYCEntry accountKYC;
-    case ACCOUNT_ROLE:
-        AccountRoleEntry accountRole;
-    case ACCOUNT_RULE:
-        AccountRuleEntry accountRule;
-    case SIGNER_RULE:
-        SignerRuleEntry signerRule;
-    case SIGNER_ROLE:
-        SignerRoleEntry signerRole;
+    case MASKED_DATA:
+        MaskedDataEntry maskedData;
+    case RECOVERY:
+        RecoveryEntry recovery;
     }
     data;
 
