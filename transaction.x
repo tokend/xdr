@@ -4,34 +4,7 @@
 
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-create-account.h"
-%#include "xdr/operation-set-fees.h"
-%#include "xdr/operation-create-withdrawal-request.h"
-%#include "xdr/operation-manage-balance.h"
-%#include "xdr/operation-manage-asset.h"
-%#include "xdr/operation-create-preissuance-request.h"
-%#include "xdr/operation-create-issuance-request.h"
-%#include "xdr/operation-manage-limits.h"
-%#include "xdr/operation-manage-asset-pair.h"
-%#include "xdr/operation-manage-offer.h"
-%#include "xdr/operation-manage-invoice-request.h"
-%#include "xdr/operation-review-request.h"
-%#include "xdr/operation-create-sale-creation-request.h"
-%#include "xdr/operation-cancel-sale-creation-request.h"
-%#include "xdr/operation-check-sale-state.h"
-%#include "xdr/operation-payout.h"
-%#include "xdr/operation-create-AML-alert-request.h"
 %#include "xdr/operation-manage-key-value.h"
-%#include "xdr/operation-create-change-role-request.h"
-%#include "xdr/operation-manage-external-system-id-pool-entry.h"
-%#include "xdr/operation-bind-external-system-id.h"
-%#include "xdr/operation-payment.h"
-%#include "xdr/operation-manage-sale.h"
-%#include "xdr/operation-create-manage-limits-request.h"
-%#include "xdr/operation-manage-contract.h"
-%#include "xdr/operation-manage-contract-request.h"
-%#include "xdr/operation-create-atomic-swap-bid-request.h"
-%#include "xdr/operation-cancel-atomic-swap-ask.h"
-%#include "xdr/operation-create-atomic-swap-ask-request.h"
 %#include "xdr/operation-manage-account-role.h"
 %#include "xdr/operation-manage-account-rule.h"
 %#include "xdr/operation-manage-signer-role.h"
@@ -39,14 +12,6 @@
 %#include "xdr/operation-manage-signer.h"
 %#include "xdr/operation-license.h"
 %#include "xdr/operation-stamp.h"
-%#include "xdr/operation-manage-poll.h"
-%#include "xdr/operation-manage-create-poll-request.h"
-%#include "xdr/operation-manage-vote.h"
-%#include "xdr/operation-manage-account-specific-rule.h"
-%#include "xdr/operation-cancel-change-role-request.h"
-%#include "xdr/operation-create-kyc-recovery-request.h"
-%#include "xdr/operation-initiate-kyc-recovery.h"
-%#include "xdr/operation-remove-asset-pair.h"
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
@@ -67,63 +32,9 @@ struct Operation
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-	case CREATE_ISSUANCE_REQUEST:
-		CreateIssuanceRequestOp createIssuanceRequestOp;
-    case SET_FEES:
-        SetFeesOp setFeesOp;
-	case CREATE_WITHDRAWAL_REQUEST:
-		CreateWithdrawalRequestOp createWithdrawalRequestOp;
-	case MANAGE_BALANCE:
-		ManageBalanceOp manageBalanceOp;
-    case MANAGE_ASSET:
-        ManageAssetOp manageAssetOp;
-    case CREATE_PREISSUANCE_REQUEST:
-        CreatePreIssuanceRequestOp createPreIssuanceRequest;
-    case MANAGE_LIMITS:
-        ManageLimitsOp manageLimitsOp;
-	case MANAGE_ASSET_PAIR:
-		ManageAssetPairOp manageAssetPairOp;
-	case MANAGE_OFFER:
-		ManageOfferOp manageOfferOp;
-    case MANAGE_INVOICE_REQUEST:
-        ManageInvoiceRequestOp manageInvoiceRequestOp;
-	case REVIEW_REQUEST:
-		ReviewRequestOp reviewRequestOp;
-	case CREATE_SALE_REQUEST:
-		CreateSaleCreationRequestOp createSaleCreationRequestOp;
-	case CHECK_SALE_STATE:
-		CheckSaleStateOp checkSaleStateOp;
-	case PAYOUT:
-	    PayoutOp payoutOp;
-	case CREATE_AML_ALERT:
-	    CreateAMLAlertRequestOp createAMLAlertRequestOp;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueOp manageKeyValueOp;
-	case CREATE_CHANGE_ROLE_REQUEST:
-		CreateChangeRoleRequestOp createChangeRoleRequestOp;
-    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
-        ManageExternalSystemAccountIdPoolEntryOp manageExternalSystemAccountIdPoolEntryOp;
-    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
-        BindExternalSystemAccountIdOp bindExternalSystemAccountIdOp;
-    case PAYMENT:
-        PaymentOp paymentOp;
-    case MANAGE_SALE:
-        ManageSaleOp manageSaleOp;
-    case CREATE_MANAGE_LIMITS_REQUEST:
-        CreateManageLimitsRequestOp createManageLimitsRequestOp;
-    case MANAGE_CONTRACT_REQUEST:
-        ManageContractRequestOp manageContractRequestOp;
-    case MANAGE_CONTRACT:
-        ManageContractOp manageContractOp;
-    case CANCEL_SALE_REQUEST:
-        CancelSaleCreationRequestOp cancelSaleCreationRequestOp;
-    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
-        CreateAtomicSwapAskRequestOp createAtomicSwapAskRequestOp;
-    case CANCEL_ATOMIC_SWAP_ASK:
-        CancelAtomicSwapAskOp cancelAtomicSwapAskOp;
-    case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidRequestOp createAtomicSwapBidRequestOp;
-    case MANAGE_ACCOUNT_ROLE:
+	case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleOp manageAccountRoleOp;
     case MANAGE_ACCOUNT_RULE:
         ManageAccountRuleOp manageAccountRuleOp;
@@ -137,22 +48,6 @@ struct Operation
         StampOp stampOp;
     case LICENSE:
         LicenseOp licenseOp;
-    case MANAGE_CREATE_POLL_REQUEST:
-        ManageCreatePollRequestOp manageCreatePollRequestOp;
-    case MANAGE_POLL:
-        ManagePollOp managePollOp;
-    case MANAGE_VOTE:
-        ManageVoteOp manageVoteOp;
-    case MANAGE_ACCOUNT_SPECIFIC_RULE:
-        ManageAccountSpecificRuleOp manageAccountSpecificRuleOp;
-    case CANCEL_CHANGE_ROLE_REQUEST:
-        CancelChangeRoleRequestOp cancelChangeRoleRequestOp;
-    case REMOVE_ASSET_PAIR:
-        RemoveAssetPairOp removeAssetPairOp;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryOp initiateKYCRecoveryOp;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
     case CREATE_DATA:
         CreateDataOp createDataOp;
     case UPDATE_DATA:
@@ -276,62 +171,8 @@ case opINNER:
     {
     case CREATE_ACCOUNT:
         CreateAccountResult createAccountResult;
-	case CREATE_ISSUANCE_REQUEST:
-		CreateIssuanceRequestResult createIssuanceRequestResult;
-    case SET_FEES:
-        SetFeesResult setFeesResult;
-    case CREATE_WITHDRAWAL_REQUEST:
-		CreateWithdrawalRequestResult createWithdrawalRequestResult;
-    case MANAGE_BALANCE:
-        ManageBalanceResult manageBalanceResult;
-    case MANAGE_ASSET:
-        ManageAssetResult manageAssetResult;
-    case CREATE_PREISSUANCE_REQUEST:
-        CreatePreIssuanceRequestResult createPreIssuanceRequestResult;
-    case MANAGE_LIMITS:
-        ManageLimitsResult manageLimitsResult;
-	case MANAGE_ASSET_PAIR:
-		ManageAssetPairResult manageAssetPairResult;
-	case MANAGE_OFFER:
-		ManageOfferResult manageOfferResult;
-	case MANAGE_INVOICE_REQUEST:
-		ManageInvoiceRequestResult manageInvoiceRequestResult;
-	case REVIEW_REQUEST:
-		ReviewRequestResult reviewRequestResult;
-	case CREATE_SALE_REQUEST:
-		CreateSaleCreationRequestResult createSaleCreationRequestResult;
-	case CHECK_SALE_STATE:
-		CheckSaleStateResult checkSaleStateResult;
-	case PAYOUT:
-	    PayoutResult payoutResult;
-	case CREATE_AML_ALERT:
-	    CreateAMLAlertRequestResult createAMLAlertRequestResult;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueResult manageKeyValueResult;
-	case CREATE_CHANGE_ROLE_REQUEST:
-	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
-    case MANAGE_EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
-        ManageExternalSystemAccountIdPoolEntryResult manageExternalSystemAccountIdPoolEntryResult;
-    case BIND_EXTERNAL_SYSTEM_ACCOUNT_ID:
-        BindExternalSystemAccountIdResult bindExternalSystemAccountIdResult;
-    case PAYMENT:
-        PaymentResult paymentResult;
-    case MANAGE_SALE:
-        ManageSaleResult manageSaleResult;
-    case CREATE_MANAGE_LIMITS_REQUEST:
-        CreateManageLimitsRequestResult createManageLimitsRequestResult;
-    case MANAGE_CONTRACT_REQUEST:
-        ManageContractRequestResult manageContractRequestResult;
-    case MANAGE_CONTRACT:
-        ManageContractResult manageContractResult;
-    case CANCEL_SALE_REQUEST:
-        CancelSaleCreationRequestResult cancelSaleCreationRequestResult;
-    case CREATE_ATOMIC_SWAP_ASK_REQUEST:
-        CreateAtomicSwapAskRequestResult createAtomicSwapAskRequestResult;
-    case CANCEL_ATOMIC_SWAP_ASK:
-        CancelAtomicSwapAskResult cancelAtomicSwapAskResult;
-    case CREATE_ATOMIC_SWAP_BID_REQUEST:
-        CreateAtomicSwapBidRequestResult createAtomicSwapBidRequestResult;
     case MANAGE_ACCOUNT_ROLE:
         ManageAccountRoleResult manageAccountRoleResult;
     case MANAGE_ACCOUNT_RULE:
@@ -346,22 +187,6 @@ case opINNER:
         StampResult stampResult;
     case LICENSE:
         LicenseResult licenseResult;
-    case MANAGE_POLL:
-        ManagePollResult managePollResult;
-    case MANAGE_CREATE_POLL_REQUEST:
-        ManageCreatePollRequestResult manageCreatePollRequestResult;
-    case MANAGE_VOTE:
-        ManageVoteResult manageVoteResult;
-    case MANAGE_ACCOUNT_SPECIFIC_RULE:
-        ManageAccountSpecificRuleResult manageAccountSpecificRuleResult;
-    case CANCEL_CHANGE_ROLE_REQUEST:
-        CancelChangeRoleRequestResult cancelChangeRoleRequestResult;
-    case REMOVE_ASSET_PAIR:
-        RemoveAssetPairResult removeAssetPairResult;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
     case CREATE_DATA:
         CreateDataResult createDataResult;
     case UPDATE_DATA:
