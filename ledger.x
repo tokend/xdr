@@ -3,7 +3,6 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 %#include "xdr/transaction.h"
-%#include "xdr/SCP.h"
 %#include "xdr/ledger-keys.h"
 
 namespace stellar
@@ -47,26 +46,16 @@ struct LedgerHeader
 {
     uint32 ledgerVersion;    // the protocol version of the ledger
     Hash previousLedgerHash; // hash of the previous ledger header
-    StellarValue scpValue;   // what consensus agreed to
+    Hash txSetHash;          // hash of transactions' hashes
     Hash txSetResultHash;    // the TransactionResultSet that led to this ledger
-    Hash bucketListHash;     // hash of the ledger state
 
     uint32 ledgerSeq; // sequence number of this ledger
 
     IdGenerator idGenerators<>; // generators of ids
 
-    uint32 baseFee;     // base fee per operation in stroops
-    uint32 baseReserve; // account base reserve in stroops
-
     uint32 maxTxSetSize; // maximum size a transaction set can be
 
-    int64 txExpirationPeriod;
-    
-    Hash skipList[4]; // hashes of ledgers in the past. allows you to jump back
-                      // in time without walking the chain back ledger by ledger
-                      // each slot contains the oldest ledger that is mod of
-                      // either 50  5000  50000 or 500000 depending on index
-                      // skipList[0] mod(50), skipList[1] mod(5000), etc
+    uint64 txExpirationPeriod;
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -96,22 +85,7 @@ case VERSION:
 case MAX_TX_SET_SIZE:
     uint32 newMaxTxSetSize; // update maxTxSetSize
 case TX_EXPIRATION_PERIOD:
-    int64 newTxExpirationPeriod;
-};
-
-enum BucketEntryType
-{
-    LIVEENTRY = 0,
-    DEADENTRY = 1
-};
-
-union BucketEntry switch (BucketEntryType type)
-{
-case LIVEENTRY:
-    LedgerEntry liveEntry;
-
-case DEADENTRY:
-    LedgerKey deadEntry;
+    uint64 newTxExpirationPeriod;
 };
 
 // Transaction sets are the unit used by SCP to decide on transitions
@@ -176,29 +150,6 @@ struct LedgerHeaderHistoryEntry
         void;
     }
     ext;
-};
-
-// historical SCP messages
-
-struct LedgerSCPMessages
-{
-    uint32 ledgerSeq;
-    SCPEnvelope messages<>;
-};
-
-// note: ledgerMessages may refer to any quorumSets encountered
-// in the file so far, not just the one from this entry
-struct SCPHistoryEntryV0
-{
-    SCPQuorumSet quorumSets<>; // additional quorum sets used by ledgerMessages
-    LedgerSCPMessages ledgerMessages;
-};
-
-// SCP history file is an array of these
-union SCPHistoryEntry switch (LedgerVersion v)
-{
-case EMPTY_VERSION:
-    SCPHistoryEntryV0 v0;
 };
 
 // represents the meta in the transaction table history
