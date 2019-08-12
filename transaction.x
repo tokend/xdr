@@ -15,6 +15,7 @@
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
+%#include "xdr/operation-change-role.h"
 
 namespace stellar
 {
@@ -54,6 +55,8 @@ struct Operation
         UpdateDataOp updateDataOp;
     case REMOVE_DATA:
         RemoveDataOp removeDataOp;
+    case CHANGE_ROLE:
+        ChangeRoleOp changeRoleOp;
     }
     body;
 };
@@ -193,6 +196,8 @@ case opINNER:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
+    case CHANGE_ROLE:
+        ChangeRoleResult changeRoleResult;
     }
     tr;
 case opNO_ENTRY:

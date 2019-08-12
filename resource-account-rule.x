@@ -50,7 +50,8 @@ enum AccountRuleAction
     REMOVE = 17,
     UPDATE_END_TIME = 18,
     CREATE_FOR_OTHER_WITH_TASKS = 19,
-    UPDATE = 20
+    UPDATE = 20,
+    CHANGE_ROLE = 21
 };
 
 }

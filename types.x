@@ -138,6 +138,7 @@ struct Fee {
 enum OperationType
 {
     CREATE_ACCOUNT = 1,
+    CHANGE_ROLE = 2,
     UPDATE_DATA = 8,
     REMOVE_DATA = 10,
     CREATE_DATA = 14,
