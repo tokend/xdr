@@ -8,29 +8,29 @@
 namespace stellar
 {
 
-typedef opaque UpgradeType<128>;
-
-/* StellarValue is the value used by SCP to reach consensus on a given ledger
+/* Ledger upgrades
+note that the `upgrades` field from StellarValue is normalized such that
+it only contains one entry per LedgerUpgradeType, and entries are sorted
+in ascending order
 */
-struct StellarValue
+enum LedgerUpgradeType
 {
-    Hash txSetHash;   // transaction set to apply to previous ledger
-    uint64 closeTime; // network close time
+    NONE = 0,
+    VERSION = 1,
+    MAX_TX_SET_SIZE = 2,
+    TX_EXPIRATION_PERIOD = 3
+};
 
-    // upgrades to apply to the previous ledger (usually empty)
-    // this is a vector of encoded 'LedgerUpgrade' so that nodes can drop
-    // unknown steps during consensus if needed.
-    // see notes below on 'LedgerUpgrade' for more detail
-    // max size is dictated by number of upgrade types (+ room for future)
-    UpgradeType upgrades<6>;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+union LedgerUpgrade switch (LedgerUpgradeType type)
+{
+case NONE:
+    void;
+case VERSION:
+    uint32 newLedgerVersion; // update ledgerVersion
+case MAX_TX_SET_SIZE:
+    uint32 newMaxTxSetSize; // update maxTxSetSize
+case TX_EXPIRATION_PERIOD:
+    uint64 newTxExpirationPeriod;
 };
 
 // The IdGenerator is generator of id for specific instances
@@ -50,12 +50,10 @@ struct LedgerHeader
     Hash txSetResultHash;    // the TransactionResultSet that led to this ledger
 
     uint32 ledgerSeq; // sequence number of this ledger
+    uint64 closeTime; // network close time
 
     IdGenerator idGenerators<>; // generators of ids
-
-    uint32 maxTxSetSize; // maximum size a transaction set can be
-
-    uint64 txExpirationPeriod;
+    LedgerUpgrade upgrade; // upgrade in current ledger (usually none), only one upgrade in one closed ledger is enough
 
     // reserved for future use
     union switch (LedgerVersion v)
@@ -64,28 +62,6 @@ struct LedgerHeader
         void;
     }
     ext;
-};
-
-/* Ledger upgrades
-note that the `upgrades` field from StellarValue is normalized such that
-it only contains one entry per LedgerUpgradeType, and entries are sorted
-in ascending order
-*/
-enum LedgerUpgradeType
-{
-    VERSION = 1,
-    MAX_TX_SET_SIZE = 2,
-    TX_EXPIRATION_PERIOD = 3
-};
-
-union LedgerUpgrade switch (LedgerUpgradeType type)
-{
-case VERSION:
-    uint32 newLedgerVersion; // update ledgerVersion
-case MAX_TX_SET_SIZE:
-    uint32 newMaxTxSetSize; // update maxTxSetSize
-case TX_EXPIRATION_PERIOD:
-    uint64 newTxExpirationPeriod;
 };
 
 // Transaction sets are the unit used by SCP to decide on transitions
