@@ -46,7 +46,10 @@ enum LedgerEntryType
 {
     ACCOUNT = 1,
     MASKED_DATA = 2,
-    RECOVERY = 3
+    IDENTIFIER = 3,
+    MASKED_DATA_CONFIRMATION = 4,
+    IDENTIFIER_CONFIRMATION = 5,
+    RECOVERY = 6
 };
 
 // variable size as the size depends on the signature scheme used
@@ -93,7 +96,9 @@ enum OperationType
     CHANGE_KEY = 2,
     PUT_DATA = 3,
     CONFIRM_DATA = 4,
-    RECOVERY = 5
+    PUT_IDENTIFIER = 5,
+    CONFIRM_IDENTIFIER = 6,
+    RECOVERY = 7
 };
 
 struct DecoratedSignature

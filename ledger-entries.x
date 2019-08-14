@@ -5,7 +5,10 @@
 %#include "xdr/types.h"
 %#include "xdr/ledger-entries-account.h"
 %#include "xdr/ledger-entries-masked-data.h"
+%#include "xdr/ledger-entries-masked-data-confirmation.h"
 %#include "xdr/ledger-entries-recovery.h"
+%#include "xdr/ledger-entries-identifier.h"
+%#include "xdr/ledger-entries-identifier-confirmation.h"
 
 namespace stellar
 {
@@ -21,8 +24,14 @@ struct LedgerEntry
         AccountEntry account;
     case MASKED_DATA:
         MaskedDataEntry maskedData;
+    case IDENTIFIER:
+        IdentifierEntry identifier;
     case RECOVERY:
         RecoveryEntry recovery;
+    case IDENTIFIER_CONFIRMATION:
+        IdentifierConfirmationEntry identifierConfirmation;
+    case MASKED_DATA_CONFIRMATION:
+        MaskedDataConfirmationEntry maskedDataConfirmation;
     }
     data;
 

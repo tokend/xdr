@@ -11,24 +11,41 @@ case ACCOUNT:
     struct
     {
         AccountID accountID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-       ext;
+
+        EmptyExt ext;
     } account;
 case MASKED_DATA:
     struct {
-        uint64 id;
+       uint64 id;
 
         EmptyExt ext;
     } maskedData;
 case RECOVERY:
     struct {
-        AccountID target;
+        AccountID accountID;
 
         EmptyExt ext;
     } recovery;
+case IDENTIFIER:
+    struct
+    {
+        uint64 id;
+
+        EmptyExt ext;
+    } identifier;
+case IDENTIFIER_CONFIRMATION:
+    struct
+    {
+    uint64 id;
+
+    EmptyExt ext;
+    } identifierConfirmation;
+case MASKED_DATA_CONFIRMATION:
+    struct
+    {
+    uint64 id;
+
+    EmptyExt ext;
+    } maskedDataConfirmation;
 };
 }

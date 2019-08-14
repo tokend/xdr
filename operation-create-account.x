@@ -1,4 +1,5 @@
 %#include "xdr/types.h"
+%#include "xdr/ledger-entries-identifier.h"
 
 namespace stellar
 {
@@ -10,9 +11,17 @@ struct CreateAccountOp
     AccountID destination;
     //: ID of an another account that introduced this account into the system.
     //: If account with such ID does not exist or it's Admin Account. Referrer won't be set.
-    AccountID* referrer;
+    AccountID referrer;
 
     PublicKey key;
+
+    longstring* mainData;
+    longstring* additionalData;
+
+    longstring externalIdentifiers<>;
+
+    AccountID recoveryProviders<>;
+    uint32 recoveryPower;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -35,8 +44,9 @@ enum CreateAccountResultCode
     //: Source account cannot be the same as the destination account
     INVALID_DESTINATION = -1,
     //: Account with such an ID already exists
-    ALREADY_EXISTS = -2 // account already exist
-
+    ALREADY_EXISTS = -2, // account already exist
+    NO_RECOVERY_PROVIDERS = -3,
+    INVALID_RECOVERY_POWER = -4
 };
 
 //: Result of successful application of `CreateAccount` operation

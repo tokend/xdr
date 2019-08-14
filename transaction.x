@@ -8,6 +8,8 @@
 %#include "xdr/operation-recovery.h"
 %#include "xdr/operation-put-data.h"
 %#include "xdr/operation-confirm-data.h"
+%#include "xdr/operation-put-identifier.h"
+%#include "xdr/operation-confirm-identifier.h"
 
 namespace stellar
 {
@@ -33,6 +35,10 @@ struct Operation
         PutDataOp putDataOp;
     case CONFIRM_DATA:
         ConfirmDataOp confirmDataOp;
+    case PUT_IDENTIFIER:
+        PutIdentifierOp putIdentifierOp;
+    case CONFIRM_IDENTIFIER:
+        ConfirmIdentifierOp confirmIdentifierOp;
     }
     body;
 };
@@ -141,6 +147,10 @@ case opINNER:
         PutDataResult putDataResult;
     case CONFIRM_DATA:
         ConfirmDataResult confirmDataResult;
+    case PUT_IDENTIFIER:
+        PutIdentifierResult putIdentifierResult;
+    case CONFIRM_IDENTIFIER:
+        ConfirmIdentifierResult confirmIdentifierResult;
     }
     tr;
 default:

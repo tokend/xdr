@@ -9,7 +9,7 @@ namespace stellar
 
 struct RecoveryEntry
 {
-    AccountID targetAccount;
+    AccountID accountID;
 
     AccountID recoveryProviders<>;
 

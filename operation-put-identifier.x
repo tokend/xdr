@@ -3,10 +3,8 @@
 namespace stellar
 {
 
-struct PutDataOp
+struct PutIdentifierOp
 {
-    MaskedDataType type;
-
     longstring value;
 
     //: reserved for future use
@@ -17,13 +15,13 @@ struct PutDataOp
     } ext;
 };
 
-enum PutDataResultCode
+enum PutIdentifierResultCode
 {
-    //: PutData was successfully applied
+    //: PutIdentifier was successfully applied
     SUCCESS = 0
 };
 
-struct PutDataSuccess
+struct PutIdentifierSuccess
 {
     uint64 id;
 
@@ -32,10 +30,10 @@ struct PutDataSuccess
 
 
 //: Result of operation applying
-union PutDataResult switch (PutDataResultCode code)
+union PutIdentifierResult switch (PutIdentifierResultCode code)
 {
 case SUCCESS:
-    PutDataSuccess success;
+    PutIdentifierSuccess success;
 default:
     void;
 };

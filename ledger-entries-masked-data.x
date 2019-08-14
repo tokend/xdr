@@ -4,33 +4,25 @@
 namespace stellar
 {
 
-    //: `MaskedDataType` defines the type of value in the masked entry
-    enum MaskedDataType
-    {
-        MAIN = 1,
-        ADDITIONAL = 2,
-        IDENTIFIER = 3
-    };
+//: `MaskedDataType` defines the type of value in the masked entry
+enum MaskedDataType
+{
+    MAIN = 1,
+    ADDITIONAL = 2
+};
 
-    struct MaskedData
-    {
-        longstring value;
+//: `MaskedDataEntry` is an entry used to store masked data
+struct MaskedDataEntry
+{
+    uint64 id;
 
-        MaskedDataType type;
+    AccountID accountID;
 
-        EmptyExt ext;
-    };
+    MaskedDataType type;
 
-    //: `MaskedDataEntry` is an entry used to store masked data 
-    struct MaskedDataEntry
-    {
-        uint64 id;
+    longstring value;
 
-        AccountID account;
-
-        MaskedData data;
-
-        EmptyExt ext;
-    };
+    EmptyExt ext;
+};
 
 }
