@@ -260,6 +260,20 @@ struct AccountRuleRequirement
     EmptyExt ext;
 };
 
+//: Defines requirements for tx or operation which were not fulfilled
+struct SignerRuleRequirement
+{
+	//: defines resources to which access was denied
+    SignerRuleResource resource;
+	//: defines action which was denied
+    SignerRuleAction action;
+	//: defines account for which requirements were not met
+	AccountID account;
+
+	//: reserved for future extension
+    EmptyExt ext;
+};
+
 union OperationResult switch (OperationResultCode code)
 {
 case opINNER:
@@ -359,6 +373,8 @@ case opNO_ENTRY:
     LedgerEntryType entryType;
 case opNO_ROLE_PERMISSION:
     AccountRuleRequirement requirement;
+//case opBAD_AUTH:
+//    SignerRuleRequirement requirements;
 default:
     void;
 };
