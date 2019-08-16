@@ -125,10 +125,10 @@ case TRANSACTION:
 // SCP
 case GET_SCP_QUORUMSET:
     uint256 qSetHash;
-case SCP_QUORUMSET:
-    SCPQuorumSet qSet;
-case SCP_MESSAGE:
-    SCPEnvelope envelope;
+//case SCP_QUORUMSET:
+//    SCPQuorumSet qSet;
+//case SCP_MESSAGE:
+//    SCPEnvelope envelope;
 case GET_SCP_STATE:
     uint32 getSCPLedgerSeq; // ledger seq requested ; if 0, requests the latest
 };
