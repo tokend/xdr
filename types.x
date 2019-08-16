@@ -79,7 +79,7 @@ struct HmacSha256Mac
         opaque mac[32];
 };
 
-typedef string AccountID<64>;
+typedef opaque AccountID[32];
 typedef opaque Thresholds[4];
 typedef string string32<32>;
 typedef string string64<64>;
