@@ -23,7 +23,9 @@ enum RecoveryResultCode
     SUCCESS = 0,
 
     //: Account with provided account address does not exist
-    TARGET_ACCOUNT_NOT_FOUND = -1
+    TARGET_ACCOUNT_NOT_FOUND = -1,
+    NO_RECOVERY_PROVIDERS = -2,
+    INVALID_RECOVERY_POWER = -3
 };
 
 
