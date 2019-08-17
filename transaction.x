@@ -122,14 +122,12 @@ enum OperationResultCode
     opBAD_AUTH = -1,      // too few valid signatures / wrong network
     opNO_ACCOUNT = -2,    // source account was not found
 	opNOT_ALLOWED = -3,   // operation is not allowed for this type of source account
-	opACCOUNT_BLOCKED = -4, // account is blocked
     opNO_COUNTERPARTY = -5,
     opCOUNTERPARTY_BLOCKED = -6,
     opCOUNTERPARTY_WRONG_TYPE = -7,
-    opBAD_AUTH_EXTRA = -8,
-    opNOT_SUPPORTED = -11,
+    opNOT_SUPPORTED = -8,
     //: operation was skipped cause of failure validation of previous operation
-    opSKIPPED = -12
+    opSKIPPED = -9
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -168,11 +166,10 @@ enum TransactionResultCode
     txMISSING_OPERATION = -4, // no operation was specified
 
     txBAD_AUTH = -5,                   // too few valid signatures / wrong network
-    txNO_ACCOUNT = -6,                 // source account not found
+    txNO_ACCOUNT = -6,                 // source accountEXTRA not found
     txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
     txINTERNAL_ERROR = -8,             // an unknown error occurred
-    txACCOUNT_BLOCKED = -9,            // account is blocked and cannot be source of tx
-    txDUPLICATION = -10               // if timing is stored
+    txDUPLICATION = -9               // if timing is stored
 };
 
 struct TransactionResult
