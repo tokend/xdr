@@ -4,7 +4,7 @@
 
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-create-account.h"
-%#include "xdr/operation-change-public-key.h"
+%#include "xdr/operation-change-key.h"
 %#include "xdr/operation-recovery.h"
 %#include "xdr/operation-put-data.h"
 %#include "xdr/operation-confirm-data.h"
