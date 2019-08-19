@@ -121,13 +121,10 @@ enum OperationResultCode
 
     opBAD_AUTH = -1,      // too few valid signatures / wrong network
     opNO_ACCOUNT = -2,    // source account was not found
-	opNOT_ALLOWED = -3,   // operation is not allowed for this type of source account
-    opNO_COUNTERPARTY = -5,
-    opCOUNTERPARTY_BLOCKED = -6,
-    opCOUNTERPARTY_WRONG_TYPE = -7,
-    opNOT_SUPPORTED = -8,
+    opNO_COUNTERPARTY = -3,
+    opNOT_SUPPORTED = -4,
     //: operation was skipped cause of failure validation of previous operation
-    opSKIPPED = -9
+    opSKIPPED = -5
 };
 
 union OperationResult switch (OperationResultCode code)
@@ -166,7 +163,7 @@ enum TransactionResultCode
     txMISSING_OPERATION = -4, // no operation was specified
 
     txBAD_AUTH = -5,                   // too few valid signatures / wrong network
-    txNO_ACCOUNT = -6,                 // source accountEXTRA not found
+    txNO_ACCOUNT = -6,                 // source account not found
     txBAD_AUTH_EXTRA = -7,             // unused signatures attached to transaction
     txINTERNAL_ERROR = -8,             // an unknown error occurred
     txDUPLICATION = -9               // if timing is stored
