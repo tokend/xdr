@@ -16,7 +16,7 @@ case ACCOUNT:
     } account;
 case MASKED_DATA:
     struct {
-       uint64 id;
+        int64 id;
 
         EmptyExt ext;
     } maskedData;
@@ -29,23 +29,23 @@ case RECOVERY:
 case IDENTIFIER:
     struct
     {
-        uint64 id;
+        int64 id;
 
         EmptyExt ext;
     } identifier;
 case IDENTIFIER_CONFIRMATION:
     struct
     {
-    uint64 id;
+        int64 id;
 
-    EmptyExt ext;
+        EmptyExt ext;
     } identifierConfirmation;
 case MASKED_DATA_CONFIRMATION:
     struct
     {
-    uint64 id;
+        int64 id;
 
-    EmptyExt ext;
+        EmptyExt ext;
     } maskedDataConfirmation;
 };
 }

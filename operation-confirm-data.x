@@ -5,11 +5,11 @@ namespace stellar
 
 struct ConfirmDataOp
 {
-    uint64 dataID;
+    int64 dataID;
 
-    uint64 confirmationID;
+    int64 confirmationID;
 
-    uint64 mask;
+    uint32 mask;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -28,7 +28,7 @@ enum ConfirmDataResultCode
 
 struct ConfirmDataSuccess
 {
-    uint64 id;
+    uint64 confirmationID;
 
     EmptyExt ext;
 };

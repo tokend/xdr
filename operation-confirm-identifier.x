@@ -5,7 +5,7 @@ namespace stellar
 
 struct ConfirmIdentifierOp
 {
-    uint64 id;
+    int64 identifierID;
 
     //: reserved for future use
     union switch (LedgerVersion v)

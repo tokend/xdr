@@ -9,7 +9,7 @@ struct IdentifierEntry
 
     AccountID accountID;
 
-    longstring data;
+    longstring value;
 
     EmptyExt ext;
 };

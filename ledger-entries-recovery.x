@@ -13,7 +13,7 @@ struct RecoveryEntry
 
     AccountID recoveryProviders<>;
 
-    uint32 power;
+    uint32 recoveryPower;
 
     EmptyExt ext;
 };

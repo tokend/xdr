@@ -6,11 +6,11 @@ namespace stellar
 
 struct MaskedDataConfirmationEntry
 {
-    uint64 id;
+    int64 id;
 
-    uint64 dataID;
+    int64 dataID;
 
-    uint64 mask;
+    uint32 mask;
 
     AccountID registrar;
 

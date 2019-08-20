@@ -11,7 +11,7 @@ struct RecoveryOp
 
     AccountID recoveryProviders<>;
 
-    uint64 power;
+    uint64 recoveryPower;
 
     EmptyExt ext;
 };
@@ -28,12 +28,15 @@ enum RecoveryResultCode
     INVALID_RECOVERY_POWER = -3
 };
 
+struct RecoverySuccess {
+    EmptyExt ext;
+};
 
 //: Result of operation applying
 union RecoveryResult switch (RecoveryResultCode code)
 {
 case SUCCESS:
-    EmptyExt ext;
+    RecoverySuccess success;
 default:
     void;
 };

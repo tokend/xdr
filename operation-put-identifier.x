@@ -23,7 +23,7 @@ enum PutIdentifierResultCode
 
 struct PutIdentifierSuccess
 {
-    uint64 id;
+    uint64 identifierID;
 
     EmptyExt ext;
 };
