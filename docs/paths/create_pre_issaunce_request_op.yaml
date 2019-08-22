@@ -14,7 +14,7 @@
                     | source      | `REVIEWABLE_REQUEST` | `CREATE_PRE_ISSUANCE` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
                   #### Signer Role Requirements
-                    No singer rule required beacuse only asset pre issuer can do pre issuance.
+                    No singer rule required because only asset pre issuer can do pre issuance.
     operationId: createPreIssuanceRequestOp
     x-item-type: operation
     parameters:

@@ -6,7 +6,7 @@
     description: |
                   Allows to cancel `CREATE_ASSET` or `UPDATE_ASSET` reviewable request
                   #### Account Role Requirements
-                    No account rule required beacuse only requestor can remove own request
+                    No account rule required because only requestor can remove own request
 
                   #### Signer Role Requirements
                     | Resource Type | Rule Action | Details |
