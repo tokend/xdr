@@ -8,7 +8,7 @@
       Only rules for sales now supported.
 
       #### Account Role Requirements
-        No account rule required beacuse only entry owner or admin can create specific rules
+        No account rule required because only entry owner or admin can create specific rules
 
       #### Signer Role Requirements
         | Resource Type | Action  |

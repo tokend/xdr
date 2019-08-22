@@ -6,10 +6,10 @@
     description: |
                   Allows to change asset pre issuer
                   #### Account Role Requirements
-                    No account rule required beacuse only current asset pre issuer can change asset pre issuer
+                    No account rule required because only current asset pre issuer can change asset pre issuer
 
                   #### Signer Role Requirements
-                    No signer rule required beacuse only current asset pre issuer can change asset pre issuer
+                    No signer rule required because only current asset pre issuer can change asset pre issuer
     operationId: changePreIssuedAssetSigner
     x-item-type: operation
     parameters:

@@ -7,7 +7,7 @@
       Allows to remove account specific rules.
 
       #### Account Role Requirements
-        No account rule required beacuse only entry owner or admin can remove specific rules
+        No account rule required because only entry owner or admin can remove specific rules
 
       #### Signer Role Requirements
         | Resource Type | Action  |
