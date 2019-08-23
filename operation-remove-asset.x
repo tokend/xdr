@@ -32,7 +32,7 @@ enum RemoveAssetResultCode
     //: Asset can't be deleted as there exist asset pairs with it
     HAS_PAIR = -1,
     //: Asset can't be deleted as it has active offers
-    HAS_OFFERS = -2,
+    HAS_ACTIVE_OFFERS = -2,
     //: Asset can't be deleted as it has active sales
     HAS_ACTIVE_SALES = -3
 };
