@@ -202,7 +202,8 @@ enum OperationType
     CANCEL_CHANGE_ROLE_REQUEST = 47,
     INITIATE_KYC_RECOVERY = 48,
     CREATE_KYC_RECOVERY_REQUEST = 49,
-    REMOVE_ASSET_PAIR = 50
+    REMOVE_ASSET_PAIR = 50,
+    REMOVE_ASSET = 51
 };
 
 struct DecoratedSignature
