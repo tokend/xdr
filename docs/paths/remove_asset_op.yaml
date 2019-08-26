@@ -1,0 +1,35 @@
+/removeAssetOp:
+  get:
+    tags:
+      - Assets
+    summary: Remove Asset
+    description: |
+      Removes [asset](#operation/assetResource).
+      #### Account Role Requirements
+        | Account        | Resource Type  | Action   |
+        | -------------  |:--------------:| --------:|
+        | source         | `ASSET`   | `REMOVE` |
+
+      #### Signer Role Requirements
+        | Resource Type  | Rule Action |
+        |:--------------:| -----------:|
+        | `ASSET`   | `REMOVE`    |
+    operationId: removeAssetOp
+    x-item-type: operation
+    parameters:
+      - name: Remove Asset Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/RemoveAssetOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/RemoveAssetResult'
