@@ -6,9 +6,10 @@
     description: |
       Removes [asset](#operation/assetResource).
       #### Account Role Requirements
-        | Account        | Resource Type  | Action   |
-        | -------------  |:--------------:| --------:|
-        | source         | `ASSET`   | `REMOVE` |
+        | Account        | Resource Type  | Action   | Condition |
+        | -------------  |:--------------:| --------:| :--------:|
+        | source         | `ASSET`   | `REMOVE` | source == assetOwner |
+        | source         | `ASSET`   | `REMOVE_FOR_OTHER` | source != assetOwner |
 
       #### Signer Role Requirements
         | Resource Type  | Rule Action |
