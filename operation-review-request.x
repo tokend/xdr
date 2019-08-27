@@ -2,6 +2,7 @@
 
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-payment.h"
+%#include "xdr/operation-manage-offer.h"
 
 namespace stellar
 {
@@ -201,6 +202,10 @@ struct ExtendedResult {
         AtomicSwapAskExtended atomicSwapAskExtended;
     case CREATE_POLL:
         CreatePollExtended createPoll;
+    case MANAGE_OFFER:
+        ManageOfferResult manageOfferResult;
+    case CREATE_PAYMENT:
+        PaymentResult paymentResult;
     } typeExt;
 
     //: Reserved for future use
