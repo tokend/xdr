@@ -15,12 +15,14 @@ enum CreateManageOfferRequestResultCode
 {
     SUCCESS = 0,
 
-    INVALID_OFFER = -1
+    INVALID_OFFER = -1,
+    MANAGE_OFFER_TASKS_NOT_FOUND = -2
 };
 
 struct CreateManagerOfferRequestSuccessResult 
 {
     uint64 requestID;
+    bool fulfilled;
 
     EmptyExt ext;
 };
@@ -30,7 +32,7 @@ union CreateManageOfferRequestResult switch (CreateManageOfferRequestResultCode 
 case SUCCESS:
     CreateManagerOfferRequestSuccessResult success;
 case INVALID_OFFER:
-    ManageOfferResultCode validationCode;
+    ManageOfferResultCode manageOfferCode;
 default: 
     void;
 };

@@ -378,14 +378,23 @@ enum ReviewRequestResultCode
 
     //KYC
     //:Signer data is invalid - either weight is wrong or details are invalid
-    INVALID_SIGNER_DATA = -1600
+    INVALID_SIGNER_DATA = -1600,
 
+    // offer
+    MANAGE_OFFER_FAILED = -1700,
+    
+    // payment
+    PAYMENT_FAILED = -1800
 };
 //: Result of applying the review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
     ExtendedResult success;
+case MANAGE_OFFER_FAILED:
+    ManageOfferResultCode manageOfferCode;
+case PAYMENT_FAILED:
+    PaymentResultCode paymentCode;
 default:
     void;
 };

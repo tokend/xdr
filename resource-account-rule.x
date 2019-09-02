@@ -112,6 +112,14 @@ case MANAGE_OFFER:
         //: reserved for future extension
         EmptyExt ext;
     } manageOffer;
+case CREATE_PAYMENT:
+    struct 
+    {
+        AssetCode assetCode;
+        uint64 assetType;
+
+        EmptyExt ext;
+    } createPayment;
 default:
     //: reserved for future extension
     EmptyExt ext;
