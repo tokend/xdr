@@ -28,13 +28,15 @@ enum RemoveAssetResultCode
 {
     //: Operation is successfully applied
     SUCCESS = 0,
-    //: Asset not found
+    //: Asset code is invalid
+    INVALID_ASSET_CODE = -1,    
     //: Asset can't be deleted as there exist asset pairs with it
-    HAS_PAIR = -1,
+    HAS_PAIR = -2,
     //: Asset can't be deleted as it has active offers
-    HAS_ACTIVE_OFFERS = -2,
+    HAS_ACTIVE_OFFERS = -3,
     //: Asset can't be deleted as it has active sales
-    HAS_ACTIVE_SALES = -3
+    HAS_ACTIVE_SALES = -4
+
 };
 
 //: Result of successful `RemoveAssetOp` application
