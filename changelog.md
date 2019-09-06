@@ -7,6 +7,7 @@
 * new LedgerVersion
 * `RemoveAsset` operation
 * `REMOVE_FOR_OTHER` account rule action 
+* `REMOVE_FOR_OTHER` signer rule action 
 
 ## 3.4.1-x.0
 

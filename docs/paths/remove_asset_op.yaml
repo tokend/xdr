@@ -14,7 +14,8 @@
       #### Signer Role Requirements
         | Resource Type  | Rule Action |
         |:--------------:| -----------:|
-        | `ASSET`   | `REMOVE`    |
+        | `ASSET`   | `REMOVE` | source == assetOwner |
+        | `ASSET`   | `REMOVE_FOR_OTHER` | source != assetOwner |
     operationId: removeAssetOp
     x-item-type: operation
     parameters:
