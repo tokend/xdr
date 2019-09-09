@@ -1,4 +1,5 @@
 %#include "xdr/types.h"
+%#include "xdr/operation-payment.h"
 
 namespace stellar 
 {
@@ -23,6 +24,8 @@ struct CreatePaymentRequestSuccessResult
 {
     uint64 requestID;
     bool fulfilled;
+
+    PaymentResult* paymentResult;
 
     EmptyExt ext;
 };

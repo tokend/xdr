@@ -1,4 +1,5 @@
 %#include "xdr/reviewable-request-manage-offer.h"
+%#include "xdr/operation-manage-offer.h"
 
 namespace stellar 
 {
@@ -23,6 +24,8 @@ struct CreateManagerOfferRequestSuccessResult
 {
     uint64 requestID;
     bool fulfilled;
+
+    ManageOfferResult* manageOfferResult;
 
     EmptyExt ext;
 };
