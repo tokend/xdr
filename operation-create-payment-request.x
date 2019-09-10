@@ -1,5 +1,6 @@
 %#include "xdr/types.h"
 %#include "xdr/operation-payment.h"
+%#include "xdr/reviewable-request-payment.h"
 
 namespace stellar 
 {
