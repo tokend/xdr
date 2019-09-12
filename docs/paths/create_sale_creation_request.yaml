@@ -16,7 +16,9 @@
         all tokens (max amount to be sold) are distributed between participants according to their contributions.
       * Fixed price: price is locked only in default quote asset.
         Amount of tokens distributed between participants depends only on capitalization on sale close.
-
+      * Immediate: price is locked only in default quote asset.
+        Participants receive tokens being sold on sale immediatelly after making offer.
+        Sale is considered successful even if soft cap was not reached.
       #### Account Role Requirements
         | Account | Resource Type   | Reviewable Request Type | Action | Condition |
         | --------|:---------------:|:-------:|:--------:|:-------:|
@@ -31,14 +33,14 @@
     operationId: createSaleRequestOp
     x-item-type: operation
     parameters:
-    - name: CreateSaleRequestOp
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: object
-        $ref: '#/components/schemas/CreateSaleCreationRequestOp'
+      - name: CreateSaleRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreateSaleCreationRequestOp'
     responses:
       200:
         description: Result

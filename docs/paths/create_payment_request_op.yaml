@@ -1,0 +1,43 @@
+/createPaymentRequestOp:
+  get:
+    tags:
+      - Payment
+    summary: Create payment request
+    description: |
+      Allows to create request to transfer some amount of asset from source balance to destination account/balance.
+      Payment request is a reviewable request. It uses tasks - bitmask, where each bit represents conditions under which
+      request can be approved. Tasks can be set or cleared both manually(by reviewer) and automatically.
+      Tasks bit mask can be provided either from `KeyValueEntry` by key `payment_tasks:<asset_code>` (which specify tasks
+      for asset) or by key `payment_tasks:*` if there are no payment tasks for provided asset.
+      If field `allTasks` is set, `KeyValueEntry` won't be used.
+      #### Account Role Requirements
+        | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
+        | ------------- |:-------------:| -----:| -----: | -----: |
+        | receiver    | `ASSET`              | -                   | `RECEIVE_PAYMENT`   | -                    |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_PAYMENT`    | `CREATE`            | `allTasks` == `null` |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_PAYMENT`    | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+      #### Signer Role Requirements
+        | Resource Type        | Reviewable Request Type |  Action             | Condition             |
+        |:--------------------:| :----------------------:| :-----------------: | :-------------------: |
+        | `REVIEWABLE_REQUEST` | `CREATE_PAYMENT`        | `CREATE`            | `allTasks` == `null`  |
+        | `REVIEWABLE_REQUEST` | `CREATE_PAYMENT`        | `CREATE_WITH_TASKS` | `allTasks` != `null`  |
+    operationId: createPaymentRequestOp
+    x-item-type: operation
+    parameters:
+      - name: CreatePaymentRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreatePaymentRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreatePaymentRequestResult'
