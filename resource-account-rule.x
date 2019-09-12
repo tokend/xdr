@@ -109,15 +109,21 @@ case MANAGE_OFFER:
         //: UINT32_MAX means any action.
         uint32 manageAction;
 
+        //: ID of the order book.
+        uint64 orderBookID;
+
         //: reserved for future extension
         EmptyExt ext;
     } manageOffer;
 case CREATE_PAYMENT:
     struct 
     {
+        //: Code of asset in which payment is being made
         AssetCode assetCode;
+        //: Type of asset in which payment is being made
         uint64 assetType;
 
+        //: reserved for future extension
         EmptyExt ext;
     } createPayment;
 default:
