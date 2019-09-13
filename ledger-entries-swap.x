@@ -22,7 +22,6 @@ struct SwapEntry
     uint64 lockTime;
 
 	uint64 fee;
-    uint64 percentFee;
 
     EmptyExt ext;
 };

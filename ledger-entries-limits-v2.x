@@ -10,9 +10,7 @@ enum StatsOpType
     WITHDRAW = 2,
     SPEND = 3,
     DEPOSIT = 4,
-    PAYOUT = 5,
-    SWAP_IN = 6,
-    SWAP_OUT = 7
+    PAYOUT = 5
 };
 
 //: `LimitsV2Entry` is used in the system configuration to set limits (daily, weekly, montly, annual)
