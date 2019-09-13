@@ -303,5 +303,10 @@ case ACCOUNT_SPECIFIC_RULE:
 
         EmptyExt ext;
     } accountSpecificRule;
+case SWAP:
+    struct
+    {
+        uint64 swapID;
+    } swap;
 };
 }

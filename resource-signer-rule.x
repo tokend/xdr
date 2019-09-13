@@ -155,6 +155,17 @@ case ACCOUNT_SPECIFIC_RULE:
             EmptyExt ext;
         } accountSpecificRule;
     } accountSpecificRuleExt;
+case SWAP:
+    struct
+    {
+        //: code of the asset
+        AssetCode assetCode;
+        //: type of the asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } swap;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -180,7 +191,8 @@ enum SignerRuleAction
     CLOSE = 15,
     UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
-    CREATE_FOR_OTHER_WITH_TASKS = 18
+    CREATE_FOR_OTHER_WITH_TASKS = 18,
+    EXCHANGE = 19
 };
 
 

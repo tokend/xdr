@@ -47,6 +47,8 @@
 %#include "xdr/operation-create-kyc-recovery-request.h"
 %#include "xdr/operation-initiate-kyc-recovery.h"
 %#include "xdr/operation-remove-asset-pair.h"
+%#include "xdr/operation-open-swap.h"
+%#include "xdr/operation-close-swap.h"
 
 namespace stellar
 {
@@ -150,6 +152,10 @@ struct Operation
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
+    case OPEN_SWAP:
+        OpenSwapOp openSwapOp;
+    case CLOSE_SWAP:
+        CloseSwapOp closeSwapOp;
     }
     body;
 };
@@ -353,6 +359,10 @@ case opINNER:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryResult initiateKYCRecoveryResult;
+    case OPEN_SWAP:
+        OpenSwapResult openSwapResult;
+    case CLOSE_SWAP:
+        CloseSwapResult closeSwapResult;
     }
     tr;
 case opNO_ENTRY:

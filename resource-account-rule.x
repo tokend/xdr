@@ -213,6 +213,17 @@ case ACCOUNT_SPECIFIC_RULE:
             EmptyExt ext;
         } accountSpecificRule;
     } accountSpecificRuleExt;
+case SWAP:
+    struct
+    {
+        //: code of the asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } swap;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -239,7 +250,8 @@ enum AccountRuleAction
     CLOSE = 16,
     REMOVE = 17,
     UPDATE_END_TIME = 18,
-    CREATE_FOR_OTHER_WITH_TASKS = 19
+    CREATE_FOR_OTHER_WITH_TASKS = 19,
+    EXCHANGE = 20
 };
 
 }
