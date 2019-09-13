@@ -24,7 +24,8 @@ enum CloseSwapResultCode
     SWAP_EXPIRED = -1,
     INVALID_SECRET = -2,
     //: After the swap fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
-    LINE_FULL = -3
+    LINE_FULL = -3,
+    NOT_AUTHORIZED = -4
 
 };
 //: CloseSwapSuccess is used to pass saved ledger hash and license hash
