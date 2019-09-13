@@ -16,7 +16,7 @@
                   #### Signer Role Requirements
                     | Resource Type        | Reviewable Request Type | Rule Action | Details |
                     |:--------------------:|:-----------------------:|:-----------:| --------|
-                    | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CREATE`    | Resource includes pemission type of poll |
+                    | `REVIEWABLE_REQUEST` | `CREATE_POLL`           | `CREATE`    | Resource includes permission type of poll |
     operationId: createCreatePollRequest
     x-item-type: operation
     parameters:

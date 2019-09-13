@@ -15,6 +15,8 @@
 %#include "xdr/reviewable-request-atomic-swap-bid.h"
 %#include "xdr/reviewable-request-create-poll.h"
 %#include "xdr/reviewable-request-kyc-recovery.h"
+%#include "xdr/reviewable-request-manage-offer.h"
+%#include "xdr/reviewable-request-payment.h"
 
 namespace stellar
 {
@@ -38,7 +40,9 @@ enum ReviewableRequestType
 	CREATE_POLL = 14,
 	CREATE_ATOMIC_SWAP_ASK = 16,
 	CREATE_ATOMIC_SWAP_BID = 17,
-	KYC_RECOVERY = 18
+	KYC_RECOVERY = 18,
+	MANAGE_OFFER = 19,
+	CREATE_PAYMENT = 20
 };
 
 struct TasksExt {
@@ -101,6 +105,10 @@ struct ReviewableRequestEntry {
             CreatePollRequest createPollRequest;
         case KYC_RECOVERY:
             KYCRecoveryRequest kycRecoveryRequest;
+		case MANAGE_OFFER:
+			ManageOfferRequest manageOfferRequest;
+		case CREATE_PAYMENT:
+			CreatePaymentRequest createPaymentRequest;
 	} body;
 
 	TasksExt tasks;

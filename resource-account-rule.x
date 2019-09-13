@@ -88,6 +88,44 @@ case CREATE_POLL:
         //: reserved for future extension
         EmptyExt ext;
     } createPoll;
+case MANAGE_OFFER:
+    struct 
+    {
+        //: type of base asset
+        uint64 baseAssetType;
+        //: type of quote asset
+        uint64 quoteAssetType;
+
+        //: code of base asset
+        AssetCode baseAssetCode;
+        //: code of quote asset
+        AssetCode quoteAssetCode;
+
+        bool isBuy;
+        //: 0 means creation, 
+        //: 1 means removing,
+        //: 2 means participate in sale,
+        //: 3 means remove participation in sale, 
+        //: UINT32_MAX means any action.
+        uint32 manageAction;
+
+        //: ID of the order book.
+        uint64 orderBookID;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } manageOffer;
+case CREATE_PAYMENT:
+    struct 
+    {
+        //: Code of asset in which payment is being made
+        AssetCode assetCode;
+        //: Type of asset in which payment is being made
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } createPayment;
 default:
     //: reserved for future extension
     EmptyExt ext;
