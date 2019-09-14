@@ -7,7 +7,14 @@
 * new LedgerVersion
 * `RemoveAsset` operation
 * `REMOVE_FOR_OTHER` account rule action 
-* `REMOVE_FOR_OTHER` signer rule action 
+* `REMOVE_FOR_OTHER` signer rule action
+* `CreateManageOfferRequest` operation
+* `CreatePaymentRequest` operation
+* `CREATE_PAYMENT` reviewable request type
+* `MANAGE_OFFER` reviewable request type
+* `IMMEDIATE` sale type
+*  Account rule resources
+*  Signer rule resources 
 
 ## 3.4.1-x.0
 
