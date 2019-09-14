@@ -14,8 +14,8 @@
         | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
         | ------------- |:-------------:| -----:| -----: | -----: |
         | receiver    | `ASSET`              | `RECEIVE_ISSUANCE` | -                   | -                    |
-        | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS`    | `CREATE`            | `allTasks` == `null` |
-        | source      | `REVIEWABLE_REQUEST` | `UPDATE_LIMITS`    | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_ISSUANCE`    | `CREATE`            | `allTasks` == `null` |
+        | source      | `REVIEWABLE_REQUEST` | `CREATE_ISSUANCE`    | `CREATE_WITH_TASKS` | `allTasks` != `null` |
 
       #### Signer Role Requirements
         | Resource Type | Reviewable Request Type |Action  |
@@ -24,14 +24,14 @@
     operationId: createIssuanceRequestOp
     x-item-type: operation
     parameters:
-    - name: CreateIssuanceRequestOp
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: object
-        $ref: '#/components/schemas/CreateIssuanceRequestOp'
+      - name: CreateIssuanceRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreateIssuanceRequestOp'
     responses:
       200:
         description: Result

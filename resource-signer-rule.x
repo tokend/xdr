@@ -192,7 +192,8 @@ enum SignerRuleAction
     UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
-    EXCHANGE = 19
+    REMOVE_FOR_OTHER = 19,
+    EXCHANGE = 20
 };
 
 

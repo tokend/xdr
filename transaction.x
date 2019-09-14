@@ -47,6 +47,9 @@
 %#include "xdr/operation-create-kyc-recovery-request.h"
 %#include "xdr/operation-initiate-kyc-recovery.h"
 %#include "xdr/operation-remove-asset-pair.h"
+%#include "xdr/operation-create-manage-offer-request.h"
+%#include "xdr/operation-create-payment-request.h"
+%#include "xdr/operation-remove-asset.h"
 %#include "xdr/operation-open-swap.h"
 %#include "xdr/operation-close-swap.h"
 
@@ -152,6 +155,12 @@ struct Operation
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
+    case CREATE_MANAGE_OFFER_REQUEST:
+        CreateManageOfferRequestOp createManageOfferRequestOp;
+    case CREATE_PAYMENT_REQUEST:
+        CreatePaymentRequestOp createPaymentRequestOp;
+    case REMOVE_ASSET:
+        RemoveAssetOp removeAssetOp;
     case OPEN_SWAP:
         OpenSwapOp openSwapOp;
     case CLOSE_SWAP:
@@ -359,6 +368,12 @@ case opINNER:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryResult initiateKYCRecoveryResult;
+    case CREATE_MANAGE_OFFER_REQUEST:
+        CreateManageOfferRequestResult createManageOfferRequestResult;
+    case CREATE_PAYMENT_REQUEST:
+        CreatePaymentRequestResult createPaymentRequestResult;
+    case REMOVE_ASSET:
+        RemoveAssetResult removeAssetResult;
     case OPEN_SWAP:
         OpenSwapResult openSwapResult;
     case CLOSE_SWAP:

@@ -23,7 +23,7 @@ struct OpenSwapOp
 
     Hash secretHash;
 
-    uint64 lockTime;
+    int64 lockTime;
 
     //: reserved for future extension
     EmptyExt ext;

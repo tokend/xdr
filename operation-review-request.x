@@ -2,6 +2,7 @@
 
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-payment.h"
+%#include "xdr/operation-manage-offer.h"
 
 namespace stellar
 {
@@ -201,6 +202,10 @@ struct ExtendedResult {
         AtomicSwapAskExtended atomicSwapAskExtended;
     case CREATE_POLL:
         CreatePollExtended createPoll;
+    case MANAGE_OFFER:
+        ManageOfferResult manageOfferResult;
+    case CREATE_PAYMENT:
+        PaymentResult paymentResult;
     } typeExt;
 
     //: Reserved for future use
@@ -373,14 +378,23 @@ enum ReviewRequestResultCode
 
     //KYC
     //:Signer data is invalid - either weight is wrong or details are invalid
-    INVALID_SIGNER_DATA = -1600
+    INVALID_SIGNER_DATA = -1600,
 
+    // offer
+    MANAGE_OFFER_FAILED = -1700,
+    
+    // payment
+    PAYMENT_FAILED = -1800
 };
 //: Result of applying the review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
     ExtendedResult success;
+case MANAGE_OFFER_FAILED:
+    ManageOfferResultCode manageOfferCode;
+case PAYMENT_FAILED:
+    PaymentResultCode paymentCode;
 default:
     void;
 };
