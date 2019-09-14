@@ -57,7 +57,8 @@ enum OpenSwapResultCode
     //: There is no account found with an ID provided in `destination.accountID`
     DESTINATION_ACCOUNT_NOT_FOUND = -10,
     //: Amount precision and asset precision are mismatched
-    INCORRECT_AMOUNT_PRECISION = -11
+    INCORRECT_AMOUNT_PRECISION = -11,
+    INVALID_DETAILS = -12
 
 };
 //: OpenSwapSuccess is used to pass saved ledger hash and license hash
