@@ -277,7 +277,8 @@ enum AccountRuleAction
     CLOSE = 16,
     REMOVE = 17,
     UPDATE_END_TIME = 18,
-    CREATE_FOR_OTHER_WITH_TASKS = 19
+    CREATE_FOR_OTHER_WITH_TASKS = 19,
+    REMOVE_FOR_OTHER = 20
 };
 
 }

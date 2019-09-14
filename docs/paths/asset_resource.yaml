@@ -1,0 +1,69 @@
+/assetResource:
+  get:
+    tags:
+      - Assets
+    x-item-type: entry
+    summary: Asset Resources
+    description: |
+      Describes the asset pairs as a set of properties and policies for two particular assets (i.e. base and quote assets).
+    x-code-samples:
+      - lang: "XDR"
+        source: |
+
+          enum AssetPolicy
+          {
+            //: Defines whether or not asset can be transfered using payments
+          	TRANSFERABLE = 1,
+          	//: Defines whether or not asset is considered base
+          	BASE_ASSET = 2,
+          	//: [[Deprecated]]
+          	STATS_QUOTE_ASSET = 4,
+          	//: Defines whether or not asset can be withdrawed from the system
+          	WITHDRAWABLE = 8,
+          	//: Defines whether or not manual review for issuance of asset is required
+          	ISSUANCE_MANUAL_REVIEW_REQUIRED = 16,
+          	//: Defines whether or not asset can be base in atomic swap
+          	CAN_BE_BASE_IN_ATOMIC_SWAP = 32,
+          	//: Defines whether or not asset can be quote in atomic swap
+          	CAN_BE_QUOTE_IN_ATOMIC_SWAP = 64
+          };
+
+
+          struct AssetEntry
+          {
+            //: Code of the asset
+            AssetCode code;
+            //: Owner(creator) of the asset
+          	AccountID owner;
+          	//: Account responsible for preissuance of the asset
+          	AccountID preissuedAssetSigner;
+              //: Arbitrary stringified JSON object that can be used to attach data to asset
+          	longstring details;
+          	//: Maximal amount of tokens that can be issued
+          	uint64 maxIssuanceAmount;
+          	//: Amount of tokens available for issuance
+          	uint64 availableForIssueance;
+          	//: Amount of tokens issued already
+          	uint64 issued;
+          	//: Amount of tokens to be issued which is locked. `pendingIssuance+issued <= maxIssuanceAmount`
+          	uint64 pendingIssuance;
+          	//: Policies of the asset
+            uint32 policies;
+            //: Used to restrict usage. Used in account rules
+            uint64 type;
+            //: Number of decimal places. Must be <= 6
+            uint32 trailingDigitsCount;
+
+            //: Reserved for future use
+            EmptyExt ext;
+          };
+    operationId: assetResource
+    parameters:
+      - name: Asset
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/AssetEntry'

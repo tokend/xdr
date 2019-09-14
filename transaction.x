@@ -49,6 +49,7 @@
 %#include "xdr/operation-remove-asset-pair.h"
 %#include "xdr/operation-create-manage-offer-request.h"
 %#include "xdr/operation-create-payment-request.h"
+%#include "xdr/operation-remove-asset.h"
 
 namespace stellar
 {
@@ -156,6 +157,8 @@ struct Operation
         CreateManageOfferRequestOp createManageOfferRequestOp;
     case CREATE_PAYMENT_REQUEST:
         CreatePaymentRequestOp createPaymentRequestOp;
+    case REMOVE_ASSET:
+        RemoveAssetOp removeAssetOp;
     }
     body;
 };
@@ -363,6 +366,8 @@ case opINNER:
         CreateManageOfferRequestResult createManageOfferRequestResult;
     case CREATE_PAYMENT_REQUEST:
         CreatePaymentRequestResult createPaymentRequestResult;
+    case REMOVE_ASSET:
+        RemoveAssetResult removeAssetResult;
     }
     tr;
 case opNO_ENTRY:
