@@ -8,7 +8,6 @@ struct OpenSwapOp
 {
     BalanceID sourceBalance;
 
-    AssetCode asset;
     uint64 amount;
 
    //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
@@ -20,6 +19,8 @@ struct OpenSwapOp
    } destination;
 
     PaymentFeeData feeData;
+
+    longstring details;
 
     Hash secretHash;
 

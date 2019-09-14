@@ -9,17 +9,16 @@ struct SwapEntry
 
     Hash secretHash;
 
-    AccountID sourceAccount;
     BalanceID sourceBalance;
 
-    AccountID destinationAccount;
     BalanceID destinationBalance;
 
-    AssetCode assetCode;
+    longstring details;
+
     uint64 amount;
 
-    uint64 createdAt;
-    uint64 lockTime;
+    int64 createdAt;
+    int64 lockTime;
 
 	uint64 fee;
 
