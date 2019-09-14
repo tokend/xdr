@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.5.0-x.0
 
 ### Added
 
@@ -16,7 +16,7 @@
 *  Account rule resources
 *  Signer rule resources 
 
-## 3.4.1-x.0
+## 3.4.1
 
 ### Added
 
