@@ -64,7 +64,12 @@ enum OpenSwapResultCode
 //: OpenSwapSuccess is used to pass saved ledger hash and license hash
 struct OpenSwapSuccess {
     uint64 swapID;
-    
+
+    //: ID of the destination account
+    AccountID destination;
+    //: ID of the destination balance
+    BalanceID destinationBalance;
+
     //: reserved for future extension
     EmptyExt ext;
 };
