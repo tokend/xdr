@@ -70,6 +70,11 @@ struct OpenSwapSuccess {
     //: ID of the destination balance
     BalanceID destinationBalance;
 
+    //: Fee to be charged from the source balance
+    Fee actualSourceFee;
+    //: Fee to be charged from the destination balance
+    Fee actualDestinationFee;
+
     //: reserved for future extension
     EmptyExt ext;
 };
