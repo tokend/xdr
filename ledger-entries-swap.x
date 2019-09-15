@@ -9,6 +9,7 @@ struct SwapEntry
 
     Hash secretHash;
 
+    AccountID source;
     BalanceID sourceBalance;
 
     BalanceID destinationBalance;
