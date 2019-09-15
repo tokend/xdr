@@ -27,8 +27,19 @@ enum CloseSwapResultCode
     NOT_AUTHORIZED = -4
 
 };
+
+enum CloseSwapEffect
+{
+    //: Swap closed
+    CLOSED = 0,
+    //: Swap cancelled updated
+    CANCELLED = 1
+};
+
 //: CloseSwapSuccess is used to pass saved ledger hash and license hash
 struct CloseSwapSuccess {
+    CloseSwapEffect effect;
+
     EmptyExt ext;
 };
 
