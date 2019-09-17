@@ -41,24 +41,22 @@ enum OpenSwapResultCode
     //: Not enough funds in the source account
     UNDERFUNDED = -2,
     //: There is no balance found with an ID provided in `destinations.balanceID`
-    DESTINATION_BALANCE_NOT_FOUND = -3,
     //: Sender balance asset and receiver balance asset are not equal
-    BALANCE_ASSETS_MISMATCHED = -4,
+    BALANCE_ASSETS_MISMATCHED = -3,
     //: There is no balance found with ID provided in `sourceBalanceID`
-    SRC_BALANCE_NOT_FOUND = -5,
+    SRC_BALANCE_NOT_FOUND = -4,
     //: Payment asset does not have a `SWAPPABLE` policy set
-    NOT_ALLOWED_BY_ASSET_POLICY = -6,
+    NOT_ALLOWED_BY_ASSET_POLICY = -5,
     //: Overflow during total fee calculation
-    INVALID_DESTINATION_FEE = -7,
+    INVALID_DESTINATION_FEE = -6,
     //: Payment fee amount is insufficient
-    INSUFFICIENT_FEE_AMOUNT = -8,
+    INSUFFICIENT_FEE_AMOUNT = -7,
     //: Fee charged from destination balance is greater than the amount
-    AMOUNT_IS_LESS_THAN_DEST_FEE = -9,
+    AMOUNT_IS_LESS_THAN_DEST_FEE = -8,
     //: There is no account found with an ID provided in `destination.accountID`
-    DESTINATION_ACCOUNT_NOT_FOUND = -10,
     //: Amount precision and asset precision are mismatched
-    INCORRECT_AMOUNT_PRECISION = -11,
-    INVALID_DETAILS = -12
+    INCORRECT_AMOUNT_PRECISION = -9,
+    INVALID_DETAILS = -10
 
 };
 //: OpenSwapSuccess is used to pass saved ledger hash and license hash

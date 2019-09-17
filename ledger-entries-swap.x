@@ -5,7 +5,7 @@ namespace stellar
 
 struct SwapEntry
 {
-    uint64 swapID;
+    uint64 id;
 
     Hash secretHash;
 

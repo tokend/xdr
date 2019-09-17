@@ -24,9 +24,7 @@ enum CloseSwapResultCode
     INVALID_SECRET = -2,
     //: After the swap fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
     LINE_FULL = -3,
-    NOT_AUTHORIZED = -4,
-    NOT_READY = -5
-
+    NOT_AUTHORIZED = -4
 };
 
 enum CloseSwapEffect
