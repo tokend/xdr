@@ -306,7 +306,7 @@ case ACCOUNT_SPECIFIC_RULE:
 case SWAP:
     struct
     {
-        uint64 swapID;
+        uint64 id;
     } swap;
 };
 }
