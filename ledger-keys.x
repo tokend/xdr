@@ -307,6 +307,8 @@ case SWAP:
     struct
     {
         uint64 id;
+
+        EmptyExt ext;
     } swap;
 };
 }
