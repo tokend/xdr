@@ -18,7 +18,8 @@ enum FeeType
     OPERATION_FEE = 6,
     PAYOUT_FEE = 7,
     ATOMIC_SWAP_SALE_FEE = 8,
-    ATOMIC_SWAP_PURCHASE_FEE = 9
+    ATOMIC_SWAP_PURCHASE_FEE = 9,
+    SWAP_FEE = 10
 };
 
 //: (not used) `EmissionFeeType` is a subtype of `ISSUANCE_FEE`

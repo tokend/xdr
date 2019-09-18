@@ -20,7 +20,8 @@ enum AssetPolicy
 	//: Defines whether or not asset can be base in atomic swap
 	CAN_BE_BASE_IN_ATOMIC_SWAP = 32,
 	//: Defines whether or not asset can be quote in atomic swap
-	CAN_BE_QUOTE_IN_ATOMIC_SWAP = 64
+	CAN_BE_QUOTE_IN_ATOMIC_SWAP = 64,
+    SWAPPABLE = 128
 };
 
 

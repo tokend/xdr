@@ -50,6 +50,8 @@
 %#include "xdr/operation-create-manage-offer-request.h"
 %#include "xdr/operation-create-payment-request.h"
 %#include "xdr/operation-remove-asset.h"
+%#include "xdr/operation-open-swap.h"
+%#include "xdr/operation-close-swap.h"
 
 namespace stellar
 {
@@ -159,6 +161,10 @@ struct Operation
         CreatePaymentRequestOp createPaymentRequestOp;
     case REMOVE_ASSET:
         RemoveAssetOp removeAssetOp;
+    case OPEN_SWAP:
+        OpenSwapOp openSwapOp;
+    case CLOSE_SWAP:
+        CloseSwapOp closeSwapOp;
     }
     body;
 };
@@ -368,6 +374,10 @@ case opINNER:
         CreatePaymentRequestResult createPaymentRequestResult;
     case REMOVE_ASSET:
         RemoveAssetResult removeAssetResult;
+    case OPEN_SWAP:
+        OpenSwapResult openSwapResult;
+    case CLOSE_SWAP:
+        CloseSwapResult closeSwapResult;
     }
     tr;
 case opNO_ENTRY:

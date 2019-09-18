@@ -89,7 +89,7 @@ case CREATE_POLL:
         EmptyExt ext;
     } createPoll;
 case MANAGE_OFFER:
-    struct 
+    struct
     {
         //: type of base asset
         uint64 baseAssetType;
@@ -102,10 +102,10 @@ case MANAGE_OFFER:
         AssetCode quoteAssetCode;
 
         bool isBuy;
-        //: 0 means creation, 
+        //: 0 means creation,
         //: 1 means removing,
         //: 2 means participate in sale,
-        //: 3 means remove participation in sale, 
+        //: 3 means remove participation in sale,
         //: UINT32_MAX means any action.
         uint32 manageAction;
 
@@ -116,7 +116,7 @@ case MANAGE_OFFER:
         EmptyExt ext;
     } manageOffer;
 case CREATE_PAYMENT:
-    struct 
+    struct
     {
         //: Code of asset in which payment is being made
         AssetCode assetCode;
@@ -251,6 +251,17 @@ case ACCOUNT_SPECIFIC_RULE:
             EmptyExt ext;
         } accountSpecificRule;
     } accountSpecificRuleExt;
+case SWAP:
+    struct
+    {
+        //: code of the asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } swap;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -278,7 +289,8 @@ enum AccountRuleAction
     REMOVE = 17,
     UPDATE_END_TIME = 18,
     CREATE_FOR_OTHER_WITH_TASKS = 19,
-    REMOVE_FOR_OTHER = 20
+    REMOVE_FOR_OTHER = 20,
+    EXCHANGE = 21
 };
 
 }
