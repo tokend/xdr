@@ -57,7 +57,8 @@ enum OpenSwapResultCode
     //: Amount precision and asset precision are mismatched
     INCORRECT_AMOUNT_PRECISION = -9,
     INVALID_DETAILS = -10,
-    INVALID_LOCK_TIME = -11
+    INVALID_LOCK_TIME = -11,
+    INVALID_AMOUNT = -12
 
 };
 //: OpenSwapSuccess is used to pass saved ledger hash and license hash
