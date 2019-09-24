@@ -8,7 +8,7 @@
       Quote assets are assets in which investments can be made.
       Base asset is an asset being sold.
       #### Sale types
-      There are 3 types of sale:
+      There are 4 types of sale:
       * Basic: For basic sale price of base asset is locked for every quote asset.
          Amount of tokens distributed between participants depends on amount of contribution
          and price of base asset in terms of quote asset in which contribution was made.
