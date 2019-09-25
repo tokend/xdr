@@ -1,0 +1,44 @@
+/closeSwapOp:
+  get:
+    tags:
+      - WIP
+    summary: CloseSwap operation
+    description: |
+      Allows to lock some amount of asset on source balance with ability to send it to destination account/balance if
+      destination knows secret.
+
+      Swap can be closed if:
+        - Lock time not reached, receiver is the source of close swap, correct secret provided
+        - Lock time reached, sender is the source of close swap, secret not provided
+        - Lock time reached, master is the source of close swap, secret not provided
+
+      #### Account Role Requirements
+        | Account        | Resource Type | Action            |
+        | -------------  |:-------------:|:----------------: |
+        | swapSource     | `SWAP`       | `EXCHANGE`         |
+        | swapDest       | `SWAP`       | `EXCHANGE`         |
+
+      #### Signer Role Requirements
+        | Resource Type | Rule Action  |
+        |:-------------:|:------------:|
+        | `SWAP`        | `EXCHANGE`   |
+
+    operationId: closeSwapOp
+    x-item-type: operation
+    parameters:
+      - name: Close Swap Op
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CloseSwapOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CloseSwapResult'
