@@ -6,11 +6,12 @@ namespace stellar
 
 struct OpenSwapOp
 {
+    //: Source balance of the swap
     BalanceID sourceBalance;
-
+    //: Amount to send in swap
     uint64 amount;
 
-   //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
+   //: `destination` defines the type of instance that receives amount based on given PaymentDestinationType
    union switch (PaymentDestinationType type) {
        case ACCOUNT:
            AccountID accountID;
@@ -18,12 +19,14 @@ struct OpenSwapOp
            BalanceID balanceID;
    } destination;
 
+    //: Fee data for the swap
     PaymentFeeData feeData;
-
+    //: Arbitrary stringified json object provided by swap source
     longstring details;
 
+    //: Hash of the secret
     Hash secretHash;
-
+    //: Time till which swapped funds can be received by destination if valid secret is provided
     int64 lockTime;
 
     //: reserved for future extension
@@ -37,6 +40,7 @@ enum OpenSwapResultCode
     //: OpenSwap was successful 
     SUCCESS = 0,
 
+    //: Source and destination balances are the same
     MALFORMED = -1,
     //: Not enough funds in the source account
     UNDERFUNDED = -2,
@@ -56,8 +60,11 @@ enum OpenSwapResultCode
     //: There is no account found with an ID provided in `destination.accountID`
     //: Amount precision and asset precision are mismatched
     INCORRECT_AMOUNT_PRECISION = -9,
+    //: Not allowed to create swap with invalid json details
     INVALID_DETAILS = -10,
+    //: Lock time is in the past
     INVALID_LOCK_TIME = -11,
+    //: Zero amount is not allowed
     INVALID_AMOUNT = -12
 
 };
