@@ -80,16 +80,20 @@ struct Operation
 		CreateChangeRoleRequestOp createChangeRoleRequestOp;
     case PAYMENT:
         PaymentOp paymentOp;
-    case MANAGE_ACCOUNT_ROLE:
-        ManageAccountRoleOp manageAccountRoleOp;
-    case MANAGE_ACCOUNT_RULE:
-        ManageAccountRuleOp manageAccountRuleOp;
     case MANAGE_SIGNER:
         ManageSignerOp manageSignerOp;
-    case MANAGE_SIGNER_ROLE:
-        ManageSignerRoleOp manageSignerRoleOp;
-    case MANAGE_SIGNER_RULE:
-        ManageSignerRuleOp manageSignerRuleOp;
+    case CREATE_ROLE:
+        CreateRoleOp createRoleOp;
+    case UPDATE_ROLE:
+        UpdateRoleOp updateRoleOp;
+    case REMOVE_ROLE:
+        RemoveRoleOp removeRoleOp;
+    case CREATE_RULE:
+        CreateRuleOp createRuleOp;
+    case UPDATE_RULE:
+        UpdateRuleOp UpdateRuleOp;
+    case REMOVE_RULE:
+        RemoveRuleOp removeRuleOp;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
@@ -188,26 +192,12 @@ enum OperationResultCode
 };
 
 //: Defines requirements for tx or operation which were not fulfilled
-struct AccountRuleRequirement
+struct RuleRequirement
 {
 	//: defines resources to which access was denied
-    AccountRuleResource resource;
+    RuleResource resource;
 	//: defines action which was denied
-    AccountRuleAction action;
-	//: defines account for which requirements were not met
-	AccountID account;
-
-	//: reserved for future extension
-    EmptyExt ext;
-};
-
-//: Defines requirements for tx or operation which were not fulfilled
-struct SignerRuleRequirement
-{
-	//: defines resources to which access was denied
-    SignerRuleResource resource;
-	//: defines action which was denied
-    SignerRuleAction action;
+    RuleAction action;
 	//: defines account for which requirements were not met
 	AccountID account;
 
@@ -238,16 +228,20 @@ case opINNER:
 	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
     case PAYMENT:
         PaymentResult paymentResult;
-    case MANAGE_ACCOUNT_ROLE:
-        ManageAccountRoleResult manageAccountRoleResult;
-    case MANAGE_ACCOUNT_RULE:
-        ManageAccountRuleResult manageAccountRuleResult;
     case MANAGE_SIGNER:
         ManageSignerResult manageSignerResult;
-    case MANAGE_SIGNER_ROLE:
-        ManageSignerRoleResult manageSignerRoleResult;
-    case MANAGE_SIGNER_RULE:
-        ManageSignerRuleResult manageSignerRuleResult;
+    case CREATE_ROLE:
+        CreateRoleResult createRoleResult;
+    case UPDATE_ROLE:
+        UpdateRoleResult updateRoleResult;
+    case REMOVE_ROLE:
+        RemoveRoleResult removeRoleResult;
+    case CREATE_RULE:
+        CreateRuleResult createRuleResult;
+    case UPDATE_RULE:
+        UpdateRuleResult UpdateRuleResult;
+    case REMOVE_RULE:
+        RemoveRuleResult removeRuleResult;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:
@@ -257,7 +251,7 @@ case opINNER:
 case opNO_ENTRY:
     LedgerEntryType entryType;
 case opNO_ROLE_PERMISSION:
-    AccountRuleRequirement requirement;
+    RuleRequirement requirement;
 //case opBAD_AUTH:
 //    SignerRuleRequirement requirements;
 default:
