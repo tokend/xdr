@@ -95,7 +95,7 @@ case ACCOUNT_KYC:
         }
         ext;
     } accountKYC;
-case ACCOUNT_ROLE:
+case ROLE:
     struct {
         uint64 id;
         union switch (LedgerVersion v)
@@ -104,8 +104,8 @@ case ACCOUNT_ROLE:
             void;
         }
         ext;
-    } accountRole;
-case ACCOUNT_RULE:
+    } role;
+case RULE:
     struct {
         uint64 id;
         union switch (LedgerVersion v)
@@ -114,26 +114,6 @@ case ACCOUNT_RULE:
             void;
         }
         ext;
-    } accountRule;
-case SIGNER_ROLE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } signerRole;
-case SIGNER_RULE:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } signerRule;
+    } rule;
 };
 }

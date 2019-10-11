@@ -64,15 +64,7 @@ case ASSET:
     } asset;
 case ANY:
     void;
-case SIGNER_RULE:
-    //: Describes properties that are equal to managed signer rule entry fields
-    struct
-    {
-        bool isDefault;
-
-        EmptyExt ext;
-    } signerRule;
-case SIGNER_ROLE:
+case ROLE:
     //: Describes properties that are equal to managed signer role entry fields
     struct
     {
@@ -80,7 +72,7 @@ case SIGNER_ROLE:
         uint64 roleID;
 
         EmptyExt ext;
-    } signerRole;
+    } role;
 case SIGNER:
     //: Describes properties that are equal to managed signer entry fields
     struct
