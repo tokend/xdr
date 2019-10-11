@@ -34,7 +34,6 @@ enum PublicKeyType
 {
 	PUBLIC_KEY_TYPE_ED25519 = 0
 };
-lkj
 
 union PublicKey switch (CryptoKeyType type)
 {
@@ -130,7 +129,7 @@ enum OperationType
     MANAGE_SIGNER = 38,
     MANAGE_ROLE = 39,
     MANAGE_RULE = 40,
-    CREATE_KYC_RECOVERY_REQUEST = 49,
+    CREATE_KYC_RECOVERY_REQUEST = 49
 };
 
 struct DecoratedSignature
