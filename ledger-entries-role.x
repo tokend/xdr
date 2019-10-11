@@ -1,17 +1,14 @@
 %#include "xdr/types.h"
-%#include "xdr/resource-account-rule.h"
 
 namespace stellar
 {
 
-struct AccountRuleEntry
+struct RoleEntry
 {
     uint64 id;
+    uint64 ruleIDs<>;
 
-    AccountRuleResource resource;
-    AccountRuleAction action;
-
-    bool forbids;
+    AccountID ownerID;
 
     longstring details;
 

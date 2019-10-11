@@ -28,7 +28,6 @@ enum ReviewableRequestType
 	CHANGE_ROLE = 8,
 	CREATE_ASSET = 10,
 	UPDATE_ASSET = 13,
-	CREATE_POLL = 14,
 	KYC_RECOVERY = 18
 };
 

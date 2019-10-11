@@ -57,62 +57,22 @@ struct LedgerEntry
         AccountEntry account;
     case SIGNER:
         SignerEntry signer;
-    case FEE:
-        FeeEntry feeState;
     case BALANCE:
         BalanceEntry balance;
     case ASSET:
         AssetEntry asset;
     case REFERENCE_ENTRY:
         ReferenceEntry reference;
-    case STATISTICS:
-        StatisticsEntry stats;
-    case ACCOUNT_LIMITS:
-        AccountLimitsEntry accountLimits;
-	case ASSET_PAIR: 
-		AssetPairEntry assetPair;
-	case OFFER_ENTRY:
-		OfferEntry offer;
-	case REVIEWABLE_REQUEST:
+    case REVIEWABLE_REQUEST:
 		ReviewableRequestEntry reviewableRequest;
-	case EXTERNAL_SYSTEM_ACCOUNT_ID:
-		ExternalSystemAccountID externalSystemAccountID;
-	case SALE:
-		SaleEntry sale;
 	case KEY_VALUE:
 	    KeyValueEntry keyValue;
 	case ACCOUNT_KYC:
         AccountKYCEntry accountKYC;
-    case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
-        ExternalSystemAccountIDPoolEntry externalSystemAccountIDPoolEntry;
-    case LIMITS_V2:
-        LimitsV2Entry limitsV2;
-    case STATISTICS_V2:
-        StatisticsV2Entry statisticsV2;
-    case PENDING_STATISTICS:
-        PendingStatisticsEntry pendingStatistics;
-    case CONTRACT:
-        ContractEntry contract;
-    case ATOMIC_SWAP_ASK:
-        AtomicSwapAskEntry atomicSwapAsk;
-    case ACCOUNT_ROLE:
-        AccountRoleEntry accountRole;
-    case ACCOUNT_RULE:
-        AccountRuleEntry accountRule;
-    case SIGNER_RULE:
-        SignerRuleEntry signerRule;
-    case SIGNER_ROLE:
-        SignerRoleEntry signerRole;
-    case LICENSE:
-        LicenseEntry license;
-    case STAMP:
-        StampEntry stamp;
-    case POLL:
-        PollEntry poll;
-    case VOTE:
-        VoteEntry vote;
-    case ACCOUNT_SPECIFIC_RULE:
-        AccountSpecificRuleEntry accountSpecificRule;
+    case RULE:
+        RuleEntry rule;
+    case ROLE:
+        RoleEntry role;
     }
     data;
 

@@ -31,18 +31,6 @@ case SIGNER:
         }
         ext;
     } signer;
-case FEE:
-    struct {
-        Hash hash;
-        int64 lowerBound;
-        int64 upperBound;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } feeState;
 case BALANCE:
     struct
     {
@@ -77,42 +65,6 @@ case REFERENCE_ENTRY:
 		}
 		ext;
     } reference;
-case STATISTICS:
-    struct {
-        AccountID accountID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } stats;
-case ACCOUNT_LIMITS:
-    struct {
-        AccountID accountID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-    } accountLimits;
-case ASSET_PAIR:
-    struct {
-        AssetCode base;
-        AssetCode quote;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } assetPair;
-case OFFER_ENTRY:
-    struct {
-        uint64 offerID;
-        AccountID ownerID;
-    } offer;
 case REVIEWABLE_REQUEST:
     struct {
         uint64 requestID;
@@ -123,27 +75,6 @@ case REVIEWABLE_REQUEST:
         }
         ext;
     } reviewableRequest;
-case EXTERNAL_SYSTEM_ACCOUNT_ID:
-	struct {
-		AccountID accountID;
-		int32 externalSystemType;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} externalSystemAccountID;
-case SALE:
-    struct {
-        uint64 saleID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } sale;
 case KEY_VALUE:
     struct {
         longstring key;
@@ -164,66 +95,6 @@ case ACCOUNT_KYC:
         }
         ext;
     } accountKYC;
-case EXTERNAL_SYSTEM_ACCOUNT_ID_POOL_ENTRY:
-    struct {
-		uint64 poolEntryID;
-		union switch (LedgerVersion v)
-		{
-		case EMPTY_VERSION:
-			void;
-		}
-		ext;
-	} externalSystemAccountIDPoolEntry;
-case LIMITS_V2:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        } ext;
-    } limitsV2;
-case STATISTICS_V2:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } statisticsV2;
-case PENDING_STATISTICS:
-    struct {
-        uint64 statisticsID;
-        uint64 requestID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } pendingStatistics;
-case CONTRACT:
-    struct {
-        uint64 contractID;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } contract;
-case ATOMIC_SWAP_ASK:
-    struct {
-        uint64 id;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } atomicSwapAsk;
 case ACCOUNT_ROLE:
     struct {
         uint64 id;
@@ -264,44 +135,5 @@ case SIGNER_RULE:
         }
         ext;
     } signerRule;
-case STAMP:
-    struct {
-        Hash ledgerHash;
-        Hash licenseHash;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-    } stamp;
-case LICENSE:
-    struct {
-        Hash licenseHash;
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        } ext;
-    } license;
-case POLL:
-    struct {
-        uint64 id;
-
-        EmptyExt ext;
-    } poll;
-case VOTE:
-    struct {
-        uint64 pollID;
-        AccountID voterID;
-
-        EmptyExt ext;
-    } vote;
-case ACCOUNT_SPECIFIC_RULE:
-    struct {
-        uint64 id;
-
-        EmptyExt ext;
-    } accountSpecificRule;
 };
 }
