@@ -23,39 +23,13 @@ enum ReviewableRequestType
 {
 	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
 	ANY = 1,
-	CREATE_PRE_ISSUANCE = 2,
 	CREATE_ISSUANCE = 3,
 	CREATE_WITHDRAW = 4,
-	CREATE_SALE = 5,
-	UPDATE_LIMITS = 6,
-    CREATE_AML_ALERT = 7,
 	CHANGE_ROLE = 8,
-	UPDATE_SALE_DETAILS = 9,
 	CREATE_ASSET = 10,
-	CREATE_INVOICE = 11,
-	MANAGE_CONTRACT = 12,
 	UPDATE_ASSET = 13,
 	CREATE_POLL = 14,
-	CREATE_ATOMIC_SWAP_ASK = 16,
-	CREATE_ATOMIC_SWAP_BID = 17,
 	KYC_RECOVERY = 18
-};
-
-struct TasksExt {
-    // Tasks are represented by a bitmask
-    uint32 allTasks;
-    uint32 pendingTasks;
-
-    // External details vector consists of comments written by request reviewers
-    longstring externalDetails<>;
-
-    // Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -73,37 +47,21 @@ struct ReviewableRequestEntry {
 			AssetCreationRequest assetCreationRequest;
 		case UPDATE_ASSET:
 			AssetUpdateRequest assetUpdateRequest;
-		case CREATE_PRE_ISSUANCE:
-			PreIssuanceRequest preIssuanceRequest;
 		case CREATE_ISSUANCE:
 			IssuanceRequest issuanceRequest;
 		case CREATE_WITHDRAW:
 			WithdrawalRequest withdrawalRequest;
-		case CREATE_SALE:
-			SaleCreationRequest saleCreationRequest;
-        case UPDATE_LIMITS:
-            LimitsUpdateRequest limitsUpdateRequest;
-        case CREATE_AML_ALERT:
-            AMLAlertRequest amlAlertRequest;
         case CHANGE_ROLE:
             ChangeRoleRequest changeRoleRequest;
-        case UPDATE_SALE_DETAILS:
-            UpdateSaleDetailsRequest updateSaleDetailsRequest;
-        case CREATE_INVOICE:
-            InvoiceRequest invoiceRequest;
-        case MANAGE_CONTRACT:
-            ContractRequest contractRequest;
-        case CREATE_ATOMIC_SWAP_ASK:
-            CreateAtomicSwapAskRequest createAtomicSwapAskRequest;
-        case CREATE_ATOMIC_SWAP_BID:
-            CreateAtomicSwapBidRequest createAtomicSwapBidRequest;
-        case CREATE_POLL:
-            CreatePollRequest createPollRequest;
         case KYC_RECOVERY:
             KYCRecoveryRequest kycRecoveryRequest;
 	} body;
 
-	TasksExt tasks;
+	uint32 allTasks;
+    uint32 pendingTasks;
+
+    // External details vector consists of comments written by request reviewers
+    longstring externalDetails<>;
 
 	// reserved for future use
     union switch (LedgerVersion v)
