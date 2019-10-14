@@ -249,11 +249,10 @@ case opINNER:
     }
     tr;
 case opNO_ENTRY:
-    LedgerEntryType entryType;
+    LedgerKey entryKey;
 case opNO_ROLE_PERMISSION:
+case opBAD_AUTH:
     RuleRequirement requirement;
-//case opBAD_AUTH:
-//    SignerRuleRequirement requirements;
 default:
     void;
 };
