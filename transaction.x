@@ -304,7 +304,7 @@ struct TransactionResult
     case txFAILED:
         OperationResult results<>;
     case txNO_ROLE_PERMISSION:
-        AccountRuleRequirement requirement;
+        RuleRequirement requirement;
     default:
         void;
     }
