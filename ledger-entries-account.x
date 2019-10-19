@@ -7,23 +7,6 @@
 namespace stellar
 {
 
-struct Limits
-{
-    int64 dailyOut;
-    int64 weeklyOut;
-    int64 monthlyOut;
-    int64 annualOut;
-
-    // reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
-};
-
-
 /* AccountEntry
 
     Main entry representing a user in Tokend. All transactions are
@@ -44,7 +27,7 @@ struct AccountEntry
     // identify account, while keeping size of index small
     uint64 sequentialID;
 
-	uint64 roleID;
+	uint64 roleIDs<>;
 
     // reserved for future use
     union switch (LedgerVersion v)
