@@ -80,8 +80,12 @@ struct Operation
 		CreateChangeRoleRequestOp createChangeRoleRequestOp;
     case PAYMENT:
         PaymentOp paymentOp;
-    case MANAGE_SIGNER:
-        ManageSignerOp manageSignerOp;
+    case CREATE_SIGNER:
+        CreateSignerOp createSignerOp;
+    case UPDATE_SIGNER:
+        UpdateSignerOp updateSignerOp;
+    case REMOVE_SIGNER:
+        RemoveSignerOp removeSignerOp;
     case CREATE_ROLE:
         CreateRoleOp createRoleOp;
     case UPDATE_ROLE:
@@ -228,8 +232,12 @@ case opINNER:
 	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
     case PAYMENT:
         PaymentResult paymentResult;
-    case MANAGE_SIGNER:
-        ManageSignerResult manageSignerResult;
+    case CREATE_SIGNER:
+        CreateSignerResult createSignerResult;
+    case UPDATE_SIGNER:
+        UpdateSignerResult updateSignerResult;
+    case REMOVE_SIGNER:
+        RemoveSignerResult removeSignerResult;
     case CREATE_ROLE:
         CreateRoleResult createRoleResult;
     case UPDATE_ROLE:

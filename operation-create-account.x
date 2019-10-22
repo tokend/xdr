@@ -13,10 +13,10 @@ struct CreateAccountOp
     //: If account with such ID does not exist or it's Admin Account. Referrer won't be set.
     AccountID* referrer;
     //: ID of the role that will be attached to an account
-    uint64 roleID;
+    uint64 roleIDs<>;
 
     //: Array of data about 'destination' account signers to be created
-    UpdateSignerData signersData<>;
+    SignerData signersData<>;
 
     //: reserved for future use
     union switch (LedgerVersion v)
@@ -73,7 +73,7 @@ case SUCCESS:
     CreateAccountSuccess success;
 case INVALID_SIGNER_DATA:
     //: `createSignerErrorCode` is used to determine the reason of signer creation failure
-    ManageSignerResultCode createSignerErrorCode;
+    CreateSignerResultCode createSignerErrorCode;
 default:
     void;
 };
