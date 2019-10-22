@@ -13,7 +13,7 @@ struct SignerEntry
 
 	longstring details;
 
-	uint64 roleID;
+	uint64 roleIDs<>;
 
 	 // reserved for future use
     union switch (LedgerVersion v)
