@@ -48,7 +48,9 @@ enum CreateAccountResultCode
     //: See `createSignerErrorCode`
     INVALID_SIGNER_DATA = -5,
     //: It is not allowed to create accounts without signers
-    NO_SIGNER_DATA = -6 // empty signer data array not allowed
+    NO_SIGNER_DATA = -6, // empty signer data array not allowed
+    NO_ROLE_IDS = -7,
+    ROLE_ID_DUPLICATION = -8
 };
 
 //: Result of successful application of `CreateAccount` operation
@@ -74,6 +76,9 @@ case SUCCESS:
 case INVALID_SIGNER_DATA:
     //: `createSignerErrorCode` is used to determine the reason of signer creation failure
     CreateSignerResultCode createSignerErrorCode;
+case NO_SUCH_ROLE:
+case ROLE_ID_DUPLICATION:
+    uint64 roleID;
 default:
     void;
 };

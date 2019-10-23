@@ -40,13 +40,18 @@ enum CreateSignerResultCode
     //: There is no role with such id
     NO_SUCH_ROLE = -3,
     //: It is not allowed to set weight more than 1000
-    INVALID_WEIGHT = -4 // more than 1000
+    INVALID_WEIGHT = -4, // more than 1000
+    NO_ROLE_IDS = -5,
+    ROLE_ID_DUPLICATION = -6
 };
 
 union CreateSignerResult switch (CreateSignerResultCode code)
 {
 case SUCCESS:
     EmptyExt ext;
+case NO_SUCH_ROLE:
+case ROLE_ID_DUPLICATION:
+    uint64 roleID;
 default:
     void;
 };
