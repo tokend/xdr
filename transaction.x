@@ -98,6 +98,8 @@ struct Operation
         UpdateRuleOp UpdateRuleOp;
     case REMOVE_RULE:
         RemoveRuleOp removeRuleOp;
+    case CREATE_REVIEWABLE_REQUEST:
+        CreateReviewableRequestOp createReviewableRequestOp;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
@@ -250,6 +252,8 @@ case opINNER:
         UpdateRuleResult UpdateRuleResult;
     case REMOVE_RULE:
         RemoveRuleResult removeRuleResult;
+    case CREATE_REVIEWABLE_REQUEST:
+        CreateReviewableRequestResult createReviewableRequestResult;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
     case INITIATE_KYC_RECOVERY:

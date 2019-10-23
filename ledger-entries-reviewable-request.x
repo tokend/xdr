@@ -31,35 +31,46 @@ enum ReviewableRequestType
 	KYC_RECOVERY = 18
 };
 
+union ReviewableRequestOperation switch (OperationType type)
+{
+case CREATE_ACCOUNT:
+    CreateAccountOp createAccountOp;
+case PAYMENT:
+    PaymentOp paymentOp;
+case CREATE_SIGNER:
+    CreateSignerOp createSignerOp;
+case UPDATE_SIGNER:
+    UpdateSignerOp updateSignerOp;
+case REMOVE_SIGNER:
+    RemoveSignerOp removeSignerOp;
+case CREATE_ROLE:
+    CreateRoleOp createRoleOp;
+case UPDATE_ROLE:
+    UpdateRoleOp updateRoleOp;
+case REMOVE_ROLE:
+    RemoveRoleOp removeRoleOp;
+case CREATE_RULE:
+    CreateRuleOp createRuleOp;
+case UPDATE_RULE:
+    UpdateRuleOp UpdateRuleOp;
+case REMOVE_RULE:
+    RemoveRuleOp removeRuleOp;
+};
+
 // ReviewableRequest - request reviewable by admin
 struct ReviewableRequestEntry {
 	uint64 requestID;
 	Hash hash; // hash of the request body
 	AccountID requestor;
-	longstring rejectReason;
-	AccountID reviewer;
-	string64* reference; // reference for request which will act as an unique key for the request (will reject request with the same reference from same requestor)
+
 	int64 createdAt; // when request was created
 
-	union switch (ReviewableRequestType type) {
-		case CREATE_ASSET:
-			AssetCreationRequest assetCreationRequest;
-		case UPDATE_ASSET:
-			AssetUpdateRequest assetUpdateRequest;
-		case CREATE_ISSUANCE:
-			IssuanceRequest issuanceRequest;
-		case CREATE_WITHDRAW:
-			WithdrawalRequest withdrawalRequest;
-        case CHANGE_ROLE:
-            ChangeRoleRequest changeRoleRequest;
-        case KYC_RECOVERY:
-            KYCRecoveryRequest kycRecoveryRequest;
-	} body;
+	ReviewableRequestOperation operations<>;
 
 	uint32 allTasks;
     uint32 pendingTasks;
 
-    // External details vector consists of comments written by request reviewers
+    // External details vector consists of comments written by request reviewers, includes reject reason
     longstring externalDetails<>;
 
 	// reserved for future use
