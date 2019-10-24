@@ -216,7 +216,7 @@ union OperationResultTr switch (OperationType type)
 {
 case CREATE_ACCOUNT:
     CreateAccountResult createAccountResult;
-case CREATE_WITHDRAWAL_REQUEST:
+case DESTRUCTION:
     DestructionResult destructionResult;
 case MANAGE_BALANCE:
     ManageBalanceResult manageBalanceResult;
