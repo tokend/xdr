@@ -77,7 +77,7 @@ struct ReviewableRequestEntry
     uint32 pendingTasks;
 
     // External details vector consists of comments written by request reviewers
-    longstring externalDetails;
+    longstring externalDetails<>;
 
 	// reserved for future use
     union switch (LedgerVersion v)

@@ -81,7 +81,9 @@ enum ReviewRequestResultCode
     //: Permanent reject is not allowed. Only reject should be used
     PERMANENT_REJECT_NOT_ALLOWED = -9,
     //: Trying to remove tasks which are not set
-    REMOVING_NOT_SET_TASKS = -100,// cannot remove tasks which are not set
+    REMOVING_NOT_SET_TASKS = -10,// cannot remove tasks which are not set
+    //: CheckValid or Confirm of operation is failed
+    INVALID_OPERATION = -11,
 
     //: Asset requests
     //: Trying to create an asset that already exists
@@ -137,6 +139,8 @@ union ReviewRequestResult switch (ReviewRequestResultCode code)
 {
 case SUCCESS:
     ExtendedResult success;
+case INVALID_OPERATION:
+    OperationResultTr operationResult;
 default:
     void;
 };
