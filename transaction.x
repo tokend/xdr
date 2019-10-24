@@ -95,7 +95,7 @@ struct Operation
     case CREATE_RULE:
         CreateRuleOp createRuleOp;
     case UPDATE_RULE:
-        UpdateRuleOp UpdateRuleOp;
+        UpdateRuleOp updateRuleOp;
     case REMOVE_RULE:
         RemoveRuleOp removeRuleOp;
     case CREATE_REVIEWABLE_REQUEST:
@@ -211,55 +211,56 @@ struct RuleRequirement
     EmptyExt ext;
 };
 
+union OperationResultTr switch (OperationType type)
+{
+case CREATE_ACCOUNT:
+    CreateAccountResult createAccountResult;
+case CREATE_ISSUANCE_REQUEST:
+    CreateIssuanceRequestResult createIssuanceRequestResult;
+case CREATE_WITHDRAWAL_REQUEST:
+    CreateWithdrawalRequestResult createWithdrawalRequestResult;
+case MANAGE_BALANCE:
+    ManageBalanceResult manageBalanceResult;
+case MANAGE_ASSET:
+    ManageAssetResult manageAssetResult;
+case REVIEW_REQUEST:
+    ReviewRequestResult reviewRequestResult;
+case MANAGE_KEY_VALUE:
+    ManageKeyValueResult manageKeyValueResult;
+case CREATE_CHANGE_ROLE_REQUEST:
+    CreateChangeRoleRequestResult createChangeRoleRequestResult;
+case PAYMENT:
+    PaymentResult paymentResult;
+case CREATE_SIGNER:
+    CreateSignerResult createSignerResult;
+case UPDATE_SIGNER:
+    UpdateSignerResult updateSignerResult;
+case REMOVE_SIGNER:
+    RemoveSignerResult removeSignerResult;
+case CREATE_ROLE:
+    CreateRoleResult createRoleResult;
+case UPDATE_ROLE:
+    UpdateRoleResult updateRoleResult;
+case REMOVE_ROLE:
+    RemoveRoleResult removeRoleResult;
+case CREATE_RULE:
+    CreateRuleResult createRuleResult;
+case UPDATE_RULE:
+    UpdateRuleResult updateRuleResult;
+case REMOVE_RULE:
+    RemoveRuleResult removeRuleResult;
+case CREATE_REVIEWABLE_REQUEST:
+    CreateReviewableRequestResult createReviewableRequestResult;
+case CREATE_KYC_RECOVERY_REQUEST:
+    CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
+case INITIATE_KYC_RECOVERY:
+    InitiateKYCRecoveryResult initiateKYCRecoveryResult;
+};
+
 union OperationResult switch (OperationResultCode code)
 {
 case opINNER:
-    union switch (OperationType type)
-    {
-    case CREATE_ACCOUNT:
-        CreateAccountResult createAccountResult;
-	case CREATE_ISSUANCE_REQUEST:
-		CreateIssuanceRequestResult createIssuanceRequestResult;
-    case CREATE_WITHDRAWAL_REQUEST:
-		CreateWithdrawalRequestResult createWithdrawalRequestResult;
-    case MANAGE_BALANCE:
-        ManageBalanceResult manageBalanceResult;
-    case MANAGE_ASSET:
-        ManageAssetResult manageAssetResult;
-    case REVIEW_REQUEST:
-		ReviewRequestResult reviewRequestResult;
-	case MANAGE_KEY_VALUE:
-	    ManageKeyValueResult manageKeyValueResult;
-	case CREATE_CHANGE_ROLE_REQUEST:
-	    CreateChangeRoleRequestResult createChangeRoleRequestResult;
-    case PAYMENT:
-        PaymentResult paymentResult;
-    case CREATE_SIGNER:
-        CreateSignerResult createSignerResult;
-    case UPDATE_SIGNER:
-        UpdateSignerResult updateSignerResult;
-    case REMOVE_SIGNER:
-        RemoveSignerResult removeSignerResult;
-    case CREATE_ROLE:
-        CreateRoleResult createRoleResult;
-    case UPDATE_ROLE:
-        UpdateRoleResult updateRoleResult;
-    case REMOVE_ROLE:
-        RemoveRoleResult removeRoleResult;
-    case CREATE_RULE:
-        CreateRuleResult createRuleResult;
-    case UPDATE_RULE:
-        UpdateRuleResult UpdateRuleResult;
-    case REMOVE_RULE:
-        RemoveRuleResult removeRuleResult;
-    case CREATE_REVIEWABLE_REQUEST:
-        CreateReviewableRequestResult createReviewableRequestResult;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
-    case INITIATE_KYC_RECOVERY:
-        InitiateKYCRecoveryResult initiateKYCRecoveryResult;
-    }
-    tr;
+    OperationResultTr tr;
 case opNO_ENTRY:
     LedgerKey entryKey;
 case opNO_ROLE_PERMISSION:

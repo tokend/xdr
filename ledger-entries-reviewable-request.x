@@ -52,7 +52,7 @@ case REMOVE_ROLE:
 case CREATE_RULE:
     CreateRuleOp createRuleOp;
 case UPDATE_RULE:
-    UpdateRuleOp UpdateRuleOp;
+    UpdateRuleOp updateRuleOp;
 case REMOVE_RULE:
     RemoveRuleOp removeRuleOp;
 };
