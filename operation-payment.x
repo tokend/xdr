@@ -29,11 +29,6 @@ struct PaymentFeeData {
     ext;
 };
 
-//: Defines the type of destination of the payment
-enum PaymentDestinationType {
-    ACCOUNT = 0,
-    BALANCE = 1
-};
 
 //: PaymentOp is used to transfer some amount of asset from the source balance to destination account/balance
 struct PaymentOp
@@ -41,8 +36,10 @@ struct PaymentOp
     //: ID of the source balance of payment
     BalanceID sourceBalanceID;
 
+    uint64 type;
+
     //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
-    union switch (PaymentDestinationType type) {
+    union switch (DestinationType type) {
         case ACCOUNT:
             AccountID accountID;
         case BALANCE:

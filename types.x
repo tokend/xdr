@@ -146,4 +146,11 @@ struct DecoratedSignature
     Signature signature; // actual signature
 };
 
+
+//: Defines the type of destination for operation
+enum DestinationType {
+    ACCOUNT = 0,
+    BALANCE = 1
+};
+
 }

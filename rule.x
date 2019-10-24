@@ -100,6 +100,19 @@ case INITIATE_KYC_RECOVERY:
         //: reserved for future extension
         EmptyExt ext;
     } initiateKYCRecovery;
+case PAYMENT:
+    struct
+    {
+        //: asset code
+        AssetCode assetCode;
+        //: asset type
+        uint64 assetType;
+        //: payment type
+        uint64 paymentType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } payment;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -125,7 +138,8 @@ enum RuleAction
     CLOSE = 15,
     UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
-    CREATE_FOR_OTHER_WITH_TASKS = 18
+    CREATE_FOR_OTHER_WITH_TASKS = 18,
+    RECEIVE = 19
 };
 
 
