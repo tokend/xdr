@@ -133,6 +133,7 @@ case DESTRUCTION:
         //: asset type
         uint64 assetType;
 
+        EmptyExt ext;
     } destruction;
 default:
     //: reserved for future extension
