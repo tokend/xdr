@@ -121,6 +121,8 @@ case ISSUANCE:
         AssetCode assetCode;
         //: asset type
         uint64 assetType;
+
+        EmptyExt ext;
     } issuance;
 default:
     //: reserved for future extension

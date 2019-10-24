@@ -15,6 +15,7 @@
 %#include "xdr/reviewable-request-atomic-swap-bid.h"
 %#include "xdr/reviewable-request-create-poll.h"
 %#include "xdr/reviewable-request-kyc-recovery.h"
+%#include "xdr/reviewable-request-kyc-recovery.h"
 
 namespace stellar
 {
