@@ -160,6 +160,6 @@ union MovementDestination switch (DestinationType type) {
         AccountID accountID;
     case BALANCE:
         BalanceID balanceID;
-}
+};
 
 }
