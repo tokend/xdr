@@ -23,6 +23,8 @@ struct IssuanceOp
 
     MovementDestination destination;
 
+    longstring reference;
+
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details of the issuance (External system id, etc.)
     //: Total fee to pay, consists of fixed fee and percent fee, calculated automatically
