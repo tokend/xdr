@@ -113,7 +113,7 @@ case PAYMENT:
         //: reserved for future extension
         EmptyExt ext;
     } payment;
-CASE ISSUANCE:
+case ISSUANCE:
     struct
     {
         uint64 issuanceType;
