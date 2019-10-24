@@ -15,7 +15,7 @@ enum CreateReviewableRequestResultCode
     INVALID_OPERATION = -1
 };
 
-union CreateReviewableRequestRequest switch (CreateReviewableRequestResultCode code)
+union CreateReviewableRequestResult switch (CreateReviewableRequestResultCode code)
 {
 case SUCCESS:
     EmptyExt ext;
