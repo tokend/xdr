@@ -103,6 +103,8 @@ struct Operation
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
     case CREATE_KYC_RECOVERY_REQUEST:
         CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
+    case ISSUANCE:
+        IssuanceOp issuanceOp;
     }
     body;
 };
@@ -252,6 +254,8 @@ case CREATE_KYC_RECOVERY_REQUEST:
     CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
 case INITIATE_KYC_RECOVERY:
     InitiateKYCRecoveryResult initiateKYCRecoveryResult;
+case ISSUANCE:
+    IssuanceResult issuanceResult;
 };
 
 union OperationResult switch (OperationResultCode code)
