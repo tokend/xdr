@@ -55,6 +55,8 @@ case UPDATE_RULE:
     UpdateRuleOp updateRuleOp;
 case REMOVE_RULE:
     RemoveRuleOp removeRuleOp;
+case ISSUANCE:
+    IssuanceOp issuanceOp;
 };
 
 // ReviewableRequest - request reviewable by admin

@@ -47,6 +47,7 @@
 %#include "xdr/operation-create-kyc-recovery-request.h"
 %#include "xdr/operation-initiate-kyc-recovery.h"
 %#include "xdr/operation-remove-asset-pair.h"
+%#include "xdr/operation-issue.h"
 
 namespace stellar
 {

@@ -113,6 +113,15 @@ case PAYMENT:
         //: reserved for future extension
         EmptyExt ext;
     } payment;
+CASE ISSUANCE:
+    struct
+    {
+        uint64 issuanceType;
+        //: asset code
+        AssetCode assetCode;
+        //: asset type
+        uint64 assetType;
+    } issuance;
 default:
     //: reserved for future extension
     EmptyExt ext;

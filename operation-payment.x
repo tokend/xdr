@@ -39,12 +39,7 @@ struct PaymentOp
     uint64 type;
 
     //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
-    union switch (DestinationType type) {
-        case ACCOUNT:
-            AccountID accountID;
-        case BALANCE:
-            BalanceID balanceID;
-    } destination;
+    MovementDestination destination;
 
     //: Amount of payment
     uint64 amount;

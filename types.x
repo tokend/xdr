@@ -57,7 +57,8 @@ enum LedgerEntryType
     RULE = 30,
     ROLE = 31,
     INITIATE_KYC_RECOVERY = 37,
-    PAYMENT = 38
+    PAYMENT = 38,
+    ISSUANCE = 39
 };
 
 // variable size as the size depends on the signature scheme used
@@ -119,7 +120,7 @@ struct Fee {
 enum OperationType
 {
     CREATE_ACCOUNT = 1,
-    CREATE_ISSUANCE_REQUEST = 3,
+    ISSUANCE = 3,
     CREATE_WITHDRAWAL_REQUEST = 7,
     MANAGE_BALANCE = 9,
     MANAGE_ASSET = 11,
@@ -153,5 +154,12 @@ enum DestinationType {
     ACCOUNT = 0,
     BALANCE = 1
 };
+
+union MovementDestination switch (DestinationType type) {
+    case ACCOUNT:
+        AccountID accountID;
+    case BALANCE:
+        BalanceID balanceID;
+}
 
 }
