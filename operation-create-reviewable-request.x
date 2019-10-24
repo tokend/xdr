@@ -12,7 +12,8 @@ enum CreateReviewableRequestResultCode
 {
     SUCCESS = 0,
 
-    INVALID_OPERATION = -1
+    INVALID_OPERATION = -1,
+    TASKS_NOT_FOUND = -2
 };
 
 union CreateReviewableRequestResult switch (CreateReviewableRequestResultCode code)
