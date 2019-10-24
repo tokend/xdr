@@ -58,7 +58,8 @@ enum LedgerEntryType
     ROLE = 31,
     INITIATE_KYC_RECOVERY = 37,
     PAYMENT = 38,
-    ISSUANCE = 39
+    ISSUANCE = 39,
+    DESTRUCTION = 40
 };
 
 // variable size as the size depends on the signature scheme used
@@ -121,7 +122,7 @@ enum OperationType
 {
     CREATE_ACCOUNT = 1,
     ISSUANCE = 3,
-    CREATE_WITHDRAWAL_REQUEST = 7,
+    DESTRUCTION = 7,
     MANAGE_BALANCE = 9,
     MANAGE_ASSET = 11,
     REVIEW_REQUEST = 18,

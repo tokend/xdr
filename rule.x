@@ -124,6 +124,16 @@ case ISSUANCE:
 
         EmptyExt ext;
     } issuance;
+case DESTRUCTION:
+    struct
+    {
+        uint64 destructionType;
+        //: asset code
+        AssetCode assetCode;
+        //: asset type
+        uint64 assetType;
+
+    } destruction;
 default:
     //: reserved for future extension
     EmptyExt ext;

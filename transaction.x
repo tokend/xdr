@@ -65,8 +65,8 @@ struct Operation
     {
     case CREATE_ACCOUNT:
         CreateAccountOp createAccountOp;
-	case CREATE_WITHDRAWAL_REQUEST:
-		CreateWithdrawalRequestOp createWithdrawalRequestOp;
+	case DESTRUCTION:
+		DestructionOp destructionOp;
 	case MANAGE_BALANCE:
 		ManageBalanceOp manageBalanceOp;
     case MANAGE_ASSET:
@@ -217,7 +217,7 @@ union OperationResultTr switch (OperationType type)
 case CREATE_ACCOUNT:
     CreateAccountResult createAccountResult;
 case CREATE_WITHDRAWAL_REQUEST:
-    CreateWithdrawalRequestResult createWithdrawalRequestResult;
+    DestructionResult destructionResult;
 case MANAGE_BALANCE:
     ManageBalanceResult manageBalanceResult;
 case MANAGE_ASSET:

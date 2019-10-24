@@ -5,39 +5,38 @@
 namespace stellar
 {
 
-/* CreateWithdrawalRequestOp
+/* DestructionOp
 
     Creates withdrawal request
 
     Threshold: high
 
-    Result: CreateWithdrawalRequestResult
+    Result: DestructionResult
 */
-//: CreateWithdrawalRequest operation is used to create a reviewable request,
-//: which, after reviewer's approval, will charge the specified amount from balance and send it to external wallet/account
-struct CreateWithdrawalRequestOp
+//: Destruction operation will charge the specified amount from balance
+struct DestructionOp
 {
-    //: Withdrawal request to create 
-    WithdrawalRequest request;
-    //: (optional) Bit mask whose flags must be cleared in order for WithdrawalRequest to be approved, which will be used by key withdrawal_tasks:<asset_code> 
-    //: instead of key-value
-    uint32* allTasks;
-    //: Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+    //: security type
+    uint64 type;
+    //: Balance to withdraw from
+    BalanceID balance; // balance id from which withdrawal will be performed
+    //: Amount to withdraw
+    uint64 amount; // amount to be withdrawn
+    //: Total fee to pay, contains fixed amount and calculated percent of the withdrawn amount
+    Fee fee; // expected fee to be paid
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
+    longstring creatorDetails; // details set by requester
 
+    //: Reserved for future use
+    EmptyExt ext;
 };
 
-/******* CreateWithdrawalRequest Result ********/
-//: CreateWithdrawalRequest operation result codes
-enum CreateWithdrawalRequestResultCode
+/******* Destruction Result ********/
+//: Destruction operation result codes
+enum DestructionResultCode
 {
     // codes considered as "success" for the operation
-    //: CreateWithdrawalRequest operation successfully applied
+    //: Destruction operation successfully applied
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
@@ -80,25 +79,15 @@ enum CreateWithdrawalRequestResultCode
 };
 
 //: Result of the successful withdrawal request creation
-struct CreateWithdrawalSuccess {
-    //: ID of a newly created WithdrawalRequest
-    uint64 requestID;
-    //: Indicates whether or not the withdrawal request was auto approved and fulfilled
-    bool fulfilled;
-    //: Reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+struct DestructionSuccess {
+    EmptyExt ext;
 };
 
 //: Result of applying CreateWithdrawalRequst operation along with the result code
-union CreateWithdrawalRequestResult switch (CreateWithdrawalRequestResultCode code)
+union DestructionResult switch (DestructionResultCode code)
 {
     case SUCCESS:
-        CreateWithdrawalSuccess success;
+        DestructionSuccess success;
     default:
         void;
 };
