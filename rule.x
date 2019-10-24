@@ -161,7 +161,8 @@ enum RuleAction
     UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
-    RECEIVE = 19
+    RECEIVE = 19,
+    PERFORM = 20
 };
 
 
