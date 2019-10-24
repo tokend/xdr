@@ -63,11 +63,12 @@ case DESTRUCTION:
 };
 
 // ReviewableRequest - request reviewable by admin
-struct ReviewableRequestEntry {
+struct ReviewableRequestEntry
+{
 	uint64 requestID;
 	Hash hash; // hash of the request body
 	AccountID requestor;
-
+    longstring rejectReason;
 	int64 createdAt; // when request was created
 
 	ReviewableRequestOperation operations<>;
@@ -75,8 +76,8 @@ struct ReviewableRequestEntry {
 	uint32 allTasks;
     uint32 pendingTasks;
 
-    // External details vector consists of comments written by request reviewers, includes reject reason
-    longstring externalDetails<>;
+    // External details vector consists of comments written by request reviewers
+    longstring externalDetails;
 
 	// reserved for future use
     union switch (LedgerVersion v)
