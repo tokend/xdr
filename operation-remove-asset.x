@@ -39,8 +39,9 @@ enum RemoveAssetResultCode
     //: Asset can't be deleted as it has active atomic swaps
     HAS_ACTIVE_ATOMIC_SWAPS = -5,
     //: Asset can't be deleted as it has active swaps
-    HAS_ACTIVE_SWAPS = -6
-
+    HAS_ACTIVE_SWAPS = -6,
+    //: Asset can't be deleted as it is stats quote asset
+    CANNOT_REMOVE_STATS_QUOTE_ASSET = -7
 };
 
 //: Result of successful `RemoveAssetOp` application
