@@ -50,7 +50,8 @@ enum CreateAccountResultCode
     //: It is not allowed to create accounts without signers
     NO_SIGNER_DATA = -6, // empty signer data array not allowed
     NO_ROLE_IDS = -7,
-    ROLE_ID_DUPLICATION = -8
+    ROLE_ID_DUPLICATION = -8,
+    TOO_MANY_ROLES = -9
 };
 
 //: Result of successful application of `CreateAccount` operation
@@ -79,6 +80,8 @@ case INVALID_SIGNER_DATA:
 case NO_SUCH_ROLE:
 case ROLE_ID_DUPLICATION:
     uint64 roleID;
+case TOO_MANY_ROLES:
+    uint32 maxRolesCount;
 default:
     void;
 };

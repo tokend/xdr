@@ -60,6 +60,8 @@ case ISSUANCE:
     IssuanceOp issuanceOp;
 case DESTRUCTION:
     DestructionOp destructionOp;
+case CHANGE_ACCOUNT_ROLES:
+    ChangeAccountRolesOp changeAccountRolesOp;
 };
 
 // ReviewableRequest - request reviewable by admin

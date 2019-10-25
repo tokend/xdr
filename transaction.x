@@ -75,8 +75,8 @@ struct Operation
 		ReviewRequestOp reviewRequestOp;
 	case MANAGE_KEY_VALUE:
 	    ManageKeyValueOp manageKeyValueOp;
-	case CREATE_CHANGE_ROLE_REQUEST:
-		CreateChangeRoleRequestOp createChangeRoleRequestOp;
+	case CHANGE_ACCOUNT_ROLES:
+		ChangeAccountRolesOp changeAccountRolesOp;
     case PAYMENT:
         PaymentOp paymentOp;
     case CREATE_SIGNER:
@@ -226,8 +226,8 @@ case REVIEW_REQUEST:
     ReviewRequestResult reviewRequestResult;
 case MANAGE_KEY_VALUE:
     ManageKeyValueResult manageKeyValueResult;
-case CREATE_CHANGE_ROLE_REQUEST:
-    CreateChangeRoleRequestResult createChangeRoleRequestResult;
+case CHANGE_ACCOUNT_ROLES:
+    ChangeAccountRolesResult changeAccountRolesResult;
 case PAYMENT:
     PaymentResult paymentResult;
 case CREATE_SIGNER:
