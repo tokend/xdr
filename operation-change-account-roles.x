@@ -6,7 +6,7 @@ struct ChangeAccountRolesOp
     AccountID destinationAccount;
 
     //: ID of account role that will be attached to `destinationAccount`
-    uint64 rolesToSet;
+    uint64 rolesToSet<>;
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring details;
 

@@ -42,7 +42,8 @@ enum CreateSignerResultCode
     //: It is not allowed to set weight more than 1000
     INVALID_WEIGHT = -4, // more than 1000
     NO_ROLE_IDS = -5,
-    ROLE_ID_DUPLICATION = -6
+    ROLE_ID_DUPLICATION = -6,
+    TOO_MANY_ROLES = -7
 };
 
 union CreateSignerResult switch (CreateSignerResultCode code)
@@ -52,6 +53,8 @@ case SUCCESS:
 case NO_SUCH_ROLE:
 case ROLE_ID_DUPLICATION:
     uint64 roleID;
+case TOO_MANY_ROLES:
+    uint32 maxRolesCount;
 default:
     void;
 };

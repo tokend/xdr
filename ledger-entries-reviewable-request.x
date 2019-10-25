@@ -77,6 +77,7 @@ struct ReviewableRequestEntry
 
 	uint32 allTasks;
     uint32 pendingTasks;
+    // maybe add sequenceNumber and creator details
 
     // External details vector consists of comments written by request reviewers
     longstring externalDetails<>;
