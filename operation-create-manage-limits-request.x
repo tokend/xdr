@@ -57,9 +57,7 @@ enum CreateManageLimitsRequestResultCode
     //: Cannot set allTasks on the rejected request update
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -6,
     //: 0 value is either not allowed for `allTasks` or for the value entry received by key `limits_update_tasks`
-    LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7,
-    //: Asset with provided asset code does not exist
-    ASSET_NOT_FOUND = -8
+    LIMITS_UPDATE_ZERO_TASKS_NOT_ALLOWED = -7
 };
 
 //: `CreateManageLimitsRequestResult` represents the result of the `CreateManageLimitsRequestOp` with corresponding details based on given `CreateManageLimitsRequestResultCode`
