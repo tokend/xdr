@@ -367,7 +367,6 @@ enum ReviewRequestResultCode
     ACCOUNT_NOT_FOUND = -1311,
     //: There is no role with passed ID for limits update request
     ROLE_NOT_FOUND = -1312,
-    ASSET_NOT_FOUND = -1313,
 
     //: Deprecated: Contract requests
     CONTRACT_DETAILS_TOO_LONG = -1400, // customer details reached length limit
