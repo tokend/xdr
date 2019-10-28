@@ -32,7 +32,7 @@ enum ReviewableRequestType
 	KYC_RECOVERY = 18
 };
 
-union ReviewableRequestOperation switch (OperationType type)
+union ReviewableRequestOperationBody switch (OperationType type)
 {
 case CREATE_ACCOUNT:
     CreateAccountOp createAccountOp;
@@ -62,6 +62,18 @@ case DESTRUCTION:
     DestructionOp destructionOp;
 case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesOp changeAccountRolesOp;
+};
+
+struct ReviewableRequestOperation 
+{
+    uint32 operationID;
+
+    ReviewableRequestOperationBody body;
+
+    uint32 allTasks;
+    uint32 pendingTasks;
+
+    EmptyExt ext;
 };
 
 // ReviewableRequest - request reviewable by admin

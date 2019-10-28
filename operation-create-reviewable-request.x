@@ -3,7 +3,7 @@ namespace stellar
 
 struct CreateReviewableRequestOp
 {
-    ReviewableRequestOperation operations<>;
+    ReviewableRequestOperationBody operations<>;
 
     EmptyExt ext;
 };
