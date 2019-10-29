@@ -11,45 +11,14 @@ case REVIEWABLE_REQUEST:
     //: Describes properties that are equal to managed reviewable request entry fields
     struct
     {
-        //: Describes properties of some reviewable request types that
-        //: can be used to restrict the usage of reviewable requests
-        union switch (ReviewableRequestType requestType)
-        {
-        case CREATE_ISSUANCE:
-            //: is used to restrict the usage of a reviewable request with create_issuance type
-            struct
-            {
-                //: code of asset
-                AssetCode assetCode;
-                //: type of asset
-                uint64 assetType;
+        ReviewableRequestOperationRule opRules<>;
 
-                //: reserved for future extension
-                EmptyExt ext;
-            } createIssuance;
-        case CREATE_WITHDRAW:
-            //: is used to restrict the usage of a reviewable request with create_withdraw type
-            struct
-            {
-                //: code of asset
-                AssetCode assetCode;
-                //: type of asset
-                uint64 assetType;
-
-                //: reserved for future extension
-                EmptyExt ext;
-            } createWithdraw;
-        default:
-            //: reserved for future extension
-            EmptyExt ext;
-        } details;
+        uint64 securityType;
 
         //: Bit mask of tasks that is allowed to add to reviewable request pending tasks
         uint64 tasksToAdd;
         //: Bit mask of tasks that is allowed to remove from reviewable request pending tasks
         uint64 tasksToRemove;
-        //: Bit mask of tasks that is allowed to use as reviewable request pending tasks
-        uint64 allTasks;
 
         EmptyExt ext;
     } reviewableRequest;
@@ -165,5 +134,13 @@ enum RuleAction
     PERFORM = 20
 };
 
+struct ReviewableRequestOperationRule 
+{
+    RuleResource resource;
+
+    RuleAction action;
+
+    EmptyExt ext;
+};
 
 }
