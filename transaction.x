@@ -69,8 +69,8 @@ struct Operation
 		DestructionOp destructionOp;
 	case MANAGE_BALANCE:
 		ManageBalanceOp manageBalanceOp;
-    case MANAGE_ASSET:
-        ManageAssetOp manageAssetOp;
+    case CREATE_ASSET:
+        CreateAssetOp createAssetOp;
     case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
 	case MANAGE_KEY_VALUE:
@@ -224,8 +224,8 @@ case DESTRUCTION:
     DestructionResult destructionResult;
 case MANAGE_BALANCE:
     ManageBalanceResult manageBalanceResult;
-case MANAGE_ASSET:
-    ManageAssetResult manageAssetResult;
+case CREATE_ASSET:
+    CreateAssetResult createAssetResult;
 case REVIEW_REQUEST:
     ReviewRequestResult reviewRequestResult;
 case MANAGE_KEY_VALUE:
