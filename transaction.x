@@ -100,7 +100,7 @@ struct Operation
     case CREATE_REVIEWABLE_REQUEST:
         CreateReviewableRequestOp createReviewableRequestOp;
     case UPDATE_REVIEWABLE_REQUEST:
-        UpdateReviewableReuqestOp updateReviewableRequestOp;
+        UpdateReviewableRequestOp updateReviewableRequestOp;
     case REMOVE_REVIEWABLE_REQUEST:
         RemoveReviewableRequestOp removeReviewableRequestOp;
     case INITIATE_KYC_RECOVERY:
