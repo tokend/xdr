@@ -121,7 +121,7 @@ enum RuleAction
     REMOVE = 7,
     CANCEL = 8,
     REVIEW = 9,
-    RECEIVE_ATOMIC_SWAP = 10,
+    CHANGE_ROLES = 10,
     PARTICIPATE = 11,
     BIND = 12,
     UPDATE_MAX_ISSUANCE = 13,
