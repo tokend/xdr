@@ -36,7 +36,7 @@ struct PaymentOp
     //: ID of the source balance of payment
     BalanceID sourceBalanceID;
 
-    uint64 type;
+    uint32 type;
 
     //: `destination` defines the type of instance that receives the payment based on given PaymentDestinationType
     MovementDestination destination;

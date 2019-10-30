@@ -54,7 +54,7 @@ case NO_SUCH_RULE:
     uint64 ruleID;
 case TOO_MANY_RULE_IDS:
     //: max count of rule ids that can be passed in `ruleIDs` array
-    uint64 maxRuleIDsCount;
+    uint32 maxRuleIDsCount;
 default:
     void;
 };

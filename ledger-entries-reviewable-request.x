@@ -77,8 +77,8 @@ struct ReviewableRequestEntry
 
 	ReviewableRequestOperation operations<>;
 
-	uint32 allTasks;
-    uint32 pendingTasks;
+	uint64 allTasks;
+    uint64 pendingTasks;
     // maybe add sequenceNumber and creator details
 
     // External details vector consists of comments written by request reviewers

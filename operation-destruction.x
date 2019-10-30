@@ -17,7 +17,7 @@ namespace stellar
 struct DestructionOp
 {
     //: security type
-    uint64 type;
+    uint32 type;
     //: Balance to withdraw from
     BalanceID balance; // balance id from which withdrawal will be performed
     //: Amount to withdraw

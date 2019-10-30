@@ -14,7 +14,7 @@ namespace stellar
 struct IssuanceOp
 {
     //: security type
-    uint64 type;
+    uint32 type;
 
     //: Code of an asset to issuance
     AssetCode asset;

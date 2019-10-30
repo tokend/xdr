@@ -38,11 +38,11 @@ struct ReviewRequestOp
     longstring reason;
 
     //: Tasks to add to pending
-    uint32 tasksToAdd;
+    uint64 tasksToAdd;
     //: Tasks to remove from pending
-    uint32 tasksToRemove;
+    uint64 tasksToRemove;
     //: Details of the current review
-    string externalDetails<>;
+    longstring externalDetails;
 
     //: Reserved for future use
     union switch (LedgerVersion v)

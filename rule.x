@@ -27,7 +27,7 @@ case ASSET:
     struct
     {
         AssetCode assetCode;
-        uint64 assetType;
+        uint32 assetType;
 
         EmptyExt ext;
     } asset;
@@ -75,9 +75,9 @@ case PAYMENT:
         //: asset code
         AssetCode assetCode;
         //: asset type
-        uint64 assetType;
+        uint32 assetType;
         //: payment type
-        uint64 paymentType;
+        uint32 paymentType;
 
         //: reserved for future extension
         EmptyExt ext;
@@ -85,22 +85,22 @@ case PAYMENT:
 case ISSUANCE:
     struct
     {
-        uint64 issuanceType;
+        uint32 issuanceType;
         //: asset code
         AssetCode assetCode;
         //: asset type
-        uint64 assetType;
+        uint32 assetType;
 
         EmptyExt ext;
     } issuance;
 case DESTRUCTION:
     struct
     {
-        uint64 destructionType;
+        uint32 destructionType;
         //: asset code
         AssetCode assetCode;
         //: asset type
-        uint64 assetType;
+        uint32 assetType;
 
         EmptyExt ext;
     } destruction;
