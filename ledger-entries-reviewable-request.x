@@ -62,6 +62,8 @@ case DESTRUCTION:
     DestructionOp destructionOp;
 case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesOp changeAccountRolesOp;
+case CREATE_ASSET:
+    CreateAssetOp createAssetOp;
 };
 
 // ReviewableRequest - request reviewable by admin

@@ -5,7 +5,7 @@ struct UpdateReviewableRequestOp
 {
     uint64 requestID;
 
-    ReviewableRequestOperationBody operations<>;
+    ReviewableRequestOperation operations<>;
 
     EmptyExt ext;
 };

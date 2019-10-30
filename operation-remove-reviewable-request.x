@@ -3,9 +3,7 @@ namespace stellar
 
 struct RemoveReviewableRequestOp
 {
-
-    unit64 requestID;
-
+    uint64 requestID;
 
     EmptyExt ext;
 };
