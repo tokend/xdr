@@ -20,6 +20,7 @@ struct AssetEntry
 	longstring details;
 	uint64 maxIssuanceAmount; // max number of tokens to be issued
 	uint64 issued; // number of issued tokens
+	uint64 pendingIssuance; // number of tokens to be issued
     uint32 policies;
 	uint32 state; // smth that can be used to disable asset
     uint32 securityType; // use instead policies that limit usage, use in account rules
