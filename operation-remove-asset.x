@@ -29,14 +29,21 @@ enum RemoveAssetResultCode
     //: Operation is successfully applied
     SUCCESS = 0,
     //: Asset code is invalid
-    INVALID_ASSET_CODE = -1,    
+    INVALID_ASSET_CODE = -1,
     //: Asset can't be deleted as there exist asset pairs with it
     HAS_PAIR = -2,
     //: Asset can't be deleted as it has active offers
     HAS_ACTIVE_OFFERS = -3,
     //: Asset can't be deleted as it has active sales
-    HAS_ACTIVE_SALES = -4
-
+    HAS_ACTIVE_SALES = -4,
+    //: Asset can't be deleted as it has active atomic swaps
+    HAS_ACTIVE_ATOMIC_SWAPS = -5,
+    //: Asset can't be deleted as it has active swaps
+    HAS_ACTIVE_SWAPS = -6,
+    //: Asset can't be deleted as it is stats quote asset
+    CANNOT_REMOVE_STATS_QUOTE_ASSET = -7,
+    //: Cannot delete asset, as some balances in target asset have non-empty locked amount
+    HAS_PENDING_MOVEMENTS = -8
 };
 
 //: Result of successful `RemoveAssetOp` application

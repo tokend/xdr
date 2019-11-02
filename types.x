@@ -28,7 +28,8 @@ enum LedgerVersion
     FIX_DEPOSIT_STATS = 18,
     FIX_CREATE_KYC_RECOVERY_PERMISSIONS = 19,
     CLEAR_DATABASE_CACHE = 20,
-    FIX_ISSUANCE_REVIEWER = 21
+    FIX_ISSUANCE_REVIEWER = 21,
+    MARK_ASSET_AS_DELETED = 22
 };
 
 union EmptyExt switch (LedgerVersion v)
