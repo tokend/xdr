@@ -39,7 +39,7 @@ enum KYCRecoveryResultCode
     //: Account with provided account address does not exist
     TARGET_ACCOUNT_NOT_FOUND = -9,
     //: System configuration forbids KYC recovery
-    RECOVERY_NOT_ALLOWED = -10,
+    RECOVERY_NOT_ALLOWED = -10
 };
 
 //: Result of operation applying
