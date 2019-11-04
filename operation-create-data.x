@@ -1,4 +1,4 @@
-``%#include "xdr/types.h"
+%#include "xdr/types.h"
 
 namespace stellar 
 {
