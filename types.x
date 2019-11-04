@@ -57,10 +57,6 @@ enum LedgerEntryType
     KEY_VALUE = 20,
     RULE = 30,
     ROLE = 31,
-    INITIATE_KYC_RECOVERY = 37,
-    PAYMENT = 38,
-    ISSUANCE = 39,
-    DESTRUCTION = 40
 };
 
 // variable size as the size depends on the signature scheme used

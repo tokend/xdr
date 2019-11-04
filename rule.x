@@ -117,28 +117,55 @@ default:
 };
 
 //: Actions that can be applied to a signer rule resource
-enum RuleAction
+enum RuleActionType
 {
     ANY = 1,
     CREATE = 2,
     CREATE_FOR_OTHER = 3,
     UPDATE = 4,
-    MANAGE = 5,
+    ISSUE = 5,
     SEND = 6,
     REMOVE = 7,
-    CANCEL = 8,
+    DESTROY = 8,
     REVIEW = 9,
     CHANGE_ROLES = 10,
-    PARTICIPATE = 11,
-    BIND = 12,
+    INITIATE_RECOVERY = 11,
+    RECOVER = 12,
     UPDATE_MAX_ISSUANCE = 13,
-    CHECK = 14,
-    CLOSE = 15,
     UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
-    RECEIVE = 19,
-    PERFORM = 20
+    RECEIVE = 19
+};
+
+union RuleAction switch (RuleActionType type) 
+{
+case ISSUE:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } issue;
+case DESTROY:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } destroy;
+case SEND:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } send;
+case CHANGE_ROLES:
+    struct {
+        uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
+
+        EmptyExt;
+    } changeRoles;
+default:
+    EmptyExt ext;
 };
 
 struct ReviewableRequestOperationRule 
