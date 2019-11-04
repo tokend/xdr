@@ -104,6 +104,13 @@ case DESTRUCTION:
 
         EmptyExt ext;
     } destruction;
+case DATA:
+    struct
+    {
+        uint64 id;
+        uint64 securityType;
+        EmptyExt ext;
+    } data;
 default:
     //: reserved for future extension
     EmptyExt ext;

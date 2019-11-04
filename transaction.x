@@ -71,6 +71,12 @@ struct Operation
 		ManageBalanceOp manageBalanceOp;
     case CREATE_ASSET:
         CreateAssetOp createAssetOp;
+    case CREATE_DATA:
+        CreateDataOp createDataOp;
+    case UPDATE_DATA:
+        UpdateDataOp updateDataOp;
+    case REMOVE_DATA:
+        RemoveDataOp removeDataOp;
     case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
 	case PUT_KEY_VALUE:
@@ -228,6 +234,12 @@ case MANAGE_BALANCE:
     ManageBalanceResult manageBalanceResult;
 case CREATE_ASSET:
     CreateAssetResult createAssetResult;
+case CREATE_DATA:
+    CreateDataResult createDataResult;
+case UPDATE_DATA:
+    UpdateDataResult updateDataResult;
+case REMOVE_DATA:
+    RemoveDataResult removeDataResult;
 case REVIEW_REQUEST:
     ReviewRequestResult reviewRequestResult;
 case PUT_KEY_VALUE:

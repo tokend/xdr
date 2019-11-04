@@ -115,5 +115,12 @@ case RULE:
         }
         ext;
     } rule;
+case DATA:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } data;
+
 };
 }
