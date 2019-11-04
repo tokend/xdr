@@ -73,8 +73,10 @@ struct Operation
         CreateAssetOp createAssetOp;
     case REVIEW_REQUEST:
 		ReviewRequestOp reviewRequestOp;
-	case MANAGE_KEY_VALUE:
-	    ManageKeyValueOp manageKeyValueOp;
+	case PUT_KEY_VALUE:
+	    PutKeyValueOp putKeyValueOp;
+    case REMOVE_KEY_VALUE:
+	    RemoveKeyValueOp removeKeyValueOp;
 	case CHANGE_ACCOUNT_ROLES:
 		ChangeAccountRolesOp changeAccountRolesOp;
     case PAYMENT:
@@ -228,8 +230,10 @@ case CREATE_ASSET:
     CreateAssetResult createAssetResult;
 case REVIEW_REQUEST:
     ReviewRequestResult reviewRequestResult;
-case MANAGE_KEY_VALUE:
-    ManageKeyValueResult manageKeyValueResult;
+case PUT_KEY_VALUE:
+    PutKeyValueResult putKeyValueResult;
+case REMOVE_KEY_VALUE:
+    RemoveKeyValueResult removeKeyValueResult;
 case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesResult changeAccountRolesResult;
 case PAYMENT:

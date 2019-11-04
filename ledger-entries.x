@@ -36,16 +36,6 @@
 namespace stellar
 {
 
-// the 'Thresholds' type is packed uint8_t values
-// defined by these indexes
-enum ThresholdIndexes
-{
-    MASTER_WEIGHT = 0,
-    LOW = 1,
-    MED = 2,
-    HIGH = 3
-};
-
 
 struct LedgerEntry
 {
