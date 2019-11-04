@@ -92,7 +92,6 @@ struct HmacSha256Mac
 
 typedef PublicKey AccountID;
 typedef PublicKey BalanceID;
-typedef opaque Thresholds[4];
 typedef string string32<32>;
 typedef string string64<64>;
 typedef string string256<256>;
