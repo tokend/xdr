@@ -162,7 +162,7 @@ case CHANGE_ROLES:
     struct {
         uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
 
-        EmptyExt;
+        EmptyExt ext;
     } changeRoles;
 default:
     EmptyExt ext;
