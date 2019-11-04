@@ -7,8 +7,6 @@ namespace stellar
 //: KYCRecoveryOp to create KYC recovery request and set new signers for account
 struct KYCRecoveryOp
 {
-    //: ID of a reviewable request. If set 0, request is created, else - request is updated
-    uint64 requestID;
     //: Account for which signers will be set
     AccountID targetAccount;
     //: New signers to set
@@ -48,9 +46,6 @@ union KYCRecoveryResult switch (KYCRecoveryResultCode code)
 case SUCCESS:
     //: Is used to pass useful params if operation is success
     struct {
-        //: Indicates whether or not the KYC Recovery request was auto approved and fulfilled
-        bool fulfilled;
-
         //: reserved for future use
         EmptyExt ext;
     } success;
