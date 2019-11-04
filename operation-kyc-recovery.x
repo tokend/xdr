@@ -48,9 +48,6 @@ union KYCRecoveryResult switch (KYCRecoveryResultCode code)
 case SUCCESS:
     //: Is used to pass useful params if operation is success
     struct {
-        //: id of the created request
-        uint64 requestID;
-
         //: Indicates whether or not the KYC Recovery request was auto approved and fulfilled
         bool fulfilled;
 
