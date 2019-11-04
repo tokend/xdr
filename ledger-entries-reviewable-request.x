@@ -71,6 +71,9 @@ struct ReviewableRequestEntry
 {
 	uint64 requestID;
 	Hash hash; // hash of the request body
+
+    uint32 securityType; // responsable for operations (types, count)
+
 	AccountID requestor;
     longstring rejectReason;
 	int64 createdAt; // when request was created
