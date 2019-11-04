@@ -64,7 +64,7 @@ case INITIATE_KYC_RECOVERY:
     struct
     {
         //: Role id
-        uint64 roleID;
+        uint64 roleIDs<>;
 
         //: reserved for future extension
         EmptyExt ext;
