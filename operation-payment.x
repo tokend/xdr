@@ -120,12 +120,7 @@ struct PaymentResponse {
     Fee actualDestinationPaymentFee;
 
     //: reserved for future use
-    union switch (LedgerVersion v)
-    {
-    case EMPTY_VERSION:
-        void;
-    }
-    ext;
+    EmptyExt ext;
 };
 
 union PaymentResult switch (PaymentResultCode code)

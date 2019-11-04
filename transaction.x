@@ -105,8 +105,8 @@ struct Operation
         RemoveReviewableRequestOp removeReviewableRequestOp;
     case INITIATE_KYC_RECOVERY:
         InitiateKYCRecoveryOp initiateKYCRecoveryOp;
-    case CREATE_KYC_RECOVERY_REQUEST:
-        CreateKYCRecoveryRequestOp createKYCRecoveryRequestOp;
+    case KYC_RECOVERY:
+        KYCRecoveryOp kycRecoveryOp;
     case ISSUANCE:
         IssuanceOp issuanceOp;
     }
@@ -258,8 +258,8 @@ case UPDATE_REVIEWABLE_REQUEST:
     UpdateReviewableRequestResult updateReviewableRequestResult;
 case REMOVE_REVIEWABLE_REQUEST:
     RemoveReviewableRequestResult removeReviewableRequestResult;
-case CREATE_KYC_RECOVERY_REQUEST:
-    CreateKYCRecoveryRequestResult createKYCRecoveryRequestResult;
+case KYC_RECOVERY:
+    KYCRecoveryResult kycRecoveryResult;
 case INITIATE_KYC_RECOVERY:
     InitiateKYCRecoveryResult initiateKYCRecoveryResult;
 case ISSUANCE:
