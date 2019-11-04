@@ -60,50 +60,6 @@ case KEY_VALUE:
         //: reserved for future extension
         EmptyExt ext;
     } keyValue;
-case INITIATE_KYC_RECOVERY:
-    struct
-    {
-        //: Role id
-        uint64 roleIDs<>;
-
-        //: reserved for future extension
-        EmptyExt ext;
-    } initiateKYCRecovery;
-case PAYMENT:
-    struct
-    {
-        //: asset code
-        AssetCode assetCode;
-        //: asset type
-        uint32 assetType;
-        //: payment type
-        uint32 paymentType;
-
-        //: reserved for future extension
-        EmptyExt ext;
-    } payment;
-case ISSUANCE:
-    struct
-    {
-        uint32 issuanceType;
-        //: asset code
-        AssetCode assetCode;
-        //: asset type
-        uint32 assetType;
-
-        EmptyExt ext;
-    } issuance;
-case DESTRUCTION:
-    struct
-    {
-        uint32 destructionType;
-        //: asset code
-        AssetCode assetCode;
-        //: asset type
-        uint32 assetType;
-
-        EmptyExt ext;
-    } destruction;
 case DATA:
     struct
     {
