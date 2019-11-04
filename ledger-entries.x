@@ -51,6 +51,8 @@ struct LedgerEntry
         BalanceEntry balance;
     case ASSET:
         AssetEntry asset;
+    case DATA:
+        DataEntry data;
     case REFERENCE_ENTRY:
         ReferenceEntry reference;
     case REVIEWABLE_REQUEST:
