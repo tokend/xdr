@@ -56,7 +56,7 @@ enum LedgerEntryType
 	ACCOUNT_KYC = 18,
     KEY_VALUE = 20,
     RULE = 30,
-    ROLE = 31,
+    ROLE = 31
 };
 
 // variable size as the size depends on the signature scheme used
