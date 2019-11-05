@@ -109,8 +109,6 @@ struct PaymentResponse {
     AssetCode asset;
     //: Actual amount received
     uint64 amountReceived;
-    //: Unique ID of the payment
-    uint64 paymentID;
 
     //: Fee charged from the source balance
     Fee actualSourcePaymentFee;
