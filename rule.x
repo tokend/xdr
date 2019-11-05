@@ -63,7 +63,6 @@ case KEY_VALUE:
 case DATA:
     struct
     {
-        uint64 id;
         uint32 securityType;
         EmptyExt ext;
     } data;
