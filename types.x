@@ -119,7 +119,7 @@ enum OperationType
     CREATE_ACCOUNT = 1,
     ISSUANCE = 3,
     DESTRUCTION = 7,
-    MANAGE_BALANCE = 9,
+    CREATE_BALANCE = 9,
     CREATE_ASSET = 11,
     UPDATE_ASSET = 12,
     CREATE_DATA = 14,

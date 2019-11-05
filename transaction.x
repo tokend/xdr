@@ -67,8 +67,8 @@ struct Operation
         CreateAccountOp createAccountOp;
 	case DESTRUCTION:
 		DestructionOp destructionOp;
-	case MANAGE_BALANCE:
-		ManageBalanceOp manageBalanceOp;
+	case CREATE_BALANCE:
+		CreateBalanceOp createBalanceOp;
     case CREATE_ASSET:
         CreateAssetOp createAssetOp;
     case UPDATE_ASSET:
@@ -232,8 +232,8 @@ case CREATE_ACCOUNT:
     CreateAccountResult createAccountResult;
 case DESTRUCTION:
     DestructionResult destructionResult;
-case MANAGE_BALANCE:
-    ManageBalanceResult manageBalanceResult;
+case CREATE_BALANCE:
+    CreateBalanceResult createBalanceResult;
 case CREATE_ASSET:
     CreateAssetResult createAssetResult;
 case UPDATE_ASSET:

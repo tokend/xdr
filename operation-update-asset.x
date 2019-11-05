@@ -14,7 +14,9 @@ enum UpdateAssetResultCode
 {
     SUCCESS = 0,
 
-    NOT_FOUND = -1
+    NOT_FOUND = -1,
+    INVALID_DETAILS = -2,
+    UNSUFFICIENT_MAX_ISSUANCE_AMOUNT = -3
 };
 
 union UpdateAssetResult switch(UpdateAssetResultCode code) 
