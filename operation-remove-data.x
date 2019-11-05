@@ -14,7 +14,8 @@ enum RemoveDataResultCode
 {
     SUCCESS = 0,
 
-    NOT_FOUND = -1
+    NOT_FOUND = -1,
+    NOT_ALLOWED = -2
 };
 
 union RemoveDataResult switch (RemoveDataResultCode code)

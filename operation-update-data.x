@@ -17,7 +17,8 @@ enum UpdateDataResultCode
     SUCCESS = 0,
 
     INVALID_DATA = -1,
-    NOT_FOUND = -2
+    NOT_FOUND = -2,
+    NOT_ALLOWED = -3
 };
 
 union UpdateDataResult switch (UpdateDataResultCode code)
