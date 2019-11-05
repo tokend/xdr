@@ -59,7 +59,7 @@ enum DestructionResultCode
     //: Applying operation would exceed limits set in the system
     LIMITS_EXCEEDED = -9,
     //: Amount withdrawn is smaller than the minimal withdrawable amount set in the system
-    LOWER_BOUND_NOT_EXCEEDED = -10,
+    LOWER_BOUND_NOT_EXCEEDED = -10
 };
 
 //: Result of the successful withdrawal request creation
