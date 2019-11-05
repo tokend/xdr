@@ -71,6 +71,8 @@ struct Operation
 		ManageBalanceOp manageBalanceOp;
     case CREATE_ASSET:
         CreateAssetOp createAssetOp;
+    case UPDATE_ASSET:
+        UpdateAssetOp updateAssetOp;
     case CREATE_DATA:
         CreateDataOp createDataOp;
     case UPDATE_DATA:
@@ -234,6 +236,8 @@ case MANAGE_BALANCE:
     ManageBalanceResult manageBalanceResult;
 case CREATE_ASSET:
     CreateAssetResult createAssetResult;
+case UPDATE_ASSET:
+    UpdateAssetResult updateAssetResult;
 case CREATE_DATA:
     CreateDataResult createDataResult;
 case UPDATE_DATA:
