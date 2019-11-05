@@ -46,7 +46,7 @@ case SIGNER:
     //: Describes properties that are equal to managed signer entry fields
     struct
     {
-        uint64 roleID;
+        uint64 roleIDs<>;
 
         EmptyExt ext;
     } signer;
