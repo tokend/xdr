@@ -7,8 +7,6 @@ namespace stellar
 
     Send an amount in specified asset to a destination account.
 
-    Threshold: med
-
     Result: PaymentResult
 */
 
@@ -109,8 +107,8 @@ struct PaymentResponse {
 
     //: Code of an asset used in payment
     AssetCode asset;
-    //: Amount sent by the sender
-    uint64 sourceSentUniversal;
+    //: Actual amount received
+    uint64 amountReceived;
     //: Unique ID of the payment
     uint64 paymentID;
 
