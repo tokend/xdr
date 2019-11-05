@@ -9,6 +9,8 @@ struct DataEntry
     uint32 securityType;
     longstring value;
 
+    AccountID owner;
+
     EmptyExt ext;
 };
 }
