@@ -17,7 +17,7 @@ namespace stellar
 struct DestructionOp
 {
     //: security type
-    uint32 type;
+    uint32 securityType;
     //: Balance to withdraw from
     BalanceID balance; // balance id from which withdrawal will be performed
     //: Amount to withdraw
@@ -48,34 +48,18 @@ enum DestructionResultCode
     BALANCE_NOT_FOUND = -3, // balance not found
     //: Asset cannot be withdrawn because AssetPolicy::WITHDRAWABLE is not set
     ASSET_IS_NOT_WITHDRAWABLE = -4,
-    //: Deprecated
-    CONVERSION_PRICE_IS_NOT_AVAILABLE = -5, // failed to find conversion price - conversion is not allowed
     //: Expected fee and actual fee mismatch
-    FEE_MISMATCHED = -6,
-    //: Deprecated
-    CONVERSION_OVERFLOW = -7,
-    //: Deprecated
-    CONVERTED_AMOUNT_MISMATCHED = -8,
+    FEE_MISMATCHED = -5,
     //: Trying to lock balance, locked amount would exceed UINT64_MAX
-    BALANCE_LOCK_OVERFLOW = -9,
+    BALANCE_LOCK_OVERFLOW = -6,
     //: Insufficient balance to withdraw the requested amount
-    UNDERFUNDED = -10,
-    //: Non zero universal amount
-    INVALID_UNIVERSAL_AMOUNT = -11,
+    UNDERFUNDED = -7,
     //: Applying operation would overflow statistics
-    STATS_OVERFLOW = -12,
+    STATS_OVERFLOW = -8,
     //: Applying operation would exceed limits set in the system
-    LIMITS_EXCEEDED = -13,
-    //: Deprecated
-    INVALID_PRE_CONFIRMATION_DETAILS = -14, // it's not allowed to pass pre confirmation details
+    LIMITS_EXCEEDED = -9,
     //: Amount withdrawn is smaller than the minimal withdrawable amount set in the system
-    LOWER_BOUND_NOT_EXCEEDED = -15,
-    //: Withdrawal tasks are not set in the system, i.e. it's not allowed to perform withdraw operations
-    WITHDRAWAL_TASKS_NOT_FOUND = -16,
-    //: Not allowed to set withdrawal tasks on the request creation
-    NOT_ALLOWED_TO_SET_WITHDRAWAL_TASKS = -17,
-    //: Not allowed to set zero tasks
-    WITHDRAWAL_ZERO_TASKS_NOT_ALLOWED = -18
+    LOWER_BOUND_NOT_EXCEEDED = -10,
 };
 
 //: Result of the successful withdrawal request creation
@@ -83,7 +67,7 @@ struct DestructionSuccess {
     EmptyExt ext;
 };
 
-//: Result of applying CreateWithdrawalRequst operation along with the result code
+//: Result of applying Destruction operation along with the result code
 union DestructionResult switch (DestructionResultCode code)
 {
     case SUCCESS:

@@ -13,7 +13,7 @@ case REVIEWABLE_REQUEST:
     {
         ReviewableRequestOperationRule opRules<>;
 
-        uint64 securityType;
+        uint32 securityType;
 
         //: Bit mask of tasks that is allowed to add to reviewable request pending tasks
         uint64 tasksToAdd;
@@ -27,7 +27,7 @@ case ASSET:
     struct
     {
         AssetCode assetCode;
-        uint32 assetType;
+        uint32 securityType;
 
         EmptyExt ext;
     } asset;
@@ -64,7 +64,7 @@ case DATA:
     struct
     {
         uint64 id;
-        uint64 securityType;
+        uint32 securityType;
         EmptyExt ext;
     } data;
 default:
@@ -88,10 +88,10 @@ enum RuleActionType
     INITIATE_RECOVERY = 11,
     RECOVER = 12,
     UPDATE_MAX_ISSUANCE = 13,
-    UPDATE_END_TIME = 16,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
-    RECEIVE = 19
+    RECEIVE = 19,
+    RECEIVE_ISSUANCE = 20
 };
 
 union RuleAction switch (RuleActionType type) 
@@ -114,12 +114,30 @@ case SEND:
 
         EmptyExt ext;
     } send;
+case RECEIVE:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } receive;
+case RECEIVE_ISSUANCE:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } receiveIssuance;
 case CHANGE_ROLES:
     struct {
         uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
 
         EmptyExt ext;
     } changeRoles;
+case INITIATE_RECOVERY:
+    struct {
+        uint64 roleIDs<>;
+
+        EmptyExt ext;
+    } initiateRecovery;
 default:
     EmptyExt ext;
 };

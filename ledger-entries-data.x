@@ -6,7 +6,7 @@ namespace stellar
 struct DataEntry 
 {
     uint64 id;
-    uint64 securityType;
+    uint32 securityType;
     longstring value;
 
     EmptyExt ext;

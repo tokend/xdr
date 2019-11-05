@@ -5,7 +5,7 @@ namespace stellar
     
 struct CreateDataOp 
 {
-    uint64 securityType;
+    uint32 securityType;
     longstring value;
 
     EmptyExt ext;
