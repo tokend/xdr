@@ -6,6 +6,7 @@ struct UpdateAssetOp
     AssetCode code;
     longstring details;
 	uint64 maxIssuanceAmount;
+	uint32 state;
 
     EmptyExt ext;
 };
