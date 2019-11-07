@@ -22,6 +22,9 @@ struct DestructionOp
     BalanceID balance; // balance id from which withdrawal will be performed
     //: Amount to withdraw
     uint64 amount; // amount to be withdrawn
+
+    longstring reference;
+
     //: Total fee to pay, contains fixed amount and calculated percent of the withdrawn amount
     Fee fee; // expected fee to be paid
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
@@ -59,7 +62,8 @@ enum DestructionResultCode
     //: Applying operation would exceed limits set in the system
     LIMITS_EXCEEDED = -9,
     //: Amount withdrawn is smaller than the minimal withdrawable amount set in the system
-    LOWER_BOUND_NOT_EXCEEDED = -10
+    LOWER_BOUND_NOT_EXCEEDED = -10,
+    REFERENCE_DUPLICATION = -11
 };
 
 //: Result of the successful withdrawal request creation
