@@ -17,10 +17,18 @@ enum CreateReviewableRequestResultCode
     TOO_MANY_OPERATIONS = -3
 };
 
+struct CreateReviewableRequestSuccessResult 
+{
+    uint64 requestID;
+    bool isFulfilled;
+
+    EmptyExt ext;
+};
+
 union CreateReviewableRequestResult switch (CreateReviewableRequestResultCode code)
 {
 case SUCCESS:
-    EmptyExt ext;
+    CreateReviewableRequestSuccessResult success;
 case INVALID_OPERATION:
     OperationResultTr operationResult;
 case TOO_MANY_OPERATIONS:
