@@ -140,7 +140,7 @@ union ReviewRequestResult switch (ReviewRequestResultCode code)
 case SUCCESS:
     ExtendedResult success;
 case INVALID_OPERATION:
-    OperationResultTr operationResult;
+    OperationResult operationResult;
 default:
     void;
 };

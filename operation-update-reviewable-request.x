@@ -25,7 +25,7 @@ union UpdateReviewableRequestResult switch (UpdateReviewableRequestResultCode co
 case SUCCESS:
     EmptyExt ext;
 case INVALID_OPERATION:
-    OperationResultTr operationResult;
+    OperationResult operationResult;
 case TOO_MANY_OPERATIONS:
     uint32 maxOperationsCount;
 default:

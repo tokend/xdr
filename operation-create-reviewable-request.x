@@ -30,7 +30,7 @@ union CreateReviewableRequestResult switch (CreateReviewableRequestResultCode co
 case SUCCESS:
     CreateReviewableRequestSuccessResult success;
 case INVALID_OPERATION:
-    OperationResultTr operationResult;
+    OperationResult operationResult;
 case TOO_MANY_OPERATIONS:
     uint32 maxOperationsCount;
 default:
