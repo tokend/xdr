@@ -64,6 +64,8 @@ case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesOp changeAccountRolesOp;
 case CREATE_ASSET:
     CreateAssetOp createAssetOp;
+case CREATE_BALANCE:
+    CreateBalanceOp createBalanceOp;
 };
 
 // ReviewableRequest - request reviewable by admin
