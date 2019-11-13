@@ -68,6 +68,14 @@ enum DestructionResultCode
 
 //: Result of the successful withdrawal request creation
 struct DestructionSuccess {
+    //: Account address of the receiver
+    AccountID targetAccount;
+    BalanceID targetBalance;
+
+    uint64 actualAmount;
+    //: Paid fee
+    Fee fee;
+
     EmptyExt ext;
 };
 

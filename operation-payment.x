@@ -99,7 +99,7 @@ enum PaymentResultCode
 };
 
 //: `PaymentResponse` defines the response on the corresponding PaymentOp
-struct PaymentResponse {
+struct PaymentSuccess {
     //: ID of the destination account
     AccountID destination;
     //: ID of the destination balance
@@ -122,7 +122,7 @@ struct PaymentResponse {
 union PaymentResult switch (PaymentResultCode code)
 {
 case SUCCESS:
-    PaymentResponse paymentResponse;
+    PaymentSuccess paymentSuccess;
 default:
     void;
 };

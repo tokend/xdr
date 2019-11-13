@@ -87,6 +87,7 @@ enum RuleActionType
     INITIATE_RECOVERY = 11,
     RECOVER = 12,
     UPDATE_MAX_ISSUANCE = 13,
+    DESTROY_FOR_OTHER = 14,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     RECEIVE = 19,
@@ -137,6 +138,12 @@ case INITIATE_RECOVERY:
 
         EmptyExt ext;
     } initiateRecovery;
+case DESTROY_FOR_OTHER:
+    struct {
+        uint32 securityType;
+
+        EmptyExt ext;
+    } destroyForOther;
 default:
     EmptyExt ext;
 };
