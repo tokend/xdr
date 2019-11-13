@@ -20,7 +20,8 @@ enum CreateReviewableRequestResultCode
 struct CreateReviewableRequestSuccessResult 
 {
     uint64 requestID;
-    bool isFulfilled;
+
+    ExtendedResult extendedResult;
 
     EmptyExt ext;
 };

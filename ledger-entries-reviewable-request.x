@@ -20,18 +20,6 @@
 namespace stellar
 {
 
-enum ReviewableRequestType
-{
-	NONE = 0, // use this request type in ReviewRequestOp extended result if additional info is not required
-	ANY = 1,
-	CREATE_ISSUANCE = 3,
-	CREATE_WITHDRAW = 4,
-	CHANGE_ROLE = 8,
-	CREATE_ASSET = 10,
-	UPDATE_ASSET = 13,
-	KYC_RECOVERY = 18
-};
-
 union ReviewableRequestOperation switch (OperationType type)
 {
 case CREATE_ACCOUNT:
@@ -64,8 +52,25 @@ case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesOp changeAccountRolesOp;
 case CREATE_ASSET:
     CreateAssetOp createAssetOp;
+case REMOVE_KEY_VALUE:
+    RemoveKeyValueOp removeKeyValueOp;
+case PUT_KEY_VALUE:
+    PutKeyValueOp putKeyValueOp;
+case CREATE_DATA:
+    CreateDataOp createDataOp;
+case UPDATE_DATA:
+    UpdateDataOp updateDataOp;
+case REMOVE_DATA:
+    RemoveDataOp removeDataOp;
 case CREATE_BALANCE:
     CreateBalanceOp createBalanceOp;
+case UPDATE_ASSET:
+    UpdateAssetOp updateAssetOp;
+case INITIATE_KYC_RECOVERY:
+    InitiateKYCRecoveryOp initiateKYCRecoveryOp;
+case KYC_RECOVERY:
+    KYCRecoveryOp kycRecoveryOp;
+
 };
 
 // ReviewableRequest - request reviewable by admin
@@ -74,7 +79,7 @@ struct ReviewableRequestEntry
 	uint64 requestID;
 	Hash hash; // hash of the request body
 
-    uint32 securityType; // responsable for operations (types, count)
+    uint32 securityType; // responsible for operations (types, count)
 
 	AccountID requestor;
     longstring rejectReason;

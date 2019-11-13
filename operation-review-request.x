@@ -83,47 +83,15 @@ enum ReviewRequestResultCode
     //: Trying to remove tasks which are not set
     REMOVING_NOT_SET_TASKS = -10,// cannot remove tasks which are not set
     //: CheckValid or Confirm of operation is failed
-    INVALID_OPERATION = -11,
-
-    //: Asset requests
-    //: Trying to create an asset that already exists
-    ASSET_ALREADY_EXISTS = -200,
-    //: Trying to update an asset that does not exist
-    ASSET_DOES_NOT_EXISTS = -210,
-
-    //: Issuance requests
-    //: After the issuance request application, issued amount will exceed max issuance amount
-    MAX_ISSUANCE_AMOUNT_EXCEEDED = -400,
-    //: Trying to issue more than it is available for issuance
-    INSUFFICIENT_AVAILABLE_FOR_ISSUANCE_AMOUNT = -410,
-    //: Funding account will exceed UINT64_MAX
-    FULL_LINE = -420,
-    //: It is not allowed to set system tasks
-    SYSTEM_TASKS_NOT_ALLOWED = -430,
-    //: Incorrect amount precision
-    INCORRECT_PRECISION = -440,
-
-    //: Change role 
-    //: Trying to remove zero tasks
-    NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
-    //: There is no account role with provided id
-    ACCOUNT_ROLE_TO_SET_DOES_NOT_EXIST = -610,
-
-    //KYC
-    //:Signer data is invalid - either weight is wrong or details are invalid
-    INVALID_SIGNER_DATA = -1600
-
+    INVALID_OPERATION = -11
 };
 
 //: Extended result of a Review Request operation containing details specific to certain request types
 struct ExtendedResult {
     //: Indicates whether or not the request that is being reviewed was applied
     bool fulfilled;
-    //: typeExt is used to pass ReviewableRequestType along with details specific to a request type
-    union switch(ReviewableRequestType requestType) {
-    case NONE:
-        void;
-    } typeExt;
+
+    OperationResult operationResults<>;
 
     //: Reserved for future use
     union switch (LedgerVersion v)
