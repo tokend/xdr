@@ -52,10 +52,12 @@ case CHANGE_ACCOUNT_ROLES:
     ChangeAccountRolesOp changeAccountRolesOp;
 case CREATE_ASSET:
     CreateAssetOp createAssetOp;
-case REMOVE_KEY_VALUE:
-    RemoveKeyValueOp removeKeyValueOp;
+case UPDATE_ASSET:
+    UpdateAssetOp updateAssetOp;
 case PUT_KEY_VALUE:
     PutKeyValueOp putKeyValueOp;
+case REMOVE_KEY_VALUE:
+    RemoveKeyValueOp removeKeyValueOp;
 case CREATE_DATA:
     CreateDataOp createDataOp;
 case UPDATE_DATA:
@@ -64,8 +66,6 @@ case REMOVE_DATA:
     RemoveDataOp removeDataOp;
 case CREATE_BALANCE:
     CreateBalanceOp createBalanceOp;
-case UPDATE_ASSET:
-    UpdateAssetOp updateAssetOp;
 case INITIATE_KYC_RECOVERY:
     InitiateKYCRecoveryOp initiateKYCRecoveryOp;
 case KYC_RECOVERY:

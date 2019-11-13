@@ -57,6 +57,7 @@ case ASSET:
     {
         AssetCode assetCode;
         uint32 securityType;
+        uint32 state;
 
         EmptyExt ext;
     } asset;
