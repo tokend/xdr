@@ -4,8 +4,37 @@
 namespace stellar
 {
 
+
+struct CustomRuleAction
+{
+    longstring actionType;
+
+    longstring actionPayload;
+};
+
+struct CustomRuleResource
+{
+    longstring resourceType;
+    longstring resourcePayload;
+};
+
+
+enum RuleResourceType
+{
+    LEDGER_ENTRY = 0,
+    CUSTOM = 1
+};
+
+union RuleResource switch(RuleResourceType resourceType)
+{
+    case LEDGER_ENTRY:
+        InternalRuleResource internalRuleResource;
+    case CUSTOM:
+        CustomRuleResource customRuleResource;
+};
+
 //: Describes properties of some entries that can be used to restrict the usage of entries
-union RuleResource switch (LedgerEntryType type)
+union InternalRuleResource switch (LedgerEntryType type)
 {
 case REVIEWABLE_REQUEST:
     //: Describes properties that are equal to managed reviewable request entry fields
@@ -91,7 +120,8 @@ enum RuleActionType
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     RECEIVE = 19,
-    RECEIVE_ISSUANCE = 20
+    RECEIVE_ISSUANCE = 20,
+    CUSTOM = 21
 };
 
 union RuleAction switch (RuleActionType type) 
@@ -144,6 +174,8 @@ case DESTROY_FOR_OTHER:
 
         EmptyExt ext;
     } destroyForOther;
+case CUSTOM:
+    CustomRuleAction customRuleAction;
 default:
     EmptyExt ext;
 };
