@@ -183,7 +183,7 @@ default:
 
 struct ReviewableRequestOperationRule 
 {
-    RuleResource resource;
+    InternalRuleResource resource;
 
     RuleAction action;
 
