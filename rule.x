@@ -119,6 +119,7 @@ enum RuleActionType
     UPDATE_MAX_ISSUANCE = 13,
     UPDATE_STATE = 14,
     DESTROY_FOR_OTHER = 15,
+    CHANGE_ROLES_FOR_OTHER = 16,
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     RECEIVE = 19,
@@ -159,6 +160,12 @@ case RECEIVE_ISSUANCE:
         EmptyExt ext;
     } receiveIssuance;
 case CHANGE_ROLES:
+    struct {
+        uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
+
+        EmptyExt ext;
+    } changeRoles;
+case CHANGE_ROLES_FOR_OTHER:
     struct {
         uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
 
