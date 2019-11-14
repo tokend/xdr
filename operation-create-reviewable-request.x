@@ -3,6 +3,7 @@ namespace stellar
 
 struct CreateReviewableRequestOp
 {
+    uint32 securityType;
     ReviewableRequestOperation operations<>;
 
     EmptyExt ext;
