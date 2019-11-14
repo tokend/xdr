@@ -37,7 +37,10 @@ enum UpdateRuleResultCode
     //: There is no signer rule with such id or source cannot manage the rule
     NOT_FOUND = -1, // does not exists or owner mismatched
     //: Passed details have invalid json structure
-    INVALID_DETAILS = -2
+    INVALID_DETAILS = -2,
+
+    INVALID_CUSTOM_ACTION = -3,
+    INVALID_CUSTOM_RESOURCE = -4
 };
 
 //: Result of operation application

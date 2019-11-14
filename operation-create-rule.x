@@ -28,7 +28,10 @@ enum CreateRuleResultCode
 
     // codes considered as "failure" for the operation
     //: Passed details have invalid json structure
-    INVALID_DETAILS = -1
+    INVALID_DETAILS = -1,
+
+    INVALID_CUSTOM_ACTION = -2,
+    INVALID_CUSTOM_RESOURCE = -3
 };
 
 //: Result of operation application
