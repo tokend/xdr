@@ -170,7 +170,7 @@ case CHANGE_ROLES_FOR_OTHER:
         uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
 
         EmptyExt ext;
-    } changeRoles;
+    } changeRolesForOther;
 case INITIATE_RECOVERY:
     struct {
         uint64 roleIDs<>;
