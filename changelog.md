@@ -1,6 +1,13 @@
 # Changelog
 
-## 3.5.0-x.0
+## 3.6.0-x.0
+
+## Added
+
+* new LedgerVersion for marking asset as deleted
+* asset operation error codes
+
+## 3.5.0
 
 ### Added
 
