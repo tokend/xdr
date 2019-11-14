@@ -106,7 +106,6 @@ enum RuleActionType
 {
     ANY = 1,
     CREATE = 2,
-    CREATE_FOR_OTHER = 3,
     UPDATE = 4,
     ISSUE = 5,
     SEND = 6,
@@ -118,10 +117,6 @@ enum RuleActionType
     RECOVER = 12,
     UPDATE_MAX_ISSUANCE = 13,
     UPDATE_STATE = 14,
-    DESTROY_FOR_OTHER = 15,
-    CHANGE_ROLES_FOR_OTHER = 16,
-    CREATE_WITH_TASKS = 17,
-    CREATE_FOR_OTHER_WITH_TASKS = 18,
     RECEIVE = 19,
     RECEIVE_ISSUANCE = 20,
     CUSTOM = 21
@@ -129,6 +124,18 @@ enum RuleActionType
 
 union RuleAction switch (RuleActionType type) 
 {
+case CREATE:
+    struct {
+        bool forOther;
+
+        EmptyExt ext;
+    } create;
+case UPDATE:
+    struct {
+        bool forOther;
+
+        EmptyExt ext;
+    } update;
 case ISSUE:
     struct {
         uint32 securityType;
@@ -138,6 +145,7 @@ case ISSUE:
 case DESTROY:
     struct {
         uint32 securityType;
+        bool forOther;
 
         EmptyExt ext;
     } destroy;
@@ -162,27 +170,16 @@ case RECEIVE_ISSUANCE:
 case CHANGE_ROLES:
     struct {
         uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
+        bool forOther;
 
         EmptyExt ext;
     } changeRoles;
-case CHANGE_ROLES_FOR_OTHER:
-    struct {
-        uint64 roleIDs<>; // if roleIDsToSet (from operation body) the same, action will triggered
-
-        EmptyExt ext;
-    } changeRolesForOther;
 case INITIATE_RECOVERY:
     struct {
         uint64 roleIDs<>;
 
         EmptyExt ext;
     } initiateRecovery;
-case DESTROY_FOR_OTHER:
-    struct {
-        uint32 securityType;
-
-        EmptyExt ext;
-    } destroyForOther;
 case CUSTOM:
     CustomRuleAction customRuleAction;
 default:
