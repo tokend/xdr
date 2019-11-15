@@ -29,7 +29,8 @@ enum LedgerVersion
     FIX_CREATE_KYC_RECOVERY_PERMISSIONS = 19,
     CLEAR_DATABASE_CACHE = 20,
     FIX_ISSUANCE_REVIEWER = 21,
-    MARK_ASSET_AS_DELETED = 22
+    MARK_ASSET_AS_DELETED = 22,
+    FIX_MAX_SUBJECT_SIZE = 23,
 };
 
 union EmptyExt switch (LedgerVersion v)
