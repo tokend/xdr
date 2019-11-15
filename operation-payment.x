@@ -105,7 +105,7 @@ enum PaymentResultCode
     //: There is no account found with an ID provided in `destination.accountID`
     DESTINATION_ACCOUNT_NOT_FOUND = -14,
     //: Amount precision and asset precision are mismatched
-    INCORRECT_AMOUNT_PRECISION = -15
+    INCORRECT_AMOUNT_PRECISION = -15,
     //: Too much signs in subject
     TOO_MUCH_SIGNS = -16,
 };
