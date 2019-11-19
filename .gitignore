@@ -2,3 +2,4 @@
 *.h
 docs/build/
 vendor/
+.bundle/
