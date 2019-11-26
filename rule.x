@@ -44,11 +44,6 @@ case REVIEWABLE_REQUEST:
 
         uint32 securityType;
 
-        //: Bit mask of tasks that is allowed to add to reviewable request pending tasks
-        uint64 tasksToAdd;
-        //: Bit mask of tasks that is allowed to remove from reviewable request pending tasks
-        uint64 tasksToRemove;
-
         EmptyExt ext;
     } reviewableRequest;
 case ASSET:
@@ -180,6 +175,14 @@ case INITIATE_RECOVERY:
 
         EmptyExt ext;
     } initiateRecovery;
+case REVIEW:
+    struct {
+        //: Bit mask of tasks that is allowed to add to reviewable request pending tasks
+        uint64 tasksToAdd;
+        //: Bit mask of tasks that is allowed to remove from reviewable request pending tasks
+        uint64 tasksToRemove;
+        EmptyExt ext;
+    } review;
 case CUSTOM:
     CustomRuleAction customRuleAction;
 default:
