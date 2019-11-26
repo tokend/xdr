@@ -5,8 +5,6 @@ struct CreateRoleOp
 {
     //: Array of ids of existing, unique and not default rules
     uint64 ruleIDs<>;
-    //: Indicates whether or not a rule can be modified in the future
-    bool isReadOnly;
     //: Arbitrary stringified json object with details to attach to the role
     longstring details;
 

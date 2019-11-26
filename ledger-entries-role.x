@@ -8,8 +8,6 @@ struct RoleEntry
     uint64 id;
     uint64 ruleIDs<>;
 
-    AccountID ownerID;
-
     longstring details;
 
     // reserved for future use

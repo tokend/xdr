@@ -51,7 +51,7 @@ union CreateAssetResult switch (CreateAssetResultCode code)
 {
 case SUCCESS:
     //: Result of successful operation application
-    EmptyExt exy;
+    EmptyExt ext;
 default:
     void;
 };

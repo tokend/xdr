@@ -12,11 +12,8 @@ struct RuleEntry
     RuleAction action;
 
     bool forbids;
-    bool isDefault; // default rules will be in each role
 
     longstring details;
-
-    AccountID ownerID;
 
     // reserved for future use
     union switch (LedgerVersion v)
