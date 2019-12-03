@@ -101,6 +101,7 @@ enum RuleActionType
 {
     ANY = 1,
     CREATE = 2,
+    READ = 3,
     UPDATE = 4,
     ISSUE = 5,
     SEND = 6,
@@ -191,7 +192,7 @@ default:
 
 struct ReviewableRequestOperationRule 
 {
-    InternalRuleResource resource;
+    RuleResource resource;
 
     RuleAction action;
 
