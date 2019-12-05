@@ -17,7 +17,8 @@ enum UpdateReviewableRequestResultCode
     INVALID_OPERATION = -1,
     TASKS_NOT_FOUND = -2,
     TOO_MANY_OPERATIONS = -3,
-    NOT_FOUND = -4
+    NOT_FOUND = -4,
+    SECURITY_TYPE_MISMATCH = -5
 };
 
 union UpdateReviewableRequestResult switch (UpdateReviewableRequestResultCode code)

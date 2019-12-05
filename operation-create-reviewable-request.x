@@ -15,7 +15,8 @@ enum CreateReviewableRequestResultCode
 
     INVALID_OPERATION = -1,
     TASKS_NOT_FOUND = -2,
-    TOO_MANY_OPERATIONS = -3
+    TOO_MANY_OPERATIONS = -3,
+    SECURITY_TYPE_MISMATCH = -4
 };
 
 struct CreateReviewableRequestSuccessResult 
