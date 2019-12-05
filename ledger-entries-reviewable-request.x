@@ -17,6 +17,7 @@
 %#include "xdr/reviewable-request-kyc-recovery.h"
 %#include "xdr/reviewable-request-manage-offer.h"
 %#include "xdr/reviewable-request-payment.h"
+%#include "xdr/reviewable-request-redemption.h"
 
 namespace stellar
 {
