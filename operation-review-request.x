@@ -260,7 +260,7 @@ struct ReviewRequestOp
 enum ReviewRequestResultCode
 {
     //: Codes considered as "success" for an operation
-    //: Operation is applied successfuly 
+    //: Operation is applied successfully
     SUCCESS = 0,
 
     //: Codes considered as "failure" for an operation
