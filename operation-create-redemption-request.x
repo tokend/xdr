@@ -45,7 +45,11 @@ enum CreateRedemptionRequestResultCode
     //: Redemption is invalid
     INVALID_REDEMPTION = -1,
     //: Tasks for the redemption request were neither provided in the request nor loaded through KeyValue
-    REDEMPTION_TASKS_NOT_FOUND = -2
+    REDEMPTION_TASKS_NOT_FOUND = -2,
+    //: Creator details must not be empty
+    INVALID_CREATOR_DETAILS = -3,
+    //: Amount must be greater then 0
+    INVALID_AMOUNT = -4,
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
