@@ -6,9 +6,9 @@ namespace stellar
 //: Body of a reviewable RedemptionRequest, contains parameters regarding AML alert
 struct RedemptionRequest {
     //: Balance to charge assets from. Balance must be in asset owned by requester.
-    BalanceID destination;
-    //: Balance to add funds to
-    BalanceID currentHolder;
+    BalanceID sourceBalanceID;
+    //: Account to transfer funds
+    AccountID destination;
 
     //: Amount of redemption
     uint64 amount;
