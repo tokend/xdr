@@ -126,6 +126,17 @@ case CREATE_PAYMENT:
         //: reserved for future extension
         EmptyExt ext;
     } createPayment;
+case PERFORM_REDEMPTION:
+    struct
+    {
+        //: Code of asset in which redemption is being made
+        AssetCode assetCode;
+        //: Type of asset in which redemption is being made
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } performRedemption;
 default:
     //: reserved for future extension
     EmptyExt ext;
