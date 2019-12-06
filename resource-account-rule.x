@@ -290,7 +290,8 @@ enum AccountRuleAction
     UPDATE_END_TIME = 18,
     CREATE_FOR_OTHER_WITH_TASKS = 19,
     REMOVE_FOR_OTHER = 20,
-    EXCHANGE = 21
+    EXCHANGE = 21,
+    RECEIVE_REDEMPTION = 22
 };
 
 }
