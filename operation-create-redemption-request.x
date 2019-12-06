@@ -50,6 +50,8 @@ enum CreateRedemptionRequestResultCode
     INVALID_CREATOR_DETAILS = -3,
     //: Amount must be greater then 0
     INVALID_AMOUNT = -4,
+    //: Reference must not be longer then 64 bytes
+    INVALID_REFERENCE = -5
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
