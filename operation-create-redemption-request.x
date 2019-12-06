@@ -42,22 +42,10 @@ enum CreateRedemptionRequestResultCode
     SUCCESS = 0,
 
     //codes considered as "failure" for the operation
-    //: Update redemption tasks are not set in the system, i.e. it's not allowed to perform redemption
-    REDEMPTION_TASKS_NOT_FOUND = -1,
-    //: Holder's balance with provided balance ID does not exist
-    CURRENT_HOLDER_BALANCE_NOT_EXIST = -2, // balance doesn't exist
-    //: Destination balance with provided balance ID does not exist
-    DESTINATION_BALANCE_NOT_EXIST = -3, // balance doesn't exist
-    //: Creator details are not in a valid JSON format
-    INVALID_CREATOR_DETAILS = -4, //invalid reason for request
-    //: Specified amount is greater than the amount on the balance
-    UNDERFUNDED = -5, //when couldn't lock balance
-    //: Redemption request with the same reference already exists
-    REFERENCE_DUPLICATION = -6, // reference already exists
-    //: Amount must be positive
-    INVALID_AMOUNT = -7, // amount must be positive
-    //: Amount precision and asset precision set in the system are mismatched
-    INCORRECT_PRECISION = -8
+    //: Redemption is invalid
+    INVALID_REDEMPTION = -1,
+    //: Tasks for the redemption request were neither provided in the request nor loaded through KeyValue
+    REDEMPTION_TASKS_NOT_FOUND = -2
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
