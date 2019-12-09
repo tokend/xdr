@@ -52,14 +52,16 @@ enum CreateRedemptionRequestResultCode
     INVALID_AMOUNT = -4,
     //: Reference must not be longer then 64 bytes
     INVALID_REFERENCE = -5,
-    //: Balance with provided balance ID does not exist
-    BALANCE_NOT_EXIST = -6, // balance doesn't exist
+    //: Source balance with provided balance ID does not exist
+    SOURCE_BALANCE_NOT_EXIST = -6, // balance doesn't exist
     //: Amount has incorrect precision
     INCORRECT_PRECISION = -7,
     //: Balance underfunded
     UNDERFUNDED = -8,
     //: Duplicated references are not allowed
-    REFERENCE_DUPLICATION = -9
+    REFERENCE_DUPLICATION = -9,
+    //: Destination account with provided account ID does not exist
+    DST_ACCOUNT_NOT_EXIST = -10
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
