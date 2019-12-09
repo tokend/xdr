@@ -10,9 +10,6 @@ struct RedemptionRequest {
     //: Account to transfer funds
     AccountID destination;
 
-    //: Amount of redemption
-    uint64 amount;
-
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
     longstring creatorDetails; // details set by requester
 
