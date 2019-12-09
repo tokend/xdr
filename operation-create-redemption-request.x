@@ -57,7 +57,9 @@ enum CreateRedemptionRequestResultCode
     //: Amount has incorrect precision
     INCORRECT_PRECISION = -7,
     //: Balance underfunded
-    UNDERFUNDED = -8
+    UNDERFUNDED = -8,
+    //: Duplicated references are not allowed
+    REFERENCE_DUPLICATION = -9
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
