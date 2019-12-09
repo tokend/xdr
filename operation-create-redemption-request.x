@@ -55,7 +55,9 @@ enum CreateRedemptionRequestResultCode
     //: Balance with provided balance ID does not exist
     BALANCE_NOT_EXIST = -6, // balance doesn't exist
     //: Amount has incorrect precision
-    INCORRECT_PRECISION = -7
+    INCORRECT_PRECISION = -7,
+    //: Balance underfunded
+    UNDERFUNDED = -8
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
