@@ -60,8 +60,8 @@ enum CreateRedemptionRequestResultCode
     UNDERFUNDED = -8,
     //: Duplicated references are not allowed
     REFERENCE_DUPLICATION = -9,
-    //: Destination account with provided account ID does not exist
-    DST_ACCOUNT_NOT_EXIST = -10
+    //: No balance in needed (srcBalance's) asset for destination account
+    DST_BALANCE_NOT_EXIST = -10
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
