@@ -51,7 +51,9 @@ enum CreateRedemptionRequestResultCode
     //: Amount must be greater then 0
     INVALID_AMOUNT = -4,
     //: Reference must not be longer then 64 bytes
-    INVALID_REFERENCE = -5
+    INVALID_REFERENCE = -5,
+    //: Balance with provided balance ID does not exist
+    BALANCE_NOT_EXIST = -6 // balance doesn't exist
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
