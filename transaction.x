@@ -166,7 +166,7 @@ struct Operation
         OpenSwapOp openSwapOp;
     case CLOSE_SWAP:
         CloseSwapOp closeSwapOp;
-    case CREATE_PAYMENT_REQUEST:
+    case CREATE_REDEMPTION_REQUEST:
         CreateRedemptionRequestOp createRedemptionRequestOp;
     }
     body;
