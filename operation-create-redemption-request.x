@@ -67,7 +67,7 @@ enum CreateRedemptionRequestResultCode
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
-struct CreateRedemptionRequestSuccess {
+struct RedemptionRequestResponse {
     //: ID of a newly created reviewable request
     uint64 requestID;
     //: Indicates  whether or not the Redemption request was auto approved and fulfilled
@@ -92,7 +92,7 @@ struct CreateRedemptionRequestSuccess {
 union CreateRedemptionRequestResult switch (CreateRedemptionRequestResultCode code)
 {
     case SUCCESS:
-        CreateRedemptionRequestSuccess success;
+        RedemptionRequestResponse redemptionResponse;
     default:
         void;
 };
