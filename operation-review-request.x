@@ -206,6 +206,8 @@ struct ExtendedResult {
         ManageOfferResult manageOfferResult;
     case CREATE_PAYMENT:
         PaymentResult paymentResult;
+    case PERFORM_REDEMPTION:
+        CreateRedemptionRequestResult createRedemptionResult;
     } typeExt;
 
     //: Reserved for future use
