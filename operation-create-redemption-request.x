@@ -72,6 +72,13 @@ struct CreateRedemptionRequestSuccess {
     uint64 requestID;
     //: Indicates  whether or not the Redemption request was auto approved and fulfilled
     bool fulfilled;
+
+    //: ID of destination balance (may be freshly created)
+    BalanceID destinationBalanceID;
+    //: Code of an asset used in payment
+    AssetCode asset;
+    //: Amount sent by the sender
+    uint64 sourceSentUniversal;
     //: Reserved for future use
      union switch (LedgerVersion v)
     {
