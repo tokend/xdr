@@ -61,7 +61,9 @@ enum CreateRedemptionRequestResultCode
     //: Duplicated references are not allowed
     REFERENCE_DUPLICATION = -9,
     //: No destination with provided account ID
-    DST_ACCOUNT_NOT_FOUND = -10
+    DST_ACCOUNT_NOT_FOUND = -10,
+    //: Not allowed to set zero tasks for request
+    REDEMPTION_ZERO_TASKS_NOT_ALLOWED = -11
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
