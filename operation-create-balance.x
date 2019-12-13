@@ -14,6 +14,8 @@ struct CreateBalanceOp
     //: Defines an asset code of the balance to which `action` will be applied
     AssetCode asset;
 
+    bool additional;
+
     union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
@@ -36,7 +38,8 @@ enum CreateBalanceResultCode
     //: Cannot find an asset with a provided asset code
     ASSET_NOT_FOUND = -2,
     //: Cannot find an account provided by the `destination` AccountID
-    DESTINATION_NOT_FOUND = -3
+    DESTINATION_NOT_FOUND = -3,
+    ALREADY_EXISTS = -4
 };
 
 // `ManageBalanceSuccess` represents the successful result of the `ManageBalanceOp`
