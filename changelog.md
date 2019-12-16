@@ -1,8 +1,14 @@
 # Changelog
 
-## 3.6.0-x.0
+## 3.7.0
 
-## Added
+### Added
+
+* redemption reviewable request
+
+## 3.6.0
+
+### Added
 
 * new LedgerVersion for marking asset as deleted
 * asset operation error codes

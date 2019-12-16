@@ -126,6 +126,17 @@ case CREATE_PAYMENT:
         //: reserved for future extension
         EmptyExt ext;
     } createPayment;
+case PERFORM_REDEMPTION:
+    struct
+    {
+        //: Code of asset in which redemption is being made
+        AssetCode assetCode;
+        //: Type of asset in which redemption is being made
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } performRedemption;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -290,7 +301,8 @@ enum AccountRuleAction
     UPDATE_END_TIME = 18,
     CREATE_FOR_OTHER_WITH_TASKS = 19,
     REMOVE_FOR_OTHER = 20,
-    EXCHANGE = 21
+    EXCHANGE = 21,
+    RECEIVE_REDEMPTION = 22
 };
 
 }

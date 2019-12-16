@@ -211,7 +211,8 @@ enum OperationType
     CREATE_PAYMENT_REQUEST = 52,
     REMOVE_ASSET = 53,
     OPEN_SWAP = 54,
-    CLOSE_SWAP = 55
+    CLOSE_SWAP = 55,
+    CREATE_REDEMPTION_REQUEST = 56
 };
 
 struct DecoratedSignature

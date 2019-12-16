@@ -49,6 +49,7 @@
 %#include "xdr/operation-remove-asset-pair.h"
 %#include "xdr/operation-create-manage-offer-request.h"
 %#include "xdr/operation-create-payment-request.h"
+%#include "xdr/operation-create-redemption-request.h"
 %#include "xdr/operation-remove-asset.h"
 %#include "xdr/operation-open-swap.h"
 %#include "xdr/operation-close-swap.h"
@@ -165,6 +166,8 @@ struct Operation
         OpenSwapOp openSwapOp;
     case CLOSE_SWAP:
         CloseSwapOp closeSwapOp;
+    case CREATE_REDEMPTION_REQUEST:
+        CreateRedemptionRequestOp createRedemptionRequestOp;
     }
     body;
 };
@@ -378,6 +381,8 @@ case opINNER:
         OpenSwapResult openSwapResult;
     case CLOSE_SWAP:
         CloseSwapResult closeSwapResult;
+    case CREATE_REDEMPTION_REQUEST:
+        CreateRedemptionRequestResult createRedemptionRequestResult;
     }
     tr;
 case opNO_ENTRY:

@@ -3,6 +3,7 @@
 %#include "xdr/ledger-entries.h"
 %#include "xdr/operation-payment.h"
 %#include "xdr/operation-manage-offer.h"
+%#include "xdr/operation-create-redemption-request.h"
 
 namespace stellar
 {
@@ -206,6 +207,8 @@ struct ExtendedResult {
         ManageOfferResult manageOfferResult;
     case CREATE_PAYMENT:
         PaymentResult paymentResult;
+    case PERFORM_REDEMPTION:
+        CreateRedemptionRequestResult createRedemptionResult;
     } typeExt;
 
     //: Reserved for future use
@@ -260,7 +263,7 @@ struct ReviewRequestOp
 enum ReviewRequestResultCode
 {
     //: Codes considered as "success" for an operation
-    //: Operation is applied successfuly 
+    //: Operation is applied successfully
     SUCCESS = 0,
 
     //: Codes considered as "failure" for an operation

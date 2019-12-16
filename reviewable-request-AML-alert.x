@@ -6,7 +6,7 @@
 namespace stellar
 {
 
-//: Body of a reviewable AMLAlertRequest, contains parameters regarding AML alert
+    //: Body of a reviewable AMLAlertRequest, contains parameters regarding AML alert
 struct AMLAlertRequest {
     //: Target balance to void tokens from
     BalanceID balanceID;
