@@ -1,0 +1,39 @@
+/createRedemptionReviewableRequest:
+  get:
+    tags:
+      - Redemption
+    summary: Create Redemption Request
+    description: |
+                  Allows creating `REDEMPTION` reviewable request.
+                  `REDEMPTION` request is used to force redeem money from holder.
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Action  | Condition |
+                    | --------|:-------------:|:-----:| ------------|
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks == null` |
+                    | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks != null` |
+                    | destination  | `ASSET` | `RECEIVE_REDEMPTION` | `allTasks != null` |
+
+                  #### Signer Role Requirements
+                    | Resource Type| Action  |
+                    |:-------------:| -----:|
+                    | `REVIEWABLE_REQUEST` | `CREATE` |
+    operationId: createRedemptionRequestOp
+    x-item-type: operation
+    parameters:
+    - name: Create Redemption Request Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateRedemptionRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateRedemptionRequestResult'
