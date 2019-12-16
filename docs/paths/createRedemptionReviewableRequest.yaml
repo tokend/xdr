@@ -12,7 +12,7 @@
                     | --------|:-------------:|:-----:| ------------|
                     | source  | `REVIEWABLE_REQUEST` | `CREATE` | `allTasks == null` |
                     | source  | `REVIEWABLE_REQUEST` | `CREATE_WITH_TASKS` | `allTasks != null` |
-                    | destination  | `ASSET` | `RECEIVE_REDEMPTION` | `allTasks != null` |
+                    | destination  | `ASSET` | `RECEIVE_REDEMPTION` | - |
 
                   #### Signer Role Requirements
                     | Resource Type| Action  |
