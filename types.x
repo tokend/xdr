@@ -44,19 +44,17 @@ case KEY_TYPE_ED25519:
 
 enum LedgerEntryType
 {
-    TRANSACTION = 0, // is used for account rule resource
-    ANY = 1, // is used for rules
-    ACCOUNT = 2,
-    SIGNER = 3,
-    BALANCE = 5,
-    DATA = 6,
-    ASSET = 7,
-    REFERENCE_ENTRY = 8,
-    REVIEWABLE_REQUEST = 15,
-	ACCOUNT_KYC = 18,
-    KEY_VALUE = 20,
-    RULE = 30,
-    ROLE = 31
+    ACCOUNT = 1,
+    SIGNER = 2,
+    BALANCE = 3,
+    DATA = 4,
+    ASSET = 5,
+    REFERENCE_ENTRY = 6,
+    REVIEWABLE_REQUEST = 7,
+	ACCOUNT_KYC = 8,
+    KEY_VALUE = 9,
+    RULE = 10,
+    ROLE = 11
 };
 
 // variable size as the size depends on the signature scheme used
@@ -117,33 +115,33 @@ struct Fee {
 enum OperationType
 {
     CREATE_ACCOUNT = 1,
-    ISSUANCE = 3,
-    DESTRUCTION = 7,
+    PUT_KEY_VALUE = 2,
+    REMOVE_KEY_VALUE = 3,
+    CREATE_ASSET = 4,
+    UPDATE_ASSET = 5,
+    PAYMENT = 6,
+    ISSUANCE = 7,
+    DESTRUCTION = 8,
     CREATE_BALANCE = 9,
-    CREATE_ASSET = 11,
-    UPDATE_ASSET = 12,
-    CREATE_DATA = 14,
-    UPDATE_DATA = 15,
-    REMOVE_DATA = 16,
-    REVIEW_REQUEST = 18,
-	CHANGE_ACCOUNT_ROLES = 22,
-    PAYMENT = 23,
-    PUT_KEY_VALUE = 27,
-    REMOVE_KEY_VALUE = 28,
-    CREATE_SIGNER = 30,
-    UPDATE_SIGNER = 31,
-    REMOVE_SIGNER = 32,
-    CREATE_ROLE = 39,
-    UPDATE_ROLE = 40,
-    REMOVE_ROLE = 41,
-    CREATE_RULE = 42,
-    UPDATE_RULE = 43,
-    REMOVE_RULE = 44,
-    CREATE_REVIEWABLE_REQUEST = 45,
-    UPDATE_REVIEWABLE_REQUEST = 46,
-    REMOVE_REVIEWABLE_REQUEST = 47,
-    INITIATE_KYC_RECOVERY = 48,
-    KYC_RECOVERY = 49
+    CREATE_DATA = 10,
+    UPDATE_DATA = 11,
+    REMOVE_DATA = 12,
+    REVIEW_REQUEST = 13,
+	CHANGE_ACCOUNT_ROLES = 14,
+    CREATE_SIGNER = 15,
+    UPDATE_SIGNER = 16,
+    REMOVE_SIGNER = 17,
+    CREATE_ROLE = 18,
+    UPDATE_ROLE = 19,
+    REMOVE_ROLE = 20,
+    CREATE_RULE = 21,
+    UPDATE_RULE = 22,
+    REMOVE_RULE = 23,
+    CREATE_REVIEWABLE_REQUEST = 24,
+    UPDATE_REVIEWABLE_REQUEST = 25,
+    REMOVE_REVIEWABLE_REQUEST = 26,
+    INITIATE_KYC_RECOVERY = 27,
+    KYC_RECOVERY = 28
 };
 
 struct DecoratedSignature

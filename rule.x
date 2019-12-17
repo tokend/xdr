@@ -21,16 +21,21 @@ struct CustomRuleResource
 
 enum RuleResourceType
 {
-    LEDGER_ENTRY = 0,
-    CUSTOM = 1
+    ANY = 1,
+    LEDGER_ENTRY = 2,
+    CUSTOM = 3
 };
 
 union RuleResource switch(RuleResourceType resourceType)
 {
+    case ANY:
+        void;
     case LEDGER_ENTRY:
         InternalRuleResource internalRuleResource;
     case CUSTOM:
         CustomRuleResource customRuleResource;
+    default:
+        EmptyExt ext;
 };
 
 //: Describes properties of some entries that can be used to restrict the usage of entries
@@ -56,8 +61,6 @@ case ASSET:
 
         EmptyExt ext;
     } asset;
-case ANY:
-    void;
 case ROLE:
     //: Describes properties that are equal to managed signer role entry fields
     struct
@@ -120,6 +123,8 @@ enum RuleActionType
 
 union RuleAction switch (RuleActionType type) 
 {
+case ANY:
+    void;
 case CREATE:
     struct {
         bool forOther;
