@@ -53,7 +53,7 @@ struct LedgerEntry
         AssetEntry asset;
     case DATA:
         DataEntry data;
-    case REFERENCE_ENTRY:
+    case REFERENCE:
         ReferenceEntry reference;
     case REVIEWABLE_REQUEST:
 		ReviewableRequestEntry reviewableRequest;

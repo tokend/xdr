@@ -49,7 +49,7 @@ enum LedgerEntryType
     BALANCE = 3,
     DATA = 4,
     ASSET = 5,
-    REFERENCE_ENTRY = 6,
+    REFERENCE = 6,
     REVIEWABLE_REQUEST = 7,
 	ACCOUNT_KYC = 8,
     KEY_VALUE = 9,

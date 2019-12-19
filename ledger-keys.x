@@ -53,7 +53,7 @@ case ASSET:
         }
         ext;
     } asset;
-case REFERENCE_ENTRY:
+case REFERENCE:
     struct
     {
         AccountID sender;
