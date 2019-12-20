@@ -63,7 +63,9 @@ enum CreateRedemptionRequestResultCode
     //: No destination with provided account ID
     DST_ACCOUNT_NOT_FOUND = -10,
     //: Not allowed to set zero tasks for request
-    REDEMPTION_ZERO_TASKS_NOT_ALLOWED = -11
+    REDEMPTION_ZERO_TASKS_NOT_ALLOWED = -11,
+    //: Not allowed to redeem non-owned asset
+    REDEMPTION_NON_OWNED_ASSET_FORBIDDEN = -12
 };
 
 //: Result of successful application of `CreateRedemptionRequest` operation
