@@ -46,6 +46,7 @@ union KYCRecoveryResult switch (KYCRecoveryResultCode code)
 case SUCCESS:
     //: Is used to pass useful params if operation is success
     struct {
+        AccountID targetAccount;
         //: reserved for future use
         EmptyExt ext;
     } success;

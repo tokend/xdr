@@ -7,7 +7,7 @@ namespace stellar
 struct InitiateKYCRecoveryOp
 {
     //: Address of account to be recovered
-    AccountID account;
+    AccountID targetAccount;
     //: New signer to set
     PublicKey signer;
 
@@ -37,6 +37,7 @@ union InitiateKYCRecoveryResult switch (InitiateKYCRecoveryResultCode code)
 case SUCCESS:
     struct
     {
+         AccountID targetAccount;
          //: reserved for future use
          union switch (LedgerVersion v)
          {
