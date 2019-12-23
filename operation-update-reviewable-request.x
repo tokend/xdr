@@ -6,6 +6,7 @@ struct UpdateReviewableRequestOp
     uint64 requestID;
 
     ReviewableRequestOperation operations<>;
+    longstring creatorDetails;
 
     EmptyExt ext;
 };
@@ -18,7 +19,8 @@ enum UpdateReviewableRequestResultCode
     TASKS_NOT_FOUND = -2,
     TOO_MANY_OPERATIONS = -3,
     NOT_FOUND = -4,
-    SECURITY_TYPE_MISMATCH = -5
+    SECURITY_TYPE_MISMATCH = -5,
+    INVALID_CREATOR_DETAILS = -6
 };
 
 union UpdateReviewableRequestResult switch (UpdateReviewableRequestResultCode code)

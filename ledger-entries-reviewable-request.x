@@ -93,6 +93,7 @@ struct ReviewableRequestEntry
 
     // External details vector consists of comments written by request reviewers
     longstring externalDetails<>;
+    longstring creatorDetails;
 
 	// reserved for future use
     union switch (LedgerVersion v)
