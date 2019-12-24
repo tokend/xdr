@@ -58,7 +58,9 @@ enum IssuanceResultCode
     INVALID_CREATOR_DETAILS = -8,
     //: Fee is greater than the amount to issuance
     FEE_EXCEEDS_AMOUNT = -9,
-    INVALID_AMOUNT_PRECISION = -10
+    INVALID_AMOUNT_PRECISION = -10,
+    INVALID_REFERENCE = -11,
+    REFERENCE_DUPLICATION = -12
 };
 
 //:Result of successful application of Issuance operation

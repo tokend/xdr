@@ -63,7 +63,8 @@ enum DestructionResultCode
     LIMITS_EXCEEDED = -9,
     //: Amount withdrawn is smaller than the minimal withdrawable amount set in the system
     LOWER_BOUND_NOT_EXCEEDED = -10,
-    REFERENCE_DUPLICATION = -11
+    REFERENCE_DUPLICATION = -11,
+    INVALID_REFERENCE = -12
 };
 
 //: Result of the successful withdrawal request creation
