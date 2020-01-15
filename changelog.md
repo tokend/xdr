@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.7.2
+
+### Added
+
+* New ledger version
+
+## 3.7.1
+
+### Added
+
+* Error code for create redemption operation
+
 ## 3.7.0
 
 ### Added
