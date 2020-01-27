@@ -31,7 +31,8 @@ enum LedgerVersion
     FIX_ISSUANCE_REVIEWER = 21,
     MARK_ASSET_AS_DELETED = 22,
     FIX_MAX_SUBJECT_SIZE = 23,
-    FIX_MOVEMENT_REVIEW = 24
+    FIX_MOVEMENT_REVIEW = 24,
+    FIX_SIGNATURE_CHECK = 25
 };
 
 union EmptyExt switch (LedgerVersion v)
