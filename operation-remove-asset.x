@@ -9,7 +9,7 @@ namespace stellar
 
     Result: `RemoveAssetResult`
 */
-//: `RemoveAssetOp` removes specified asset pair
+//: `RemoveAssetOp` changes the state of specified asset to removed 
 struct RemoveAssetOp
 {
     //: Defines an asset
