@@ -46,7 +46,8 @@ enum LicenseResultCode
     //: Provided due date is in the past.
     INVALID_DUE_DATE = -2,
     //: Not enough valid signatures to submit a license (at least one valid signature is required)
-    INVALID_SIGNATURE = -3
+    INVALID_SIGNATURE = -3,
+    EXTRA_SIGNATURES = -4
 };
 
 //: LicenseSuccess is a result of successful LicenseOp application
