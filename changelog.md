@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added 
+
+* Ledger version
+* `creatorDetails` for `PaymentRequest`, `ManageOfferRequest`
+
 ## 3.7.2
 
 ### Added

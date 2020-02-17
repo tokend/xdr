@@ -33,7 +33,8 @@ enum LedgerVersion
     FIX_MAX_SUBJECT_SIZE = 23,
     FIX_MOVEMENT_REVIEW = 24,
     FIX_SIGNATURE_CHECK = 25,
-    FIX_AUTOREVIEW = 26
+    FIX_AUTOREVIEW = 26,
+    MOVEMENT_REQUESTS_DETAILS = 27
 };
 
 union EmptyExt switch (LedgerVersion v)
