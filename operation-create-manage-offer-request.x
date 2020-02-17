@@ -24,7 +24,9 @@ enum CreateManageOfferRequestResultCode
     //: Offer is invalid
     INVALID_OFFER = -1,
     //: Tasks for the manage offer request were neither provided in the request nor loaded through KeyValue
-    MANAGE_OFFER_TASKS_NOT_FOUND = -2
+    MANAGE_OFFER_TASKS_NOT_FOUND = -2,
+    //: Creator details are not in a valid JSON format
+    INVALID_CREATOR_DETAILS = -3
 };
 
 struct CreateManagerOfferRequestSuccessResult 

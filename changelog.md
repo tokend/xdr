@@ -6,6 +6,7 @@
 
 * Ledger version
 * `creatorDetails` for `PaymentRequest`, `ManageOfferRequest`
+* Result codes for `CreatePaymentRequest`, `CreateManageOfferRequest`
 
 ## 3.7.2
 
