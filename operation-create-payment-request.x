@@ -25,7 +25,9 @@ enum CreatePaymentRequestResultCode
     //: Payment is invalid
     INVALID_PAYMENT = -1,
     //: Tasks for the payment request were neither provided in the request nor loaded through KeyValue
-    PAYMENT_TASKS_NOT_FOUND = -2
+    PAYMENT_TASKS_NOT_FOUND = -2,
+    //: Creator details are not in a valid JSON format
+    INVALID_CREATOR_DETAILS = -3
 };
 
 //: Result of the successful payment request creation
