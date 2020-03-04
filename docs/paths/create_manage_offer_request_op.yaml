@@ -7,8 +7,7 @@
       Allows to create request to make offer in some asset pair or participate in sale.
       ManageOffer request is a reviewable request. It uses tasks - bitmask, where each bit represents conditions under which
       request can be approved. Tasks can be set or cleared both manually(by reviewer) and automatically.
-      Tasks bit mask can be provided either from `KeyValueEntry` by key `manageOffer_tasks:<asset_code>` (which specify tasks
-      for asset) or by key `manageOffer_tasks:*` if there are no manageOffer tasks for provided asset.
+      Tasks bit mask can be provided from `KeyValueEntry`.
       If field `allTasks` is set, `KeyValueEntry` won't be used.
       #### Account Role Requirements
        | Account        | Resource Type | Reviewable Request Type | Action  | Condition |
@@ -22,6 +21,22 @@
        |:--------------------:| :----------------------:| :-----------------: | :-------------------: |
        | `REVIEWABLE_REQUEST` | `MANAGE_OFFER`               | `CREATE`            | `allTasks` == `null`  |
        | `REVIEWABLE_REQUEST` | `MANAGE_OFFER`               | `CREATE_WITH_TASKS` | `allTasks` != `null`  |
+
+      #### Related Key values
+
+      If `allTasks' field is not set, tasks for request will be taken from one of the following key values.
+
+      | Key    | Condition |  Description |
+      | :----: | :-------: | :----------: |
+      | `create_offer_tasks:<base>:<quote>` | `offerID` == 0 && `orderBookID` == 0 | Used to set tasks on offer creation |
+      | `remove_offer_tasks:<base>:<quote>` | `offerID` != 0 && `orderBookID` == 0 && `amount` == 0 | Used to set tasks on offer removal  |
+      | `create_sale_participation_tasks:<base>:<quote>` | `offerID` == 0 && `orderBookID` != 0| Used to set tasks on sale participation creation  |
+      | `remove_sale_participation_tasks:<base>:<quote>` | `offerID` != 0 && `orderBookID` != 0 && `amount` == 0 | Used to set tasks on sale participation removal  |
+
+      `<base>` - order book base asset code. Usage of `*` to match any asset code is allowed.
+
+      `<quote>` - order book quote asset code. Usage of `*` to match any asset code is allowed.
+
     operationId: createManageOfferRequestOp
     x-item-type: operation
     parameters:
