@@ -34,7 +34,8 @@ enum LedgerVersion
     FIX_MOVEMENT_REVIEW = 24,
     FIX_SIGNATURE_CHECK = 25,
     FIX_AUTOREVIEW = 26,
-    MOVEMENT_REQUESTS_DETAILS = 27
+    MOVEMENT_REQUESTS_DETAILS = 27,
+    FIX_CRASH_CORE_WITH_PAYMENT = 28
 };
 
 union EmptyExt switch (LedgerVersion v)
