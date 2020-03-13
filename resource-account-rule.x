@@ -273,6 +273,14 @@ case SWAP:
         //: reserved for future extension
         EmptyExt ext;
     } swap;
+case DATA:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } data;
 default:
     //: reserved for future extension
     EmptyExt ext;
