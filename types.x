@@ -108,7 +108,8 @@ enum LedgerEntryType
     VOTE = 35,
     ACCOUNT_SPECIFIC_RULE = 36,
     INITIATE_KYC_RECOVERY = 37,
-    SWAP = 38
+    SWAP = 38,
+    LOCK = 39
 };
 
 // variable size as the size depends on the signature scheme used
