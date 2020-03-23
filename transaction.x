@@ -53,6 +53,8 @@
 %#include "xdr/operation-remove-asset.h"
 %#include "xdr/operation-open-swap.h"
 %#include "xdr/operation-close-swap.h"
+%#include "xdr/operation-lock-amount.h"
+%#include "xdr/operation-unlock-amount.h"
 
 namespace stellar
 {
@@ -168,6 +170,10 @@ struct Operation
         CloseSwapOp closeSwapOp;
     case CREATE_REDEMPTION_REQUEST:
         CreateRedemptionRequestOp createRedemptionRequestOp;
+    case LOCK_AMOUNT:
+        LockOp lockOp;
+    case UNLOCK_AMOUNT:
+        UnlockOp unlockOp;
     }
     body;
 };
@@ -383,6 +389,10 @@ case opINNER:
         CloseSwapResult closeSwapResult;
     case CREATE_REDEMPTION_REQUEST:
         CreateRedemptionRequestResult createRedemptionRequestResult;
+    case LOCK_AMOUNT:
+        LockResult lockResult;
+    case UNLOCK_AMOUNT:
+        UnlockResult unlockResult;
     }
     tr;
 case opNO_ENTRY:
