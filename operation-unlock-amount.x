@@ -34,7 +34,7 @@ enum UnlockEffect
     FULFILLED = 0
 };
 
-struct UnlockResult
+struct UnlockSuccess
 {
     //: Effect of the Unlock operation
     UnlockEffect effect;
