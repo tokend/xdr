@@ -273,6 +273,17 @@ case SWAP:
         //: reserved for future extension
         EmptyExt ext;
     } swap;
+case LOCK:
+    struct
+    {
+        //: code of the locked asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } lock;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -302,7 +313,9 @@ enum AccountRuleAction
     CREATE_FOR_OTHER_WITH_TASKS = 19,
     REMOVE_FOR_OTHER = 20,
     EXCHANGE = 21,
-    RECEIVE_REDEMPTION = 22
+    RECEIVE_REDEMPTION = 22,
+    LOCK = 23,
+    UNLOCK = 24
 };
 
 }

@@ -166,6 +166,17 @@ case SWAP:
         //: reserved for future extension
         EmptyExt ext;
     } swap;
+case LOCK:
+    struct
+    {
+        //: code of the locked asset
+        AssetCode assetCode;
+        //: type of asset
+        uint64 assetType;
+
+        //: reserved for future extension
+        EmptyExt ext;
+    } lock;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -193,7 +204,9 @@ enum SignerRuleAction
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     REMOVE_FOR_OTHER = 19,
-    EXCHANGE = 20
+    EXCHANGE = 20,
+    LOCK = 21,
+    UNLOCK = 22
 };
 
 
