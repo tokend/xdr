@@ -32,8 +32,9 @@ enum UnlockResultCode
 
 enum UnlockEffect
 {
-    //: Lock fulfilled and lock entry can be deleted
-    FULFILLED = 0
+    UNLOCKED = 0,
+    //: Lock fulfilled, i.e. all funds locked by a particular lock entry were unlocked and lock entry can be deleted
+    LOCK_FULFILLED = 1
 };
 
 struct UnlockSuccess
