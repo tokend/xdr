@@ -18,14 +18,16 @@ enum UnlockResultCode
 {
     //: Unlock was successful 
     SUCCESS = 0,
+    //: Not enough funds on the provided balance
+    UNDERFUNDED = -1,
     //: There is no lock entry with ID provided in `lockID`
-    LOCK_NOT_FOUND = -1,
+    LOCK_NOT_FOUND = -2,
     //: Amount should be greater than zero and less than amount provided in the lock entry
-    INVALID_AMOUNT = -2,
+    INVALID_AMOUNT = -3,
     //: Amount precision and asset precision are mismatched
-    INCORRECT_AMOUNT_PRECISION = -3,
+    INCORRECT_AMOUNT_PRECISION = -4,
     //: After the unlock fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
-    LINE_FULL = -4
+    LINE_FULL = -5
 };
 
 enum UnlockEffect
