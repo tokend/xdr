@@ -220,8 +220,8 @@ enum OperationType
     OPEN_SWAP = 54,
     CLOSE_SWAP = 55,
     CREATE_REDEMPTION_REQUEST = 56,
-    LOCK_AMOUNT = 57,
-    UNLOCK_AMOUNT = 58
+    LOCK = 57,
+    UNLOCK = 58
 };
 
 struct DecoratedSignature

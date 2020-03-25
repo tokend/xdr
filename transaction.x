@@ -170,9 +170,9 @@ struct Operation
         CloseSwapOp closeSwapOp;
     case CREATE_REDEMPTION_REQUEST:
         CreateRedemptionRequestOp createRedemptionRequestOp;
-    case LOCK_AMOUNT:
+    case LOCK:
         LockOp lockOp;
-    case UNLOCK_AMOUNT:
+    case UNLOCK:
         UnlockOp unlockOp;
     }
     body;
@@ -389,9 +389,9 @@ case opINNER:
         CloseSwapResult closeSwapResult;
     case CREATE_REDEMPTION_REQUEST:
         CreateRedemptionRequestResult createRedemptionRequestResult;
-    case LOCK_AMOUNT:
+    case LOCK:
         LockResult lockResult;
-    case UNLOCK_AMOUNT:
+    case UNLOCK:
         UnlockResult unlockResult;
     }
     tr;
