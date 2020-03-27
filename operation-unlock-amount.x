@@ -53,7 +53,8 @@ union UnlockResult switch (UnlockResultCode code)
 case SUCCESS:
     UnlockSuccess success;
 default:
-    void;
+    //: `entry`, performing actions on which, operation failure has occurred
+    LedgerEntryType problemEntryType;
 };
 
 }
