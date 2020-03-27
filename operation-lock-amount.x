@@ -32,7 +32,9 @@ enum LockResultCode
     //: Duplicated references are not allowed
     REFERENCE_DUPLICATION = -5,
     //: After the lock fulfillment, the balance's locked amount will exceed the limit (total locked amount on the balance will be greater than UINT64_MAX)
-    LINE_FULL = -6
+    LINE_FULL = -6,
+    //: Details must be valid JSON
+    INVALID_DETAILS = -7
 };
 
 // LockSuccess is used to pass saved lock ID
