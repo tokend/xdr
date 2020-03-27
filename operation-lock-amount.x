@@ -10,6 +10,7 @@ struct LockOp
     //: Amount to lock on balance
     uint64 amount;
     longstring reference;
+    longstring details;
 
     //: reserved for future extension
     EmptyExt ext;

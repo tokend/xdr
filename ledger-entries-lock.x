@@ -11,6 +11,7 @@ struct LockEntry
     //: locked amount
     uint64 amount;
     longstring reference;
+    longstring details;
 
     union switch (LedgerVersion v)
     {
