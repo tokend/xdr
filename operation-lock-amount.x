@@ -42,7 +42,10 @@ struct LockSuccess
 {
     //: id of the created lock entry
     uint64 lockID;
-
+    //: id of the operational account
+    AccountID opAccountID;
+    //: code of the operational asset
+    AssetCode opAssetCode;
     //: reserved for future extension
     EmptyExt ext;
 };
