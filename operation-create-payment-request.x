@@ -41,6 +41,9 @@ struct CreatePaymentRequestSuccessResult
     //: Result of the payment application
     PaymentResult* paymentResult;
 
+    //: Tasks value
+    uint32* allTasks;
+
     //: reserved for future extension
     EmptyExt ext;
 };
