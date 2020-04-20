@@ -41,9 +41,6 @@ struct CreatePaymentRequestSuccessResult
     //: Result of the payment application
     PaymentResult* paymentResult;
 
-    //: Number of loaded tasks
-    uint32 allTasks;
-
     //: reserved for future extension
     EmptyExt ext;
 };
