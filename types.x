@@ -223,7 +223,7 @@ enum OperationType
     CREATE_REDEMPTION_REQUEST = 56,
     CREATE_DATA = 57,
     UPDATE_DATA = 58,
-    REMOVE_DATA = 59
+    REMOVE_DATA = 59,
     LOCK = 60,
     UNLOCK = 61
 };
