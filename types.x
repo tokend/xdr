@@ -109,7 +109,8 @@ enum LedgerEntryType
     ACCOUNT_SPECIFIC_RULE = 36,
     INITIATE_KYC_RECOVERY = 37,
     SWAP = 38,
-    LOCK = 39
+    DATA = 39
+    LOCK = 40
 };
 
 // variable size as the size depends on the signature scheme used
@@ -220,8 +221,11 @@ enum OperationType
     OPEN_SWAP = 54,
     CLOSE_SWAP = 55,
     CREATE_REDEMPTION_REQUEST = 56,
-    LOCK = 57,
-    UNLOCK = 58
+    CREATE_DATA = 57,
+    UPDATE_DATA = 58,
+    REMOVE_DATA = 59
+    LOCK = 60,
+    UNLOCK = 61
 };
 
 struct DecoratedSignature

@@ -1,0 +1,36 @@
+/removeData:
+  get:
+    tags:
+      - Data
+    summary: Remove data
+    description: |
+                  Allows to remove data
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action | Details |
+                    | --------|:-------------:|:-----------:| :-----: |
+                    | source  | `DATA`        | `REMOVE`    | Resource contains data type |
+
+                  #### Signer Role Requirements
+                   | Account        | Resource Type | Rule Action        | Condition | Details |
+                   | -------------- |:-------------:|:------------------:| --------| :---: |
+                   | source         | `DATA`        | `REMOVE`           | Always | Resource contains data type |
+    operationId: removeData
+    x-item-type: operation
+    parameters:
+    - name: Remove Data Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/RemoveDataOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/RemoveDataResult'

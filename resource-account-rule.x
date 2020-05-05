@@ -273,6 +273,14 @@ case SWAP:
         //: reserved for future extension
         EmptyExt ext;
     } swap;
+case DATA:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } data;
 case LOCK:
     struct
     {
@@ -314,8 +322,9 @@ enum AccountRuleAction
     REMOVE_FOR_OTHER = 20,
     EXCHANGE = 21,
     RECEIVE_REDEMPTION = 22,
-    LOCK = 23,
-    UNLOCK = 24
+    UPDATE = 23
+    LOCK = 24,
+    UNLOCK = 25
 };
 
 }

@@ -1,0 +1,35 @@
+/dataResource:
+  get:
+    tags:
+      - Data
+    x-item-type: entry
+    summary: Data Resources
+    description: |
+      Describes the data pairs as a set of properties and policies for two particular datas (i.e. base and quote datas).
+    x-code-samples:
+      - lang: "XDR"
+        source: |
+          struct DataEntry
+          {
+            //: ID of the data entry
+            uint64 id;
+            //: Numeric type, used for access control
+            uint64 type;
+            //: Value stored
+            longstring value;
+
+            //: Creator of the entry
+            AccountID owner;
+            //: Reserved for future extension
+            EmptyExt ext;
+          };
+    operationId: dataResource
+    parameters:
+      - name: Data
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/DataEntry'

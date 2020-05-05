@@ -310,6 +310,12 @@ case SWAP:
 
         EmptyExt ext;
     } swap;
+case DATA:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } data;
 case LOCK:
     struct
     {
