@@ -23,7 +23,7 @@ enum LockResultCode
 
     //: Not enough funds on the provided balance
     UNDERFUNDED = -1,
-    //: There is no balance found with ID provided in `balanceID`
+    //: There is no balance found with ID provided in `balanceID` or balance not owned by source
     BALANCE_NOT_FOUND = -2,
     //: Amount precision and asset precision are mismatched
     INCORRECT_AMOUNT_PRECISION = -3,
