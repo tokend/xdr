@@ -20,7 +20,9 @@ enum UpdateDataResultCode
     //: `value` must be in a valid JSON format
     INVALID_DATA = -1,
     //: Entry with provided ID does not exist
-    NOT_FOUND = -2
+    NOT_FOUND = -2,
+    //: Only owner or admin can update data entry
+    NOT_AUTHORIZED = -3
 };
 
 
