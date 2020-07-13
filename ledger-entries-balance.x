@@ -5,6 +5,14 @@
 namespace stellar
 {
 
+enum BalanceState
+{
+    NORMAL = 0,
+    LOCKED = 1,
+    LOCKED_INCOMING = 2
+    LOCKED_OUTGOING = 3
+};
+
 struct BalanceEntry
 {
     BalanceID balanceID;
@@ -21,6 +29,10 @@ struct BalanceEntry
     {
     case EMPTY_VERSION:
         void;
+    case BALANCE_STATE:
+        struct {
+            BalanceState state;
+        } lockExt;
     }
     ext;
 };
