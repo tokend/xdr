@@ -9,7 +9,7 @@ enum BalanceState
 {
     NORMAL = 0,
     LOCKED = 1,
-    LOCKED_INCOMING = 2
+    LOCKED_INCOMING = 2,
     LOCKED_OUTGOING = 3
 };
 
