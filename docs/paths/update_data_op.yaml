@@ -1,0 +1,36 @@
+/updateData:
+  get:
+    tags:
+      - Data
+    summary: Update data
+    description: |
+                  Allows to update data
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action | Details |
+                    | --------|:-------------:|:-----------:| :-----: |
+                    | source  | `DATA`        | `UPDATE`    | Resource contains data type |
+
+                  #### Signer Role Requirements
+                   | Account        | Resource Type | Rule Action        | Condition | Details |
+                   | -------------- |:-------------:|:------------------:| --------| :---: |
+                   | source         | `DATA`        | `UPDATE`           | Always | Resource contains data type |
+    operationId: updateData
+    x-item-type: operation
+    parameters:
+    - name: Update Data Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/UpdateDataOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/UpdateDataResult'

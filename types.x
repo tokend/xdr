@@ -109,7 +109,8 @@ enum LedgerEntryType
     VOTE = 35,
     ACCOUNT_SPECIFIC_RULE = 36,
     INITIATE_KYC_RECOVERY = 37,
-    SWAP = 38
+    SWAP = 38,
+    DATA = 39
 };
 
 // variable size as the size depends on the signature scheme used
@@ -219,7 +220,10 @@ enum OperationType
     REMOVE_ASSET = 53,
     OPEN_SWAP = 54,
     CLOSE_SWAP = 55,
-    CREATE_REDEMPTION_REQUEST = 56
+    CREATE_REDEMPTION_REQUEST = 56,
+    CREATE_DATA = 57,
+    UPDATE_DATA = 58,
+    REMOVE_DATA = 59
 };
 
 struct DecoratedSignature

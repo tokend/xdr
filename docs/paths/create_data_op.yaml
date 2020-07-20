@@ -1,0 +1,36 @@
+/createData:
+  get:
+    tags:
+      - Data
+    summary: Create data
+    description: |
+                  Allows to create data
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action | Details |
+                    | --------|:-------------:|:-----------:| :-----: |
+                    | source  | `DATA`        | `CREATE`    | Resource contains data type |
+
+                  #### Signer Role Requirements
+                   | Account        | Resource Type | Rule Action        | Condition | Details |
+                   | -------------- |:-------------:|:------------------:| --------| :---: |
+                   | source         | `DATA`        | `CREATE`           | Always | Resource contains data type |
+    operationId: createData
+    x-item-type: operation
+    parameters:
+    - name: Create Data Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/CreateDataOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateDataResult'

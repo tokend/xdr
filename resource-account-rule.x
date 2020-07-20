@@ -273,6 +273,14 @@ case SWAP:
         //: reserved for future extension
         EmptyExt ext;
     } swap;
+case DATA:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } data;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -302,7 +310,8 @@ enum AccountRuleAction
     CREATE_FOR_OTHER_WITH_TASKS = 19,
     REMOVE_FOR_OTHER = 20,
     EXCHANGE = 21,
-    RECEIVE_REDEMPTION = 22
+    RECEIVE_REDEMPTION = 22,
+    UPDATE = 23
 };
 
 }
