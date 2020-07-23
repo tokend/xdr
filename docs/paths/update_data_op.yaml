@@ -7,14 +7,16 @@
                   Allows to update data
 
                   #### Account Role Requirements
-                    | Account | Resource Type | Rule Action | Details |
-                    | --------|:-------------:|:-----------:| :-----: |
-                    | source  | `DATA`        | `UPDATE`    | Resource contains data type |
+                    | Account | Resource Type | Rule Action | Condition | Details |
+                    | --------|:-------------:|:-----------:| :----: |:-----: |
+                    | source  | `DATA`        | `UPDATE`    | source `accountID` is equal to data owner | Resource contains data type |
+                    | source  | `DATA`        | `UPDATE_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
 
                   #### Signer Role Requirements
                    | Account        | Resource Type | Rule Action        | Condition | Details |
                    | -------------- |:-------------:|:------------------:| --------| :---: |
-                   | source         | `DATA`        | `UPDATE`           | Always | Resource contains data type |
+                   | source         | `DATA`        | `UPDATE`           | source `accountID` is equal to data owner | Resource contains data type |
+                   | source         | `DATA`        | `UPDATE_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
     operationId: updateData
     x-item-type: operation
     parameters:

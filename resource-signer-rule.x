@@ -201,7 +201,8 @@ enum SignerRuleAction
     CREATE_WITH_TASKS = 17,
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     REMOVE_FOR_OTHER = 19,
-    EXCHANGE = 20
+    EXCHANGE = 20,
+    UPDATE_FOR_OTHER = 21
 };
 
 
