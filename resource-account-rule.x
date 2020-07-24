@@ -311,7 +311,8 @@ enum AccountRuleAction
     REMOVE_FOR_OTHER = 20,
     EXCHANGE = 21,
     RECEIVE_REDEMPTION = 22,
-    UPDATE = 23
+    UPDATE = 23,
+    UPDATE_FOR_OTHER = 24
 };
 
 }

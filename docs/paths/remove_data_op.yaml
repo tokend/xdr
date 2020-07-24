@@ -5,16 +5,18 @@
     summary: Remove data
     description: |
                   Allows to remove data
-
                   #### Account Role Requirements
-                    | Account | Resource Type | Rule Action | Details |
-                    | --------|:-------------:|:-----------:| :-----: |
-                    | source  | `DATA`        | `REMOVE`    | Resource contains data type |
+
+                  | Account | Resource Type | Rule Action | Condition | Details |
+                  | --------|:-------------:|:-----------:| :----: |:-----: |
+                  | source  | `DATA`        | `REMOVE`    | source `accountID` is equal to data owner | Resource contains data type |
+                  | source  | `DATA`        | `REMOVE_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
 
                   #### Signer Role Requirements
                    | Account        | Resource Type | Rule Action        | Condition | Details |
                    | -------------- |:-------------:|:------------------:| --------| :---: |
-                   | source         | `DATA`        | `REMOVE`           | Always | Resource contains data type |
+                   | source         | `DATA`        | `REMOVE`           | source `accountID` is equal to data owner | Resource contains data type |
+                   | source         | `DATA`        | `REMOVE_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
     operationId: removeData
     x-item-type: operation
     parameters:
