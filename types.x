@@ -223,7 +223,10 @@ enum OperationType
     CREATE_REDEMPTION_REQUEST = 56,
     CREATE_DATA = 57,
     UPDATE_DATA = 58,
-    REMOVE_DATA = 59
+    REMOVE_DATA = 59,
+    CREATE_DATA_REQUEST = 60,
+    UPDATE_DATA_REQUEST = 61,
+    REMOVE_DATA_REQUEST = 62
 };
 
 struct DecoratedSignature

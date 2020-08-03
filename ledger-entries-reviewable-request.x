@@ -44,7 +44,10 @@ enum ReviewableRequestType
 	KYC_RECOVERY = 18,
 	MANAGE_OFFER = 19,
 	CREATE_PAYMENT = 20,
-	PERFORM_REDEMPTION = 21
+	PERFORM_REDEMPTION = 21,
+	CREATE_DATA = 22,
+    UPDATE_DATA = 23,
+    REMOVE_DATA = 24
 };
 
 struct TasksExt {
@@ -113,6 +116,12 @@ struct ReviewableRequestEntry {
 			CreatePaymentRequest createPaymentRequest;
         case PERFORM_REDEMPTION:
             RedemptionRequest redemptionRequest;
+        case CREATE_DATA:
+            CreateDataRequest createDataRequest;
+        case UPDATE_DATA:
+            UpdateDataRequest updateDataRequest;
+        case REMOVE_DATA:
+            RemoveDataRequest removeDataRequest;
 	} body;
 
 	TasksExt tasks;
