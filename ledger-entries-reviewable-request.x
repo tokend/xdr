@@ -18,6 +18,9 @@
 %#include "xdr/reviewable-request-manage-offer.h"
 %#include "xdr/reviewable-request-payment.h"
 %#include "xdr/reviewable-request-redemption.h"
+%#include "xdr/reviewable-request-create-data.h"
+%#include "xdr/reviewable-request-update-data.h"
+%#include "xdr/reviewable-request-remove-data.h"
 
 namespace stellar
 {
