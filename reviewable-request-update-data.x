@@ -3,6 +3,9 @@
 namespace stellar
 {
 struct UpdateDataRequest {
+    //: ID of the data entry
+    uint64 id;
+
     //: Value stored
     longstring value;
 
