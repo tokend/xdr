@@ -56,6 +56,9 @@
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
+%#include "xdr/operation-create-data-request.h"
+%#include "xdr/operation-update-data-request.h"
+%#include "xdr/operation-remove-data-request.h"
 
 namespace stellar
 {
@@ -177,6 +180,12 @@ struct Operation
         UpdateDataOp updateDataOp;
     case REMOVE_DATA:
         RemoveDataOp removeDataOp;
+    case CREATE_DATA_REQUEST:
+        CreateDataRequestOp createDataRequestOp;
+    case UPDATE_DATA_REQUEST:
+        UpdateDataRequestOp updateDataRequestOp;
+    case REMOVE_DATA_REQUEST:
+        RemoveDataRequestOp removeDataRequestOp;
     }
     body;
 };
@@ -397,7 +406,7 @@ case opINNER:
     case UPDATE_DATA:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
-        RemoveDataResult removeDataResult;
+        RemoveDataResult removeDataResult;//TODO RR MANAGE DATE
     }
     tr;
 case opNO_ENTRY:
