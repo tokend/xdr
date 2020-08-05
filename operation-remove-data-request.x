@@ -3,6 +3,7 @@
 namespace stellar
 {
 
+// todo comment
 struct RemoveDataRequestOp
 {
     RemoveDataRequest removeDataRequest;
