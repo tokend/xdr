@@ -14,7 +14,7 @@ struct UpdateDataRequestOp
 
 enum UpdateDataRequestResultCode
 {
-    SUCCESS = 0,
+    SUCCESS = 0
 };
 
 union UpdateDataRequestResult switch (UpdateDataRequestResultCode code)

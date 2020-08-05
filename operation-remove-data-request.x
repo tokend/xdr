@@ -14,7 +14,7 @@ struct RemoveDataRequestOp
 
 enum RemoveDataRequestResultCode
 {
-    SUCCESS = 0,
+    SUCCESS = 0
 };
 
 union RemoveDataRequestResult switch (RemoveDataRequestResultCode code)

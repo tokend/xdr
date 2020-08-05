@@ -14,7 +14,7 @@ struct CreateDataRequestOp
 
 enum CreateDataRequestResultCode
 {
-    SUCCESS = 0,
+    SUCCESS = 0
 };
 
 union CreateDataRequestResult switch (CreateDataRequestResultCode code)
