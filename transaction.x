@@ -406,7 +406,13 @@ case opINNER:
     case UPDATE_DATA:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
-        RemoveDataResult removeDataResult;//TODO RR MANAGE DATE
+        RemoveDataResult removeDataResult;
+    case CREATE_DATA_REQUEST:
+        CreateDataRequestResult createDataRequestResult;
+    case UPDATE_DATA_REQUEST:
+        UpdateDataRequestResult updateDataRequestResult;
+    case REMOVE_DATA_REQUEST:
+        RemoveDataRequestResult removeDataRequestResult;
     }
     tr;
 case opNO_ENTRY:
