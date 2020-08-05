@@ -3,7 +3,7 @@
 namespace stellar
 {
 
-// todo comment
+//:todo comment
 struct CreateDataRequestOp
 {
     CreateDataRequest createDataRequest;
