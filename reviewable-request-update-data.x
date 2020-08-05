@@ -9,6 +9,9 @@ struct UpdateDataRequest {
     //: Value stored
     longstring value;
 
+    //: Creator of the entry
+    AccountID owner;
+
     //: reserved for future use
     union switch (LedgerVersion v)
     {
