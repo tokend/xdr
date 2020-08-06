@@ -14,7 +14,9 @@ struct CreateDataRequestOp
 
 enum CreateDataRequestResultCode
 {
-    SUCCESS = 0
+    SUCCESS = 0,
+    INVALID_VALUE = -1,
+    OWNER_NOT_EXIST = -2
 };
 
 struct CreateDataRequestResponse {
