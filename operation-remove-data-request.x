@@ -17,18 +17,23 @@ enum RemoveDataRequestResultCode
     SUCCESS = 0
 };
 
+struct RemoveDataRequestResponse {
+    uint64 requestID;
+    bool fulfilled;
+
+    //: Reserved for future use
+     union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 union RemoveDataRequestResult switch (RemoveDataRequestResultCode code)
 {
 case SUCCESS:
-    struct {
-        // Reserved for future use
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-	} success;
+    RemoveDataRequestResponse removeDataRequestResponse;
 default:
     void;
 };

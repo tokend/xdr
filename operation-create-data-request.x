@@ -17,18 +17,26 @@ enum CreateDataRequestResultCode
     SUCCESS = 0
 };
 
+struct CreateDataRequestResponse {
+    uint64 requestID;
+    bool fulfilled;
+
+    uint64 type;
+    longstring value;
+
+    //: Reserved for future use
+     union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    }
+    ext;
+};
+
 union CreateDataRequestResult switch (CreateDataRequestResultCode code)
 {
 case SUCCESS:
-    struct {
-        // Reserved for future use
-        union switch (LedgerVersion v)
-        {
-        case EMPTY_VERSION:
-            void;
-        }
-        ext;
-	} success;
+    CreateDataRequestResponse createDataRequestResponse;
 default:
     void;
 };
