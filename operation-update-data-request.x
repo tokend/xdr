@@ -21,6 +21,7 @@ struct UpdateDataRequestResponse {
     uint64 requestID;
     bool fulfilled;
 
+    AccountID owner;
     uint64 dataID;
     uint64 type;
     longstring value;
