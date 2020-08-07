@@ -14,7 +14,10 @@ struct UpdateDataRequestOp
 
 enum UpdateDataRequestResultCode
 {
-    SUCCESS = 0
+    SUCCESS = 0,
+    INVALID_VALUE = -1,
+    NOT_FOUND = -2,
+    OWNER_NOT_EXIST = -3
 };
 
 struct UpdateDataRequestResponse {
