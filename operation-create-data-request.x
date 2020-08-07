@@ -22,7 +22,7 @@ enum CreateDataRequestResultCode
 struct CreateDataRequestResponse {
     uint64 requestID;
     bool fulfilled;
-
+    //todo add owner
     uint64 type;
     longstring value;
 

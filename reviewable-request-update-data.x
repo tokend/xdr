@@ -6,7 +6,8 @@ struct UpdateDataRequest {
     //: ID of the data entry
     uint64 id;
 
-    //: Value stored
+    AccountID owner;
+    uint64 type;
     longstring value;
 
     //: reserved for future use
