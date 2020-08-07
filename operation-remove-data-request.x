@@ -15,7 +15,7 @@ struct RemoveDataRequestOp
 enum RemoveDataRequestResultCode
 {
     SUCCESS = 0,
-    NOT_FOUND = -2,
+    NOT_FOUND = -1,
 };
 
 struct RemoveDataRequestResponse {
