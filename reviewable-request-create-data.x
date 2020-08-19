@@ -6,6 +6,9 @@ struct DataCreationRequest {
     //: Numeric type, used for access control
     uint64 type;
 
+    // Sequence number increases when request is rejected
+	uint32 sequenceNumber;
+
     //: Value stored
     longstring value;
 

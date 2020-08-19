@@ -137,6 +137,14 @@ case PERFORM_REDEMPTION:
         //: reserved for future extension
         EmptyExt ext;
     } performRedemption;
+case DATA_CREATION:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataCreation;
 default:
     //: reserved for future extension
     EmptyExt ext;

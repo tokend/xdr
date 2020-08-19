@@ -7,7 +7,7 @@ struct CreateDataCreationRequestOp
     //: ID of the DataCreationRequest. If set to 0, a new request is created
     uint64 requestID;
 
-    CreateDataRequest createDataRequest;
+    DataCreationRequest dataCreationRequest;
 
     uint32* allTasks;
 
@@ -18,7 +18,8 @@ struct CreateDataCreationRequestOp
 enum CreateDataCreationRequestResultCode
 {
     SUCCESS = 0,
-    INVALID_VALUE = -1
+    INVALID_VALUE = -1,
+    CREATE_DATA_TASKS_NOT_FOUND = -2
 };
 
 struct CreateDataCreationRequestResponse {
@@ -37,10 +38,10 @@ struct CreateDataCreationRequestResponse {
     ext;
 };
 
-union CreateDataCreationRequestResult switch (CreateDataRequestResultCode code)
+union CreateDataCreationRequestResult switch (CreateDataCreationRequestResultCode code)
 {
 case SUCCESS:
-    CreateDataRequestResponse createDataRequestResponse;
+    CreateDataCreationRequestResponse createDataCreationRequestResponse;
 default:
     void;
 };

@@ -184,7 +184,7 @@ struct Operation
     case CANCEL_DATA_CREATION_REQUEST:
         CancelDataCreationRequestOp cancelDataCreationRequestOp;
     }
-    
+
     body;
 };
 
@@ -405,8 +405,6 @@ case opINNER:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
-    case CREATE_DATA_REQUEST:
-        CreateDataRequestResult createDataRequestResult;
     case CREATE_DATA_CREATION_REQUEST:
         CreateDataCreationRequestResult CreateDataCreationRequestResult;
     case CANCEL_DATA_CREATION_REQUEST:
