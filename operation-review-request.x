@@ -26,8 +26,8 @@ enum ReviewRequestOpAction {
         Result: ReviewRequestResult
 */
 //: Review details of a Limits Update request
-struct LimitsUpdateDetails { 
-    //: Limits entry containing new limits to set 
+struct LimitsUpdateDetails {
+    //: Limits entry containing new limits to set
     LimitsV2Entry newLimitsV2;
 
     //:reserved for future use
@@ -52,7 +52,7 @@ struct WithdrawalDetails {
     ext;
 };
 
-//: Details of AML Alert 
+//: Details of AML Alert
 struct AMLAlertDetails {
     //: Comment on reason of AML Alert
     string comment<>;
@@ -267,7 +267,7 @@ enum ReviewRequestResultCode
     SUCCESS = 0,
 
     //: Codes considered as "failure" for an operation
-    //: Reject reason must be empty on approve and not empty on reject/permanent 
+    //: Reject reason must be empty on approve and not empty on reject/permanent
     INVALID_REASON = -1,
     //: Unknown action to perform on ReviewableRequest
     INVALID_ACTION = -2,
@@ -320,7 +320,7 @@ enum ReviewRequestResultCode
     //: Trying to create a sale with one of the quote assets that doesn't exist
     QUOTE_ASSET_NOT_FOUND = -550,
 
-    //: Change role 
+    //: Change role
     //: Trying to remove zero tasks
     NON_ZERO_TASKS_TO_REMOVE_NOT_ALLOWED = -600,
     //: There is no account role with provided id
@@ -385,12 +385,9 @@ enum ReviewRequestResultCode
 
     // offer
     MANAGE_OFFER_FAILED = -1700,
-    
-    // payment
-    PAYMENT_FAILED = -1800,
 
-    // data
-    DATA_NOT_FOUND = -1900
+    // payment
+    PAYMENT_FAILED = -1800
 };
 //: Result of applying the review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)
@@ -406,4 +403,3 @@ default:
 };
 
 }
-

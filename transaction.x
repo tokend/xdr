@@ -56,9 +56,8 @@
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
-%#include "xdr/operation-create-data-request.h"
-%#include "xdr/operation-update-data-request.h"
-%#include "xdr/operation-remove-data-request.h"
+%#include "xdr/operation-create-data-creation-request.h"
+%#include "xdr/operation-cancel-data-creation-request.h"
 
 namespace stellar
 {
@@ -180,13 +179,12 @@ struct Operation
         UpdateDataOp updateDataOp;
     case REMOVE_DATA:
         RemoveDataOp removeDataOp;
-    case CREATE_DATA_REQUEST:
-        CreateDataRequestOp createDataRequestOp;
-    case UPDATE_DATA_REQUEST:
-        UpdateDataRequestOp updateDataRequestOp;
-    case REMOVE_DATA_REQUEST:
-        RemoveDataRequestOp removeDataRequestOp;
+    case CREATE_DATA_CREATION_REQUEST:
+        CreateDataCreationRequestOp createDataCreationRequestOp;
+    case CANCEL_DATA_CREATION_REQUEST:
+        CancelDataCreationRequestOp cancelDataCreationRequestOp;
     }
+    
     body;
 };
 
@@ -409,10 +407,10 @@ case opINNER:
         RemoveDataResult removeDataResult;
     case CREATE_DATA_REQUEST:
         CreateDataRequestResult createDataRequestResult;
-    case UPDATE_DATA_REQUEST:
-        UpdateDataRequestResult updateDataRequestResult;
-    case REMOVE_DATA_REQUEST:
-        RemoveDataRequestResult removeDataRequestResult;
+    case CREATE_DATA_CREATION_REQUEST:
+        CreateDataCreationRequestResult CreateDataCreationRequestResult;
+    case CANCEL_DATA_CREATION_REQUEST:
+        CancelDataCreationRequestResult CancelDataCreationRequestResult;
     }
     tr;
 case opNO_ENTRY:

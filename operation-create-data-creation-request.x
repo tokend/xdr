@@ -2,8 +2,11 @@
 
 namespace stellar
 {
-struct CreateDataRequestOp
+struct CreateDataCreationRequestOp
 {
+    //: ID of the DataCreationRequest. If set to 0, a new request is created
+    uint64 requestID;
+
     CreateDataRequest createDataRequest;
 
     uint32* allTasks;
@@ -12,14 +15,13 @@ struct CreateDataRequestOp
     EmptyExt ext;
 };
 
-enum CreateDataRequestResultCode
+enum CreateDataCreationRequestResultCode
 {
     SUCCESS = 0,
-    INVALID_VALUE = -1,
-    OWNER_NOT_EXIST = -2
+    INVALID_VALUE = -1
 };
 
-struct CreateDataRequestResponse {
+struct CreateDataCreationRequestResponse {
     uint64 requestID;
     bool fulfilled;
     //todo add owner
@@ -27,7 +29,7 @@ struct CreateDataRequestResponse {
     longstring value;
 
     //: Reserved for future use
-     union switch (LedgerVersion v)
+    union switch (LedgerVersion v)
     {
     case EMPTY_VERSION:
         void;
@@ -35,7 +37,7 @@ struct CreateDataRequestResponse {
     ext;
 };
 
-union CreateDataRequestResult switch (CreateDataRequestResultCode code)
+union CreateDataCreationRequestResult switch (CreateDataRequestResultCode code)
 {
 case SUCCESS:
     CreateDataRequestResponse createDataRequestResponse;
