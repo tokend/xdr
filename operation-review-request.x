@@ -187,6 +187,16 @@ struct AtomicSwapBidExtended
     ext;
 };
 
+struct DataCreationExtended {
+    //: Owner of the created data entry
+    AccountID owner;
+    //: ID of the created data entry
+    uint64 id;
+    //: Security type of the created data entry
+    uint64 type;
+};
+
+
 //: Extended result of a Review Request operation containing details specific to certain request types
 struct ExtendedResult {
     //: Indicates whether or not the request that is being reviewed was applied
@@ -209,6 +219,8 @@ struct ExtendedResult {
         PaymentResult paymentResult;
     case PERFORM_REDEMPTION:
         CreateRedemptionRequestResult createRedemptionResult;
+    case DATA_CREATE:
+        DataCreationExtended dataCreationExtended;
     } typeExt;
 
     //: Reserved for future use
