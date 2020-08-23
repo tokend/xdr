@@ -9,6 +9,9 @@ struct DataCreationRequest {
     // Sequence number increases when request is rejected
 	uint32 sequenceNumber;
 
+    //: Owner of data to create
+    AccountID owner;
+
     //: Value stored
     longstring value;
 
