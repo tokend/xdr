@@ -219,7 +219,7 @@ struct ExtendedResult {
         PaymentResult paymentResult;
     case PERFORM_REDEMPTION:
         CreateRedemptionRequestResult createRedemptionResult;
-    case DATA_CREATE:
+    case DATA_CREATION:
         DataCreationExtended dataCreationExtended;
     } typeExt;
 
