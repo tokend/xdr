@@ -19,7 +19,8 @@ enum CreateDataCreationRequestResultCode
 {
     SUCCESS = 0,
     INVALID_VALUE = -1,
-    CREATE_DATA_TASKS_NOT_FOUND = -2
+    CREATE_DATA_TASKS_NOT_FOUND = -2,
+    REQUEST_NOT_FOUND = -3
 };
 
 struct CreateDataCreationRequestResponse {
