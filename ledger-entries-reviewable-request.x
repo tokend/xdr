@@ -46,7 +46,8 @@ enum ReviewableRequestType
 	MANAGE_OFFER = 19,
 	CREATE_PAYMENT = 20,
 	PERFORM_REDEMPTION = 21,
-	DATA_CREATION = 22
+	DATA_CREATION = 22,
+	DATA_UPDATE = 23
 };
 
 struct TasksExt {
@@ -117,6 +118,8 @@ struct ReviewableRequestEntry {
             RedemptionRequest redemptionRequest;
         case DATA_CREATION:
             DataCreationRequest dataCreationRequest;
+        case DATA_UPDATE:
+            DataUpdateRequest dataUpdateRequest;
 	} body;
 
 	TasksExt tasks;

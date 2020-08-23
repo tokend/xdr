@@ -183,6 +183,8 @@ struct Operation
         CreateDataCreationRequestOp createDataCreationRequestOp;
     case CANCEL_DATA_CREATION_REQUEST:
         CancelDataCreationRequestOp cancelDataCreationRequestOp;
+    case CREATE_DATA_UPDATE_REQUEST:
+        CreateDataUpdateRequestOp createDataUpdateRequestOp;
     }
 
     body;
@@ -406,9 +408,11 @@ case opINNER:
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
     case CREATE_DATA_CREATION_REQUEST:
-        CreateDataCreationRequestResult CreateDataCreationRequestResult;
+        CreateDataCreationRequestResult createDataCreationRequestResult;
     case CANCEL_DATA_CREATION_REQUEST:
-        CancelDataCreationRequestResult CancelDataCreationRequestResult;
+        CancelDataCreationRequestResult cancelDataCreationRequestResult;
+    case CREATE_DATA_UPDATE_REQUEST:
+        CreateDataUpdateRequestResult createDataUpdateRequestResult;
     }
     tr;
 case opNO_ENTRY:

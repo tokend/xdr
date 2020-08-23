@@ -2,12 +2,12 @@
 
 namespace stellar
 {
-struct CreateDataCreationRequestOp
+struct CreateDataUpdateRequestOp
 {
-    //: ID of the DataCreationRequest. If set to 0, a new request is created
+    //: ID of the DataUpdateRequest. If set to 0, a new request is created
     uint64 requestID;
 
-    DataCreationRequest dataCreationRequest;
+    DataUpdateRequest dataUpdateRequest;
 
     uint32* allTasks;
 
@@ -15,14 +15,14 @@ struct CreateDataCreationRequestOp
     EmptyExt ext;
 };
 
-enum CreateDataCreationRequestResultCode
+enum CreateDataUpdateRequestResultCode
 {
     SUCCESS = 0,
     INVALID_VALUE = -1,
-    CREATE_DATA_TASKS_NOT_FOUND = -2
+    UPDATE_DATA_TASKS_NOT_FOUND = -2
 };
 
-struct CreateDataCreationRequestResponse {
+struct CreateDataUpdateRequestResponse {
     uint64 requestID;
     bool fulfilled;
     AccountID owner;
@@ -39,10 +39,10 @@ struct CreateDataCreationRequestResponse {
     ext;
 };
 
-union CreateDataCreationRequestResult switch (CreateDataCreationRequestResultCode code)
+union CreateDataUpdateRequestResult switch (CreateDataUpdateRequestResultCode code)
 {
 case SUCCESS:
-    CreateDataCreationRequestResponse createDataCreationRequestResponse;
+    CreateDataUpdateRequestResponse createDataUpdateRequestResponse;
 default:
     void;
 };
