@@ -1,4 +1,4 @@
-%#include "xdr/reviewable-request-create-data.h"
+%#include "xdr/reviewable-request-update-data.h"
 
 namespace stellar
 {
