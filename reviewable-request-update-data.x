@@ -12,6 +12,9 @@ struct DataUpdateRequest {
     //: Value stored
     longstring value;
 
+    //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
+    longstring creatorDetails; // details set by requester
+
     //: reserved for future use
     union switch (LedgerVersion v)
     {
