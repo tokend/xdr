@@ -399,7 +399,10 @@ enum ReviewRequestResultCode
     MANAGE_OFFER_FAILED = -1700,
 
     // payment
-    PAYMENT_FAILED = -1800
+    PAYMENT_FAILED = -1800,
+
+    // Update Data
+    DATA_NOT_FOUND = -1900
 };
 //: Result of applying the review request with result code
 union ReviewRequestResult switch (ReviewRequestResultCode code)

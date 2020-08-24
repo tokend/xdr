@@ -19,7 +19,9 @@ enum CreateDataUpdateRequestResultCode
 {
     SUCCESS = 0,
     INVALID_VALUE = -1,
-    UPDATE_DATA_TASKS_NOT_FOUND = -2
+    UPDATE_DATA_TASKS_NOT_FOUND = -2,
+    DATA_NOT_FOUND = -3,
+    INVALID_CREATOR_DETAILS = -4
 };
 
 struct CreateDataUpdateRequestResponse {
