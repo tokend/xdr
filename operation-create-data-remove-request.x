@@ -21,7 +21,8 @@ enum CreateDataRemoveRequestResultCode
     INVALID_VALUE = -1,
     REMOVE_DATA_TASKS_NOT_FOUND = -2,
     DATA_NOT_FOUND = -3,
-    INVALID_CREATOR_DETAILS = -4
+    INVALID_CREATOR_DETAILS = -4,
+    REQUEST_NOT_FOUND = -5
 };
 
 struct CreateDataRemoveRequestSuccess {
