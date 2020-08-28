@@ -124,7 +124,7 @@ struct ReviewableRequestEntry {
         case DATA_UPDATE:
             DataUpdateRequest dataUpdateRequest;
         case DATA_REMOVE:
-            DataUpdateRequest dataUpdateRequest;
+            DataRemoveRequest dataRemoveRequest;
 
 	} body;
 
