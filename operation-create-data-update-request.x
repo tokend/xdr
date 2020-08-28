@@ -27,10 +27,6 @@ enum CreateDataUpdateRequestResultCode
 struct CreateDataUpdateRequestSuccess {
     uint64 requestID;
     bool fulfilled;
-    AccountID owner;
-    uint64 id;
-    uint64 type;
-    longstring value;
 
     //: Reserved for future use
     union switch (LedgerVersion v)

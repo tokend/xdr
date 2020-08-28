@@ -27,8 +27,6 @@ enum CreateDataRemoveRequestResultCode
 struct CreateDataRemoveRequestSuccess {
     uint64 requestID;
     bool fulfilled;
-    uint64 id;
-    uint64 type;
 
     //: Reserved for future use
     union switch (LedgerVersion v)

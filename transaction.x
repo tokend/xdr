@@ -59,6 +59,9 @@
 %#include "xdr/operation-create-data-creation-request.h"
 %#include "xdr/operation-cancel-data-creation-request.h"
 %#include "xdr/operation-create-data-update-request.h"
+%#include "xdr/operation-cancel-data-update-request.h"
+%#include "xdr/operation-create-data-remove-request.h"
+%#include "xdr/operation-cancel-data-remove-request.h"
 
 namespace stellar
 {
