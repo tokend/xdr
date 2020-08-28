@@ -24,7 +24,7 @@ enum CreateDataCreationRequestResultCode
     INVALID_CREATOR_DETAILS = -4
 };
 
-struct CreateDataCreationRequestResponse {
+struct CreateDataCreationRequestSuccess {
     uint64 requestID;
     bool fulfilled;
     AccountID owner;
@@ -44,7 +44,7 @@ struct CreateDataCreationRequestResponse {
 union CreateDataCreationRequestResult switch (CreateDataCreationRequestResultCode code)
 {
 case SUCCESS:
-    CreateDataCreationRequestResponse createDataCreationRequestResponse;
+    CreateDataCreationRequestSuccess success;
 default:
     void;
 };

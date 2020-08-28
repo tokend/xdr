@@ -20,6 +20,7 @@
 %#include "xdr/reviewable-request-redemption.h"
 %#include "xdr/reviewable-request-create-data.h"
 %#include "xdr/reviewable-request-update-data.h"
+%#include "xdr/reviewable-request-remove-data.h"
 
 namespace stellar
 {
@@ -48,7 +49,8 @@ enum ReviewableRequestType
 	CREATE_PAYMENT = 20,
 	PERFORM_REDEMPTION = 21,
 	DATA_CREATION = 22,
-	DATA_UPDATE = 23
+	DATA_UPDATE = 23,
+	DATA_REMOVE = 24
 };
 
 struct TasksExt {
@@ -121,6 +123,9 @@ struct ReviewableRequestEntry {
             DataCreationRequest dataCreationRequest;
         case DATA_UPDATE:
             DataUpdateRequest dataUpdateRequest;
+        case DATA_REMOVE:
+            DataUpdateRequest dataUpdateRequest;
+
 	} body;
 
 	TasksExt tasks;
