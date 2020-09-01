@@ -110,7 +110,8 @@ enum LedgerEntryType
     ACCOUNT_SPECIFIC_RULE = 36,
     INITIATE_KYC_RECOVERY = 37,
     SWAP = 38,
-    DATA = 39
+    DATA = 39,
+    CUSTOM = 40
 };
 
 // variable size as the size depends on the signature scheme used
