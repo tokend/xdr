@@ -145,7 +145,7 @@ default:
 //: Describes custom rule resource that can be used outside of the Core for flexible access control
 struct CustomRuleResource {
     //: Action attributes
-    longstring action;
+    longstring *action;
     //: Resource attributes
     longstring resource;
 
