@@ -29,7 +29,13 @@ enum CreateDeferredPaymentCreationRequestResultCode
     //: or auto approved
     SUCCESS = 0,
 
-    REFERENCE_DUPLICATION = -1,
+    SOURCE_BALANCE_NOT_FOUND = -1,
+    DESTINATION_ACCOUNT_NOT_FOUND = -2,
+    INCORRECT_PRECISION = -3,
+    UNDERFUNDED = -4,
+    TASKS_NOT_FOUND = -5,
+    INVALID_CREATOR_DETAILS = -6,
+    INVALID_AMOUNT = -7
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
