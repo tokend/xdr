@@ -26,6 +26,8 @@ enum CancelDeferredPaymentCreationRequestResultCode
     // codes considered as "failure" for the operation
     //: There is no atomic swap ask with such id
     NOT_FOUND = -1, // request does not exist
+    REQUEST_ID_INVALID = -2,
+    LINE_FULL = -3
 };
 
 //: Success result of CancelDeferredPaymentCreationRequestOp application

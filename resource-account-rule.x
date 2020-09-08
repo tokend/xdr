@@ -143,6 +143,7 @@ case CREATE_DEFERRED_PAYMENT:
         AssetCode assetCode;
 
         uint64 assetType;
+        EmptyExt ext;
     } createDeferredPayment;
 case CLOSE_DEFERRED_PAYMENT:
     struct
@@ -150,7 +151,8 @@ case CLOSE_DEFERRED_PAYMENT:
         AssetCode assetCode;
 
         uint64 assetType;
-    } createDeferredPayment;
+        EmptyExt ext;
+    } closeDeferredPayment;
 default:
     //: reserved for future extension
     EmptyExt ext;
