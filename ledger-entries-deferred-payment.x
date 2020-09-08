@@ -17,8 +17,6 @@ struct DeferredPaymentEntry
 
     AccountID destination;
 
-    longstring reference;
-
     //: Reserved for future extension
     EmptyExt ext;
 };
