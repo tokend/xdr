@@ -316,5 +316,11 @@ case DATA:
 
         EmptyExt ext;
     } data;
+case DEFERRED_PAYMENT:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } deferredPayment;
 };
 }

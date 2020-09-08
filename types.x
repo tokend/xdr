@@ -110,7 +110,8 @@ enum LedgerEntryType
     ACCOUNT_SPECIFIC_RULE = 36,
     INITIATE_KYC_RECOVERY = 37,
     SWAP = 38,
-    DATA = 39
+    DATA = 39,
+    DEFERRED_PAYMENT = 40
 };
 
 // variable size as the size depends on the signature scheme used
@@ -223,7 +224,11 @@ enum OperationType
     CREATE_REDEMPTION_REQUEST = 56,
     CREATE_DATA = 57,
     UPDATE_DATA = 58,
-    REMOVE_DATA = 59
+    REMOVE_DATA = 59,
+    CREATE_DEFERRED_PAYMENT_CREATION_REQUEST = 60,
+    CANCEL_DEFERRED_PAYMENT_CREATION_REQUEST = 61,
+    CREATE_CLOSE_DEFERRED_PAYMENT_REQUEST = 62,
+    CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST = 63
 };
 
 struct DecoratedSignature
