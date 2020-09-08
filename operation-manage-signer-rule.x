@@ -117,7 +117,9 @@ enum ManageSignerRuleResultCode
     //: It is not allowed to remove the rule if it is attached to at least one role
     RULE_IS_USED = -2,
     //: Passed details have invalid json structure
-    INVALID_DETAILS = -3
+    INVALID_DETAILS = -3,
+    //: Custom rule action can not be used with entries other than CUSTOM
+    INVALID_ACTION = -4
 };
 
 //: Result of operation application
