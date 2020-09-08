@@ -18,6 +18,8 @@
 %#include "xdr/reviewable-request-manage-offer.h"
 %#include "xdr/reviewable-request-payment.h"
 %#include "xdr/reviewable-request-redemption.h"
+%#include "xdr/reviewable-request-create-deferred-payment.h"
+%#include "xdr/reviewable-request-close-deferred-payment.h"
 
 namespace stellar
 {
@@ -44,7 +46,9 @@ enum ReviewableRequestType
 	KYC_RECOVERY = 18,
 	MANAGE_OFFER = 19,
 	CREATE_PAYMENT = 20,
-	PERFORM_REDEMPTION = 21
+	PERFORM_REDEMPTION = 21,
+	CREATE_DEFERRED_PAYMENT = 22,
+	CLOSE_DEFERRED_PAYMENT = 23
 };
 
 struct TasksExt {
@@ -113,6 +117,11 @@ struct ReviewableRequestEntry {
 			CreatePaymentRequest createPaymentRequest;
         case PERFORM_REDEMPTION:
             RedemptionRequest redemptionRequest;
+        case CREATE_DEFERRED_PAYMENT:
+            CreateDeferredPaymentRequest createDeferredPaymentRequest;
+        case CLOSE_DEFERRED_PAYMENT:
+            CloseDeferredPaymentRequest closeDeferredPaymentRequest;
+
 	} body;
 
 	TasksExt tasks;

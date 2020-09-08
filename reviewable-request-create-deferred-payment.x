@@ -11,6 +11,10 @@ struct CreateDeferredPaymentRequest {
     uint64 amount;
     PaymentFeeData feeData;
 
+    longstring reference;
+
+    longstring creatorDetails; // details set by requester
+
     EmptyExt ext;
 };
 

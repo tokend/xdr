@@ -137,6 +137,20 @@ case PERFORM_REDEMPTION:
         //: reserved for future extension
         EmptyExt ext;
     } performRedemption;
+case CREATE_DEFERRED_PAYMENT:
+    struct
+    {
+        AssetCode assetCode;
+
+        uint64 assetType;
+    } createDeferredPayment;
+case CLOSE_DEFERRED_PAYMENT:
+    struct
+    {
+        AssetCode assetCode;
+
+        uint64 assetType;
+    } createDeferredPayment;
 default:
     //: reserved for future extension
     EmptyExt ext;

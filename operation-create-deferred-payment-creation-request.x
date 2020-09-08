@@ -29,6 +29,7 @@ enum CreateDeferredPaymentCreationRequestResultCode
     //: or auto approved
     SUCCESS = 0,
 
+    REFERENCE_DUPLICATION = -1,
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
