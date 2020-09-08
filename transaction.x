@@ -56,6 +56,12 @@
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
+%#include "xdr/operation-create-data-creation-request.h"
+%#include "xdr/operation-cancel-data-creation-request.h"
+%#include "xdr/operation-create-data-update-request.h"
+%#include "xdr/operation-cancel-data-update-request.h"
+%#include "xdr/operation-create-data-remove-request.h"
+%#include "xdr/operation-cancel-data-remove-request.h"
 
 namespace stellar
 {
@@ -177,7 +183,20 @@ struct Operation
         UpdateDataOp updateDataOp;
     case REMOVE_DATA:
         RemoveDataOp removeDataOp;
+    case CREATE_DATA_CREATION_REQUEST:
+        CreateDataCreationRequestOp createDataCreationRequestOp;
+    case CANCEL_DATA_CREATION_REQUEST:
+        CancelDataCreationRequestOp cancelDataCreationRequestOp;
+    case CREATE_DATA_UPDATE_REQUEST:
+        CreateDataUpdateRequestOp createDataUpdateRequestOp;
+    case CREATE_DATA_REMOVE_REQUEST:
+        CreateDataRemoveRequestOp createDataRemoveRequestOp;
+    case CANCEL_DATA_UPDATE_REQUEST:
+        CancelDataUpdateRequestOp cancelDataUpdateRequestOp;
+    case CANCEL_DATA_REMOVE_REQUEST:
+        CancelDataRemoveRequestOp cancelDataRemoveRequestOp;
     }
+
     body;
 };
 
@@ -398,6 +417,18 @@ case opINNER:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
+    case CREATE_DATA_CREATION_REQUEST:
+        CreateDataCreationRequestResult createDataCreationRequestResult;
+    case CANCEL_DATA_CREATION_REQUEST:
+        CancelDataCreationRequestResult cancelDataCreationRequestResult;
+    case CREATE_DATA_UPDATE_REQUEST:
+        CreateDataUpdateRequestResult createDataUpdateRequestResult;
+    case CREATE_DATA_REMOVE_REQUEST:
+        CreateDataRemoveRequestResult createDataRemoveRequestResult;
+    case CANCEL_DATA_UPDATE_REQUEST:
+        CancelDataUpdateRequestResult cancelDataUpdateRequestResult;
+    case CANCEL_DATA_REMOVE_REQUEST:
+        CancelDataRemoveRequestResult cancelDataRemoveRequestResult;
     }
     tr;
 case opNO_ENTRY:
