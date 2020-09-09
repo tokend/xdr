@@ -46,7 +46,7 @@ union CancelDeferredPaymentCreationRequestResult switch (CancelDeferredPaymentCr
 {
 case SUCCESS:
     //: is used to pass useful fields after successful operation applying
-    CancelDeferredPaymentCreationRequestSuccess success;
+    CancelDeferredPaymentCreationRequestResultSuccess success;
 default:
     void;
 };
