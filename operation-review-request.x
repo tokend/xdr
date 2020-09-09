@@ -198,12 +198,22 @@ struct CreateDeferredPaymentResult
     EmptyExt ext;
 };
 
+enum CloseDeferredPaymentEffect
+{
+    CHARGED = 0,
+    DELETED = 1
+};
+
 struct CloseDeferredPaymentResult
 {
     uint64 deferredPaymentID;
 
     AccountID destination;
     BalanceID destinationBalance;
+
+    CloseDeferredPaymentEffect effect;
+
+    uint64 deferredPaymentRemainder;
 
     uint64 totalFee;
     uint64 totalAmount;
