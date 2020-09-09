@@ -1,5 +1,5 @@
 %#include "xdr/ledger-entries.h"
-%#include "xdr/reviewable-request-atomic-swap-ask.h"
+%#include "xdr/reviewable-request-close-deferred-payment.h"
 
 namespace stellar
 {
@@ -27,6 +27,15 @@ enum CreateCloseDeferredPaymentRequestResultCode
     //: or auto approved
     SUCCESS = 0,
 
+    UNDERFUNDED = -1,
+    INVALID_CREATOR_DETAILS = -2,
+    NOT_AUTHORIZED = -3,
+    DESTINATION_ACCOUNT_NOT_FOUND = -4,
+    INCORRECT_PRECISION = -5,
+    ASSET_MISMATCH = -6,
+    LINE_FULL = -7,
+    TASKS_NOT_FOUND = -8,
+    INVALID_AMOUNT = -9
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
