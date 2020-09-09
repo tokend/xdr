@@ -43,6 +43,31 @@ enum CreateCloseDeferredPaymentRequestResultCode
     REQUEST_NOT_FOUND = -11
 };
 
+
+enum CloseDeferredPaymentEffect
+{
+    CHARGED = 0,
+    DELETED = 1
+};
+
+struct CloseDeferredPaymentResult
+{
+    uint64 deferredPaymentID;
+
+    AccountID destination;
+    BalanceID destinationBalance;
+
+    CloseDeferredPaymentEffect effect;
+
+    uint64 deferredPaymentRemainder;
+
+    uint64 totalFee;
+    uint64 totalAmount;
+    EmptyExt ext;
+};
+
+
+
 //: Success result of CreateASwapAskCreationRequestOp application
 struct CreateCloseDeferredPaymentRequestSuccess
 {

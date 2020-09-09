@@ -4,6 +4,7 @@
 %#include "xdr/operation-payment.h"
 %#include "xdr/operation-manage-offer.h"
 %#include "xdr/operation-create-redemption-request.h"
+%#include "xdr/operation-create-close-deferred-payment-request.h"
 
 namespace stellar
 {
@@ -195,28 +196,6 @@ struct CreateDeferredPaymentResult
     uint64 totalFee;
     uint64 totalAmount;
 
-    EmptyExt ext;
-};
-
-enum CloseDeferredPaymentEffect
-{
-    CHARGED = 0,
-    DELETED = 1
-};
-
-struct CloseDeferredPaymentResult
-{
-    uint64 deferredPaymentID;
-
-    AccountID destination;
-    BalanceID destinationBalance;
-
-    CloseDeferredPaymentEffect effect;
-
-    uint64 deferredPaymentRemainder;
-
-    uint64 totalFee;
-    uint64 totalAmount;
     EmptyExt ext;
 };
 
