@@ -35,7 +35,8 @@ enum CreateCloseDeferredPaymentRequestResultCode
     ASSET_MISMATCH = -6,
     LINE_FULL = -7,
     TASKS_NOT_FOUND = -8,
-    INVALID_AMOUNT = -9
+    INVALID_AMOUNT = -9,
+    DESTINATION_BALANCE_NOT_FOUND = -10
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
