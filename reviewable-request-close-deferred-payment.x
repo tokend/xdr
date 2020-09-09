@@ -18,6 +18,8 @@ struct CloseDeferredPaymentRequest {
     uint64 amount;
     PaymentFeeData feeData;
 
+    uint32 sequenceNumber;
+
     EmptyExt ext;
 };
 
