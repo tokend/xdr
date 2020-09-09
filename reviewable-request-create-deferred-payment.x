@@ -1,6 +1,7 @@
 
 
 %#include "xdr/types.h"
+%#include "xdr/operation-payment.h"
 
 namespace stellar
 {

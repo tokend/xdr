@@ -1,5 +1,5 @@
 %#include "xdr/ledger-entries.h"
-%#include "xdr/reviewable-request-atomic-swap-ask.h"
+%#include "xdr/reviewable-request-create-deferred-payment.h"
 
 namespace stellar
 {
