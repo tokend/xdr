@@ -194,6 +194,8 @@ struct CreateDeferredPaymentResult
     AccountID source;
     uint64 totalFee;
     uint64 totalAmount;
+
+    EmptyExt ext;
 };
 
 struct CloseDeferredPaymentResult
@@ -205,6 +207,7 @@ struct CloseDeferredPaymentResult
 
     uint64 totalFee;
     uint64 totalAmount;
+    EmptyExt ext;
 };
 
 //: Extended result of a Review Request operation containing details specific to certain request types
