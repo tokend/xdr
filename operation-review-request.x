@@ -187,6 +187,26 @@ struct AtomicSwapBidExtended
     ext;
 };
 
+struct CreateDeferredPaymentResult
+{
+    uint64 deferredPaymentID;
+    AccountID destination;
+    AccountID source;
+    uint64 totalFee;
+    uint64 totalAmount;
+};
+
+struct CloseDeferredPaymentResult
+{
+    uint64 deferredPaymentID;
+
+    AccountID destination;
+    BalanceID destinationBalance;
+
+    uint64 totalFee;
+    uint64 totalAmount;
+};
+
 //: Extended result of a Review Request operation containing details specific to certain request types
 struct ExtendedResult {
     //: Indicates whether or not the request that is being reviewed was applied
@@ -209,6 +229,10 @@ struct ExtendedResult {
         PaymentResult paymentResult;
     case PERFORM_REDEMPTION:
         CreateRedemptionRequestResult createRedemptionResult;
+    case CREATE_DEFERRED_PAYMENT:
+        CreateDeferredPaymentResult createDeferredPaymentResult;
+    case CLOSE_DEFERRED_PAYMENT:
+         CloseDeferredPaymentResult closeDeferredPaymentResult;
     } typeExt;
 
     //: Reserved for future use
