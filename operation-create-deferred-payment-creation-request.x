@@ -49,6 +49,7 @@ struct CreateDeferredPaymentCreationRequestSuccess
     //: Indicates whether or not the `CREATE_ATOMIC_SWAP_ASK` request was auto approved and fulfilled
     bool fulfilled;
     //: ID of a newly created ask (if the ask  creation request has been auto approved)
+    uint64 deferredPaymentID;
 
     //: reserved for the future use
     union switch (LedgerVersion v)
