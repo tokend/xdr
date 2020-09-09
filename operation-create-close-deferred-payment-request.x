@@ -7,6 +7,9 @@ namespace stellar
 //: CreateCloseDeferredPaymentRequestOp is used to create `CLOSE_DEFERRED_PAYMENT` request
 struct CreateCloseDeferredPaymentRequestOp
 {
+
+    uint64 requestID;
+
     //: Body of request which will be created
     CloseDeferredPaymentRequest request;
 
@@ -36,7 +39,8 @@ enum CreateCloseDeferredPaymentRequestResultCode
     LINE_FULL = -7,
     TASKS_NOT_FOUND = -8,
     INVALID_AMOUNT = -9,
-    DESTINATION_BALANCE_NOT_FOUND = -10
+    DESTINATION_BALANCE_NOT_FOUND = -10,
+    REQUEST_NOT_FOUND = -11
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
@@ -45,6 +49,8 @@ struct CreateCloseDeferredPaymentRequestSuccess
     uint64 requestID;
     bool fulfilled;
     uint64 deferredPaymentID;
+
+    CloseDeferredPaymentResult extendedResult;
 
     //: reserved for the future use
     union switch (LedgerVersion v)

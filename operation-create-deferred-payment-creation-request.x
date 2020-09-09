@@ -7,6 +7,8 @@ namespace stellar
 //: CreateDeferredPaymentCreationRequestOp is used to create `CREATE_DEFERRED_PAYMENT` request
 struct CreateDeferredPaymentCreationRequestOp
 {
+
+    uint64 requestID;
     //: Body of request which will be created
     CreateDeferredPaymentRequest request;
 
@@ -35,7 +37,8 @@ enum CreateDeferredPaymentCreationRequestResultCode
     UNDERFUNDED = -4,
     TASKS_NOT_FOUND = -5,
     INVALID_CREATOR_DETAILS = -6,
-    INVALID_AMOUNT = -7
+    INVALID_AMOUNT = -7,
+    REQUEST_NOT_FOUND = -8
 };
 
 //: Success result of CreateASwapAskCreationRequestOp application
@@ -48,6 +51,7 @@ struct CreateDeferredPaymentCreationRequestSuccess
     //: ID of a newly created ask (if the ask  creation request has been auto approved)
     uint64 deferredPaymentID;
 
+    CreateDeferredPaymentResult extendedResult;
     //: reserved for the future use
     union switch (LedgerVersion v)
     {
