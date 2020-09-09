@@ -51,7 +51,7 @@ struct CreateDeferredPaymentCreationRequestSuccess
     //: ID of a newly created ask (if the ask  creation request has been auto approved)
     uint64 deferredPaymentID;
 
-    CreateDeferredPaymentResult extendedResult;
+    CreateDeferredPaymentResult* extendedResult;
     //: reserved for the future use
     union switch (LedgerVersion v)
     {

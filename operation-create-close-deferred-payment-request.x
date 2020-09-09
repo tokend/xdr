@@ -50,7 +50,7 @@ struct CreateCloseDeferredPaymentRequestSuccess
     bool fulfilled;
     uint64 deferredPaymentID;
 
-    CloseDeferredPaymentResult extendedResult;
+    CloseDeferredPaymentResult* extendedResult;
 
     //: reserved for the future use
     union switch (LedgerVersion v)
