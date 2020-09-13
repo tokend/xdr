@@ -137,6 +137,30 @@ case PERFORM_REDEMPTION:
         //: reserved for future extension
         EmptyExt ext;
     } performRedemption;
+case DATA_CREATION:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataCreation;
+case DATA_UPDATE:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataUpdate;
+case DATA_REMOVE:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataRemove;
 case CREATE_DEFERRED_PAYMENT:
     struct
     {
@@ -157,6 +181,17 @@ default:
     //: reserved for future extension
     EmptyExt ext;
 };
+
+//: Describes custom rule resource that can be used outside of the Core for flexible access control
+struct CustomRuleResource {
+    //: Action attributes
+    longstring *action;
+    //: Resource attributes
+    longstring resource;
+
+    EmptyExt ext;
+};
+
 
 //: Describes properties of some entries that can be used to restrict the usage of entries
 union AccountRuleResource switch (LedgerEntryType type)
@@ -297,6 +332,8 @@ case DATA:
         //: Reserved for future extension
         EmptyExt ext;
     } data;
+case CUSTOM:
+    CustomRuleResource custom;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -328,7 +365,8 @@ enum AccountRuleAction
     EXCHANGE = 21,
     RECEIVE_REDEMPTION = 22,
     UPDATE = 23,
-    UPDATE_FOR_OTHER = 24
+    UPDATE_FOR_OTHER = 24,
+    CUSTOM = 25
 };
 
 }

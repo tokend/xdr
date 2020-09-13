@@ -18,6 +18,9 @@
 %#include "xdr/reviewable-request-manage-offer.h"
 %#include "xdr/reviewable-request-payment.h"
 %#include "xdr/reviewable-request-redemption.h"
+%#include "xdr/reviewable-request-create-data.h"
+%#include "xdr/reviewable-request-update-data.h"
+%#include "xdr/reviewable-request-remove-data.h"
 %#include "xdr/reviewable-request-create-deferred-payment.h"
 %#include "xdr/reviewable-request-close-deferred-payment.h"
 
@@ -47,8 +50,11 @@ enum ReviewableRequestType
 	MANAGE_OFFER = 19,
 	CREATE_PAYMENT = 20,
 	PERFORM_REDEMPTION = 21,
-	CREATE_DEFERRED_PAYMENT = 22,
-	CLOSE_DEFERRED_PAYMENT = 23
+	DATA_CREATION = 22,
+	DATA_UPDATE = 23,
+	DATA_REMOVE = 24,
+	CREATE_DEFERRED_PAYMENT = 25,
+    CLOSE_DEFERRED_PAYMENT = 26
 };
 
 struct TasksExt {
@@ -117,6 +123,12 @@ struct ReviewableRequestEntry {
 			CreatePaymentRequest createPaymentRequest;
         case PERFORM_REDEMPTION:
             RedemptionRequest redemptionRequest;
+        case DATA_CREATION:
+            DataCreationRequest dataCreationRequest;
+        case DATA_UPDATE:
+            DataUpdateRequest dataUpdateRequest;
+        case DATA_REMOVE:
+            DataRemoveRequest dataRemoveRequest;
         case CREATE_DEFERRED_PAYMENT:
             CreateDeferredPaymentRequest createDeferredPaymentRequest;
         case CLOSE_DEFERRED_PAYMENT:

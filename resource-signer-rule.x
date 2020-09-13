@@ -174,6 +174,8 @@ case DATA:
         //: Reserved for future extension
         EmptyExt ext;
     } data;
+case CUSTOM:
+    CustomRuleResource custom;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -202,7 +204,8 @@ enum SignerRuleAction
     CREATE_FOR_OTHER_WITH_TASKS = 18,
     REMOVE_FOR_OTHER = 19,
     EXCHANGE = 20,
-    UPDATE_FOR_OTHER = 21
+    UPDATE_FOR_OTHER = 21,
+    CUSTOM = 22
 };
 
 
