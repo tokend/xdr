@@ -9,7 +9,6 @@ namespace stellar
 struct CloseDeferredPaymentRequest {
     uint64 deferredPaymentID;
 
-    AccountID destination;
     BalanceID destinationBalance;
 
     //: Arbitrary stringified json object that can be used to attach data to be reviewed by an admin
