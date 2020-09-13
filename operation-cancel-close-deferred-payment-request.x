@@ -24,7 +24,7 @@ enum CancelCloseDeferredPaymentRequestResultCode
     SUCCESS = 0,
 
     // codes considered as "failure" for the operation
-    NOT_FOUND = -1,
+    NOT_FOUND = -1
 };
 
 //: Success result of CancelCloseDeferredPaymentRequestOp application
