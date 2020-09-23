@@ -59,10 +59,6 @@ struct CloseDeferredPaymentResult
 
     CloseDeferredPaymentEffect effect;
 
-    uint64 deferredPaymentRemainder;
-
-    uint64 totalFee;
-    uint64 totalAmount;
     EmptyExt ext;
 };
 

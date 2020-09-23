@@ -10,7 +10,6 @@ struct CreateDeferredPaymentRequest {
     AccountID destination;
 
     uint64 amount;
-    PaymentFeeData feeData;
     uint32 sequenceNumber;
 
     longstring creatorDetails; // details set by requester
@@ -19,4 +18,3 @@ struct CreateDeferredPaymentRequest {
 };
 
 }
-

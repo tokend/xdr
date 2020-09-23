@@ -2,7 +2,7 @@
 %#include "xdr/operation-payment.h"
 
 
-namespace stellar 
+namespace stellar
 {
 struct DeferredPaymentEntry
 {
@@ -10,7 +10,8 @@ struct DeferredPaymentEntry
     uint64 id;
 
     uint64 amount;
-    PaymentFeeData feeData;
+
+    longstring details;
 
     //: Creator of the entry
     AccountID source;

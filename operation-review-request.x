@@ -194,8 +194,6 @@ struct CreateDeferredPaymentResult
     uint64 deferredPaymentID;
     AccountID destination;
     AccountID source;
-    uint64 totalFee;
-    uint64 totalAmount;
 
     EmptyExt ext;
 };
