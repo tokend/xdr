@@ -1,0 +1,32 @@
+/cancelCloseDeferredPaymentRequestOp:
+  get:
+    tags:
+      - Deferred payment
+    summary: Close deferred payment request
+    description: |
+      Allow to unlock and send money from existing deferred payment
+
+      #### Signer Role Requirements
+        | Resource Type | ReviewableRequestType | Action |
+        |:-------------:|:-------:|:--------:|
+        | `REVIEWABLE_REQUEST` | `CLOSE_DEFERRED_PAYMENT` | `CANCEL` |
+
+    operationId: cancelCloseDeferredPaymentRequestOp
+    x-item-type: operation
+    parameters:
+      - name: CancelCloseDeferredPaymentRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CancelCloseDeferredPaymentRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CancelCloseDeferredPaymentRequestOp'

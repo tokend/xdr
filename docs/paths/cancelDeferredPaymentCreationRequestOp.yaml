@@ -1,0 +1,30 @@
+/cancelDeferredPaymentCreationRequestOp:
+  get:
+    tags:
+      - Deferred payment
+    summary: Cancel create deferred payment request
+    description: |
+      #### Signer Role Requirements
+        | Resource Type | ReviewableRequestType | Action |
+        |:-------------:|:-------:|:--------:|
+        | `REVIEWABLE_REQUEST` | `CREATE_DEFERRED_PAYMENT` | `CANCEL` |
+
+    operationId: createDeferredPaymentCreationRequestOp
+    x-item-type: operation
+    parameters:
+      - name: CancelDeferredPaymentCreationRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CancelDeferredPaymentCreationRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CancelDeferredPaymentCreationRequestOp'

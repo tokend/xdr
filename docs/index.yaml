@@ -24,7 +24,7 @@ servers:
 tags:
   - name: Transaction
     description: |
-                  Transactions are commands that modify the ledger state. 
+                  Transactions are commands that modify the ledger state.
                   If you think of the ledger as a database, then Operations are SQL commands and Trannsactions are SQL transactions.
 
 
@@ -37,7 +37,7 @@ tags:
     description: Defines operations to manage Assets
   - name: Fees
     description: Defines operations to manage Fees
-  - name: Signers 
+  - name: Signers
     description: Defines operations to manage Signers
   - name: Account Roles
     description: Account Role - entry that consists of [Account Rules](#tag/Account-Rules) and can be attached to account.
@@ -45,7 +45,7 @@ tags:
     description: |
       Account Rule defines if `action` can be performed for [resource](#operation/AccountRuleResource).
 
-      TokenD uses strict policy for rules matching. 
+      TokenD uses strict policy for rules matching.
       List of requirements to the roles of participants is formed based on operation (transaction) details.
       If one of the requirements is not fulfilled, operation is rejected.
       Requirement is specified for account and consits of resource and action to be performed.
@@ -58,19 +58,19 @@ tags:
     description: |
       Signer Rule - entry that defines if `action` can be performed for [resource](#operation/SignerRuleResource).
 
-      TokenD uses strict policy for rules matching. 
+      TokenD uses strict policy for rules matching.
       List of requirements to the roles of participants is formed based on operation (transaction) details.
       If one of the requirements is not fulfilled, operation is rejected.
       Requirement is specified for signer and consits of resource and action to be performed.
       Requirement is fulfilled if signer's role contains matching rule with `forbids=false`.
       If one of the matching rules has `forbids=true` - operation is rejected.
-      If role does not contain any matching rules - operation is rejected.  
+      If role does not contain any matching rules - operation is rejected.
   - name: Asset Pairs
     description: |
-                  
+
   - name: Order Books
     description: |
-                  
+
   - name: AMLAlert
     description: Defines access points to AMLAlert Reviewable Requests
   - name: KYC
@@ -91,7 +91,7 @@ tags:
     description: Defines access points to operations related to votes
   - name: Account Specific Rules
     description: |
-      `Account Specific Rules` are similar in functionality to `Account Rules` - they define permissions to interact with various TokenD entities on account level. The main difference between `Account Specific Rules` and `Account Rules` is that with `Account Specific Rules` it's possible to define permissions for particular account without need to create separate role for this account. What is more, `Account Specific Rules` are managed by both Admins and entry owners. 
+      `Account Specific Rules` are similar in functionality to `Account Rules` - they define permissions to interact with various TokenD entities on account level. The main difference between `Account Specific Rules` and `Account Rules` is that with `Account Specific Rules` it's possible to define permissions for particular account without need to create separate role for this account. What is more, `Account Specific Rules` are managed by both Admins and entry owners.
       Main use case for this feature is white/black lists for particular entity. In current version it's only possible to manage white/black lists for sales.
 x-tagGroups:
   - name: Essentials
@@ -110,6 +110,7 @@ x-tagGroups:
      - External Systems
      - Atomic Swap
      - Redemption
+     - Deferred payment
   - name: Access Control
     tags:
       - Signers
