@@ -17,6 +17,10 @@
         |:-------------:|:-------:|:--------:|
         | `REVIEWABLE_REQUEST` | `CREATE_DEFERRED_PAYMENT` | `CREATE` |
 
+      #### Tasks
+
+      `create_deferred_payment_creation_tasks:<asset_code>`
+
     operationId: createDeferredPaymentCreationRequestOp
     x-item-type: operation
     parameters:

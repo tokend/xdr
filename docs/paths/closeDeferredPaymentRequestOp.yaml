@@ -17,6 +17,10 @@
         |:-------------:|:-------:|:--------:|
         | `REVIEWABLE_REQUEST` | `CLOSE_DEFERRED_PAYMENT` | `CREATE` |
 
+      #### Tasks
+
+      `create_deferred_payment_close_tasks:<asset_code>`
+
     operationId: createCloseDeferredPaymentRequestOp
     x-item-type: operation
     parameters:

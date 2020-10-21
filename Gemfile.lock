@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/tokend/xdrgen.git
-  revision: e2e74404df5a4164e53e791906fd7f466b604c08
+  revision: 80d539c45c75b111a9d5ee6889cdd70b4ee720e1
   specs:
     xdrgen (0.0.6)
       activesupport (~> 5)
