@@ -62,6 +62,10 @@
 %#include "xdr/operation-cancel-data-update-request.h"
 %#include "xdr/operation-create-data-remove-request.h"
 %#include "xdr/operation-cancel-data-remove-request.h"
+%#include "xdr/operation-create-deferred-payment-creation-request.h"
+%#include "xdr/operation-create-close-deferred-payment-request.h"
+%#include "xdr/operation-cancel-deferred-payment-creation-request.h"
+%#include "xdr/operation-cancel-close-deferred-payment-request.h"
 
 namespace stellar
 {
@@ -195,6 +199,15 @@ struct Operation
         CancelDataUpdateRequestOp cancelDataUpdateRequestOp;
     case CANCEL_DATA_REMOVE_REQUEST:
         CancelDataRemoveRequestOp cancelDataRemoveRequestOp;
+    case CREATE_DEFERRED_PAYMENT_CREATION_REQUEST:
+        CreateDeferredPaymentCreationRequestOp createDeferredPaymentCreationRequestOp;
+    case CANCEL_DEFERRED_PAYMENT_CREATION_REQUEST:
+        CancelDeferredPaymentCreationRequestOp cancelDeferredPaymentCreationRequestOp;
+    case CREATE_CLOSE_DEFERRED_PAYMENT_REQUEST:
+        CreateCloseDeferredPaymentRequestOp createCloseDeferredPaymentRequestOp;
+    case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
+        CancelCloseDeferredPaymentRequestOp cancelCloseDeferredPaymentRequestOp;
+
     }
 
     body;
@@ -429,6 +442,15 @@ case opINNER:
         CancelDataUpdateRequestResult cancelDataUpdateRequestResult;
     case CANCEL_DATA_REMOVE_REQUEST:
         CancelDataRemoveRequestResult cancelDataRemoveRequestResult;
+    case CREATE_DEFERRED_PAYMENT_CREATION_REQUEST:
+            CreateDeferredPaymentCreationRequestResult createDeferredPaymentCreationRequestResult;
+    case CANCEL_DEFERRED_PAYMENT_CREATION_REQUEST:
+        CancelDeferredPaymentCreationRequestResult cancelDeferredPaymentCreationRequestResult;
+    case CREATE_CLOSE_DEFERRED_PAYMENT_REQUEST:
+        CreateCloseDeferredPaymentRequestResult createCloseDeferredPaymentRequestResult;
+    case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
+        CancelCloseDeferredPaymentRequestResult cancelCloseDeferredPaymentRequestResult;
+
     }
     tr;
 case opNO_ENTRY:

@@ -4,6 +4,7 @@
 %#include "xdr/operation-payment.h"
 %#include "xdr/operation-manage-offer.h"
 %#include "xdr/operation-create-redemption-request.h"
+%#include "xdr/operation-create-close-deferred-payment-request.h"
 
 namespace stellar
 {
@@ -187,6 +188,17 @@ struct AtomicSwapBidExtended
     ext;
 };
 
+
+struct CreateDeferredPaymentResult
+{
+    uint64 deferredPaymentID;
+    AccountID destination;
+    AccountID source;
+
+    EmptyExt ext;
+};
+
+
 struct DataCreationExtended {
     //: Owner of the created data entry
     AccountID owner;
@@ -221,6 +233,11 @@ struct ExtendedResult {
         CreateRedemptionRequestResult createRedemptionResult;
     case DATA_CREATION:
         DataCreationExtended dataCreationExtended;
+    case CREATE_DEFERRED_PAYMENT:
+        CreateDeferredPaymentResult createDeferredPaymentResult;
+    case CLOSE_DEFERRED_PAYMENT:
+         CloseDeferredPaymentResult closeDeferredPaymentResult;
+
     } typeExt;
 
     //: Reserved for future use

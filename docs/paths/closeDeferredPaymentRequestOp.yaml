@@ -1,0 +1,42 @@
+/createCloseDeferredPaymentRequestOp:
+  get:
+    tags:
+      - Deferred payment
+    summary: Close deferred payment request
+    description: |
+      Allow to unlock and send money from existing deferred payment
+
+      #### Account Role Requirements
+        | Account | Resource Type   | Reviewable Request Type | Action | Condition |
+        | --------|:---------------:|:-------:|:--------:|:-------:|
+        | source  | `REVIEWABLE_REQUEST` | `CLOSE_DEFERRED_PAYMENT` | `CREATE` | `allTasks` == `null` |
+        | source  | `REVIEWABLE_REQUEST` | `CLOSE_DEFERRED_PAYMENT` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+      #### Signer Role Requirements
+        | Resource Type | ReviewableRequestType | Action |
+        |:-------------:|:-------:|:--------:|
+        | `REVIEWABLE_REQUEST` | `CLOSE_DEFERRED_PAYMENT` | `CREATE` |
+
+      #### Tasks
+
+      `create_deferred_payment_close_tasks:<asset_code>`
+
+    operationId: createCloseDeferredPaymentRequestOp
+    x-item-type: operation
+    parameters:
+      - name: CreateCloseDeferredPaymentRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreateCloseDeferredPaymentRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateCloseDeferredPaymentRequestOp'

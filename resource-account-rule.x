@@ -161,6 +161,22 @@ case DATA_REMOVE:
         //: Reserved for future extension
         EmptyExt ext;
     } dataRemove;
+case CREATE_DEFERRED_PAYMENT:
+    struct
+    {
+        AssetCode assetCode;
+
+        uint64 assetType;
+        EmptyExt ext;
+    } createDeferredPayment;
+case CLOSE_DEFERRED_PAYMENT:
+    struct
+    {
+        AssetCode assetCode;
+
+        uint64 assetType;
+        EmptyExt ext;
+    } closeDeferredPayment;
 default:
     //: reserved for future extension
     EmptyExt ext;

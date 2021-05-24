@@ -1,0 +1,42 @@
+/createDeferredPaymentCreationRequestOp:
+  get:
+    tags:
+      - Deferred payment
+    summary: Create deferred payment request
+    description: |
+      Allow to create deferred payment and allow destination to manage this deferred payment
+
+      #### Account Role Requirements
+        | Account | Resource Type   | Reviewable Request Type | Action | Condition |
+        | --------|:---------------:|:-------:|:--------:|:-------:|
+        | source  | `REVIEWABLE_REQUEST` | `CREATE_DEFERRED_PAYMENT` | `CREATE` | `allTasks` == `null` |
+        | source  | `REVIEWABLE_REQUEST` | `CREATE_DEFERRED_PAYMENT` | `CREATE_WITH_TASKS` | `allTasks` != `null` |
+
+      #### Signer Role Requirements
+        | Resource Type | ReviewableRequestType | Action |
+        |:-------------:|:-------:|:--------:|
+        | `REVIEWABLE_REQUEST` | `CREATE_DEFERRED_PAYMENT` | `CREATE` |
+
+      #### Tasks
+
+      `create_deferred_payment_creation_tasks:<asset_code>`
+
+    operationId: createDeferredPaymentCreationRequestOp
+    x-item-type: operation
+    parameters:
+      - name: CreateDeferredPaymentCreationRequestOp
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: object
+          $ref: '#/components/schemas/CreateDeferredPaymentCreationRequestOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/CreateDeferredPaymentCreationRequestResult'

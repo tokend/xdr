@@ -21,6 +21,8 @@
 %#include "xdr/reviewable-request-create-data.h"
 %#include "xdr/reviewable-request-update-data.h"
 %#include "xdr/reviewable-request-remove-data.h"
+%#include "xdr/reviewable-request-create-deferred-payment.h"
+%#include "xdr/reviewable-request-close-deferred-payment.h"
 
 namespace stellar
 {
@@ -50,7 +52,9 @@ enum ReviewableRequestType
 	PERFORM_REDEMPTION = 21,
 	DATA_CREATION = 22,
 	DATA_UPDATE = 23,
-	DATA_REMOVE = 24
+	DATA_REMOVE = 24,
+	CREATE_DEFERRED_PAYMENT = 25,
+    CLOSE_DEFERRED_PAYMENT = 26
 };
 
 struct TasksExt {
@@ -125,6 +129,10 @@ struct ReviewableRequestEntry {
             DataUpdateRequest dataUpdateRequest;
         case DATA_REMOVE:
             DataRemoveRequest dataRemoveRequest;
+        case CREATE_DEFERRED_PAYMENT:
+            CreateDeferredPaymentRequest createDeferredPaymentRequest;
+        case CLOSE_DEFERRED_PAYMENT:
+            CloseDeferredPaymentRequest closeDeferredPaymentRequest;
 
 	} body;
 
