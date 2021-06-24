@@ -8,7 +8,8 @@ namespace stellar
 enum ManageSaleAction
 {
     CREATE_UPDATE_DETAILS_REQUEST = 1,
-    CANCEL = 2
+    CANCEL = 2,
+    UPDATE_TIME = 3
 };
 
 
@@ -35,6 +36,21 @@ struct UpdateSaleDetailsData {
     } ext;
 };
 
+//: Details are valid if one of the fileds is not zero
+struct UpdateTimeData {
+    //: start time can be updated if sale is not started yet (zero means no changes)
+    uint64 newStartTime; 
+    //: end time should be greater than start time (zero means no changes)
+    uint64 newEndTime;
+
+    //: Reserved for future use
+    union switch (LedgerVersion v)
+    {
+    case EMPTY_VERSION:
+        void;
+    } ext;
+};
+
 //: ManageSaleOp is used to cancel a sale, or create a reviewable request which, after approval, will update sale details.
 struct ManageSaleOp
 {
@@ -46,6 +62,8 @@ struct ManageSaleOp
         UpdateSaleDetailsData updateSaleDetailsData;
     case CANCEL:
         void;
+    case UPDATE_TIME:
+        UpdateTimeData updateTime;
     } data;
 
     //: Reserved for future use
@@ -74,7 +92,13 @@ enum ManageSaleResultCode
     //: It is not allowed to set allTasks for a pending reviewable request
     NOT_ALLOWED_TO_SET_TASKS_ON_UPDATE = -5, // not allowed to set allTasks on request update
     //: Update sale details tasks are not set in the system, i.e. it's not allowed to perform the update of sale details 
-    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6
+    SALE_UPDATE_DETAILS_TASKS_NOT_FOUND = -6,
+    //: Both fields are zero
+    INVALID_UPDATE_TIME_DATA = -7,
+    //: Start time could not be updated (sale has already started)
+    INVALID_START_TIME = -8,
+    //: End time could not be less than start time
+    INVALID_END_TIME = -9
 };
 
 //:Result of ManageSale operation successful application 
@@ -88,6 +112,7 @@ struct ManageSaleResultSuccess
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
     case CANCEL:
+    case UPDATE_TIME:
         void;
     } response;
 
