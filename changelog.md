@@ -8,6 +8,9 @@
 * `creatorDetails` for `PaymentRequest`, `ManageOfferRequest`
 * Result codes for `CreatePaymentRequest`, `CreateManageOfferRequest`
 
+### Fixed
+* Updated `ManageSaleResultSuccess` union switch to resolve issue with missing ref to the result schema
+
 ## 3.7.2
 
 ### Added
