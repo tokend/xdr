@@ -112,6 +112,7 @@ struct ManageSaleResultSuccess
     case CREATE_UPDATE_DETAILS_REQUEST:
         uint64 requestID;
     case CANCEL:
+        void;
     case UPDATE_TIME:
         void;
     } response;
