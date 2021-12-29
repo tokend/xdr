@@ -1,0 +1,26 @@
+/liquidityPoolSwap:
+  get:
+    tags:
+      - "Liquidity Pool"
+    summary: Swap assets
+    description: |
+      Allow to swap assets using liquidity pool mechanism
+    operationId: lpSwapOp
+    x-item-type: operation
+    parameters:
+    - name: LPSwapOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/LpSwapOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/LpSwapResult'

@@ -116,7 +116,8 @@ enum LedgerEntryType
     SWAP = 38,
     DATA = 39,
     CUSTOM = 40,
-    DEFERRED_PAYMENT = 41
+    DEFERRED_PAYMENT = 41,
+    LIQUIDITY_POOL = 42
 };
 
 // variable size as the size depends on the signature scheme used
@@ -239,7 +240,10 @@ enum OperationType
     CREATE_DEFERRED_PAYMENT_CREATION_REQUEST = 66,
     CANCEL_DEFERRED_PAYMENT_CREATION_REQUEST = 67,
     CREATE_CLOSE_DEFERRED_PAYMENT_REQUEST = 68,
-    CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST = 69
+    CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST = 69,
+    LP_SWAP = 70,
+    LP_ADD_LIQUIDITY = 71,
+    LP_REMOVE_LIQUIDITY = 72
 };
 
 struct DecoratedSignature
