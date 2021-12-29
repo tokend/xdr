@@ -4,7 +4,7 @@
       - "Liquidity Pool"
     summary: Liquidity pool
     description: |
-      Ahdjfsh
+      Describes the liquidity pool state
     operationId: liquidityPool
     parameters:
       - name: LiquidityPoolEntry
