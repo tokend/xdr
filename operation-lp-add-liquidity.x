@@ -5,10 +5,10 @@ namespace stellar
 {
     struct LPAddLiquidityOp
     {
-        //: First asset of the pair
-        AssetCode firstAsset;
-        //: Second asset of the pair
-        AssetCode secondAsset;
+        //: Balance for first asset of the pair
+        BalanceID firstAssetBalance;
+        //: Balance for second asset of the pair
+        BalanceID secondAssetBalance;
 
         //: Desired amount of first asset to be provided
         uint64 firstAssetDesiredAmount;
@@ -19,12 +19,6 @@ namespace stellar
         uint64 firstAssetMinAmount;
         //: Minimal amount of second asset to be provided
         uint64 secondAssetMinAmount;
-
-        //: Fee data for providing the liquidity
-        PaymentFeeData feeData;
-
-        //: Time till which add liquidity can be executed
-        uint64 deadline;
 
         //: Reserved for future use
         EmptyExt ext;
@@ -45,12 +39,14 @@ namespace stellar
         LINE_FULL = -3,
         //: Provided asset does not have a `SWAPPABLE` policy set
         NOT_ALLOWED_BY_ASSET_POLICY = -4,
-        //: Overflow during total fee calculation
-        INVALID_DESTINATION_FEE = -5,
-        //: Providing fee amount is insufficient
-        INSUFFICIENT_FEE_AMOUNT = -6,
-        //: Fee charged from provider is greater than the provided liquidity amount
-        PROVIDED_AMOUNT_IS_LESS_THAN_FEE = -7
+        //: Source balance not found
+        SRC_BALANCE_NOT_FOUND = -5,
+        //: Zero desired amount not allowed
+        INVALID_DESIRED_AMOUNT = -6,
+        //: Zero min amount not allowed
+        INVALID_MIN_AMOUNT = -7,
+        //: Amount precision and asset precision are mismatched
+        INCORRECT_AMOUNT_PRECISION = -8
     };
 
     struct LPAddLiquiditySuccess
@@ -67,10 +63,11 @@ namespace stellar
         
         //: Code of an LP token asset 
         AssetCode lpAsset;
-        //: ID of the LP token balance
-        BalanceID lpTokenBalanceID;
         //: Amount of LP tokens issued for provided liquidity
         uint64 lpTokensAmount;
+        
+        //: Reserved for future extension
+        EmptyExt ext;
     };
 
     union LPAddLiquidityResult switch (LPAddLiquidityResultCode code)

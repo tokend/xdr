@@ -2,37 +2,21 @@
 
 namespace stellar
 {
-    struct LPAssetPair
-    {
-        //: First asset of the pair
-        AssetCode firstAsset;
-        //: Amount of first asset
-        uint64 firtsAssetAmount;
-        //: Balance of first asset
-        BalanceID firstAssetBalance;
-        //: Second asset of the pair
-        AssetCode secondAsset;
-        //: Amount of second asset
-        uint64 secondAssetAmount;
-        //: Balance of second asset
-        BalanceID secondAssetID;
-    };
-
     struct LiquidityPoolEntry
     {
         //: Unique identifier of the liquidity pool
         uint64 sequentialID;
 
         //: Account that holds balances of the liquidity pool
-        AccountID liquidityPoolOwner;
-        //: Balance of the LP tokens
-        BalanceID lpTokensBalance;
+        AccountID liquidityPoolAcount;
 
-        //: Amount of LP tokens
-        uint64 lpTokensAmount;
+        //: Assed code of the LP token
+        AssetCode lpTokenAssetCode;
 
-        //: Pair of assets in liquidity pool
-        LPAssetPair assetPair;
+        //: Balance of first asset
+        BalanceID firstAssetBalance;
+        //: Balance of second asset
+        BalanceID secondAssetBalance;
 
         //: Reserved for future usage
         EmptyExt ext;

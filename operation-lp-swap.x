@@ -11,10 +11,10 @@ namespace stellar
 
     struct LPSwapOp
     {
-        //: Source balance of the swap
-        BalanceID sourceBalance;
-        //: Target balance of the swap
-        BalanceID targetBalance;
+        //: Code of an input asset for swap
+        AssetCode inputAsset;
+        //: Code of an output asset for swap
+        AssetCode outputAsset;
 
         union switch(LPSwapType type)
         {
@@ -40,9 +40,6 @@ namespace stellar
 
         //: Fee data for the swap
         PaymentFeeData feeData;
-
-        //: Time till which swap can be executed
-        int64 deadline;
 
         //: Reserved for future use
         EmptyExt ext;
@@ -75,10 +72,8 @@ namespace stellar
         AMOUNT_IS_LESS_THAN_DEST_FEE = -9,
         //: Amount precision and asset precision are mismatched
         INCORRECT_AMOUNT_PRECISION = -10,
-        //: Deadline is in the past
-        SWAP_EXPIRED = -11,
         //: Zero amount is not allowed
-        INVALID_AMOUNT = -12
+        INVALID_AMOUNT = -11
     };
 
     struct LPSwapSuccess
@@ -87,7 +82,7 @@ namespace stellar
         uint64 liquidityPoolID;
 
         //: ID of the pool account
-        AccountID pool;
+        AccountID poolAccount;
         //: ID of the destination balance
         BalanceID destBalance;
 

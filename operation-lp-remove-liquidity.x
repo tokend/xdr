@@ -15,12 +15,6 @@ namespace stellar
         //: Minimal amount of second asset to be recieved
         uint64 secondAssetMinAmount;
 
-        //: Fee data for removing the liquidity
-        PaymentFeeData feeData;
-
-        //: Time till which remove liquidity can be executed
-        uint64 deadline;
-
         //: Reserved for future use
         EmptyExt ext;
     };
@@ -38,12 +32,12 @@ namespace stellar
         UNDERFUNDED = -2,
         //: After the removing liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         LINE_FULL = -3,
-        //: Overflow during total fee calculation
-        INVALID_DESTINATION_FEE = -5,
-        //: Providing fee amount is insufficient
-        INSUFFICIENT_FEE_AMOUNT = -6,
-        //: Fee charged is greater than the recieved asset amount
-        RECIEVED_AMOUNT_IS_LESS_THAN_FEE = -7
+        //: Zero min amount not allowed
+        INVALID_MIN_AMOUNT = -4,
+        //: Amount precision and asset precision are mismatched
+        INCORRECT_AMOUNT_PRECISION = -5,
+        //: Deadline is in the past
+        INVALID_DEADLINE = -6
     };
 
     struct LPRemoveLiquiditySuccess
@@ -65,6 +59,9 @@ namespace stellar
         uint64 firstAssetAmount;
         //: Amount of the second asset
         uint64 secondAssetAmount;
+
+        //: Reserved for future extension
+        EmptyExt ext;
     };
 
     union LPRemoveLiquidityResult switch (LPRemoveLiquidityResultCode code)
