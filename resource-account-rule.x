@@ -382,7 +382,9 @@ enum AccountRuleAction
     RECEIVE_REDEMPTION = 22,
     UPDATE = 23,
     UPDATE_FOR_OTHER = 24,
-    CUSTOM = 25
+    CUSTOM = 25,
+    MANAGE_LIQUIDITY = 26,
+    LIQUIDITY_POOL_SWAP = 27
 };
 
 }
