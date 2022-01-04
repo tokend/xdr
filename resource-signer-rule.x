@@ -176,6 +176,22 @@ case DATA:
     } data;
 case CUSTOM:
     CustomRuleResource custom;
+case LIQUIDITY_POOL:
+    struct
+    {
+        //: Code of the first asset in LP pair
+        AssetCode firstAsset;
+        //: Type of the first asset in LP pair
+        uint64 firstAssetType;
+
+        //: Code of the second asset in LP pair
+        AssetCode secondAsset;
+        //: Type of the seconds asset in LP pair
+        uint64 secondAssetType;
+
+        //: Reserved for future extension
+        EmptyExt ext;
+    } liquidityPool;
 default:
     //: reserved for future extension
     EmptyExt ext;
