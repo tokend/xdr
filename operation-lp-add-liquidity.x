@@ -10,6 +10,9 @@ namespace stellar
         //: Balance for second asset of the pair
         BalanceID secondAssetBalance;
 
+        //: Asset code of the LP token
+        AssetCode lpTokenAsset;
+
         //: Desired amount of first asset to be provided
         uint64 firstAssetDesiredAmount;
         //: Desired amount of second asset to be provided
