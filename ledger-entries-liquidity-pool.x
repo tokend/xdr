@@ -18,6 +18,9 @@ namespace stellar
         //: Balance of second asset
         BalanceID secondAssetBalance;
 
+        //: Total amount of all LP tokens
+        uint64 lpTokensTotalCap;
+
         //: Reserved for future usage
         EmptyExt ext;
     };

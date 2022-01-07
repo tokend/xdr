@@ -49,7 +49,9 @@ namespace stellar
         //: Zero min amount not allowed
         INVALID_MIN_AMOUNT = -7,
         //: Amount precision and asset precision are mismatched
-        INCORRECT_AMOUNT_PRECISION = -8
+        INCORRECT_AMOUNT_PRECISION = -8,
+        //: Can't create liquidity pool with given LP token asset code
+        INCORRECT_LP_TOKEN_CODE = -9
     };
 
     struct LPAddLiquiditySuccess
