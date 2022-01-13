@@ -4,8 +4,8 @@ namespace stellar
 {
     struct LiquidityPoolEntry
     {
-        //: Unique identifier of the liquidity pool
-        uint64 sequentialID;
+        //: Unique sequential identifier of the liquidity pool
+        uint64 id;
 
         //: Account that holds balances of the liquidity pool
         AccountID liquidityPoolAcount;
