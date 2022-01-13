@@ -10,9 +10,6 @@ namespace stellar
         //: Balance for second asset of the pair
         BalanceID secondAssetBalance;
 
-        //: Asset code of the LP token
-        AssetCode lpTokenAsset;
-
         //: Desired amount of first asset to be provided
         uint64 firstAssetDesiredAmount;
         //: Desired amount of second asset to be provided
@@ -50,8 +47,10 @@ namespace stellar
         INVALID_MIN_AMOUNT = -7,
         //: Amount precision and asset precision are mismatched
         INCORRECT_AMOUNT_PRECISION = -8,
-        //: Can't create liquidity pool with given LP token asset code
-        INCORRECT_LP_TOKEN_CODE = -9
+        //: Amount of first asset is insufficient to provide liquidity
+        INSUFFICIENT_FIRST_ASSET_AMOUNT = -9,
+        //: Amount of second asset is insufficient to provide liquidity
+        INSUFFICIENT_SECOND_ASSET_AMOUNT = -10
     };
 
     struct LPAddLiquiditySuccess
