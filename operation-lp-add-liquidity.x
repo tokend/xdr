@@ -50,7 +50,9 @@ namespace stellar
         //: Amount of first asset is insufficient to provide liquidity
         INSUFFICIENT_FIRST_ASSET_AMOUNT = -9,
         //: Amount of second asset is insufficient to provide liquidity
-        INSUFFICIENT_SECOND_ASSET_AMOUNT = -10
+        INSUFFICIENT_SECOND_ASSET_AMOUNT = -10,
+        //: Min amount cannot be bigger than desired amount
+        MIN_AMOUNT_BIGGER_THAN_DESIRED = -11
     };
 
     struct LPAddLiquiditySuccess
