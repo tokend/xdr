@@ -21,6 +21,11 @@ namespace stellar
         //: Total amount of all LP tokens
         uint64 lpTokensTotalCap;
 
+        //: Amount of first asset stored in liquidity pool
+        uint64 firstReserve;
+        //: Amount of second asset stored in liquidity pool
+        uint64 secondReserve;
+
         //: Reserved for future usage
         EmptyExt ext;
     };
