@@ -35,7 +35,7 @@ namespace stellar
         MALFORMED = -1,
         //: Not enough funds in the source account
         UNDERFUNDED = -2,
-        //: After the adding liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
+        //: After adding liqudiity, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         LINE_FULL = -3,
         //: Provided asset does not have a `SWAPPABLE` policy set
         NOT_ALLOWED_BY_ASSET_POLICY = -4,
@@ -52,7 +52,9 @@ namespace stellar
         //: Amount of second asset is insufficient to provide liquidity
         INSUFFICIENT_SECOND_ASSET_AMOUNT = -10,
         //: Min amount cannot be bigger than desired amount
-        MIN_AMOUNT_BIGGER_THAN_DESIRED = -11
+        MIN_AMOUNT_BIGGER_THAN_DESIRED = -11,
+        //: Amount of the LP tokens to issue equals to zero
+        INSUFFICIENT_LIQUIDITY_PROVIDED = -12
     };
 
     struct LPAddLiquiditySuccess
