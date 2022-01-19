@@ -23,6 +23,8 @@ union VoteData switch (PollType pollType)
 {
 case SINGLE_CHOICE:
     SingleChoiceVote single;
+case CUSTOM_CHOICE:
+	longstring custom;
 //case MULTIPLE_CHOICE:
 //    MultipleChoiceVote multiple;
 };
