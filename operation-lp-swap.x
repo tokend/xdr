@@ -11,10 +11,10 @@ namespace stellar
 
     struct LPSwapOp
     {
-        //: Code of an input asset for swap
-        AssetCode inputAsset;
-        //: Code of an output asset for swap
-        AssetCode outputAsset;
+        //: Balance of the priveded asset
+        BalanceID fromBalance;
+        //: Balance of the desired asset
+        BalanceID toBalance;
 
         union switch(LPSwapType type)
         {
@@ -58,10 +58,10 @@ namespace stellar
         UNDERFUNDED = -2,
         //: Sender balance asset and receiver balance asset are not equal
         BALANCE_ASSETS_MATCHED = -3,
-        //: There is no balance found with ID provided in `sourceBalance`
-        SRC_BALANCE_NOT_FOUND = -4,
-        //: There is no balance found with ID provided in `targetBalance`
-        TGT_BALANCE_NOT_FOUND = -5,
+        //: There is no balance found with ID provided in `fromBalance`
+        FROM_BALANCE_NOT_FOUND = -4,
+        //: There is no balance found with ID provided in `toBalance`
+        TO_BALANCE_NOT_FOUND = -5,
         //: Payment asset does not have a `SWAPPABLE` policy set
         NOT_ALLOWED_BY_ASSET_POLICY = -6,
         //: Overflow during total fee calculation
@@ -83,8 +83,6 @@ namespace stellar
 
         //: ID of the pool account
         AccountID poolAccount;
-        //: ID of the destination balance
-        BalanceID destBalance;
 
         //: Code of the source asset used in LP swap
         AssetCode sourceAsset;
