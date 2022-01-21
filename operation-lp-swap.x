@@ -72,8 +72,20 @@ namespace stellar
         AMOUNT_IS_LESS_THAN_DEST_FEE = -9,
         //: Amount precision and asset precision are mismatched
         INCORRECT_AMOUNT_PRECISION = -10,
-        //: Zero amount is not allowed
-        INVALID_AMOUNT = -11
+        //: Zero input amount not allowed
+        INSUFFICIENT_INPUT_AMOUNT = -11,
+        //: Output amount is less than allowed 
+        INSUFFICIENT_OUTPUT_AMOUNT = -12,
+        //: From and to assets are the same
+        SAME_ASSETS = -13,
+        //: Liquidity pool for assets from balances not found
+        LIQUIDITY_POOL_NOT_FOUND = -14,
+        //: Reserves of the liquidity pool are insufficient for swap
+        INSUFFICIENT_LIQUIDITY = -15,
+        //: Calculated input amount is greater than provided amountInMax
+        EXCESSIVE_INPUT_AMOUNT = -16,
+        //: The destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX 
+        LINE_FULL = -17
     };
 
     struct LPSwapSuccess
