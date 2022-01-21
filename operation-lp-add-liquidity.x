@@ -54,7 +54,9 @@ namespace stellar
         //: Min amount cannot be bigger than desired amount
         MIN_AMOUNT_BIGGER_THAN_DESIRED = -11,
         //: Amount of the LP tokens to issue equals to zero
-        INSUFFICIENT_LIQUIDITY_PROVIDED = -12
+        INSUFFICIENT_LIQUIDITY_PROVIDED = -12,
+        //: Source balances are equal
+        SAME_BALANCES = -13
     };
 
     struct LPAddLiquiditySuccess
