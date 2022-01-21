@@ -53,7 +53,7 @@ namespace stellar
         SUCCESS = 0,
 
         //: Source and target balances are the same
-        MALFORMED = -1,
+        SAME_BALANCES = -1,
         //: Not enough funds in the source account
         UNDERFUNDED = -2,
         //: Sender balance asset and receiver balance asset are not equal

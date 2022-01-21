@@ -31,8 +31,8 @@ namespace stellar
         //: LP add liquidity was successfull
         SUCCESS = 0,
 
-        //: Assets in the pair are equal or one of the assets doesn't exists
-        MALFORMED = -1,
+        //: Assets in the pair are equal
+        SAME_ASSETS = -1,
         //: Not enough funds in the source account
         UNDERFUNDED = -2,
         //: After adding liqudiity, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
