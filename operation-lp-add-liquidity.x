@@ -36,7 +36,7 @@ namespace stellar
         //: Not enough funds in the source account
         UNDERFUNDED = -2,
         //: After adding liqudiity, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
-        OVERFLOW = -3,
+        BALANCE_OVERFLOW = -3,
         //: Provided asset does not have a `SWAPPABLE` policy set
         NOT_ALLOWED_BY_ASSET_POLICY = -4,
         //: Source balance not found
