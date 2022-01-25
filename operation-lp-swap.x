@@ -85,7 +85,9 @@ namespace stellar
         //: Calculated input amount is greater than provided amountInMax
         EXCESSIVE_INPUT_AMOUNT = -16,
         //: The destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX) 
-        BALANCE_OVERFLOW = -17
+        BALANCE_OVERFLOW = -17,
+        //: Request type doesn't correspond to LPSwapType
+        INCORRECT_REQUEST_TYPE = -18
     };
 
     struct LPSwapSuccess
