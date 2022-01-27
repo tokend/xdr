@@ -5,8 +5,8 @@ namespace stellar
 {
     struct LPRemoveLiquidityOp
     {
-        //: Code of an LP token asset
-        AssetCode lpTokenAsset;
+        //: Balance of an LP token
+        BalanceID lpTokenBalance;
         //: Amount of the LP tokens to be exchanged for assets pair
         uint64 lpTokensAmount;
 
@@ -26,18 +26,14 @@ namespace stellar
         //: LP remove liquidity was successfull
         SUCCESS = 0,
 
-        //: LP token doesn't exists
-        MALFORMED = -1,
+        //: LP token balance doesn't exists
+        LP_TOKEN_BALANCE_NOT_FOUND = -1,
         //: Not enough LP tokens in the source account
         UNDERFUNDED = -2,
         //: After the removing liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
-        LINE_FULL = -3,
+        BALANCE_OVERFLOW = -3,
         //: Zero min amount not allowed
-        INVALID_MIN_AMOUNT = -4,
-        //: Amount precision and asset precision are mismatched
-        INCORRECT_AMOUNT_PRECISION = -5,
-        //: Deadline is in the past
-        INVALID_DEADLINE = -6
+        INVALID_MIN_AMOUNT = -4
     };
 
     struct LPRemoveLiquiditySuccess
