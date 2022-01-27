@@ -33,7 +33,9 @@ namespace stellar
         //: After the removing liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         BALANCE_OVERFLOW = -3,
         //: Zero min amount not allowed
-        INVALID_MIN_AMOUNT = -4
+        INVALID_MIN_AMOUNT = -4,
+        //: Liquidity pool not found
+        LP_NOT_FOUND = -5
     };
 
     struct LPRemoveLiquiditySuccess
