@@ -37,7 +37,13 @@ namespace stellar
         //: Liquidity pool not found
         LP_NOT_FOUND = -5,
         //: Zero LP tokens amount not allowed
-        INVALID_LP_TOKENS_AMOUNT = -6
+        INVALID_LP_TOKENS_AMOUNT = -6,
+        //: Calculeted first asset amount is less than min amount
+        INSUFFICIENT_FIRST_AMOUNT = -7,
+        //: Calculeted second asset amount is less than min amount
+        INSUFFICIENT_SECOND_AMOUNT = -8,
+        //: Amount precision and asset precision are mismatched
+        INCORRECT_AMOUNT_PRECISION = -9
     };
 
     struct LPRemoveLiquiditySuccess
