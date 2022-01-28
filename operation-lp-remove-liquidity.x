@@ -35,7 +35,9 @@ namespace stellar
         //: Zero min amount not allowed
         INVALID_MIN_AMOUNT = -4,
         //: Liquidity pool not found
-        LP_NOT_FOUND = -5
+        LP_NOT_FOUND = -5,
+        //: Zero LP tokens amount not allowed
+        INVALID_LP_TOKENS_AMOUNT = -6
     };
 
     struct LPRemoveLiquiditySuccess
