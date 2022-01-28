@@ -32,18 +32,16 @@ namespace stellar
         UNDERFUNDED = -2,
         //: After the removing liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         BALANCE_OVERFLOW = -3,
-        //: Zero min amount not allowed
-        INVALID_MIN_AMOUNT = -4,
         //: Liquidity pool not found
-        LP_NOT_FOUND = -5,
+        LP_NOT_FOUND = -4,
         //: Zero LP tokens amount not allowed
-        INVALID_LP_TOKENS_AMOUNT = -6,
+        INVALID_LP_TOKENS_AMOUNT = -5,
         //: Calculeted first asset amount is less than min amount
-        INSUFFICIENT_FIRST_AMOUNT = -7,
+        INSUFFICIENT_FIRST_AMOUNT = -6,
         //: Calculeted second asset amount is less than min amount
-        INSUFFICIENT_SECOND_AMOUNT = -8,
+        INSUFFICIENT_SECOND_AMOUNT = -7,
         //: Amount precision and asset precision are mismatched
-        INCORRECT_AMOUNT_PRECISION = -9
+        INCORRECT_AMOUNT_PRECISION = -8
     };
 
     struct LPRemoveLiquiditySuccess
