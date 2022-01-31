@@ -53,11 +53,6 @@ namespace stellar
         BalanceID firstAssetBalanceID;
         //: ID of the second asset balance
         BalanceID secondAssetBalanceID;
-        
-        //: Code of the first asset 
-        AssetCode firstAsset;
-        //: Code of the second asset
-        AssetCode secondAsset;
 
         //: Amount of the first asset
         uint64 firstAssetAmount;
