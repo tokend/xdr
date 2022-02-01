@@ -5,8 +5,8 @@ namespace stellar
 {
     enum LPSwapType
     {
-        TOKENS_FOR_EXACT_TOKENS = 0,
-        EXACT_TOKENS_FOR_TOKENS = 1
+        OUT_TOKENS_FOR_EXACT_IN_TOKENS = 0,
+        EXACT_OUT_TOKENS_FOR_IN_TOKENS = 1
     };
 
     struct LPSwapOp
@@ -19,7 +19,7 @@ namespace stellar
         union switch(LPSwapType type)
         {
             //: Execute swap for exact output amount
-            case TOKENS_FOR_EXACT_TOKENS:
+            case OUT_TOKENS_FOR_EXACT_IN_TOKENS:
                 struct
                 {
                     //: Maximum amount to send in the swap
@@ -28,7 +28,7 @@ namespace stellar
                     uint64 amountOut;
                 } swapTokensForExactTokens;
             //: Execute swap for exact input amount 
-            case EXACT_TOKENS_FOR_TOKENS:
+            case EXACT_OUT_TOKENS_FOR_IN_TOKENS:
                 struct
                 {
                     //: Amount to send in the swap
@@ -49,7 +49,7 @@ namespace stellar
 
     enum LPSwapResultCode
     {
-        //: LP was successfull
+        //: LP swap was successfull
         SUCCESS = 0,
 
         //: Source and target balances are the same
@@ -85,9 +85,7 @@ namespace stellar
         //: Calculated input amount is greater than provided amountInMax
         EXCESSIVE_INPUT_AMOUNT = -16,
         //: The destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX) 
-        BALANCE_OVERFLOW = -17,
-        //: Request type doesn't correspond to LPSwapType
-        INCORRECT_REQUEST_TYPE = -18
+        BALANCE_OVERFLOW = -17
     };
 
     struct LPSwapSuccess
@@ -98,10 +96,10 @@ namespace stellar
         //: ID of the pool account
         AccountID poolAccount;
 
-        //: Code of the source asset used in LP swap
-        AssetCode sourceAsset;
-        //: Code of the target asset used in LP swap
-        AssetCode targetAsset;
+        //: ID of the source asset balance
+        BalanceID sourceBalanceID;
+        //: ID of the target asset balance
+        BalanceID targetBalanceID;
 
         //: Amount of the source asset used for swap
         uint64 swapInAmount;
