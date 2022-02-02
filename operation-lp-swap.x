@@ -5,7 +5,7 @@ namespace stellar
 {
     enum LPSwapType
     {
-        OUT_TOKENS_FOR_EXACT_IN_TOKENS = 0,
+        EXACT_IN_TOKENS_FOR_OUT_TOKENS = 0,
         EXACT_OUT_TOKENS_FOR_IN_TOKENS = 1
     };
 
@@ -19,23 +19,23 @@ namespace stellar
         union switch(LPSwapType type)
         {
             //: Execute swap for exact output amount
-            case OUT_TOKENS_FOR_EXACT_IN_TOKENS:
+            case EXACT_OUT_TOKENS_FOR_IN_TOKENS:
                 struct
                 {
                     //: Maximum amount to send in the swap
                     uint64 amountInMax;
                     //: Desired amount to be recieved
                     uint64 amountOut;
-                } swapTokensForExactTokens;
+                } swapExactOutTokensForInTokens;
             //: Execute swap for exact input amount 
-            case EXACT_OUT_TOKENS_FOR_IN_TOKENS:
+            case EXACT_IN_TOKENS_FOR_OUT_TOKENS:
                 struct
                 {
                     //: Amount to send in the swap
                     uint64 amountIn;
                     //: Minimum amount to be recieved
                     uint64 amountOutMin;
-                } swapExactTokensForTokens;
+                } swapExactInTokensForOutTokens;
         } lpSwapRequest;
 
         //: Fee data for the swap
