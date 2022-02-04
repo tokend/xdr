@@ -383,8 +383,9 @@ enum AccountRuleAction
     UPDATE = 23,
     UPDATE_FOR_OTHER = 24,
     CUSTOM = 25,
-    MANAGE_LIQUIDITY = 26,
-    LIQUIDITY_POOL_SWAP = 27
+    LP_ADD_LIQUIDITY = 26,
+    LP_REMOVE_LIQUIDITY = 27,
+    LP_SWAP = 28
 };
 
 }

@@ -222,8 +222,9 @@ enum SignerRuleAction
     EXCHANGE = 20,
     UPDATE_FOR_OTHER = 21,
     CUSTOM = 22,
-    MANAGE_LIQUIDITY = 23,
-    LIQUIDITY_POOL_SWAP = 24
+    LP_ADD_LIQUIDITY = 23,
+    LP_REMOVE_LIQUIDITY = 24,
+    LP_SWAP = 25
 };
 
 
