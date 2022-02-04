@@ -8,9 +8,9 @@ namespace stellar
         uint64 id;
 
         //: Account that holds balances of the liquidity pool
-        AccountID liquidityPoolAcount;
+        AccountID liquidityPoolAccount;
 
-        //: Assed code of the LP token
+        //: Asset code of the LP token
         AssetCode lpTokenAssetCode;
 
         //: Balance of first asset

@@ -10,9 +10,9 @@ namespace stellar
         //: Amount of the LP tokens to be exchanged for assets pair
         uint64 lpTokensAmount;
 
-        //: Minimal amount of first asset to be recieved
+        //: Minimal amount of first asset to be received
         uint64 firstAssetMinAmount;
-        //: Minimal amount of second asset to be recieved
+        //: Minimal amount of second asset to be received
         uint64 secondAssetMinAmount;
 
         //: Reserved for future use
@@ -23,22 +23,22 @@ namespace stellar
 
     enum LPRemoveLiquidityResultCode
     {
-        //: LP remove liquidity was successfull
+        //: LP remove liquidity was successful
         SUCCESS = 0,
 
         //: LP token balance doesn't exists
         LP_TOKEN_BALANCE_NOT_FOUND = -1,
         //: Not enough LP tokens in the source account
         UNDERFUNDED = -2,
-        //: After the removing liqudiity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
+        //: After the removing liquidity fulfillment, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         BALANCE_OVERFLOW = -3,
         //: Liquidity pool not found
         LP_NOT_FOUND = -4,
         //: Zero LP tokens amount not allowed
         INVALID_LP_TOKENS_AMOUNT = -5,
-        //: Calculeted first asset amount is less than min amount
+        //: Calculated first asset amount is less than min amount
         INSUFFICIENT_FIRST_AMOUNT = -6,
-        //: Calculeted second asset amount is less than min amount
+        //: Calculated second asset amount is less than min amount
         INSUFFICIENT_SECOND_AMOUNT = -7,
         //: Amount precision and asset precision are mismatched
         INCORRECT_AMOUNT_PRECISION = -8

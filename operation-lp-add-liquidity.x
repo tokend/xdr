@@ -28,14 +28,14 @@ namespace stellar
 
     enum LPAddLiquidityResultCode
     {
-        //: LP add liquidity was successfull
+        //: LP add liquidity was successful
         SUCCESS = 0,
 
         //: Assets in the pair are equal
         SAME_ASSETS = -1,
         //: Not enough funds in the source account
         UNDERFUNDED = -2,
-        //: After adding liqudiity, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
+        //: After adding liquidity, the destination balance will exceed the limit (total amount on the balance will be greater than UINT64_MAX)
         BALANCE_OVERFLOW = -3,
         //: Provided asset does not have a `SWAPPABLE` policy set
         NOT_ALLOWED_BY_ASSET_POLICY = -4,

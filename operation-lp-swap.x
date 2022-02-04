@@ -11,7 +11,7 @@ namespace stellar
 
     struct LPSwapOp
     {
-        //: Balance of the priveded asset
+        //: Balance of the provided asset
         BalanceID fromBalance;
         //: Balance of the desired asset
         BalanceID toBalance;
@@ -24,7 +24,7 @@ namespace stellar
                 {
                     //: Maximum amount to send in the swap
                     uint64 amountInMax;
-                    //: Desired amount to be recieved
+                    //: Desired amount to be received
                     uint64 amountOut;
                 } swapExactOutTokensForInTokens;
             //: Execute swap for exact input amount 
@@ -33,7 +33,7 @@ namespace stellar
                 {
                     //: Amount to send in the swap
                     uint64 amountIn;
-                    //: Minimum amount to be recieved
+                    //: Minimum amount to be received
                     uint64 amountOutMin;
                 } swapExactInTokensForOutTokens;
         } lpSwapRequest;
@@ -49,7 +49,7 @@ namespace stellar
 
     enum LPSwapResultCode
     {
-        //: LP swap was successfull
+        //: LP swap was successful
         SUCCESS = 0,
 
         //: Source and target balances are the same
@@ -103,7 +103,7 @@ namespace stellar
 
         //: Amount of the source asset used for swap
         uint64 swapInAmount;
-        //: Amount of the target asset recieved from swap
+        //: Amount of the target asset received from swap
         uint64 swapOutAmount;
 
         //: Fee charged from the source balance
