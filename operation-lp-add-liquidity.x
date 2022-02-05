@@ -66,10 +66,15 @@ namespace stellar
 
         //: ID of the LP account
         AccountID lpAccountID;
-        //: ID of the first asset balance
+        //: ID of the first asset balance in LP
         BalanceID firstAssetBalanceID;
-        //: ID of the second asset balance
+        //: ID of the second asset balance in LP
         BalanceID secondAssetBalanceID;
+
+        //: Amount of tokens charged from source first balance
+        uint64 firstAssetAmount;
+        //: Amount of tokens charged from source second balance
+        uint64 secondAssetAmount;
         
         //: Code of an LP token asset 
         AssetCode lpAsset;
