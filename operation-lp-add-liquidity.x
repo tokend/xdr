@@ -6,9 +6,9 @@ namespace stellar
     struct LPAddLiquidityOp
     {
         //: Balance for first asset of the pair
-        BalanceID firstAssetBalance;
+        BalanceID firstAssetBalanceID;
         //: Balance for second asset of the pair
-        BalanceID secondAssetBalance;
+        BalanceID secondAssetBalanceID;
 
         //: Desired amount of first asset to be provided
         uint64 firstAssetDesiredAmount;
@@ -76,8 +76,8 @@ namespace stellar
         //: Amount of tokens charged from source second balance
         uint64 secondAssetAmount;
         
-        //: Code of an LP token asset 
-        AssetCode lpAsset;
+        //: ID of the LP tokens asset balance 
+        BalanceID lpAsset;
         //: Amount of LP tokens issued for provided liquidity
         uint64 lpTokensAmount;
         
