@@ -77,7 +77,7 @@ namespace stellar
         uint64 secondAssetAmount;
         
         //: ID of the LP tokens asset balance 
-        BalanceID lpAsset;
+        BalanceID lpTokensBalanceID;
         //: Amount of LP tokens issued for provided liquidity
         uint64 lpTokensAmount;
         
