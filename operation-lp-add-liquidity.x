@@ -64,12 +64,15 @@ namespace stellar
         //: Unique identifier of the liquidity pool
         uint64 liquidityPoolID;
 
-        //: ID of the LP account
-        AccountID lpAccountID;
         //: ID of the first asset balance in LP
-        BalanceID firstAssetBalanceID;
+        BalanceID lpFirstAssetBalanceID;
         //: ID of the second asset balance in LP
-        BalanceID secondAssetBalanceID;
+        BalanceID lpSecondAssetBalanceID;
+
+        //: ID of the source first asset balance
+        BalanceID sourceFirstAssetBalanceID;
+        //: ID of the source second asset balance
+        BalanceID sourceSecondAssetBalanceID;
 
         //: Amount of tokens charged from source first balance
         uint64 firstAssetAmount;
