@@ -96,14 +96,19 @@ namespace stellar
         //: ID of the pool account
         AccountID poolAccount;
 
-        //: ID of the source asset balance
-        BalanceID sourceBalanceID;
-        //: ID of the target asset balance
-        BalanceID targetBalanceID;
+        //: ID of the in balance for LP
+        BalanceID lpInBalanceID;
+        //: ID of the out balance for LP
+        BalanceID lpOutBalanceID;
 
-        //: Amount of the source asset used for swap
+        //: ID of the in balance for source
+        BalanceID sourceInBalanceID;
+        //: ID of the out balance for source
+        BalanceID sourceOutBalanceID;
+
+        //: Amount of the in asset used for swap
         uint64 swapInAmount;
-        //: Amount of the target asset received from swap
+        //: Amount of the out asset received from swap
         uint64 swapOutAmount;
 
         //: Fee charged from the source balance
