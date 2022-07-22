@@ -19,7 +19,7 @@ enum CreateDataResultCode
     //: Data entry was successfully created
     SUCCESS = 0,
     //: `value` must be in a valid JSON format
-    INVALID_DATA = -1
+    INVALID_DATA = -1,
 };
 
 struct CreateDataSuccess
