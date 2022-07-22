@@ -43,7 +43,7 @@ GEM
     thread_safe (0.3.6)
     treetop (1.5.3)
       polyglot (~> 0.3)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
 
 PLATFORMS
