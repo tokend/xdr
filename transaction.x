@@ -434,7 +434,7 @@ case opINNER:
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
     case CHANGE_DATA_OWNER:
-        ChangeDataOwnerResult: changeDataOwnerResult;
+        ChangeDataOwnerResult changeDataOwnerResult;
     case CREATE_DATA_CREATION_REQUEST:
         CreateDataCreationRequestResult createDataCreationRequestResult;
     case CANCEL_DATA_CREATION_REQUEST:
