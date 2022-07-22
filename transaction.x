@@ -56,6 +56,7 @@
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
 %#include "xdr/operation-remove-data.h"
+%#include "xdr/operation-change-data-owner.h"
 %#include "xdr/operation-create-data-creation-request.h"
 %#include "xdr/operation-cancel-data-creation-request.h"
 %#include "xdr/operation-create-data-update-request.h"
@@ -187,6 +188,8 @@ struct Operation
         UpdateDataOp updateDataOp;
     case REMOVE_DATA:
         RemoveDataOp removeDataOp;
+    case CHANGE_DATA_OWNER:
+        ChangeDataOwnerOp changeDataOwnerOp;
     case CREATE_DATA_CREATION_REQUEST:
         CreateDataCreationRequestOp createDataCreationRequestOp;
     case CANCEL_DATA_CREATION_REQUEST:
@@ -430,6 +433,8 @@ case opINNER:
         UpdateDataResult updateDataResult;
     case REMOVE_DATA:
         RemoveDataResult removeDataResult;
+    case CHANGE_DATA_OWNER:
+        ChangeDataOwnerResult: changeDataOwnerResult;
     case CREATE_DATA_CREATION_REQUEST:
         CreateDataCreationRequestResult createDataCreationRequestResult;
     case CANCEL_DATA_CREATION_REQUEST:
