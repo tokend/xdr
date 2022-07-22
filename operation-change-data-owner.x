@@ -12,11 +12,11 @@ struct ChangeDataOwnerOp
 
     //: Reserved for future extension
     EmptyExt ext;
-}
+};
 
 enum ChangeDataOwnerResultCode
 {
-    //: Data entry was successfully created
+    //: Data owner has been successfully changed
     SUCCESS = 0,
     //: ID of the destination should be valid account ID and not equal to current data owner
     INVALID_DESTINATION = 1,
