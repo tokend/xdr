@@ -63,7 +63,7 @@
 %#include "xdr/operation-cancel-data-update-request.h"
 %#include "xdr/operation-create-data-remove-request.h"
 %#include "xdr/operation-cancel-data-remove-request.h"
-%#include "xdr/operation-create-dataowner--remove-request.h"
+%#include "xdr/operation-create-data-owner--remove-request.h"
 %#include "xdr/operation-cancel-data-owner-remove-request.h"
 %#include "xdr/operation-create-deferred-payment-creation-request.h"
 %#include "xdr/operation-create-close-deferred-payment-request.h"
