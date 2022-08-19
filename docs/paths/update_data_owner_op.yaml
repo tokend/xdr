@@ -9,14 +9,12 @@
                   #### Account Role Requirements
                     | Account | Resource Type | Rule Action | Condition | Details |
                     | --------|:-------------:|:-----------:| :----: |:-----: |
-                    | source  | `DATA`        | `UPDATE_OWNER`    | source `accountID` is equal to data owner | Resource contains data type |
-                    | source  | `DATA`        | `UPDATE_OWNER_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
+                    | source  | `DATA`        | `TRANSFER_OWNERSHIP`    | source `accountID` is equal to data owner | Resource contains data type |
 
                   #### Signer Role Requirements
                    | Account        | Resource Type | Rule Action        | Condition | Details |
                    | -------------- |:-------------:|:------------------:| --------| :---: |
-                   | source         | `DATA`        | `UPDATE_OWNER`     | source `accountID` is equal to data owner | Resource contains data type |
-                   | source         | `DATA`        | `UPDATE_OWNER_FOR_OTHER`    | source `accountID` is **not** equal to data owner | Resource contains data type |
+                   | source         | `DATA`        | `TRANSFER_OWNERSHIP`     | source `accountID` is equal to data owner | Resource contains data type |
     operationId: updateDataOwner
     x-item-type: operation
     parameters:

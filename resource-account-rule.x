@@ -153,6 +153,14 @@ case DATA_UPDATE:
         //: Reserved for future extension
         EmptyExt ext;
     } dataUpdate;
+case DATA_OWNER_UPDATE:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataOwnerUpdate;
 case DATA_REMOVE:
     struct
     {
@@ -366,7 +374,8 @@ enum AccountRuleAction
     RECEIVE_REDEMPTION = 22,
     UPDATE = 23,
     UPDATE_FOR_OTHER = 24,
-    CUSTOM = 25
+    CUSTOM = 25,
+    TRANSFER_OWNERSHIP = 26
 };
 
 }

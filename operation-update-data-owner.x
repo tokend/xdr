@@ -8,7 +8,7 @@ struct UpdateDataOwnerOp
     //: ID of the data entry to update an owner
     uint64 dataID;
     //: A new owner of the entry
-    AccountID owner;
+    AccountID new_owner;
     //: Reserved for future extension
     EmptyExt ext;
 };
@@ -17,20 +17,26 @@ enum UpdateDataOwnerResultCode
 {
     //: An owner of the data was successfully updated
     SUCCESS = 0,
-    //: `owner` must be in a valid format
-    INVALID_DATA = -1,
     //: Entry with provided ID does not exist
-    NOT_FOUND = -2,
+    NOT_FOUND = -1,
     //: Only owner can update data entry
-    NOT_AUTHORIZED = -3
+    NOT_AUTHORIZED = -2
+};
+
+//: Result of successful application of `UpdateDataOwner` operation
+struct UpdateDataOwnerSuccess
+{
+    //: A new owner of the entry
+    AccountID new_owner;
+    //: Reserved for future extension
+    EmptyExt ext;
 };
 
 //: Result of operation application
 union UpdateDataOwnerResult switch (UpdateDataOwnerResultCode code)
 {
 case SUCCESS:
-    //: Reserved for future extension
-    EmptyExt ext;
+    UpdateDataOwnerSuccess success;
 default:
     void;
 };
