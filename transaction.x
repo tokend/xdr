@@ -67,8 +67,8 @@
 %#include "xdr/operation-create-close-deferred-payment-request.h"
 %#include "xdr/operation-cancel-deferred-payment-creation-request.h"
 %#include "xdr/operation-cancel-close-deferred-payment-request.h"
-%#include "xdr/operation-create-dataowner--remove-request.h"
-%#include "xdr/operation-cancel-data-owner-remove-request.h"
+%#include "xdr/operation-create-data-owner-update-request.h"
+%#include "xdr/operation-cancel-data-owner-update-request.h"
 
 namespace stellar
 {
