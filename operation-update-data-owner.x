@@ -8,7 +8,7 @@ struct UpdateDataOwnerOp
     //: ID of the data entry to update an owner
     uint64 dataID;
     //: A new owner of the entry
-    AccountID new_owner;
+    AccountID newOwner;
     //: Reserved for future extension
     EmptyExt ext;
 };
@@ -27,7 +27,7 @@ enum UpdateDataOwnerResultCode
 struct UpdateDataOwnerSuccess
 {
     //: A new owner of the entry
-    AccountID new_owner;
+    AccountID owner;
     //: Reserved for future extension
     EmptyExt ext;
 };

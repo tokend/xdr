@@ -134,7 +134,7 @@ struct ReviewableRequestEntry {
             CreateDeferredPaymentRequest createDeferredPaymentRequest;
         case CLOSE_DEFERRED_PAYMENT:
             CloseDeferredPaymentRequest closeDeferredPaymentRequest;
-		case DATA_OWNER_UPDATE:
+        case DATA_OWNER_UPDATE:
             DataOwnerUpdateRequest dataOwnerUpdateRequest;
 
 	} body;

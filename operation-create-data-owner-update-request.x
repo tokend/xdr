@@ -18,11 +18,10 @@ struct CreateDataOwnerUpdateRequestOp
 enum CreateDataOwnerUpdateRequestResultCode
 {
     SUCCESS = 0,
-    INVALID_VALUE = -1,
-    UPDATE_DATA_TASKS_NOT_FOUND = -2,
-    DATA_NOT_FOUND = -3,
-    INVALID_CREATOR_DETAILS = -4,
-    REQUEST_NOT_FOUND = -5
+    UPDATE_DATA_OWNER_TASKS_NOT_FOUND = -1,
+    DATA_NOT_FOUND = -2,
+    INVALID_CREATOR_DETAILS = -3,
+    REQUEST_NOT_FOUND = -4
 };
 
 struct CreateDataOwnerUpdateRequestSuccess {
