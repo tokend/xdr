@@ -3,8 +3,7 @@
 namespace stellar
 {
 struct DataOwnerUpdateRequest {
-    //: Id of the data entry
-    uint64 id;
+    UpdateDataOwnerOp updateDataOwnerOp;
 
     //: Sequence number increases when request is rejected
     uint32 sequenceNumber;

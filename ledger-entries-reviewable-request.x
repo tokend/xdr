@@ -55,7 +55,7 @@ enum ReviewableRequestType
 	DATA_REMOVE = 24,
 	CREATE_DEFERRED_PAYMENT = 25,
     CLOSE_DEFERRED_PAYMENT = 26,
-	DATA_OWNER_UPDATE = 27
+    DATA_OWNER_UPDATE = 27
 };
 
 struct TasksExt {
