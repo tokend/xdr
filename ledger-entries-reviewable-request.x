@@ -23,6 +23,7 @@
 %#include "xdr/reviewable-request-remove-data.h"
 %#include "xdr/reviewable-request-create-deferred-payment.h"
 %#include "xdr/reviewable-request-close-deferred-payment.h"
+%#include "xdr/reviewable-request-update-data-owner.h"
 
 namespace stellar
 {
