@@ -1,4 +1,5 @@
 %#include "xdr/ledger-entries-data.h"
+%#include "xdr/operation-update-data-owner.h"
 
 namespace stellar
 {
