@@ -55,6 +55,7 @@
 %#include "xdr/operation-close-swap.h"
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
+%#include "xdr/operation-update-data-owner.h"
 %#include "xdr/operation-remove-data.h"
 %#include "xdr/operation-create-data-creation-request.h"
 %#include "xdr/operation-cancel-data-creation-request.h"
@@ -66,6 +67,8 @@
 %#include "xdr/operation-create-close-deferred-payment-request.h"
 %#include "xdr/operation-cancel-deferred-payment-creation-request.h"
 %#include "xdr/operation-cancel-close-deferred-payment-request.h"
+%#include "xdr/operation-create-data-owner-update-request.h"
+%#include "xdr/operation-cancel-data-owner-update-request.h"
 
 namespace stellar
 {
@@ -207,7 +210,12 @@ struct Operation
         CreateCloseDeferredPaymentRequestOp createCloseDeferredPaymentRequestOp;
     case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
         CancelCloseDeferredPaymentRequestOp cancelCloseDeferredPaymentRequestOp;
-
+    case UPDATE_DATA_OWNER:
+        UpdateDataOwnerOp updateDataOwnerOp;
+    case CREATE_DATA_OWNER_UPDATE_REQUEST:
+        CreateDataOwnerUpdateRequestOp createDataOwnerUpdateRequestOp;
+    case CANCEL_DATA_OWNER_UPDATE_REQUEST:
+        CancelDataOwnerUpdateRequestOp cancelDataOwnerUpdateRequestOp;
     }
 
     body;
@@ -450,7 +458,12 @@ case opINNER:
         CreateCloseDeferredPaymentRequestResult createCloseDeferredPaymentRequestResult;
     case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
         CancelCloseDeferredPaymentRequestResult cancelCloseDeferredPaymentRequestResult;
-
+    case UPDATE_DATA_OWNER:
+        UpdateDataOwnerResult updateDataOwnerResult;
+    case CREATE_DATA_OWNER_UPDATE_REQUEST:
+        CreateDataOwnerUpdateRequestResult createDataOwnerUpdateRequestResult;
+    case CANCEL_DATA_OWNER_UPDATE_REQUEST:
+        CancelDataOwnerUpdateRequestResult cancelDataOwnerUpdateRequestResult;
     }
     tr;
 case opNO_ENTRY:
