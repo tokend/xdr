@@ -7,6 +7,7 @@
 * Ledger version
 * `creatorDetails` for `PaymentRequest`, `ManageOfferRequest`
 * Result codes for `CreatePaymentRequest`, `CreateManageOfferRequest`
+* Operation `UpdateDataOwnerOp` and corresponding `DataOwnerUpdateRequest`
 
 ### Fixed
 * Updated `ManageSaleResultSuccess` union switch to resolve issue with missing ref to the result schema
