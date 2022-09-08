@@ -4,7 +4,17 @@
       - "Liquidity Pool"
     summary: Provide liquidity to the pool
     description: |
-      Allow to provide liquidity to the pool or create new liquidity pool with provided assets amounts
+      Allows to provide liquidity to the pool or create a new liquidity pool with provided assets amounts
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action            |
+        | ------------- | ---------------- | ----------------- |
+        | source        | `LIQUIDITY_POOL` | `LP_ADD_LIQUIDITY`|
+
+      #### Signer Role Requirements
+        | Resource Type    | Action             |
+        | ---------------- | ------------------ |
+        | `LIQUIDITY_POOL` | `LP_ADD_LIQUIDITY` |
     operationId: lpAddLiquidityOp
     x-item-type: operation
     parameters:

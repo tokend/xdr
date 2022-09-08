@@ -1,0 +1,36 @@
+/updateDataOwner:
+  get:
+    tags:
+      - Data
+    summary: Update an owner of data
+    description: |
+                  Allows to update an owner of data
+
+                  #### Account Role Requirements
+                    | Account | Resource Type | Rule Action | Condition | Details |
+                    | --------|:-------------:|:-----------:| :----: |:-----: |
+                    | source  | `DATA`        | `TRANSFER_OWNERSHIP`    | source `accountID` is equal to data owner | Resource contains data type |
+
+                  #### Signer Role Requirements
+                   | Account        | Resource Type | Rule Action        | Condition | Details |
+                   | -------------- |:-------------:|:------------------:| --------| :---: |
+                   | source         | `DATA`        | `TRANSFER_OWNERSHIP`     | source `accountID` is equal to data owner | Resource contains data type |
+    operationId: updateDataOwner
+    x-item-type: operation
+    parameters:
+    - name: Update Data Owner Op
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/UpdateDataOwnerOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/UpdateDataOwnerResult'

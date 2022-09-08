@@ -4,7 +4,17 @@
       - "Liquidity Pool"
     summary: Swap assets
     description: |
-      Allow to swap assets using liquidity pool mechanism
+      Allows to swap assets using a liquidity pool mechanism
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action    |
+        | ------------- | ---------------- | --------- |
+        | source        | `LIQUIDITY_POOL` | `LP_SWAP` |
+
+      #### Signer Role Requirements
+        | Resource Type    | Action    |
+        | ---------------- | --------- |
+        | `LIQUIDITY_POOL` | `LP_SWAP` |
     operationId: lpSwapOp
     x-item-type: operation
     parameters:

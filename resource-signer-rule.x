@@ -224,7 +224,8 @@ enum SignerRuleAction
     CUSTOM = 22,
     LP_ADD_LIQUIDITY = 23,
     LP_REMOVE_LIQUIDITY = 24,
-    LP_SWAP = 25
+    LP_SWAP = 25,
+    TRANSFER_OWNERSHIP = 26
 };
 
 

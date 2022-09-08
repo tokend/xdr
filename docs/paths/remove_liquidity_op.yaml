@@ -4,7 +4,17 @@
       - "Liquidity Pool"
     summary: Remove liquidity from the pool
     description: |
-      Allow to remove liquidity from the pool
+      Allows to remove liquidity from the pool
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action                |
+        | ------------- | ---------------- | --------------------- |
+        | source        | `LIQUIDITY_POOL` | `LP_REMOVE_LIQUIDITY` |
+
+      #### Signer Role Requirements
+        | Resource Type    | Action                |
+        | ---------------- | --------------------- |
+        | `LIQUIDITY_POOL` | `LP_REMOVE_LIQUIDITY` |
     operationId: lpRemoveLiquidityOp
     x-item-type: operation
     parameters:

@@ -55,6 +55,7 @@
 %#include "xdr/operation-close-swap.h"
 %#include "xdr/operation-create-data.h"
 %#include "xdr/operation-update-data.h"
+%#include "xdr/operation-update-data-owner.h"
 %#include "xdr/operation-remove-data.h"
 %#include "xdr/operation-create-data-creation-request.h"
 %#include "xdr/operation-cancel-data-creation-request.h"
@@ -69,6 +70,8 @@
 %#include "xdr/operation-lp-swap.h"
 %#include "xdr/operation-lp-add-liquidity.h"
 %#include "xdr/operation-lp-remove-liquidity.h"
+%#include "xdr/operation-create-data-owner-update-request.h"
+%#include "xdr/operation-cancel-data-owner-update-request.h"
 
 namespace stellar
 {
@@ -216,7 +219,12 @@ struct Operation
         LPAddLiquidityOp lpAddLiquidityOp;
     case LP_REMOVE_LIQUIDITY:
         LPRemoveLiquidityOp lpRemoveLiquidityOp;
-
+    case UPDATE_DATA_OWNER:
+        UpdateDataOwnerOp updateDataOwnerOp;
+    case CREATE_DATA_OWNER_UPDATE_REQUEST:
+        CreateDataOwnerUpdateRequestOp createDataOwnerUpdateRequestOp;
+    case CANCEL_DATA_OWNER_UPDATE_REQUEST:
+        CancelDataOwnerUpdateRequestOp cancelDataOwnerUpdateRequestOp;
     }
 
     body;
@@ -465,7 +473,12 @@ case opINNER:
         LPAddLiquidityResult lpAddLiquidityResult;
     case LP_REMOVE_LIQUIDITY:
         LPRemoveLiquidityResult lpRemoveLiquidityResult;
-
+    case UPDATE_DATA_OWNER:
+        UpdateDataOwnerResult updateDataOwnerResult;
+    case CREATE_DATA_OWNER_UPDATE_REQUEST:
+        CreateDataOwnerUpdateRequestResult createDataOwnerUpdateRequestResult;
+    case CANCEL_DATA_OWNER_UPDATE_REQUEST:
+        CancelDataOwnerUpdateRequestResult cancelDataOwnerUpdateRequestResult;
     }
     tr;
 case opNO_ENTRY:

@@ -153,6 +153,14 @@ case DATA_UPDATE:
         //: Reserved for future extension
         EmptyExt ext;
     } dataUpdate;
+case DATA_OWNER_UPDATE:
+    struct
+    {
+        //: Numeric type of the data
+        uint64 type;
+        //: Reserved for future extension
+        EmptyExt ext;
+    } dataOwnerUpdate;
 case DATA_REMOVE:
     struct
     {
@@ -385,7 +393,8 @@ enum AccountRuleAction
     CUSTOM = 25,
     LP_ADD_LIQUIDITY = 26,
     LP_REMOVE_LIQUIDITY = 27,
-    LP_SWAP = 28
+    LP_SWAP = 28,
+    TRANSFER_OWNERSHIP = 29
 };
 
 }

@@ -23,6 +23,7 @@
 %#include "xdr/reviewable-request-remove-data.h"
 %#include "xdr/reviewable-request-create-deferred-payment.h"
 %#include "xdr/reviewable-request-close-deferred-payment.h"
+%#include "xdr/reviewable-request-update-data-owner.h"
 
 namespace stellar
 {
@@ -54,7 +55,8 @@ enum ReviewableRequestType
 	DATA_UPDATE = 23,
 	DATA_REMOVE = 24,
 	CREATE_DEFERRED_PAYMENT = 25,
-    CLOSE_DEFERRED_PAYMENT = 26
+    CLOSE_DEFERRED_PAYMENT = 26,
+    DATA_OWNER_UPDATE = 27
 };
 
 struct TasksExt {
@@ -133,6 +135,8 @@ struct ReviewableRequestEntry {
             CreateDeferredPaymentRequest createDeferredPaymentRequest;
         case CLOSE_DEFERRED_PAYMENT:
             CloseDeferredPaymentRequest closeDeferredPaymentRequest;
+        case DATA_OWNER_UPDATE:
+            DataOwnerUpdateRequest dataOwnerUpdateRequest;
 
 	} body;
 
