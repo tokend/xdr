@@ -1,0 +1,36 @@
+/removeLiquidity:
+  get:
+    tags:
+      - "Liquidity Pool"
+    summary: Remove liquidity from the pool
+    description: |
+      Allows to remove liquidity from the pool
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action                |
+        | ------------- | ---------------- | --------------------- |
+        | source        | `LIQUIDITY_POOL` | `LP_REMOVE_LIQUIDITY` |
+
+      #### Signer Role Requirements
+        | Resource Type    | Action                |
+        | ---------------- | --------------------- |
+        | `LIQUIDITY_POOL` | `LP_REMOVE_LIQUIDITY` |
+    operationId: lpRemoveLiquidityOp
+    x-item-type: operation
+    parameters:
+    - name: LPRemoveLiquidityOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/LpRemoveLiquidityOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/LpRemoveLiquidityResult'

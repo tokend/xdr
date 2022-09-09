@@ -35,6 +35,7 @@
 %#include "xdr/ledger-entries-swap.h"
 %#include "xdr/ledger-entries-data.h"
 %#include "xdr/ledger-entries-deferred-payment.h"
+%#include "xdr/ledger-entries-liquidity-pool.h"
 
 namespace stellar
 {
@@ -122,6 +123,8 @@ struct LedgerEntry
         DataEntry data;
     case DEFERRED_PAYMENT:
         DeferredPaymentEntry deferredPayment;
+    case LIQUIDITY_POOL:
+        LiquidityPoolEntry liquidityPool;
     }
     data;
 

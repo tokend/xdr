@@ -111,6 +111,7 @@ x-tagGroups:
      - Atomic Swap
      - Redemption
      - Deferred payment
+     - Liquidity Pool
   - name: Access Control
     tags:
       - Signers

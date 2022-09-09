@@ -1,0 +1,36 @@
+/liquidityPoolSwap:
+  get:
+    tags:
+      - "Liquidity Pool"
+    summary: Swap assets
+    description: |
+      Allows to swap assets using a liquidity pool mechanism
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action    |
+        | ------------- | ---------------- | --------- |
+        | source        | `LIQUIDITY_POOL` | `LP_SWAP` |
+
+      #### Signer Role Requirements
+        | Resource Type    | Action    |
+        | ---------------- | --------- |
+        | `LIQUIDITY_POOL` | `LP_SWAP` |
+    operationId: lpSwapOp
+    x-item-type: operation
+    parameters:
+    - name: LPSwapOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/LpSwapOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/LpSwapResult'

@@ -1,0 +1,36 @@
+/addLiquidity:
+  get:
+    tags:
+      - "Liquidity Pool"
+    summary: Provide liquidity to the pool
+    description: |
+      Allows to provide liquidity to the pool or create a new liquidity pool with provided assets amounts
+
+      #### Account Role Requirements
+        | Account       | Resource Type    | Action            |
+        | ------------- | ---------------- | ----------------- |
+        | source        | `LIQUIDITY_POOL` | `LP_ADD_LIQUIDITY`|
+
+      #### Signer Role Requirements
+        | Resource Type    | Action             |
+        | ---------------- | ------------------ |
+        | `LIQUIDITY_POOL` | `LP_ADD_LIQUIDITY` |
+    operationId: lpAddLiquidityOp
+    x-item-type: operation
+    parameters:
+    - name: LPAddLiquidityOp
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: object
+        $ref: '#/components/schemas/LpAddLiquidityOp'
+    responses:
+      200:
+        description: Result
+        content:
+          xdr:
+            schema:
+              type: object
+              $ref: '#/components/schemas/LpAddLiquidityResult'

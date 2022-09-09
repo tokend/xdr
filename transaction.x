@@ -67,6 +67,9 @@
 %#include "xdr/operation-create-close-deferred-payment-request.h"
 %#include "xdr/operation-cancel-deferred-payment-creation-request.h"
 %#include "xdr/operation-cancel-close-deferred-payment-request.h"
+%#include "xdr/operation-lp-swap.h"
+%#include "xdr/operation-lp-add-liquidity.h"
+%#include "xdr/operation-lp-remove-liquidity.h"
 %#include "xdr/operation-create-data-owner-update-request.h"
 %#include "xdr/operation-cancel-data-owner-update-request.h"
 
@@ -210,6 +213,12 @@ struct Operation
         CreateCloseDeferredPaymentRequestOp createCloseDeferredPaymentRequestOp;
     case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
         CancelCloseDeferredPaymentRequestOp cancelCloseDeferredPaymentRequestOp;
+    case LP_SWAP:
+        LPSwapOp lpSwapOp;
+    case LP_ADD_LIQUIDITY:
+        LPAddLiquidityOp lpAddLiquidityOp;
+    case LP_REMOVE_LIQUIDITY:
+        LPRemoveLiquidityOp lpRemoveLiquidityOp;
     case UPDATE_DATA_OWNER:
         UpdateDataOwnerOp updateDataOwnerOp;
     case CREATE_DATA_OWNER_UPDATE_REQUEST:
@@ -451,13 +460,19 @@ case opINNER:
     case CANCEL_DATA_REMOVE_REQUEST:
         CancelDataRemoveRequestResult cancelDataRemoveRequestResult;
     case CREATE_DEFERRED_PAYMENT_CREATION_REQUEST:
-            CreateDeferredPaymentCreationRequestResult createDeferredPaymentCreationRequestResult;
+        CreateDeferredPaymentCreationRequestResult createDeferredPaymentCreationRequestResult;
     case CANCEL_DEFERRED_PAYMENT_CREATION_REQUEST:
         CancelDeferredPaymentCreationRequestResult cancelDeferredPaymentCreationRequestResult;
     case CREATE_CLOSE_DEFERRED_PAYMENT_REQUEST:
         CreateCloseDeferredPaymentRequestResult createCloseDeferredPaymentRequestResult;
     case CANCEL_CLOSE_DEFERRED_PAYMENT_REQUEST:
         CancelCloseDeferredPaymentRequestResult cancelCloseDeferredPaymentRequestResult;
+    case LP_SWAP:
+        LPSwapResult lpSwapResult;
+    case LP_ADD_LIQUIDITY:
+        LPAddLiquidityResult lpAddLiquidityResult;
+    case LP_REMOVE_LIQUIDITY:
+        LPRemoveLiquidityResult lpRemoveLiquidityResult;
     case UPDATE_DATA_OWNER:
         UpdateDataOwnerResult updateDataOwnerResult;
     case CREATE_DATA_OWNER_UPDATE_REQUEST:

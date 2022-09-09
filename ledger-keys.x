@@ -322,5 +322,11 @@ case DEFERRED_PAYMENT:
 
         EmptyExt ext;
     } deferredPayment;
+case LIQUIDITY_POOL:
+    struct {
+        uint64 id;
+
+        EmptyExt ext;
+    } liquidityPool;
 };
 }

@@ -176,6 +176,22 @@ case DATA:
     } data;
 case CUSTOM:
     CustomRuleResource custom;
+case LIQUIDITY_POOL:
+    struct
+    {
+        //: Code of the first asset in LP pair
+        AssetCode firstAsset;
+        //: Type of the first asset in LP pair
+        uint64 firstAssetType;
+
+        //: Code of the second asset in LP pair
+        AssetCode secondAsset;
+        //: Type of the seconds asset in LP pair
+        uint64 secondAssetType;
+
+        //: Reserved for future extension
+        EmptyExt ext;
+    } liquidityPool;
 default:
     //: reserved for future extension
     EmptyExt ext;
@@ -206,7 +222,10 @@ enum SignerRuleAction
     EXCHANGE = 20,
     UPDATE_FOR_OTHER = 21,
     CUSTOM = 22,
-    TRANSFER_OWNERSHIP = 23
+    TRANSFER_OWNERSHIP = 23,
+    LP_ADD_LIQUIDITY = 24,
+    LP_REMOVE_LIQUIDITY = 25,
+    LP_SWAP = 26
 };
 
 
