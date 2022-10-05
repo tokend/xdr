@@ -4,12 +4,13 @@
 
 ### Added 
 
-* New ledger version `LIQUIDITY_POOL`
+* New ledger entry type `LIQUIDITY_POOL`
 * `creatorDetails` for `PaymentRequest`, `ManageOfferRequest`
 * Result codes for `CreatePaymentRequest`, `CreateManageOfferRequest`
 * Operations
   1. `LPAddLiquidityOp`, `LPSwapOp`, `LPRemoveLiquidityOp`
   2. `UpdateDataOwnerOp` and corresponding `DataOwnerUpdateRequest`
+* New ledger version `FIX_DATA_OWNERSHIP_TRANSFER_OWNER_CHECK`
 
 ### Fixed
 * Updated `ManageSaleResultSuccess` union switch to resolve issue with missing ref to the result schema
