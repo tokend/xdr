@@ -10,7 +10,7 @@
 * Operations
   1. `LPAddLiquidityOp`, `LPSwapOp`, `LPRemoveLiquidityOp`
   2. `UpdateDataOwnerOp` and corresponding `DataOwnerUpdateRequest`
-* New ledger version `FIX_DATA_OWNERSHIP_TRANSFER_OWNER_CHECK`
+* New ledger version `FIX_UPDATE_DATA_OWNER_RESULT`
 
 ### Fixed
 * Updated `ManageSaleResultSuccess` union switch to resolve issue with missing ref to the result schema
